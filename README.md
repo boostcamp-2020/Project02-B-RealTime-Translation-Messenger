@@ -1,8 +1,11 @@
 # Project02-RealTime-Translation-Messenger
 
 <h1 align="center">
-  <img src="https://user-images.githubusercontent.com/68672528/99348989-39a69000-28de-11eb-9664-b5ad3dca7d89.png" width=600 alt="귀여운 파파고 친구들" />
+  <img src="https://user-images.githubusercontent.com/68672528/99348989-39a69000-28de-11eb-9664-b5ad3dca7d89.png" width=700 alt="귀여운 파파고 친구들" />
 </h1>
+
+<br>
+<br>
 
 <div align="center">
 
