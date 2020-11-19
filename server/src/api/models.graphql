@@ -1,0 +1,7 @@
+type User {
+  id: Int!
+  nickname: String!
+  avatar: String!
+  password: String
+  lang: String!
+}
