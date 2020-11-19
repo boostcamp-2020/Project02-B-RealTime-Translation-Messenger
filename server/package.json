@@ -10,12 +10,14 @@
     "@prisma/client": "^2.11.0",
     "dotenv": "^8.2.0",
     "graphql-tools": "^6.2.4",
-    "graphql-yoga": "^1.18.3"
+    "graphql-yoga": "^1.18.3",
+    "merge-graphql-schemas": "^1.7.8"
   },
   "devDependencies": {
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.5",
     "@prisma/cli": "2.11.0",
+    "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.8",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
@@ -24,6 +26,7 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
     "ts-node": "^9.0.0",
@@ -32,6 +35,6 @@
   },
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts",
-    "generate": "npx prisma migrate save --name init --experimental && npx prisma migrate up --experimental && npx prisma generate"
+    "generate": "yarn prisma migrate save --name init --experimental && yarn prisma migrate up --experimental && yarn prisma generate"
   }
 }
