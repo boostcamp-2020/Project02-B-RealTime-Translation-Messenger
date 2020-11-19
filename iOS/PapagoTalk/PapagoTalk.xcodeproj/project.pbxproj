@@ -14,18 +14,10 @@
 		BBF2DCA6256674A500F2EA7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA5256674A500F2EA7D /* Assets.xcassets */; };
 		BBF2DCA9256674A500F2EA7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */; };
 		BBF2DCB4256674A500F2EA7D /* PapagoTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */; };
-		BBF2DCBF256674A500F2EA7D /* PapagoTalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCBE256674A500F2EA7D /* PapagoTalkUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		BBF2DCB0256674A500F2EA7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BBF2DC91256674A300F2EA7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BBF2DC98256674A300F2EA7D;
-			remoteInfo = PapagoTalk;
-		};
-		BBF2DCBB256674A500F2EA7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BBF2DC91256674A300F2EA7D /* Project object */;
 			proxyType = 1;
@@ -46,9 +38,6 @@
 		BBF2DCAF256674A500F2EA7D /* PapagoTalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PapagoTalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTalkTests.swift; sourceTree = "<group>"; };
 		BBF2DCB5256674A500F2EA7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BBF2DCBA256674A500F2EA7D /* PapagoTalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PapagoTalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBF2DCBE256674A500F2EA7D /* PapagoTalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTalkUITests.swift; sourceTree = "<group>"; };
-		BBF2DCC0256674A500F2EA7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +55,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BBF2DCB7256674A500F2EA7D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +63,6 @@
 			children = (
 				BBF2DC9B256674A300F2EA7D /* PapagoTalk */,
 				BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */,
-				BBF2DCBD256674A500F2EA7D /* PapagoTalkUITests */,
 				BBF2DC9A256674A300F2EA7D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +72,6 @@
 			children = (
 				BBF2DC99256674A300F2EA7D /* PapagoTalk.app */,
 				BBF2DCAF256674A500F2EA7D /* PapagoTalkTests.xctest */,
-				BBF2DCBA256674A500F2EA7D /* PapagoTalkUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,15 +97,6 @@
 				BBF2DCB5256674A500F2EA7D /* Info.plist */,
 			);
 			path = PapagoTalkTests;
-			sourceTree = "<group>";
-		};
-		BBF2DCBD256674A500F2EA7D /* PapagoTalkUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BBF2DCBE256674A500F2EA7D /* PapagoTalkUITests.swift */,
-				BBF2DCC0256674A500F2EA7D /* Info.plist */,
-			);
-			path = PapagoTalkUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,24 +137,6 @@
 			productReference = BBF2DCAF256674A500F2EA7D /* PapagoTalkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BBF2DCB9256674A500F2EA7D /* PapagoTalkUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BBF2DCC9256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalkUITests" */;
-			buildPhases = (
-				BBF2DCB6256674A500F2EA7D /* Sources */,
-				BBF2DCB7256674A500F2EA7D /* Frameworks */,
-				BBF2DCB8256674A500F2EA7D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BBF2DCBC256674A500F2EA7D /* PBXTargetDependency */,
-			);
-			name = PapagoTalkUITests;
-			productName = PapagoTalkUITests;
-			productReference = BBF2DCBA256674A500F2EA7D /* PapagoTalkUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,10 +150,6 @@
 						CreatedOnToolsVersion = 12.2;
 					};
 					BBF2DCAE256674A500F2EA7D = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = BBF2DC98256674A300F2EA7D;
-					};
-					BBF2DCB9256674A500F2EA7D = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = BBF2DC98256674A300F2EA7D;
 					};
@@ -221,7 +170,6 @@
 			targets = (
 				BBF2DC98256674A300F2EA7D /* PapagoTalk */,
 				BBF2DCAE256674A500F2EA7D /* PapagoTalkTests */,
-				BBF2DCB9256674A500F2EA7D /* PapagoTalkUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,13 +186,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BBF2DCAD256674A500F2EA7D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBF2DCB8256674A500F2EA7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,14 +213,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BBF2DCB6256674A500F2EA7D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BBF2DCBF256674A500F2EA7D /* PapagoTalkUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -287,11 +220,6 @@
 			isa = PBXTargetDependency;
 			target = BBF2DC98256674A300F2EA7D /* PapagoTalk */;
 			targetProxy = BBF2DCB0256674A500F2EA7D /* PBXContainerItemProxy */;
-		};
-		BBF2DCBC256674A500F2EA7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BBF2DC98256674A300F2EA7D /* PapagoTalk */;
-			targetProxy = BBF2DCBB256674A500F2EA7D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -513,46 +441,6 @@
 			};
 			name = Release;
 		};
-		BBF2DCCA256674A500F2EA7D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = PapagoTalkUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.PapagoTalkUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PapagoTalk;
-			};
-			name = Debug;
-		};
-		BBF2DCCB256674A500F2EA7D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = PapagoTalkUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.PapagoTalkUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PapagoTalk;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -579,15 +467,6 @@
 			buildConfigurations = (
 				BBF2DCC7256674A500F2EA7D /* Debug */,
 				BBF2DCC8256674A500F2EA7D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BBF2DCC9256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalkUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BBF2DCCA256674A500F2EA7D /* Debug */,
-				BBF2DCCB256674A500F2EA7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
