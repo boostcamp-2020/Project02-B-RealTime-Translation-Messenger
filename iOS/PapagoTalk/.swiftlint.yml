@@ -1,0 +1,10 @@
+disabled_rules:
+- line_length
+- trailing_whitespace
+
+included:
+excluded:
+- Pods
+- PapagoTalk/SceneDelegate.swift
+- PapagoTalk/AppDelegate.swift
+function_body_length: 200

@@ -1,0 +1,29 @@
+PODS:
+  - Apollo (0.37.0):
+    - Apollo/Core (= 0.37.0)
+  - Apollo/Core (0.37.0)
+  - Apollo/WebSocket (0.37.0):
+    - Apollo/Core
+    - Starscream (~> 3.1.1)
+  - Starscream (3.1.1)
+  - SwiftLint (0.40.1)
+
+DEPENDENCIES:
+  - Apollo
+  - Apollo/WebSocket
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - Apollo
+    - Starscream
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Apollo: 9b386f7bda8f97f4980c939b7d1aa6da30e6602c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  SwiftLint: bbfed21bf4451dcbd0f5cdbee44a18e06cf91b12
+
+PODFILE CHECKSUM: 8ff670ae7a53cfac94faa264ca7f54d5ae90f3b5
+
+COCOAPODS: 1.9.3

@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0911A2A21E2A83DABE30DCD8 /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */; };
+		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
+		B74A2047BB861DFC398D6FE0 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */; };
 		BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */; };
 		BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */; };
 		BBF2DCA1256674A300F2EA7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCA0256674A300F2EA7D /* ViewController.swift */; };
@@ -27,6 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.release.xcconfig"; sourceTree = "<group>"; };
+		9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
+		99A2766A256687D1008BD24C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BBF2DC99256674A300F2EA7D /* PapagoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PapagoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +47,7 @@
 		BBF2DCAF256674A500F2EA7D /* PapagoTalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PapagoTalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTalkTests.swift; sourceTree = "<group>"; };
 		BBF2DCB5256674A500F2EA7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E428797153F8882AB3C663E3 /* Pods-PapagoTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B74A2047BB861DFC398D6FE0 /* Pods_PapagoTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0911A2A21E2A83DABE30DCD8 /* Pods_PapagoTalkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,9 +73,12 @@
 		BBF2DC90256674A300F2EA7D = {
 			isa = PBXGroup;
 			children = (
+				99A2766A256687D1008BD24C /* .swiftlint.yml */,
 				BBF2DC9B256674A300F2EA7D /* PapagoTalk */,
 				BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */,
 				BBF2DC9A256674A300F2EA7D /* Products */,
+				BDB645955860CC284B4F06B4 /* Pods */,
+				EB34B92CAF9EC55846A01D71 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +114,26 @@
 			path = PapagoTalkTests;
 			sourceTree = "<group>";
 		};
+		BDB645955860CC284B4F06B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E428797153F8882AB3C663E3 /* Pods-PapagoTalk.debug.xcconfig */,
+				110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */,
+				B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */,
+				9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EB34B92CAF9EC55846A01D71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */,
+				B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +141,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBF2DCC3256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalk" */;
 			buildPhases = (
+				9310C3760A617A247417F4C4 /* [CP] Check Pods Manifest.lock */,
 				BBF2DC95256674A300F2EA7D /* Sources */,
 				BBF2DC96256674A300F2EA7D /* Frameworks */,
 				BBF2DC97256674A300F2EA7D /* Resources */,
+				1924C4FDCF031E14E830256B /* [CP] Embed Pods Frameworks */,
+				99A2766E25668875008BD24C /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -123,6 +161,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBF2DCC6256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalkTests" */;
 			buildPhases = (
+				1A3C89118E0669B9C1089462 /* [CP] Check Pods Manifest.lock */,
 				BBF2DCAB256674A500F2EA7D /* Sources */,
 				BBF2DCAC256674A500F2EA7D /* Frameworks */,
 				BBF2DCAD256674A500F2EA7D /* Resources */,
@@ -179,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */,
 				BBF2DCA9256674A500F2EA7D /* LaunchScreen.storyboard in Resources */,
 				BBF2DCA6256674A500F2EA7D /* Assets.xcassets in Resources */,
 				BBF2DCA4256674A300F2EA7D /* Main.storyboard in Resources */,
@@ -193,6 +233,88 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1924C4FDCF031E14E830256B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1A3C89118E0669B9C1089462 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PapagoTalkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9310C3760A617A247417F4C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PapagoTalk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99A2766E25668875008BD24C /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BBF2DC95256674A300F2EA7D /* Sources */ = {
@@ -361,12 +483,14 @@
 		};
 		BBF2DCC4256674A500F2EA7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E428797153F8882AB3C663E3 /* Pods-PapagoTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = PapagoTalk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,12 +504,14 @@
 		};
 		BBF2DCC5256674A500F2EA7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = PapagoTalk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -399,13 +525,14 @@
 		};
 		BBF2DCC7256674A500F2EA7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = PapagoTalkTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,13 +548,14 @@
 		};
 		BBF2DCC8256674A500F2EA7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = PapagoTalkTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
