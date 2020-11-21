@@ -1,5 +1,5 @@
 const fillZero = (num: string, width: number): string => {
-  return new Array(width - (num.length ? num.length - 1 : 0)).join('0') + num;
+  return '0'.repeat(width - num.length) + num;
 };
 
 const getRandomRoomNumber = (): string => {
