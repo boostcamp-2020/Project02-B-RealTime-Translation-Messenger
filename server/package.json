@@ -11,7 +11,8 @@
     "dotenv": "^8.2.0",
     "graphql-tools": "^6.2.4",
     "graphql-yoga": "^1.18.3",
-    "merge-graphql-schemas": "^1.7.8"
+    "merge-graphql-schemas": "^1.7.8",
+    "module-alias": "^2.2.2"
   },
   "devDependencies": {
     "@babel/node": "^7.10.5",
@@ -34,7 +35,11 @@
     "typescript": "^4.0.5"
   },
   "scripts": {
-    "dev": "nodemon --exec ts-node src/server.ts",
+    "dev": "nodemon --exec ./node_modules/.bin/ts-node -r tsconfig-paths/register src/server.ts",
     "generate": "yarn prisma migrate save --name init --experimental && yarn prisma migrate up --experimental && yarn prisma generate"
+  },
+  "_moduleAliases": {
+    "@utils": "src/utils",
+    "@api": "src/api"
   }
 }

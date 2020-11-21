@@ -2,6 +2,7 @@ import './env';
 import { GraphQLServer } from 'graphql-yoga';
 import schema from './schema';
 import logger from 'morgan';
+import 'module-alias/register';
 
 const PORT = process.env.PORT || 4000;
 
