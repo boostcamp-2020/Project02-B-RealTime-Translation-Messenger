@@ -4,4 +4,12 @@ type User {
   avatar: String!
   password: String
   lang: String!
+  rooms: [Room!]!
+}
+
+type Room {
+  id: Int!
+  avatar: String!
+  code: String!
+  users: [User!]!
 }
