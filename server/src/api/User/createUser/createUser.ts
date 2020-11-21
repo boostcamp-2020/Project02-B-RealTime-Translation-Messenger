@@ -1,10 +1,18 @@
 import { PrismaClient } from '@prisma/client';
-import getRandomNumber from '../../../utils/util';
+import { getRandomNumber, randomImage } from '@utils/util';
+import errorMessage from '@utils/errorMessage';
+
 const prisma = new PrismaClient();
+
+interface User {
+  nickname: string;
+  avatar: string;
+  lang: string;
+}
 
 export default {
   Mutation: {
-    createUser: async (_: any, args: any) => {
+    createUser: async (_: any, args: User): Promise<string> => {
       const { nickname, avatar, lang } = args;
       try {
         const user = await prisma.user.create({
@@ -22,13 +30,13 @@ export default {
                 id: user.id,
               },
             },
-            avatar: 'https://picsum.photos/200',
+            avatar: randomImage(),
             code: randomCode,
           },
         });
         return randomCode;
       } catch (error) {
-        throw new Error('error');
+        throw new Error(errorMessage.already);
       }
     },
   },
