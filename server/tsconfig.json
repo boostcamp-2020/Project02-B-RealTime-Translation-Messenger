@@ -1,26 +1,37 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es2015", "es2016", "es2017", "es2018", "es2019", "es2020"],
-
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018",
+      "es2019",
+      "es2020"
+    ],
     // sourceMap
     "sourceMap": true,
-
     // module
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-
     // lint
     "strict": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "noFallthroughCasesInSwitch": true,
-
     // more spec
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "noImplicitAny": true,
+    "paths": {
+      "@api/*": [
+        "src/api/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+    }
   }
 }
