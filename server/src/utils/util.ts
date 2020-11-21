@@ -7,4 +7,4 @@ const getRandomNumber = (width: number): string => {
   return fillZero(String(randomNum), width);
 };
 
-export default { getRandomNumber };
+export default getRandomNumber;
