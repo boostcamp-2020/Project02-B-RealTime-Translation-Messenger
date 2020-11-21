@@ -7,4 +7,6 @@ const getRandomNumber = (width: number): string => {
   return fillZero(String(randomNum), width);
 };
 
-export default { getRandomNumber };
+const randomImage = (): string => 'https://picsum.photos/200';
+
+export { getRandomNumber, randomImage };
