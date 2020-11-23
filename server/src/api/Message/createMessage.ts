@@ -14,28 +14,23 @@ export default {
   Mutation: {
     createMessage: async (_: Message, args: Message): Promise<boolean> => {
       const { text, source, nickname, roomId } = args;
-      try {
-        const message = await prisma.message.create({
-          data: {
-            text,
-            source,
-            user: {
-              connect: {
-                nickname,
-              },
-            },
-            room: {
-              connect: {
-                id: roomId,
-              },
+      await prisma.message.create({
+        data: {
+          text,
+          source,
+          user: {
+            connect: {
+              nickname,
             },
           },
-        });
-        if (message) return true;
-        throw new Error(errorMessage.notFound);
-      } catch (error) {
-        throw new Error(error);
-      }
+          room: {
+            connect: {
+              id: roomId,
+            },
+          },
+        },
+      });
+      return true;
     },
   },
 };
