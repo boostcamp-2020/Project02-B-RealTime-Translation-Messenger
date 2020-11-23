@@ -5,6 +5,7 @@ type User {
   password: String
   lang: String!
   rooms: [Room!]!
+  messages: [Message]!
 }
 
 type Room {

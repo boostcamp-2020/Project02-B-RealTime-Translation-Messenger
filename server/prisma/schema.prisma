@@ -14,9 +14,9 @@ model User {
   password  String?
   lang      String
   rooms     Room[]
+  messages  Message[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now()) @updatedAt
-  Message   Message[]
 }
 
 model Room {
@@ -24,9 +24,9 @@ model Room {
   avatar    String
   code      String    @unique
   users     User[]
+  messages  Message[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now()) @updatedAt
-  Message   Message[]
 }
 
 model Message {
@@ -35,8 +35,8 @@ model Message {
   source    String
   room      Room     @relation(fields: [roomId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
   roomId    Int
   userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
