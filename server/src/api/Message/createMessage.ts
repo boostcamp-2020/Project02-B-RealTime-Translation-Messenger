@@ -32,9 +32,9 @@ export default {
           },
         });
         if (message) return true;
-        return false;
+        throw new Error(errorMessage.notFound);
       } catch (error) {
-        throw new Error(errorMessage.server);
+        throw new Error(error);
       }
     },
   },
