@@ -3,7 +3,7 @@ import errorMessage from '@utils/errorMessage';
 
 const prisma = new PrismaClient();
 
-interface User {
+interface EnterInfo {
   nickname: string;
   avatar: string;
   lang: string;
@@ -12,24 +12,20 @@ interface User {
 
 export default {
   Mutation: {
-    enterRoom: async (_: any, { nickname, avatar, lang, code }: User): Promise<boolean> => {
-      try {
-        await prisma.user.create({
-          data: {
-            nickname,
-            lang,
-            avatar,
-            rooms: {
-              connect: { code },
-            },
+    enterRoom: async (_: any, { nickname, avatar, lang, code }: EnterInfo): Promise<number> => {
+      const result = await prisma.user.create({
+        data: {
+          nickname,
+          lang,
+          avatar,
+          rooms: {
+            connect: { code },
           },
-          include: { rooms: true },
-        });
+        },
+        include: { rooms: true },
+      });
 
-        return true;
-      } catch (error) {
-        throw new Error(errorMessage.already);
-      }
+      return result.rooms[0].id;
     },
   },
 };
