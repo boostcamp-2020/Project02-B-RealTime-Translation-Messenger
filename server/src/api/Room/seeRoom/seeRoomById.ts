@@ -9,6 +9,10 @@ export default {
         where: {
           id,
         },
+        include: {
+          users: true,
+          messages: true,
+        },
       }),
   },
 };
