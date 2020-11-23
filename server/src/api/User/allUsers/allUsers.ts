@@ -4,6 +4,11 @@ const prisma = new PrismaClient();
 
 export default {
   Query: {
-    allUsers: () => prisma.user.findMany(),
+    allUsers: () =>
+      prisma.user.findMany({
+        include: {
+          rooms: true,
+        },
+      }),
   },
 };
