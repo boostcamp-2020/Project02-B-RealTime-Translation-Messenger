@@ -1,3 +1,0 @@
-type Mutation {
-  createUser(nickname: String!, avatar: String!, lang: String!): String!
-}
