@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client';
 import { getRandomNumber, randomImage } from '@utils/util';
-import errorMessage from '@utils/errorMessage';
 
 const prisma = new PrismaClient();
 
@@ -14,30 +13,26 @@ export default {
   Mutation: {
     createRoom: async (_: any, args: User): Promise<string> => {
       const { nickname, avatar, lang } = args;
-      try {
-        const user = await prisma.user.create({
-          data: {
-            nickname,
-            lang,
-            avatar,
-          },
-        });
-        const randomCode = getRandomNumber(6);
-        await prisma.room.create({
-          data: {
-            users: {
-              connect: {
-                id: user.id,
-              },
+      const user = await prisma.user.create({
+        data: {
+          nickname,
+          lang,
+          avatar,
+        },
+      });
+      const randomCode = getRandomNumber(6);
+      await prisma.room.create({
+        data: {
+          users: {
+            connect: {
+              id: user.id,
             },
-            avatar: randomImage(),
-            code: randomCode,
           },
-        });
-        return randomCode;
-      } catch (error) {
-        throw new Error(errorMessage.already);
-      }
+          avatar: randomImage(),
+          code: randomCode,
+        },
+      });
+      return randomCode;
     },
   },
 };
