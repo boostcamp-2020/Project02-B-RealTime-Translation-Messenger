@@ -1,0 +1,3 @@
+type Mutation {
+  enterRoom(nickname: String!, avatar: String!, lang: String!, code: String!): Int!
+}
