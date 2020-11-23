@@ -3,14 +3,9 @@ import errorMessage from '@utils/errorMessage';
 
 const prisma = new PrismaClient();
 
-interface User {
-  id: number;
-}
-
 export default {
   Mutation: {
-    deleteUser: async (_: any, args: User): Promise<boolean> => {
-      const { id: userId } = args;
+    deleteUser: async (_: any, { id: userId }: { id: number }): Promise<boolean> => {
       try {
         /**
          * 1. 유저 삭제 (삭제할때 해당 유저가 속한 방번호 조회)
