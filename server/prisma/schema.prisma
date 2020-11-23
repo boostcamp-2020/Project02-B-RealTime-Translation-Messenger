@@ -8,21 +8,35 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  nickname  String   @unique
+  id        Int       @id @default(autoincrement())
+  nickname  String    @unique
   avatar    String
   password  String?
   lang      String
   rooms     Room[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  Message   Message[]
 }
 
 model Room {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   avatar    String
-  code      String   @unique
+  code      String    @unique
   users     User[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  Message   Message[]
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  text      String
+  source    String
+  room      Room     @relation(fields: [roomId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
+  roomId    Int
+  userId    Int
 }
