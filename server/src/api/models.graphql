@@ -5,6 +5,7 @@ type User {
   password: String
   lang: String!
   rooms: [Room!]!
+  messages: [Message]!
 }
 
 type Room {
@@ -12,4 +13,13 @@ type Room {
   avatar: String!
   code: String!
   users: [User!]!
+  messages: [Message!]!
+}
+
+type Message {
+  id: Int!   
+  text: String!
+  source: String!
+  room: Room!     
+  user: User!     
 }
