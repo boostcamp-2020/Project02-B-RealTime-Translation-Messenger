@@ -9,7 +9,7 @@ target 'PapagoTalk' do
   pod "SwiftLint"
   pod "ReactorKit"
   pod "RxCocoa"
-
+  pod "Kingfisher"
   # Pods for PapagoTalk
 
   target 'PapagoTalkTests' do
