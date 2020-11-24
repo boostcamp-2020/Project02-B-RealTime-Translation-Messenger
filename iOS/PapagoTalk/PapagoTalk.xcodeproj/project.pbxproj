@@ -11,6 +11,10 @@
 		9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */; };
 		996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* DefaultImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactory.swift */; };
+		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
+		996A1463256D364C00F21215 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1462256D364C00F21215 /* UIViewController+.swift */; };
+		996A1467256D3A5F00F21215 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1466256D3A5F00F21215 /* Language.swift */; };
+		996A146B256D5B6200F21215 /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A146A256D5B6200F21215 /* Locale+.swift */; };
 		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
 		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
 		B74A2047BB861DFC398D6FE0 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */; };
@@ -40,6 +44,10 @@
 		9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* DefaultImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
+		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		996A1462256D364C00F21215 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		996A1466256D3A5F00F21215 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		996A146A256D5B6200F21215 /* Locale+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+.swift"; sourceTree = "<group>"; };
 		99A2766A256687D1008BD24C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		99A2768325668EFA008BD24C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,13 +86,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		996A146E256D5B8E00F21215 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				996A1471256D5C7100F21215 /* Factory */,
+				BB97AE0B256CDC0900307DAD /* Extension */,
+				996A1470256D5BC100F21215 /* Enum */,
+				996A146F256D5B9800F21215 /* Constant */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		996A146F256D5B9800F21215 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		996A1470256D5BC100F21215 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				996A1466256D3A5F00F21215 /* Language.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		996A1471256D5C7100F21215 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				996A1445256D187900F21215 /* ImageFactory.swift */,
+				996A1432256D040B00F21215 /* DefaultImageFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		99A2767F25668E13008BD24C /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				99A2768325668EFA008BD24C /* HomeViewController.swift */,
+				996A145C256D324600F21215 /* LanguageSelectionView.swift */,
 				9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */,
-				996A1432256D040B00F21215 /* DefaultImageFactory.swift */,
-				996A1445256D187900F21215 /* ImageFactory.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -92,7 +134,9 @@
 		BB97AE0B256CDC0900307DAD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				996A146A256D5B6200F21215 /* Locale+.swift */,
 				BB97AE07256CDC0400307DAD /* UIView+.swift */,
+				996A1462256D364C00F21215 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -121,8 +165,8 @@
 		BBF2DC9B256674A300F2EA7D /* PapagoTalk */ = {
 			isa = PBXGroup;
 			children = (
+				996A146E256D5B8E00F21215 /* Common */,
 				99A2767F25668E13008BD24C /* Home */,
-				BB97AE0B256CDC0900307DAD /* Extension */,
 				BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */,
 				BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */,
 				BBF2DCA2256674A300F2EA7D /* Main.storyboard */,
@@ -349,10 +393,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */,
+				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
+				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
 				996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
+				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,

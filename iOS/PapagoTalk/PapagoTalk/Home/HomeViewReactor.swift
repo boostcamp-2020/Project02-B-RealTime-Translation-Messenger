@@ -13,17 +13,20 @@ final class HomeViewReactor: Reactor {
     enum Action {
         case nickNameChanged(String)
         case profileImageTapped
+        case languageSelected(Language)
     }
     
     enum Mutation {
         case setNickName(String)
         case shakeNickNameTextField(Bool)
         case setImage(String)
+        case setLanguage(Language)
     }
     
     struct State {
         var nickName: String
         var profileImageURL: String
+        var language: String
         var isInvalidNickNameLength: Bool
     }
     
@@ -35,6 +38,7 @@ final class HomeViewReactor: Reactor {
         defaultImageFactory = imageFactory
         initialState = State(nickName: "",
                              profileImageURL: defaultImageFactory.randomImageURL(),
+                             language: Locale.currentLanguage.localizedText,
                              isInvalidNickNameLength: false)
     }
     
@@ -44,6 +48,8 @@ final class HomeViewReactor: Reactor {
             return blockNickNameMaxLength(input: nickName)
         case .profileImageTapped:
             return configureRandomImage()
+        case .languageSelected(let language):
+            return Observable.just(Mutation.setLanguage(language))
         }
     }
     
@@ -57,6 +63,8 @@ final class HomeViewReactor: Reactor {
             state.isInvalidNickNameLength = needShake
         case .setImage(let imageURL):
             state.profileImageURL = imageURL
+        case .setLanguage(let language):
+            state.language = language.localizedText
         }
         return state
     }

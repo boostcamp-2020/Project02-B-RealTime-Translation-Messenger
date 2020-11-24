@@ -14,15 +14,19 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var nickNameTextField: UITextField!
+    @IBOutlet private weak var languageSelectionButton: UIButton!
+    @IBOutlet weak var selectedLanguageLabel: UILabel!
     
     private var profileImageTapGesture =  UITapGestureRecognizer()
     
     var disposeBag = DisposeBag()
+    var languageSelection: BehaviorSubject<Language> = BehaviorSubject(value: Locale.currentLanguage)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reactor = HomeViewReactor()
         profileImageView.addGestureRecognizer(profileImageTapGesture)
+        bind()
     }
     
     func bind(reactor: HomeViewReactor) {
@@ -34,6 +38,11 @@ final class HomeViewController: UIViewController, StoryboardView {
         
         profileImageTapGesture.rx.event
             .map { _ in Reactor.Action.profileImageTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        languageSelection
+            .map { Reactor.Action.languageSelected($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -54,5 +63,27 @@ final class HomeViewController: UIViewController, StoryboardView {
                 self?.profileImageView.kf.setImage(with: $0)
             })
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.language }
+            .distinctUntilChanged()
+            .bind(to: selectedLanguageLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    func bind() {
+        languageSelectionButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.showLanguageSelectionView()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func showLanguageSelectionView() {
+        let customAlertView = storyboard?.instantiateViewController(identifier: LanguageSelectionView.identifier) as? LanguageSelectionView
+        customAlertView?.pickerViewObserver = languageSelection
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alertController.setValue(customAlertView, forKey: "contentViewController")
+        self.present(alertController, animated: true)
     }
 }
