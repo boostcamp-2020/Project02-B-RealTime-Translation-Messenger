@@ -11,9 +11,9 @@ interface Message {
 
 export default {
   Mutation: {
-    createMessage: async (_: Message, args: Message): Promise<boolean> => {
+    createMessage: async (_: Message, args: Message, { pubsub }: any): Promise<boolean> => {
       const { text, source, nickname, roomId } = args;
-      await prisma.message.create({
+      const newMessage = await prisma.message.create({
         data: {
           text,
           source,
@@ -28,6 +28,9 @@ export default {
             },
           },
         },
+      });
+      pubsub.publish('NEW_MESSAGE', {
+        newMessage,
       });
       return true;
     },
