@@ -15,12 +15,12 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var nickNameTextField: UITextField!
     @IBOutlet private weak var languageSelectionButton: UIButton!
-    @IBOutlet weak var selectedLanguageLabel: UILabel!
+    @IBOutlet private weak var selectedLanguageLabel: UILabel!
     
     private var profileImageTapGesture =  UITapGestureRecognizer()
+    private var languageSelection: BehaviorSubject<Language> = BehaviorSubject(value: Locale.currentLanguage)
     
     var disposeBag = DisposeBag()
-    var languageSelection: BehaviorSubject<Language> = BehaviorSubject(value: Locale.currentLanguage)
     
     override func viewDidLoad() {
         super.viewDidLoad()
