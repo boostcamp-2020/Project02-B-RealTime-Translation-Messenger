@@ -19,7 +19,6 @@ final class HomeViewReactor: Reactor {
         case setNickName(String)
         case shakeNickNameTextField(Bool)
         case setImage(String)
-        
     }
     
     struct State {
@@ -28,14 +27,15 @@ final class HomeViewReactor: Reactor {
         var isInvalidNickNameLength: Bool
     }
     
-    var initialState: State
-    var defaultImageFactory: ImageFactory
+    private let defaultImageFactory: ImageFactory
+    
+    let initialState: State
     
     init(imageFactory: ImageFactory = DefaultImageFactory()) {
         defaultImageFactory = imageFactory
         initialState = State(nickName: "",
-                                  profileImageURL: defaultImageFactory.randomImageURL(),
-                                  isInvalidNickNameLength: false)
+                             profileImageURL: defaultImageFactory.randomImageURL(),
+                             isInvalidNickNameLength: false)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -62,15 +62,15 @@ final class HomeViewReactor: Reactor {
     }
     
     private func blockNickNameMaxLength(input nickName: String) -> Observable<Mutation> {
-        let needShake = nickName.count > 12
+        let isInvalidLength = nickName.count > 12
         
-        guard needShake else {
+        guard isInvalidLength else {
             return Observable.just(Mutation.setNickName(String(nickName.prefix(12))))
         }
         return Observable.concat([
-            Observable.just(Mutation.shakeNickNameTextField(needShake)),
+            Observable.just(Mutation.shakeNickNameTextField(isInvalidLength)),
             Observable.just(Mutation.setNickName(String(nickName.prefix(12)))),
-            Observable.just(Mutation.shakeNickNameTextField(!needShake))
+            Observable.just(Mutation.shakeNickNameTextField(!isInvalidLength))
         ])
     }
     
