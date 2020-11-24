@@ -12,16 +12,17 @@ import Kingfisher
 
 final class HomeViewController: UIViewController, StoryboardView {
     
-    @IBOutlet weak var nickNameTextField: UITextField!
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet private weak var profileImageView: UIImageView!
+    @IBOutlet private weak var nickNameTextField: UITextField!
+    
+    private var profileImageTapGesture =  UITapGestureRecognizer()
     
     var disposeBag = DisposeBag()
-    var profileImageTapGesture =  UITapGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileImageView.addGestureRecognizer(profileImageTapGesture)
         reactor = HomeViewReactor()
+        profileImageView.addGestureRecognizer(profileImageTapGesture)
     }
     
     func bind(reactor: HomeViewReactor) {
@@ -32,6 +33,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         profileImageTapGesture.rx.event
+            // TODO: 여기서 map 보다 더 적절한 것은 (_ in)?
             .map { _ in Reactor.Action.profileImageTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -41,6 +43,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.isInvalidNickNameLength }
+            // TODO: if를 제외할 방식은? -> filter
             .do { if $0 { self.nickNameTextField.shake() } }
             .subscribe()
             .disposed(by: disposeBag)
