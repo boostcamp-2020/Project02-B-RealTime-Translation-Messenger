@@ -5,6 +5,9 @@ PODS:
   - Apollo/WebSocket (0.37.0):
     - Apollo/Core
     - Starscream (~> 3.1.1)
+  - Kingfisher (5.15.6):
+    - Kingfisher/Core (= 5.15.6)
+  - Kingfisher/Core (5.15.6)
   - ReactorKit (2.1.0):
     - RxSwift (~> 5.0)
     - WeakMapTable (~> 1.1)
@@ -21,6 +24,7 @@ PODS:
 DEPENDENCIES:
   - Apollo
   - Apollo/WebSocket
+  - Kingfisher
   - ReactorKit
   - RxCocoa
   - SwiftLint
@@ -28,6 +32,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Apollo
+    - Kingfisher
     - ReactorKit
     - RxCocoa
     - RxRelay
@@ -38,6 +43,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Apollo: 9b386f7bda8f97f4980c939b7d1aa6da30e6602c
+  Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   ReactorKit: 12a93358c554bb3f167b16b14c40374fa9cd5acd
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
@@ -46,6 +52,6 @@ SPEC CHECKSUMS:
   SwiftLint: bbfed21bf4451dcbd0f5cdbee44a18e06cf91b12
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: b87c3a6e8c819127907d4c2e347b512db1372ce7
+PODFILE CHECKSUM: 917cd7420d8e44c3f59170d3b59ac7950450bdef
 
 COCOAPODS: 1.9.3
