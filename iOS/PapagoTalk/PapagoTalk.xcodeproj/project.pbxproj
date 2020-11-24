@@ -20,6 +20,7 @@
 		B74A2047BB861DFC398D6FE0 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */; };
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
+		BB6F7EC8256D729200D66F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC7256D729200D66F8E /* Constant.swift */; };
 		BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97AE07256CDC0400307DAD /* UIView+.swift */; };
 		BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */; };
 		BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */; };
@@ -56,6 +57,7 @@
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
+		BB6F7EC7256D729200D66F8E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = PapagoTalk/Chat/Constant.swift; sourceTree = SOURCE_ROOT; };
 		BB97AE07256CDC0400307DAD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		BBF2DC99256674A300F2EA7D /* PapagoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PapagoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		996A146F256D5B9800F21215 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				BB6F7EC7256D729200D66F8E /* Constant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
+				BB6F7EC8256D729200D66F8E /* Constant.swift in Sources */,
 				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
