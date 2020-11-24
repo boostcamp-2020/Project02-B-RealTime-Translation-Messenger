@@ -8,6 +8,7 @@ export default {
       prisma.user.findMany({
         include: {
           rooms: true,
+          messages: true,
         },
       }),
   },
