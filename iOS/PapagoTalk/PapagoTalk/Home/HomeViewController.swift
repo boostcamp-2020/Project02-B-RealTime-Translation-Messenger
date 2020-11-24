@@ -33,7 +33,6 @@ final class HomeViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         profileImageTapGesture.rx.event
-            // TODO: 여기서 map 보다 더 적절한 것은 (_ in)?
             .map { _ in Reactor.Action.profileImageTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -43,8 +42,8 @@ final class HomeViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.isInvalidNickNameLength }
-            // TODO: if를 제외할 방식은? -> filter
-            .do { if $0 { self.nickNameTextField.shake() } }
+            .filter { $0 }
+            .do {  _ in self.nickNameTextField.shake()  }
             .subscribe()
             .disposed(by: disposeBag)
         
