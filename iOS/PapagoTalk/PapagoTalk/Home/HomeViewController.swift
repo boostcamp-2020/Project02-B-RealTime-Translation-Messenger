@@ -10,9 +10,10 @@ import ReactorKit
 import RxCocoa
 
 class HomeViewController: UIViewController, StoryboardView {
-    var disposeBag = DisposeBag()
     
     @IBOutlet weak var nickNameTextField: UITextField!
+    
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,11 @@ class HomeViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.nickName }
             .bind(to: nickNameTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isInvalidNickNameLength }
+            .do { if $0 { self.nickNameTextField.shake() } }
+            .subscribe()
             .disposed(by: disposeBag)
     }
 }
