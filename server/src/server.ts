@@ -1,12 +1,14 @@
 import './env';
-import { GraphQLServer } from 'graphql-yoga';
+import { GraphQLServer, PubSub } from 'graphql-yoga';
 import schema from './schema';
 import logger from 'morgan';
 import 'module-alias/register';
 
 const PORT = process.env.PORT || 4000;
 
-const server = new GraphQLServer({ schema });
+const pubsub = new PubSub();
+
+const server = new GraphQLServer({ schema, context: { pubsub } });
 
 server.express.use(logger('dev'));
 
