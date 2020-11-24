@@ -30,7 +30,7 @@
                                                     <constraint firstAttribute="width" secondItem="Lmf-Sg-0ZA" secondAttribute="height" multiplier="1:1" id="sVc-jM-86N"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임 입력" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kJ-Nk-l6d">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임 입력 (2~12자)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kJ-Nk-l6d">
                                                 <rect key="frame" x="30" y="246" width="294" height="24.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -122,7 +122,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="대화방 만들기"/>
+                                        <state key="normal" title="대화방 참가하기"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-Fj-RPh">
                                         <rect key="frame" x="30" y="90" width="354" height="50"/>
@@ -132,7 +132,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="대화방 참가하기"/>
+                                        <state key="normal" title="대화방 만들기"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -159,6 +159,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VD6-KK-MUD"/>
+                    <connections>
+                        <outlet property="nickNameTextField" destination="2kJ-Nk-l6d" id="m8s-nF-1aQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
