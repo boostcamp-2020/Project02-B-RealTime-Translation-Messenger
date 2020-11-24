@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		0911A2A21E2A83DABE30DCD8 /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */; };
 		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
+		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
 		B74A2047BB861DFC398D6FE0 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */; };
 		BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */; };
 		BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */; };
-		BBF2DCA1256674A300F2EA7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCA0256674A300F2EA7D /* ViewController.swift */; };
 		BBF2DCA4256674A300F2EA7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA2256674A300F2EA7D /* Main.storyboard */; };
 		BBF2DCA6256674A500F2EA7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA5256674A500F2EA7D /* Assets.xcassets */; };
 		BBF2DCA9256674A500F2EA7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */; };
@@ -34,12 +34,12 @@
 		110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.release.xcconfig"; sourceTree = "<group>"; };
 		9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
 		99A2766A256687D1008BD24C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		99A2768325668EFA008BD24C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BBF2DC99256674A300F2EA7D /* PapagoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PapagoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BBF2DCA0256674A300F2EA7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BBF2DCA3256674A300F2EA7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BBF2DCA5256674A500F2EA7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBF2DCA8256674A500F2EA7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99A2767F25668E13008BD24C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				99A2768325668EFA008BD24C /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		BBF2DC90256674A300F2EA7D = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +102,9 @@
 		BBF2DC9B256674A300F2EA7D /* PapagoTalk */ = {
 			isa = PBXGroup;
 			children = (
+				99A2767F25668E13008BD24C /* Home */,
 				BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */,
 				BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */,
-				BBF2DCA0256674A300F2EA7D /* ViewController.swift */,
 				BBF2DCA2256674A300F2EA7D /* Main.storyboard */,
 				BBF2DCA5256674A500F2EA7D /* Assets.xcassets */,
 				BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */,
@@ -321,9 +329,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBF2DCA1256674A300F2EA7D /* ViewController.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
+				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
