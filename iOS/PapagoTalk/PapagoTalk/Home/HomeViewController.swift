@@ -9,7 +9,7 @@ import UIKit
 import ReactorKit
 import RxCocoa
 
-class HomeViewController: UIViewController, StoryboardView {
+final class HomeViewController: UIViewController, StoryboardView {
     
     @IBOutlet weak var nickNameTextField: UITextField!
     
@@ -17,10 +17,10 @@ class HomeViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactor = HomeReactor()
+        reactor = HomeViewReactor()
     }
     
-    func bind(reactor: HomeReactor) {
+    func bind(reactor: HomeViewReactor) {
         nickNameTextField.rx.text
             .orEmpty
             .map { Reactor.Action.nickNameChanged($0) }
