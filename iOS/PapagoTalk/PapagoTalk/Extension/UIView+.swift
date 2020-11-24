@@ -8,6 +8,13 @@
 import UIKit
 
 extension UIView {
+    
+    @IBInspectable
+    var cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set { layer.cornerRadius = newValue }
+    }
+    
     func shake(count: Float = 2, for duration: TimeInterval = 0.15, withTranslation translation: Float = 5) {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
