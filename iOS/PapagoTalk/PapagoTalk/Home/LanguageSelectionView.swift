@@ -1,5 +1,5 @@
 //
-//  LanguagePickerView.swift
+//  LanguageSelectionView.swift
 //  PapagoTalk
 //
 //  Created by Byoung-Hwi Yoon on 2020/11/24.
@@ -9,11 +9,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LanguageSelectionView: UIViewController {
+final class LanguageSelectionView: UIViewController {
     
-    @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet private weak var pickerView: UIPickerView!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var confirmButton: UIButton!
     
     var disposeBag = DisposeBag()
     var pickerViewObserver: BehaviorSubject<Language>?
@@ -21,7 +21,7 @@ class LanguageSelectionView: UIViewController {
     override func viewDidLoad() {
         configurePickerView()
         bind()
-        initialSelect(index: 0)
+        initializePickerView(at: 0)
     }
     
     private func configurePickerView() {
@@ -32,11 +32,6 @@ class LanguageSelectionView: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func initialSelect(index: Int) {
-        pickerView.selectRow(index, inComponent: 0, animated: true)
-        pickerView.delegate?.pickerView?(pickerView, didSelectRow: index, inComponent: 0)
-    }
-    
     private func bind() {
         cancelButton.rx.tap
             .asDriver()
@@ -45,14 +40,21 @@ class LanguageSelectionView: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        if let observer = pickerViewObserver {
-            confirmButton.rx.tap
-                .withLatestFrom(pickerView.rx.modelSelected(Language.self))
-                .map { $0[0] }
-                .do { [weak self] _ in self?.dismiss(animated: true, completion: nil) }
-                .bind(to: observer)
-                .disposed(by: disposeBag)
+        guard let observer = pickerViewObserver else {
+            return
         }
+        confirmButton.rx.tap
+            .withLatestFrom(pickerView.rx.modelSelected(Language.self))
+            .map { $0[0] }
+            .do { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .bind(to: observer)
+            .disposed(by: disposeBag)
     }
     
+    private func initializePickerView(at index: Int) {
+        pickerView.selectRow(index, inComponent: 0, animated: true)
+        pickerView.delegate?.pickerView?(pickerView, didSelectRow: index, inComponent: 0)
+    }
 }
