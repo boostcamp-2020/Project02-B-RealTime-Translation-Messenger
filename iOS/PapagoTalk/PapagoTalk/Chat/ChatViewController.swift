@@ -18,6 +18,8 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     var disposeBag = DisposeBag()
     var messages = [Message]()
+    var networkService = NetworkService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         reactor = ChatViewReactor()
@@ -44,19 +46,28 @@ final class ChatViewController: UIViewController, StoryboardView {
         sendButton.rx.tap
             .withLatestFrom(inputBarTextView.rx.text)
             .map { text -> Message in
-                print("TextInput")
                 guard let text = text else {
                     return Message(text: "")
                 }
                 return Message(text: text) }
             .subscribe(onNext: { message in
-                print("Message Appended")
-                self.messages.append(message)
-                self.chatCollectionView.reloadData()
+                print("sent")
+                self.networkService.sendMessage(text: message.text, source: "ko", nickname: "yejin", roomId: 1)
+                    .subscribe()
+                    .disposed(by: self.disposeBag)
                 self.inputBarTextView.text = nil
             })
             .disposed(by: disposeBag)
         
+        networkService.getMessage(roomId: 1)
+            .map { Message(text: $0.newMessage!.text) }
+            .asObservable()
+            .subscribe(onNext: {
+                self.messages.append($0)
+                self.chatCollectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
+            
     }
     
     private func calculateTextViewHeight(with text: String) -> CGFloat {
