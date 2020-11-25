@@ -7,4 +7,5 @@ excluded:
 - Pods
 - PapagoTalk/SceneDelegate.swift
 - PapagoTalk/AppDelegate.swift
+- PapagoTalk/GraphQL/API.swift
 function_body_length: 200

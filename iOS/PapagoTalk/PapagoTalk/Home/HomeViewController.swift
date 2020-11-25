@@ -31,7 +31,9 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     func bind(reactor: HomeViewReactor) {
         profileImageTapGesture.rx.event
-            .map { _ in Reactor.Action.profileImageTapped }
+            .map { _ in
+                Reactor.Action.profileImageTapped
+            }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -60,7 +62,9 @@ final class HomeViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.isInvalidNickNameLength }
             .filter { $0 }
-            .do {  _ in self.nickNameTextField.shake()  }
+            .do { [weak self] _ in
+                self?.nickNameTextField.shake()
+            }
             .subscribe()
             .disposed(by: disposeBag)
         

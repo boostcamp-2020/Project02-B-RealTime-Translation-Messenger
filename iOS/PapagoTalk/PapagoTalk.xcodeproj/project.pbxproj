@@ -15,6 +15,8 @@
 		996A1463256D364C00F21215 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1462256D364C00F21215 /* UIViewController+.swift */; };
 		996A1467256D3A5F00F21215 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1466256D3A5F00F21215 /* Language.swift */; };
 		996A146B256D5B6200F21215 /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A146A256D5B6200F21215 /* Locale+.swift */; };
+		996C4E04256E4F220015F9F4 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E03256E4F220015F9F4 /* TestCell.swift */; };
+		996C4E4B256E61050015F9F4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E4A256E61050015F9F4 /* API.swift */; };
 		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
 		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
 		B74A2047BB861DFC398D6FE0 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */; };
@@ -51,6 +53,11 @@
 		996A1462256D364C00F21215 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		996A1466256D3A5F00F21215 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		996A146A256D5B6200F21215 /* Locale+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+.swift"; sourceTree = "<group>"; };
+		996C4E03256E4F220015F9F4 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		996C4E0A256E59740015F9F4 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetMessage.graphql; sourceTree = "<group>"; };
+		996C4E16256E59CE0015F9F4 /* SendMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendMessage.graphql; sourceTree = "<group>"; };
+		996C4E4A256E61050015F9F4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		99A2766A256687D1008BD24C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		99A2768325668EFA008BD24C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +127,17 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		996C4E3D256E5F2C0015F9F4 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				996C4E4A256E61050015F9F4 /* API.swift */,
+				996C4E0A256E59740015F9F4 /* schema.json */,
+				996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */,
+				996C4E16256E59CE0015F9F4 /* SendMessage.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		99A2767F25668E13008BD24C /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +153,7 @@
 			children = (
 				BB6F7EBF256D697500D66F8E /* ChatViewController.swift */,
 				BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */,
+				996C4E03256E4F220015F9F4 /* TestCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -181,6 +200,7 @@
 		BBF2DC9B256674A300F2EA7D /* PapagoTalk */ = {
 			isa = PBXGroup;
 			children = (
+				996C4E3D256E5F2C0015F9F4 /* GraphQL */,
 				996A146E256D5B8E00F21215 /* Common */,
 				99A2767F25668E13008BD24C /* Home */,
 				BB6F7EBE256D693800D66F8E /* Chat */,
@@ -230,6 +250,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBF2DCC3256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalk" */;
 			buildPhases = (
+				996C4E07256E584A0015F9F4 /* ApolloCLI */,
 				9310C3760A617A247417F4C4 /* [CP] Check Pods Manifest.lock */,
 				BBF2DC95256674A300F2EA7D /* Sources */,
 				BBF2DC96256674A300F2EA7D /* Frameworks */,
@@ -385,6 +406,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		996C4E07256E584A0015F9F4 /* ApolloCLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/PapagoTalk/GraphQL/*.graphql",
+			);
+			name = ApolloCLI;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/PapagoTalk/GraphQL/API.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
 		99A2766E25668875008BD24C /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -417,12 +458,14 @@
 				996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
+				996C4E04256E4F220015F9F4 /* TestCell.swift in Sources */,
 				BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */,
 				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
 				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
+				996C4E4B256E61050015F9F4 /* API.swift in Sources */,
 				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

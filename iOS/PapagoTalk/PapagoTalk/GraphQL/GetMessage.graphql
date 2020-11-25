@@ -1,0 +1,12 @@
+subscription GetMessage($roomId: Int!) {
+  newMessage(roomId: $roomId) {
+    id
+    text
+    source
+    user {
+      id
+      nickname
+      avatar
+    }
+  }
+}
