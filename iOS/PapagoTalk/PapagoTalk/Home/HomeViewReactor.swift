@@ -70,7 +70,7 @@ final class HomeViewReactor: Reactor {
     }
     
     private func blockNickNameMaxLength(input nickName: String) -> Observable<Mutation> {
-        let isInvalidLength = nickName.count > 12
+        let isInvalidLength = nickName.count > Constant.maxNickNameLength
         
         guard isInvalidLength else {
             return Observable.just(Mutation.setNickName(String(nickName.prefix(12))))
