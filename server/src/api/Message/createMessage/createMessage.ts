@@ -28,6 +28,9 @@ export default {
             },
           },
         },
+        include: {
+          user: true,
+        },
       });
       pubsub.publish('NEW_MESSAGE', {
         newMessage,
