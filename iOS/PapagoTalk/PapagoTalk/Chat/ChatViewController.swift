@@ -41,9 +41,10 @@ final class ChatViewController: UIViewController, StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        //
-        //  reactor.state.map {  }
-        //
+        reactor.state.map { $0.sendResult }
+            .asObservable()
+            .subscribe()
+            .disposed(by: disposeBag)
         
         // TODO: 이동 예정
         networkService.getMessage(roomId: 1)
