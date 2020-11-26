@@ -8,9 +8,9 @@
 import Foundation
 
 struct Message {
-    let id: Int?
+    let id: Int? = nil
     let text: String
-    let language: String?
-    let sender: User?
-    let timeStamp: String?
+    let language: String? = nil
+    let sender: User? = nil
+    let timeStamp: String? = nil
 }

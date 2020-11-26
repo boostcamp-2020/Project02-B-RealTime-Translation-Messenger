@@ -15,5 +15,4 @@ struct APIEndPoint {
     static var socketURL: String {
         "ws://" + baseURL
     }
-    
 }
