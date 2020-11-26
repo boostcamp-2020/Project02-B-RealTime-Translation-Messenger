@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import errorMessage from '@utils/errorMessage';
 
 const prisma = new PrismaClient();
 
@@ -12,7 +11,10 @@ interface EnterInfo {
 
 export default {
   Mutation: {
-    enterRoom: async (_: any, { nickname, avatar, lang, code }: EnterInfo): Promise<number> => {
+    enterRoom: async (
+      _: any,
+      { nickname, avatar, lang, code }: EnterInfo,
+    ): Promise<{ userId: number; roomId: number }> => {
       const result = await prisma.user.create({
         data: {
           nickname,
@@ -25,7 +27,7 @@ export default {
         include: { rooms: true },
       });
 
-      return result.rooms[0].id;
+      return { userId: result.id, roomId: result.rooms[0].id };
     },
   },
 };
