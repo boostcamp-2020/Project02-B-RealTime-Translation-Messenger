@@ -10,11 +10,16 @@ import ReactorKit
 
 final class ChatViewReactor: Reactor {
     
+    // TODO: 모델 분리 예정
+    var networkService = NetworkService()
+    
     enum Action {
+        case subscribeNewMessages(Int)
         case sendMessage(String)
     }
     
     enum Mutation {
+        case appendNewMessage(Message)
         case setSendResult(Bool)
     }
     
@@ -31,11 +36,14 @@ final class ChatViewReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .subscribeNewMessages(let roomID):
+            return networkService.getMessage(roomId: roomID)
+                .compactMap { Message(userId: $0.newMessage!.user.id, text: $0.newMessage!.text) }
+                .map { Mutation.appendNewMessage($0) }
         case .sendMessage(let message):
-            // Message 조립
-            // API 요청 + SideEffect (completion)
-            // return map -> 결과
-            return Observable.just(Mutation.setSendResult(true))
+            return networkService.sendMessage(text: message, source: "ko", userId: 7, roomId: 1)
+                .asObservable()
+                .map { Mutation.setSendResult($0.createMessage) }
         }
     }
     
@@ -43,6 +51,8 @@ final class ChatViewReactor: Reactor {
         var state = state
         
         switch mutation {
+        case .appendNewMessage(let message):
+            state.messageBox.messages.append(message)
         case .setSendResult(let isSuccess):
             state.sendResult = isSuccess
         }
