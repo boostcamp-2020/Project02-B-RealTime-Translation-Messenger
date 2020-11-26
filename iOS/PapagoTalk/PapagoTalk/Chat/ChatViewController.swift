@@ -18,11 +18,9 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     var disposeBag = DisposeBag()
     
-    // TODO: 분리 예정
-    var networkService = NetworkService()
-    
     // TODO: User정보 관리 객체 분리
     let userId = 7
+    let roomID = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +29,13 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     func bind(reactor: ChatViewReactor) {
+        self.rx.viewWillAppear
+            .map { _ in
+                Reactor.Action.subscribeNewMessages(1)
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         sendButton.rx.tap
             .withLatestFrom(inputBarTextView.rx.text)
             .compactMap { $0 }
@@ -42,11 +47,6 @@ final class ChatViewController: UIViewController, StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.sendResult }
-            .asObservable()
-            .subscribe()
-            .disposed(by: disposeBag)
-                
         reactor.state.map { $0.messageBox.messages }
             .bind(to: chatCollectionView.rx.items) { [weak self] (_, row, element) in
                 guard let cell = self?.configureMessageCell(at: row, with: element) else {
@@ -55,16 +55,11 @@ final class ChatViewController: UIViewController, StoryboardView {
                 return cell
             }
             .disposed(by: disposeBag)
-
-        // TODO: 이동 예정
-//        networkService.getMessage(roomId: 1)
-//            .map { Message(text: $0.newMessage!.text) }
-//            .asObservable()
-//            .subscribe(onNext: {
-//                self.messages.append($0)
-//                self.chatCollectionView.reloadData()
-//            })
-//            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.sendResult }
+            .asObservable()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     private func bind() {
