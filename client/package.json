@@ -1,0 +1,9 @@
+{
+  "name": "madagascar",
+  "version": "1.0.0",
+  "description": "대화를 실시간으로 번역하는 기능을 가진 iOS App, Web 메신저",
+  "main": "index.js",
+  "repository": "https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger",
+  "author": "Project02-B-RealTime-Translation-Messenger",
+  "license": "MIT"
+}
