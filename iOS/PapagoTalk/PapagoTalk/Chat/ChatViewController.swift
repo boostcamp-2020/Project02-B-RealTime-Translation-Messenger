@@ -77,10 +77,6 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
 }
 
-struct Message {
-    let text: String
-}
-
 extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         messages.count
