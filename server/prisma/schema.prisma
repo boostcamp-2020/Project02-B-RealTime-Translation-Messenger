@@ -9,7 +9,7 @@ datasource db {
 
 model User {
   id        Int       @id @default(autoincrement())
-  nickname  String    @unique
+  nickname  String
   avatar    String
   password  String?
   lang      String

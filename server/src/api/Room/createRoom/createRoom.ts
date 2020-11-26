@@ -11,7 +11,10 @@ interface User {
 
 export default {
   Mutation: {
-    createRoom: async (_: any, args: User): Promise<{ id: number; code: string }> => {
+    createRoom: async (
+      _: any,
+      args: User,
+    ): Promise<{ userId: number; roomId: number; code: string }> => {
       const { nickname, avatar, lang } = args;
       const user = await prisma.user.create({
         data: {
@@ -32,7 +35,7 @@ export default {
           code: randomCode,
         },
       });
-      return { id: newRoom.id, code: randomCode };
+      return { userId: user.id, roomId: newRoom.id, code: randomCode };
     },
   },
 };
