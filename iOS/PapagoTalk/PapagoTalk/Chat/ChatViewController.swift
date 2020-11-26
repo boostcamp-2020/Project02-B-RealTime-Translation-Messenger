@@ -14,10 +14,13 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var inputBarTextView: UITextView!
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: UICollectionView!
-    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet private weak var sendButton: UIButton!
     
     var disposeBag = DisposeBag()
+    
+    // TODO: 모델 분리 예정
     var messages = [Message]()
+    // TODO: 분리 예정
     var networkService = NetworkService()
     
     override func viewDidLoad() {
@@ -27,9 +30,34 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     func bind(reactor: ChatViewReactor) {
+        sendButton.rx.tap
+            .withLatestFrom(inputBarTextView.rx.text)
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+            .map { Reactor.Action.sendMessage($0) }
+            .do(afterNext: { [weak self] _ in
+                self?.inputBarTextView.text = nil
+            })
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        //
+        //  reactor.state.map {  }
+        //
+        
+        // TODO: 이동 예정
+        networkService.getMessage(roomId: 1)
+            .map { Message(text: $0.newMessage!.text) }
+            .asObservable()
+            .subscribe(onNext: {
+                self.messages.append($0)
+                self.chatCollectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bind() {
+        // TODO: 따로 함수로 정리
         inputBarTextView.rx.text
             .orEmpty
             .compactMap { [weak self] text in
@@ -40,34 +68,17 @@ final class ChatViewController: UIViewController, StoryboardView {
             .bind(to: inputBarTextViewHeight.rx.constant)
             .disposed(by: disposeBag)
         
+        // TODO: 삭제 예정
         chatCollectionView.delegate = self
         chatCollectionView.dataSource = self
-        
-        sendButton.rx.tap
-            .withLatestFrom(inputBarTextView.rx.text)
-            .map { text -> Message in
-                guard let text = text else {
-                    return Message(text: "")
-                }
-                return Message(text: text) }
-            .subscribe(onNext: { message in
-                print("sent")
-                self.networkService.sendMessage(text: message.text, source: "ko", nickname: "yejin", roomId: 1)
-                    .subscribe()
-                    .disposed(by: self.disposeBag)
-                self.inputBarTextView.text = nil
-            })
-            .disposed(by: disposeBag)
-        
-        networkService.getMessage(roomId: 1)
-            .map { Message(text: $0.newMessage!.text) }
-            .asObservable()
-            .subscribe(onNext: {
-                self.messages.append($0)
-                self.chatCollectionView.reloadData()
-            })
-            .disposed(by: disposeBag)
-            
+        //            .subscribe(onNext: { message in
+        //                print("sent")
+        //                self.networkService.sendMessage(text: message.text, source: "ko", nickname: "yejin", roomId: 1)
+        //                    .subscribe()
+        //                    .disposed(by: self.disposeBag)
+        //                self.inputBarTextView.text = nil
+        //            })
+        //            .disposed(by: disposeBag)
     }
     
     private func calculateTextViewHeight(with text: String) -> CGFloat {
@@ -77,6 +88,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
 }
 
+// TODO: Rx로 수정
 extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         messages.count
@@ -93,5 +105,4 @@ extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.width, height: 40)
     }
-    
 }
