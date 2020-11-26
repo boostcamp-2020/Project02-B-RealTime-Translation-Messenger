@@ -5,21 +5,21 @@ const prisma = new PrismaClient();
 interface Message {
   text: string;
   source: string;
-  nickname: string;
+  userId: number;
   roomId: number;
 }
 
 export default {
   Mutation: {
     createMessage: async (_: Message, args: Message, { pubsub }: any): Promise<boolean> => {
-      const { text, source, nickname, roomId } = args;
+      const { text, source, userId, roomId } = args;
       const newMessage = await prisma.message.create({
         data: {
           text,
           source,
           user: {
             connect: {
-              nickname,
+              id: userId,
             },
           },
           room: {
