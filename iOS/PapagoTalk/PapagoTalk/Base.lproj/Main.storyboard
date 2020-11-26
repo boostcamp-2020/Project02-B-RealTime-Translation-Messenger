@@ -325,51 +325,76 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TestCell" id="Ygp-jF-DOb" customClass="TestCell" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SentMessageCell" id="Ygp-jF-DOb" customClass="SentMessageCell" customModule="PapagoTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jq0-Iv-ZBe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5w7-Ho-hoy">
-                                                    <rect key="frame" x="42" y="8" width="330" height="43"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-63-o6J">
-                                                            <rect key="frame" x="144.5" y="11.5" width="41.5" height="20.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" id="261-Qw-i38"/>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" id="QkQ-aE-0Gg"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" text="." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV">
+                                                    <rect key="frame" x="376" y="8" width="30" height="44"/>
                                                     <color key="backgroundColor" name="PapagoSkyBlue"/>
                                                     <constraints>
-                                                        <constraint firstItem="5Fc-63-o6J" firstAttribute="centerX" secondItem="5w7-Ho-hoy" secondAttribute="centerX" id="Nz5-Ne-4nZ"/>
-                                                        <constraint firstAttribute="height" constant="40" id="Y1Q-oy-JOg"/>
-                                                        <constraint firstItem="5Fc-63-o6J" firstAttribute="centerY" secondItem="5w7-Ho-hoy" secondAttribute="centerY" id="qSb-rj-wuY"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="bDS-5T-sMN"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="bwf-8v-Hhf"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="z1w-4F-tBA"/>
                                                     </constraints>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="20"/>
+                                                            <real key="value" value="16.5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                </view>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="5w7-Ho-hoy" secondAttribute="bottom" constant="8" id="6hc-J6-xTP"/>
-                                                <constraint firstItem="5w7-Ho-hoy" firstAttribute="top" secondItem="jq0-Iv-ZBe" secondAttribute="top" constant="8" id="VPI-Tj-c3y"/>
-                                                <constraint firstItem="5w7-Ho-hoy" firstAttribute="leading" secondItem="jq0-Iv-ZBe" secondAttribute="leading" constant="42" id="Z1d-Fu-qfj"/>
-                                                <constraint firstAttribute="trailing" secondItem="5w7-Ho-hoy" secondAttribute="trailing" constant="42" id="dWw-FU-v7t"/>
-                                                <constraint firstItem="5w7-Ho-hoy" firstAttribute="centerX" secondItem="jq0-Iv-ZBe" secondAttribute="centerX" id="fTv-ql-11e"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZVH-iM-tHV" secondAttribute="trailing" constant="8" id="RVK-Su-zeE"/>
+                                                <constraint firstItem="ZVH-iM-tHV" firstAttribute="top" secondItem="jq0-Iv-ZBe" secondAttribute="top" constant="8" id="cy2-ho-6sz"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZVH-iM-tHV" secondAttribute="bottom" constant="8" id="wz3-gc-tdJ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="414" height="59"/>
+                                        <size key="customSize" width="414" height="60"/>
                                         <connections>
-                                            <outlet property="text" destination="5Fc-63-o6J" id="krN-CP-Wa4"/>
+                                            <outlet property="messageTextView" destination="ZVH-iM-tHV" id="RVl-8M-HMr"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReceivedMessageCell" id="39B-qn-dKO" customClass="ReceivedMessageCell" customModule="PapagoTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="70" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BHL-qx-p9o">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" text="." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-KZ-Cbi">
+                                                    <rect key="frame" x="8" y="8" width="30" height="44"/>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="9N2-rt-4rW"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="WNt-WN-QQI"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="eSp-R1-g44"/>
+                                                    </constraints>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="16.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Y1i-KZ-Cbi" secondAttribute="bottom" constant="8" id="a8D-NX-4iU"/>
+                                                <constraint firstItem="Y1i-KZ-Cbi" firstAttribute="top" secondItem="BHL-qx-p9o" secondAttribute="top" constant="8" id="hQU-aE-37e"/>
+                                                <constraint firstItem="Y1i-KZ-Cbi" firstAttribute="leading" secondItem="BHL-qx-p9o" secondAttribute="leading" constant="8" id="lyf-cG-Ejm"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="60"/>
+                                        <connections>
+                                            <outlet property="messageTextView" destination="Y1i-KZ-Cbi" id="seu-1M-1nm"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

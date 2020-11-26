@@ -18,10 +18,11 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     var disposeBag = DisposeBag()
     
-    // TODO: 모델 분리 예정
-    var messages = [Message]()
     // TODO: 분리 예정
     var networkService = NetworkService()
+    
+    // TODO: User정보 관리 객체 분리
+    let userId = 7
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,20 +46,31 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asObservable()
             .subscribe()
             .disposed(by: disposeBag)
-        
-        // TODO: 이동 예정
-        networkService.getMessage(roomId: 1)
-            .map { Message(text: $0.newMessage!.text) }
-            .asObservable()
-            .subscribe(onNext: {
-                self.messages.append($0)
-                self.chatCollectionView.reloadData()
-            })
+                
+        reactor.state.map { $0.messageBox.messages }
+            .bind(to: chatCollectionView.rx.items) { [weak self] (_, row, element) in
+                guard let cell = self?.configureMessageCell(at: row, with: element) else {
+                    return UICollectionViewCell()
+                }
+                return cell
+            }
             .disposed(by: disposeBag)
+
+        // TODO: 이동 예정
+//        networkService.getMessage(roomId: 1)
+//            .map { Message(text: $0.newMessage!.text) }
+//            .asObservable()
+//            .subscribe(onNext: {
+//                self.messages.append($0)
+//                self.chatCollectionView.reloadData()
+//            })
+//            .disposed(by: disposeBag)
     }
     
     private func bind() {
-        // TODO: 따로 함수로 정리
+        chatCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
         inputBarTextView.rx.text
             .orEmpty
             .compactMap { [weak self] text in
@@ -68,18 +80,6 @@ final class ChatViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .bind(to: inputBarTextViewHeight.rx.constant)
             .disposed(by: disposeBag)
-        
-        // TODO: 삭제 예정
-        chatCollectionView.delegate = self
-        chatCollectionView.dataSource = self
-        //            .subscribe(onNext: { message in
-        //                print("sent")
-        //                self.networkService.sendMessage(text: message.text, source: "ko", nickname: "yejin", roomId: 1)
-        //                    .subscribe()
-        //                    .disposed(by: self.disposeBag)
-        //                self.inputBarTextView.text = nil
-        //            })
-        //            .disposed(by: disposeBag)
     }
     
     private func calculateTextViewHeight(with text: String) -> CGFloat {
@@ -87,22 +87,28 @@ final class ChatViewController: UIViewController, StoryboardView {
                                                         height: CGFloat.greatestFiniteMagnitude))
         return min(Constant.inputBarTextViewMaxHeight, size.height)
     }
+    
+    private func configureMessageCell(at row: Int, with element: Message) -> UICollectionViewCell {
+        let indexPath = IndexPath(row: row, section: 0)
+        switch element.sender.id {
+        case userId:
+            guard let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: "SentMessageCell", for: indexPath) as? SentMessageCell else {
+                return UICollectionViewCell()
+            }
+            cell.messageTextView.text = element.text
+            return cell
+        default:
+            guard let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: "ReceivedMessageCell", for: indexPath) as? ReceivedMessageCell else {
+                return UICollectionViewCell()
+            }
+            cell.messageTextView.text = element.text
+            return cell
+        }
+    }
 }
 
 // TODO: Rx로 수정
-extension ChatViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        messages.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TestCell", for: indexPath) as? TestCell else {
-            return UICollectionViewCell()
-        }
-        cell.text.text = messages[indexPath.row].text
-        return cell
-    }
-    
+extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.width, height: 40)
     }
