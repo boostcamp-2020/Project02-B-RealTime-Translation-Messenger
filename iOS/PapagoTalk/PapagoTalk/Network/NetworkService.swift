@@ -12,7 +12,7 @@ import RxSwift
 protocol NetworkServiceProviding {
     func sendMessage(text: String,
                      source: String,
-                     nickname: String,
+                     userId: Int,
                      roomId: Int) -> Maybe<SendMessageMutation.Data>
 }
 
@@ -42,12 +42,12 @@ class NetworkService: NetworkServiceProviding {
 
     func sendMessage(text: String,
                      source: String,
-                     nickname: String,
+                     userId: Int,
                      roomId: Int) -> Maybe<SendMessageMutation.Data> {
         
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.perform(
-                mutation: SendMessageMutation(text: text, source: source, nickname: nickname, roomId: roomId),
+                mutation: SendMessageMutation(text: text, source: source, userId: userId, roomId: roomId),
                 resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):

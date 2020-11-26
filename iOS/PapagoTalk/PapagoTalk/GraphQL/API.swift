@@ -198,8 +198,8 @@ public final class SendMessageMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation SendMessage($text: String!, $source: String!, $nickname: String!, $roomId: Int!) {
-      createMessage(text: $text, source: $source, nickname: $nickname, roomId: $roomId)
+    mutation SendMessage($text: String!, $source: String!, $userId: Int!, $roomId: Int!) {
+      createMessage(text: $text, source: $source, userId: $userId, roomId: $roomId)
     }
     """
 
@@ -207,18 +207,18 @@ public final class SendMessageMutation: GraphQLMutation {
 
   public var text: String
   public var source: String
-  public var nickname: String
+  public var userId: Int
   public var roomId: Int
 
-  public init(text: String, source: String, nickname: String, roomId: Int) {
+  public init(text: String, source: String, userId: Int, roomId: Int) {
     self.text = text
     self.source = source
-    self.nickname = nickname
+    self.userId = userId
     self.roomId = roomId
   }
 
   public var variables: GraphQLMap? {
-    return ["text": text, "source": source, "nickname": nickname, "roomId": roomId]
+    return ["text": text, "source": source, "userId": userId, "roomId": roomId]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -226,7 +226,7 @@ public final class SendMessageMutation: GraphQLMutation {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("createMessage", arguments: ["text": GraphQLVariable("text"), "source": GraphQLVariable("source"), "nickname": GraphQLVariable("nickname"), "roomId": GraphQLVariable("roomId")], type: .nonNull(.scalar(Bool.self))),
+        GraphQLField("createMessage", arguments: ["text": GraphQLVariable("text"), "source": GraphQLVariable("source"), "userId": GraphQLVariable("userId"), "roomId": GraphQLVariable("roomId")], type: .nonNull(.scalar(Bool.self))),
       ]
     }
 
