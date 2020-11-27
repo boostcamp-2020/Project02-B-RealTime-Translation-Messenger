@@ -85,20 +85,21 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     private func configureMessageCell(at row: Int, with element: Message) -> UICollectionViewCell {
         let indexPath = IndexPath(row: row, section: 0)
+        let identifier: String
+        
         switch element.sender.id {
         case userId:
-            guard let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: "SentMessageCell", for: indexPath) as? SentMessageCell else {
-                return UICollectionViewCell()
-            }
-            cell.messageTextView.text = element.text
-            return cell
+            identifier = SentMessageCell.identifier
         default:
-            guard let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: "ReceivedMessageCell", for: indexPath) as? ReceivedMessageCell else {
-                return UICollectionViewCell()
-            }
-            cell.messageTextView.text = element.text
-            return cell
+            identifier = ReceivedMessageCell.identifier
         }
+        let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        
+        guard let messageCell = cell as? MessageCell else {
+            return UICollectionViewCell()
+        }
+        messageCell.configureMessageCell(message: element)
+        return cell
     }
 }
 
