@@ -1,0 +1,13 @@
+disabled_rules:
+- line_length
+- trailing_whitespace
+
+included:
+excluded:
+- Pods
+- PapagoTalk/SceneDelegate.swift
+- PapagoTalk/AppDelegate.swift
+- PapagoTalk/GraphQL/API.swift
+identifier_name:
+  min_length: 1
+function_body_length: 200
