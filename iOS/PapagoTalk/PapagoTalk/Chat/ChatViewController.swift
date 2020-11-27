@@ -43,6 +43,7 @@ final class ChatViewController: UIViewController, StoryboardView {
             .map { Reactor.Action.sendMessage($0) }
             .do(afterNext: { [weak self] _ in
                 self?.inputBarTextView.text = nil
+                self?.scrollToLastMessage()
             })
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -58,6 +59,12 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.sendResult }
             .asObservable()
+            .do(afterNext: { [weak self] isSuccess in
+                guard isSuccess else {
+                    return
+                }
+                self?.scrollToLastMessage()
+            })
             .subscribe()
             .disposed(by: disposeBag)
     }
@@ -99,6 +106,11 @@ final class ChatViewController: UIViewController, StoryboardView {
             cell.messageTextView.text = element.text
             return cell
         }
+    }
+    
+    private func scrollToLastMessage() {
+        let newY = chatCollectionView.contentSize.height - chatCollectionView.bounds.height
+        chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: true)
     }
 }
 
