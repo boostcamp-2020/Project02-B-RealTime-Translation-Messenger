@@ -1,0 +1,3 @@
+mutation SendMessage($text: String! $source: String!, $userId: Int!, $roomId: Int!) {
+    createMessage(text: $text, source: $source, userId: $userId, roomId: $roomId)
+}

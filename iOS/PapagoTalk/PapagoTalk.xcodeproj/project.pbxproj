@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0911A2A21E2A83DABE30DCD8 /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */; };
+		1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */; };
 		9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */; };
 		996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* DefaultImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactory.swift */; };
@@ -15,13 +15,23 @@
 		996A1463256D364C00F21215 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1462256D364C00F21215 /* UIViewController+.swift */; };
 		996A1467256D3A5F00F21215 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1466256D3A5F00F21215 /* Language.swift */; };
 		996A146B256D5B6200F21215 /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A146A256D5B6200F21215 /* Locale+.swift */; };
+		996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E50256E7BF90015F9F4 /* NetworkService.swift */; };
+		996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */; };
+		996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E91257005C20015F9F4 /* SentMessageCell.swift */; };
+		996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */; };
 		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
 		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
-		B74A2047BB861DFC398D6FE0 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */; };
+		BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */; };
+		BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200A025701B4000CC8020 /* RxSwift+.swift */; };
+		BB1200B52570269100CC8020 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200B42570269100CC8020 /* API.swift */; };
+		BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */; };
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
 		BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
+		BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9725A7256FA5DD00C4938D /* MessageBox.swift */; };
 		BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97AE07256CDC0400307DAD /* UIView+.swift */; };
+		BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5B256F4678009B8B5F /* Message.swift */; };
+		BBEA1A60256F46FE009B8B5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5F256F46FE009B8B5F /* User.swift */; };
 		BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */; };
 		BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */; };
 		BBF2DCA4256674A300F2EA7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA2256674A300F2EA7D /* Main.storyboard */; };
@@ -41,8 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.release.xcconfig"; sourceTree = "<group>"; };
+		68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
 		9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* DefaultImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageFactory.swift; sourceTree = "<group>"; };
@@ -51,14 +61,27 @@
 		996A1462256D364C00F21215 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		996A1466256D3A5F00F21215 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		996A146A256D5B6200F21215 /* Locale+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+.swift"; sourceTree = "<group>"; };
+		996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetMessage.graphql; sourceTree = "<group>"; };
+		996C4E16256E59CE0015F9F4 /* SendMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendMessage.graphql; sourceTree = "<group>"; };
+		996C4E50256E7BF90015F9F4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
+		996C4E91257005C20015F9F4 /* SentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMessageCell.swift; sourceTree = "<group>"; };
+		996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedMessageCell.swift; sourceTree = "<group>"; };
 		99A2766A256687D1008BD24C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		99A2768325668EFA008BD24C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB1200A025701B4000CC8020 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
+		BB1200AE2570266E00CC8020 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		BB1200B42570269100CC8020 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
 		BB6F7ED2256D799B00D66F8E /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB9725A7256FA5DD00C4938D /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		BB97AE07256CDC0400307DAD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		BBEA1A5B256F4678009B8B5F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BBEA1A5F256F46FE009B8B5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BBF2DC99256674A300F2EA7D /* PapagoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PapagoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B74A2047BB861DFC398D6FE0 /* Pods_PapagoTalk.framework in Frameworks */,
+				1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0911A2A21E2A83DABE30DCD8 /* Pods_PapagoTalkTests.framework in Frameworks */,
+				BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +143,35 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		996C4E3D256E5F2C0015F9F4 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				BB1200B42570269100CC8020 /* API.swift */,
+				BB1200AE2570266E00CC8020 /* schema.json */,
+				996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */,
+				996C4E16256E59CE0015F9F4 /* SendMessage.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		996C4E4F256E7B900015F9F4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				996C4E50256E7BF90015F9F4 /* NetworkService.swift */,
+				996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		996C4E90257004FA0015F9F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				996C4E91257005C20015F9F4 /* SentMessageCell.swift */,
+				996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		99A2767F25668E13008BD24C /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +185,10 @@
 		BB6F7EBE256D693800D66F8E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				996C4E90257004FA0015F9F4 /* View */,
 				BB6F7EBF256D697500D66F8E /* ChatViewController.swift */,
 				BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */,
+				BB9725A7256FA5DD00C4938D /* MessageBox.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -153,8 +207,19 @@
 				996A146A256D5B6200F21215 /* Locale+.swift */,
 				BB97AE07256CDC0400307DAD /* UIView+.swift */,
 				996A1462256D364C00F21215 /* UIViewController+.swift */,
+				BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */,
+				BB1200A025701B4000CC8020 /* RxSwift+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		BBEA1A63256F49A8009B8B5F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				BBEA1A5B256F4678009B8B5F /* Message.swift */,
+				BBEA1A5F256F46FE009B8B5F /* User.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		BBF2DC90256674A300F2EA7D = {
@@ -181,6 +246,9 @@
 		BBF2DC9B256674A300F2EA7D /* PapagoTalk */ = {
 			isa = PBXGroup;
 			children = (
+				BBEA1A63256F49A8009B8B5F /* Entity */,
+				996C4E4F256E7B900015F9F4 /* Network */,
+				996C4E3D256E5F2C0015F9F4 /* GraphQL */,
 				996A146E256D5B8E00F21215 /* Common */,
 				99A2767F25668E13008BD24C /* Home */,
 				BB6F7EBE256D693800D66F8E /* Chat */,
@@ -217,8 +285,8 @@
 		EB34B92CAF9EC55846A01D71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				08BA842DC3D7F4B63EB4424F /* Pods_PapagoTalk.framework */,
-				B026AE923AC219E805A8CE82 /* Pods_PapagoTalkTests.framework */,
+				AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */,
+				68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -231,6 +299,7 @@
 			buildConfigurationList = BBF2DCC3256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalk" */;
 			buildPhases = (
 				9310C3760A617A247417F4C4 /* [CP] Check Pods Manifest.lock */,
+				996C4E07256E584A0015F9F4 /* ApolloCLI */,
 				BBF2DC95256674A300F2EA7D /* Sources */,
 				BBF2DC96256674A300F2EA7D /* Frameworks */,
 				BBF2DC97256674A300F2EA7D /* Resources */,
@@ -385,6 +454,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		996C4E07256E584A0015F9F4 /* ApolloCLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/PapagoTalk/GraphQL/*.graphql",
+			);
+			name = ApolloCLI;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/PapagoTalk/GraphQL/API.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
 		99A2766E25668875008BD24C /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,13 +504,23 @@
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
 				996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */,
+				996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
+				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
+				BBEA1A60256F46FE009B8B5F /* User.swift in Sources */,
 				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
 				BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */,
+				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
 				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
+				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
+				996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */,
+				BB1200B52570269100CC8020 /* API.swift in Sources */,
+				996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */,
+				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
+				BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */,
 				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
 				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,
 			);
