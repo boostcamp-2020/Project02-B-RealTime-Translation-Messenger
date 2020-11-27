@@ -1,0 +1,804 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */; };
+		9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */; };
+		996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* DefaultImageFactory.swift */; };
+		996A1446256D187900F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactory.swift */; };
+		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
+		996A1463256D364C00F21215 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1462256D364C00F21215 /* UIViewController+.swift */; };
+		996A1467256D3A5F00F21215 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1466256D3A5F00F21215 /* Language.swift */; };
+		996A146B256D5B6200F21215 /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A146A256D5B6200F21215 /* Locale+.swift */; };
+		996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E50256E7BF90015F9F4 /* NetworkService.swift */; };
+		996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */; };
+		996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E91257005C20015F9F4 /* SentMessageCell.swift */; };
+		996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */; };
+		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
+		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
+		BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */; };
+		BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200A025701B4000CC8020 /* RxSwift+.swift */; };
+		BB1200B52570269100CC8020 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200B42570269100CC8020 /* API.swift */; };
+		BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */; };
+		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
+		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
+		BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
+		BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9725A7256FA5DD00C4938D /* MessageBox.swift */; };
+		BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97AE07256CDC0400307DAD /* UIView+.swift */; };
+		BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5B256F4678009B8B5F /* Message.swift */; };
+		BBEA1A60256F46FE009B8B5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5F256F46FE009B8B5F /* User.swift */; };
+		BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */; };
+		BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */; };
+		BBF2DCA4256674A300F2EA7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA2256674A300F2EA7D /* Main.storyboard */; };
+		BBF2DCA6256674A500F2EA7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA5256674A500F2EA7D /* Assets.xcassets */; };
+		BBF2DCA9256674A500F2EA7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */; };
+		BBF2DCB4256674A500F2EA7D /* PapagoTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BBF2DCB0256674A500F2EA7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBF2DC91256674A300F2EA7D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBF2DC98256674A300F2EA7D;
+			remoteInfo = PapagoTalk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.release.xcconfig"; sourceTree = "<group>"; };
+		68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
+		9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
+		996A1432256D040B00F21215 /* DefaultImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageFactory.swift; sourceTree = "<group>"; };
+		996A1445256D187900F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
+		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		996A1462256D364C00F21215 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		996A1466256D3A5F00F21215 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		996A146A256D5B6200F21215 /* Locale+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+.swift"; sourceTree = "<group>"; };
+		996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetMessage.graphql; sourceTree = "<group>"; };
+		996C4E16256E59CE0015F9F4 /* SendMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendMessage.graphql; sourceTree = "<group>"; };
+		996C4E50256E7BF90015F9F4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
+		996C4E91257005C20015F9F4 /* SentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMessageCell.swift; sourceTree = "<group>"; };
+		996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedMessageCell.swift; sourceTree = "<group>"; };
+		99A2766A256687D1008BD24C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		99A2768325668EFA008BD24C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB1200A025701B4000CC8020 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
+		BB1200AE2570266E00CC8020 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		BB1200B42570269100CC8020 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
+		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
+		BB6F7ED2256D799B00D66F8E /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB9725A7256FA5DD00C4938D /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
+		BB97AE07256CDC0400307DAD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		BBEA1A5B256F4678009B8B5F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BBEA1A5F256F46FE009B8B5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BBF2DC99256674A300F2EA7D /* PapagoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PapagoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BBF2DCA3256674A300F2EA7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BBF2DCA5256674A500F2EA7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BBF2DCA8256674A500F2EA7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BBF2DCAA256674A500F2EA7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBF2DCAF256674A500F2EA7D /* PapagoTalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PapagoTalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTalkTests.swift; sourceTree = "<group>"; };
+		BBF2DCB5256674A500F2EA7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E428797153F8882AB3C663E3 /* Pods-PapagoTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BBF2DC96256674A300F2EA7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBF2DCAC256674A500F2EA7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		996A146E256D5B8E00F21215 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BB6F7ED1256D798400D66F8E /* Constant */,
+				996A1470256D5BC100F21215 /* Enum */,
+				BB97AE0B256CDC0900307DAD /* Extension */,
+				996A1471256D5C7100F21215 /* Factory */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		996A1470256D5BC100F21215 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				996A1466256D3A5F00F21215 /* Language.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		996A1471256D5C7100F21215 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				996A1445256D187900F21215 /* ImageFactory.swift */,
+				996A1432256D040B00F21215 /* DefaultImageFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		996C4E3D256E5F2C0015F9F4 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				BB1200B42570269100CC8020 /* API.swift */,
+				BB1200AE2570266E00CC8020 /* schema.json */,
+				996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */,
+				996C4E16256E59CE0015F9F4 /* SendMessage.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		996C4E4F256E7B900015F9F4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				996C4E50256E7BF90015F9F4 /* NetworkService.swift */,
+				996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		996C4E90257004FA0015F9F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				996C4E91257005C20015F9F4 /* SentMessageCell.swift */,
+				996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		99A2767F25668E13008BD24C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				99A2768325668EFA008BD24C /* HomeViewController.swift */,
+				996A145C256D324600F21215 /* LanguageSelectionView.swift */,
+				9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BB6F7EBE256D693800D66F8E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				996C4E90257004FA0015F9F4 /* View */,
+				BB6F7EBF256D697500D66F8E /* ChatViewController.swift */,
+				BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */,
+				BB9725A7256FA5DD00C4938D /* MessageBox.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		BB6F7ED1256D798400D66F8E /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				BB6F7ED2256D799B00D66F8E /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		BB97AE0B256CDC0900307DAD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				996A146A256D5B6200F21215 /* Locale+.swift */,
+				BB97AE07256CDC0400307DAD /* UIView+.swift */,
+				996A1462256D364C00F21215 /* UIViewController+.swift */,
+				BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */,
+				BB1200A025701B4000CC8020 /* RxSwift+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BBEA1A63256F49A8009B8B5F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				BBEA1A5B256F4678009B8B5F /* Message.swift */,
+				BBEA1A5F256F46FE009B8B5F /* User.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		BBF2DC90256674A300F2EA7D = {
+			isa = PBXGroup;
+			children = (
+				99A2766A256687D1008BD24C /* .swiftlint.yml */,
+				BBF2DC9B256674A300F2EA7D /* PapagoTalk */,
+				BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */,
+				BBF2DC9A256674A300F2EA7D /* Products */,
+				BDB645955860CC284B4F06B4 /* Pods */,
+				EB34B92CAF9EC55846A01D71 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BBF2DC9A256674A300F2EA7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBF2DC99256674A300F2EA7D /* PapagoTalk.app */,
+				BBF2DCAF256674A500F2EA7D /* PapagoTalkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBF2DC9B256674A300F2EA7D /* PapagoTalk */ = {
+			isa = PBXGroup;
+			children = (
+				BBEA1A63256F49A8009B8B5F /* Entity */,
+				996C4E4F256E7B900015F9F4 /* Network */,
+				996C4E3D256E5F2C0015F9F4 /* GraphQL */,
+				996A146E256D5B8E00F21215 /* Common */,
+				99A2767F25668E13008BD24C /* Home */,
+				BB6F7EBE256D693800D66F8E /* Chat */,
+				BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */,
+				BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */,
+				BBF2DCA2256674A300F2EA7D /* Main.storyboard */,
+				BBF2DCA5256674A500F2EA7D /* Assets.xcassets */,
+				BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */,
+				BBF2DCAA256674A500F2EA7D /* Info.plist */,
+			);
+			path = PapagoTalk;
+			sourceTree = "<group>";
+		};
+		BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */,
+				BBF2DCB5256674A500F2EA7D /* Info.plist */,
+			);
+			path = PapagoTalkTests;
+			sourceTree = "<group>";
+		};
+		BDB645955860CC284B4F06B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E428797153F8882AB3C663E3 /* Pods-PapagoTalk.debug.xcconfig */,
+				110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */,
+				B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */,
+				9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EB34B92CAF9EC55846A01D71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */,
+				68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBF2DC98256674A300F2EA7D /* PapagoTalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBF2DCC3256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalk" */;
+			buildPhases = (
+				9310C3760A617A247417F4C4 /* [CP] Check Pods Manifest.lock */,
+				996C4E07256E584A0015F9F4 /* ApolloCLI */,
+				BBF2DC95256674A300F2EA7D /* Sources */,
+				BBF2DC96256674A300F2EA7D /* Frameworks */,
+				BBF2DC97256674A300F2EA7D /* Resources */,
+				1924C4FDCF031E14E830256B /* [CP] Embed Pods Frameworks */,
+				99A2766E25668875008BD24C /* SwiftLint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PapagoTalk;
+			productName = PapagoTalk;
+			productReference = BBF2DC99256674A300F2EA7D /* PapagoTalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BBF2DCAE256674A500F2EA7D /* PapagoTalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBF2DCC6256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalkTests" */;
+			buildPhases = (
+				1A3C89118E0669B9C1089462 /* [CP] Check Pods Manifest.lock */,
+				BBF2DCAB256674A500F2EA7D /* Sources */,
+				BBF2DCAC256674A500F2EA7D /* Frameworks */,
+				BBF2DCAD256674A500F2EA7D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBF2DCB1256674A500F2EA7D /* PBXTargetDependency */,
+			);
+			name = PapagoTalkTests;
+			productName = PapagoTalkTests;
+			productReference = BBF2DCAF256674A500F2EA7D /* PapagoTalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BBF2DC91256674A300F2EA7D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					BBF2DC98256674A300F2EA7D = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					BBF2DCAE256674A500F2EA7D = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = BBF2DC98256674A300F2EA7D;
+					};
+				};
+			};
+			buildConfigurationList = BBF2DC94256674A300F2EA7D /* Build configuration list for PBXProject "PapagoTalk" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BBF2DC90256674A300F2EA7D;
+			productRefGroup = BBF2DC9A256674A300F2EA7D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBF2DC98256674A300F2EA7D /* PapagoTalk */,
+				BBF2DCAE256674A500F2EA7D /* PapagoTalkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BBF2DC97256674A300F2EA7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */,
+				BBF2DCA9256674A500F2EA7D /* LaunchScreen.storyboard in Resources */,
+				BBF2DCA6256674A500F2EA7D /* Assets.xcassets in Resources */,
+				BBF2DCA4256674A300F2EA7D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBF2DCAD256674A500F2EA7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1924C4FDCF031E14E830256B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1A3C89118E0669B9C1089462 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PapagoTalkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9310C3760A617A247417F4C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PapagoTalk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		996C4E07256E584A0015F9F4 /* ApolloCLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/PapagoTalk/GraphQL/*.graphql",
+			);
+			name = ApolloCLI;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/PapagoTalk/GraphQL/API.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
+		99A2766E25668875008BD24C /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BBF2DC95256674A300F2EA7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */,
+				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
+				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
+				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
+				996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */,
+				996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */,
+				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
+				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
+				BBEA1A60256F46FE009B8B5F /* User.swift in Sources */,
+				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
+				BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */,
+				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
+				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
+				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
+				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
+				996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */,
+				BB1200B52570269100CC8020 /* API.swift in Sources */,
+				996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */,
+				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
+				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
+				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
+				BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */,
+				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
+				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBF2DCAB256674A500F2EA7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBF2DCB4256674A500F2EA7D /* PapagoTalkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BBF2DCB1256674A500F2EA7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BBF2DC98256674A300F2EA7D /* PapagoTalk */;
+			targetProxy = BBF2DCB0256674A500F2EA7D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BBF2DCA2256674A300F2EA7D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBF2DCA3256674A300F2EA7D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBF2DCA8256674A500F2EA7D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BBF2DCC1256674A500F2EA7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BBF2DCC2256674A500F2EA7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BBF2DCC4256674A500F2EA7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E428797153F8882AB3C663E3 /* Pods-PapagoTalk.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = PapagoTalk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.PapagoTalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BBF2DCC5256674A500F2EA7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = PapagoTalk/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.PapagoTalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BBF2DCC7256674A500F2EA7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = PapagoTalkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.PapagoTalkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PapagoTalk.app/PapagoTalk";
+			};
+			name = Debug;
+		};
+		BBF2DCC8256674A500F2EA7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = PapagoTalkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.PapagoTalkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PapagoTalk.app/PapagoTalk";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BBF2DC94256674A300F2EA7D /* Build configuration list for PBXProject "PapagoTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBF2DCC1256674A500F2EA7D /* Debug */,
+				BBF2DCC2256674A500F2EA7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBF2DCC3256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBF2DCC4256674A500F2EA7D /* Debug */,
+				BBF2DCC5256674A500F2EA7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBF2DCC6256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBF2DCC7256674A500F2EA7D /* Debug */,
+				BBF2DCC8256674A500F2EA7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BBF2DC91256674A300F2EA7D /* Project object */;
+}

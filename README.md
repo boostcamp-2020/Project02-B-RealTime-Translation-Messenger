@@ -1,8 +1,11 @@
 # Project02-RealTime-Translation-Messenger
 
 <h1 align="center">
-  <img src="https://user-images.githubusercontent.com/68672528/99280096-54441f00-2874-11eb-9ccd-c8b404585c9a.png" width=400 alt="로고" />
+  <img src="https://user-images.githubusercontent.com/60081031/99608166-b48fb800-2a50-11eb-8d25-505f65fe6370.png" width=700 alt="Madagascar team Logo" />
 </h1>
+
+<br>
+<br>
 
 <div align="center">
 
