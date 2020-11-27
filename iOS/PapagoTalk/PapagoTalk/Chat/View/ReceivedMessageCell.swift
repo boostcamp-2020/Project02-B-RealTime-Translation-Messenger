@@ -7,6 +7,13 @@
 
 import UIKit
 
-class ReceivedMessageCell: UICollectionViewCell {
-    @IBOutlet weak var messageTextView: UITextView!
+final class ReceivedMessageCell: UICollectionViewCell {
+    @IBOutlet private weak var messageTextView: UITextView!
+    
+}
+
+extension ReceivedMessageCell: MessageCell {
+    func configureMessageCell(message: Message) {
+        messageTextView.text = message.text
+    }
 }
