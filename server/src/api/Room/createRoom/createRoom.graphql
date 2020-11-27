@@ -1,0 +1,9 @@
+type createRoomResponse {
+  userId: Int!
+  roomId: Int!
+  code: String!
+}
+
+type Mutation {
+  createRoom(nickname: String!, avatar: String!, lang: String!): createRoomResponse!
+}

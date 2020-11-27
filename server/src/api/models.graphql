@@ -1,0 +1,25 @@
+type User {
+  id: Int!
+  nickname: String!
+  avatar: String!
+  password: String
+  lang: String!
+  rooms: [Room!]!
+  messages: [Message]!
+}
+
+type Room {
+  id: Int!
+  avatar: String!
+  code: String!
+  users: [User!]!
+  messages: [Message!]!
+}
+
+type Message {
+  id: Int!   
+  text: String!
+  source: String!
+  room: Room!     
+  user: User!     
+}
