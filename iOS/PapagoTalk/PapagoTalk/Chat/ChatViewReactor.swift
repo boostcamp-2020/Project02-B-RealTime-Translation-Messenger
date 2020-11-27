@@ -38,8 +38,8 @@ final class ChatViewReactor: Reactor {
         switch action {
         case .subscribeNewMessages(let roomID):
             return networkService.getMessage(roomId: roomID)
-                .compactMap { Message(userId: $0.newMessage!.user.id, text: $0.newMessage!.text) }
-                .map { Mutation.appendNewMessage($0) }
+                .compactMap { $0.newMessage }
+                .map { Mutation.appendNewMessage(Message(userId: $0.user.id, text: $0.text)) }
         case .sendMessage(let message):
             return networkService.sendMessage(text: message, source: "ko", userId: 7, roomId: 1)
                 .asObservable()
