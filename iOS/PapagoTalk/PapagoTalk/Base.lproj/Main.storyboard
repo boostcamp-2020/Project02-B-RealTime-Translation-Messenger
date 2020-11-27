@@ -333,11 +333,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" text="." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV">
-                                                    <rect key="frame" x="376" y="8" width="30" height="44"/>
+                                                    <rect key="frame" x="366" y="8" width="40" height="44"/>
                                                     <color key="backgroundColor" name="PapagoSkyBlue"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="bDS-5T-sMN"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="bwf-8v-Hhf"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="bwf-8v-Hhf"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="z1w-4F-tBA"/>
                                                     </constraints>
                                                     <color key="textColor" systemColor="labelColor"/>
@@ -369,12 +369,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" text="." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-KZ-Cbi">
-                                                    <rect key="frame" x="8" y="8" width="30" height="44"/>
+                                                    <rect key="frame" x="8" y="8" width="40" height="44"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="9N2-rt-4rW"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="WNt-WN-QQI"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="eSp-R1-g44"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="eSp-R1-g44"/>
                                                     </constraints>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
