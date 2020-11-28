@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */; };
+		990DE923257265BB00340A72 /* JoinChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE922257265BB00340A72 /* JoinChatViewController.swift */; };
+		990DE9292572665400340A72 /* JoinChatReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9282572665400340A72 /* JoinChatReactor.swift */; };
 		9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */; };
 		996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* DefaultImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactory.swift */; };
@@ -54,6 +56,8 @@
 		110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.release.xcconfig"; sourceTree = "<group>"; };
 		68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
+		990DE922257265BB00340A72 /* JoinChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatViewController.swift; sourceTree = "<group>"; };
+		990DE9282572665400340A72 /* JoinChatReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatReactor.swift; sourceTree = "<group>"; };
 		9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* DefaultImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
@@ -115,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		990DE9212572657300340A72 /* JoinChat */ = {
+			isa = PBXGroup;
+			children = (
+				990DE922257265BB00340A72 /* JoinChatViewController.swift */,
+				990DE9282572665400340A72 /* JoinChatReactor.swift */,
+			);
+			path = JoinChat;
+			sourceTree = "<group>";
+		};
 		996A146E256D5B8E00F21215 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +265,7 @@
 				996A146E256D5B8E00F21215 /* Common */,
 				99A2767F25668E13008BD24C /* Home */,
 				BB6F7EBE256D693800D66F8E /* Chat */,
+				990DE9212572657300340A72 /* JoinChat */,
 				BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */,
 				BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */,
 				BBF2DCA2256674A300F2EA7D /* Main.storyboard */,
@@ -503,6 +517,7 @@
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
+				990DE923257265BB00340A72 /* JoinChatViewController.swift in Sources */,
 				996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */,
 				996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
@@ -514,6 +529,7 @@
 				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
 				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
+				990DE9292572665400340A72 /* JoinChatReactor.swift in Sources */,
 				996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */,
 				BB1200B52570269100CC8020 /* API.swift in Sources */,
 				996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */,
