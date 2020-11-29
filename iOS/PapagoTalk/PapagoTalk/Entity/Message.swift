@@ -8,17 +8,34 @@
 import Foundation
 
 struct Message: Codable {
-    let id: Int
+    let id: Int?
     let text: String
-    let language: Language
     let sender: User
+    let language: String
     let timeStamp: String
     
-    init(userId: Int, text: String) {
-        id = 1
+    init(of body: String) {
+        let user = ChatViewController.user
+        id = nil
+        text = body
+        sender = user
+        language = user.language.code
+        timeStamp = DateFormatter.format(of: Date())
+    }
+    
+    init(id: Int, text: String, sender: User, language: String, timeStamp: String) {
+        self.id = id
         self.text = text
-        language = .korean
-        timeStamp = "2020"
-        sender = User(id: userId, nickName: "HAHA", image: "", language: .korean)
+        self.sender = sender
+        self.language = language
+        self.timeStamp = timeStamp
+    }
+    
+    init(userId: Int, text: String) {
+        self.id = nil
+        self.text = text
+        self.sender = User(id: userId, nickName: "", image: "", language: .english)
+        self.language = "ko"
+        self.timeStamp = "2020"
     }
 }
