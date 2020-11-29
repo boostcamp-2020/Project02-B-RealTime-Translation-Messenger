@@ -29,16 +29,16 @@ final class JoinChatReactor: Reactor {
         var errorMessage: String?
         var user: User
         var joinChatResponse: JoinChatResponse?
-        
     }
     
     let maxCodeLength = 6
     // TODO: 모델 분리 예정
     var networkService = NetworkService()
     
-    var initialState: State
+    let initialState: State
+    let user = JoinChatViewController.user
     
-    init(user: User) {
+    init() {
         initialState = State(codeInput: [String](repeating: "", count: maxCodeLength),
                              cusor: 0,
                              user: user)
