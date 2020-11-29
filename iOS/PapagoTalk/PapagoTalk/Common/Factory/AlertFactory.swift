@@ -10,7 +10,7 @@ import UIKit
 struct AlertFactory: AlertFactoryType {
     func alert(message: String) -> UIAlertController {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let action = UIAlertAction(title: Strings.ok, style: .default, handler: nil)
         alert.addAction(action)
         
         return alert

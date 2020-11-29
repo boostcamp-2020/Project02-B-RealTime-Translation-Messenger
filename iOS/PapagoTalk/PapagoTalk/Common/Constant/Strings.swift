@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+struct Strings {
+    
+    // MARK: - Common
+    static let english = "English".localized
+    static let korean = "Korean".localized
+    static let ok = "OK".localized
+    
+    // MARK: - Network
+    struct Network {
+        static let connectionAlertMessage = "Please Check your Network Connection".localized
+    }
+    
+    // MARK: - JoinChat
+    struct JoinChat {
+        static let noSuchRoomAlertMessage = "Chat Room is Doesn't Exist \n Or already Deleted".localized
+    }
+}
