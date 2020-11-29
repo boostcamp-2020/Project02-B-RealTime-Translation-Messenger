@@ -21,7 +21,7 @@ final class LanguageSelectionView: UIViewController {
     override func viewDidLoad() {
         configurePickerView()
         bind()
-        initializePickerView(at: 0)
+        initializePickerView(at: HomeViewController.user.language.index)
     }
     
     private func configurePickerView() {
