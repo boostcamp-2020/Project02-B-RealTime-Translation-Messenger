@@ -29,6 +29,7 @@ final class ChatViewReactor: Reactor {
     }
     
     let initialState: State
+    let user = ChatViewController.user
     
     init() {
         initialState = State(messageBox: MessageBox())
@@ -41,7 +42,10 @@ final class ChatViewReactor: Reactor {
                 .compactMap { $0.newMessage }
                 .map { Mutation.appendNewMessage(Message(userId: $0.user.id, text: $0.text)) }
         case .sendMessage(let message):
-            return networkService.sendMessage(text: message, source: "ko", userId: 7, roomId: 1)
+            return networkService.sendMessage(text: message,
+                                              source: user.language.code,
+                                              userId: user.id,
+                                              roomId: 1)
                 .asObservable()
                 .map { Mutation.setSendResult($0.createMessage) }
         }
