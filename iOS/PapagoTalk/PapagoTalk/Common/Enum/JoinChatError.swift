@@ -14,9 +14,9 @@ enum JoinChatError: Error {
     var message: String {
         switch self {
         case .cannotFindRoom:
-            return "이미 삭제되었거나\n존재하지 않는 채팅방입니다."
+            return Strings.JoinChat.noSuchRoomAlertMessage
         case .networkError:
-            return "네트워크 연결을 확인해주세요"
+            return Strings.Network.connectionAlertMessage
         }
     }
 }
