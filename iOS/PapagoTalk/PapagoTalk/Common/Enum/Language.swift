@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Language: CaseIterable {
+enum Language: String, Codable, CaseIterable {
     case korean
     case english
     
@@ -17,6 +17,15 @@ enum Language: CaseIterable {
             return "한국어"
         case .english:
             return "영어"
+        }
+    }
+    
+    var code: String {
+        switch self {
+        case .korean:
+            return "ko"
+        case .english:
+            return "en"
         }
     }
 }
