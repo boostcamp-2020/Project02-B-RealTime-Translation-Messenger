@@ -155,6 +155,7 @@
 				996A1470256D5BC100F21215 /* Enum */,
 				BB97AE0B256CDC0900307DAD /* Extension */,
 				996A1471256D5C7100F21215 /* Factory */,
+				BBF085852573BA05004B67F7 /* PropertyWrapper */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -259,9 +260,16 @@
 			children = (
 				BBEA1A5B256F4678009B8B5F /* Message.swift */,
 				BBEA1A5F256F46FE009B8B5F /* User.swift */,
-				BB20F4C525738D2C00C5AC1D /* UserDefault.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		BBF085852573BA05004B67F7 /* PropertyWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				BB20F4C525738D2C00C5AC1D /* UserDefault.swift */,
+			);
+			path = PropertyWrapper;
 			sourceTree = "<group>";
 		};
 		BBF2DC90256674A300F2EA7D = {
