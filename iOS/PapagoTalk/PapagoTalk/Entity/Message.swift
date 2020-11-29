@@ -19,6 +19,6 @@ struct Message {
         self.text = text
         language = "ko"
         timeStamp = "2020"
-        sender = User(id: userId, nickName: "HAHA", image: nil, language: nil)
+        sender = User(id: userId, nickName: "HAHA", image: "", language: "ko")
     }
 }

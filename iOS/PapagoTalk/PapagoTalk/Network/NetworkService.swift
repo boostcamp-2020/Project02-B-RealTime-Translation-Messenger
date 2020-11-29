@@ -93,6 +93,34 @@ class NetworkService: NetworkServiceProviding {
             }
         }
     }
+    
+    func enterRoom(user: User,
+                   code: String) -> Maybe<JoinChatResponse> {
+        
+        return Maybe.create { [weak self] observer in
+            let cancellable = self?.client.perform(
+                mutation: EnterRoomMutation(nickName: user.nickName, avatar: user.image, language: user.language, code: code),
+                resultHandler: { result in
+                    switch result {
+                    case let .success(gqlResult):
+                        if gqlResult.errors != nil {
+                            observer(.error(JoinChatError.cannotFindRoom))
+                        } else if let data = gqlResult.data {
+                            let response = JoinChatResponse(userId: data.enterRoom.userId, roomId: data.enterRoom.roomId)
+                            observer(.success(response))
+                        } else {
+                            observer(.completed)
+                        }
+                    case .failure:
+                        observer(.error(JoinChatError.networkError))
+                    }
+                }
+            )
+            return Disposables.create {
+                cancellable?.cancel()
+            }
+        }
+    }
 }
 
 enum NetworkError: Error {

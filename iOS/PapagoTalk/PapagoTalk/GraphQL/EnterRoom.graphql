@@ -1,0 +1,6 @@
+mutation EnterRoom($nickName: String!, $avatar: String!, $language: String!, $code: String!) {
+    enterRoom(nickname: $nickName, avatar: $avatar, lang: $language, code: $code) {
+        userId
+        roomId
+    }
+}
