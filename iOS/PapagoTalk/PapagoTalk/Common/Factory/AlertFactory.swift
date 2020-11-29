@@ -1,0 +1,18 @@
+//
+//  AlertFactory.swift
+//  PapagoTalk
+//
+//  Created by Byoung-Hwi Yoon on 2020/11/29.
+//
+
+import UIKit
+
+struct AlertFactory: AlertFactoryType {
+    func alert(message: String) -> UIAlertController {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        return alert
+    }
+}
