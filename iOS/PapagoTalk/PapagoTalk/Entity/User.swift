@@ -8,22 +8,22 @@
 import Foundation
 
 struct User: Codable {
-    let id: Int?
-    let nickName: String
-    let image: String
-    let language: Language
+    var id: Int
+    var nickName: String
+    var image: String
+    var language: Language
     
-    init(id: Int?, nickName: String, image: String, language: Language) {
+    init(id: Int, nickName: String, image: String, language: Language) {
         self.id = id
         self.nickName = nickName
         self.image = image
         self.language = language
     }
     
-    init() {
+    init(_ imageFactory: ImageFactory = DefaultImageFactory()) {
         id = 1
         nickName = ""
-        image = ""
-        language = .korean
+        image = imageFactory.randomImageURL()
+        language = Locale.currentLanguage
     }
 }
