@@ -8,8 +8,8 @@
 import Foundation
 
 struct User {
-    let id: Int?
+    var id: Int?
     let nickName: String
-    let image: String?
-    let language: String?
+    let image: String
+    let language: String
 }
