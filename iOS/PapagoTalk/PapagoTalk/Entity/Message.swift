@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct Message {
+struct Message: Codable {
     let id: Int
     let text: String
-    let language: String
+    let language: Language
     let sender: User
     let timeStamp: String
     
     init(userId: Int, text: String) {
         id = 1
         self.text = text
-        language = "ko"
+        language = .korean
         timeStamp = "2020"
-        sender = User(id: userId, nickName: "HAHA", image: "", language: "ko")
+        sender = User(id: userId, nickName: "HAHA", image: "", language: .korean)
     }
 }
