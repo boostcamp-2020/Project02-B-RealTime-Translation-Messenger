@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  PapagoTalk
+
+  Created by Byoung-Hwi Yoon on 2020/11/29.
+  
+*/
+
+//Mark: - Common
+"English" = "영어";
+"Korean" = "한국어";
+"OK" = "확인";
+
+//Mark: - JoinChat
+"Chat Room is Doesn't Exist \n Or already Deleted" = "이미 삭제되었거나 \n 존재하지 않는 채팅방입니다.";
+"Please Check your Network Connection" = "네트워크 연결을 확인해주세요";

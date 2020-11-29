@@ -14,9 +14,9 @@ enum Language: CaseIterable {
     var localizedText: String {
         switch self {
         case .korean:
-            return "한국어"
+            return Strings.korean
         case .english:
-            return "영어"
+            return Strings.english
         }
     }
 }
