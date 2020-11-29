@@ -19,8 +19,8 @@ final class ChatViewController: UIViewController, StoryboardView {
     var disposeBag = DisposeBag()
     
     // TODO: User정보 관리 객체 분리
-    let userId = 7
-    let roomID = 1
+    var userId = 7
+    var roomID = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +30,10 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     func bind(reactor: ChatViewReactor) {
         self.rx.viewWillAppear
-            .map { _ in
-                Reactor.Action.subscribeNewMessages(1)
+            .compactMap { [weak self] _ in
+                self?.roomID
             }
+            .map { Reactor.Action.subscribeNewMessages($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
