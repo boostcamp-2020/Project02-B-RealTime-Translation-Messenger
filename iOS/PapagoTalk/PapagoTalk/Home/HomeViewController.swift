@@ -16,6 +16,8 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var nickNameTextField: UITextField!
     @IBOutlet private weak var languageSelectionButton: UIButton!
     @IBOutlet private weak var selectedLanguageLabel: UILabel!
+    @IBOutlet private weak var joinChatRoomButton: UIButton!
+    @IBOutlet private weak var makeChatRoomButton: UIButton!
     
     private var profileImageTapGesture =  UITapGestureRecognizer()
     private var languageSelection = BehaviorSubject(value: Locale.currentLanguage)
@@ -47,6 +49,12 @@ final class HomeViewController: UIViewController, StoryboardView {
             .map { Reactor.Action.languageSelected($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+//        joinChatRoomButton.rx.tap
+//            .map { Reactor.Action. }
+        
+//        makeChatRoomButton.rx.tap
+//            .map { Reactor.Action. }
         
         reactor.state.map { $0.profileImageURL }
             .distinctUntilChanged()
