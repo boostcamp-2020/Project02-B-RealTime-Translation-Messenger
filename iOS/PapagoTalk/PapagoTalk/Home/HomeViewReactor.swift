@@ -11,35 +11,37 @@ import ReactorKit
 final class HomeViewReactor: Reactor {
     
     enum Action {
-        case nickNameChanged(String)
         case profileImageTapped
+        case nickNameChanged(String)
         case languageSelected(Language)
     }
     
     enum Mutation {
+        case setImage(String)
         case setNickName(String)
         case shakeNickNameTextField(Bool)
-        case setImage(String)
         case setLanguage(Language)
     }
     
     struct State {
-        var nickName: String
         var profileImageURL: String
-        var language: String
+        var nickName: String
         var isInvalidNickNameLength: Bool
+        var language: Language
     }
     
     private let defaultImageFactory: ImageFactory
     
     let initialState: State
+    let user = HomeViewController.user
     
     init(imageFactory: ImageFactory = DefaultImageFactory()) {
         defaultImageFactory = imageFactory
-        initialState = State(nickName: "",
-                             profileImageURL: defaultImageFactory.randomImageURL(),
-                             language: Locale.currentLanguage.localizedText,
-                             isInvalidNickNameLength: false)
+        
+        initialState = State(profileImageURL: user.image,
+                             nickName: user.nickName,
+                             isInvalidNickNameLength: false,
+                             language: user.language)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -64,7 +66,7 @@ final class HomeViewReactor: Reactor {
         case .setImage(let imageURL):
             state.profileImageURL = imageURL
         case .setLanguage(let language):
-            state.language = language.localizedText
+            state.language = language
         }
         return state
     }
