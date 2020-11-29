@@ -7,9 +7,23 @@
 
 import Foundation
 
-struct User {
-    var id: Int?
+struct User: Codable {
+    let id: Int?
     let nickName: String
     let image: String
-    let language: String
+    let language: Language
+    
+    init(id: Int?, nickName: String, image: String, language: Language) {
+        self.id = id
+        self.nickName = nickName
+        self.image = image
+        self.language = language
+    }
+    
+    init() {
+        id = 1
+        nickName = ""
+        image = ""
+        language = .korean
+    }
 }
