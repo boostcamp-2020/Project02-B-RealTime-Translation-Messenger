@@ -28,4 +28,13 @@ enum Language: String, Codable, CaseIterable {
             return "en"
         }
     }
+    
+    var index: Int {
+        switch self {
+        case .korean:
+            return 0
+        case .english:
+            return 1
+        }
+    }
 }
