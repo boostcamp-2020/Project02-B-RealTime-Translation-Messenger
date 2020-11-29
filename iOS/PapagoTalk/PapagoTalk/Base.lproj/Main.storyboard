@@ -223,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="84.375"/>
         </scene>
-        <!--View Controller-->
+        <!--Join Chat View Controller-->
         <scene sceneID="v5h-4p-edw">
             <objects>
-                <viewController id="A2b-VF-6Zb" sceneMemberID="viewController">
+                <viewController id="A2b-VF-6Zb" customClass="JoinChatViewController" customModule="PapagoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0uc-41-Tsl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -642,6 +642,25 @@
                     </view>
                     <navigationItem key="navigationItem" id="fse-df-A4g"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="removeButton" destination="LCa-7X-TqT" id="ls3-1S-4Hq"/>
+                        <outletCollection property="numberButtons" destination="DHP-ud-cXj" collectionClass="NSMutableArray" id="58h-bA-zUy"/>
+                        <outletCollection property="numberButtons" destination="BiU-hv-QG4" collectionClass="NSMutableArray" id="E09-zg-84T"/>
+                        <outletCollection property="numberButtons" destination="2dy-Pc-WHl" collectionClass="NSMutableArray" id="BSS-UW-DLl"/>
+                        <outletCollection property="numberButtons" destination="ZOe-qD-a0k" collectionClass="NSMutableArray" id="Pl8-AK-uhx"/>
+                        <outletCollection property="numberButtons" destination="vDZ-MP-myf" collectionClass="NSMutableArray" id="Rei-Rq-wcz"/>
+                        <outletCollection property="numberButtons" destination="kPg-Yj-Muo" collectionClass="NSMutableArray" id="THI-EM-Ciu"/>
+                        <outletCollection property="numberButtons" destination="ptb-Gu-gI7" collectionClass="NSMutableArray" id="DwH-2Q-eJb"/>
+                        <outletCollection property="numberButtons" destination="sgm-nq-9up" collectionClass="NSMutableArray" id="0lC-YL-9Ia"/>
+                        <outletCollection property="numberButtons" destination="r6Z-aW-cVM" collectionClass="NSMutableArray" id="0jo-LK-iRm"/>
+                        <outletCollection property="numberButtons" destination="mN6-zV-UBV" collectionClass="NSMutableArray" id="bih-Xb-l2o"/>
+                        <outletCollection property="inputLabels" destination="h32-PN-rWs" collectionClass="NSMutableArray" id="8ik-l1-j65"/>
+                        <outletCollection property="inputLabels" destination="gPt-fV-dXW" collectionClass="NSMutableArray" id="4q5-N2-Njp"/>
+                        <outletCollection property="inputLabels" destination="Au1-cT-z70" collectionClass="NSMutableArray" id="330-bL-OeB"/>
+                        <outletCollection property="inputLabels" destination="m51-bI-Qnh" collectionClass="NSMutableArray" id="ueF-KP-6m7"/>
+                        <outletCollection property="inputLabels" destination="Owa-PJ-5az" collectionClass="NSMutableArray" id="ntJ-6S-nUi"/>
+                        <outletCollection property="inputLabels" destination="xMH-58-Ps6" collectionClass="NSMutableArray" id="W6n-Ga-EKY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gdz-iX-M6z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

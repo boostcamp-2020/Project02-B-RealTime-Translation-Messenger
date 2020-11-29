@@ -10,6 +10,14 @@
 		1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */; };
 		990DE923257265BB00340A72 /* JoinChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE922257265BB00340A72 /* JoinChatViewController.swift */; };
 		990DE9292572665400340A72 /* JoinChatReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9282572665400340A72 /* JoinChatReactor.swift */; };
+		990DE92D2572836B00340A72 /* EnterRoom.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990DE92C2572836B00340A72 /* EnterRoom.graphql */; };
+		990DE9392572860500340A72 /* SendMessage.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990DE9382572860500340A72 /* SendMessage.graphql */; };
+		990DE93F257335CD00340A72 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 990DE93E257335CD00340A72 /* schema.json */; };
+		990DE943257335E300340A72 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE942257335E300340A72 /* API.swift */; };
+		990DE947257336D900340A72 /* JoinChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE946257336D900340A72 /* JoinChatError.swift */; };
+		990DE94D2573479600340A72 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE94C2573479600340A72 /* AlertFactory.swift */; };
+		990DE9512573499500340A72 /* AlertFactoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9502573499500340A72 /* AlertFactoryType.swift */; };
+		990DE957257367B800340A72 /* JoinChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE956257367B800340A72 /* JoinChatResponse.swift */; };
 		9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */; };
 		996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* DefaultImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactory.swift */; };
@@ -25,7 +33,6 @@
 		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
 		BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */; };
 		BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200A025701B4000CC8020 /* RxSwift+.swift */; };
-		BB1200B52570269100CC8020 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200B42570269100CC8020 /* API.swift */; };
 		BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */; };
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
@@ -58,6 +65,14 @@
 		9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
 		990DE922257265BB00340A72 /* JoinChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatViewController.swift; sourceTree = "<group>"; };
 		990DE9282572665400340A72 /* JoinChatReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatReactor.swift; sourceTree = "<group>"; };
+		990DE92C2572836B00340A72 /* EnterRoom.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EnterRoom.graphql; sourceTree = "<group>"; };
+		990DE9382572860500340A72 /* SendMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendMessage.graphql; sourceTree = "<group>"; };
+		990DE93E257335CD00340A72 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		990DE942257335E300340A72 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		990DE946257336D900340A72 /* JoinChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatError.swift; sourceTree = "<group>"; };
+		990DE94C2573479600340A72 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
+		990DE9502573499500340A72 /* AlertFactoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactoryType.swift; sourceTree = "<group>"; };
+		990DE956257367B800340A72 /* JoinChatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatResponse.swift; sourceTree = "<group>"; };
 		9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* DefaultImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
@@ -66,7 +81,6 @@
 		996A1466256D3A5F00F21215 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		996A146A256D5B6200F21215 /* Locale+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+.swift"; sourceTree = "<group>"; };
 		996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetMessage.graphql; sourceTree = "<group>"; };
-		996C4E16256E59CE0015F9F4 /* SendMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendMessage.graphql; sourceTree = "<group>"; };
 		996C4E50256E7BF90015F9F4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
 		996C4E91257005C20015F9F4 /* SentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMessageCell.swift; sourceTree = "<group>"; };
@@ -76,8 +90,6 @@
 		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB1200A025701B4000CC8020 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
-		BB1200AE2570266E00CC8020 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		BB1200B42570269100CC8020 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
@@ -143,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				996A1466256D3A5F00F21215 /* Language.swift */,
+				990DE946257336D900340A72 /* JoinChatError.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -152,6 +165,8 @@
 			children = (
 				996A1445256D187900F21215 /* ImageFactory.swift */,
 				996A1432256D040B00F21215 /* DefaultImageFactory.swift */,
+				990DE9502573499500340A72 /* AlertFactoryType.swift */,
+				990DE94C2573479600340A72 /* AlertFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -159,10 +174,11 @@
 		996C4E3D256E5F2C0015F9F4 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				BB1200B42570269100CC8020 /* API.swift */,
-				BB1200AE2570266E00CC8020 /* schema.json */,
+				990DE942257335E300340A72 /* API.swift */,
+				990DE93E257335CD00340A72 /* schema.json */,
 				996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */,
-				996C4E16256E59CE0015F9F4 /* SendMessage.graphql */,
+				990DE92C2572836B00340A72 /* EnterRoom.graphql */,
+				990DE9382572860500340A72 /* SendMessage.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -172,6 +188,7 @@
 			children = (
 				996C4E50256E7BF90015F9F4 /* NetworkService.swift */,
 				996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */,
+				990DE956257367B800340A72 /* JoinChatResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -189,8 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				99A2768325668EFA008BD24C /* HomeViewController.swift */,
-				996A145C256D324600F21215 /* LanguageSelectionView.swift */,
 				9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */,
+				996A145C256D324600F21215 /* LanguageSelectionView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -390,7 +407,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				990DE93F257335CD00340A72 /* schema.json in Resources */,
 				99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */,
+				990DE9392572860500340A72 /* SendMessage.graphql in Resources */,
+				990DE92D2572836B00340A72 /* EnterRoom.graphql in Resources */,
 				BBF2DCA9256674A500F2EA7D /* LaunchScreen.storyboard in Resources */,
 				BBF2DCA6256674A500F2EA7D /* Assets.xcassets in Resources */,
 				BBF2DCA4256674A300F2EA7D /* Main.storyboard in Resources */,
@@ -521,6 +541,7 @@
 				996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */,
 				996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
+				990DE943257335E300340A72 /* API.swift in Sources */,
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
 				BBEA1A60256F46FE009B8B5F /* User.swift in Sources */,
 				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
@@ -530,13 +551,16 @@
 				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
 				990DE9292572665400340A72 /* JoinChatReactor.swift in Sources */,
+				990DE947257336D900340A72 /* JoinChatError.swift in Sources */,
 				996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */,
-				BB1200B52570269100CC8020 /* API.swift in Sources */,
 				996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */,
 				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
+				990DE9512573499500340A72 /* AlertFactoryType.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
 				BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */,
+				990DE957257367B800340A72 /* JoinChatResponse.swift in Sources */,
+				990DE94D2573479600340A72 /* AlertFactory.swift in Sources */,
 				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
 				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,
 			);
