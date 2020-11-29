@@ -874,6 +874,21 @@
             </objects>
             <point key="canvasLocation" x="2002.8985507246377" y="811.60714285714278"/>
         </scene>
+        <!--Chat Drawer View Controller-->
+        <scene sceneID="uFR-uJ-Uri">
+            <objects>
+                <viewController storyboardIdentifier="ChatDrawerViewController" id="6xX-jC-EmE" customClass="ChatDrawerViewController" customModule="PapagoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N8b-Ms-U6D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Uec-13-aoS"/>
+                        <color key="backgroundColor" name="PapagoBlue"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8aB-0J-sLT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2852" y="812"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="b36-dj-hMn">
             <objects>
