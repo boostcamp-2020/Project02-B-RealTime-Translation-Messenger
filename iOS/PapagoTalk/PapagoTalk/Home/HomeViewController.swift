@@ -20,14 +20,14 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var makeChatRoomButton: UIButton!
     
     private var profileImageTapGesture =  UITapGestureRecognizer()
-    private var languageSelection = BehaviorSubject(value: Locale.currentLanguage)
+    private var languageSelection = BehaviorSubject(value: user.language)
     
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureHomeView()
         reactor = HomeViewReactor()
-        profileImageView.addGestureRecognizer(profileImageTapGesture)
         bind()
     }
     
@@ -61,10 +61,12 @@ final class HomeViewController: UIViewController, StoryboardView {
             .compactMap { URL(string: $0) }
             .subscribe(onNext: { [weak self] in
                 self?.profileImageView.kf.setImage(with: $0)
+                HomeViewController.user.image = $0.absoluteString
             })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.nickName }
+            .do { HomeViewController.user.nickName = $0 }
             .bind(to: nickNameTextField.rx.text)
             .disposed(by: disposeBag)
         
@@ -78,6 +80,8 @@ final class HomeViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.language }
             .distinctUntilChanged()
+            .do { HomeViewController.user.language = $0 }
+            .map { $0.localizedText }
             .bind(to: selectedLanguageLabel.rx.text)
             .disposed(by: disposeBag)
     }
@@ -89,6 +93,11 @@ final class HomeViewController: UIViewController, StoryboardView {
                 self?.showLanguageSelectionView()
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func configureHomeView() {
+        profileImageView.addGestureRecognizer(profileImageTapGesture)
+        nickNameTextField.text = HomeViewController.user.nickName
     }
     
     private func showLanguageSelectionView() {
