@@ -10,4 +10,13 @@ import Foundation
 enum MessageType: String, Codable {
     case sent
     case received
+    
+    var identifier: String {
+        switch self {
+        case .sent:
+            return SentMessageCell.identifier
+        case .received:
+            return ReceivedMessageCell.identifier
+        }
+    }
 }
