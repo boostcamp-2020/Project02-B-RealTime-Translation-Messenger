@@ -19,9 +19,9 @@ final class MessageBox {
     }
     
     func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
-        let isSameDate = Calendar.isSameDate(of: newMessage.timeStamp, with: lastMessage.timeStamp)
+        let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.timeStamp, with: lastMessage.timeStamp)
         var message = newMessage
-        message.setIsFirst(with: isSameDate)
+        message.setIsFirst(with: !isNotFirstOfDay)
         return message
     }
 }

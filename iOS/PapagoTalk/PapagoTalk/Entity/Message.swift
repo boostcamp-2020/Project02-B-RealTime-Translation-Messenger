@@ -23,7 +23,7 @@ struct Message: Codable {
         self.sender = user
         self.language = user.language.code
         self.timeStamp = Date()
-        self.isFirstOfDay = false
+        self.isFirstOfDay = true
         self.type = .sent
     }
     
@@ -34,7 +34,7 @@ struct Message: Codable {
         self.sender = User()
         self.language = ""
         self.timeStamp = "".toDate()
-        self.isFirstOfDay = false
+        self.isFirstOfDay = true
         self.type = .received
     }
     
@@ -44,7 +44,7 @@ struct Message: Codable {
         self.sender = user
         self.language = language
         self.timeStamp = timeStamp.toDate()
-        self.isFirstOfDay = false
+        self.isFirstOfDay = true
         self.type = .received
     }
     
