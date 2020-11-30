@@ -18,9 +18,8 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     var disposeBag = DisposeBag()
     
-    // TODO: User정보 관리 객체 분리
-    var userId = 7
-    var roomID = 1
+    var userId = user.id
+    var roomID = 7
     
     override func viewDidLoad() {
         super.viewDidLoad()

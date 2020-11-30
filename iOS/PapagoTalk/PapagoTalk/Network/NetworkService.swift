@@ -99,7 +99,7 @@ class NetworkService: NetworkServiceProviding {
         
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.perform(
-                mutation: EnterRoomMutation(nickName: user.nickName, avatar: user.image, language: user.language, code: code),
+                mutation: EnterRoomMutation(nickName: user.nickName, avatar: user.image, language: user.language.code, code: code),
                 resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):

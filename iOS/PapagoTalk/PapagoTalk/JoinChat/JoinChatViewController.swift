@@ -20,7 +20,7 @@ final class JoinChatViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactor = JoinChatReactor(user: User(id: nil, nickName: "Nick", image: "", language: "ko"))
+        reactor = JoinChatReactor()
     }
     
     func bind(reactor: JoinChatReactor) {

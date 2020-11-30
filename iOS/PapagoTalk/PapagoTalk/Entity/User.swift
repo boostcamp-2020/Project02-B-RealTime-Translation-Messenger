@@ -7,9 +7,23 @@
 
 import Foundation
 
-struct User {
-    var id: Int?
-    let nickName: String
-    let image: String
-    let language: String
+struct User: Codable {
+    var id: Int
+    var nickName: String
+    var image: String
+    var language: Language
+    
+    init(id: Int, nickName: String, image: String, language: Language) {
+        self.id = id
+        self.nickName = nickName
+        self.image = image
+        self.language = language
+    }
+    
+    init(_ imageFactory: ImageFactory = DefaultImageFactory()) {
+        id = 1
+        nickName = ""
+        image = imageFactory.randomImageURL()
+        language = Locale.currentLanguage
+    }
 }
