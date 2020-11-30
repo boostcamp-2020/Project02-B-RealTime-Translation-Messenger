@@ -12,29 +12,47 @@ struct Message: Codable {
     let text: String
     let sender: User
     let language: String
-    let timeStamp: String
+    let timeStamp: Date
+    var isFirstOfDay: Bool
+    var type: MessageType
     
-    init(of body: String, by user: User) {
-        id = nil
-        text = body
-        sender = user
-        language = user.language.code
-        timeStamp = ""
-    }
-    
-    init(id: Int, text: String, sender: User, language: String, timeStamp: String) {
-        self.id = id
+    // App -> API
+    init(of text: String, by user: User) {
+        self.id = nil
         self.text = text
-        self.sender = sender
-        self.language = language
-        self.timeStamp = timeStamp
+        self.sender = user
+        self.language = user.language.code
+        self.timeStamp = Date()
+        self.isFirstOfDay = false
+        self.type = .sent
     }
     
+    // TODO: API -> App - init API 형식에 맞게 변경 예정
     init(userId: Int, text: String) {
         self.id = nil
         self.text = text
         self.sender = User()
         self.language = ""
-        self.timeStamp = ""
+        self.timeStamp = "".toDate()
+        self.isFirstOfDay = false
+        self.type = .received
+    }
+    
+    init(id: Int, of text: String, by user: User, language: String, timeStamp: String) {
+        self.id = id
+        self.text = text
+        self.sender = user
+        self.language = language
+        self.timeStamp = timeStamp.toDate()
+        self.isFirstOfDay = false
+        self.type = .received
+    }
+    
+    mutating func setIsFirst(with isFirst: Bool) {
+        isFirstOfDay = isFirst
+    }
+    
+    mutating func setType(by user: User) {
+        type = (sender.id == user.id) ? .sent : .received
     }
 }
