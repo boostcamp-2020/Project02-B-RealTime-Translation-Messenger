@@ -40,7 +40,16 @@ final class ChatViewReactor: Reactor {
         case .subscribeNewMessages(let roomID):
             return networkService.getMessage(roomId: roomID)
                 .compactMap { $0.newMessage }
-                .map { Mutation.appendNewMessage(Message(userId: $0.user.id, text: $0.text)) }
+                // TODO: 막 넣은 데이터들 API 생기면 수정
+                // TODO: 구조 개선
+                .map { Mutation.appendNewMessage(Message(id: $0.id,
+                                                         of: $0.text,
+                                                         by: User(id: $0.user.id,
+                                                                  nickName: $0.user.nickname,
+                                                                  image: $0.user.avatar,
+                                                                  language: .korean),
+                                                         language: $0.source,
+                                                         timeStamp: "1606743370")) }
         case .sendMessage(let message):
             return networkService.sendMessage(text: message,
                                               source: user.language.code,
