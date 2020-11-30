@@ -5,6 +5,7 @@ PODS:
   - Apollo/WebSocket (0.37.0):
     - Apollo/Core
     - Starscream (~> 3.1.1)
+  - Differentiator (4.0.1)
   - Kingfisher (5.15.6):
     - Kingfisher/Core (= 5.15.6)
   - Kingfisher/Core (5.15.6)
@@ -14,6 +15,13 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxGesture (3.0.2):
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
@@ -27,14 +35,19 @@ DEPENDENCIES:
   - Kingfisher
   - ReactorKit
   - RxCocoa
+  - RxDataSources
+  - RxGesture
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Apollo
+    - Differentiator
     - Kingfisher
     - ReactorKit
     - RxCocoa
+    - RxDataSources
+    - RxGesture
     - RxRelay
     - RxSwift
     - Starscream
@@ -43,15 +56,18 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Apollo: 9b386f7bda8f97f4980c939b7d1aa6da30e6602c
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   ReactorKit: 12a93358c554bb3f167b16b14c40374fa9cd5acd
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftLint: bbfed21bf4451dcbd0f5cdbee44a18e06cf91b12
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 917cd7420d8e44c3f59170d3b59ac7950450bdef
+PODFILE CHECKSUM: 73c73c080d73d6aa89e6d6f5330683c31066583f
 
 COCOAPODS: 1.9.3

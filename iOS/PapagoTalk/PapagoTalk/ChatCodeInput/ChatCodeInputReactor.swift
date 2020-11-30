@@ -8,7 +8,7 @@
 import Foundation
 import ReactorKit
 
-final class JoinChatReactor: Reactor {
+final class ChatCodeInputReactor: Reactor {
     enum Action {
         case numberButtonTapped(String)
         case removeButtonTapped
@@ -36,7 +36,7 @@ final class JoinChatReactor: Reactor {
     var networkService = NetworkService()
     
     let initialState: State
-    let user = JoinChatViewController.user
+    let user = ChatCodeInputViewController.user
     
     init() {
         initialState = State(codeInput: [String](repeating: "", count: maxCodeLength),

@@ -8,6 +8,7 @@
 import UIKit
 import ReactorKit
 import RxCocoa
+import RxGesture
 import Kingfisher
 
 final class HomeViewController: UIViewController, StoryboardView {
@@ -19,20 +20,20 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var joinChatRoomButton: UIButton!
     @IBOutlet private weak var makeChatRoomButton: UIButton!
     
-    private var profileImageTapGesture =  UITapGestureRecognizer()
     private var languageSelection = BehaviorSubject(value: user.language)
     
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureHomeView()
         reactor = HomeViewReactor()
         bind()
     }
     
     func bind(reactor: HomeViewReactor) {
-        profileImageTapGesture.rx.event
+
+        profileImageView.rx.tapGesture()
+            .when(.recognized)
             .map { _ in
                 Reactor.Action.profileImageTapped
             }
@@ -41,6 +42,7 @@ final class HomeViewController: UIViewController, StoryboardView {
         
         nickNameTextField.rx.text
             .orEmpty
+            .changed
             .map { Reactor.Action.nickNameChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -93,11 +95,6 @@ final class HomeViewController: UIViewController, StoryboardView {
                 self?.showLanguageSelectionView()
             }
             .disposed(by: disposeBag)
-    }
-    
-    private func configureHomeView() {
-        profileImageView.addGestureRecognizer(profileImageTapGesture)
-        nickNameTextField.text = HomeViewController.user.nickName
     }
     
     private func showLanguageSelectionView() {
