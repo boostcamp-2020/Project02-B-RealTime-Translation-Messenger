@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+enum HomeError: Error {
+    case invalidNickName
+    case networkError
+    
+    var message: String {
+        switch self {
+        case .invalidNickName:
+            return Strings.Home.invalidNickNameAlertMessage
+        case .networkError:
+            return Strings.Network.connectionAlertMessage
+        }
+    }
+}
