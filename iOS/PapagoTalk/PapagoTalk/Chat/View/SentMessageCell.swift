@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol MessageCell: class {
-    func configureMessageCell(message: Message)
-}
-
 final class SentMessageCell: UICollectionViewCell {
     @IBOutlet private weak var messageTextView: UITextView!
     
