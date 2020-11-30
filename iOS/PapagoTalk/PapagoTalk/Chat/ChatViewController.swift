@@ -15,6 +15,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: UICollectionView!
     @IBOutlet private weak var sendButton: UIButton!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var disposeBag = DisposeBag()
     
@@ -25,6 +26,7 @@ final class ChatViewController: UIViewController, StoryboardView {
         super.viewDidLoad()
         reactor = ChatViewReactor()
         bind()
+        bindKeyboard()
     }
     
     func bind(reactor: ChatViewReactor) {
@@ -102,6 +104,35 @@ final class ChatViewController: UIViewController, StoryboardView {
     private func scrollToLastMessage() {
         let newY = chatCollectionView.contentSize.height - chatCollectionView.bounds.height
         chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: true)
+    }
+}
+
+extension ChatViewController: KeyboardProviding {
+    private func bindKeyboard() {
+        tapToDissmissKeyboard
+            .drive()
+            .disposed(by: disposeBag)
+        
+        keyboardWillShow
+            .drive(onNext: { [weak self] keyboardFrame in
+                guard let self = self else {
+                    return
+                }
+                self.bottomConstraint.constant = keyboardFrame.height - self.view.safeAreaInsets.bottom
+                UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        keyboardWillHide
+            .drive(onNext: { [weak self] _ in
+                self?.bottomConstraint.constant = 0
+                UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+                    self?.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
