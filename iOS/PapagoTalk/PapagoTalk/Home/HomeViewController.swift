@@ -23,6 +23,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     private var languageSelection = BehaviorSubject(value: user.language)
     
     var disposeBag = DisposeBag()
+    var alertFactory: AlertFactoryType = AlertFactory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +56,10 @@ final class HomeViewController: UIViewController, StoryboardView {
 //        joinChatRoomButton.rx.tap
 //            .map { Reactor.Action. }
         
-//        makeChatRoomButton.rx.tap
-//            .map { Reactor.Action. }
+        makeChatRoomButton.rx.tap
+            .map { Reactor.Action.makeChatRoomButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         reactor.state.map { $0.profileImageURL }
             .distinctUntilChanged()
@@ -72,7 +75,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .bind(to: nickNameTextField.rx.text)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.isInvalidNickNameLength }
+        reactor.state.map { $0.needShake }
             .filter { $0 }
             .do { [weak self] _ in
                 self?.nickNameTextField.shake()
@@ -86,8 +89,26 @@ final class HomeViewController: UIViewController, StoryboardView {
             .map { $0.localizedText }
             .bind(to: selectedLanguageLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        reactor.state.compactMap { $0.createRoomResponse }
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] in
+                self?.moveToChat(userId: $0.userId, roomId: $0.roomId)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.errorMessage }
+            .distinctUntilChanged()
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] errorMessage in
+                guard let message = errorMessage else {
+                    return
+                }
+                self?.alert(message: message)
+            })
+            .disposed(by: disposeBag)
     }
-    
+        
     private func bind() {
         languageSelectionButton.rx.tap
             .asDriver()
@@ -106,5 +127,18 @@ final class HomeViewController: UIViewController, StoryboardView {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alertController.setValue(customAlertView, forKey: "contentViewController")
         present(alertController, animated: true)
+    }
+    
+    private func alert(message: String) {
+        present(alertFactory.alert(message: message), animated: true)
+    }
+    
+    private func moveToChat(userId: Int, roomId: Int) {
+        guard let chatVC = storyboard?.instantiateViewController(identifier: ChatViewController.identifier) as? ChatViewController else {
+            return
+        }
+        chatVC.userId = userId
+        chatVC.roomID = roomId
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 }
