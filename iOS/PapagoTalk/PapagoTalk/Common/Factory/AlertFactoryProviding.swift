@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol AlertFactoryType {
+protocol AlertFactoryProviding {
     func alert(message: String) -> UIAlertController
 }
