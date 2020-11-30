@@ -14,13 +14,12 @@ struct Message: Codable {
     let language: String
     let timeStamp: String
     
-    init(of body: String) {
-        let user = ChatViewController.user
+    init(of body: String, by user: User) {
         id = nil
         text = body
         sender = user
         language = user.language.code
-        timeStamp = DateFormatter.format(of: Date())
+        timeStamp = ""
     }
     
     init(id: Int, text: String, sender: User, language: String, timeStamp: String) {
@@ -34,8 +33,8 @@ struct Message: Codable {
     init(userId: Int, text: String) {
         self.id = nil
         self.text = text
-        self.sender = User(id: userId, nickName: "", image: "", language: .english)
-        self.language = "ko"
-        self.timeStamp = "2020"
+        self.sender = User()
+        self.language = ""
+        self.timeStamp = ""
     }
 }
