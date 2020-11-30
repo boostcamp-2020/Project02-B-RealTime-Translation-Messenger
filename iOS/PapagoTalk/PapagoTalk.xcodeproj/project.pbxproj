@@ -46,6 +46,8 @@
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
 		BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
+		BB93C290257526DD00C68491 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C28F257526DD00C68491 /* MessageType.swift */; };
+		BB93C2942575345200C68491 /* Calendar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C2932575345200C68491 /* Calendar+.swift */; };
 		BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9725A7256FA5DD00C4938D /* MessageBox.swift */; };
 		BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97AE07256CDC0400307DAD /* UIView+.swift */; };
 		BB9A86A02574879500FE14D6 /* ChatDrawerUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A869F2574879500FE14D6 /* ChatDrawerUserCell.swift */; };
@@ -118,6 +120,8 @@
 		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
 		BB6F7ED2256D799B00D66F8E /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB93C28F257526DD00C68491 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
+		BB93C2932575345200C68491 /* Calendar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+.swift"; sourceTree = "<group>"; };
 		BB9725A7256FA5DD00C4938D /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		BB97AE07256CDC0400307DAD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		BB9A869F2574879500FE14D6 /* ChatDrawerUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerUserCell.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				996A1466256D3A5F00F21215 /* Language.swift */,
 				990DE946257336D900340A72 /* JoinChatError.swift */,
 				BB20F4DE2573959500C5AC1D /* UserDefaultType.swift */,
+				BB93C28F257526DD00C68491 /* MessageType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				BBE140762573D374000B0604 /* DateFormatter+.swift */,
 				BB20F4DA257394F800C5AC1D /* Encodable+.swift */,
 				990DE9772573A67C00340A72 /* String+.swift */,
+				BB93C2932575345200C68491 /* Calendar+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -603,6 +609,7 @@
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
+				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
 				996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */,
 				996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */,
@@ -619,6 +626,7 @@
 				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
 				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
 				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
+				BB93C290257526DD00C68491 /* MessageType.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
 				990DE9292572665400340A72 /* ChatCodeInputReactor.swift in Sources */,
 				990DE97C2573A80B00340A72 /* Strings.swift in Sources */,
