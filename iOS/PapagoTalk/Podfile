@@ -10,6 +10,8 @@ target 'PapagoTalk' do
   pod "ReactorKit"
   pod "RxCocoa"
   pod "Kingfisher"
+  pod "RxGesture"
+  pod "RxDataSources"
   # Pods for PapagoTalk
 
   target 'PapagoTalkTests' do
