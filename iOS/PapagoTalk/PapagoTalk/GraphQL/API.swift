@@ -4,6 +4,125 @@
 import Apollo
 import Foundation
 
+public final class CreateRoomMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation CreateRoom($nickname: String!, $avatar: String!, $lang: String!) {
+      createRoom(nickname: $nickname, avatar: $avatar, lang: $lang) {
+        __typename
+        userId
+        roomId
+        code
+      }
+    }
+    """
+
+  public let operationName: String = "CreateRoom"
+
+  public var nickname: String
+  public var avatar: String
+  public var lang: String
+
+  public init(nickname: String, avatar: String, lang: String) {
+    self.nickname = nickname
+    self.avatar = avatar
+    self.lang = lang
+  }
+
+  public var variables: GraphQLMap? {
+    return ["nickname": nickname, "avatar": avatar, "lang": lang]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("createRoom", arguments: ["nickname": GraphQLVariable("nickname"), "avatar": GraphQLVariable("avatar"), "lang": GraphQLVariable("lang")], type: .nonNull(.object(CreateRoom.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(createRoom: CreateRoom) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "createRoom": createRoom.resultMap])
+    }
+
+    public var createRoom: CreateRoom {
+      get {
+        return CreateRoom(unsafeResultMap: resultMap["createRoom"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "createRoom")
+      }
+    }
+
+    public struct CreateRoom: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["createRoomResponse"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("userId", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("roomId", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("code", type: .nonNull(.scalar(String.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(userId: Int, roomId: Int, code: String) {
+        self.init(unsafeResultMap: ["__typename": "createRoomResponse", "userId": userId, "roomId": roomId, "code": code])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var userId: Int {
+        get {
+          return resultMap["userId"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "userId")
+        }
+      }
+
+      public var roomId: Int {
+        get {
+          return resultMap["roomId"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "roomId")
+        }
+      }
+
+      public var code: String {
+        get {
+          return resultMap["code"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "code")
+        }
+      }
+    }
+  }
+}
+
 public final class EnterRoomMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =

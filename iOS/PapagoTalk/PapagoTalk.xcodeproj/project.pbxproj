@@ -13,7 +13,6 @@
 		990DE92D2572836B00340A72 /* EnterRoom.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990DE92C2572836B00340A72 /* EnterRoom.graphql */; };
 		990DE9392572860500340A72 /* SendMessage.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990DE9382572860500340A72 /* SendMessage.graphql */; };
 		990DE93F257335CD00340A72 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 990DE93E257335CD00340A72 /* schema.json */; };
-		990DE943257335E300340A72 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE942257335E300340A72 /* API.swift */; };
 		990DE947257336D900340A72 /* JoinChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE946257336D900340A72 /* JoinChatError.swift */; };
 		990DE94D2573479600340A72 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE94C2573479600340A72 /* AlertFactory.swift */; };
 		990DE9512573499500340A72 /* AlertFactoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9502573499500340A72 /* AlertFactoryType.swift */; };
@@ -22,6 +21,8 @@
 		990DE9782573A67C00340A72 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9772573A67C00340A72 /* String+.swift */; };
 		990DE97C2573A80B00340A72 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE97B2573A80B00340A72 /* Strings.swift */; };
 		9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */; };
+		993AF66F2574DBE200416692 /* CreateRoom.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 993AF66E2574DBE100416692 /* CreateRoom.graphql */; };
+		993AF6752574DD3300416692 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF6742574DD3300416692 /* API.swift */; };
 		996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* DefaultImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactory.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
@@ -80,7 +81,6 @@
 		990DE92C2572836B00340A72 /* EnterRoom.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EnterRoom.graphql; sourceTree = "<group>"; };
 		990DE9382572860500340A72 /* SendMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendMessage.graphql; sourceTree = "<group>"; };
 		990DE93E257335CD00340A72 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		990DE942257335E300340A72 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		990DE946257336D900340A72 /* JoinChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatError.swift; sourceTree = "<group>"; };
 		990DE94C2573479600340A72 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		990DE9502573499500340A72 /* AlertFactoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactoryType.swift; sourceTree = "<group>"; };
@@ -92,6 +92,8 @@
 		990DE9772573A67C00340A72 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		990DE97B2573A80B00340A72 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
+		993AF66E2574DBE100416692 /* CreateRoom.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateRoom.graphql; sourceTree = "<group>"; };
+		993AF6742574DD3300416692 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* DefaultImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
@@ -203,11 +205,12 @@
 		996C4E3D256E5F2C0015F9F4 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				990DE942257335E300340A72 /* API.swift */,
+				993AF6742574DD3300416692 /* API.swift */,
 				990DE93E257335CD00340A72 /* schema.json */,
 				996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */,
 				990DE92C2572836B00340A72 /* EnterRoom.graphql */,
 				990DE9382572860500340A72 /* SendMessage.graphql */,
+				993AF66E2574DBE100416692 /* CreateRoom.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -344,7 +347,7 @@
 				99A2767F25668E13008BD24C /* Home */,
 				BB6F7EBE256D693800D66F8E /* Chat */,
 				990DE9212572657300340A72 /* ChatCodeInput */,
-        BB38252325740153000425FD /* ChatDrawer */,
+				BB38252325740153000425FD /* ChatDrawer */,
 				BBF2DC9C256674A300F2EA7D /* AppDelegate.swift */,
 				BBF2DC9E256674A300F2EA7D /* SceneDelegate.swift */,
 				BBF2DCA2256674A300F2EA7D /* Main.storyboard */,
@@ -473,6 +476,7 @@
 			files = (
 				990DE93F257335CD00340A72 /* schema.json in Resources */,
 				99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */,
+				993AF66F2574DBE200416692 /* CreateRoom.graphql in Resources */,
 				990DE9392572860500340A72 /* SendMessage.graphql in Resources */,
 				990DE92D2572836B00340A72 /* EnterRoom.graphql in Resources */,
 				BBF2DCA9256674A500F2EA7D /* LaunchScreen.storyboard in Resources */,
@@ -608,7 +612,6 @@
 				996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */,
-				990DE943257335E300340A72 /* API.swift in Sources */,
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
 				BBEA1A60256F46FE009B8B5F /* User.swift in Sources */,
 				BB20F4D7257394D800C5AC1D /* Data+.swift in Sources */,
@@ -621,6 +624,7 @@
 				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactory.swift in Sources */,
 				990DE9292572665400340A72 /* ChatCodeInputReactor.swift in Sources */,
+				993AF6752574DD3300416692 /* API.swift in Sources */,
 				990DE97C2573A80B00340A72 /* Strings.swift in Sources */,
 				990DE947257336D900340A72 /* JoinChatError.swift in Sources */,
 				BB9A86A02574879500FE14D6 /* ChatDrawerUserCell.swift in Sources */,
