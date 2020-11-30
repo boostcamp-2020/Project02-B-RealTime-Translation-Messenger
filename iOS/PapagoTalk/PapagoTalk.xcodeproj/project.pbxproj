@@ -25,6 +25,7 @@
 		993AF6752574DD3300416692 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF6742574DD3300416692 /* API.swift */; };
 		993AF6792574DF2F00416692 /* CreateRoomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF6782574DF2F00416692 /* CreateRoomResponse.swift */; };
 		993AF67D2574E3E200416692 /* HomeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF67C2574E3E200416692 /* HomeError.swift */; };
+		993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF697257517AE00416692 /* KeyboardProviding.swift */; };
 		996A1433256D040B00F21215 /* DefaultImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* DefaultImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactory.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
@@ -98,6 +99,7 @@
 		993AF6742574DD3300416692 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		993AF6782574DF2F00416692 /* CreateRoomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomResponse.swift; sourceTree = "<group>"; };
 		993AF67C2574E3E200416692 /* HomeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeError.swift; sourceTree = "<group>"; };
+		993AF697257517AE00416692 /* KeyboardProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardProviding.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* DefaultImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
@@ -173,9 +175,18 @@
 			path = ChatCodeInput;
 			sourceTree = "<group>";
 		};
+		993AF6962575177900416692 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				993AF697257517AE00416692 /* KeyboardProviding.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		996A146E256D5B8E00F21215 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				993AF6962575177900416692 /* Util */,
 				BB6F7ED1256D798400D66F8E /* Constant */,
 				996A1470256D5BC100F21215 /* Enum */,
 				BB97AE0B256CDC0900307DAD /* Extension */,
@@ -641,6 +652,7 @@
 				BBE140772573D374000B0604 /* DateFormatter+.swift in Sources */,
 				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
 				990DE9512573499500340A72 /* AlertFactoryType.swift in Sources */,
+				993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				990DE9782573A67C00340A72 /* String+.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
