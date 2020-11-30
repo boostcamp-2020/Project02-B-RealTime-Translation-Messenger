@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export default {
   Query: {
-    allChatById: (_: any, { id }: { id: number }) =>
+    allMessagesById: (_: any, { id }: { id: number }) =>
       prisma.message.findMany({
         where: {
           room: { id },
