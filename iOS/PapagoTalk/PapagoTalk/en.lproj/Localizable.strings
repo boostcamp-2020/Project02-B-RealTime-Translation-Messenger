@@ -11,6 +11,9 @@
 "Korean" = "Korean";
 "OK" = "OK";
 
+//Mark: - Home
+"Please Enter 2-12 Characters for NickName" = "Please Enter 2-12 Characters for NickName";
+
 //Mark: - JoinChat
 "Chat Room is Doesn't Exist \n Or already Deleted" = "Chat Room is Doesn't Exist \n Or already Deleted";
 "Please Check your Network Connection" = "Please Check your Network Connection";

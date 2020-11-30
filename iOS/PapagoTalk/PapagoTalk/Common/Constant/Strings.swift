@@ -19,6 +19,11 @@ struct Strings {
         static let connectionAlertMessage = "Please Check your Network Connection".localized
     }
     
+    // MARK: - Home
+    struct Home {
+        static let invalidNickNameAlertMessage = "Please Enter 2-12 Characters for NickName".localized
+    }
+    
     // MARK: - JoinChat
     struct JoinChat {
         static let noSuchRoomAlertMessage = "Chat Room is Doesn't Exist \n Or already Deleted".localized
