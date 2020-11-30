@@ -29,6 +29,7 @@ final class HomeViewController: UIViewController, StoryboardView {
         super.viewDidLoad()
         reactor = HomeViewReactor()
         bind()
+        bindKeyboard()
     }
     
     func bind(reactor: HomeViewReactor) {
@@ -140,5 +141,13 @@ final class HomeViewController: UIViewController, StoryboardView {
         chatVC.userId = userId
         chatVC.roomID = roomId
         navigationController?.pushViewController(chatVC, animated: true)
+    }
+}
+
+extension HomeViewController: KeyboardProviding {
+    private func bindKeyboard() {
+        tapToDissmissKeyboard
+            .drive()
+            .disposed(by: disposeBag)
     }
 }
