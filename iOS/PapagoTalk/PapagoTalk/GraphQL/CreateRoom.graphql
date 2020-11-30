@@ -1,0 +1,7 @@
+mutation CreateRoom($nickname: String!, $avatar: String!, $lang: String!) {
+  createRoom(nickname: $nickname, avatar: $avatar, lang: $lang){
+    userId
+    roomId
+    code
+  }
+}
