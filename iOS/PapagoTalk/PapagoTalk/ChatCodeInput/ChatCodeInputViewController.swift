@@ -1,5 +1,5 @@
 //
-//  JoinChatViewController.swift
+//  ChatCodeInputViewController.swift
 //  PapagoTalk
 //
 //  Created by Byoung-Hwi Yoon on 2020/11/28.
@@ -9,21 +9,23 @@ import UIKit
 import ReactorKit
 import RxCocoa
 
-final class JoinChatViewController: UIViewController, StoryboardView {
+final class ChatCodeInputViewController: UIViewController, StoryboardView {
     
     @IBOutlet var inputLabels: [UILabel]!
     @IBOutlet var numberButtons: [UIButton]!
     @IBOutlet weak var removeButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var disposeBag = DisposeBag()
     var alertFactory: AlertFactoryType = AlertFactory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactor = JoinChatReactor()
+        reactor = ChatCodeInputReactor()
+        bind()
     }
     
-    func bind(reactor: JoinChatReactor) {
+    func bind(reactor: ChatCodeInputReactor) {
         numberButtons.forEach { button in
             button.rx.tap
                 .compactMap { button.currentTitle }
@@ -64,6 +66,14 @@ final class JoinChatViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
     }
 
+    private func bind() {
+        cancelButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in self?.navigationController?.popViewController(animated: true) })
+            .disposed(by: disposeBag)
+        
+    }
+    
     private func alert(message: String) {
         present(alertFactory.alert(message: message), animated: true)
     }
