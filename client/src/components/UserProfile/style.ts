@@ -10,37 +10,43 @@ export default {
     position: relative;
     width: 16rem;
     height: 16rem;
-    background: ${(props) => props.theme.bgColor};
+
+    background: ${(props) => props.theme.whiteColor};
     box-sizing: border-box;
     border: ${(props) => props.theme.boxBorder};
     border-radius: 50%;
   `,
   Avatar: styled.img`
-    background: none;
     width: inherit;
     height: inherit;
+    background: none;
   `,
   RefreshButton: styled.button`
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    padding: 0.5rem;
+
     bottom: 1rem;
     right: 1rem;
-    position: absolute;
+    padding: 0.5rem;
+
     background: ${(props) => props.theme.grayColor};
+    border-radius: 50%;
+
     svg {
       fill: ${(props) => props.theme.whiteColor};
     }
   `,
   NicknameInput: styled.input`
     width: 12rem;
-    text-align: center;
-    padding: 0.5rem;
     margin: 1rem 0;
-    border-bottom: ${(props) => props.theme.boxBorder};
-    font-size: 18px;
+    padding: 0.5rem;
+
     color: ${(props) => props.theme.text};
+    border-bottom: ${(props) => props.theme.boxBorder};
+
+    font-size: 18px;
+    text-align: center;
   `,
 };
