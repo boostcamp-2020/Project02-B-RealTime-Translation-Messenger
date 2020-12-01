@@ -17,6 +17,10 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
+    private weak var chatDrawerViewController: ChatDrawerViewController!
+    private var visualEffectView: UIVisualEffectView!
+    private var runningAnimations = [UIViewPropertyAnimator]()
+    
     var disposeBag = DisposeBag()
     
     var userId = user.id
@@ -27,6 +31,7 @@ final class ChatViewController: UIViewController, StoryboardView {
         reactor = ChatViewReactor()
         bind()
         bindKeyboard()
+        configureChatDrawer()
     }
     
     func bind(reactor: ChatViewReactor) {
@@ -84,6 +89,9 @@ final class ChatViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .bind(to: inputBarTextViewHeight.rx.constant)
             .disposed(by: disposeBag)
+        
+        // visualEffectView.rx.tapGesture()
+            
     }
     
     private func calculateTextViewHeight(with text: String) -> CGFloat {
@@ -104,6 +112,34 @@ final class ChatViewController: UIViewController, StoryboardView {
     private func scrollToLastMessage() {
         let newY = chatCollectionView.contentSize.height - chatCollectionView.bounds.height
         chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: true)
+    }
+    
+    private func configureChatDrawer() {
+        configureVisualEffectView()
+        
+        let drawerWidth = (view.frame.width * 5) / 6
+        chatDrawerViewController =
+            storyboard?.instantiateViewController(identifier: ChatDrawerViewController.identifier)
+        
+        addChild(chatDrawerViewController)
+        view.addSubview(chatDrawerViewController.view)
+        
+        chatDrawerViewController.view.frame = CGRect(x: view.frame.width - drawerWidth,
+                                                     y: .zero,
+                                                     width: drawerWidth,
+                                                     height: view.frame.height)
+        // chatDrawerViewController.view.clipsToBounds = true
+        present(chatDrawerViewController, animated: true)
+    }
+    
+    private func configureVisualEffectView() {
+        visualEffectView = UIVisualEffectView()
+        visualEffectView.frame = view.frame
+        view.addSubview(visualEffectView)
+    }
+    
+    private func configureAnimation() {
+        
     }
 }
 
