@@ -56,7 +56,6 @@ final class ChatViewController: UIViewController, StoryboardView {
             .map { Reactor.Action.sendMessage($0) }
             .do(afterNext: { [weak self] _ in
                 self?.inputBarTextView.text = nil
-                self?.scrollToLastMessage()
             })
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -69,7 +68,9 @@ final class ChatViewController: UIViewController, StoryboardView {
         reactor.state.map { $0.roomCode }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
-                self?.navigationItem.title = String($0.prefix(3)) + "-" + String($0.suffix(3))
+                var code = $0
+                code.insert("-", at: code.index(code.startIndex, offsetBy: 3))
+                self?.navigationItem.title = code
                 })
             .disposed(by: disposeBag)
         

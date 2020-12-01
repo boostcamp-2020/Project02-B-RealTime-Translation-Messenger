@@ -32,6 +32,7 @@ final class ChatCodeInputReactor: Reactor {
     private let maxCodeLength = 6
     private let networkService: NetworkServiceProviding
     private var userData: UserDataProviding
+    
     let initialState: State
     
     init(networkService: NetworkServiceProviding,
