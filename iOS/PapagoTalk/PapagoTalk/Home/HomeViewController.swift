@@ -23,11 +23,22 @@ final class HomeViewController: UIViewController, StoryboardView {
     private var languageSelection = BehaviorSubject(value: user.language)
     
     var disposeBag = DisposeBag()
-    var alertFactory: AlertFactoryType = AlertFactory()
+    private let alertFactory: AlertFactoryProviding
+    weak var coordinator: MainCoordinator?
+    
+    init?(coder: NSCoder, reactor: HomeViewReactor, alertFactory: AlertFactoryProviding) {
+        self.alertFactory = alertFactory
+        super.init(coder: coder)
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        alertFactory = AlertFactory()
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactor = HomeViewReactor()
         bind()
         bindKeyboard()
     }
@@ -117,6 +128,13 @@ final class HomeViewController: UIViewController, StoryboardView {
                 self?.showLanguageSelectionView()
             }
             .disposed(by: disposeBag)
+        
+        joinChatRoomButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.coordinator?.showChatCodeInput()
+            }
+            .disposed(by: disposeBag)
     }
     
     private func showLanguageSelectionView() {
@@ -135,12 +153,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     }
     
     private func moveToChat(userId: Int, roomId: Int) {
-        guard let chatVC = storyboard?.instantiateViewController(identifier: ChatViewController.identifier) as? ChatViewController else {
-            return
-        }
-        chatVC.userId = userId
-        chatVC.roomID = roomId
-        navigationController?.pushViewController(chatVC, animated: true)
+        coordinator?.showChat(roomID: roomId)
     }
 }
 
