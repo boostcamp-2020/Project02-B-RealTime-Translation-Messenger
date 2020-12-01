@@ -15,6 +15,9 @@ const Theme = {
 export const lightTheme: DefaultTheme = {
   bgColor: Theme.whiteColor,
   text: Theme.darkGrayColor,
+  lightGrayColor: Theme.lightGrayColor,
+  grayColor: Theme.grayColor,
+  darkGrayColor: Theme.darkGrayColor,
   whiteColor: Theme.whiteColor,
   blackColor: Theme.blackColor,
   blueColor: Theme.blueColor,
@@ -26,6 +29,9 @@ export const lightTheme: DefaultTheme = {
 export const darkTheme: DefaultTheme = {
   bgColor: Theme.blackColor,
   text: Theme.lightGrayColor,
+  lightGrayColor: Theme.lightGrayColor,
+  grayColor: Theme.grayColor,
+  darkGrayColor: Theme.darkGrayColor,
   whiteColor: Theme.whiteColor,
   blackColor: Theme.blackColor,
   blueColor: Theme.blueColor,
