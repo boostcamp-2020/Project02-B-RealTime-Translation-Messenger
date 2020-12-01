@@ -19,6 +19,8 @@ export const lightTheme: DefaultTheme = {
   blackColor: Theme.blackColor,
   blueColor: Theme.blueColor,
   greenColor: Theme.greenColor,
+  lightGrayColor: Theme.lightGrayColor,
+  darkGrayColor: Theme.darkGrayColor,
   borderRadius: Theme.borderRadius,
   boxBorder: Theme.boxBorder,
 };
@@ -30,6 +32,8 @@ export const darkTheme: DefaultTheme = {
   blackColor: Theme.blackColor,
   blueColor: Theme.blueColor,
   greenColor: Theme.greenColor,
+  lightGrayColor: Theme.lightGrayColor,
+  darkGrayColor: Theme.darkGrayColor,
   borderRadius: Theme.borderRadius,
   boxBorder: Theme.boxBorder,
 };
