@@ -19,7 +19,6 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewSize()
         reactor = ChatDrawerViewReactor()
     }
     
@@ -52,6 +51,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         // reactor.state.map { $0.roomCode }
+        // TODO: 클립보드 복사
         
         reactor.state.map { $0.leaveChatRoom }
             .filter { $0 }
@@ -65,10 +65,6 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
     }
     
-    private func configureViewSize() {
-        
-    }
-    
     private func configureChatDrawerUserCell(at row: Int, with element: User) -> UICollectionViewCell {
         guard let cell = userListCollectionView.dequeueReusableCell(withReuseIdentifier: ChatDrawerUserCell.identifier,
                                                                     for: IndexPath(row: row, section: .zero)) as? ChatDrawerUserCell else {
@@ -77,7 +73,4 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         cell.configureUserCell(with: element)
         return cell
     }
-    
-    // view did load -> view 크기 계산 + Animation + 흐림 Effect
-    // tap gesture, pan gesture
 }
