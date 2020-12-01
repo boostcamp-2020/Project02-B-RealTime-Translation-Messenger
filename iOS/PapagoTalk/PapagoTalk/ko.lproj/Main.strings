@@ -70,3 +70,12 @@
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "va8-FQ-vZP"; */
 "va8-FQ-vZP.normalTitle" = "Send";
+
+/* Class = "UILabel"; text = "참가자"; ObjectID = "okh-F7-eqj"; */
+"okh-F7-eqj.text" = "참가자";
+
+/* Class = "UILabel"; text = "채팅방 코드 복사"; ObjectID = "fJr-yc-L8f"; */
+"fJr-yc-L8f.text" = "채팅방 코드 복사";
+
+/* Class = "UILabel"; text = "채팅방 나가기"; ObjectID = "M2b-ut-9Qf"; */
+"M2b-ut-9Qf.text" = "채팅방 나가기";
