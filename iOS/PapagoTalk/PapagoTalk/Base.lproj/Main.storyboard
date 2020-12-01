@@ -761,7 +761,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-jw-dz3">
                                 <rect key="frame" x="0.0" y="44" width="414" height="772"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pbJ-PR-6ix">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pbJ-PR-6ix">
                                     <size key="itemSize" width="414" height="59"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -795,16 +795,30 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" text="안녕하세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV">
-                                                    <rect key="frame" x="331" y="40" width="71" height="42"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV">
+                                                    <rect key="frame" x="314" y="40" width="88" height="42"/>
                                                     <color key="backgroundColor" name="PapagoSkyBlue"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="bDS-5T-sMN"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="bwf-8v-Hhf"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="z1w-4F-tBA"/>
                                                     </constraints>
-                                                    <color key="textColor" systemColor="labelColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="안녕하세요">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" Hi">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -813,7 +827,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 6:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRr-JJ-sLX">
-                                                    <rect key="frame" x="270" y="67.5" width="51" height="14.5"/>
+                                                    <rect key="frame" x="253" y="67.5" width="51" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
@@ -832,13 +846,14 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="90"/>
                                         <connections>
-                                            <outlet property="dateButton" destination="IJO-uC-sDU" id="IPf-PF-rT8"/>
+                                            <outlet property="dateBadge" destination="IJO-uC-sDU" id="IPf-PF-rT8"/>
+                                            <outlet property="dateBadgeHeight" destination="FJJ-mX-0oV" id="aAI-F3-V2m"/>
                                             <outlet property="messageTextView" destination="ZVH-iM-tHV" id="RVl-8M-HMr"/>
                                             <outlet property="timeLabel" destination="hRr-JJ-sLX" id="URR-W0-GwE"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReceivedMessageCell" id="39B-qn-dKO" customClass="ReceivedMessageCell" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="100" width="414" height="110"/>
+                                        <rect key="frame" x="0.0" y="90" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BHL-qx-p9o">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
@@ -883,16 +898,31 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" text="안녕하세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-KZ-Cbi">
-                                                    <rect key="frame" x="80" y="66" width="71" height="36"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-KZ-Cbi">
+                                                    <rect key="frame" x="80" y="66" width="88" height="36"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="9N2-rt-4rW"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="WNt-WN-QQI"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="eSp-R1-g44"/>
                                                     </constraints>
-                                                    <color key="textColor" systemColor="labelColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="안녕하세요">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                                                <font key="NSOriginalFont" size="14" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" Hi">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -901,7 +931,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 6:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8P-YL-lNQ">
-                                                    <rect key="frame" x="161" y="87.5" width="51" height="14.5"/>
+                                                    <rect key="frame" x="178" y="87.5" width="51" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
@@ -927,7 +957,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="110"/>
                                         <connections>
-                                            <outlet property="dateButton" destination="btx-gT-koo" id="Zh4-56-IP7"/>
+                                            <outlet property="dateBadge" destination="btx-gT-koo" id="Zh4-56-IP7"/>
+                                            <outlet property="dateBadgeHeight" destination="gWW-lI-9B9" id="7mQ-oJ-tKI"/>
                                             <outlet property="messageTextView" destination="Y1i-KZ-Cbi" id="seu-1M-1nm"/>
                                             <outlet property="nickNameLabel" destination="zyP-S3-xoJ" id="rwX-Ua-6Zr"/>
                                             <outlet property="profileImageView" destination="ymh-Tr-sLT" id="ekO-5O-I7y"/>

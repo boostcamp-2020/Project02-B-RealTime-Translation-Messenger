@@ -10,16 +10,18 @@ import Kingfisher
 
 final class ReceivedMessageCell: UICollectionViewCell {
     
-    @IBOutlet private weak var dateButton: UIButton!
+    @IBOutlet private weak var dateBadge: UIButton!
     @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var nickNameLabel: UILabel!
     @IBOutlet private weak var messageTextView: UITextView!
     @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet weak var dateBadgeHeight: NSLayoutConstraint!
+    
 }
 
 extension ReceivedMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
-        configureDate(of: dateButton, with: message.timeStamp, isFirst: message.isFirstOfDay)
+        configureDate(of: dateBadge, dateBadgeHeight: dateBadgeHeight, with: message.timeStamp, isFirst: message.isFirstOfDay)
         configureImage(with: message.sender.image)
         configureNickName(with: message.sender.nickName)
         configureMessage(of: messageTextView, with: message.text)
