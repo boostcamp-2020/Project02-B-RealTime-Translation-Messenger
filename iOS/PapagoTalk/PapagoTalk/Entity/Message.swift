@@ -27,17 +27,6 @@ struct Message: Codable {
         self.type = .sent
     }
     
-    // TODO: API -> App - init API 형식에 맞게 변경 예정
-    init(userId: Int, text: String) {
-        self.id = nil
-        self.text = text
-        self.sender = User()
-        self.language = ""
-        self.timeStamp = "".toDate()
-        self.isFirstOfDay = true
-        self.type = .received
-    }
-    
     init(id: Int, of text: String, by user: User, language: String, timeStamp: String) {
         self.id = id
         self.text = text
