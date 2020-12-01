@@ -31,6 +31,7 @@
 		995BE9CD25760B2F00C15AC7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9CC25760B2F00C15AC7 /* API.swift */; };
 		995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D0257621B700C15AC7 /* UserDataProvider.swift */; };
 		995BE9D525762AC500C15AC7 /* UserDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D425762AC500C15AC7 /* UserDataProviding.swift */; };
+		995BE9F72576350A00C15AC7 /* TranslateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9F62576350A00C15AC7 /* TranslateResult.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
@@ -112,6 +113,7 @@
 		995BE9CC25760B2F00C15AC7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		995BE9D0257621B700C15AC7 /* UserDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
 		995BE9D425762AC500C15AC7 /* UserDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProviding.swift; sourceTree = "<group>"; };
+		995BE9F62576350A00C15AC7 /* TranslateResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateResult.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				BBEA1A5B256F4678009B8B5F /* Message.swift */,
+				995BE9F62576350A00C15AC7 /* TranslateResult.swift */,
 				BBEA1A5F256F46FE009B8B5F /* User.swift */,
 			);
 			path = Entity;
@@ -695,6 +698,7 @@
 				BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */,
 				990DE957257367B800340A72 /* JoinChatResponse.swift in Sources */,
 				990DE94D2573479600340A72 /* AlertFactory.swift in Sources */,
+				995BE9F72576350A00C15AC7 /* TranslateResult.swift in Sources */,
 				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
 				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,
 				995BE9CD25760B2F00C15AC7 /* API.swift in Sources */,
