@@ -20,7 +20,8 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var joinChatRoomButton: UIButton!
     @IBOutlet private weak var makeChatRoomButton: UIButton!
     
-    private var languageSelection = BehaviorSubject(value: user.language)
+    //UserDefault의 값으로 변경
+    private var languageSelection = BehaviorSubject(value: Language.korean)
     
     var disposeBag = DisposeBag()
     private let alertFactory: AlertFactoryProviding
@@ -39,6 +40,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nickNameTextField.autocorrectionType = .no
         bind()
         bindKeyboard()
     }
@@ -78,12 +80,10 @@ final class HomeViewController: UIViewController, StoryboardView {
             .compactMap { URL(string: $0) }
             .subscribe(onNext: { [weak self] in
                 self?.profileImageView.kf.setImage(with: $0)
-                HomeViewController.user.image = $0.absoluteString
             })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.nickName }
-            .do { HomeViewController.user.nickName = $0 }
             .bind(to: nickNameTextField.rx.text)
             .disposed(by: disposeBag)
         
@@ -97,7 +97,6 @@ final class HomeViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.language }
             .distinctUntilChanged()
-            .do { HomeViewController.user.language = $0 }
             .map { $0.localizedText }
             .bind(to: selectedLanguageLabel.rx.text)
             .disposed(by: disposeBag)

@@ -1,8 +1,9 @@
-subscription GetMessage($roomId: Int!) {
-  newMessage(roomId: $roomId) {
+subscription GetMessage($roomId: Int!, $language: String!) {
+  newMessage(roomId: $roomId, lang: $language) {
     id
     text
     source
+    createdAt
     user {
       id
       nickname

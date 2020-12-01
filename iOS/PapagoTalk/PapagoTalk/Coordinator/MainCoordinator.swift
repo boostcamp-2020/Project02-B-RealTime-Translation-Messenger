@@ -11,14 +11,14 @@ class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     var networkService: NetworkServiceProviding
-    var userData: User
+    var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
     
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
     init(navigationController: UINavigationController,
          networkService: NetworkServiceProviding,
-         userData: User,
+         userData: UserDataProviding,
          alertFactory: AlertFactoryProviding) {
         
         self.navigationController = navigationController

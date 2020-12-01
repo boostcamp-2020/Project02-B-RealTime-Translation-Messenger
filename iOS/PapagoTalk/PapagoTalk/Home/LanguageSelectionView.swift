@@ -17,11 +17,12 @@ final class LanguageSelectionView: UIViewController {
     
     var disposeBag = DisposeBag()
     var pickerViewObserver: BehaviorSubject<Language>?
+    @UserDefault(type: .userInfo, default: User()) var user: User
     
     override func viewDidLoad() {
         configurePickerView()
         bind()
-        initializePickerView(at: HomeViewController.user.language.index)
+        initializePickerView(at: user.language.index)
     }
     
     private func configurePickerView() {

@@ -41,21 +41,21 @@ final class HomeViewReactor: Reactor {
     }
     
     private let networkService: NetworkServiceProviding
-    private let user: User
+    private var userData: UserDataProviding
     private let defaultImageFactory: ImageFactoryProviding
     let initialState: State
     
     init(networkService: NetworkServiceProviding,
-         userData: User,
+         userData: UserDataProviding,
          imageFactory: ImageFactoryProviding = ImageFactory()) {
         defaultImageFactory = imageFactory
         self.networkService = networkService
-        self.user = userData
+        self.userData = userData
         
-        initialState = State(profileImageURL: user.image,
-                             nickName: user.nickName,
+        initialState = State(profileImageURL: userData.image,
+                             nickName: userData.nickName,
                              needShake: false,
-                             language: user.language)
+                             language: userData.language)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -77,12 +77,15 @@ final class HomeViewReactor: Reactor {
         switch mutation {
         case .setNickName(let nickName):
             state.nickName = nickName
+            userData.nickName = nickName //위치 변경
         case .shakeNickNameTextField(let needShake):
             state.needShake = needShake
         case .setImage(let imageURL):
             state.profileImageURL = imageURL
+            userData.image = imageURL //위치 변경
         case .setLanguage(let language):
             state.language = language
+            userData.language = language // 위치변경
         case .createRoom(let response):
             state.createRoomResponse = response
         case .alertError(let error):
@@ -111,8 +114,9 @@ final class HomeViewReactor: Reactor {
     }
     
     private func requestCreateRoom() -> Observable<Mutation> {
-        return networkService.createRoom(user: user)
+        return networkService.createRoom(user: userData.user)
             .asObservable()
+            .do(onNext: { [weak self] in self?.userData.id = $0.userId  })
             .map { Mutation.createRoom($0) }
             .catchError { _ in
                 .concat([ .just(.alertError(.networkError)),

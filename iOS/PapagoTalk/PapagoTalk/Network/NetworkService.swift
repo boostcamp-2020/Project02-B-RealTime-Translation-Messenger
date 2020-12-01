@@ -14,9 +14,13 @@ protocol NetworkServiceProviding {
                      source: String,
                      userId: Int,
                      roomId: Int) -> Maybe<SendMessageMutation.Data>
-    func getMessage(roomId: Int) -> Observable<GetMessageSubscription.Data>
+    
+    func getMessage(roomId: Int,
+                    language: Language) -> Observable<GetMessageSubscription.Data>
+    
     func enterRoom(user: User,
                    code: String) -> Maybe<JoinChatResponse>
+    
     func createRoom(user: User) -> Maybe<CreateRoomResponse>
 }
 
@@ -74,10 +78,10 @@ class NetworkService: NetworkServiceProviding {
         }
     }
     
-    func getMessage(roomId: Int) -> Observable<GetMessageSubscription.Data> {
+    func getMessage(roomId: Int, language: Language) -> Observable<GetMessageSubscription.Data> {
         return Observable.create { [weak self] observer in
             let cancellable = self?.client.subscribe(
-                subscription: GetMessageSubscription(roomId: roomId),
+                subscription: GetMessageSubscription(roomId: roomId, language: language.code),
                 resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):
