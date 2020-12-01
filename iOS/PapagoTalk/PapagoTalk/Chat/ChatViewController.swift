@@ -153,6 +153,37 @@ final class ChatViewController: UIViewController, StoryboardView {
         bindChatDrawerGesture()
         configureAnimation(state: .opened, duration: 0.9)
     }
+    
+    private func configureVisualEffectView() {
+        visualEffectView = UIVisualEffectView()
+        visualEffectView.frame = view.frame
+        view.addSubview(visualEffectView)
+    }
+    
+    private func bindChatDrawerGesture() {
+        chatDrawerViewController
+            .view.rx.panGesture()
+            .subscribe(onNext: { [weak self] in
+                self?.chatDrawerPanned(recognizer: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        /*
+         let chatDrawerButtonTap = chatDrawerButton.rx.tap.map { _ in return () }
+         let view: Observable<Void> = visualEffectView.rx.tapGesture().when(.recognized).map { _ in return () }
+         
+         Observable.of(chatDrawerButtonTap, view).merge()
+         
+         visualEffectView.rx.tapGesture()
+             .when(.recognized)
+             .map { $0.touchesBegan(.init(), with: .init()) }
+             .bind(to: chatDrawerButton.rx.tap.asControlEvent())
+             .disposed(by: disposeBag)
+         
+        */
+    }
+    
+    
 
 extension ChatViewController: KeyboardProviding {
     private func bindKeyboard() {
