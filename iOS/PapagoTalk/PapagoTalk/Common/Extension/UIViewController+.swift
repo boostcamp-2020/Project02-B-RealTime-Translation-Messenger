@@ -9,8 +9,6 @@ import UIKit
 
 extension UIViewController {
     
-    @UserDefault(type: .userInfo, default: User()) static var user: User
-    
     static var identifier: String {
         String(describing: Self.self)
     }

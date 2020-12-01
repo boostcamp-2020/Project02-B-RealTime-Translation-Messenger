@@ -20,14 +20,28 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var joinChatRoomButton: UIButton!
     @IBOutlet private weak var makeChatRoomButton: UIButton!
     
-    private var languageSelection = BehaviorSubject(value: user.language)
-    
+    //UserDefault의 값으로 변경
+    private var languageSelection = BehaviorSubject(value: Language.korean)
+    private let alertFactory: AlertFactoryProviding
+  
+    weak var coordinator: MainCoordinator?
+  
     var disposeBag = DisposeBag()
-    var alertFactory: AlertFactoryProviding = AlertFactory()
+    
+    init?(coder: NSCoder, reactor: HomeViewReactor, alertFactory: AlertFactoryProviding) {
+        self.alertFactory = alertFactory
+        super.init(coder: coder)
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        alertFactory = AlertFactory()
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactor = HomeViewReactor()
+        nickNameTextField.autocorrectionType = .no
         bind()
         bindKeyboard()
     }
@@ -66,12 +80,10 @@ final class HomeViewController: UIViewController, StoryboardView {
             .compactMap { URL(string: $0) }
             .subscribe(onNext: { [weak self] in
                 self?.profileImageView.kf.setImage(with: $0)
-                HomeViewController.user.image = $0.absoluteString
             })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.nickName }
-            .do { HomeViewController.user.nickName = $0 }
             .bind(to: nickNameTextField.rx.text)
             .disposed(by: disposeBag)
         
@@ -85,7 +97,6 @@ final class HomeViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.language }
             .distinctUntilChanged()
-            .do { HomeViewController.user.language = $0 }
             .map { $0.localizedText }
             .bind(to: selectedLanguageLabel.rx.text)
             .disposed(by: disposeBag)
@@ -116,6 +127,13 @@ final class HomeViewController: UIViewController, StoryboardView {
                 self?.showLanguageSelectionView()
             }
             .disposed(by: disposeBag)
+        
+        joinChatRoomButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.coordinator?.showChatCodeInput()
+            }
+            .disposed(by: disposeBag)
     }
     
     private func showLanguageSelectionView() {
@@ -134,12 +152,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     }
     
     private func moveToChat(userId: Int, roomId: Int) {
-        guard let chatVC = storyboard?.instantiateViewController(identifier: ChatViewController.identifier) as? ChatViewController else {
-            return
-        }
-        chatVC.userId = userId
-        chatVC.roomID = roomId
-        navigationController?.pushViewController(chatVC, animated: true)
+        coordinator?.showChat(roomID: roomId)
     }
 }
 

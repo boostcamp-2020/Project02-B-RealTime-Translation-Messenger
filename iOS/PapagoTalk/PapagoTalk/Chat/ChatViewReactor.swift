@@ -10,17 +10,14 @@ import ReactorKit
 
 final class ChatViewReactor: Reactor {
     
-    // TODO: 모델 분리 예정
-    var networkService = NetworkService()
-    
     enum Action {
-        case subscribeNewMessages(Int)
+        case subscribeNewMessages
         case sendMessage(String)
         case chatDrawerButtonTapped
     }
     
     enum Mutation {
-        case appendNewMessage(Message)
+        case appendNewMessage([Message])
         case setSendResult(Bool)
         case toggleDrawerState
     }
@@ -31,33 +28,31 @@ final class ChatViewReactor: Reactor {
         var drawerState: Bool
     }
     
+    private let networkService: NetworkServiceProviding
+    private let userData: UserDataProviding
+    private let roomID: Int
     let initialState: State
-    let user = ChatViewController.user
     
-    init() {
-        initialState = State(messageBox: MessageBox(), drawerState: false)
+    init(networkService: NetworkServiceProviding, userData: UserDataProviding, roomID: Int) {
+        self.networkService = networkService
+        self.userData = userData
+        self.roomID = roomID
+        initialState = State(messageBox: MessageBox())
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .subscribeNewMessages(let roomID):
-            return networkService.getMessage(roomId: roomID)
+        case .subscribeNewMessages:
+            return networkService.getMessage(roomId: roomID, language: userData.language)
                 .compactMap { $0.newMessage }
-                // TODO: 막 넣은 데이터들 API 생기면 수정
-                // TODO: 구조 개선
-                .map { Mutation.appendNewMessage(Message(id: $0.id,
-                                                         of: $0.text,
-                                                         by: User(id: $0.user.id,
-                                                                  nickName: $0.user.nickname,
-                                                                  image: $0.user.avatar,
-                                                                  language: .korean),
-                                                         language: $0.source,
-                                                         timeStamp: "1606743370")) }
+                .compactMap { [weak self] in self?.seperateMessage(newMessage: $0) }
+                .map { Mutation.appendNewMessage($0)}
+
         case .sendMessage(let message):
             return networkService.sendMessage(text: message,
-                                              source: user.language.code,
-                                              userId: user.id,
-                                              roomId: 1)
+                                              source: userData.language.code,
+                                              userId: userData.id,
+                                              roomId: roomID)
                 .asObservable()
                 .map { Mutation.setSendResult($0.createMessage) }
         case .chatDrawerButtonTapped:
@@ -70,12 +65,42 @@ final class ChatViewReactor: Reactor {
         
         switch mutation {
         case .appendNewMessage(let message):
-            state.messageBox.messages.append(message)
+            state.messageBox.messages.append(contentsOf: message)
         case .setSendResult(let isSuccess):
             state.sendResult = isSuccess
         case .toggleDrawerState:
             state.drawerState.toggle()
         }
         return state
+    }
+    
+    private func seperateMessage(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message] {
+        guard let timeStamp = newMessage.createdAt,
+              let json = newMessage.text.data(using: .utf8),
+              let translateResult: TranslateResult = try? json.decoded() else {
+            return []
+        }
+        var messages = [Message]()
+        let time = String(timeStamp.prefix(10))
+        let sender = User(id: newMessage.user.id,
+                          nickName: newMessage.user.nickname,
+                          image: newMessage.user.avatar,
+                          language: .english) // 수정 필요
+        let originMessage = Message(id: newMessage.id,
+                                    of: translateResult.originText,
+                                    by: sender,
+                                    language: newMessage.source,
+                                    timeStamp: time)
+        messages.append(originMessage)
+        
+        if originMessage.type == .received {
+            let translatedMessage = Message(id: newMessage.id,
+                                            of: translateResult.translatedText,
+                                            by: sender,
+                                            language: userData.language.code,
+                                            timeStamp: time)
+            messages.append(translatedMessage)
+        }
+        return messages
     }
 }

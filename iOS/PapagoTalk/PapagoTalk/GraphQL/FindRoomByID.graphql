@@ -1,0 +1,11 @@
+query FindRoomById($roomID: Int!) {
+  roomById(id: $roomID) {
+    code
+    users {
+      id
+      nickname
+      avatar
+      lang
+    }
+  }
+}
