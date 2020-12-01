@@ -67,7 +67,9 @@ final class HomeViewReactor: Reactor {
         case .languageSelected(let language):
             return .just(Mutation.setLanguage(language))
         case .makeChatRoomButtonTapped:
-            return currentState.isNickNameValid ? requestCreateRoom() : .concat([.just(.alertError(.invalidNickName)), .just(.clearErrorMessage)])
+            return currentState.isNickNameValid ?
+                requestCreateRoom() : .concat([.just(.alertError(.invalidNickName)),
+                                               .just(.clearErrorMessage)])
         }
     }
     
