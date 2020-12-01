@@ -5,6 +5,7 @@ import { Theme } from '../styles/Theme';
 interface Props {
   text: string;
   color?: string;
+  onClick?: () => void;
 }
 
 const { blueColor } = Theme;
@@ -21,8 +22,10 @@ const Container = styled.button`
   text-align: center;
 `;
 
-const Button: FC<Props> = ({ text, color }) => (
-  <Container color={color}>{text}</Container>
+const Button: FC<Props> = ({ text, color, onClick }) => (
+  <Container onClick={onClick} color={color}>
+    {text}
+  </Container>
 );
 
 Button.defaultProps = {
