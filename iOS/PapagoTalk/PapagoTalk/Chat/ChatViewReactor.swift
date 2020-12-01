@@ -25,6 +25,7 @@ final class ChatViewReactor: Reactor {
     struct State {
         var messageBox: MessageBox
         var sendResult: Bool = true
+        var roomCode: String
         var drawerState: Bool
     }
     
@@ -33,11 +34,13 @@ final class ChatViewReactor: Reactor {
     private let roomID: Int
     let initialState: State
     
-    init(networkService: NetworkServiceProviding, userData: UserDataProviding, roomID: Int) {
+    init(networkService: NetworkServiceProviding, userData: UserDataProviding, roomID: Int, code: String) {
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
-        initialState = State(messageBox: MessageBox(userID: userData.id), drawerState: false)
+        initialState = State(messageBox: MessageBox(userID: userData.id),
+                             roomCode: code,
+                             drawerState: false)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {

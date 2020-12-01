@@ -34,6 +34,7 @@
 		995BE9F72576350A00C15AC7 /* TranslateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9F62576350A00C15AC7 /* TranslateResult.swift */; };
 		996479372576854900CFF202 /* MessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479362576854900CFF202 /* MessageText.swift */; };
 		9964793B2576901200CFF202 /* InputBarTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964793A2576901200CFF202 /* InputBarTextView.swift */; };
+		9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964795225769BD500CFF202 /* ChatRoomInfo.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
@@ -119,6 +120,7 @@
 		995BE9F62576350A00C15AC7 /* TranslateResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateResult.swift; sourceTree = "<group>"; };
 		996479362576854900CFF202 /* MessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageText.swift; sourceTree = "<group>"; };
 		9964793A2576901200CFF202 /* InputBarTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarTextView.swift; sourceTree = "<group>"; };
+		9964795225769BD500CFF202 /* ChatRoomInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomInfo.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				BBEA1A5B256F4678009B8B5F /* Message.swift */,
 				995BE9F62576350A00C15AC7 /* TranslateResult.swift */,
 				BBEA1A5F256F46FE009B8B5F /* User.swift */,
+				9964795225769BD500CFF202 /* ChatRoomInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
 				996A1433256D040B00F21215 /* ImageFactory.swift in Sources */,
 				996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */,
+				9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */,
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,

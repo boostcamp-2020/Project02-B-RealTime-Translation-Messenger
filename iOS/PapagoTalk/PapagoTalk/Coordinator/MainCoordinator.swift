@@ -44,20 +44,21 @@ class MainCoordinator: Coordinator {
 
 extension MainCoordinator {
     
-    func codeInputToChat(roomID: Int) {
+    func codeInputToChat(roomID: Int, code: String) {
         navigationController.presentedViewController?.dismiss(animated: true, completion: { [weak self] in
-            self?.showChat(roomID: roomID)
+            self?.showChat(roomID: roomID, code: code)
         })
         
     }
     
-    func showChat(roomID: Int) {
+    func showChat(roomID: Int, code: String) {
         let viewController = storyboard.instantiateViewController(
             identifier: ChatViewController.identifier,
             creator: { [unowned self] coder -> ChatViewController? in
                 let reactor = ChatViewReactor(networkService: networkService,
                                               userData: userData,
-                                              roomID: roomID)
+                                              roomID: roomID,
+                                              code: code)
                 return ChatViewController(coder: coder, reactor: reactor)
             }
         )
