@@ -40,13 +40,13 @@ final class HomeViewReactor: Reactor {
         }
     }
     
-    private let defaultImageFactory: ImageFactory
+    private let defaultImageFactory: ImageFactoryProviding
     
     let initialState: State
     let user = HomeViewController.user
     let networkService = NetworkService()
     
-    init(imageFactory: ImageFactory = DefaultImageFactory()) {
+    init(imageFactory: ImageFactoryProviding = ImageFactory()) {
         defaultImageFactory = imageFactory
         
         initialState = State(profileImageURL: user.image,

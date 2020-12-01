@@ -1,5 +1,5 @@
 //
-//  AlertFactoryType.swift
+//  AlertFactoryProviding.swift
 //  PapagoTalk
 //
 //  Created by Byoung-Hwi Yoon on 2020/11/29.
@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol AlertFactoryType {
+protocol AlertFactoryProviding {
     func alert(message: String) -> UIAlertController
 }
