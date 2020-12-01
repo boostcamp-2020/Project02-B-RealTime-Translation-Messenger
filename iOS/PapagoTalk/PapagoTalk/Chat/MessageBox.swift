@@ -21,12 +21,14 @@ final class MessageBox {
     }
     
     func append(_ message: Message) {
+        var message = message
+        message = setType(of: message)
+        
         guard let lastMessage = messages.last else {
             messages.append(message)
             return
         }
-        var message = setMessageIsFirst(of: message, comparedBy: lastMessage)
-        message = setType(of: message)
+        message = setMessageIsFirst(of: message, comparedBy: lastMessage)
         messages.append(message)
     }
     
