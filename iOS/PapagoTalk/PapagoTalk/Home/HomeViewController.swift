@@ -23,7 +23,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     private var languageSelection = BehaviorSubject(value: user.language)
     
     var disposeBag = DisposeBag()
-    var alertFactory: AlertFactoryType = AlertFactory()
+    var alertFactory: AlertFactoryProviding = AlertFactory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
