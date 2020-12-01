@@ -8,18 +8,22 @@
 import UIKit
 import ReactorKit
 import RxCocoa
+import RxGesture
 
 final class ChatViewController: UIViewController, StoryboardView {
-
+    
     @IBOutlet private weak var inputBarTextView: UITextView!
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: UICollectionView!
     @IBOutlet private weak var sendButton: UIButton!
+    @IBOutlet private weak var chatDrawerButton: UIBarButtonItem!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     private weak var chatDrawerViewController: ChatDrawerViewController!
+    private var chatDrawerWidth: CGFloat!
     private var visualEffectView: UIVisualEffectView!
     private var runningAnimations = [UIViewPropertyAnimator]()
+    private var animationProgressWhenInterrupted = CGFloat.zero
     
     var disposeBag = DisposeBag()
     
@@ -31,7 +35,6 @@ final class ChatViewController: UIViewController, StoryboardView {
         reactor = ChatViewReactor()
         bind()
         bindKeyboard()
-        configureChatDrawer()
     }
     
     func bind(reactor: ChatViewReactor) {
@@ -55,6 +58,11 @@ final class ChatViewController: UIViewController, StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        chatDrawerButton.rx.tap
+            .map { Reactor.Action.chatDrawerButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.messageBox.messages }
             .bind(to: chatCollectionView.rx.items) { [weak self] (_, row, element) in
                 guard let cell = self?.configureChatMessageCell(at: row, with: element) else {
@@ -74,6 +82,18 @@ final class ChatViewController: UIViewController, StoryboardView {
             })
             .subscribe()
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.drawerState }
+            .distinctUntilChanged()
+            .do { [weak self] _ in
+                if !(self?.runningAnimations.isEmpty ?? true) {
+                    self?.runningAnimations.removeAll()
+                }
+            }
+            .subscribe(onNext: { [weak self] in
+                ($0) ? self?.configureChatDrawer() : self?.configureAnimation(state: .closed, duration: 0.5)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bind() {
@@ -89,9 +109,6 @@ final class ChatViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .bind(to: inputBarTextViewHeight.rx.constant)
             .disposed(by: disposeBag)
-        
-        // visualEffectView.rx.tapGesture()
-            
     }
     
     private func calculateTextViewHeight(with text: String) -> CGFloat {
@@ -114,33 +131,7 @@ final class ChatViewController: UIViewController, StoryboardView {
         chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: true)
     }
     
-    private func configureChatDrawer() {
-        configureVisualEffectView()
-        
-        let drawerWidth = (view.frame.width * 5) / 6
-        chatDrawerViewController =
-            storyboard?.instantiateViewController(identifier: ChatDrawerViewController.identifier)
-        
-        addChild(chatDrawerViewController)
-        view.addSubview(chatDrawerViewController.view)
-        
-        chatDrawerViewController.view.frame = CGRect(x: view.frame.width - drawerWidth,
-                                                     y: .zero,
-                                                     width: drawerWidth,
-                                                     height: view.frame.height)
-        // chatDrawerViewController.view.clipsToBounds = true
-        present(chatDrawerViewController, animated: true)
-    }
     
-    private func configureVisualEffectView() {
-        visualEffectView = UIVisualEffectView()
-        visualEffectView.frame = view.frame
-        view.addSubview(visualEffectView)
-    }
-    
-    private func configureAnimation() {
-        
-    }
 }
 
 extension ChatViewController: KeyboardProviding {
