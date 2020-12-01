@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct UserDataProvider: UserDataProviding {
+    @UserDefault(type: .userInfo, default: User()) var user: User
+}

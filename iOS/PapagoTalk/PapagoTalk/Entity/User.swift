@@ -7,13 +7,6 @@
 
 import Foundation
 
-protocol UserDataProviding {
-    var id: Int { get set }
-    var nickName: String { get set }
-    var image: String { get set }
-    var language: Language { get set }
-}
-
 struct User: Codable {
     var id: Int
     var nickName: String

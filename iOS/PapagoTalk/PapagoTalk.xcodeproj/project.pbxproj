@@ -30,6 +30,7 @@
 		995BE9C725760ADD00C15AC7 /* FindRoomByID.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 995BE9C625760ADD00C15AC7 /* FindRoomByID.graphql */; };
 		995BE9CD25760B2F00C15AC7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9CC25760B2F00C15AC7 /* API.swift */; };
 		995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D0257621B700C15AC7 /* UserDataProvider.swift */; };
+		995BE9D525762AC500C15AC7 /* UserDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D425762AC500C15AC7 /* UserDataProviding.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
@@ -110,6 +111,7 @@
 		995BE9C625760ADD00C15AC7 /* FindRoomByID.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindRoomByID.graphql; sourceTree = "<group>"; };
 		995BE9CC25760B2F00C15AC7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		995BE9D0257621B700C15AC7 /* UserDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
+		995BE9D425762AC500C15AC7 /* UserDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProviding.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			children = (
 				BB20F4C525738D2C00C5AC1D /* UserDefault.swift */,
 				995BE9D0257621B700C15AC7 /* UserDataProvider.swift */,
+				995BE9D425762AC500C15AC7 /* UserDataProviding.swift */,
 			);
 			path = PropertyWrapper;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB20F4DF2573959500C5AC1D /* UserDefaultType.swift in Sources */,
+				995BE9D525762AC500C15AC7 /* UserDataProviding.swift in Sources */,
 				996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */,
 				995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */,
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
