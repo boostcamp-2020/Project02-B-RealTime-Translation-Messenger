@@ -41,7 +41,7 @@ struct Message: Codable {
         isFirstOfDay = isFirst
     }
     
-    mutating func setType(by user: User) {
-        type = (sender.id == user.id) ? .sent : .received
+    mutating func setType(by userID: Int) {
+        type = (sender.id == userID) ? .sent : .received
     }
 }

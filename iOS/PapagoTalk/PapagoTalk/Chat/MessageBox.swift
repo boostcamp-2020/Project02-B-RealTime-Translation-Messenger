@@ -8,7 +8,13 @@
 import Foundation
 
 final class MessageBox {
+    
+    var currentUserID: Int
     var messages = [Message]()
+    
+    init(userID: Int) {
+        currentUserID = userID
+    }
     
     func append(_ messages: [Message]) {
         messages.forEach { append($0) }
@@ -33,7 +39,7 @@ final class MessageBox {
     
     func setType(of newMessage: Message) -> Message {
         var message = newMessage
-        message.setType(by: newMessage.sender)
+        message.setType(by: currentUserID)
         return message
     }
 }
