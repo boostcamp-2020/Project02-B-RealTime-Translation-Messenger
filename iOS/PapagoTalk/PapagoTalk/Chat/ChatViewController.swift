@@ -232,7 +232,43 @@ final class ChatViewController: UIViewController, StoryboardView {
         runningAnimations.append(blurAnimator)
     }
     
+    // MARK: - ChatDrawer PanGesture
     
+    private func chatDrawerPanned(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            startInteractiveTransition(state: .closed, duration: 0.5)
+        case .changed:
+            let translation = recognizer.translation(in: chatDrawerViewController.view)
+            updateInteractiveTransition(fractionCompleted: translation.x / chatDrawerWidth)
+        case .ended:
+            continueInteractiveTransition()
+        default:
+            break
+        }
+    }
+    
+    private func startInteractiveTransition(state: ChatDrawerState, duration: TimeInterval) {
+        if runningAnimations.isEmpty {
+            configureAnimation(state: state, duration: 0.9)
+        }
+        runningAnimations.forEach({
+            $0.pauseAnimation()
+            animationProgressWhenInterrupted = $0.fractionComplete
+        })
+    }
+    
+    private func updateInteractiveTransition(fractionCompleted: CGFloat) {
+        runningAnimations.forEach({
+            $0.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
+        })
+    }
+    
+    private func continueInteractiveTransition() {
+        runningAnimations.forEach({
+            $0.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+        })
+    }
 }
 
 extension ChatViewController: KeyboardProviding {
