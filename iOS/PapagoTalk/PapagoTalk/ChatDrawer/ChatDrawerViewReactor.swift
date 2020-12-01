@@ -10,6 +10,8 @@ import ReactorKit
 
 final class ChatDrawerViewReactor: Reactor {
     
+    typealias UserList = [User]
+    
     enum Action {
         case fetchUsers
         case chatRoomCodeButtonTapped
@@ -17,13 +19,13 @@ final class ChatDrawerViewReactor: Reactor {
     }
     
     enum Mutation {
-        case setUsers([User]) // RoomNumber?
+        case setUsers(UserList) // RoomNumber?
         case alertRoomCode(String)
         case setLeaveChatRoom(Bool)
     }
     
     struct State {
-        var users: [User]
+        var users: UserList
         var roomCode: String
         var leaveChatRoom: Bool
     }
@@ -31,13 +33,13 @@ final class ChatDrawerViewReactor: Reactor {
     let initialState: State
     
     init() {
-        initialState = State(users: [User](), roomCode: "", leaveChatRoom: false)
+        initialState = State(users: UserList(), roomCode: "", leaveChatRoom: false)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .fetchUsers:
-            return .just(Mutation.setUsers([User]()))
+            return .just(Mutation.setUsers(UserList()))
         case .chatRoomCodeButtonTapped:
             return .just(Mutation.alertRoomCode(""))
         case .leaveChatRoomButtonTapped:
