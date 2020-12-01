@@ -183,7 +183,57 @@ final class ChatViewController: UIViewController, StoryboardView {
         */
     }
     
+    // MARK: - ChatDrawer Animation
     
+    private func configureAnimation(state: ChatDrawerState, duration: TimeInterval) {
+        guard runningAnimations.isEmpty else {
+            DispatchQueue.main.async { [weak self] in
+                self?.runningAnimations.removeAll()
+                self?.configureAnimation(state: state, duration: duration)
+            }
+            return
+        }
+        
+        let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) { [weak self] in
+            guard let self = self, let chatDrawer = self.chatDrawerViewController else {
+                return
+            }
+            switch state {
+            case .opened:
+                chatDrawer.view.frame.origin.x = self.view.frame.width - self.chatDrawerWidth
+            case .closed:
+                chatDrawer.view.frame.origin.x = self.view.frame.width
+            }
+        }
+        frameAnimator.addCompletion { [weak self] _ in
+            self?.runningAnimations.removeAll()
+            guard let chatDrawer = self?.chatDrawerViewController, state == .closed else {
+                return
+            }
+            chatDrawer.dismiss(animated: false, completion: nil)
+            self?.chatDrawerViewController = nil
+        }
+        frameAnimator.startAnimation()
+        runningAnimations.append(frameAnimator)
+        
+        let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) { [weak self] in
+            guard let visualEffectView = self?.visualEffectView else {
+                return
+            }
+            switch state {
+            case .opened:
+                visualEffectView.effect = UIBlurEffect(style: .dark)
+                visualEffectView.alpha = 0.3
+            case .closed:
+                visualEffectView.effect = nil
+            }
+        }
+        blurAnimator.startAnimation()
+        runningAnimations.append(blurAnimator)
+    }
+    
+    
+}
 
 extension ChatViewController: KeyboardProviding {
     private func bindKeyboard() {
