@@ -226,11 +226,10 @@
 		996A1470256D5BC100F21215 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				BB1FFD4A257685EA00E4668C /* Errors */,
 				996A1466256D3A5F00F21215 /* Language.swift */,
-				990DE946257336D900340A72 /* JoinChatError.swift */,
-				993AF67C2574E3E200416692 /* HomeError.swift */,
-				BB20F4DE2573959500C5AC1D /* UserDefaultType.swift */,
 				BB93C28F257526DD00C68491 /* MessageType.swift */,
+				BB20F4DE2573959500C5AC1D /* UserDefaultType.swift */,
 				BB1FFD1425761BB100E4668C /* ChatDrawerState.swift */,
 			);
 			path = Enum;
@@ -290,6 +289,15 @@
 				996A145C256D324600F21215 /* LanguageSelectionView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		BB1FFD4A257685EA00E4668C /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				990DE946257336D900340A72 /* JoinChatError.swift */,
+				993AF67C2574E3E200416692 /* HomeError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		BB38252325740153000425FD /* ChatDrawer */ = {
@@ -353,6 +361,8 @@
 				BBEA1A5B256F4678009B8B5F /* Message.swift */,
 				995BE9F62576350A00C15AC7 /* TranslateResult.swift */,
 				BBEA1A5F256F46FE009B8B5F /* User.swift */,
+				995BE9D0257621B700C15AC7 /* UserDataProvider.swift */,
+				995BE9D425762AC500C15AC7 /* UserDataProviding.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -361,8 +371,6 @@
 			isa = PBXGroup;
 			children = (
 				BB20F4C525738D2C00C5AC1D /* UserDefault.swift */,
-				995BE9D0257621B700C15AC7 /* UserDataProvider.swift */,
-				995BE9D425762AC500C15AC7 /* UserDataProviding.swift */,
 			);
 			path = PropertyWrapper;
 			sourceTree = "<group>";
