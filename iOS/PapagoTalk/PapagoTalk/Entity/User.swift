@@ -27,7 +27,7 @@ struct User: Codable {
         self.language = language
     }
     
-    init(_ imageFactory: ImageFactory = DefaultImageFactory()) {
+    init(_ imageFactory: ImageFactoryProviding = ImageFactory()) {
         id = 1
         nickName = ""
         image = imageFactory.randomImageURL()

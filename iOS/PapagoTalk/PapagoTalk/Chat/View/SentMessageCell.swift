@@ -8,12 +8,16 @@
 import UIKit
 
 final class SentMessageCell: UICollectionViewCell {
-    @IBOutlet private weak var messageTextView: UITextView!
     
+    @IBOutlet private weak var dateButton: UIButton!
+    @IBOutlet private weak var messageTextView: UITextView!
+    @IBOutlet private weak var timeLabel: UILabel!
 }
 
 extension SentMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
-        messageTextView.text = message.text
+        configureDate(of: dateButton, with: message.timeStamp, isFirst: message.isFirstOfDay)
+        configureMessage(of: messageTextView, with: message.text)
+        configureTime(of: timeLabel, with: message.timeStamp)
     }
 }

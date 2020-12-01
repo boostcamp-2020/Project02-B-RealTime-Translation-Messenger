@@ -93,21 +93,11 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     private func configureMessageCell(at row: Int, with element: Message) -> UICollectionViewCell {
-        let indexPath = IndexPath(row: row, section: 0)
-        let identifier: String
-        
-        switch element.sender.id {
-        case userId:
-            identifier = SentMessageCell.identifier
-        default:
-            identifier = ReceivedMessageCell.identifier
-        }
-        let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        
-        guard let messageCell = cell as? MessageCell else {
+        guard let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: element.type.identifier,
+                                                                for: IndexPath(row: row, section: .zero)) as? MessageCell else {
             return UICollectionViewCell()
         }
-        messageCell.configureMessageCell(message: element)
+        cell.configureMessageCell(message: element)
         return cell
     }
     

@@ -17,7 +17,7 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
     @IBOutlet weak var cancelButton: UIButton!
     
     var disposeBag = DisposeBag()
-    var alertFactory: AlertFactoryType = AlertFactory()
+    var alertFactory: AlertFactoryProviding = AlertFactory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
