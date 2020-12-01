@@ -731,7 +731,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-12-yAe">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-12-yAe" customClass="InputBarTextView" customModule="PapagoTalk" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="336" height="30"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -759,7 +759,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-jw-dz3">
-                                <rect key="frame" x="0.0" y="44" width="414" height="772"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="764"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pbJ-PR-6ix">
                                     <size key="itemSize" width="414" height="59"/>
@@ -795,7 +795,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
                                                     <rect key="frame" x="314" y="40" width="88" height="42"/>
                                                     <color key="backgroundColor" name="PapagoSkyBlue"/>
                                                     <constraints>
@@ -880,26 +880,26 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ymh-Tr-sLT">
-                                                    <rect key="frame" x="12" y="40" width="58" height="58"/>
+                                                    <rect key="frame" x="12" y="40" width="42" height="42"/>
                                                     <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="blP-3z-br4"/>
+                                                        <constraint firstAttribute="height" constant="42" id="blP-3z-br4"/>
                                                         <constraint firstAttribute="width" secondItem="ymh-Tr-sLT" secondAttribute="height" multiplier="1:1" id="mIq-4X-y4O"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="30"/>
+                                                            <real key="value" value="21"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마마고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyP-S3-xoJ">
-                                                    <rect key="frame" x="80" y="40" width="39" height="18"/>
+                                                    <rect key="frame" x="64" y="40" width="39" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-KZ-Cbi" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
-                                                    <rect key="frame" x="80" y="66" width="88" height="36"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-KZ-Cbi" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="66" width="88" height="36"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="9N2-rt-4rW"/>
@@ -931,7 +931,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 6:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8P-YL-lNQ">
-                                                    <rect key="frame" x="178" y="87.5" width="51" height="14.5"/>
+                                                    <rect key="frame" x="162" y="87.5" width="51" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
@@ -975,7 +975,7 @@
                             <constraint firstItem="AUb-Gw-ivA" firstAttribute="top" secondItem="7RJ-jw-dz3" secondAttribute="bottom" id="MBY-Zf-b4J"/>
                             <constraint firstItem="7RJ-jw-dz3" firstAttribute="leading" secondItem="KeC-AO-te6" secondAttribute="leading" id="NG6-Om-ekN"/>
                             <constraint firstItem="AUb-Gw-ivA" firstAttribute="leading" secondItem="KeC-AO-te6" secondAttribute="leading" id="Qqe-lf-Dyp"/>
-                            <constraint firstItem="7RJ-jw-dz3" firstAttribute="top" secondItem="KeC-AO-te6" secondAttribute="top" id="qWU-nm-ekV"/>
+                            <constraint firstItem="7RJ-jw-dz3" firstAttribute="top" secondItem="KeC-AO-te6" secondAttribute="top" constant="8" id="qWU-nm-ekV"/>
                             <constraint firstItem="KeC-AO-te6" firstAttribute="bottom" secondItem="AUb-Gw-ivA" secondAttribute="bottom" id="thH-v8-Fzc"/>
                             <constraint firstItem="KeC-AO-te6" firstAttribute="trailing" secondItem="AUb-Gw-ivA" secondAttribute="trailing" id="z1N-bD-FDd"/>
                         </constraints>
