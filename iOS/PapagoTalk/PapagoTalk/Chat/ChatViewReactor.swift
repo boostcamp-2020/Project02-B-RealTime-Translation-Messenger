@@ -26,13 +26,13 @@ final class ChatViewReactor: Reactor {
     }
     
     private let networkService: NetworkServiceProviding
-    private let user: User
+    private let userData: UserDataProviding
     private let roomID: Int
     let initialState: State
     
-    init(networkService: NetworkServiceProviding, userData: User, roomID: Int) {
+    init(networkService: NetworkServiceProviding, userData: UserDataProviding, roomID: Int) {
         self.networkService = networkService
-        user = userData
+        self.userData = userData
         self.roomID = roomID
         initialState = State(messageBox: MessageBox())
     }
@@ -40,22 +40,23 @@ final class ChatViewReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .subscribeNewMessages:
-            return networkService.getMessage(roomId: roomID)
+            return networkService.getMessage(roomId: roomID, language: userData.language)
                 .compactMap { $0.newMessage }
                 // TODO: 막 넣은 데이터들 API 생기면 수정
                 // TODO: 구조 개선
-                .map { Mutation.appendNewMessage(Message(id: $0.id,
-                                                         of: $0.text,
-                                                         by: User(id: $0.user.id,
-                                                                  nickName: $0.user.nickname,
-                                                                  image: $0.user.avatar,
-                                                                  language: .korean),
-                                                         language: $0.source,
-                                                         timeStamp: "1606743370")) }
+                .map {
+                    Mutation.appendNewMessage(Message(id: $0.id,
+                                                      of: $0.text,
+                                                      by: User(id: $0.user.id,
+                                                               nickName: $0.user.nickname,
+                                                               image: $0.user.avatar,
+                                                               language: .korean), // 수정필요
+                                                      language: $0.source,
+                                                      timeStamp: $0.createdAt ?? "" )) }
         case .sendMessage(let message):
             return networkService.sendMessage(text: message,
-                                              source: user.language.code,
-                                              userId: user.id,
+                                              source: userData.language.code,
+                                              userId: userData.id,
                                               roomId: roomID)
                 .asObservable()
                 .map { Mutation.setSendResult($0.createMessage) }

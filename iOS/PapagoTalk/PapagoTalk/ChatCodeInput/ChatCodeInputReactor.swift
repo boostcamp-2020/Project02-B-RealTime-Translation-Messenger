@@ -27,23 +27,21 @@ final class ChatCodeInputReactor: Reactor {
         var cusor: Int
         var roomId: Int?
         var errorMessage: String?
-        var user: User
         var joinChatResponse: JoinChatResponse?
     }
     
     private let maxCodeLength = 6
     private let networkService: NetworkServiceProviding
-    private let user: User
+    private var userData: UserDataProviding
     let initialState: State
     
     init(networkService: NetworkServiceProviding,
-         userData: User) {
+         userData: UserDataProviding) {
         
         self.networkService = networkService
-        user = userData
+        self.userData = userData
         initialState = State(codeInput: [String](repeating: "", count: maxCodeLength),
-                             cusor: 0,
-                             user: user)
+                             cusor: 0)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -75,7 +73,6 @@ final class ChatCodeInputReactor: Reactor {
             state.cusor = (state.cusor <= 0) ? 0 : state.cusor - 1
             state.codeInput[state.cusor] = ""
         case .joinChatRoom(let response):
-            state.user.id = response.userId
             state.roomId = response.roomId
             state.joinChatResponse = response
         case .alertError(let error):
@@ -88,8 +85,9 @@ final class ChatCodeInputReactor: Reactor {
     
     private func requestEnterRoom(state: State, lastInput: String) -> Observable<Mutation> {
         let code = state.codeInput.reduce("") { $0 + $1 } + lastInput
-        return networkService.enterRoom(user: state.user, code: code)
+        return networkService.enterRoom(user: userData.user, code: code)
             .asObservable()
+            .do(onNext: { [weak self] in self?.userData.id = $0.userId })
             .map { Mutation.joinChatRoom($0) }
             .catchError { [weak self] in
                 guard let self = self else {
