@@ -795,12 +795,12 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
                                                     <rect key="frame" x="314" y="40" width="88" height="42"/>
                                                     <color key="backgroundColor" name="PapagoSkyBlue"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="bDS-5T-sMN"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="bwf-8v-Hhf"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="bwf-8v-Hhf"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="z1w-4F-tBA"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
@@ -822,7 +822,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="16.5"/>
+                                                            <real key="value" value="12"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
@@ -898,13 +898,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-KZ-Cbi">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-KZ-Cbi" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
                                                     <rect key="frame" x="80" y="66" width="88" height="36"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="9N2-rt-4rW"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="WNt-WN-QQI"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="eSp-R1-g44"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="eSp-R1-g44"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="안녕하세요">
@@ -926,7 +926,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="16.5"/>
+                                                            <real key="value" value="12"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
