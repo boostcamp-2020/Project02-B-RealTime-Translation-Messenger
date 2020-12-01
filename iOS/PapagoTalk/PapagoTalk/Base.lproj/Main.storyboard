@@ -782,7 +782,7 @@
                                                         <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                                                     </accessibility>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="FJJ-mX-0oV"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="24" id="FJJ-mX-0oV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -799,7 +799,7 @@
                                                     <rect key="frame" x="314" y="40" width="88" height="42"/>
                                                     <color key="backgroundColor" name="PapagoSkyBlue"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="bDS-5T-sMN"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" id="bDS-5T-sMN"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="bwf-8v-Hhf"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="z1w-4F-tBA"/>
                                                     </constraints>
@@ -836,12 +836,12 @@
                                             <constraints>
                                                 <constraint firstItem="hRr-JJ-sLX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jq0-Iv-ZBe" secondAttribute="leading" constant="12" id="81V-ox-fVE"/>
                                                 <constraint firstItem="IJO-uC-sDU" firstAttribute="centerX" secondItem="jq0-Iv-ZBe" secondAttribute="centerX" id="Axn-Y5-ez4"/>
-                                                <constraint firstItem="ZVH-iM-tHV" firstAttribute="top" secondItem="IJO-uC-sDU" secondAttribute="bottom" constant="12" id="DDQ-Jx-Fub"/>
-                                                <constraint firstItem="hRr-JJ-sLX" firstAttribute="bottom" secondItem="ZVH-iM-tHV" secondAttribute="bottom" id="ODT-iB-4TN"/>
+                                                <constraint firstItem="ZVH-iM-tHV" firstAttribute="top" secondItem="IJO-uC-sDU" secondAttribute="bottom" priority="999" constant="12" id="DDQ-Jx-Fub"/>
+                                                <constraint firstItem="hRr-JJ-sLX" firstAttribute="bottom" secondItem="ZVH-iM-tHV" secondAttribute="bottom" priority="999" id="ODT-iB-4TN"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZVH-iM-tHV" secondAttribute="trailing" constant="12" id="RVK-Su-zeE"/>
                                                 <constraint firstItem="ZVH-iM-tHV" firstAttribute="leading" secondItem="hRr-JJ-sLX" secondAttribute="trailing" constant="10" id="jYW-Nu-9gN"/>
-                                                <constraint firstItem="IJO-uC-sDU" firstAttribute="top" secondItem="jq0-Iv-ZBe" secondAttribute="top" constant="4" id="r71-jL-C7T"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZVH-iM-tHV" secondAttribute="bottom" constant="8" id="wz3-gc-tdJ"/>
+                                                <constraint firstItem="IJO-uC-sDU" firstAttribute="top" secondItem="jq0-Iv-ZBe" secondAttribute="top" priority="999" constant="4" id="r71-jL-C7T"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZVH-iM-tHV" secondAttribute="bottom" priority="999" constant="8" id="wz3-gc-tdJ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="90"/>
@@ -866,7 +866,7 @@
                                                         <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                                                     </accessibility>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="gWW-lI-9B9"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="24" id="gWW-lI-9B9"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -883,7 +883,7 @@
                                                     <rect key="frame" x="12" y="40" width="42" height="42"/>
                                                     <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="42" id="blP-3z-br4"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="42" id="blP-3z-br4"/>
                                                         <constraint firstAttribute="width" secondItem="ymh-Tr-sLT" secondAttribute="height" multiplier="1:1" id="mIq-4X-y4O"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -903,7 +903,7 @@
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="9N2-rt-4rW"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="WNt-WN-QQI"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" id="WNt-WN-QQI"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="eSp-R1-g44"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
@@ -938,21 +938,21 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="btx-gT-koo" firstAttribute="top" secondItem="BHL-qx-p9o" secondAttribute="top" constant="4" id="0ou-wv-zAf"/>
-                                                <constraint firstItem="ymh-Tr-sLT" firstAttribute="top" secondItem="btx-gT-koo" secondAttribute="bottom" constant="12" id="2Er-jt-ZyQ"/>
+                                                <constraint firstItem="btx-gT-koo" firstAttribute="top" secondItem="BHL-qx-p9o" secondAttribute="top" priority="999" constant="4" id="0ou-wv-zAf"/>
+                                                <constraint firstItem="ymh-Tr-sLT" firstAttribute="top" secondItem="btx-gT-koo" secondAttribute="bottom" priority="999" constant="12" id="2Er-jt-ZyQ"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zyP-S3-xoJ" secondAttribute="trailing" constant="12" id="4eI-Jm-EzT"/>
                                                 <constraint firstItem="btx-gT-koo" firstAttribute="centerX" secondItem="BHL-qx-p9o" secondAttribute="centerX" id="6uf-0Z-95E"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d8P-YL-lNQ" secondAttribute="trailing" constant="12" id="Uhb-Mf-mu8"/>
                                                 <constraint firstItem="zyP-S3-xoJ" firstAttribute="leading" secondItem="ymh-Tr-sLT" secondAttribute="trailing" constant="10" id="VQX-xj-Gid"/>
                                                 <constraint firstItem="Y1i-KZ-Cbi" firstAttribute="leading" secondItem="ymh-Tr-sLT" secondAttribute="trailing" constant="10" id="Vhf-Vo-OJA"/>
                                                 <constraint firstItem="d8P-YL-lNQ" firstAttribute="leading" secondItem="Y1i-KZ-Cbi" secondAttribute="trailing" constant="10" id="ZKO-VM-glt"/>
-                                                <constraint firstAttribute="bottom" secondItem="Y1i-KZ-Cbi" secondAttribute="bottom" constant="8" id="a8D-NX-4iU"/>
-                                                <constraint firstItem="zyP-S3-xoJ" firstAttribute="top" secondItem="btx-gT-koo" secondAttribute="bottom" constant="12" id="bIP-yq-vCQ"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ymh-Tr-sLT" secondAttribute="bottom" constant="12" id="ez4-xq-Btw"/>
-                                                <constraint firstItem="Y1i-KZ-Cbi" firstAttribute="top" secondItem="zyP-S3-xoJ" secondAttribute="bottom" constant="8" id="fNp-Cq-7ph"/>
+                                                <constraint firstAttribute="bottom" secondItem="Y1i-KZ-Cbi" secondAttribute="bottom" priority="999" constant="8" id="a8D-NX-4iU"/>
+                                                <constraint firstItem="zyP-S3-xoJ" firstAttribute="top" secondItem="btx-gT-koo" secondAttribute="bottom" priority="999" constant="12" id="bIP-yq-vCQ"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ymh-Tr-sLT" secondAttribute="bottom" priority="999" constant="12" id="ez4-xq-Btw"/>
+                                                <constraint firstItem="Y1i-KZ-Cbi" firstAttribute="top" secondItem="zyP-S3-xoJ" secondAttribute="bottom" priority="999" constant="8" id="fNp-Cq-7ph"/>
                                                 <constraint firstItem="ymh-Tr-sLT" firstAttribute="leading" secondItem="BHL-qx-p9o" secondAttribute="leading" constant="12" id="moM-7G-GiF"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y1i-KZ-Cbi" secondAttribute="trailing" constant="100" id="uwX-ro-NzV"/>
-                                                <constraint firstItem="d8P-YL-lNQ" firstAttribute="bottom" secondItem="Y1i-KZ-Cbi" secondAttribute="bottom" id="xUk-qm-h74"/>
+                                                <constraint firstItem="d8P-YL-lNQ" firstAttribute="bottom" secondItem="Y1i-KZ-Cbi" secondAttribute="bottom" priority="999" id="xUk-qm-h74"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="110"/>

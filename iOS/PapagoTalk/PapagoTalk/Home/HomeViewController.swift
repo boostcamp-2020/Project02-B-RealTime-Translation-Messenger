@@ -104,7 +104,7 @@ final class HomeViewController: UIViewController, StoryboardView {
         reactor.state.compactMap { $0.createRoomResponse }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
-                self?.moveToChat(userId: $0.userId, roomId: $0.roomId)
+                self?.coordinator?.showChat(roomID: $0.roomId, code: $0.code)
             })
             .disposed(by: disposeBag)
         
@@ -149,10 +149,6 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     private func alert(message: String) {
         present(alertFactory.alert(message: message), animated: true)
-    }
-    
-    private func moveToChat(userId: Int, roomId: Int) {
-        coordinator?.showChat(roomID: roomId)
     }
 }
 

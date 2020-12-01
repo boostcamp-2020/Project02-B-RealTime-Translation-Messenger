@@ -66,6 +66,13 @@ final class ChatViewController: UIViewController, StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.roomCode }
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] in
+                self?.navigationItem.title = String($0.prefix(3)) + "-" + String($0.suffix(3))
+                })
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.messageBox.messages }
             .do(afterNext: { [weak self] in
                 guard let currentMessageType = $0.last?.type,

@@ -58,10 +58,10 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
                 .disposed(by: disposeBag)
         }
         
-        reactor.state.compactMap { $0.joinChatResponse }
+        reactor.state.compactMap { $0.chatRoomInfo }
             .distinctUntilChanged()
-            .do(onNext: { [weak self] response in
-                self?.coordinator?.codeInputToChat(roomID: response.roomId)
+            .do(onNext: { [weak self] roomInfo in
+                self?.coordinator?.codeInputToChat(roomID: roomInfo.roomID, code: roomInfo.code)
             })
             .subscribe()
             .disposed(by: disposeBag)
