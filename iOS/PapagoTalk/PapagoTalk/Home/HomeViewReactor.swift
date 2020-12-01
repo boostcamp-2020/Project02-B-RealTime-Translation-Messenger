@@ -97,14 +97,15 @@ final class HomeViewReactor: Reactor {
     }
     
     private func blockNickNameMaxLength(input nickName: String) -> Observable<Mutation> {
-        let needShake = nickName.count > Constant.maxNickNameLength
+        let maxValue = Constant.maxNickNameLength
+        let needShake = nickName.count > maxValue
         
         guard needShake else {
-            return Observable.just(Mutation.setNickName(String(nickName.prefix(12))))
+            return Observable.just(Mutation.setNickName(String(nickName.prefix(maxValue))))
         }
         return Observable.concat([
             Observable.just(Mutation.shakeNickNameTextField(needShake)),
-            Observable.just(Mutation.setNickName(String(nickName.prefix(12)))),
+            Observable.just(Mutation.setNickName(String(nickName.prefix(maxValue)))),
             Observable.just(Mutation.shakeNickNameTextField(!needShake))
         ])
     }

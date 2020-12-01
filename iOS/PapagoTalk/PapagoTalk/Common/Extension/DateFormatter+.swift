@@ -11,17 +11,17 @@ extension DateFormatter {
     
     static let dateFormatter = DateFormatter()
     
-    // TODO: Localization
     static func chatDateFormat(of date: Date) -> String {
-        dateFormatter.dateFormat = "yyyy년 M월 d일 EEEE"
-        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.dateFormat = "yyyy MMMM dd EEEE"
+        // dateFormatter.dateStyle = .medium
+        // dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: Locale.autoupdatingCurrent.identifier)
         return dateFormatter.string(from: date)
     }
     
-    // TODO: Localization
     static func chatTimeFormat(of date: Date) -> String {
         dateFormatter.dateFormat = "a H:mm"
-        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.locale = Locale(identifier: Locale.autoupdatingCurrent.identifier)
         return dateFormatter.string(from: date)
     }
 }

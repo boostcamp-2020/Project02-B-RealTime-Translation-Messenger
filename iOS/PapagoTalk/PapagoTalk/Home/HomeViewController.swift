@@ -22,10 +22,11 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     //UserDefault의 값으로 변경
     private var languageSelection = BehaviorSubject(value: Language.korean)
-    
-    var disposeBag = DisposeBag()
     private let alertFactory: AlertFactoryProviding
+  
     weak var coordinator: MainCoordinator?
+  
+    var disposeBag = DisposeBag()
     
     init?(coder: NSCoder, reactor: HomeViewReactor, alertFactory: AlertFactoryProviding) {
         self.alertFactory = alertFactory
@@ -46,7 +47,6 @@ final class HomeViewController: UIViewController, StoryboardView {
     }
     
     func bind(reactor: HomeViewReactor) {
-
         profileImageView.rx.tapGesture()
             .when(.recognized)
             .map { _ in

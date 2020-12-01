@@ -13,16 +13,19 @@ final class ChatViewReactor: Reactor {
     enum Action {
         case subscribeNewMessages
         case sendMessage(String)
+        case chatDrawerButtonTapped
     }
     
     enum Mutation {
         case appendNewMessage([Message])
         case setSendResult(Bool)
+        case toggleDrawerState
     }
     
     struct State {
         var messageBox: MessageBox
         var sendResult: Bool = true
+        var drawerState: Bool
     }
     
     private let networkService: NetworkServiceProviding
@@ -52,6 +55,8 @@ final class ChatViewReactor: Reactor {
                                               roomId: roomID)
                 .asObservable()
                 .map { Mutation.setSendResult($0.createMessage) }
+        case .chatDrawerButtonTapped:
+            return Observable.just(Mutation.toggleDrawerState)
         }
     }
     
@@ -63,6 +68,8 @@ final class ChatViewReactor: Reactor {
             state.messageBox.messages.append(contentsOf: message)
         case .setSendResult(let isSuccess):
             state.sendResult = isSuccess
+        case .toggleDrawerState:
+            state.drawerState.toggle()
         }
         return state
     }
