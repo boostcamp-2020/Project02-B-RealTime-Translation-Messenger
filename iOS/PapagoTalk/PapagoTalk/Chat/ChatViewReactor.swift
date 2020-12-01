@@ -10,11 +10,8 @@ import ReactorKit
 
 final class ChatViewReactor: Reactor {
     
-    // TODO: 모델 분리 예정
-    var networkService = NetworkService()
-    
     enum Action {
-        case subscribeNewMessages(Int)
+        case subscribeNewMessages
         case sendMessage(String)
     }
     
@@ -28,16 +25,21 @@ final class ChatViewReactor: Reactor {
         var sendResult: Bool = true
     }
     
+    private let networkService: NetworkServiceProviding
+    private let user: User
+    private let roomID: Int
     let initialState: State
-    let user = ChatViewController.user
     
-    init() {
+    init(networkService: NetworkServiceProviding, userData: User, roomID: Int) {
+        self.networkService = networkService
+        user = userData
+        self.roomID = roomID
         initialState = State(messageBox: MessageBox())
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .subscribeNewMessages(let roomID):
+        case .subscribeNewMessages:
             return networkService.getMessage(roomId: roomID)
                 .compactMap { $0.newMessage }
                 // TODO: 막 넣은 데이터들 API 생기면 수정
@@ -54,7 +56,7 @@ final class ChatViewReactor: Reactor {
             return networkService.sendMessage(text: message,
                                               source: user.language.code,
                                               userId: user.id,
-                                              roomId: 1)
+                                              roomId: roomID)
                 .asObservable()
                 .map { Mutation.setSendResult($0.createMessage) }
         }

@@ -17,11 +17,23 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
     @IBOutlet weak var cancelButton: UIButton!
     
     var disposeBag = DisposeBag()
-    var alertFactory: AlertFactoryProviding = AlertFactory()
+    var alertFactory: AlertFactoryProviding
+    weak var coordinator: MainCoordinator?
+    
+    init?(coder: NSCoder, reactor: ChatCodeInputReactor, alertFactory: AlertFactoryProviding) {
+        self.alertFactory = alertFactory
+        super.init(coder: coder)
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        //FatalError?
+        alertFactory = AlertFactory()
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactor = ChatCodeInputReactor()
         bind()
     }
     
@@ -48,8 +60,8 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
         
         reactor.state.compactMap { $0.joinChatResponse }
             .distinctUntilChanged()
-            .do(onNext: { [weak self] in
-                self?.moveToChat(userId: $0.userId, roomId: $0.roomId)
+            .do(onNext: { [weak self] response in
+                self?.coordinator?.codeInputToChat(roomID: response.roomId)
             })
             .subscribe()
             .disposed(by: disposeBag)
@@ -69,21 +81,12 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
     private func bind() {
         cancelButton.rx.tap
             .asDriver()
-            .drive(onNext: { [weak self] _ in self?.navigationController?.popViewController(animated: true) })
+            .drive(onNext: { [weak self] _ in self?.dismiss(animated: true) })
             .disposed(by: disposeBag)
         
     }
     
     private func alert(message: String) {
         present(alertFactory.alert(message: message), animated: true)
-    }
-    
-    private func moveToChat(userId: Int, roomId: Int) {
-        guard let chatVC = storyboard?.instantiateViewController(identifier: ChatViewController.identifier) as? ChatViewController else {
-            return
-        }
-        chatVC.userId = userId
-        chatVC.roomID = roomId
-        navigationController?.pushViewController(chatVC, animated: true)
     }
 }

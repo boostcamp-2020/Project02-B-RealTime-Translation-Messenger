@@ -31,14 +31,16 @@ final class ChatCodeInputReactor: Reactor {
         var joinChatResponse: JoinChatResponse?
     }
     
-    let maxCodeLength = 6
-    // TODO: 모델 분리 예정
-    var networkService = NetworkService()
-    
+    private let maxCodeLength = 6
+    private let networkService: NetworkServiceProviding
+    private let user: User
     let initialState: State
-    let user = ChatCodeInputViewController.user
     
-    init() {
+    init(networkService: NetworkServiceProviding,
+         userData: User) {
+        
+        self.networkService = networkService
+        user = userData
         initialState = State(codeInput: [String](repeating: "", count: maxCodeLength),
                              cusor: 0,
                              user: user)

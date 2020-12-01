@@ -18,23 +18,26 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var disposeBag = DisposeBag()
+    weak var coordinator: MainCoordinator?
     
-    var userId = user.id
-    var roomID = 7
+    init?(coder: NSCoder, reactor: ChatViewReactor) {
+        super.init(coder: coder)
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactor = ChatViewReactor()
         bind()
         bindKeyboard()
     }
     
     func bind(reactor: ChatViewReactor) {
         self.rx.viewWillAppear
-            .compactMap { [weak self] _ in
-                self?.roomID
-            }
-            .map { Reactor.Action.subscribeNewMessages($0) }
+            .map { _ in Reactor.Action.subscribeNewMessages }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
