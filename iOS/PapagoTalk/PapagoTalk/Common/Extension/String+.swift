@@ -18,7 +18,7 @@ extension String {
     }
     
     private func toDouble() -> Double {
-        guard let doubleValue = Double(self) else {
+        guard let doubleValue = Double(self.prefix(10)) else {
             return .zero
         }
         return doubleValue
