@@ -10,6 +10,10 @@ import Foundation
 final class MessageBox {
     var messages = [Message]()
     
+    func append(_ messages: [Message]) {
+        messages.forEach { append($0) }
+    }
+    
     func append(_ message: Message) {
         guard let lastMessage = messages.last else {
             messages.append(message)

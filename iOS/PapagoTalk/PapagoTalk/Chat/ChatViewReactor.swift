@@ -37,7 +37,7 @@ final class ChatViewReactor: Reactor {
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
-        initialState = State(messageBox: MessageBox())
+        initialState = State(messageBox: MessageBox(), drawerState: false)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -46,7 +46,7 @@ final class ChatViewReactor: Reactor {
             return networkService.getMessage(roomId: roomID, language: userData.language)
                 .compactMap { $0.newMessage }
                 .compactMap { [weak self] in self?.seperateMessage(newMessage: $0) }
-                .map { Mutation.appendNewMessage($0)}
+                .map { Mutation.appendNewMessage($0) }
 
         case .sendMessage(let message):
             return networkService.sendMessage(text: message,
@@ -64,8 +64,8 @@ final class ChatViewReactor: Reactor {
         var state = state
         
         switch mutation {
-        case .appendNewMessage(let message):
-            state.messageBox.messages.append(contentsOf: message)
+        case .appendNewMessage(let messages):
+            state.messageBox.append(messages)
         case .setSendResult(let isSuccess):
             state.sendResult = isSuccess
         case .toggleDrawerState:
