@@ -26,7 +26,9 @@
 		993AF6792574DF2F00416692 /* CreateRoomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF6782574DF2F00416692 /* CreateRoomResponse.swift */; };
 		993AF67D2574E3E200416692 /* HomeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF67C2574E3E200416692 /* HomeError.swift */; };
 		993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF697257517AE00416692 /* KeyboardProviding.swift */; };
-    996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
+		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
+		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
+		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
 		996A1463256D364C00F21215 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1462256D364C00F21215 /* UIViewController+.swift */; };
@@ -102,7 +104,9 @@
 		993AF6782574DF2F00416692 /* CreateRoomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomResponse.swift; sourceTree = "<group>"; };
 		993AF67C2574E3E200416692 /* HomeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeError.swift; sourceTree = "<group>"; };
 		993AF697257517AE00416692 /* KeyboardProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardProviding.swift; sourceTree = "<group>"; };
-    996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
+		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
 		996A1462256D364C00F21215 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
@@ -185,6 +189,15 @@
 				993AF697257517AE00416692 /* KeyboardProviding.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		995BE99D2575DF7E00C15AC7 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				995BE99E2575DF9400C15AC7 /* Coordinator.swift */,
+				995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		996A146E256D5B8E00F21215 /* Common */ = {
@@ -363,6 +376,7 @@
 		BBF2DC9B256674A300F2EA7D /* PapagoTalk */ = {
 			isa = PBXGroup;
 			children = (
+				995BE99D2575DF7E00C15AC7 /* Coordinator */,
 				BBEA1A63256F49A8009B8B5F /* Entity */,
 				996C4E4F256E7B900015F9F4 /* Network */,
 				996C4E3D256E5F2C0015F9F4 /* GraphQL */,
@@ -627,6 +641,7 @@
 			files = (
 				BB20F4DF2573959500C5AC1D /* UserDefaultType.swift in Sources */,
 				996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */,
+				995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */,
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
@@ -649,6 +664,7 @@
 				BB93C290257526DD00C68491 /* MessageType.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */,
 				990DE9292572665400340A72 /* ChatCodeInputReactor.swift in Sources */,
+				995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */,
 				993AF6752574DD3300416692 /* API.swift in Sources */,
 				993AF67D2574E3E200416692 /* HomeError.swift in Sources */,
 				993AF6792574DF2F00416692 /* CreateRoomResponse.swift in Sources */,
