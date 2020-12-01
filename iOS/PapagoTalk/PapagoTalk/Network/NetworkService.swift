@@ -14,6 +14,10 @@ protocol NetworkServiceProviding {
                      source: String,
                      userId: Int,
                      roomId: Int) -> Maybe<SendMessageMutation.Data>
+    func getMessage(roomId: Int) -> Observable<GetMessageSubscription.Data>
+    func enterRoom(user: User,
+                   code: String) -> Maybe<JoinChatResponse>
+    func createRoom(user: User) -> Maybe<CreateRoomResponse>
 }
 
 class NetworkService: NetworkServiceProviding {

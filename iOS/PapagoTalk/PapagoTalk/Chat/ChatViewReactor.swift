@@ -25,12 +25,12 @@ final class ChatViewReactor: Reactor {
         var sendResult: Bool = true
     }
     
-    private let networkService: NetworkService
+    private let networkService: NetworkServiceProviding
     private let user: User
     private let roomID: Int
     let initialState: State
     
-    init(networkService: NetworkService, userData: User, roomID: Int) {
+    init(networkService: NetworkServiceProviding, userData: User, roomID: Int) {
         self.networkService = networkService
         user = userData
         self.roomID = roomID

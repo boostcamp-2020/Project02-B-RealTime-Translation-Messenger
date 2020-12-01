@@ -10,14 +10,14 @@ import UIKit
 class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController
-    var networkService: NetworkService
+    var networkService: NetworkServiceProviding
     var userData: User
     var alertFactory: AlertFactoryProviding
     
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
     init(navigationController: UINavigationController,
-         networkService: NetworkService,
+         networkService: NetworkServiceProviding,
          userData: User,
          alertFactory: AlertFactoryProviding) {
         

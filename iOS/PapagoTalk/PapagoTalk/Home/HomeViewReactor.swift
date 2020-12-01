@@ -40,12 +40,12 @@ final class HomeViewReactor: Reactor {
         }
     }
     
-    private let networkService: NetworkService
+    private let networkService: NetworkServiceProviding
     private let user: User
     private let defaultImageFactory: ImageFactoryProviding
     let initialState: State
     
-    init(networkService: NetworkService,
+    init(networkService: NetworkServiceProviding,
          userData: User,
          imageFactory: ImageFactoryProviding = ImageFactory()) {
         defaultImageFactory = imageFactory
