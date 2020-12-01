@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-const Theme = {
+export const Theme = {
   blueColor: '#0F4C81',
   greenColor: '#22C263',
   lightGrayColor: '#E5E5E5',
@@ -10,6 +10,8 @@ const Theme = {
   whiteColor: '#FAFAFA',
   boxBorder: '1px solid #C4C4C4',
   borderRadius: '20px',
+  borderRadiusSmall: '10px',
+  Overlay: 'rgba(0, 0, 0, 0.6)',
 };
 
 export const lightTheme: DefaultTheme = {
@@ -20,7 +22,9 @@ export const lightTheme: DefaultTheme = {
   blueColor: Theme.blueColor,
   greenColor: Theme.greenColor,
   borderRadius: Theme.borderRadius,
+  borderRadiusSmall: Theme.borderRadiusSmall,
   boxBorder: Theme.boxBorder,
+  Overlay: Theme.Overlay,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -31,5 +35,7 @@ export const darkTheme: DefaultTheme = {
   blueColor: Theme.blueColor,
   greenColor: Theme.greenColor,
   borderRadius: Theme.borderRadius,
+  borderRadiusSmall: Theme.borderRadiusSmall,
   boxBorder: Theme.boxBorder,
+  Overlay: Theme.Overlay,
 };
