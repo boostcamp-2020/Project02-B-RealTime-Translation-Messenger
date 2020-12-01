@@ -52,7 +52,7 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.messageBox.messages }
             .bind(to: chatCollectionView.rx.items) { [weak self] (_, row, element) in
-                guard let cell = self?.configureMessageCell(at: row, with: element) else {
+                guard let cell = self?.configureChatMessageCell(at: row, with: element) else {
                     return UICollectionViewCell()
                 }
                 return cell
@@ -92,7 +92,7 @@ final class ChatViewController: UIViewController, StoryboardView {
         return min(Constant.inputBarTextViewMaxHeight, size.height)
     }
     
-    private func configureMessageCell(at row: Int, with element: Message) -> UICollectionViewCell {
+    private func configureChatMessageCell(at row: Int, with element: Message) -> UICollectionViewCell {
         guard let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: element.type.identifier,
                                                                 for: IndexPath(row: row, section: .zero)) as? MessageCell else {
             return UICollectionViewCell()
