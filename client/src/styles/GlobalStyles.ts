@@ -17,8 +17,14 @@ export default createGlobalStyle`
     color: ${(props) => props.theme.blueColor};
     text-decoration: none;
   }
-  input:focus {
+  input {
+    padding: 0;
+    background: inherit;
+    border: 0;
     outline: none;
+    &:focus {
+      outline: none;
+    }
   }
   button {
     padding: 0;
