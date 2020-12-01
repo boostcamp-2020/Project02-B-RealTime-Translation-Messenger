@@ -131,8 +131,28 @@ final class ChatViewController: UIViewController, StoryboardView {
         chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: true)
     }
     
+    // MARK: - configure ChatDrawer
     
-}
+    private func configureChatDrawer() {
+        guard chatDrawerViewController == nil else {
+            return
+        }
+        configureVisualEffectView()
+
+        chatDrawerViewController =
+            storyboard?.instantiateViewController(identifier: ChatDrawerViewController.identifier)
+        addChild(chatDrawerViewController)
+        view.addSubview(chatDrawerViewController.view)
+        
+        chatDrawerWidth = (view.frame.width * 3) / 4
+        chatDrawerViewController.view.frame = CGRect(x: view.frame.width,
+                                                     y: .zero,
+                                                     width: chatDrawerWidth,
+                                                     height: view.frame.height)
+        chatDrawerViewController.view.clipsToBounds = true
+        bindChatDrawerGesture()
+        configureAnimation(state: .opened, duration: 0.9)
+    }
 
 extension ChatViewController: KeyboardProviding {
     private func bindKeyboard() {
