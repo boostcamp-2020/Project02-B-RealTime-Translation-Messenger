@@ -957,6 +957,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="thH-v8-Fzc" id="C4I-q2-Qw8"/>
                         <outlet property="chatCollectionView" destination="7RJ-jw-dz3" id="CG0-4b-cwV"/>
+                        <outlet property="chatDrawerButton" destination="sJd-dO-18v" id="YW9-fd-6gN"/>
                         <outlet property="inputBarTextView" destination="2E6-12-yAe" id="ymH-tU-ioA"/>
                         <outlet property="inputBarTextViewHeight" destination="SCD-Tw-v2T" id="OVk-3v-lgs"/>
                         <outlet property="sendButton" destination="va8-FQ-vZP" id="peW-cj-bOD"/>

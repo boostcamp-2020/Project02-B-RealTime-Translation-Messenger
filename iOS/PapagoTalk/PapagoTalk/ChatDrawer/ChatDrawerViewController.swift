@@ -56,6 +56,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         reactor.state.map { $0.leaveChatRoom }
             .filter { $0 }
             .do { [weak self] _ in
+                // TODO: coordinator완성된 후 수정
                 self?.dismiss(animated: true, completion: {
                     self?.navigationController?.popViewController(animated: true)
                 })
