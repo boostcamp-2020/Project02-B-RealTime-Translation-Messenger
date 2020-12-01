@@ -33,7 +33,6 @@ final class HomeViewController: UIViewController, StoryboardView {
     }
     
     func bind(reactor: HomeViewReactor) {
-
         profileImageView.rx.tapGesture()
             .when(.recognized)
             .map { _ in

@@ -15,7 +15,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: UICollectionView!
     @IBOutlet private weak var sendButton: UIButton!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     var disposeBag = DisposeBag()
     
