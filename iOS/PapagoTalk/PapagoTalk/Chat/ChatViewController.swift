@@ -67,6 +67,13 @@ final class ChatViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.messageBox.messages }
+            .do(afterNext: { [weak self] in
+                guard let currentMessageType = $0.last?.type,
+                      currentMessageType == .sent else {
+                    return
+                }
+                self?.scrollToLastMessage()
+            })
             .bind(to: chatCollectionView.rx.items) { [weak self] (_, row, element) in
                 guard let cell = self?.configureChatMessageCell(at: row, with: element) else {
                     return UICollectionViewCell()
@@ -77,12 +84,6 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.sendResult }
             .asObservable()
-            .do(afterNext: { [weak self] isSuccess in
-                guard isSuccess else {
-                    return
-                }
-                self?.scrollToLastMessage()
-            })
             .subscribe()
             .disposed(by: disposeBag)
         
