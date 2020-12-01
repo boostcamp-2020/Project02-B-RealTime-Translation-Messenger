@@ -15,13 +15,21 @@ final class MessageBox {
             messages.append(message)
             return
         }
-        messages.append(setMessageIsFirst(of: message, comparedBy: lastMessage))
+        var message = setMessageIsFirst(of: message, comparedBy: lastMessage)
+        message = setType(of: message)
+        messages.append(message)
     }
     
     func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
         let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.timeStamp, with: lastMessage.timeStamp)
         var message = newMessage
         message.setIsFirst(with: !isNotFirstOfDay)
+        return message
+    }
+    
+    func setType(of newMessage: Message) -> Message {
+        var message = newMessage
+        message.setType(by: newMessage.sender)
         return message
     }
 }
