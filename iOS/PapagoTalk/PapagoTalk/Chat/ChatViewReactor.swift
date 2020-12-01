@@ -37,7 +37,7 @@ final class ChatViewReactor: Reactor {
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
-        initialState = State(messageBox: MessageBox(), drawerState: false)
+        initialState = State(messageBox: MessageBox(userID: userData.id), drawerState: false)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -93,7 +93,7 @@ final class ChatViewReactor: Reactor {
                                     timeStamp: time)
         messages.append(originMessage)
         
-        if originMessage.type == .received {
+        if newMessage.user.id != userData.id {
             let translatedMessage = Message(id: newMessage.id,
                                             of: translateResult.translatedText,
                                             by: sender,

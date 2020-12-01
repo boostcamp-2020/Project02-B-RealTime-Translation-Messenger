@@ -8,19 +8,27 @@
 import Foundation
 
 final class MessageBox {
+    
+    var currentUserID: Int
     var messages = [Message]()
+    
+    init(userID: Int) {
+        currentUserID = userID
+    }
     
     func append(_ messages: [Message]) {
         messages.forEach { append($0) }
     }
     
     func append(_ message: Message) {
+        var message = message
+        message = setType(of: message)
+        
         guard let lastMessage = messages.last else {
             messages.append(message)
             return
         }
-        var message = setMessageIsFirst(of: message, comparedBy: lastMessage)
-        message = setType(of: message)
+        message = setMessageIsFirst(of: message, comparedBy: lastMessage)
         messages.append(message)
     }
     
@@ -33,7 +41,7 @@ final class MessageBox {
     
     func setType(of newMessage: Message) -> Message {
         var message = newMessage
-        message.setType(by: newMessage.sender)
+        message.setType(by: currentUserID)
         return message
     }
 }
