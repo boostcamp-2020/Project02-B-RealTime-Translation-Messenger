@@ -32,7 +32,7 @@ final class MicrophoneButton: UIButton {
     var buttonColor: UIColor?
     private var latestCenter: CGPoint?
     
-    var mode: ContentsMode = .big {
+    var mode: ContentsMode = .small {
         didSet {
             let newSize = CGSize(width: mode.size, height: mode.size)
             frame.size = newSize
@@ -49,6 +49,15 @@ final class MicrophoneButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureShadow()
+        commonInit()
+    }
+    
+    init(mode: ContentsMode, origin: CGPoint) {
+        let size = CGSize(width: mode.size, height: mode.size)
+        let rect = CGRect(origin: origin, size: size)
+        super.init(frame: rect)
+        self.mode = mode
         configureShadow()
         commonInit()
     }
