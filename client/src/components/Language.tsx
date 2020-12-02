@@ -15,7 +15,6 @@ const LanguageButton = styled.input<{ selected: boolean }>`
   border: ${(props) => props.theme.boxBorder};
   border-radius: ${(props) => props.theme.borderRadius};
   font-size: 1.2rem;
-  box-sizing: border-box;
 
   &:hover {
     color: ${(props) => props.theme.blackColor};
