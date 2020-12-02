@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import App from './App';
-import Client from './apollo/client';
+import Client from './apollo/Client';
 
 const rootElement = document.getElementById('root');
 
