@@ -1,16 +1,13 @@
-import { getMainDefinition } from 'apollo-utilities';
-import { split } from 'apollo-boost';
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import { WebSocketLink } from 'apollo-link-ws';
+import { getMainDefinition } from '@apollo/client/utilities';
+import { ApolloClient, HttpLink, split, InMemoryCache } from '@apollo/client';
+import { WebSocketLink } from '@apollo/client/link/ws';
 
 const httpLink = new HttpLink({
-  uri: `http://${process.env.HOST_URL}`,
+  uri: `http://${process.env.HOST_URL}/`,
 });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://${process.env.HOST_URL}`,
+  uri: `ws://${process.env.HOST_URL}/`,
   options: {
     reconnect: true,
   },

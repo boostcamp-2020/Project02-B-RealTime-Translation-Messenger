@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ApolloProvider } from 'react-apollo';
-import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
+import { ApolloProvider } from '@apollo/react-hooks';
 import App from './App';
 import Client from './apollo/Client';
 
@@ -9,9 +8,7 @@ const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <ApolloProvider client={Client}>
-    <ApolloHooksProvider client={Client}>
-      <App />
-    </ApolloHooksProvider>
+    <App />
   </ApolloProvider>,
   rootElement,
 );
