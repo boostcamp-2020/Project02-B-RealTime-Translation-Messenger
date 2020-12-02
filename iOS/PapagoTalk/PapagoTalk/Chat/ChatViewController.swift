@@ -18,9 +18,9 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var chatDrawerButton: UIBarButtonItem!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var sppechRecognizerButton: SpeechRegcognizerButton!
     
     private weak var chatDrawerViewController: ChatDrawerViewController!
+    var microphoneButton: MicrophoneButton!
     private var chatDrawerWidth: CGFloat!
     private var visualEffectView: UIVisualEffectView!
     private var runningAnimations = [UIViewPropertyAnimator]()
@@ -40,6 +40,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        attachMicrophoneButton()
         bind()
         bindKeyboard()
     }
@@ -122,6 +123,16 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asObservable()
             .distinctUntilChanged()
             .bind(to: inputBarTextViewHeight.rx.constant)
+            .disposed(by: disposeBag)
+        
+        microphoneButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                self?.microphoneButton.moveForSpeech {
+                    self?.showSpeechView()
+                }
+                //self?.showSpeechView()
+            })
             .disposed(by: disposeBag)
     }
     
