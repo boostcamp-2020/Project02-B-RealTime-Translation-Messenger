@@ -77,6 +77,19 @@ final class SpeechViewController: UIViewController, StoryboardView {
         }
     }
     
+    private func configureRecognitionRequest() {
+        let inputNode = audioEngine.inputNode
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        guard let recognitionRequest = recognitionRequest else {
+            debugPrint("SFSpeechAudioBufferRecognitionRequest create error")
+            Toast(text: "음성인식 기능의 오류가 발생하였습니다.\n다시 시작해주세요.", delay: 0, duration: 2).show()
+            return
+        }
+        recognitionRequest.shouldReportPartialResults = true
+        configureRecognitionTask(by: recognitionRequest, on: inputNode)
+    }
+    
     
 }
 
