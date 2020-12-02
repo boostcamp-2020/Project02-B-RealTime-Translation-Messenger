@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SpeechRegcognizerButton: UIButton {
+final class MicrophoneButton: UIButton {
     
     enum ContentsMode {
         case big
@@ -29,15 +29,14 @@ final class SpeechRegcognizerButton: UIButton {
         }
     }
     
-    @IBInspectable
     var buttonColor: UIColor?
+    private var latestCenter: CGPoint?
     
-    var mode: ContentsMode = .small {
+    var mode: ContentsMode = .big {
         didSet {
-            constraints
-                .filter { $0.firstAttribute == .width }[1]
-                .constant = mode.size
-            superview?.layoutIfNeeded()
+            let newSize = CGSize(width: mode.size, height: mode.size)
+            frame.size = newSize
+            bounds.size = newSize
             updateShadow()
         }
     }
@@ -70,6 +69,25 @@ final class SpeechRegcognizerButton: UIButton {
         plusPath.move(to: CGPoint(x: center.x, y: center.y - offset))
         plusPath.addLine(to: CGPoint(x: center.x, y: center.y + offset))
         plusPath.close()
+    }
+    
+    func moveForSpeech(completion: (() -> Void)?) {
+        guard let superviewCenter = superview?.center else { return }
+        latestCenter = center
+        let newY = superviewCenter.y + Constant.speechViewHeight/2 - Constant.speechViewBottomInset  - (frame.height/2)
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.center = CGPoint(x: superviewCenter.x, y: newY)
+        }
+        completion: { _ in
+            completion?()
+        }
+    }
+    
+    func moveToLatest() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.center = self?.latestCenter ?? .zero
+        }
     }
     
     private func configureShadow() {
