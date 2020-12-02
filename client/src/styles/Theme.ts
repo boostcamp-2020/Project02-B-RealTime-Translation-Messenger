@@ -9,8 +9,8 @@ export const Theme = {
   blackColor: '#262626',
   whiteColor: '#FAFAFA',
   boxBorder: '1px solid #C4C4C4',
-  borderRadius: '20px',
-  borderRadiusSmall: '10px',
+  borderRadius: '12px',
+  borderRadiusSmall: '8px',
   Overlay: 'rgba(0, 0, 0, 0.6)',
 };
 
