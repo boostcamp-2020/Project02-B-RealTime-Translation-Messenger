@@ -20,22 +20,27 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var joinChatRoomButton: UIButton!
     @IBOutlet private weak var makeChatRoomButton: UIButton!
     
-    //UserDefault의 값으로 변경
-    private var languageSelection = BehaviorSubject(value: Language.korean)
+    private var languageSelection: BehaviorSubject<Language>
     private let alertFactory: AlertFactoryProviding
   
     weak var coordinator: MainCoordinator?
   
     var disposeBag = DisposeBag()
     
-    init?(coder: NSCoder, reactor: HomeViewReactor, alertFactory: AlertFactoryProviding) {
+    init?(coder: NSCoder,
+          reactor: HomeViewReactor,
+          alertFactory: AlertFactoryProviding,
+          currentLanguage: Language) {
+        
         self.alertFactory = alertFactory
+        languageSelection = BehaviorSubject(value: currentLanguage)
         super.init(coder: coder)
         self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
         alertFactory = AlertFactory()
+        languageSelection = BehaviorSubject(value: Language.english)
         super.init(coder: coder)
     }
     
@@ -66,10 +71,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .map { Reactor.Action.languageSelected($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-//        joinChatRoomButton.rx.tap
-//            .map { Reactor.Action. }
-        
+            
         makeChatRoomButton.rx.tap
             .map { Reactor.Action.makeChatRoomButtonTapped }
             .bind(to: reactor.action)
@@ -88,6 +90,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.needShake }
+            .distinctUntilChanged()
             .filter { $0 }
             .do { [weak self] _ in
                 self?.nickNameTextField.shake()

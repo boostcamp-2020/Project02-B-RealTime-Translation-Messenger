@@ -27,7 +27,6 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
     }
     
     required init?(coder: NSCoder) {
-        //FatalError?
         alertFactory = AlertFactory()
         super.init(coder: coder)
     }
@@ -83,7 +82,6 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
             .asDriver()
             .drive(onNext: { [weak self] _ in self?.dismiss(animated: true) })
             .disposed(by: disposeBag)
-        
     }
     
     private func alert(message: String) {

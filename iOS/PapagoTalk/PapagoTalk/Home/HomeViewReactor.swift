@@ -36,22 +36,23 @@ final class HomeViewReactor: Reactor {
         var errorMessage: String?
         
         var isNickNameValid: Bool {
-            (2...12) ~= nickName.count
+            (Constant.minNickNameLength...Constant.maxNickNameLength) ~= nickName.count
         }
     }
     
     private let networkService: NetworkServiceProviding
     private var userData: UserDataProviding
     private let defaultImageFactory: ImageFactoryProviding
+    
     let initialState: State
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          imageFactory: ImageFactoryProviding = ImageFactory()) {
-        defaultImageFactory = imageFactory
+        
         self.networkService = networkService
         self.userData = userData
-        
+        defaultImageFactory = imageFactory
         initialState = State(profileImageURL: userData.image,
                              nickName: userData.nickName,
                              needShake: false,
@@ -77,7 +78,7 @@ final class HomeViewReactor: Reactor {
         switch mutation {
         case .setNickName(let nickName):
             state.nickName = nickName
-            userData.nickName = nickName //위치 변경
+            userData.nickName = nickName //위치 변경(Swift계의 젊은천재 전수열님께 여쭤보고 바꾸기)
         case .shakeNickNameTextField(let needShake):
             state.needShake = needShake
         case .setImage(let imageURL):
@@ -85,7 +86,7 @@ final class HomeViewReactor: Reactor {
             userData.image = imageURL //위치 변경
         case .setLanguage(let language):
             state.language = language
-            userData.language = language // 위치변경
+            userData.language = language //위치변경
         case .createRoom(let response):
             state.createRoomResponse = response
         case .alertError(let error):
@@ -97,27 +98,27 @@ final class HomeViewReactor: Reactor {
     }
     
     private func blockNickNameMaxLength(input nickName: String) -> Observable<Mutation> {
-        let maxValue = Constant.maxNickNameLength
-        let needShake = nickName.count > maxValue
+        let maxLength = Constant.maxNickNameLength
+        let needShake = nickName.count > maxLength
         
         guard needShake else {
-            return Observable.just(Mutation.setNickName(String(nickName.prefix(maxValue))))
+            return .just(Mutation.setNickName(String(nickName.prefix(maxLength))))
         }
-        return Observable.concat([
-            Observable.just(Mutation.shakeNickNameTextField(needShake)),
-            Observable.just(Mutation.setNickName(String(nickName.prefix(maxValue)))),
-            Observable.just(Mutation.shakeNickNameTextField(!needShake))
+        return .concat([
+            .just(Mutation.shakeNickNameTextField(needShake)),
+            .just(Mutation.setNickName(String(nickName.prefix(maxLength)))),
+            .just(Mutation.shakeNickNameTextField(!needShake))
         ])
     }
     
     private func configureRandomImage() -> Observable<Mutation> {
-        return Observable.just(Mutation.setImage(defaultImageFactory.randomImageURL()))
+        return .just(Mutation.setImage(defaultImageFactory.randomImageURL()))
     }
     
     private func requestCreateRoom() -> Observable<Mutation> {
         return networkService.createRoom(user: userData.user)
             .asObservable()
-            .do(onNext: { [weak self] in self?.userData.id = $0.userId  })
+            .do(onNext: { [weak self] in self?.userData.id = $0.userId })
             .map { Mutation.createRoom($0) }
             .catchError { _ in
                 .concat([ .just(.alertError(.networkError)),

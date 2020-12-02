@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator {
+final class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     var networkService: NetworkServiceProviding
@@ -34,7 +34,8 @@ class MainCoordinator: Coordinator {
                 let reactor = HomeViewReactor(networkService: networkService, userData: userData)
                 return HomeViewController(coder: coder,
                                           reactor: reactor,
-                                          alertFactory: alertFactory)
+                                          alertFactory: alertFactory,
+                                          currentLanguage: userData.language)
             }
         )
         viewController.coordinator = self
@@ -79,5 +80,4 @@ extension MainCoordinator {
         viewController.coordinator = self
         navigationController.present(viewController, animated: true)
     }
-    
 }

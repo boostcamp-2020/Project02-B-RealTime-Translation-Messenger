@@ -44,6 +44,7 @@ final class LanguageSelectionView: UIViewController {
         guard let observer = pickerViewObserver else {
             return
         }
+        
         confirmButton.rx.tap
             .withLatestFrom(pickerView.rx.modelSelected(Language.self))
             .map { $0[0] }

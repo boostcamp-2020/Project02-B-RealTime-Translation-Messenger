@@ -32,12 +32,18 @@ final class ChatViewReactor: Reactor {
     private let networkService: NetworkServiceProviding
     private let userData: UserDataProviding
     private let roomID: Int
+    
     let initialState: State
     
-    init(networkService: NetworkServiceProviding, userData: UserDataProviding, roomID: Int, code: String) {
+    init(networkService: NetworkServiceProviding,
+         userData: UserDataProviding,
+         roomID: Int,
+         code: String) {
+        
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
+        
         initialState = State(messageBox: MessageBox(userID: userData.id),
                              roomCode: code,
                              drawerState: false)
