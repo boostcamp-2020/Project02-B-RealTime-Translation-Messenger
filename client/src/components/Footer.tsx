@@ -2,10 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  bottom: 1.5rem;
+  margin: 0 auto;
+  display: relative;
+  transform: translateY(300%);
   color: ${(props) => props.theme.text};
   text-align: center;
   font-size: 1.2rem;

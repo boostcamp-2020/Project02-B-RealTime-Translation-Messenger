@@ -8,8 +8,8 @@ export default {
   `,
   AvatarWrapper: styled.div`
     position: relative;
-    width: 16rem;
-    height: 16rem;
+    width: 14.5rem;
+    height: 14.5rem;
 
     background: ${(props) => props.theme.whiteColor};
     border: ${(props) => props.theme.boxBorder};
@@ -26,8 +26,8 @@ export default {
     align-items: center;
     justify-content: center;
 
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 0.8rem;
+    right: 0.8rem;
     padding: 0.5rem;
 
     background: ${(props) => props.theme.grayColor};
@@ -38,7 +38,7 @@ export default {
     }
   `,
   NicknameInput: styled.input`
-    width: 12rem;
+    width: 10rem;
     margin: 1rem 0;
     padding: 0.5rem;
 

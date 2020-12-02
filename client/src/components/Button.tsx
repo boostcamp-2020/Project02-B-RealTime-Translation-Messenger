@@ -12,13 +12,14 @@ const { blueColor } = Theme;
 
 const Container = styled.button`
   width: 100%;
+  margin: 0.3rem 0;
   padding: 15px 0px;
   color: white;
   border: 0;
   background-color: ${(props) => props.color};
   border-radius: ${(props) => props.theme.borderRadius};
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
 `;
 
