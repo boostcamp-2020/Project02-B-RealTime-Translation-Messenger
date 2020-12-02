@@ -663,24 +663,29 @@
             </objects>
             <point key="canvasLocation" x="2003" y="84"/>
         </scene>
-        <!--Speech View Controller2-->
+        <!--Speech View Controller-->
         <scene sceneID="MaF-1y-YI3">
             <objects>
-                <viewController storyboardIdentifier="SpeechViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2hK-um-IpQ" customClass="SpeechViewController2" customModule="PapagoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SpeechViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2hK-um-IpQ" customClass="SpeechViewController" customModule="PapagoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BfQ-Og-bzX">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ulf-oi-Pau">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulf-oi-Pau">
                                 <rect key="frame" x="6" y="156" width="286" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="SZI-ks-xQY"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ysf-KU-ImM"/>
                                 </constraints>
-                                <string key="text">Hello Hello Hello Hello Hello Hello
-Nice to Meet you My Name is Honux</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="...">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="24" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-PK-5XA">
@@ -735,14 +740,13 @@ Nice to Meet you My Name is Honux</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="안녕하세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rRa-JV-K4c">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRa-JV-K4c">
                                 <rect key="frame" x="6" y="43" width="286" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="27o-T6-8vB"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="HKy-q9-vfW"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-B6-ers">
@@ -755,24 +759,6 @@ Nice to Meet you My Name is Honux</string>
                                 <state key="normal">
                                     <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
                                 </state>
-                                <connections>
-                                    <action selector="dismiss:" destination="2hK-um-IpQ" eventType="touchUpInside" id="HDP-Rx-EM3"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fu5-8p-iOM">
-                                <rect key="frame" x="12" y="342" width="30" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="KDH-ZM-MtR"/>
-                                    <constraint firstAttribute="height" constant="30" id="heZ-Zs-9Qe"/>
-                                </constraints>
-                                <color key="tintColor" name="PapagoGreen"/>
-                                <state key="normal" image="arrow.counterclockwise" catalog="system"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pti-V4-ICE">
                                 <rect key="frame" x="298" y="286" width="40" height="40"/>
@@ -807,11 +793,9 @@ Nice to Meet you My Name is Honux</string>
                             <constraint firstItem="GSN-kQ-Uou" firstAttribute="bottom" secondItem="azd-LU-dRl" secondAttribute="bottom" constant="18" id="VOe-nE-Lif"/>
                             <constraint firstItem="Ulf-oi-Pau" firstAttribute="top" secondItem="aRI-4D-EsY" secondAttribute="bottom" constant="6" id="W3T-xW-noO"/>
                             <constraint firstItem="Pti-V4-ICE" firstAttribute="leading" secondItem="Ulf-oi-Pau" secondAttribute="trailing" constant="6" id="WFF-1X-wZj"/>
-                            <constraint firstItem="fu5-8p-iOM" firstAttribute="centerY" secondItem="azd-LU-dRl" secondAttribute="centerY" id="bKz-PG-VBo"/>
                             <constraint firstItem="Pti-V4-ICE" firstAttribute="bottom" secondItem="Ulf-oi-Pau" secondAttribute="bottom" id="dH5-wO-YZz"/>
                             <constraint firstItem="6rh-B6-ers" firstAttribute="leading" secondItem="BfQ-Og-bzX" secondAttribute="leading" constant="6" id="gWE-4b-0JV"/>
                             <constraint firstItem="azd-LU-dRl" firstAttribute="centerX" secondItem="GSN-kQ-Uou" secondAttribute="centerX" id="gsc-4x-KZq"/>
-                            <constraint firstItem="fu5-8p-iOM" firstAttribute="leading" secondItem="GSN-kQ-Uou" secondAttribute="leading" constant="12" id="lzy-h0-iqa"/>
                             <constraint firstItem="aRI-4D-EsY" firstAttribute="leading" secondItem="BfQ-Og-bzX" secondAttribute="leading" id="nwB-od-v6b"/>
                             <constraint firstAttribute="trailing" secondItem="aRI-4D-EsY" secondAttribute="trailing" id="p1C-tc-8qI"/>
                             <constraint firstItem="rRa-JV-K4c" firstAttribute="top" secondItem="P4u-PK-5XA" secondAttribute="bottom" constant="6" id="qaW-g6-esh"/>
@@ -826,6 +810,14 @@ Nice to Meet you My Name is Honux</string>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <size key="freeformSize" width="350" height="400"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="6rh-B6-ers" id="co4-9S-0Yz"/>
+                        <outlet property="microphoneButton" destination="azd-LU-dRl" id="1Hw-jU-ttD"/>
+                        <outlet property="originSendButton" destination="h8M-6R-f59" id="e7o-ek-126"/>
+                        <outlet property="originTextView" destination="rRa-JV-K4c" id="hWu-RS-B4Y"/>
+                        <outlet property="translatedSendButton" destination="Pti-V4-ICE" id="idB-sX-YlI"/>
+                        <outlet property="translatedTextView" destination="Ulf-oi-Pau" id="AHo-B8-vm9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WxS-q5-ims" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1337,7 +1329,6 @@ Nice to Meet you My Name is Honux</string>
     </scenes>
     <resources>
         <image name="arrow.2.circlepath" catalog="system" width="128" height="101"/>
-        <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="delete.left" catalog="system" width="128" height="104"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>

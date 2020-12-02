@@ -13,10 +13,16 @@ import Toaster
 
 final class SpeechViewController: UIViewController, StoryboardView {
     
-    let microphoneButton = UIButton()
-    let myTextView = UITextView()
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var originSendButton: UIButton!
+    @IBOutlet private weak var translatedSendButton: UIButton!
+    @IBOutlet private weak var microphoneButton: UIButton!
+    @IBOutlet private weak var originTextView: UITextView!
+    @IBOutlet private weak var translatedTextView: UITextView!
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.autoupdatingCurrent)
+    weak var delegate: SpeechViewDelegate?
+    
+    private let speechRecognizer = SFSpeechRecognizer(locale: UserDataProvider().language.locale)
     private let audioEngine = AVAudioEngine()
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -26,6 +32,8 @@ final class SpeechViewController: UIViewController, StoryboardView {
     override func viewDidLoad() {
         super.viewDidLoad()
         speechRecognizer?.delegate = self
+        reactor = SpeechViewReactor()
+        bind()
     }
     
     func bind(reactor: SpeechViewReactor) {
@@ -34,6 +42,15 @@ final class SpeechViewController: UIViewController, StoryboardView {
                 self?.microphoneButtonTapped()
             }
             .subscribe()
+            .disposed(by: disposeBag)
+    }
+    
+    func bind() {
+        cancelButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                self?.dismiss()
+            })
             .disposed(by: disposeBag)
     }
     
@@ -51,7 +68,7 @@ final class SpeechViewController: UIViewController, StoryboardView {
         audioEngine.stop()
         recognitionRequest?.endAudio()
         // button microphone 모양
-        microphoneButton.setTitle("start", for: .normal)
+        microphoneButton.setTitle("", for: .normal)
     }
     
     private func startSpeechRecognizing() {
@@ -96,7 +113,7 @@ final class SpeechViewController: UIViewController, StoryboardView {
             var isFinal = false
             
             if result != nil {
-                self.myTextView.text = result?.bestTranscription.formattedString
+                self.originTextView.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
             
@@ -123,6 +140,21 @@ final class SpeechViewController: UIViewController, StoryboardView {
         } catch {
             debugPrint(error.localizedDescription)
         }
+    }
+    
+    private func dismiss() {
+        guard let superview = view.superview else { return }
+        UIView.transition(with: superview,
+                          duration: 0.4,
+                          options: [.transitionCrossDissolve]) { [weak self] in
+            self?.view.removeFromSuperview()
+        } completion: { [weak self] _ in
+            self?.delegate?.speechViewDidDismiss()
+        }
+        
+        view.removeFromSuperview()
+        removeFromParent()
+        dismiss(animated: true)
     }
 }
 
