@@ -20,21 +20,26 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var joinChatRoomButton: UIButton!
     @IBOutlet private weak var makeChatRoomButton: UIButton!
     
-    //UserDefault의 값으로 변경
-    private var languageSelection = BehaviorSubject(value: Language.korean)
+    private var languageSelection: BehaviorSubject<Language>
     private let alertFactory: AlertFactoryProviding
   
     weak var coordinator: MainCoordinator?
     var disposeBag = DisposeBag()
     
-    init?(coder: NSCoder, reactor: HomeViewReactor, alertFactory: AlertFactoryProviding) {
+    init?(coder: NSCoder,
+          reactor: HomeViewReactor,
+          alertFactory: AlertFactoryProviding,
+          currentLanguage: Language) {
+        
         self.alertFactory = alertFactory
+        languageSelection = BehaviorSubject(value: currentLanguage)
         super.init(coder: coder)
         self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
         alertFactory = AlertFactory()
+        languageSelection = BehaviorSubject(value: Language.english)
         super.init(coder: coder)
     }
     
@@ -65,10 +70,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .map { Reactor.Action.languageSelected($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-//        joinChatRoomButton.rx.tap
-//            .map { Reactor.Action. }
-        
+            
         makeChatRoomButton.rx.tap
             .map { Reactor.Action.makeChatRoomButtonTapped }
             .bind(to: reactor.action)
@@ -87,6 +89,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.needShake }
+            .distinctUntilChanged()
             .filter { $0 }
             .do { [weak self] _ in
                 self?.nickNameTextField.shake()
@@ -103,7 +106,7 @@ final class HomeViewController: UIViewController, StoryboardView {
         reactor.state.compactMap { $0.createRoomResponse }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
-                self?.moveToChat(userId: $0.userId, roomId: $0.roomId)
+                self?.coordinator?.showChat(roomID: $0.roomId, code: $0.code)
             })
             .disposed(by: disposeBag)
         
@@ -148,10 +151,6 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     private func alert(message: String) {
         present(alertFactory.alert(message: message), animated: true)
-    }
-    
-    private func moveToChat(userId: Int, roomId: Int) {
-        coordinator?.showChat(roomID: roomId)
     }
 }
 

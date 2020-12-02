@@ -17,7 +17,7 @@ final class ChatCodeInputReactor: Reactor {
     enum Mutation {
         case setCodeInput(String)
         case removeCodeInput
-        case joinChatRoom(JoinChatResponse)
+        case joinChatRoom(ChatRoomInfo)
         case alertError(JoinChatError)
         case clearState
     }
@@ -25,14 +25,14 @@ final class ChatCodeInputReactor: Reactor {
     struct State {
         var codeInput: [String]
         var cusor: Int
-        var roomId: Int?
         var errorMessage: String?
-        var joinChatResponse: JoinChatResponse?
+        var chatRoomInfo: ChatRoomInfo?
     }
     
     private let maxCodeLength = 6
     private let networkService: NetworkServiceProviding
     private var userData: UserDataProviding
+    
     let initialState: State
     
     init(networkService: NetworkServiceProviding,
@@ -72,9 +72,8 @@ final class ChatCodeInputReactor: Reactor {
         case .removeCodeInput:
             state.cusor = (state.cusor <= 0) ? 0 : state.cusor - 1
             state.codeInput[state.cusor] = ""
-        case .joinChatRoom(let response):
-            state.roomId = response.roomId
-            state.joinChatResponse = response
+        case .joinChatRoom(let roomInfo):
+            state.chatRoomInfo = roomInfo
         case .alertError(let error):
             state.errorMessage = error.message
         case .clearState:
@@ -87,10 +86,10 @@ final class ChatCodeInputReactor: Reactor {
         let code = state.codeInput.reduce("") { $0 + $1 } + lastInput
         return networkService.enterRoom(user: userData.user, code: code)
             .asObservable()
-            .do(onNext: { [weak self] in
-                self?.userData.id = $0.userId
-            })
-            .map { Mutation.joinChatRoom($0) }
+            .do(onNext: { [weak self] in 
+                    self?.userData.id = $0.userId 
+             })
+            .map { Mutation.joinChatRoom(ChatRoomInfo(roomID: $0.roomId, code: code)) }
             .catchError { [weak self] in
                 guard let self = self else {
                     return .just(Mutation.alertError(.networkError))

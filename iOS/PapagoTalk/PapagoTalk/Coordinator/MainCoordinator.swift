@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator {
+final class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     var networkService: NetworkServiceProviding
@@ -34,7 +34,8 @@ class MainCoordinator: Coordinator {
                 let reactor = HomeViewReactor(networkService: networkService, userData: userData)
                 return HomeViewController(coder: coder,
                                           reactor: reactor,
-                                          alertFactory: alertFactory)
+                                          alertFactory: alertFactory,
+                                          currentLanguage: userData.language)
             }
         )
         viewController.coordinator = self
@@ -44,19 +45,20 @@ class MainCoordinator: Coordinator {
 
 extension MainCoordinator {
     
-    func codeInputToChat(roomID: Int) {
+    func codeInputToChat(roomID: Int, code: String) {
         navigationController.presentedViewController?.dismiss(animated: true, completion: { [weak self] in
-            self?.showChat(roomID: roomID)
+            self?.showChat(roomID: roomID, code: code)
         })
     }
     
-    func showChat(roomID: Int) {
+    func showChat(roomID: Int, code: String) {
         let viewController = storyboard.instantiateViewController(
             identifier: ChatViewController.identifier,
             creator: { [unowned self] coder -> ChatViewController? in
                 let reactor = ChatViewReactor(networkService: networkService,
                                               userData: userData,
-                                              roomID: roomID)
+                                              roomID: roomID,
+                                              code: code)
                 return ChatViewController(coder: coder, reactor: reactor)
             }
         )
@@ -77,7 +79,7 @@ extension MainCoordinator {
         viewController.coordinator = self
         navigationController.present(viewController, animated: true)
     }
-    
+  
     func showChatDrawer(roomID: Int, roomCode: String) -> ChatDrawerViewController {
         let viewController = storyboard.instantiateViewController(
             identifier: ChatDrawerViewController.identifier,

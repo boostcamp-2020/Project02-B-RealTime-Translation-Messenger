@@ -25,8 +25,9 @@ final class ChatViewReactor: Reactor {
     struct State {
         var messageBox: MessageBox
         var sendResult: Bool = true
+        var roomCode: String
         var toggleDrawer: ToggleDrawer
-        
+     
         struct ToggleDrawer: Equatable {
             var drawerState: Bool
             var roomID: Int
@@ -36,13 +37,19 @@ final class ChatViewReactor: Reactor {
     private let networkService: NetworkServiceProviding
     private let userData: UserDataProviding
     private let roomID: Int
+    
     let initialState: State
     
-    init(networkService: NetworkServiceProviding, userData: UserDataProviding, roomID: Int) {
+    init(networkService: NetworkServiceProviding,
+         userData: UserDataProviding,
+         roomID: Int,
+         code: String) {
+      
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
-        initialState = State(messageBox: MessageBox(),
+        initialState = State(messageBox: MessageBox(userID: userData.id),
+                             roomCode: code,
                              toggleDrawer: State.ToggleDrawer(drawerState: false, roomID: roomID))
     }
     
@@ -90,7 +97,7 @@ final class ChatViewReactor: Reactor {
                                     timeStamp: time)
         messages.append(originMessage)
         
-        if originMessage.type == .received {
+        if newMessage.user.id != userData.id {
             let translatedMessage = Message(id: newMessage.id,
                                             of: translateResult.translatedText,
                                             by: sender,

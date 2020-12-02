@@ -27,7 +27,6 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
     }
     
     required init?(coder: NSCoder) {
-        //FatalError?
         alertFactory = AlertFactory()
         super.init(coder: coder)
     }
@@ -58,10 +57,10 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
                 .disposed(by: disposeBag)
         }
         
-        reactor.state.compactMap { $0.joinChatResponse }
+        reactor.state.compactMap { $0.chatRoomInfo }
             .distinctUntilChanged()
-            .do(onNext: { [weak self] response in
-                self?.coordinator?.codeInputToChat(roomID: response.roomId)
+            .do(onNext: { [weak self] roomInfo in
+                self?.coordinator?.codeInputToChat(roomID: roomInfo.roomID, code: roomInfo.code)
             })
             .subscribe()
             .disposed(by: disposeBag)
@@ -83,7 +82,6 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
             .asDriver()
             .drive(onNext: { [weak self] _ in self?.dismiss(animated: true) })
             .disposed(by: disposeBag)
-        
     }
     
     private func alert(message: String) {

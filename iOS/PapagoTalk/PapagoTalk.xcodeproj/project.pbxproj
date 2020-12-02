@@ -32,6 +32,9 @@
 		995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D0257621B700C15AC7 /* UserDataProvider.swift */; };
 		995BE9D525762AC500C15AC7 /* UserDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D425762AC500C15AC7 /* UserDataProviding.swift */; };
 		995BE9F72576350A00C15AC7 /* TranslatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9F62576350A00C15AC7 /* TranslatedResult.swift */; };
+		996479372576854900CFF202 /* MessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479362576854900CFF202 /* MessageText.swift */; };
+		9964793B2576901200CFF202 /* InputBarTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964793A2576901200CFF202 /* InputBarTextView.swift */; };
+		9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964795225769BD500CFF202 /* ChatRoomInfo.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
@@ -117,6 +120,9 @@
 		995BE9D0257621B700C15AC7 /* UserDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
 		995BE9D425762AC500C15AC7 /* UserDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProviding.swift; sourceTree = "<group>"; };
 		995BE9F62576350A00C15AC7 /* TranslatedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedResult.swift; sourceTree = "<group>"; };
+		996479362576854900CFF202 /* MessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageText.swift; sourceTree = "<group>"; };
+		9964793A2576901200CFF202 /* InputBarTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarTextView.swift; sourceTree = "<group>"; };
+		9964795225769BD500CFF202 /* ChatRoomInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomInfo.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
@@ -283,6 +289,8 @@
 				BB9A86A3257487C800FE14D6 /* MessageCell.swift */,
 				996C4E91257005C20015F9F4 /* SentMessageCell.swift */,
 				996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */,
+				996479362576854900CFF202 /* MessageText.swift */,
+				9964793A2576901200CFF202 /* InputBarTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,6 +377,7 @@
 				BBEA1A5F256F46FE009B8B5F /* User.swift */,
 				995BE9D0257621B700C15AC7 /* UserDataProvider.swift */,
 				995BE9D425762AC500C15AC7 /* UserDataProviding.swift */,
+				9964795225769BD500CFF202 /* ChatRoomInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -676,11 +685,13 @@
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
+				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
 				996A1433256D040B00F21215 /* ImageFactory.swift in Sources */,
 				996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */,
+				9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */,
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
@@ -705,6 +716,7 @@
 				BB9A86A02574879500FE14D6 /* ChatDrawerUserCell.swift in Sources */,
 				996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */,
 				996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */,
+				9964793B2576901200CFF202 /* InputBarTextView.swift in Sources */,
 				BBE140772573D374000B0604 /* DateFormatter+.swift in Sources */,
 				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
 				990DE9512573499500340A72 /* AlertFactoryProviding.swift in Sources */,
