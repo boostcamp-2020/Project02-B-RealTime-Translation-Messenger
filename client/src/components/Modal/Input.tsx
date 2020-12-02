@@ -7,11 +7,12 @@ interface Props {
   value?: string;
   onChange?: () => void;
   type?: string;
+  maxLength?: number;
 }
 
 const Container = styled.input`
   width: 15%;
-  height: 100px;
+  height: 80px;
   padding: 0px 15px;
   border: 0;
   border-radius: ${(props) => props.theme.borderRadiusSmall};
@@ -22,13 +23,21 @@ const Container = styled.input`
   text-align: center;
 `;
 
-const Input: FC<Props> = ({ placeholder, required, value, onChange, type }) => (
+const Input: FC<Props> = ({
+  placeholder,
+  required,
+  value,
+  onChange,
+  type,
+  maxLength,
+}) => (
   <Container
     placeholder={placeholder}
     required={required}
     value={value}
     onChange={onChange}
     type={type}
+    maxLength={maxLength}
   />
 );
 
