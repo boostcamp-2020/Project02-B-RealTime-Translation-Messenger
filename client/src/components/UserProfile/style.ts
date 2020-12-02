@@ -12,7 +12,6 @@ export default {
     height: 16rem;
 
     background: ${(props) => props.theme.whiteColor};
-    box-sizing: border-box;
     border: ${(props) => props.theme.boxBorder};
     border-radius: 50%;
   `,

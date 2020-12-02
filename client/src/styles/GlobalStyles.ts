@@ -22,9 +22,6 @@ export default createGlobalStyle`
     background: inherit;
     border: 0;
     outline: none;
-    &:focus {
-      outline: none;
-    }
   }
   button {
     padding: 0;

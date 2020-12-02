@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
+import { Sun, Moon } from '@components/Icons';
 import GlobalStyles from './styles/GlobalStyles';
 import { lightTheme, darkTheme } from './styles/Theme';
-import { Sun, Moon } from './components/Icons';
 import Routes from './routes';
 
 const Button = styled.button`
