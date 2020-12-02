@@ -25,7 +25,12 @@ final class ChatViewReactor: Reactor {
     struct State {
         var messageBox: MessageBox
         var sendResult: Bool = true
-        var drawerState: Bool
+        var toggleDrawer: ToggleDrawer
+        
+        struct ToggleDrawer: Equatable {
+            var drawerState: Bool
+            var roomID: Int
+        }
     }
     
     private let networkService: NetworkServiceProviding
@@ -37,24 +42,16 @@ final class ChatViewReactor: Reactor {
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
-        initialState = State(messageBox: MessageBox(), drawerState: false)
+        initialState = State(messageBox: MessageBox(),
+                             toggleDrawer: State.ToggleDrawer(drawerState: false, roomID: roomID))
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .subscribeNewMessages:
-            return networkService.getMessage(roomId: roomID, language: userData.language)
-                .compactMap { $0.newMessage }
-                .compactMap { [weak self] in self?.seperateMessage(newMessage: $0) }
-                .map { Mutation.appendNewMessage($0) }
-
+            return subscribeMessages()
         case .sendMessage(let message):
-            return networkService.sendMessage(text: message,
-                                              source: userData.language.code,
-                                              userId: userData.id,
-                                              roomId: roomID)
-                .asObservable()
-                .map { Mutation.setSendResult($0.createMessage) }
+            return requestSendMessage(message: message)
         case .chatDrawerButtonTapped:
             return Observable.just(Mutation.toggleDrawerState)
         }
@@ -69,7 +66,7 @@ final class ChatViewReactor: Reactor {
         case .setSendResult(let isSuccess):
             state.sendResult = isSuccess
         case .toggleDrawerState:
-            state.drawerState.toggle()
+            state.toggleDrawer.drawerState.toggle()
         }
         return state
     }
@@ -77,7 +74,7 @@ final class ChatViewReactor: Reactor {
     private func seperateMessage(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message] {
         guard let timeStamp = newMessage.createdAt,
               let json = newMessage.text.data(using: .utf8),
-              let translateResult: TranslateResult = try? json.decoded() else {
+              let translateResult: TranslatedResult = try? json.decoded() else {
             return []
         }
         var messages = [Message]()
@@ -102,5 +99,21 @@ final class ChatViewReactor: Reactor {
             messages.append(translatedMessage)
         }
         return messages
+    }
+    
+    private func subscribeMessages() -> Observable<Mutation> {
+        return networkService.getMessage(roomId: roomID, language: userData.language)
+            .compactMap { $0.newMessage }
+            .compactMap { [weak self] in self?.seperateMessage(newMessage: $0) }
+            .map { Mutation.appendNewMessage($0) }
+    }
+    
+    private func requestSendMessage(message: String) -> Observable<Mutation> {
+        return networkService.sendMessage(text: message,
+                                          source: userData.language.code,
+                                          userId: userData.id,
+                                          roomId: roomID)
+            .asObservable()
+            .map { Mutation.setSendResult($0.createMessage) }
     }
 }
