@@ -47,6 +47,22 @@ final class SpeechViewController: UIViewController, StoryboardView {
         stopSpeechRecognizing()
     }
     
+    private func stopSpeechRecognizing() {
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
+        // button microphone 모양
+        microphoneButton.setTitle("start", for: .normal)
+    }
+    
+    private func startSpeechRecognizing() {
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
+        }
+        configureAVAudioSession()
+        configureRecognitionRequest()
+    }
+    
     
 }
 
