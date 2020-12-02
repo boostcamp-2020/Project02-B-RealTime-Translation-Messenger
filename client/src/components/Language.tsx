@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import LANGUAGE from '../constants/language';
 
 const LanguageWrapper = styled.div`
   text-align: center;
@@ -15,7 +16,6 @@ const LanguageButton = styled.input<{ selected: boolean }>`
   border: ${(props) => props.theme.boxBorder};
   border-radius: ${(props) => props.theme.borderRadius};
   font-size: 1.2rem;
-  box-sizing: border-box;
 
   &:hover {
     color: ${(props) => props.theme.blackColor};
@@ -24,21 +24,21 @@ const LanguageButton = styled.input<{ selected: boolean }>`
 `;
 
 const Language: React.FC = () => {
-  const [lang, setLang] = useState('ko');
+  const [lang, setLang] = useState(LANGUAGE.KO);
 
   return (
     <LanguageWrapper>
       <LanguageButton
         type="button"
         value="한"
-        selected={lang === 'ko'}
-        onClick={() => setLang('ko')}
+        selected={lang === LANGUAGE.KO}
+        onClick={() => setLang(LANGUAGE.KO)}
       />
       <LanguageButton
         type="button"
         value="En"
-        selected={lang === 'en'}
-        onClick={() => setLang('en')}
+        selected={lang === LANGUAGE.EN}
+        onClick={() => setLang(LANGUAGE.EN)}
       />
     </LanguageWrapper>
   );
