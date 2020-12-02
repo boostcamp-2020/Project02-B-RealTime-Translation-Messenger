@@ -8,6 +8,7 @@
 import UIKit
 import ReactorKit
 import RxCocoa
+import Toaster
 
 final class ChatDrawerViewController: UIViewController, StoryboardView {
     
@@ -17,9 +18,18 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     
     var disposeBag = DisposeBag()
     
+    init?(coder: NSCoder, reactor: ChatDrawerViewReactor) {
+        super.init(coder: coder)
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        reactor = ChatDrawerViewReactor()
+        bind()
     }
     
     func bind(reactor: ChatDrawerViewReactor) {
@@ -50,8 +60,21 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             }
             .disposed(by: disposeBag)
         
-        // reactor.state.map { $0.roomCode }
-        // TODO: 클립보드 복사
+        reactor.state.compactMap { $0.roomCode }
+            .distinctUntilChanged()
+            .asObservable()
+            .subscribe(onNext: {
+                UIPasteboard.general.string = $0
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.needToast }
+            .filter { $0 }
+            .do { [weak self] _ in
+                self?.configureToast()
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
         
         reactor.state.map { $0.leaveChatRoom }
             .filter { $0 }
@@ -65,6 +88,11 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
     }
     
+    private func bind() {
+        userListCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+    
     private func configureChatDrawerUserCell(at row: Int, with element: User) -> UICollectionViewCell {
         guard let cell = userListCollectionView.dequeueReusableCell(withReuseIdentifier: ChatDrawerUserCell.identifier,
                                                                     for: IndexPath(row: row, section: .zero)) as? ChatDrawerUserCell else {
@@ -72,5 +100,15 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         }
         cell.configureUserCell(with: element)
         return cell
+    }
+    
+    private func configureToast() {
+        Toast(text: "채팅방 코드가 복사되었습니다.", delay: 0, duration: 2).show()
+    }
+}
+
+extension ChatDrawerViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.frame.width, height: 60)
     }
 }
