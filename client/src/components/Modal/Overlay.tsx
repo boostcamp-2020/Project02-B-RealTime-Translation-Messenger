@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface Props {
   visible: boolean;
+  onClick: () => void;
 }
 
 const Container = styled.div<Props>`
@@ -16,8 +17,8 @@ const Container = styled.div<Props>`
   z-index: 1;
 `;
 
-const Overlay: FC<Props> = ({ visible }) => {
-  return <Container visible={visible} />;
+const Overlay: FC<Props> = ({ visible, onClick }) => {
+  return <Container visible={visible} onClick={onClick} />;
 };
 
 export default Overlay;
