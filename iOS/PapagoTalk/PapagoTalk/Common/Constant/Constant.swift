@@ -12,4 +12,8 @@ struct Constant {
     static let minNickNameLength = 2
     
     static let inputBarTextViewMaxHeight: CGFloat = 90
+    
+    static let speechViewWidth: CGFloat = 350
+    static let speechViewHeight: CGFloat = 400
+    static let speechViewBottomInset: CGFloat = 18
 }
