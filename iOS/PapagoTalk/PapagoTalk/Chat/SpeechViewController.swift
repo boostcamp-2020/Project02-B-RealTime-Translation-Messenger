@@ -63,6 +63,20 @@ final class SpeechViewController: UIViewController, StoryboardView {
         configureRecognitionRequest()
     }
     
+    private func configureAVAudioSession() {
+        let audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try audioSession.setCategory(AVAudioSession.Category.record)
+            try audioSession.setMode(AVAudioSession.Mode.measurement)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            debugPrint(error.localizedDescription)
+            debugPrint("AudioSession setting error")
+            Toast(text: "음성인식 기능의 오류가 발생하였습니다.\n앱을 재시작 해주세요.", delay: 0, duration: 2).show()
+        }
+    }
+    
     
 }
 
