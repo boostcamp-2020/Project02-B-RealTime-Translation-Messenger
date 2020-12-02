@@ -6,7 +6,10 @@ import Button from '../Button';
 
 interface Props {
   visible: boolean;
+  code?: string;
+  onClick?: () => void;
   setVisible?: any; // TODO: 수정하기!
+  setCode?: any; // TODO: 수정하기!
 }
 
 const Wrapper = styled.div<Props>`
@@ -56,7 +59,7 @@ const Text = styled.div`
   font-size: 15px;
 `;
 
-const Modal: FC<Props> = ({ visible, setVisible }) => {
+const Modal: FC<Props> = ({ visible, setVisible, code, setCode }) => {
   const onClickOverlay = () => {
     setVisible(!visible);
   };
@@ -70,7 +73,7 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
             <Text>참여 코드 6자리를 입력해주세요.</Text>
           </ModalHeader>
           <ModalBody>
-            <Code />
+            <Code code={code} setCode={setCode} />
           </ModalBody>
           <ModalFooter>
             <Button text="대화방 입장하기" />
