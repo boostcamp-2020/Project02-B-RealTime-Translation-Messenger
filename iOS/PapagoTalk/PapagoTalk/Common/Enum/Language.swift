@@ -29,6 +29,15 @@ enum Language: String, Codable, CaseIterable {
         }
     }
     
+    var locale: Locale {
+        switch self {
+        case .korean:
+            return Locale(identifier: "ko-KR")
+        case .english:
+            return Locale(identifier: "en-US")
+        }
+    }
+    
     var index: Int {
         switch self {
         case .korean:
