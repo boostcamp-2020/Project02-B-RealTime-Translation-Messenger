@@ -27,6 +27,7 @@ PODS:
   - RxSwift (5.1.1)
   - Starscream (3.1.1)
   - SwiftLint (0.40.1)
+  - Toaster (2.3.0)
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxGesture
   - SwiftLint
+  - Toaster (from `https://github.com/devxoul/Toaster`, branch `master`)
 
 SPEC REPOS:
   trunk:
@@ -54,6 +56,16 @@ SPEC REPOS:
     - SwiftLint
     - WeakMapTable
 
+EXTERNAL SOURCES:
+  Toaster:
+    :branch: master
+    :git: https://github.com/devxoul/Toaster
+
+CHECKOUT OPTIONS:
+  Toaster:
+    :commit: 0fca711c4083cb921cc0893a7a47836358ebf96b
+    :git: https://github.com/devxoul/Toaster
+
 SPEC CHECKSUMS:
   Apollo: 9b386f7bda8f97f4980c939b7d1aa6da30e6602c
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
@@ -66,8 +78,9 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftLint: bbfed21bf4451dcbd0f5cdbee44a18e06cf91b12
+  Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 73c73c080d73d6aa89e6d6f5330683c31066583f
+PODFILE CHECKSUM: 8ae4139089f79db6a65ed206c9aeadd21ea85b9e
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
