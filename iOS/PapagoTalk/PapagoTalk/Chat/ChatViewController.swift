@@ -221,6 +221,8 @@ final class ChatViewController: UIViewController, StoryboardView {
                 return
             }
             chatDrawer.dismiss(animated: false, completion: nil)
+            chatDrawer.view.removeFromSuperview()
+            chatDrawer.removeFromParent()
             self?.chatDrawerViewController = nil
         }
         frameAnimator.startAnimation()
