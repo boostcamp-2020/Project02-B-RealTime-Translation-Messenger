@@ -37,4 +37,15 @@ enum Language: String, Codable, CaseIterable {
             return 1
         }
     }
+    
+    static func codeToLanguage(of code: String) -> Language {
+        switch code {
+        case "ko":
+            return .korean
+        case "en":
+            return .english
+        default:
+            return .english
+        }
+    }
 }
