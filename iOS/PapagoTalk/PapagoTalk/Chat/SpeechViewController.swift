@@ -37,6 +37,16 @@ final class SpeechViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
     }
     
+    func microphoneButtonTapped() {
+        guard audioEngine.isRunning else {
+            startSpeechRecognizing()
+            // button stop 모양
+            microphoneButton.setTitle("stop", for: .normal)
+            return
+        }
+        stopSpeechRecognizing()
+    }
+    
     
 }
 
