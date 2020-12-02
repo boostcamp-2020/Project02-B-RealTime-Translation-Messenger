@@ -9,21 +9,6 @@ import Foundation
 import Apollo
 import RxSwift
 
-protocol NetworkServiceProviding {
-    func sendMessage(text: String,
-                     source: String,
-                     userId: Int,
-                     roomId: Int) -> Maybe<SendMessageMutation.Data>
-    
-    func getMessage(roomId: Int,
-                    language: Language) -> Observable<GetMessageSubscription.Data>
-    
-    func enterRoom(user: User,
-                   code: String) -> Maybe<JoinChatResponse>
-    
-    func createRoom(user: User) -> Maybe<CreateRoomResponse>
-}
-
 class NetworkService: NetworkServiceProviding {
     
     let store = ApolloStore()
@@ -47,7 +32,7 @@ class NetworkService: NetworkServiceProviding {
     )
     
     private(set) lazy var client = ApolloClient(networkTransport: self.splitNetworkTransport, store: store)
-
+    
     func sendMessage(text: String,
                      source: String,
                      userId: Int,
@@ -66,7 +51,6 @@ class NetworkService: NetworkServiceProviding {
                         } else {
                             observer(.completed)
                         }
-                        
                     case let .failure(error):
                         observer(.error(error))
                     }
@@ -85,14 +69,13 @@ class NetworkService: NetworkServiceProviding {
                 resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):
-                      if let errors = gqlResult.errors {
-                          observer.onError(errors.first!)
-                      } else if let data = gqlResult.data {
-                        observer.onNext(data)
-                      }
-
+                        if let errors = gqlResult.errors {
+                            observer.onError(errors.first!)
+                        } else if let data = gqlResult.data {
+                            observer.onNext(data)
+                        }
                     case let .failure(error):
-                      observer.onError(error)
+                        observer.onError(error)
                     }
                 }
             )
@@ -102,9 +85,7 @@ class NetworkService: NetworkServiceProviding {
         }
     }
     
-    func enterRoom(user: User,
-                   code: String) -> Maybe<JoinChatResponse> {
-        
+    func enterRoom(user: User, code: String) -> Maybe<JoinChatResponse> {
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.perform(
                 mutation: EnterRoomMutation(nickName: user.nickName, avatar: user.image, language: user.language.code, code: code),
@@ -154,15 +135,29 @@ class NetworkService: NetworkServiceProviding {
             }
         }
     }
-}
-
-enum NetworkError: Error {
-    case invalidURL
-}
-
-extension String {
-  func asURL() throws -> URL {
-    guard let url = URL(string: self) else { throw NetworkError.invalidURL }
-    return url
-  }
+    
+    func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data> {
+        return Maybe.create { [weak self] observer in
+            let cancellable = self?.client.fetch(
+                query: FindRoomByIdQuery(roomID: roomID),
+                resultHandler: { result in
+                    switch result {
+                    case let .success(gqlResult):
+                        if let errors = gqlResult.errors {
+                            observer(.error(errors.first!))
+                        } else if let data = gqlResult.data {
+                            observer(.success(data))
+                        } else {
+                            observer(.completed)
+                        }
+                    case let .failure(error):
+                        observer(.error(error))
+                    }
+                }
+            )
+            return Disposables.create {
+                cancellable?.cancel()
+            }
+        }
+    }
 }
