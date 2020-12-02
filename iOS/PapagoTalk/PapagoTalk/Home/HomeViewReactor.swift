@@ -119,7 +119,9 @@ final class HomeViewReactor: Reactor {
     private func requestCreateRoom() -> Observable<Mutation> {
         return networkService.createRoom(user: userData.user)
             .asObservable()
-            .do(onNext: { [weak self] in self?.userData.id = $0.userId  })
+            .do(onNext: { [weak self] in
+                self?.userData.id = $0.userId
+            })
             .map { Mutation.createRoom($0) }
             .catchError { _ in
                 .concat([ .just(.alertError(.networkError)),

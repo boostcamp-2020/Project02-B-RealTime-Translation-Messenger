@@ -25,7 +25,6 @@ final class HomeViewController: UIViewController, StoryboardView {
     private let alertFactory: AlertFactoryProviding
   
     weak var coordinator: MainCoordinator?
-  
     var disposeBag = DisposeBag()
     
     init?(coder: NSCoder, reactor: HomeViewReactor, alertFactory: AlertFactoryProviding) {

@@ -87,7 +87,9 @@ final class ChatCodeInputReactor: Reactor {
         let code = state.codeInput.reduce("") { $0 + $1 } + lastInput
         return networkService.enterRoom(user: userData.user, code: code)
             .asObservable()
-            .do(onNext: { [weak self] in self?.userData.id = $0.userId })
+            .do(onNext: { [weak self] in
+                self?.userData.id = $0.userId
+            })
             .map { Mutation.joinChatRoom($0) }
             .catchError { [weak self] in
                 guard let self = self else {
