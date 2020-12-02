@@ -5,9 +5,10 @@ interface Props {
   placeholder?: string;
   required?: boolean;
   value?: string;
-  onChange?: () => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: string;
   maxLength?: number;
+  name?: string;
 }
 
 const Container = styled.input`
@@ -30,6 +31,7 @@ const Input: FC<Props> = ({
   onChange,
   type,
   maxLength,
+  name,
 }) => (
   <Container
     placeholder={placeholder}
@@ -38,6 +40,7 @@ const Input: FC<Props> = ({
     onChange={onChange}
     type={type}
     maxLength={maxLength}
+    name={name}
   />
 );
 
