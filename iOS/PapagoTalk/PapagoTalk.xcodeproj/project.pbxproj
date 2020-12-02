@@ -35,6 +35,7 @@
 		996479372576854900CFF202 /* MessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479362576854900CFF202 /* MessageText.swift */; };
 		9964793B2576901200CFF202 /* InputBarTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964793A2576901200CFF202 /* InputBarTextView.swift */; };
 		9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964795225769BD500CFF202 /* ChatRoomInfo.swift */; };
+		9964797E2577670A00CFF202 /* SpeechRegcognizerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964797D2577670A00CFF202 /* SpeechRegcognizerButton.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
@@ -123,6 +124,7 @@
 		996479362576854900CFF202 /* MessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageText.swift; sourceTree = "<group>"; };
 		9964793A2576901200CFF202 /* InputBarTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarTextView.swift; sourceTree = "<group>"; };
 		9964795225769BD500CFF202 /* ChatRoomInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomInfo.swift; sourceTree = "<group>"; };
+		9964797D2577670A00CFF202 /* SpeechRegcognizerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRegcognizerButton.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */,
 				996479362576854900CFF202 /* MessageText.swift */,
 				9964793A2576901200CFF202 /* InputBarTextView.swift */,
+				9964797D2577670A00CFF202 /* SpeechRegcognizerButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				BB9A86A4257487C800FE14D6 /* MessageCell.swift in Sources */,
 				BB23C0A12576AABB001D74A0 /* NetworkServiceProviding.swift in Sources */,
 				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
+				9964797E2577670A00CFF202 /* SpeechRegcognizerButton.swift in Sources */,
 				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
 				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
 				BB93C290257526DD00C68491 /* MessageType.swift in Sources */,

@@ -719,45 +719,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUb-Gw-ivA">
-                                <rect key="frame" x="0.0" y="816" width="414" height="46"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va8-FQ-vZP">
-                                        <rect key="frame" x="356" y="8" width="42" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="t1d-el-k0J"/>
-                                        </constraints>
-                                        <state key="normal" title="Send">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-12-yAe" customClass="InputBarTextView" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="336" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" priority="250" constant="30" id="SCD-Tw-v2T"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" name="PapagoBlue"/>
-                                <constraints>
-                                    <constraint firstItem="va8-FQ-vZP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AUb-Gw-ivA" secondAttribute="top" constant="8" id="67O-iB-jhl"/>
-                                    <constraint firstAttribute="bottom" secondItem="va8-FQ-vZP" secondAttribute="bottom" constant="8" id="7Is-Oy-K2A"/>
-                                    <constraint firstItem="2E6-12-yAe" firstAttribute="leading" secondItem="AUb-Gw-ivA" secondAttribute="leading" constant="8" id="8Yk-my-OY0"/>
-                                    <constraint firstAttribute="trailing" secondItem="va8-FQ-vZP" secondAttribute="trailing" constant="16" id="Q9W-gi-7ng"/>
-                                    <constraint firstItem="va8-FQ-vZP" firstAttribute="leading" secondItem="2E6-12-yAe" secondAttribute="trailing" constant="12" id="Yao-sb-UBs"/>
-                                    <constraint firstItem="2E6-12-yAe" firstAttribute="top" secondItem="AUb-Gw-ivA" secondAttribute="top" constant="8" id="e2j-k1-Vcf"/>
-                                    <constraint firstAttribute="bottom" secondItem="2E6-12-yAe" secondAttribute="bottom" constant="8" id="wqC-LM-fG5"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-jw-dz3">
                                 <rect key="frame" x="0.0" y="52" width="414" height="764"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -967,10 +928,67 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUb-Gw-ivA">
+                                <rect key="frame" x="0.0" y="816" width="414" height="46"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va8-FQ-vZP">
+                                        <rect key="frame" x="356" y="8" width="42" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="t1d-el-k0J"/>
+                                        </constraints>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-12-yAe" customClass="InputBarTextView" customModule="PapagoTalk" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="336" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="250" constant="30" id="SCD-Tw-v2T"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" name="PapagoBlue"/>
+                                <constraints>
+                                    <constraint firstItem="va8-FQ-vZP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AUb-Gw-ivA" secondAttribute="top" constant="8" id="67O-iB-jhl"/>
+                                    <constraint firstAttribute="bottom" secondItem="va8-FQ-vZP" secondAttribute="bottom" constant="8" id="7Is-Oy-K2A"/>
+                                    <constraint firstItem="2E6-12-yAe" firstAttribute="leading" secondItem="AUb-Gw-ivA" secondAttribute="leading" constant="8" id="8Yk-my-OY0"/>
+                                    <constraint firstAttribute="trailing" secondItem="va8-FQ-vZP" secondAttribute="trailing" constant="16" id="Q9W-gi-7ng"/>
+                                    <constraint firstItem="va8-FQ-vZP" firstAttribute="leading" secondItem="2E6-12-yAe" secondAttribute="trailing" constant="12" id="Yao-sb-UBs"/>
+                                    <constraint firstItem="2E6-12-yAe" firstAttribute="top" secondItem="AUb-Gw-ivA" secondAttribute="top" constant="8" id="e2j-k1-Vcf"/>
+                                    <constraint firstAttribute="bottom" secondItem="2E6-12-yAe" secondAttribute="bottom" constant="8" id="wqC-LM-fG5"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLU-6Y-cJM" customClass="SpeechRegcognizerButton" customModule="PapagoTalk" customModuleProvider="target">
+                                <rect key="frame" x="314" y="716" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="2XJ-Tb-ROq"/>
+                                    <constraint firstAttribute="width" secondItem="nLU-6Y-cJM" secondAttribute="height" multiplier="1:1" id="UPx-k8-Ao4"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="mic" catalog="system" symbolScale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                        <color key="value" name="PapagoGreen"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KeC-AO-te6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="KeC-AO-te6" firstAttribute="trailing" secondItem="nLU-6Y-cJM" secondAttribute="trailing" constant="50" id="AGL-gd-Q4k"/>
+                            <constraint firstItem="AUb-Gw-ivA" firstAttribute="top" secondItem="nLU-6Y-cJM" secondAttribute="bottom" constant="50" id="FMN-yz-0HL"/>
                             <constraint firstItem="KeC-AO-te6" firstAttribute="trailing" secondItem="7RJ-jw-dz3" secondAttribute="trailing" id="Jh1-vT-Iee"/>
                             <constraint firstItem="AUb-Gw-ivA" firstAttribute="top" secondItem="7RJ-jw-dz3" secondAttribute="bottom" id="MBY-Zf-b4J"/>
                             <constraint firstItem="7RJ-jw-dz3" firstAttribute="leading" secondItem="KeC-AO-te6" secondAttribute="leading" id="NG6-Om-ekN"/>
@@ -990,6 +1008,7 @@
                         <outlet property="inputBarTextView" destination="2E6-12-yAe" id="ymH-tU-ioA"/>
                         <outlet property="inputBarTextViewHeight" destination="SCD-Tw-v2T" id="OVk-3v-lgs"/>
                         <outlet property="sendButton" destination="va8-FQ-vZP" id="peW-cj-bOD"/>
+                        <outlet property="sppechRecognizerButton" destination="nLU-6Y-cJM" id="FHC-tc-gae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKB-f7-LDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1171,10 +1190,14 @@
         <image name="arrow.2.circlepath" catalog="system" width="128" height="101"/>
         <image name="delete.left" catalog="system" width="128" height="104"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="mic" catalog="system" width="108" height="128"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <namedColor name="PapagoBlue">
             <color red="0.32899999618530273" green="0.5690000057220459" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PapagoGreen">
+            <color red="0.43900001049041748" green="0.89399999380111694" blue="0.51800000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PapagoSkyBlue">
             <color red="0.36500000953674316" green="0.72500002384185791" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -18,6 +18,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var chatDrawerButton: UIBarButtonItem!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var sppechRecognizerButton: SpeechRegcognizerButton!
     
     private weak var chatDrawerViewController: ChatDrawerViewController!
     private var chatDrawerWidth: CGFloat!
