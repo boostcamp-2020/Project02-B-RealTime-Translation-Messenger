@@ -11,10 +11,10 @@ import RxCocoa
 
 final class ChatCodeInputViewController: UIViewController, StoryboardView {
     
-    @IBOutlet var inputLabels: [UILabel]!
-    @IBOutlet var numberButtons: [UIButton]!
-    @IBOutlet weak var removeButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet private var inputLabels: [UILabel]!
+    @IBOutlet private var numberButtons: [UIButton]!
+    @IBOutlet private weak var removeButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIButton!
     
     weak var coordinator: MainCoordinator?
     var alertFactory: AlertFactoryProviding
@@ -76,7 +76,7 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
             })
             .disposed(by: disposeBag)
     }
-
+    
     private func bind() {
         cancelButton.rx.tap
             .asDriver()

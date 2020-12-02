@@ -15,9 +15,10 @@ final class LanguageSelectionView: UIViewController {
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var confirmButton: UIButton!
     
+    @UserDefault(type: .userInfo, default: User()) var user: User
+    
     var disposeBag = DisposeBag()
     var pickerViewObserver: BehaviorSubject<Language>?
-    @UserDefault(type: .userInfo, default: User()) var user: User
     
     override func viewDidLoad() {
         configurePickerView()

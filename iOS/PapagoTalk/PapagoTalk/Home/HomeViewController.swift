@@ -22,7 +22,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     private var languageSelection: BehaviorSubject<Language>
     private let alertFactory: AlertFactoryProviding
-  
+    
     weak var coordinator: MainCoordinator?
     var disposeBag = DisposeBag()
     
@@ -70,7 +70,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .map { Reactor.Action.languageSelected($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-            
+        
         makeChatRoomButton.rx.tap
             .map { Reactor.Action.makeChatRoomButtonTapped }
             .bind(to: reactor.action)
@@ -121,7 +121,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             })
             .disposed(by: disposeBag)
     }
-        
+    
     private func bind() {
         languageSelectionButton.rx.tap
             .asDriver()

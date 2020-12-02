@@ -27,7 +27,7 @@ final class ChatViewReactor: Reactor {
         var sendResult: Bool = true
         var roomCode: String
         var toggleDrawer: ToggleDrawer
-     
+        
         struct ToggleDrawer: Equatable {
             var drawerState: Bool
             var roomID: Int
@@ -44,7 +44,7 @@ final class ChatViewReactor: Reactor {
          userData: UserDataProviding,
          roomID: Int,
          code: String) {
-      
+        
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID

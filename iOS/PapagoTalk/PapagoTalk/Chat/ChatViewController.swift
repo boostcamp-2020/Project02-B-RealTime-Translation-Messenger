@@ -71,7 +71,7 @@ final class ChatViewController: UIViewController, StoryboardView {
                 var code = $0
                 code.insert("-", at: code.index(code.startIndex, offsetBy: 3))
                 self?.navigationItem.title = code
-                })
+            })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.messageBox.messages }
