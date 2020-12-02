@@ -90,6 +90,27 @@ final class SpeechViewController: UIViewController, StoryboardView {
         configureRecognitionTask(by: recognitionRequest, on: inputNode)
     }
     
+    private func configureRecognitionTask(by request: SFSpeechAudioBufferRecognitionRequest,
+                                          on inputNode: AVAudioInputNode) {
+        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
+            var isFinal = false
+            
+            if result != nil {
+                self.myTextView.text = result?.bestTranscription.formattedString
+                isFinal = (result?.isFinal)!
+            }
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: .zero)
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                self.microphoneButton.isEnabled = true
+            }
+        })
+        configureAdditionalSpeechInput(on: inputNode)
+    }
+    
     
 }
 
