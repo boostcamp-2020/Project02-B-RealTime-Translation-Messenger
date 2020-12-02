@@ -8,6 +8,7 @@
 import UIKit
 import ReactorKit
 import RxCocoa
+import Toaster
 
 final class ChatDrawerViewController: UIViewController, StoryboardView {
     
@@ -17,10 +18,18 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     
     var disposeBag = DisposeBag()
     
+    init?(coder: NSCoder, reactor: ChatDrawerViewReactor) {
+        super.init(coder: coder)
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewSize()
-        reactor = ChatDrawerViewReactor()
+        bind()
     }
     
     func bind(reactor: ChatDrawerViewReactor) {
@@ -51,12 +60,26 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             }
             .disposed(by: disposeBag)
         
-        // reactor.state.map { $0.roomCode }
+        reactor.state.compactMap { $0.roomCode }
+            .distinctUntilChanged()
+            .asObservable()
+            .subscribe(onNext: {
+                UIPasteboard.general.string = $0
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.needToast }
+            .filter { $0 }
+            .do { [weak self] _ in
+                self?.configureToast()
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
         
         reactor.state.map { $0.leaveChatRoom }
             .filter { $0 }
             .do { [weak self] _ in
-                // TODO: coordinator완성된 후 수정
+                // TODO: 알림 메시지?
                 self?.dismiss(animated: true, completion: {
                     self?.navigationController?.popViewController(animated: true)
                 })
@@ -65,8 +88,9 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
     }
     
-    private func configureViewSize() {
-        
+    private func bind() {
+        userListCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     
     private func configureChatDrawerUserCell(at row: Int, with element: User) -> UICollectionViewCell {
@@ -78,6 +102,13 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         return cell
     }
     
-    // view did load -> view 크기 계산 + Animation + 흐림 Effect
-    // tap gesture, pan gesture
+    private func configureToast() {
+        Toast(text: "채팅방 코드가 복사되었습니다.", delay: 0, duration: 2).show()
+    }
+}
+
+extension ChatDrawerViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.frame.width, height: 60)
+    }
 }

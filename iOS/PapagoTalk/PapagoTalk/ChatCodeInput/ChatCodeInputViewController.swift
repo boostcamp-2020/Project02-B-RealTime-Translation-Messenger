@@ -16,9 +16,9 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
     @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
-    var disposeBag = DisposeBag()
-    var alertFactory: AlertFactoryProviding
     weak var coordinator: MainCoordinator?
+    var alertFactory: AlertFactoryProviding
+    var disposeBag = DisposeBag()
     
     init?(coder: NSCoder, reactor: ChatCodeInputReactor, alertFactory: AlertFactoryProviding) {
         self.alertFactory = alertFactory

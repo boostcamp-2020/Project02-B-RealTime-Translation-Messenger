@@ -17,3 +17,6 @@
 //Mark: - JoinChat
 "Chat Room is Doesn't Exist \n Or already Deleted" = "Chat Room is Doesn't Exist \n Or already Deleted";
 "Please Check your Network Connection" = "Please Check your Network Connection";
+
+//MARK: - DateFormatter
+"yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";

@@ -12,6 +12,7 @@ target 'PapagoTalk' do
   pod "Kingfisher"
   pod "RxGesture"
   pod "RxDataSources"
+  pod "Toaster", :git => 'https://github.com/devxoul/Toaster', :branch => 'master'
   # Pods for PapagoTalk
 
   target 'PapagoTalkTests' do

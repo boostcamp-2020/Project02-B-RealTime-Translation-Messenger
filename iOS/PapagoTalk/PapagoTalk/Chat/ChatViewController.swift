@@ -25,8 +25,8 @@ final class ChatViewController: UIViewController, StoryboardView {
     private var runningAnimations = [UIViewPropertyAnimator]()
     private var animationProgressWhenInterrupted = CGFloat.zero
     
-    var disposeBag = DisposeBag()
     weak var coordinator: MainCoordinator?
+    var disposeBag = DisposeBag()
     
     init?(coder: NSCoder, reactor: ChatViewReactor) {
         super.init(coder: coder)
@@ -95,7 +95,7 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe()
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.drawerState }
+        reactor.state.map { ($0.toggleDrawer) }
             .distinctUntilChanged()
             .do { [weak self] _ in
                 if !(self?.runningAnimations.isEmpty ?? true) {
@@ -103,7 +103,8 @@ final class ChatViewController: UIViewController, StoryboardView {
                 }
             }
             .subscribe(onNext: { [weak self] in
-                ($0) ? self?.configureChatDrawer() : self?.configureAnimation(state: .closed, duration: 0.5)
+                ($0.drawerState) ?
+                    self?.configureChatDrawer(roomID: $0.roomID) : self?.configureAnimation(state: .closed, duration: 0.5)
             })
             .disposed(by: disposeBag)
     }
@@ -145,14 +146,12 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     // MARK: - configure ChatDrawer
     
-    private func configureChatDrawer() {
+    private func configureChatDrawer(roomID: Int) {
         guard chatDrawerViewController == nil else {
             return
         }
         configureVisualEffectView()
-
-        chatDrawerViewController =
-            storyboard?.instantiateViewController(identifier: ChatDrawerViewController.identifier)
+        chatDrawerViewController = coordinator?.showChatDrawer(roomID: roomID, roomCode: "")
         addChild(chatDrawerViewController)
         view.addSubview(chatDrawerViewController.view)
         
@@ -191,7 +190,6 @@ final class ChatViewController: UIViewController, StoryboardView {
              .map { $0.touchesBegan(.init(), with: .init()) }
              .bind(to: chatDrawerButton.rx.tap.asControlEvent())
              .disposed(by: disposeBag)
-         
         */
     }
     

@@ -49,7 +49,6 @@ extension MainCoordinator {
         navigationController.presentedViewController?.dismiss(animated: true, completion: { [weak self] in
             self?.showChat(roomID: roomID, code: code)
         })
-        
     }
     
     func showChat(roomID: Int, code: String) {
@@ -79,5 +78,20 @@ extension MainCoordinator {
         )
         viewController.coordinator = self
         navigationController.present(viewController, animated: true)
+    }
+  
+    func showChatDrawer(roomID: Int, roomCode: String) -> ChatDrawerViewController {
+        let viewController = storyboard.instantiateViewController(
+            identifier: ChatDrawerViewController.identifier,
+            creator: { [unowned self] coder -> ChatDrawerViewController? in
+                let reactor = ChatDrawerViewReactor(networkService: networkService,
+                                                    userData: userData,
+                                                    roomID: roomID,
+                                                    roomCode: roomCode)
+                return ChatDrawerViewController(coder: coder,
+                                                reactor: reactor)
+            }
+        )
+        return viewController
     }
 }

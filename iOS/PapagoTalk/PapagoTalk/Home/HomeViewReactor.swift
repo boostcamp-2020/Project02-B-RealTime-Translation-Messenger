@@ -68,7 +68,9 @@ final class HomeViewReactor: Reactor {
         case .languageSelected(let language):
             return .just(Mutation.setLanguage(language))
         case .makeChatRoomButtonTapped:
-            return currentState.isNickNameValid ? requestCreateRoom() : .concat([.just(.alertError(.invalidNickName)), .just(.clearErrorMessage)])
+            return currentState.isNickNameValid ?
+                requestCreateRoom() : .concat([.just(.alertError(.invalidNickName)),
+                                               .just(.clearErrorMessage)])
         }
     }
     
@@ -118,7 +120,9 @@ final class HomeViewReactor: Reactor {
     private func requestCreateRoom() -> Observable<Mutation> {
         return networkService.createRoom(user: userData.user)
             .asObservable()
-            .do(onNext: { [weak self] in self?.userData.id = $0.userId })
+            .do(onNext: { [weak self] in 
+                 self?.userData.id = $0.userId 
+             })
             .map { Mutation.createRoom($0) }
             .catchError { _ in
                 .concat([ .just(.alertError(.networkError)),
