@@ -23,6 +23,11 @@ export default createGlobalStyle`
     border: 0;
     outline: none;
   }
+  input[type="button"] {
+    &:hover {
+      cursor: pointer;
+    }
+  }
   button {
     padding: 0;
     background: none;
