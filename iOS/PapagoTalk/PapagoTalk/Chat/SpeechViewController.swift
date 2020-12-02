@@ -111,7 +111,19 @@ final class SpeechViewController: UIViewController, StoryboardView {
         configureAdditionalSpeechInput(on: inputNode)
     }
     
-    
+    private func configureAdditionalSpeechInput(on inputNode: AVAudioInputNode) {
+        let recordingFormat = inputNode.outputFormat(forBus: .zero)
+        inputNode.installTap(onBus: .zero, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            debugPrint(error.localizedDescription)
+        }
+    }
 }
 
 extension SpeechViewController: SFSpeechRecognizerDelegate {
