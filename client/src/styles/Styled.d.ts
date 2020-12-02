@@ -9,6 +9,8 @@ declare module 'styled-components' {
     blueColor: string;
     greenColor: string;
     borderRadius: string;
+    borderRadiusSmall: string;
     boxBorder: string;
+    Overlay: string;
   }
 }
