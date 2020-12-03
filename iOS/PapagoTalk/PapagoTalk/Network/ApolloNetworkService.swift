@@ -9,20 +9,20 @@ import Foundation
 import Apollo
 import RxSwift
 
-class NetworkService: NetworkServiceProviding {
+class ApolloNetworkService: NetworkServiceProviding {
     
     let store = ApolloStore()
-    var socketURL = try? APIEndPoint.socketURL.asURL()
-    var requestUR = try? APIEndPoint.requestURL.asURL()
+    var socketURL = APIEndPoint.socketURL
+    var requestURL = APIEndPoint.requestURL
     
     private lazy var webSocketTransport: WebSocketTransport = {
-        let url = URL(string: APIEndPoint.socketURL)!
+        let url = socketURL
         let request = URLRequest(url: url)
         return WebSocketTransport(request: request)
     }()
     
     private lazy var normalTransport: RequestChainNetworkTransport = {
-        let url = URL(string: APIEndPoint.requestURL)!
+        let url = requestURL
         return RequestChainNetworkTransport(interceptorProvider: LegacyInterceptorProvider(store: store), endpointURL: url)
     }()
     

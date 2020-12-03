@@ -11,7 +11,6 @@ extension Encodable {
     
     func encoded() -> Data {
         let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
         guard let encodedData = try? encoder.encode(self) else {
             return Data()
         }
