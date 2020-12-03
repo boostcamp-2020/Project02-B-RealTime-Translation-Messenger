@@ -97,7 +97,7 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe()
             .disposed(by: disposeBag)
         
-        reactor.state.map { ($0.toggleDrawer) }
+        reactor.state.map { $0.toggleDrawer }
             .distinctUntilChanged()
             .do { [weak self] _ in
                 if !(self?.runningAnimations.isEmpty ?? true) {
@@ -249,6 +249,7 @@ final class ChatViewController: UIViewController, StoryboardView {
                 visualEffectView.effect = UIBlurEffect(style: .dark)
                 visualEffectView.alpha = 0.3
             case .closed:
+                visualEffectView.removeFromSuperview()
                 visualEffectView.effect = nil
             }
         }
