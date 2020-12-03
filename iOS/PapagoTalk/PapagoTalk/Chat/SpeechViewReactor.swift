@@ -13,25 +13,29 @@ final class SpeechViewReactor: Reactor {
     enum Action {
         case microphoneButtonTapped
         case speechTextChanged(String)
+        case originTextChanged(String)
     }
     
     enum Mutation {
         case setSpeechRecognition(String)
-        case setTranslation
+        case setOriginText(String)
+        case setTranslatedText(String)
     }
     
     struct State {
         var speechRecognizedText: String
+        var originText: String
         var translatedText: String
     }
     
     private let speechManager = SpeechManager()
     private let translationManager = PapagoAPIManager()
+    private let userData = UserDataProvider()
     let initialState: State
     var disposeBag = DisposeBag()
     
     init() {
-        initialState = State(speechRecognizedText: "", translatedText: "...")
+        initialState = State(speechRecognizedText: "", originText: "", translatedText: "...")
         bind()
     }
     
@@ -39,9 +43,14 @@ final class SpeechViewReactor: Reactor {
         switch action {
         case .microphoneButtonTapped:
             speechManager.speechToText()
-            return Observable.just(Mutation.setSpeechRecognition(""))
+            return .just(Mutation.setSpeechRecognition(""))
         case .speechTextChanged(let output):
-            return Observable.just(Mutation.setSpeechRecognition(output))
+            return .just(Mutation.setSpeechRecognition(output))
+        case .originTextChanged(let input):
+            return .concat([
+                translate(text: input),
+                .just(Mutation.setOriginText(input))
+            ])
         }
     }
     
@@ -51,8 +60,10 @@ final class SpeechViewReactor: Reactor {
         switch mutation {
         case .setSpeechRecognition(let output):
             state.speechRecognizedText = output
-        case .setTranslation:
-            state.translatedText = ""
+        case .setTranslatedText(let output):
+            state.translatedText = output
+        case .setOriginText(let output):
+            state.originText = output
         }
         return state
     }
@@ -62,5 +73,15 @@ final class SpeechViewReactor: Reactor {
             .map { Action.speechTextChanged($0) }
             .bind(to: action)
             .disposed(by: disposeBag)
+    }
+    
+    private func translate(text: String) -> Observable<Mutation> {
+        let oppositeLanguage: Language = userData.language == .korean ? .english : .korean
+        return translationManager
+            .requestTranslation(request: TranslationRequest(source: userData.language.code,
+                                                            target: oppositeLanguage.code,
+                                                            text: text))
+            .asObservable()
+            .map { Mutation.setTranslatedText($0) }
     }
 }

@@ -20,7 +20,6 @@ final class SpeechViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var microphoneButton: UIButton!
     
     weak var delegate: SpeechViewDelegate?
-    let papago = PapagoAPIManager() //
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -37,22 +36,20 @@ final class SpeechViewController: UIViewController, StoryboardView {
         
         originTextView.rx.text
             .orEmpty
+            .filter { !$0.isEmpty }
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
-            .do(onNext: { [weak self] in
-                self?.papago.requestTranslation(request: TranslationRequest(source: "ko",
-                                                                           target: "en",
-                                                                           text: $0)) { result in
-                    DispatchQueue.main.async {
-                        self?.translatedTextView.text = result
-                    }
-                }
-            })
-            .subscribe()
+            .map { Reactor.Action.originTextChanged($0) }
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.speechRecognizedText }
             .distinctUntilChanged()
             .bind(to: originTextView.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.translatedText }
+            .distinctUntilChanged()
+            .bind(to: translatedTextView.rx.text )
             .disposed(by: disposeBag)
     }
     
