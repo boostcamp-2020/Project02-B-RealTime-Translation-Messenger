@@ -36,12 +36,12 @@ final class PapagoAPIManager {
 }
 
 struct PapagoAPIRequest: HTTPRequest {
-    var url: URL = APIEndPoint.papagoAPI
+    var url: URL = APIEndPoint.naverPapagoOpenAPI
     var httpMethod: HTTPMethod = .post
     var headers: [String: String] = [
         "Content-Type": "Application/json",
-        "X-Naver-Client-Id": APIEndPoint.clientID,
-        "X-Naver-Client-Secret": APIEndPoint.clientSecret
+        "X-Naver-Client-Id": APIEndPoint.naverPapagoOpenAPIclientID,
+        "X-Naver-Client-Secret": APIEndPoint.naverPapagoOpenAPIclientSecret
     ]
     var body: Data?
     
