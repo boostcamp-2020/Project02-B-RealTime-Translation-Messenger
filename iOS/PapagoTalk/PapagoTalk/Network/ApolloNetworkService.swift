@@ -9,7 +9,7 @@ import Foundation
 import Apollo
 import RxSwift
 
-class NetworkService: NetworkServiceProviding {
+class ApolloNetworkService: NetworkServiceProviding {
     
     let store = ApolloStore()
     var socketURL = APIEndPoint.socketURL

@@ -7,16 +7,18 @@
 
 import Foundation
 
-struct Papago: Codable {
-    let message: PapagoResult
-}
+struct TranslationResponse: Codable {
+    
+    struct Message: Codable {
+        let result: Result
+    }
+    
+    struct Result: Codable {
+        let srcLangType: String?
+        let tarLangType: String?
+        let translatedText: String
+    }
 
-struct PapagoResult: Codable {
-    let result: TranslationResult
-}
-
-struct TranslationResult: Codable {
-    let srcLangType: String?
-    let tarLangType: String?
-    let translatedText: String
+    let message: Message
+    
 }

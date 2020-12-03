@@ -7,20 +7,26 @@
 
 import Foundation
 
-protocol NetworkServiceProvider {
-    func request(apiConfiguration: APIConfiguration, handler: @escaping (Result<Data, NetworkError>) -> Void)
+protocol HTTPRequest {
+    var url: URL { get set }
+    var httpMethod: HTTPMethod { get set }
+    var headers: [String: String] { get set }
+    var body: Data? { get set }
 }
 
-final class URLSessionNetworkService {
+protocol URLSessionNetworkServiceProviding {
+    func request(request: HTTPRequest, handler: @escaping (Result<Data, NetworkError>) -> Void)
+}
+
+final class URLSessionNetworkService: URLSessionNetworkServiceProviding {
     
     private let session: URLSession
 
-    
     init(with urlSession: URLSession = .init(configuration: .default)) {
         session = urlSession
     }
     
-    func request(request: TranslationRequest, handler: @escaping (Result<Data, NetworkError>) -> Void) {
+    func request(request: HTTPRequest, handler: @escaping (Result<Data, NetworkError>) -> Void) {
         let urlRequest = configureURLRequest(request: request)
         
         session.dataTask(with: urlRequest) { data, response, error in
@@ -39,7 +45,6 @@ final class URLSessionNetworkService {
                 return
             case 200...299: // Success
                 guard let data = data else {
-                    print("no data")
                     handler(.failure(.invalidData(message: "data nil")))
                     return
                 }
@@ -61,13 +66,11 @@ final class URLSessionNetworkService {
         }.resume()
     }
     
-    private func configureURLRequest(request: TranslationRequest) -> URLRequest {
-        var urlRequest = URLRequest(url: APIEndPoint.papagoAPI)
-        urlRequest.httpMethod = HTTPMethod.post.description
-        urlRequest.setValue("\(ContentType.formEncode)", forHTTPHeaderField: "\(HTTPHeader.acceptType)")
-        urlRequest.setValue(clientID, forHTTPHeaderField: "X-Naver-Client-Id")
-        urlRequest.setValue(clientSecret, forHTTPHeaderField: "X-Naver-Client-Secret")
-        urlRequest.httpBody = request.encoded()
+    private func configureURLRequest(request: HTTPRequest) -> URLRequest {
+        var urlRequest = URLRequest(url: request.url)
+        urlRequest.httpMethod = request.httpMethod.description
+        urlRequest.allHTTPHeaderFields = request.headers
+        urlRequest.httpBody = request.body
         return urlRequest
     }
 }

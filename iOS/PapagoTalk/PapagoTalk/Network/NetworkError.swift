@@ -11,7 +11,6 @@ enum NetworkError: Error {
     
     // MARK: Request Error
     
-    case invalidToken
     case invalidURL
     case requestFailure(message: String)
 
