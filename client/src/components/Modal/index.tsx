@@ -6,7 +6,7 @@ import Button from '@components/Button';
 import { ENTER_ROOM } from '@queries/room.queires';
 import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
 import { useUserState, useUserDispatch } from '@contexts/UserContext';
-import { useLocalizationState } from '@/contexts/localizationContext';
+import { useLocalizationState } from '@/contexts/LocalizationContext';
 import Overlay from './Overlay';
 import Code from './Code';
 

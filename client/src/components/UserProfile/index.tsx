@@ -4,7 +4,7 @@ import util from '@utils/utils';
 import {
   useLocalizationState,
   useLocalizationDispatch,
-} from '@contexts/localizationContext';
+} from '@/contexts/LocalizationContext';
 import { useUserDispatch, useUserState } from '@contexts/UserContext';
 import { Refresh } from '@components/Icons';
 import S from './style';

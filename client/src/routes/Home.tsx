@@ -10,7 +10,7 @@ import Modal from '@components/Modal';
 import { CreateRoomResponse, MutationCreateRoomArgs } from '@generated/types';
 import { CREATE_ROOM } from '@queries/room.queires';
 import { useUserState } from '@contexts/UserContext';
-import { useLocalizationState } from '@/contexts/localizationContext';
+import { useLocalizationState } from '@/contexts/LocalizationContext';
 
 const Wrapper = styled.div`
   display: flex;

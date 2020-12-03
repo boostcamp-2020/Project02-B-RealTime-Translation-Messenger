@@ -5,7 +5,7 @@ import { Sun, Moon } from '@components/Icons';
 import GlobalStyles from '@styles/GlobalStyles';
 import { lightTheme, darkTheme } from '@styles/Theme';
 import Routes from '@routes/.';
-import { LocalizationContextProvider } from '@contexts/localizationContext';
+import { LocalizationContextProvider } from '@/contexts/LocalizationContext';
 import { UserContextProvider } from '@contexts/UserContext';
 
 const Button = styled.button`
