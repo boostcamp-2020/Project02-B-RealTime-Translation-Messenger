@@ -24,6 +24,7 @@
 		993AF6792574DF2F00416692 /* CreateRoomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF6782574DF2F00416692 /* CreateRoomResponse.swift */; };
 		993AF67D2574E3E200416692 /* HomeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF67C2574E3E200416692 /* HomeError.swift */; };
 		993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF697257517AE00416692 /* KeyboardProviding.swift */; };
+		99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */; };
 		99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482D9A2578874000802B45 /* PapagoAPIManager.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
@@ -123,6 +124,7 @@
 		993AF6782574DF2F00416692 /* CreateRoomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomResponse.swift; sourceTree = "<group>"; };
 		993AF67C2574E3E200416692 /* HomeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeError.swift; sourceTree = "<group>"; };
 		993AF697257517AE00416692 /* KeyboardProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardProviding.swift; sourceTree = "<group>"; };
+		99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedMessageCell.swift; sourceTree = "<group>"; };
 		99482D9A2578874000802B45 /* PapagoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIManager.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				BB9A86A3257487C800FE14D6 /* MessageCell.swift */,
 				996C4E91257005C20015F9F4 /* SentMessageCell.swift */,
 				996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */,
+				99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */,
 				996479362576854900CFF202 /* MessageText.swift */,
 				9964793A2576901200CFF202 /* InputBarTextView.swift */,
 				9964797D2577670A00CFF202 /* MicrophoneButton.swift */,
@@ -728,6 +731,7 @@
 				99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */,
 				BB4814C82577DCC800CFA6DB /* TranslationRequest.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
+				99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */,
 				996479962577BFAA00CFF202 /* ChatViewController + SpeechView.swift in Sources */,
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
 				996A1433256D040B00F21215 /* ImageFactory.swift in Sources */,

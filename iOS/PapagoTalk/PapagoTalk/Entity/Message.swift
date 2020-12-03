@@ -15,6 +15,7 @@ struct Message: Codable {
     let timeStamp: Date
     var isFirstOfDay: Bool
     var type: MessageType
+    var isTranslated: Bool
     
     init(of text: String, by sender: User) {
         self.id = nil
@@ -24,9 +25,10 @@ struct Message: Codable {
         self.timeStamp = Date()
         self.isFirstOfDay = true
         self.type = .sent
+        isTranslated = false
     }
     
-    init(id: Int, of text: String, by sender: User, language: String, timeStamp: String) {
+    init(id: Int, of text: String, by sender: User, language: String, timeStamp: String, isTranslated: Bool = false) {
         self.id = id
         self.text = text
         self.sender = sender
@@ -34,6 +36,7 @@ struct Message: Codable {
         self.timeStamp = timeStamp.toDate()
         self.isFirstOfDay = true
         self.type = .received
+        self.isTranslated = isTranslated
     }
     
     mutating func setIsFirst(with isFirst: Bool) {
@@ -41,6 +44,10 @@ struct Message: Codable {
     }
     
     mutating func setType(by userID: Int) {
+        if isTranslated {
+            type = .translated
+            return
+        }
         type = (sender.id == userID) ? .sent : .received
     }
 }

@@ -1012,8 +1012,8 @@
                                                     <rect key="frame" x="12" y="40" width="42" height="42"/>
                                                     <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="XBa-mG-INr"/>
                                                         <constraint firstAttribute="height" priority="999" constant="42" id="blP-3z-br4"/>
-                                                        <constraint firstAttribute="width" secondItem="ymh-Tr-sLT" secondAttribute="height" multiplier="1:1" id="mIq-4X-y4O"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1059,8 +1059,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 6:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8P-YL-lNQ">
-                                                    <rect key="frame" x="162" y="87.666666666666671" width="51" height="14.333333333333329"/>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 8:13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8P-YL-lNQ">
+                                                    <rect key="frame" x="162" y="87.666666666666671" width="48.666666666666657" height="14.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1092,6 +1092,68 @@
                                             <outlet property="nickNameLabel" destination="zyP-S3-xoJ" id="rwX-Ua-6Zr"/>
                                             <outlet property="profileImageView" destination="ymh-Tr-sLT" id="ekO-5O-I7y"/>
                                             <outlet property="timeLabel" destination="d8P-YL-lNQ" id="8cZ-We-Yrh"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TranslatedMessageCell" id="gHZ-8k-9Wd" customClass="TranslatedMessageCell" customModule="PapagoTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="200" width="414" height="49.333333333333343"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wfa-x1-yLv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.333333333333343"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2k-0w-q3r" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="8" width="88" height="33.333333333333336"/>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" id="gzc-rD-VbF"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="lYJ-sK-KS7"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ty1-kS-FqF"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="안녕하세요">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                                                <font key="NSOriginalFont" size="14" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" Hi">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 8:13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-5M-TlD">
+                                                    <rect key="frame" x="164" y="26.999999999999996" width="48.666666666666657" height="14.333333333333332"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="LLW-gC-he8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="X2k-0w-q3r" secondAttribute="bottom" constant="8" id="7mA-P4-4aU"/>
+                                                <constraint firstItem="X2k-0w-q3r" firstAttribute="leading" secondItem="wfa-x1-yLv" secondAttribute="leading" constant="64" id="995-Ve-NCe"/>
+                                                <constraint firstItem="mF7-5M-TlD" firstAttribute="leading" secondItem="X2k-0w-q3r" secondAttribute="trailing" constant="12" id="G4s-C9-Y7v"/>
+                                                <constraint firstItem="mF7-5M-TlD" firstAttribute="bottom" secondItem="X2k-0w-q3r" secondAttribute="bottom" id="T8r-mU-B1o"/>
+                                                <constraint firstItem="X2k-0w-q3r" firstAttribute="top" secondItem="wfa-x1-yLv" secondAttribute="top" constant="8" id="cgQ-cC-U7R"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageTextView" destination="X2k-0w-q3r" id="ve8-00-5j8"/>
+                                            <outlet property="timeLabel" destination="mF7-5M-TlD" id="E3b-6A-DsP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
