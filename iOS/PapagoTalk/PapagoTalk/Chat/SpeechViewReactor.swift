@@ -65,10 +65,10 @@ final class SpeechViewReactor: Reactor {
         switch mutation {
         case .setSpeechRecognition(let output):
             state.speechRecognizedText = output
-        case .setTranslatedText(let output):
-            state.translatedText = output
         case .setOriginText(let output):
             state.originText = output
+        case .setTranslatedText(let output):
+            state.translatedText = output
         case .setIsMicrophoneButtonEnable(let isEnable):
             state.isMicrophoneButtonEnable = isEnable
         }
