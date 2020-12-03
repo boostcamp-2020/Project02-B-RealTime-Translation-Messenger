@@ -18,11 +18,12 @@ struct APIEndPoint {
     static var socketURL: URL {
         URL(string: "ws://" + baseURL)!
     }
+
+    static let naverPapagoOpenAPI = URL(string: "https://openapi.naver.com/v1/papago/n2mt")!
+    static let naverPapagoOpenAPIclientID = ""
+    static let naverPapagoOpenAPIclientSecret = ""
     
-    static var papagoAPI: URL {
-        URL(string: "https://openapi.naver.com/v1/papago/n2mt")!
-    }
-    
-    static let clientID = ""
-    static let clientSecret = ""
+    static let ncpPapagoAPI = URL(string: "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation")!
+    static let ncpPapagoAPIclientID = ""
+    static let ncpPapagoAPIclientSecret = ""
 }
