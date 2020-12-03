@@ -15,8 +15,8 @@ final class SpeechManager: NSObject {
     private let audioEngine = AVAudioEngine()
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
-    private var speechToTextHandler: ((String) -> Void)?
-    var ob = BehaviorSubject<String>(value: "")
+    
+    var recognizedSpeech = BehaviorSubject<String>(value: "")
     
     override init() {
         super.init()
@@ -25,11 +25,7 @@ final class SpeechManager: NSObject {
     
     func speechToText() {
         guard audioEngine.isRunning else {
-//            speechToTextHandler = handler
-            DispatchQueue.main.async { [weak self] in
-                self?.startSpeechRecognizing()
-            }
-            // microphoneButton.setTitle("stop", for: .normal)
+            self.startSpeechRecognizing()
             return
         }
         stopSpeechRecognizing()
@@ -47,22 +43,18 @@ final class SpeechManager: NSObject {
     private func stopSpeechRecognizing() {
         audioEngine.stop()
         recognitionRequest?.endAudio()
-        // microphoneButton.setTitle("start", for: .normal)
     }
     
     private func configureAVAudioSession() {
         let audioSession = AVAudioSession.sharedInstance()
         
-        DispatchQueue.main.async {
-            do {
-                try audioSession.setCategory(AVAudioSession.Category.record)
-                try audioSession.setMode(AVAudioSession.Mode.measurement)
-                try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-            } catch {
-                debugPrint(error.localizedDescription)
-                debugPrint("AVAudio")
-                // Toast(text: "음성인식 기능의 오류가 발생하였습니다.\n앱을 재시작 해주세요.", delay: 0, duration: 2).show()
-            }
+        do {
+            try audioSession.setCategory(AVAudioSession.Category.record)
+            try audioSession.setMode(AVAudioSession.Mode.measurement)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            debugPrint(error.localizedDescription)
+            // Toast(text: "음성인식 기능의 오류가 발생하였습니다.\n앱을 재시작 해주세요.", delay: 0, duration: 2).show()
         }
     }
     
@@ -84,14 +76,12 @@ final class SpeechManager: NSObject {
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { [weak self] result, error in
             var isFinal = false
             
-            if let result = result, let handler = self?.speechToTextHandler {
-                let output = result.bestTranscription.formattedString
+            if let result = result {
+                self?.recognizedSpeech.onNext(result.bestTranscription.formattedString)
                 isFinal = result.isFinal
-                self?.ob.onNext(output)
             }
             
             guard error != nil || isFinal else {
-                debugPrint("없음")
                 return
             }
             self?.audioEngine.stop()
@@ -99,7 +89,6 @@ final class SpeechManager: NSObject {
 
             self?.recognitionRequest = nil
             self?.recognitionTask = nil
-            // self?.microphoneButton.isEnabled = true
         })
         configureAdditionalSpeechInput(on: inputNode)
     }
@@ -109,21 +98,18 @@ final class SpeechManager: NSObject {
         inputNode.installTap(onBus: .zero, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
             self.recognitionRequest?.append(buffer)
         }
-        DispatchQueue.main.async { [weak self] in
-            self?.audioEngine.prepare()
-            do {
-                try self?.audioEngine.start()
-            } catch {
-                debugPrint(error.localizedDescription)
-                debugPrint("마지막")
-            }
+        
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            debugPrint(error.localizedDescription)
         }
     }
 }
 
 extension SpeechManager: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        debugPrint("델리게이트 작동됨 ")
         guard available else {
             // microphoneButton.isEnabled = false
             return
