@@ -73,7 +73,6 @@ const Home: React.FC = () => {
           setCode={setPinCode}
         />
         <UserProfile />
-        <Language />
         <Button onClick={onClickEnterRoom} text="대화방 참여하기" />
         <Button
           text="방 만들기"

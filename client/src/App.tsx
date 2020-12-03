@@ -5,6 +5,7 @@ import { Sun, Moon } from '@components/Icons';
 import GlobalStyles from './styles/GlobalStyles';
 import { lightTheme, darkTheme } from './styles/Theme';
 import Routes from './routes';
+import { UserContextProvider } from './contexts/UserContext';
 
 const Button = styled.button`
   position: fixed;
@@ -24,13 +25,15 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
-      <GlobalStyles />
-      <Button onClick={toggleTheme}>
-        {isLight ? <Sun size={36} /> : <Moon size={36} />}
-      </Button>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
+      <UserContextProvider>
+        <GlobalStyles />
+        <Button onClick={toggleTheme}>
+          {isLight ? <Sun size={36} /> : <Moon size={36} />}
+        </Button>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </UserContextProvider>
     </ThemeProvider>
   );
 };
