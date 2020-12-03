@@ -102,7 +102,8 @@ final class ChatViewReactor: Reactor {
                                             of: translateResult.translatedText,
                                             by: sender,
                                             language: userData.language.code,
-                                            timeStamp: time)
+                                            timeStamp: time,
+                                            isTranslated: true)
             messages.append(translatedMessage)
         }
         return messages

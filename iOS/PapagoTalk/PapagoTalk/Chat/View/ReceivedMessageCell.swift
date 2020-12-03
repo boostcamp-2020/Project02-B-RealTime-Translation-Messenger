@@ -25,7 +25,6 @@ extension ReceivedMessageCell: MessageCell {
         configureImage(with: message.sender.image)
         configureNickName(with: message.sender.nickName)
         configureMessage(of: messageTextView, with: message.text)
-        configureTime(of: timeLabel, with: message.timeStamp)
     }
     
     private func configureImage(with imageURL: String) {
@@ -39,3 +38,5 @@ extension ReceivedMessageCell: MessageCell {
         nickNameLabel.text = nickName
     }
 }
+
+
