@@ -1,8 +1,15 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { useMutation } from '@apollo/client';
+import { useHistory } from 'react-router-dom';
 import Overlay from './Overlay';
 import Code from './Code';
 import Button from '../Button';
+import { ENTER_ROOM } from '../../queries/room.queires';
+import {
+  EnterRoomResponse,
+  MutationEnterRoomArgs,
+} from '../../generated/types';
 
 interface Props {
   visible: boolean;
@@ -59,9 +66,39 @@ const Text = styled.div`
   font-size: 15px;
 `;
 
-const Modal: FC<Props> = ({ visible, setVisible, code, setCode }) => {
+const Modal: FC<Props> = ({ visible, setVisible, setCode }) => {
+  const history = useHistory();
+  const code = '923186'; // TODO: 추후 수정할 예정 mock data로 입장
   const onClickOverlay = () => {
     setVisible(!visible);
+  };
+
+  const [enterRoomMutation] = useMutation<
+    { enterRoom: EnterRoomResponse },
+    MutationEnterRoomArgs
+  >(ENTER_ROOM, {
+    variables: {
+      nickname: 'naver',
+      lang: 'en',
+      avatar: 'naver_avatar',
+      code,
+    },
+  });
+
+  const onClickEnterRoom = async () => {
+    const { data } = await enterRoomMutation();
+    const roomId = data?.enterRoom.roomId;
+    const userId = data?.enterRoom.roomId;
+    history.push({
+      pathname: `/room/${roomId}`,
+      state: {
+        userId,
+        code,
+        nickname: 'naver',
+        avatar: 'naver_avatar',
+        lang: 'en',
+      },
+    });
   };
 
   return (
@@ -73,10 +110,10 @@ const Modal: FC<Props> = ({ visible, setVisible, code, setCode }) => {
             <Text>참여 코드 6자리를 입력해주세요.</Text>
           </ModalHeader>
           <ModalBody>
-            <Code code={code} setCode={setCode} />
+            <Code setCode={setCode} />
           </ModalBody>
           <ModalFooter>
-            <Button text="대화방 입장하기" />
+            <Button text="대화방 입장하기" onClick={onClickEnterRoom} />
           </ModalFooter>
         </ModalContainer>
       </Wrapper>
