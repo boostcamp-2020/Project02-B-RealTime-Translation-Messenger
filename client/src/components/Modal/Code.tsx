@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useUserState, useUserDispatch } from '@contexts/UserContext';
+import { useUserDispatch } from '@contexts/UserContext';
 import Input from './Input';
 
 interface Props {
@@ -28,7 +28,7 @@ const Code: FC<Props> = ({ visible }) => {
     const newValues = [...pinValues];
     newValues[index] = value;
     setPinValues(newValues);
-    const newTarget: any = event.target.nextElementSibling;
+    const newTarget: any = event.target.nextElementSibling; // TODO: any 수정
     if (value) {
       if (newTarget) {
         newTarget.focus();

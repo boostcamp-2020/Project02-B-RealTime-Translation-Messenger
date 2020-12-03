@@ -12,7 +12,7 @@ import Code from './Code';
 interface Props {
   visible: boolean;
   onClick?: () => void;
-  setVisible?: any; // TODO: 수정하기!
+  setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Wrapper = styled.div<Props>`
@@ -68,7 +68,7 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
   const dispatch = useUserDispatch();
 
   const onClickOverlay = () => {
-    setVisible(!visible);
+    if (setVisible) setVisible(!visible);
     dispatch({
       type: 'SET_CODE',
       code: '',
