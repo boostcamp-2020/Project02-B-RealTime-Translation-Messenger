@@ -27,6 +27,7 @@ final class SpeechViewController: UIViewController, StoryboardView {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     
+    let papago = URLSessionNetworkService()
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -41,6 +42,27 @@ final class SpeechViewController: UIViewController, StoryboardView {
             .do { [weak self] _ in
                 self?.microphoneButtonTapped()
             }
+            .subscribe()
+            .disposed(by: disposeBag)
+        
+        originTextView.rx.text
+            .orEmpty
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .do(onNext: {
+                self.papago.request(request: TranslationRequest(source: "ko", target: "en", text: $0)) { result in
+                    switch result {
+                    case .success(let data):
+                        guard let data: Papago = try? data.decoded() else {
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            self.translatedTextView.text = data.message.result.translatedText
+                        }
+                    case .failure(_: ):
+                        return
+                    }
+                }
+            })
             .subscribe()
             .disposed(by: disposeBag)
     }
@@ -167,3 +189,4 @@ extension SpeechViewController: SFSpeechRecognizerDelegate {
         microphoneButton.isEnabled = true
     }
 }
+

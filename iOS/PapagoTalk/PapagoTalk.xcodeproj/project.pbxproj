@@ -63,6 +63,10 @@
 		BB23C0A12576AABB001D74A0 /* NetworkServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23C0A02576AABB001D74A0 /* NetworkServiceProviding.swift */; };
 		BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3825242574050A000425FD /* ChatDrawerViewController.swift */; };
 		BB38252B25740B22000425FD /* ChatDrawerViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */; };
+		BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */; };
+		BB4814A22577D79B00CFA6DB /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814A12577D79B00CFA6DB /* APIConfiguration.swift */; };
+		BB4814C82577DCC800CFA6DB /* TranslationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */; };
+		BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */; };
 		BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */; };
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
@@ -159,6 +163,10 @@
 		BB23C0A02576AABB001D74A0 /* NetworkServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProviding.swift; sourceTree = "<group>"; };
 		BB3825242574050A000425FD /* ChatDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerViewController.swift; sourceTree = "<group>"; };
 		BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerViewReactor.swift; sourceTree = "<group>"; };
+		BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
+		BB4814A12577D79B00CFA6DB /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRequest.swift; sourceTree = "<group>"; };
+		BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
 		BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
@@ -288,6 +296,8 @@
 				BB23C0A02576AABB001D74A0 /* NetworkServiceProviding.swift */,
 				996C4E50256E7BF90015F9F4 /* NetworkService.swift */,
 				BB23C09A2576979C001D74A0 /* NetworkError.swift */,
+				BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */,
+				BB4814A12577D79B00CFA6DB /* APIConfiguration.swift */,
 				996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */,
 				990DE956257367B800340A72 /* JoinChatResponse.swift */,
 				993AF6782574DF2F00416692 /* CreateRoomResponse.swift */,
@@ -396,6 +406,8 @@
 				995BE9D0257621B700C15AC7 /* UserDataProvider.swift */,
 				995BE9D425762AC500C15AC7 /* UserDataProviding.swift */,
 				9964795225769BD500CFF202 /* ChatRoomInfo.swift */,
+				BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */,
+				BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -707,7 +719,10 @@
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
 				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
+				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,
 				996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */,
+				BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */,
+				BB4814C82577DCC800CFA6DB /* TranslationRequest.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
 				996479962577BFAA00CFF202 /* ChatViewController + SpeechView.swift in Sources */,
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
@@ -717,6 +732,7 @@
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */,
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
+				BB4814A22577D79B00CFA6DB /* APIConfiguration.swift in Sources */,
 				BBEA1A60256F46FE009B8B5F /* User.swift in Sources */,
 				BB20F4D7257394D800C5AC1D /* Data+.swift in Sources */,
 				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
