@@ -1,22 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import util from '../../utils/utils';
-import { avatar as Avatar } from '../../constants/avatar';
+import React from 'react';
+import LANGUAGE from '@constants/language';
+import util from '@utils/utils';
+import { useUserDispatch, useUserState } from '@contexts/UserContext';
 import { Refresh } from '../Icons';
 import S from './style';
 
 const UserProfile: React.FC = () => {
-  const [avatar, setAvatar] = useState(Avatar[0]);
-  const [nickname, setNickname] = useState('');
-
-  useEffect(() => {}, [avatar]);
+  const dispatch = useUserDispatch();
+  const { avatar, nickname, lang } = useUserState();
 
   const onClickRefresh = () => {
     const randomAvatar: string = util.getRandomAvatar();
-    setAvatar(randomAvatar);
+    dispatch({
+      type: 'SET_AVATAR',
+      avatar: randomAvatar,
+    });
   };
 
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNickname(e.target.value);
+    dispatch({
+      type: 'SET_NICKNAME',
+      nickname: e.target.value,
+    });
+  };
+
+  const onClickLang = (language: string) => {
+    dispatch({
+      type: 'SET_LANG',
+      lang: language,
+    });
   };
 
   return (
@@ -27,7 +39,26 @@ const UserProfile: React.FC = () => {
           <Refresh size={30} />
         </S.RefreshButton>
       </S.AvatarWrapper>
-      <S.NicknameInput placeholder="닉네임 입력" onChange={onChangeNickname} />
+      <S.NicknameInput
+        placeholder="닉네임 입력"
+        value={nickname}
+        onChange={onChangeNickname}
+      />
+      <S.LanguageWrapper>
+        <S.LanguageTitle>언어 선택</S.LanguageTitle>
+        <S.LanguageButton
+          type="button"
+          value="한"
+          selected={lang === LANGUAGE.KO}
+          onClick={() => onClickLang(LANGUAGE.KO)}
+        />
+        <S.LanguageButton
+          type="button"
+          value="En"
+          selected={lang === LANGUAGE.EN}
+          onClick={() => onClickLang(LANGUAGE.EN)}
+        />
+      </S.LanguageWrapper>
     </S.ProfileWrapper>
   );
 };

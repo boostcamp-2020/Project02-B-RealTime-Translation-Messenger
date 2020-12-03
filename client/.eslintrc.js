@@ -27,6 +27,7 @@ module.exports = {
         map: [
           ['@', './src'],
           ['@components', './src/components'],
+          ['@contexts', './src/contexts'],
           ['@constants', './src/constants'],
           ['@routes', './src/routes'],
           ['@styles', './src/styles'],

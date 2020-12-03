@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import UserProfile from '../components/UserProfile';
-import Language from '../components/Language';
-import Button from '../components/Button';
-import Footer from '../components/Footer';
-import { Theme } from '../styles/Theme';
-import Modal from '../components/Modal';
+import UserProfile from '@components/UserProfile';
+import Button from '@components/Button';
+import Footer from '@components/Footer';
+import { Theme } from '@styles/Theme';
+import Modal from '@components/Modal';
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,7 +23,6 @@ const Container = styled.div`
 const Home: React.FC = () => {
   const { greenColor } = Theme;
   const [visible, setVisible] = useState(false);
-  const [code, setCode] = useState('');
 
   const onClickEnterRoom = () => {
     setVisible(true);
@@ -33,14 +31,8 @@ const Home: React.FC = () => {
   return (
     <Wrapper>
       <Container>
-        <Modal
-          visible={visible}
-          setVisible={setVisible}
-          code={code}
-          setCode={setCode}
-        />
+        <Modal visible={visible} setVisible={setVisible} />
         <UserProfile />
-        <Language />
         <Button onClick={onClickEnterRoom} text="대화방 참여하기" />
         <Button text="방 만들기" color={greenColor} />
         <Footer />

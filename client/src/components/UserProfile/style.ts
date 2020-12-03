@@ -48,4 +48,32 @@ export default {
     font-size: 18px;
     text-align: center;
   `,
+  LanguageTitle: styled.div`
+    margin: 0 0 1rem 0;
+    color: ${(props) => props.theme.darkGrayColor};
+    font-size: 18px;
+  `,
+
+  LanguageWrapper: styled.div`
+    margin: 1rem 0;
+    text-align: center;
+  `,
+
+  LanguageButton: styled.input<{ selected: boolean }>`
+    width: 50px;
+    height: 50px;
+    margin: 0 0.3rem;
+    color: ${(props) =>
+      props.selected ? props.theme.blackColor : props.theme.whiteColor};
+    background-color: ${(props) =>
+      props.selected ? props.theme.lightGrayColor : props.theme.darkGrayColor};
+    border-radius: ${(props) => props.theme.borderRadius};
+    font-size: 1.2rem;
+    font-weight: ${(props) => (props.selected ? 'bold' : '')};
+
+    &:hover {
+      color: ${(props) => props.theme.blackColor};
+      background-color: ${(props) => props.theme.lightGrayColor};
+    }
+  `,
 };
