@@ -16,7 +16,8 @@ final class SpeechManager: NSObject {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     
-    var recognizedSpeech = BehaviorSubject<String>(value: "")
+    let recognizedSpeech = BehaviorSubject<String>(value: "")
+    let isAvailable = BehaviorSubject<Bool>(value: true)
     
     override init() {
         super.init()
@@ -110,10 +111,6 @@ final class SpeechManager: NSObject {
 
 extension SpeechManager: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        guard available else {
-            // microphoneButton.isEnabled = false
-            return
-        }
-        // microphoneButton.isEnabled = true
+        isAvailable.onNext(available)
     }
 }

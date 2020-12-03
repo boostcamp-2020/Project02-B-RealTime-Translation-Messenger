@@ -14,18 +14,21 @@ final class SpeechViewReactor: Reactor {
         case microphoneButtonTapped
         case speechTextChanged(String)
         case originTextChanged(String)
+        case speechRecognitionAvailabiltyChanged(Bool)
     }
     
     enum Mutation {
         case setSpeechRecognition(String)
         case setOriginText(String)
         case setTranslatedText(String)
+        case setIsMicrophoneButtonEnable(Bool)
     }
     
     struct State {
         var speechRecognizedText: String
         var originText: String
         var translatedText: String
+        var isMicrophoneButtonEnable: Bool
     }
     
     private let speechManager = SpeechManager()
@@ -35,7 +38,7 @@ final class SpeechViewReactor: Reactor {
     var disposeBag = DisposeBag()
     
     init() {
-        initialState = State(speechRecognizedText: "", originText: "", translatedText: "...")
+        initialState = State(speechRecognizedText: "", originText: "", translatedText: "...", isMicrophoneButtonEnable: true)
         bind()
     }
     
@@ -51,6 +54,8 @@ final class SpeechViewReactor: Reactor {
                 translate(text: input),
                 .just(Mutation.setOriginText(input))
             ])
+        case .speechRecognitionAvailabiltyChanged(let isAvailable):
+            return .just(Mutation.setIsMicrophoneButtonEnable(isAvailable))
         }
     }
     
@@ -64,6 +69,8 @@ final class SpeechViewReactor: Reactor {
             state.translatedText = output
         case .setOriginText(let output):
             state.originText = output
+        case .setIsMicrophoneButtonEnable(let isEnable):
+            state.isMicrophoneButtonEnable = isEnable
         }
         return state
     }
@@ -71,6 +78,11 @@ final class SpeechViewReactor: Reactor {
     private func bind() {
         speechManager.recognizedSpeech
             .map { Action.speechTextChanged($0) }
+            .bind(to: action)
+            .disposed(by: disposeBag)
+        
+        speechManager.isAvailable
+            .map { Action.speechRecognitionAvailabiltyChanged($0) }
             .bind(to: action)
             .disposed(by: disposeBag)
     }

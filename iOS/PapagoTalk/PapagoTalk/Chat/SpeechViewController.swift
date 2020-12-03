@@ -51,6 +51,13 @@ final class SpeechViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .bind(to: translatedTextView.rx.text )
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isMicrophoneButtonEnable }
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] in
+                self?.microphoneButton.isEnabled = $0
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bind() {
