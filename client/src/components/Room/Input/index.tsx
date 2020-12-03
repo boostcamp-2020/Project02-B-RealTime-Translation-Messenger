@@ -1,13 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { MutationCreateMessageArgs } from '@generated/types';
+import { CREATE_MESSAGE } from '@queries/messege.queries';
 import { Microphone } from '@components/Icons';
 import S from './style';
 
 const Input: React.FC = () => {
+  const [text, setText] = useState('');
+  const [createMessageMutation] = useMutation<MutationCreateMessageArgs>(
+    CREATE_MESSAGE,
+    {
+      variables: {
+        text,
+        source: 'ko',
+        userId: 3,
+        roomId: 1,
+      },
+    },
+  );
+
+  const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
+  const onKeyPressEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      await createMessageMutation();
+    }
+    setText('');
+  };
+
   return (
     <S.Wrapper>
       <S.InputWrapper>
         <S.InputContainer>
-          <S.Input placeholder="텍스트를 입력하세요" type="text" />
+          <S.Input
+            placeholder="텍스트를 입력하세요"
+            value={text}
+            onChange={onChangeText}
+            onKeyPress={onKeyPressEnter}
+          />
           <S.VoiceButton>
             <Microphone size={30} />
           </S.VoiceButton>
