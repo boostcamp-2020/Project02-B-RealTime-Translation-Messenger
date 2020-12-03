@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useUserDispatch } from '@contexts/UserContext';
 import Input from './Input';
 
 interface Props {
-  code?: string;
-  setCode?: any; // TODO: 수정하기!
+  visible?: boolean;
 }
 
 const Container = styled.div`
@@ -16,17 +16,33 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Code: FC<Props> = ({ code, setCode }) => {
-  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+const Code: FC<Props> = ({ visible }) => {
+  const dispatch = useUserDispatch();
+  const [pinValues, setPinValues] = useState<string[]>(new Array(6).fill(''));
+
+  const onChangeInput = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number,
+  ) => {
     const { value } = event.target;
-    const newTarget: any = event.target.nextElementSibling;
+    const newValues = [...pinValues];
+    newValues[index] = value;
+    setPinValues(newValues);
+    const newTarget: any = event.target.nextElementSibling; // TODO: any 수정
     if (value) {
       if (newTarget) {
         newTarget.focus();
       }
-      setCode(code + value);
+      dispatch({
+        type: 'SET_CODE',
+        code: newValues.join(''),
+      });
     }
   };
+
+  useEffect(() => {
+    if (!visible) setPinValues(new Array(6).fill(''));
+  }, [visible]);
 
   return (
     <Container>
@@ -36,6 +52,8 @@ const Code: FC<Props> = ({ code, setCode }) => {
           name="codePin"
           maxLength={1}
           onChange={onChangeInput}
+          index={index}
+          value={pinValues[index]}
         />
       ))}
     </Container>

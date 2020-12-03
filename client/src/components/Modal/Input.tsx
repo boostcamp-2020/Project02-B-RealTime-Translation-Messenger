@@ -4,8 +4,12 @@ import styled from 'styled-components';
 interface Props {
   placeholder?: string;
   required?: boolean;
+  index?: number;
   value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number,
+  ) => void;
   type?: string;
   maxLength?: number;
   name?: string;
@@ -27,26 +31,30 @@ const Container = styled.input`
 const Input: FC<Props> = ({
   placeholder,
   required,
+  index,
   value,
   onChange,
   type,
   maxLength,
   name,
-}) => (
-  <Container
-    placeholder={placeholder}
-    required={required}
-    value={value}
-    onChange={onChange}
-    type={type}
-    maxLength={maxLength}
-    name={name}
-  />
-);
+}) => {
+  return (
+    <Container
+      placeholder={placeholder}
+      required={required}
+      value={value}
+      onChange={(e) => onChange && onChange(e, index as number)}
+      type={type}
+      maxLength={maxLength}
+      name={name}
+    />
+  );
+};
 
 Input.defaultProps = {
   type: 'text',
   required: true,
+  name: '',
 };
 
 export default Input;

@@ -1,4 +1,4 @@
-import { avatar } from '../constants/avatar';
+import { avatar } from '@constants/avatar';
 
 const getRandomAvatar = (): string => {
   const randomNum = Math.floor(Math.random() * avatar.length);

@@ -2,21 +2,17 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
+import Button from '@components/Button';
+import { ENTER_ROOM } from '@queries/room.queires';
+import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
+import { useUserState, useUserDispatch } from '@contexts/UserContext';
 import Overlay from './Overlay';
 import Code from './Code';
-import Button from '../Button';
-import { ENTER_ROOM } from '../../queries/room.queires';
-import {
-  EnterRoomResponse,
-  MutationEnterRoomArgs,
-} from '../../generated/types';
 
 interface Props {
   visible: boolean;
-  code?: string;
   onClick?: () => void;
-  setVisible?: any; // TODO: 수정하기!
-  setCode?: any; // TODO: 수정하기!
+  setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Wrapper = styled.div<Props>`
@@ -66,11 +62,17 @@ const Text = styled.div`
   font-size: 15px;
 `;
 
-const Modal: FC<Props> = ({ visible, setVisible, setCode }) => {
+const Modal: FC<Props> = ({ visible, setVisible }) => {
   const history = useHistory();
-  const code = '923186'; // TODO: 추후 수정할 예정 mock data로 입장
+  const { nickname, avatar, lang, code } = useUserState();
+  const dispatch = useUserDispatch();
+
   const onClickOverlay = () => {
-    setVisible(!visible);
+    if (setVisible) setVisible(!visible);
+    dispatch({
+      type: 'SET_CODE',
+      code: '',
+    });
   };
 
   const [enterRoomMutation] = useMutation<
@@ -78,9 +80,9 @@ const Modal: FC<Props> = ({ visible, setVisible, setCode }) => {
     MutationEnterRoomArgs
   >(ENTER_ROOM, {
     variables: {
-      nickname: 'naver',
-      lang: 'en',
-      avatar: 'naver_avatar',
+      nickname,
+      lang,
+      avatar,
       code,
     },
   });
@@ -94,9 +96,9 @@ const Modal: FC<Props> = ({ visible, setVisible, setCode }) => {
       state: {
         userId,
         code,
-        nickname: 'naver',
-        avatar: 'naver_avatar',
-        lang: 'en',
+        nickname,
+        avatar,
+        lang,
       },
     });
   };
@@ -110,7 +112,7 @@ const Modal: FC<Props> = ({ visible, setVisible, setCode }) => {
             <Text>참여 코드 6자리를 입력해주세요.</Text>
           </ModalHeader>
           <ModalBody>
-            <Code setCode={setCode} />
+            <Code visible={visible} />
           </ModalBody>
           <ModalFooter>
             <Button text="대화방 입장하기" onClick={onClickEnterRoom} />

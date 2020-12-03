@@ -2,7 +2,7 @@ import React from 'react';
 import LANGUAGE from '@constants/language';
 import util from '@utils/utils';
 import { useUserDispatch, useUserState } from '@contexts/UserContext';
-import { Refresh } from '../Icons';
+import { Refresh } from '@components/Icons';
 import S from './style';
 
 const UserProfile: React.FC = () => {
