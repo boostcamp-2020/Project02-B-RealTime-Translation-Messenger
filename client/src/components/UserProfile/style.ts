@@ -49,14 +49,14 @@ export default {
     text-align: center;
   `,
   LanguageTitle: styled.div`
+    margin: 0 0 1rem 0;
     color: ${(props) => props.theme.darkGrayColor};
     font-size: 18px;
-    margin: 0 0 1rem 0;
   `,
 
   LanguageWrapper: styled.div`
-    text-align: center;
     margin: 1rem 0;
+    text-align: center;
   `,
 
   LanguageButton: styled.input<{ selected: boolean }>`
