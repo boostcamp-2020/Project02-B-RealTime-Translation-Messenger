@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxGesture
 
 final class MicrophoneButton: UIButton {
     
@@ -31,6 +34,7 @@ final class MicrophoneButton: UIButton {
     
     var buttonColor: UIColor?
     private var latestCenter: CGPoint?
+    private let disposeBag = DisposeBag()
     
     var mode: ContentsMode = .small {
         didSet {
@@ -45,12 +49,14 @@ final class MicrophoneButton: UIButton {
         super.init(coder: coder)
         configureShadow()
         commonInit()
+        attachGesture()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureShadow()
         commonInit()
+        attachGesture()
     }
     
     init(mode: ContentsMode, origin: CGPoint) {
@@ -60,6 +66,7 @@ final class MicrophoneButton: UIButton {
         self.mode = mode
         configureShadow()
         commonInit()
+        attachGesture()
     }
  
     override func draw(_ rect: CGRect) {
@@ -121,5 +128,34 @@ final class MicrophoneButton: UIButton {
         tintColor = .white
         contentMode = .center
         imageView?.contentMode = .scaleAspectFit
+    }
+    
+    private func attachGesture() {
+        rx.panGesture()
+              .asDriver()
+              .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                let translation = $0.translation(in: self)
+                self.center = CGPoint(x: self.center.x + translation.x, y: self.center.y + translation.y)
+                $0.setTranslation(.zero, in: self)
+                
+                if $0.state == .ended {
+                    self.moveButtonToSide()
+                }
+              })
+              .disposed(by: disposeBag)
+    }
+    
+    private func moveButtonToSide() {
+        guard let superViewWidth = superview?.bounds.width else {
+            return
+        }
+        let isLeft = center.x < superViewWidth/2
+        let nexX = isLeft ? 12 + bounds.width/2 : superViewWidth - 12 - bounds.width/2
+        let movedY = center.y
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.center = CGPoint(x: nexX, y: movedY)
+        }
+        
     }
 }
