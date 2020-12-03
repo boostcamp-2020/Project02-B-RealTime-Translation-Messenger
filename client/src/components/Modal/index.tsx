@@ -4,12 +4,9 @@ import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
 import Button from '@components/Button';
 import { ENTER_ROOM } from '@queries/room.queires';
+import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
 import Overlay from './Overlay';
 import Code from './Code';
-import {
-  EnterRoomResponse,
-  MutationEnterRoomArgs,
-} from '../../generated/types';
 
 interface Props {
   visible: boolean;
