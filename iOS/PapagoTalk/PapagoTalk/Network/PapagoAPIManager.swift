@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 final class PapagoAPIManager {
    
@@ -15,22 +16,24 @@ final class PapagoAPIManager {
         self.service = service
     }
     
-    func requestTranslation(request: TranslationRequest,
-                            completionHandler: @escaping ((String?) -> Void)) {
+    func requestTranslation(request: TranslationRequest) -> Maybe<String> {
         let body = request.encoded()
         let apiRequest = PapagoAPIRequest(body: body)
         
-        service.request(request: apiRequest) { result in
-            switch result {
-            case .success(let data):
-                guard let data: TranslationResponse = try? data.decoded() else {
-                    completionHandler(nil)
-                    return
+        return Maybe.create { [weak self] observer in
+            self?.service.request(request: apiRequest) { result in
+                switch result {
+                case .success(let data):
+                    guard let data: TranslationResponse = try? data.decoded() else {
+                        observer(.error(NetworkError.invalidData(message: "Decoding Fail")))
+                        return
+                    }
+                    observer(.success(data.message.result.translatedText))
+                case .failure(let error):
+                    observer(.error(error))
                 }
-                completionHandler(data.message.result.translatedText)
-            case .failure:
-                completionHandler(nil)
             }
+            return Disposables.create()
         }
     }
 }

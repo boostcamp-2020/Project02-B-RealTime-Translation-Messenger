@@ -12,26 +12,50 @@ final class SpeechViewReactor: Reactor {
     
     enum Action {
         case microphoneButtonTapped
+        case speechTextChanged(String)
+        case originTextChanged(String)
+        case speechRecognitionAvailabiltyChanged(Bool)
     }
     
     enum Mutation {
-        case mic
+        case setSpeechRecognition(String)
+        case setOriginText(String)
+        case setTranslatedText(String)
+        case setIsMicrophoneButtonEnable(Bool)
     }
     
     struct State {
-        
+        var speechRecognizedText: String
+        var originText: String
+        var translatedText: String
+        var isMicrophoneButtonEnable: Bool
     }
     
+    private let speechManager = SpeechManager()
+    private let translationManager = PapagoAPIManager()
+    private let userData = UserDataProvider()
     let initialState: State
+    var disposeBag = DisposeBag()
     
     init() {
-        initialState = State()
+        initialState = State(speechRecognizedText: "", originText: "", translatedText: "...", isMicrophoneButtonEnable: true)
+        bind()
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .microphoneButtonTapped:
-            return .just(Mutation.mic)
+            speechManager.speechToText()
+            return .just(Mutation.setSpeechRecognition(""))
+        case .speechTextChanged(let output):
+            return .just(Mutation.setSpeechRecognition(output))
+        case .originTextChanged(let input):
+            return .concat([
+                translate(text: input),
+                .just(Mutation.setOriginText(input))
+            ])
+        case .speechRecognitionAvailabiltyChanged(let isAvailable):
+            return .just(Mutation.setIsMicrophoneButtonEnable(isAvailable))
         }
     }
     
@@ -39,9 +63,37 @@ final class SpeechViewReactor: Reactor {
         var state = state
         
         switch mutation {
-        case .mic:
-            break
+        case .setSpeechRecognition(let output):
+            state.speechRecognizedText = output
+        case .setTranslatedText(let output):
+            state.translatedText = output
+        case .setOriginText(let output):
+            state.originText = output
+        case .setIsMicrophoneButtonEnable(let isEnable):
+            state.isMicrophoneButtonEnable = isEnable
         }
         return state
+    }
+    
+    private func bind() {
+        speechManager.recognizedSpeech
+            .map { Action.speechTextChanged($0) }
+            .bind(to: action)
+            .disposed(by: disposeBag)
+        
+        speechManager.isAvailable
+            .map { Action.speechRecognitionAvailabiltyChanged($0) }
+            .bind(to: action)
+            .disposed(by: disposeBag)
+    }
+    
+    private func translate(text: String) -> Observable<Mutation> {
+        let oppositeLanguage: Language = userData.language == .korean ? .english : .korean
+        return translationManager
+            .requestTranslation(request: TranslationRequest(source: userData.language.code,
+                                                            target: oppositeLanguage.code,
+                                                            text: text))
+            .asObservable()
+            .map { Mutation.setTranslatedText($0) }
     }
 }
