@@ -22,4 +22,7 @@ struct APIEndPoint {
     static var papagoAPI: URL {
         URL(string: "https://openapi.naver.com/v1/papago/n2mt")!
     }
+    
+    static let clientID = ""
+    static let clientSecret = ""
 }
