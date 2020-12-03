@@ -29,6 +29,8 @@ module.exports = {
           ['@components', './src/components'],
           ['@contexts', './src/contexts'],
           ['@constants', './src/constants'],
+          ['@generated', './src/generated'],
+          ['@queries', './src/queries'],
           ['@routes', './src/routes'],
           ['@styles', './src/styles'],
           ['@utils', './src/utils'],

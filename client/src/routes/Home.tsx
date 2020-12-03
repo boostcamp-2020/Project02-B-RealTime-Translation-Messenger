@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import UserProfile from '../components/UserProfile';
-import Language from '../components/Language';
-import Button from '../components/Button';
-import Footer from '../components/Footer';
-import { Theme } from '../styles/Theme';
-import Modal from '../components/Modal';
-import { CREATE_ROOM } from '../queries/room.queires';
-import { CreateRoomResponse, MutationCreateRoomArgs } from '../generated/types';
+import UserProfile from '@components/UserProfile';
+import Button from '@components/Button';
+import Footer from '@components/Footer';
+import { Theme } from '@styles/Theme';
+import Modal from '@components/Modal';
+import { CreateRoomResponse, MutationCreateRoomArgs } from '@generated/types';
+import { CREATE_ROOM } from '@queries/room.queires';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +20,7 @@ const Container = styled.div`
   display: flex;
   width: 30%;
   min-width: 360px;
-  padding: 4rem 0;
+  padding: 3rem;
   flex-direction: column;
 `;
 

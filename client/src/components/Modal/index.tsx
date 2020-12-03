@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
+import Button from '@components/Button';
+import { ENTER_ROOM } from '@queries/room.queires';
 import Overlay from './Overlay';
 import Code from './Code';
-import Button from '../Button';
-import { ENTER_ROOM } from '../../queries/room.queires';
 import {
   EnterRoomResponse,
   MutationEnterRoomArgs,
