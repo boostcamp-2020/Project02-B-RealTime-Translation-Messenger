@@ -20,10 +20,8 @@ final class SpeechViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var microphoneButton: UIButton!
     
     weak var delegate: SpeechViewDelegate?
-    
-    let papago = PapagoAPIManager()
+    let papago = PapagoAPIManager() //
     var disposeBag = DisposeBag()
-    let speechManager = SpeechManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +31,8 @@ final class SpeechViewController: UIViewController, StoryboardView {
     
     func bind(reactor: SpeechViewReactor) {
         microphoneButton.rx.tap
-//            .map { Reactor.Action.microphoneButtonTapped }
-//            .bind(to: reactor.action)
-            .do { [weak self] _ in
-                self?.speechManager.speechToText()
-            }
-            .subscribe()
+            .map { Reactor.Action.microphoneButtonTapped }
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         originTextView.rx.text
@@ -55,9 +49,14 @@ final class SpeechViewController: UIViewController, StoryboardView {
             })
             .subscribe()
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.speechRecognizedText }
+            .distinctUntilChanged()
+            .bind(to: originTextView.rx.text)
+            .disposed(by: disposeBag)
     }
     
-    func bind() {
+    private func bind() {
         cancelButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
@@ -65,16 +64,6 @@ final class SpeechViewController: UIViewController, StoryboardView {
             })
             .disposed(by: disposeBag)
     }
-    
-//    func microphoneButtonTapped() {
-//        guard audioEngine.isRunning else {
-//            startSpeechRecognizing()
-//            // button stop 모양
-//            microphoneButton.setTitle("stop", for: .normal)
-//            return
-//        }
-//        stopSpeechRecognizing()
-//    }
     
     private func dismiss() {
         guard let superview = view.superview else { return }
