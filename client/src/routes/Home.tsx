@@ -9,6 +9,7 @@ import { Theme } from '@styles/Theme';
 import Modal from '@components/Modal';
 import { CreateRoomResponse, MutationCreateRoomArgs } from '@generated/types';
 import { CREATE_ROOM } from '@queries/room.queires';
+import { useUserState } from '@contexts/UserContext';
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ const Home: React.FC = () => {
   const history = useHistory();
   const { greenColor } = Theme;
   const [visible, setVisible] = useState(false);
-  const [pinCode, setPinCode] = useState('');
+  const { avatar, nickname, lang } = useUserState();
 
   const onClickEnterRoom = () => {
     setVisible(true);
@@ -39,9 +40,9 @@ const Home: React.FC = () => {
     MutationCreateRoomArgs
   >(CREATE_ROOM, {
     variables: {
-      nickname: 'test_user',
-      lang: 'ko',
-      avatar: 'test_avatar',
+      nickname,
+      lang,
+      avatar,
     },
   });
 
@@ -55,9 +56,9 @@ const Home: React.FC = () => {
       state: {
         userId,
         code,
-        nickname: 'test_user',
-        avatar: 'test_avatar',
-        lang: 'ko',
+        nickname,
+        avatar,
+        lang,
       },
     });
   };
@@ -65,14 +66,9 @@ const Home: React.FC = () => {
   return (
     <Wrapper>
       <Container>
-        <Modal
-          visible={visible}
-          setVisible={setVisible}
-          code={pinCode}
-          setCode={setPinCode}
-        />
+        <Modal visible={visible} setVisible={setVisible} />
         <UserProfile />
-        <Button onClick={onClickEnterRoom} text="대화방 참여하기" />
+        <Button onClick={onClickEnterRoom} text="대화 참여하기" />
         <Button
           text="방 만들기"
           color={greenColor}
