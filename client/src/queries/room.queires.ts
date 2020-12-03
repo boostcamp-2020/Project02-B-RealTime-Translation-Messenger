@@ -22,3 +22,53 @@ export const CREATE_ROOM = gql`
     }
   }
 `;
+
+export const ALL_MESSAGES_BY_ID = gql`
+  query allMessagesById($id: Int!) {
+    allMessagesById(id: $id) {
+      id
+      text
+      source
+      createdAt
+      user {
+        id
+        nickname
+        avatar
+        lang
+      }
+    }
+  }
+`;
+
+export const CREATE_MESSAGE = gql`
+  mutation createMessage(
+    $text: String!
+    $source: String!
+    $userId: Int!
+    $roomId: Int!
+  ) {
+    createMessage(
+      text: $text
+      source: $source
+      userId: $userId
+      roomId: $roomId
+    )
+  }
+`;
+
+export const NEW_MESSAGE = gql`
+  subscription($roomId: Int!, $lang: String!) {
+    newMessage(roomId: $roomId, lang: $lang) {
+      id
+      text
+      source
+      createdAt
+      user {
+        id
+        nickname
+        avatar
+        lang
+      }
+    }
+  }
+`;
