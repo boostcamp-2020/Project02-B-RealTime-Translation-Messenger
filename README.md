@@ -22,3 +22,14 @@
 [![GitHub Closed PR](https://img.shields.io/github/issues-pr-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls?q=is%3Apr+is%3Aclosed)
 
 </div>
+
+<br>
+
+### [Wiki 구경가기](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/wiki)
+
+<br>
+
+## iOS 배포 🍎
+> v1.0.0
+
+주소 ➡️ https://kr.object.ncloudstorage.com/papagotalk/release/1.0.0/download.html
