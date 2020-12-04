@@ -41,12 +41,13 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        attachMicrophoneButton()
         bind()
         bindKeyboard()
     }
     
     func bind(reactor: ChatViewReactor) {
+        attachMicrophoneButton()
+        
         self.rx.viewWillAppear
             .map { _ in Reactor.Action.subscribeNewMessages }
             .bind(to: reactor.action)
@@ -70,6 +71,11 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         chatDrawerBehaviorRelay.filter { $0 }
             .map { _ in Reactor.Action.chatDrawerButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        microphoneButton.rx.tap
+            .map { Reactor.Action.microphoneButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -116,6 +122,17 @@ final class ChatViewController: UIViewController, StoryboardView {
                 self?.inputBarTextView.resignFirstResponder()
             })
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.showSpeechView }
+            .distinctUntilChanged()
+            .compactMap { $0.data }
+            .filter { $0.0 }
+            .subscribe(onNext: { [weak self] _, roomID in
+                self?.microphoneButton?.moveForSpeech {
+                    self?.showSpeechView(roomID: roomID)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bind() {
@@ -130,16 +147,6 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asObservable()
             .distinctUntilChanged()
             .bind(to: inputBarTextViewHeight.rx.constant)
-            .disposed(by: disposeBag)
-        
-        microphoneButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                self?.microphoneButton.moveForSpeech {
-                    self?.showSpeechView()
-                }
-                //self?.showSpeechView()
-            })
             .disposed(by: disposeBag)
     }
     
