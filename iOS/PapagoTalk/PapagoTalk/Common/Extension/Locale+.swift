@@ -10,7 +10,7 @@ import Foundation
 extension Locale {
     
     static var preferredLanguageCode: String {
-        let defaultLanguage = "ko"
+        let defaultLanguage = "en"
         let preferredLanguage = preferredLanguages.first ?? defaultLanguage
         return Locale(identifier: preferredLanguage).languageCode ?? defaultLanguage
     }
