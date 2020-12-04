@@ -7,17 +7,18 @@
 
 import UIKit
 
-protocol MessageCell: class {
-    func configureMessageCell(message: Message)
-}
-
 final class SentMessageCell: UICollectionViewCell {
-    @IBOutlet private weak var messageTextView: UITextView!
     
+    @IBOutlet private weak var dateBadge: UIButton!
+    @IBOutlet private weak var messageTextView: UITextView!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet weak var dateBadgeHeight: NSLayoutConstraint!
 }
 
 extension SentMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
-        messageTextView.text = message.text
+        configureDate(of: dateBadge, dateBadgeHeight: dateBadgeHeight, with: message.timeStamp, isFirst: message.isFirstOfDay)
+        configureMessage(of: messageTextView, with: message.text)
+        configureTime(of: timeLabel, with: message.timeStamp)
     }
 }

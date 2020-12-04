@@ -7,20 +7,35 @@
   "author": "Project02-B-RealTime-Translation-Messenger",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --progress --mode development",
-    "build": "webpack --progress --mode production"
+    "dev": "webpack serve --progress --mode development",
+    "build": "webpack --progress --mode production",
+    "generate": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.2",
+    "@apollo/react-hooks": "^4.0.0",
+    "@primer/components": "^22.0.2",
+    "graphql": "^15.4.0",
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hot-loader": "^4.13.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.2.1",
+    "styled-reset": "^4.3.1",
+    "subscriptions-transport-ws": "^0.9.18"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
     "@babel/preset-typescript": "^7.12.7",
+    "@graphql-codegen/cli": "1.19.4",
+    "@graphql-codegen/introspection": "^1.18.1",
+    "@graphql-codegen/typescript": "1.19.0",
+    "@graphql-codegen/typescript-operations": "^1.17.12",
+    "@graphql-codegen/typescript-react-apollo": "^2.2.1",
+    "@types/lodash": "^4.14.165",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.6",
@@ -43,10 +58,9 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
     "prettier": "^2.2.0",
-    "styled-components": "^5.2.1",
     "ts-loader": "^8.0.11",
     "typescript": "^4.1.2",
-    "webpack": "^5.7.0",
+    "webpack": "^5.9.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
   }

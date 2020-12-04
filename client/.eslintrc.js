@@ -11,7 +11,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
-    'prettier/prettier': 0,
+    'prettier/prettier': ['error'],
     'no-use-before-define': 0,
     'react/jsx-filename-extension': 0,
     'import/extensions': 0,
@@ -27,6 +27,13 @@ module.exports = {
         map: [
           ['@', './src'],
           ['@components', './src/components'],
+          ['@contexts', './src/contexts'],
+          ['@constants', './src/constants'],
+          ['@generated', './src/generated'],
+          ['@queries', './src/queries'],
+          ['@routes', './src/routes'],
+          ['@styles', './src/styles'],
+          ['@utils', './src/utils'],
         ],
       },
     },

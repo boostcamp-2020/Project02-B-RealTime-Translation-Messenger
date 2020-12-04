@@ -1,0 +1,81 @@
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "2dy-Pc-WHl"; */
+"2dy-Pc-WHl.normalTitle" = "3";
+
+/* Class = "UITextField"; placeholder = "닉네임 입력 (2~12자)"; ObjectID = "2kJ-Nk-l6d"; */
+"2kJ-Nk-l6d.placeholder" = "닉네임 입력 (2~12자)";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "BiU-hv-QG4"; */
+"BiU-hv-QG4.normalTitle" = "2";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "DHP-ud-cXj"; */
+"DHP-ud-cXj.normalTitle" = "1";
+
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "DgZ-xC-wWt"; */
+"DgZ-xC-wWt.normalTitle" = "취소";
+
+/* Class = "UITextView"; text = "."; ObjectID = "Y1i-KZ-Cbi"; */
+"Y1i-KZ-Cbi.text" = ".";
+
+/* Class = "UILabel"; text = "한국어"; ObjectID = "ZAj-jr-wsU"; */
+"ZAj-jr-wsU.text" = "한국어";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "ZOe-qD-a0k"; */
+"ZOe-qD-a0k.normalTitle" = "4";
+
+/* Class = "UITextView"; text = "."; ObjectID = "ZVH-iM-tHV"; */
+"ZVH-iM-tHV.text" = ".";
+
+/* Class = "UINavigationItem"; title = "604-392"; ObjectID = "c2Q-0K-ftg"; */
+"c2Q-0K-ftg.title" = "604-392";
+
+/* Class = "UIButton"; normalTitle = "확인"; ObjectID = "jvs-zu-QQw"; */
+"jvs-zu-QQw.normalTitle" = "확인";
+
+/* Class = "UIButton"; normalTitle = "6"; ObjectID = "kPg-Yj-Muo"; */
+"kPg-Yj-Muo.normalTitle" = "6";
+
+/* Class = "UIButton"; normalTitle = "0"; ObjectID = "mN6-zV-UBV"; */
+"mN6-zV-UBV.normalTitle" = "0";
+
+/* Class = "UIButton"; normalTitle = "대화방 만들기"; ObjectID = "mY1-Fj-RPh"; */
+"mY1-Fj-RPh.normalTitle" = "대화방 만들기";
+
+/* Class = "UIButton"; normalTitle = "7"; ObjectID = "ptb-Gu-gI7"; */
+"ptb-Gu-gI7.normalTitle" = "7";
+
+/* Class = "UIButton"; normalTitle = "대화방 참가하기"; ObjectID = "qNg-mc-5e2"; */
+"qNg-mc-5e2.normalTitle" = "대화방 참가하기";
+
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "qag-dd-9LB"; */
+"qag-dd-9LB.normalTitle" = "취소";
+
+/* Class = "UIButton"; normalTitle = "9"; ObjectID = "r6Z-aW-cVM"; */
+"r6Z-aW-cVM.normalTitle" = "9";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "sJd-dO-18v"; */
+"sJd-dO-18v.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "8"; ObjectID = "sgm-nq-9up"; */
+"sgm-nq-9up.normalTitle" = "8";
+
+/* Class = "UILabel"; text = "코드입력"; ObjectID = "uWd-v3-N4n"; */
+"uWd-v3-N4n.text" = "코드입력";
+
+/* Class = "UILabel"; text = "대화방 코드를 입력 해주세요"; ObjectID = "vAR-9r-AIg"; */
+"vAR-9r-AIg.text" = "대화방 코드를 입력 해주세요";
+
+/* Class = "UIButton"; normalTitle = "5"; ObjectID = "vDZ-MP-myf"; */
+"vDZ-MP-myf.normalTitle" = "5";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "va8-FQ-vZP"; */
+"va8-FQ-vZP.normalTitle" = "Send";
+
+/* Class = "UILabel"; text = "참가자"; ObjectID = "okh-F7-eqj"; */
+"okh-F7-eqj.text" = "참가자";
+
+/* Class = "UIButton"; normalTitle = "채팅방 코드 복사"; ObjectID = "fJr-yc-L8f"; */
+"fJr-yc-L8f.normalTitle" = "채팅방 코드 복사";
+
+/* Class = "UIButton"; normalTitle = "채팅방 나가기"; ObjectID = "M2b-ut-9Qf"; */
+"M2b-ut-9Qf.normalTitle" = "채팅방 나가기";

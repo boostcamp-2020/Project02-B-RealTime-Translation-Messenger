@@ -7,18 +7,47 @@
 
 import Foundation
 
-struct Message {
-    let id: Int
+struct Message: Codable {
+    let id: Int?
     let text: String
-    let language: String
     let sender: User
-    let timeStamp: String
+    let language: String
+    let timeStamp: Date
+    var isFirstOfDay: Bool
+    var type: MessageType
+    var isTranslated: Bool
     
-    init(userId: Int, text: String) {
-        id = 1
+    init(of text: String, by sender: User) {
+        self.id = nil
         self.text = text
-        language = "ko"
-        timeStamp = "2020"
-        sender = User(id: userId, nickName: "HAHA", image: nil, language: nil)
+        self.sender = sender
+        self.language = sender.language.code
+        self.timeStamp = Date()
+        self.isFirstOfDay = true
+        self.type = .sent
+        isTranslated = false
+    }
+    
+    init(id: Int, of text: String, by sender: User, language: String, timeStamp: String, isTranslated: Bool = false) {
+        self.id = id
+        self.text = text
+        self.sender = sender
+        self.language = language
+        self.timeStamp = timeStamp.toDate()
+        self.isFirstOfDay = true
+        self.type = .received
+        self.isTranslated = isTranslated
+    }
+    
+    mutating func setIsFirst(with isFirst: Bool) {
+        isFirstOfDay = isFirst
+    }
+    
+    mutating func setType(by userID: Int) {
+        if isTranslated {
+            type = .translated
+            return
+        }
+        type = (sender.id == userID) ? .sent : .received
     }
 }

@@ -1,6 +1,8 @@
 disabled_rules:
 - line_length
 - trailing_whitespace
+- unused_capture_list
+- multiple_closures_with_trailing_closure
 
 included:
 excluded:
