@@ -113,6 +113,7 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe(onNext: { [weak self] in
                 ($0.drawerState) ?
                     self?.configureChatDrawer(roomID: $0.roomID) : self?.configureAnimation(state: .closed, duration: 0.5)
+                self?.inputBarTextView.resignFirstResponder()
             })
             .disposed(by: disposeBag)
     }
