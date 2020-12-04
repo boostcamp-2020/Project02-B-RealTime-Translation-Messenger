@@ -10,8 +10,9 @@ import { UserContextProvider } from '@contexts/UserContext';
 
 const Button = styled.button`
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
+  right: 2.5rem;
+  bottom: 2rem;
+  z-index: 1;
   svg {
     fill: ${(props) => props.theme.text};
   }
