@@ -4,12 +4,17 @@ import { Hamburger, Copy, Door } from '@components/Icons';
 import { AvatarStack, Avatar } from '@primer/components';
 import S from './style';
 
-const Header: React.FC = () => {
+interface Props {
+  visible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header: React.FC<Props> = ({ visible, setVisible }) => {
   const history = useHistory();
 
   return (
     <S.Wrapper>
-      <S.HamburgerButton>
+      <S.HamburgerButton onClick={() => setVisible(!visible)}>
         <Hamburger size={24} />
       </S.HamburgerButton>
       <S.CodeWrapper>
