@@ -1,19 +1,31 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
+import LANGUAGE from '@constants/language';
 import { TextList, getText } from '@constants/localization';
 
 const LocalizationStateContext = createContext<TextList | undefined>(undefined);
 const LocalizationDispatchContext = createContext<
-  React.Dispatch<React.SetStateAction<TextList>> | undefined
+  React.Dispatch<Action> | undefined
 >(undefined);
 
+type Action = { type: 'SET_LOCAL'; lang: 'ko' | 'en' };
+
 const initialState = getText('ko');
+
+const reducer = (state: TextList, action: Action) => {
+  switch (action.type) {
+    case 'SET_LOCAL':
+      return getText(action.lang);
+    default:
+      throw new Error('unhandled action');
+  }
+};
 
 const LocalizationContextProvider: React.FC<React.ReactNode> = ({
   children,
 }) => {
-  const [localization, setLocalization] = useState(initialState);
+  const [localization, dispatch] = useReducer(reducer, initialState);
   return (
-    <LocalizationDispatchContext.Provider value={setLocalization}>
+    <LocalizationDispatchContext.Provider value={dispatch}>
       <LocalizationStateContext.Provider value={localization}>
         {children}
       </LocalizationStateContext.Provider>
@@ -27,12 +39,10 @@ const useLocalizationState = (): TextList => {
   return state;
 };
 
-const useLocalizationDispatch = (): React.Dispatch<
-  React.SetStateAction<TextList>
-> => {
-  const setState = useContext(LocalizationDispatchContext);
-  if (!setState) throw new Error('useLocalizationDispatch Provider not found');
-  return setState;
+const useLocalizationDispatch = (): React.Dispatch<Action> => {
+  const dispatch = useContext(LocalizationDispatchContext);
+  if (!dispatch) throw new Error('useLocalizationDispatch Provider not found');
+  return dispatch;
 };
 
 export {

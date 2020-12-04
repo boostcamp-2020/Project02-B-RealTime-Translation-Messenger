@@ -6,6 +6,7 @@ import Button from '@components/Button';
 import { ENTER_ROOM } from '@queries/room.queires';
 import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
 import { useUserState, useUserDispatch } from '@contexts/UserContext';
+import { useLocalizationState } from '@/contexts/LocalizationContext';
 import Overlay from './Overlay';
 import Code from './Code';
 
@@ -66,6 +67,7 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
   const history = useHistory();
   const { nickname, avatar, lang, code } = useUserState();
   const dispatch = useUserDispatch();
+  const { enterCode, submitCode } = useLocalizationState();
 
   const onClickOverlay = () => {
     if (setVisible) setVisible(!visible);
@@ -109,13 +111,13 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
       <Wrapper visible={visible}>
         <ModalContainer>
           <ModalHeader>
-            <Text>참여 코드 6자리를 입력해주세요.</Text>
+            <Text>{enterCode}</Text>
           </ModalHeader>
           <ModalBody>
             <Code visible={visible} />
           </ModalBody>
           <ModalFooter>
-            <Button text="대화방 입장하기" onClick={onClickEnterRoom} />
+            <Button text={submitCode} onClick={onClickEnterRoom} />
           </ModalFooter>
         </ModalContainer>
       </Wrapper>
