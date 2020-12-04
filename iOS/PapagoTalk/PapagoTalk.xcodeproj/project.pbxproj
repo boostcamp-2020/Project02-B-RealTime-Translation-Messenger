@@ -40,7 +40,7 @@
 		9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964795225769BD500CFF202 /* ChatRoomInfo.swift */; };
 		9964797E2577670A00CFF202 /* MicrophoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964797D2577670A00CFF202 /* MicrophoneButton.swift */; };
 		996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479912577BF4900CFF202 /* SpeechViewDelegate.swift */; };
-		996479962577BFAA00CFF202 /* ChatViewController + SpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479952577BFAA00CFF202 /* ChatViewController + SpeechView.swift */; };
+		996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
@@ -141,7 +141,7 @@
 		9964795225769BD500CFF202 /* ChatRoomInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomInfo.swift; sourceTree = "<group>"; };
 		9964797D2577670A00CFF202 /* MicrophoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneButton.swift; sourceTree = "<group>"; };
 		996479912577BF4900CFF202 /* SpeechViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewDelegate.swift; sourceTree = "<group>"; };
-		996479952577BFAA00CFF202 /* ChatViewController + SpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController + SpeechView.swift"; sourceTree = "<group>"; };
+		996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+SpeechViewDelegate.swift"; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 			children = (
 				996C4E90257004FA0015F9F4 /* View */,
 				BB6F7EBF256D697500D66F8E /* ChatViewController.swift */,
-				996479952577BFAA00CFF202 /* ChatViewController + SpeechView.swift */,
+				996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */,
 				BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */,
 				BB9725A7256FA5DD00C4938D /* MessageBox.swift */,
 				996479912577BF4900CFF202 /* SpeechViewDelegate.swift */,
@@ -735,6 +735,7 @@
 				BB4814C82577DCC800CFA6DB /* TranslationRequest.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
 				99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */,
+				996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */,
 				996479962577BFAA00CFF202 /* ChatViewController + SpeechView.swift in Sources */,
 				99482DFD2579425400802B45 /* RevisionedData.swift in Sources */,
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
