@@ -1,12 +1,18 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { RouteComponentProps, useLocation } from 'react-router-dom';
 import { NEW_MESSAGE, ALL_MESSAGES_BY_ID } from '@/queries/room.queires';
 import { useQuery } from '@apollo/client';
 import ChatLog from '@components/ChatLog';
+import Header from '@components/Room/Header';
+import SideBar from '@components/Room/SideBar';
+import Input from '@components/Room/Input';
 
 interface MatchParams {
   id: string;
 }
+
+const Wrapper = styled.div``;
 
 const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const roomId = +match.params.id;
@@ -17,6 +23,7 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
       id: roomId,
     },
   });
+  const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = subscribeToMore({
@@ -37,10 +44,12 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   if (loading) return <div>Loading!</div>;
 
   return (
-    <div>
-      <div>New massages</div>
+    <Wrapper>
+      <Header visible={visible} setVisible={setVisible} />
+      <SideBar visible={visible} setVisible={setVisible} />
       <ChatLog messages={data.allMessagesById} />
-    </div>
+      <Input />
+    </Wrapper>
   );
 };
 

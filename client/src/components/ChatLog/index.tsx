@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import styled from 'styled-components';
 import { Message } from '@generated/types';
 import ChatRow from './ChatRow';
 
@@ -11,35 +12,38 @@ interface TranslatedText {
   translatedText: string;
 }
 
+const Wrapper = styled.div`
+  width: 100%;
+  margin-top: 6rem;
+`;
+
 const ChatLog: FC<Props> = ({ messages }) => {
   return (
-    <div>
-      <div>New massages</div>
-      <div>
-        {messages.map((message) => {
-          try {
-            const obj: TranslatedText = JSON.parse(message.text);
-            return (
-              <ChatRow
-                key={message.id}
-                obj={obj}
-                author={message.user.nickname}
-                createdAt={message.createdAt as string}
-              />
-            );
-          } catch {
-            // TODO: Logic 수정 필요 return
-          }
+    <Wrapper>
+      {messages.map((message) => {
+        try {
+          const obj: TranslatedText = JSON.parse(message.text);
           return (
             <ChatRow
               key={message.id}
-              message={message}
+              obj={obj}
               author={message.user.nickname}
+              createdAt={message.createdAt as string}
+              message={message}
             />
           );
-        })}
-      </div>
-    </div>
+        } catch {
+          // TODO: Logic 수정 필요 return
+        }
+        return (
+          <ChatRow
+            key={message.id}
+            message={message}
+            author={message.user.nickname}
+          />
+        );
+      })}
+    </Wrapper>
   );
 };
 
