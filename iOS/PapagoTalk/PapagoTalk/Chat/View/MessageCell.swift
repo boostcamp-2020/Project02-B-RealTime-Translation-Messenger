@@ -20,6 +20,7 @@ extension MessageCell {
     
     func configureMessage(of messageTextView: UITextView, with message: String) {
         messageTextView.text = message
+        messageTextView.textColor = UIColor.init(named: "MessageTextColor")
     }
     
     func configureTime(of timeLabel: UILabel, with timeStamp: Date) {

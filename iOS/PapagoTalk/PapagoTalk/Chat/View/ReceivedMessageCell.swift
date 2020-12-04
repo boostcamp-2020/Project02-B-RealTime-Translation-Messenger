@@ -38,5 +38,3 @@ extension ReceivedMessageCell: MessageCell {
         nickNameLabel.text = nickName
     }
 }
-
-
