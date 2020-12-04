@@ -55,75 +55,39 @@ const ChatRow: FC<Props> = ({ author, message, obj, createdAt }) => {
       {isOrigin ? (
         <>
           <Column>
-            {message ? (
-              <>
-                <Info isOrigin={isOrigin}>
-                  <Text>{message.user.nickname}</Text>
-                  <Text>{message.createdAt}</Text>
-                </Info>
-                <Balloon author={author} text={message.text} />
-              </>
-            ) : (
-              <>
-                <Info isOrigin={isOrigin}>
-                  <Text>{author}</Text>
-                  <Text>{createdAt}</Text>
-                </Info>
-                {isOrigin ? (
-                  <>
-                    <Balloon
-                      author={author}
-                      translatedText={obj?.translatedText}
-                    />
-                  </>
-                ) : (
-                  <DoubleBubble>
-                    <Balloon author={author} originText={obj?.originText} />
-                    <Balloon
-                      author={author}
-                      translatedText={obj?.translatedText}
-                    />
-                  </DoubleBubble>
-                )}
-              </>
-            )}
+            <Info isOrigin={isOrigin}>
+              <Text>{message?.user.nickname}</Text>
+              <Text>{message?.createdAt}</Text>
+            </Info>
+            <Balloon author={author} originText={obj?.originText} />
           </Column>
           <Avatar size={50} profile={avatar} />
         </>
       ) : (
         <>
-          <Avatar size={50} profile={avatar} />
+          <Avatar size={50} profile={message?.user.avatar} />
           <Column>
-            {message ? (
-              <>
-                <Info isOrigin={isOrigin}>
-                  <Text>{message.user.nickname}</Text>
-                  <Text>{message.createdAt}</Text>
-                </Info>
-                <Balloon author={author} text={message.text} />
-              </>
-            ) : (
+            {obj ? (
               <>
                 <Info isOrigin={isOrigin}>
                   <Text>{author}</Text>
                   <Text>{createdAt}</Text>
                 </Info>
-                {isOrigin ? (
-                  <>
-                    <Balloon
-                      author={author}
-                      translatedText={obj?.translatedText}
-                    />
-                  </>
-                ) : (
-                  <DoubleBubble>
-                    <Balloon author={author} originText={obj?.originText} />
-                    <Balloon
-                      author={author}
-                      translatedText={obj?.translatedText}
-                    />
-                  </DoubleBubble>
-                )}
+                <DoubleBubble>
+                  <Balloon
+                    author={author}
+                    translatedText={obj?.translatedText}
+                  />
+                  <Balloon author={author} originText={obj?.originText} />
+                </DoubleBubble>
+              </>
+            ) : (
+              <>
+                <Info isOrigin={isOrigin}>
+                  <Text>{message?.user.nickname}</Text>
+                  <Text>{message?.createdAt}</Text>
+                </Info>
+                <Balloon author={author} text={message?.text} />
               </>
             )}
           </Column>
