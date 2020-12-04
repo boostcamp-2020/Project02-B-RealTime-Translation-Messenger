@@ -13,12 +13,25 @@ export const ENTER_ROOM = gql`
     }
   }
 `;
+
 export const CREATE_ROOM = gql`
   mutation createRoom($nickname: String!, $avatar: String!, $lang: String!) {
     createRoom(nickname: $nickname, avatar: $avatar, lang: $lang) {
       userId
       roomId
       code
+    }
+  }
+`;
+
+export const ROOM_BY_ID = gql`
+  query roomById($id: Int!) {
+    roomById(id: $id) {
+      users {
+        avatar
+        nickname
+        lang
+      }
     }
   }
 `;
