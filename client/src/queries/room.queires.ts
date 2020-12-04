@@ -22,3 +22,15 @@ export const CREATE_ROOM = gql`
     }
   }
 `;
+
+export const ROOM_BY_ID = gql`
+  query roomById($id: Int!) {
+    roomById(id: $id) {
+      users {
+        avatar
+        nickname
+        lang
+      }
+    }
+  }
+`;
