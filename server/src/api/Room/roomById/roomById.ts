@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export default {
   Query: {
-    seeRoomById: (_: Room, { id }: { id: number }) =>
+    roomById: (_: Room, { id }: { id: number }) =>
       prisma.room.findOne({
         where: {
           id,
