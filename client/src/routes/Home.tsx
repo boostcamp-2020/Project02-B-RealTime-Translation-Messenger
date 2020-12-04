@@ -10,6 +10,7 @@ import Modal from '@components/Modal';
 import { CreateRoomResponse, MutationCreateRoomArgs } from '@generated/types';
 import { CREATE_ROOM } from '@queries/room.queires';
 import { useUserState } from '@contexts/UserContext';
+import { useLocalizationState } from '@/contexts/LocalizationContext';
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,6 +28,7 @@ const Container = styled.div`
 
 const Home: React.FC = () => {
   const history = useHistory();
+  const { createRoom, enterRoom } = useLocalizationState();
   const { greenColor } = Theme;
   const [visible, setVisible] = useState(false);
   const { avatar, nickname, lang } = useUserState();
@@ -68,9 +70,9 @@ const Home: React.FC = () => {
       <Container>
         <Modal visible={visible} setVisible={setVisible} />
         <UserProfile />
-        <Button onClick={onClickEnterRoom} text="대화 참여하기" />
+        <Button onClick={onClickEnterRoom} text={enterRoom} />
         <Button
-          text="방 만들기"
+          text={createRoom}
           color={greenColor}
           onClick={onClickCreateRoom}
         />

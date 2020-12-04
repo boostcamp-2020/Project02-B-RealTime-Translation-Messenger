@@ -1,13 +1,19 @@
 import React from 'react';
 import LANGUAGE from '@constants/language';
 import util from '@utils/utils';
+import {
+  useLocalizationState,
+  useLocalizationDispatch,
+} from '@/contexts/LocalizationContext';
 import { useUserDispatch, useUserState } from '@contexts/UserContext';
 import { Refresh } from '@components/Icons';
 import S from './style';
 
 const UserProfile: React.FC = () => {
-  const dispatch = useUserDispatch();
   const { avatar, nickname, lang } = useUserState();
+  const dispatch = useUserDispatch();
+  const { inputNickName, selectLanguage } = useLocalizationState();
+  const localDispatch = useLocalizationDispatch();
 
   const onClickRefresh = () => {
     const randomAvatar: string = util.getRandomAvatar();
@@ -29,6 +35,10 @@ const UserProfile: React.FC = () => {
       type: 'SET_LANG',
       lang: language,
     });
+    localDispatch({
+      type: 'SET_LOCAL',
+      lang: language as 'ko' | 'en',
+    });
   };
 
   return (
@@ -40,12 +50,12 @@ const UserProfile: React.FC = () => {
         </S.RefreshButton>
       </S.AvatarWrapper>
       <S.NicknameInput
-        placeholder="닉네임 입력"
+        placeholder={inputNickName}
         value={nickname}
         onChange={onChangeNickname}
       />
       <S.LanguageWrapper>
-        <S.LanguageTitle>언어 선택</S.LanguageTitle>
+        <S.LanguageTitle>{selectLanguage}</S.LanguageTitle>
         <S.LanguageButton
           type="button"
           value="한"
