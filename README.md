@@ -30,6 +30,6 @@
 <br>
 
 ## iOS 배포 🍎
-> v1.0.0
+> v1.0.1
 
 주소 ➡️ https://kr.object.ncloudstorage.com/papagotalk/release/1.0.0/download.html
