@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { debounce } from 'lodash';
 import { useMutation } from '@apollo/client';
 import { MutationCreateMessageArgs } from '@generated/types';
 import { CREATE_MESSAGE } from '@queries/messege.queries';
@@ -19,8 +20,13 @@ const Input: React.FC = () => {
     },
   );
 
+  const getTranslatedText = debounce(async (value: string) => {
+    // const result = await request(value, 'ko', 'en');
+  }, 1000);
+
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
+    // getTranslatedText(e.target.value);
   };
 
   const onKeyPressEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
