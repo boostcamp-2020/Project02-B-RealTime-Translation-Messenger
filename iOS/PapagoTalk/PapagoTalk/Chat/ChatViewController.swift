@@ -20,13 +20,14 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     private weak var chatDrawerViewController: ChatDrawerViewController!
-    var microphoneButton: MicrophoneButton!
+    private let chatDrawerBehaviorRelay = BehaviorRelay(value: false)
     private var chatDrawerWidth: CGFloat!
     private var visualEffectView: UIVisualEffectView!
     private var runningAnimations = [UIViewPropertyAnimator]()
     private var animationProgressWhenInterrupted = CGFloat.zero
     
     weak var coordinator: MainCoordinator?
+    var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
     
     init?(coder: NSCoder, reactor: ChatViewReactor) {
@@ -64,6 +65,11 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         chatDrawerButton.rx.tap
             .map { Reactor.Action.chatDrawerButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        chatDrawerBehaviorRelay.filter { $0 }
+            .map { _ in Reactor.Action.chatDrawerButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -191,18 +197,13 @@ final class ChatViewController: UIViewController, StoryboardView {
             })
             .disposed(by: disposeBag)
         
-        /*
-         let chatDrawerButtonTap = chatDrawerButton.rx.tap.map { _ in return () }
-         let view: Observable<Void> = visualEffectView.rx.tapGesture().when(.recognized).map { _ in return () }
-         
-         Observable.of(chatDrawerButtonTap, view).merge()
-         
-         visualEffectView.rx.tapGesture()
-             .when(.recognized)
-             .map { $0.touchesBegan(.init(), with: .init()) }
-             .bind(to: chatDrawerButton.rx.tap.asControlEvent())
-             .disposed(by: disposeBag)
-        */
+        visualEffectView.rx.tapGesture()
+            .when(.recognized)
+            .do { _ in
+                self.chatDrawerBehaviorRelay.accept(true)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     // MARK: - ChatDrawer Animation
