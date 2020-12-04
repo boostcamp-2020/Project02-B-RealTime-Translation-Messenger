@@ -40,12 +40,13 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        attachMicrophoneButton()
         bind()
         bindKeyboard()
     }
     
     func bind(reactor: ChatViewReactor) {
+        attachMicrophoneButton()
+        
         self.rx.viewWillAppear
             .map { _ in Reactor.Action.subscribeNewMessages }
             .bind(to: reactor.action)
@@ -64,6 +65,11 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         chatDrawerButton.rx.tap
             .map { Reactor.Action.chatDrawerButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        microphoneButton.rx.tap
+            .map { Reactor.Action.microphoneButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -97,7 +103,7 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe()
             .disposed(by: disposeBag)
         
-        reactor.state.map { ($0.toggleDrawer) }
+        reactor.state.map { $0.toggleDrawer }
             .distinctUntilChanged()
             .do { [weak self] _ in
                 if !(self?.runningAnimations.isEmpty ?? true) {
@@ -107,6 +113,17 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe(onNext: { [weak self] in
                 ($0.drawerState) ?
                     self?.configureChatDrawer(roomID: $0.roomID) : self?.configureAnimation(state: .closed, duration: 0.5)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.showSpeechView }
+            .distinctUntilChanged()
+            .compactMap { $0.data }
+            .filter { $0.0 }
+            .subscribe(onNext: { [weak self] _, roomID in
+                self?.microphoneButton?.moveForSpeech {
+                    self?.showSpeechView(roomID: roomID)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -123,16 +140,6 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asObservable()
             .distinctUntilChanged()
             .bind(to: inputBarTextViewHeight.rx.constant)
-            .disposed(by: disposeBag)
-        
-        microphoneButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                self?.microphoneButton.moveForSpeech {
-                    self?.showSpeechView()
-                }
-                //self?.showSpeechView()
-            })
             .disposed(by: disposeBag)
     }
     
