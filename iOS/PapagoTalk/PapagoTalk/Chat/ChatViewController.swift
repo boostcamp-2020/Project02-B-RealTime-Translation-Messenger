@@ -276,7 +276,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     private func startInteractiveTransition(state: ChatDrawerState, duration: TimeInterval) {
         if runningAnimations.isEmpty {
-            configureAnimation(state: state, duration: 0.9)
+            chatDrawerBehaviorRelay.accept(true)
         }
         runningAnimations.forEach({
             $0.pauseAnimation()
