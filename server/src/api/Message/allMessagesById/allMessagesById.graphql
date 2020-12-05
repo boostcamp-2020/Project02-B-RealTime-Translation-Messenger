@@ -1,3 +1,8 @@
+type allMessages {
+  messages: [Message]
+  nextPage: Int
+}
+
 type Query {
-  allMessagesById(id: Int!): [Message]
+  allMessagesById(id: Int!, page: Int!): allMessages
 }
