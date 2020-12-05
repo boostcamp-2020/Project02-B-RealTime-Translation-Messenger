@@ -34,15 +34,26 @@ final class SpeechViewReactor: Reactor {
         var isMicrophoneButtonEnable: Bool
     }
     
-    private let speechManager = SpeechManager()
-    private let translationManager = PapagoAPIManager()
-    private let userData = UserDataProvider()
-    private let networkService = ApolloNetworkService()
-    var roomID: Int = 0
+    private let speechManager: SpeechManager
+    private let translationManager: PapagoAPIManager
+    private let userData: UserDataProviding
+    private let networkService: NetworkServiceProviding
+    var roomID: Int
     let initialState: State
     var disposeBag = DisposeBag()
     
-    init() {
+    init(networkService: NetworkServiceProviding,
+         userData: UserDataProviding,
+         translationManager: PapagoAPIManager,
+         speechManager: SpeechManager,
+         roomID: Int) {
+        
+        self.networkService = networkService
+        self.userData = userData
+        self.translationManager = translationManager
+        self.speechManager = speechManager
+        self.roomID = roomID
+        
         initialState = State(speechRecognizedText: "", originText: "", translatedText: "", isMicrophoneButtonEnable: true)
         bind()
     }
