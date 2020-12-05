@@ -20,14 +20,14 @@ final class ChatDrawerViewReactor: Reactor {
     
     enum Mutation {
         case setUsers(UserList)
-        case copyRoomCode(String)
+        case copyRoomCode
         case setNeedToast(Bool)
         case setLeaveChatRoom(Bool)
     }
     
     struct State {
         var users: UserList
-        var roomCode: String?
+        var roomCode: RevisionedData<String>
         var needToast: Bool
         var leaveChatRoom: Bool
     }
@@ -41,7 +41,10 @@ final class ChatDrawerViewReactor: Reactor {
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
-        initialState = State(users: UserList(), roomCode: nil, needToast: false, leaveChatRoom: false)
+        initialState = State(users: UserList(),
+                             roomCode: RevisionedData(data: roomCode),
+                             needToast: false,
+                             leaveChatRoom: false)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -51,7 +54,7 @@ final class ChatDrawerViewReactor: Reactor {
         case .chatRoomCodeButtonTapped:
             return .concat ([
                 .just(Mutation.setNeedToast(true)),
-                .just(Mutation.copyRoomCode("554305")),
+                .just(Mutation.copyRoomCode),
                 .just(Mutation.setNeedToast(false))
             ])
         case .leaveChatRoomButtonTapped:
@@ -65,8 +68,8 @@ final class ChatDrawerViewReactor: Reactor {
         switch mutation {
         case .setUsers(let users):
             state.users = users
-        case .copyRoomCode(let roomCode):
-            state.roomCode = roomCode
+        case .copyRoomCode:
+            state.roomCode = state.roomCode.update()
         case .setNeedToast(let needToast):
             state.needToast = needToast
         case .setLeaveChatRoom(let leaveChatRoom):
