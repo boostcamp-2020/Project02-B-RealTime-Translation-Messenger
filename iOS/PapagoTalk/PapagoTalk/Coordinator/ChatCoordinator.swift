@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol ChatCoordinating: class {
-    func presentSpeech(from presentingViewController: UIViewController)
-    func presentDrawer(from presentingViewController: UIViewController)
-}
-
 final class ChatCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinating?
     

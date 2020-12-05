@@ -62,8 +62,6 @@ final class ChatViewReactor: Reactor {
             return requestSendMessage(message: message)
         case .chatDrawerButtonTapped:
             return .just(.toggleDrawerState)
-        case .microphoneButtonTapped:
-            return .just(Mutation.showSpeechView)
         }
     }
     
