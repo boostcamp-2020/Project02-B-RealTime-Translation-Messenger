@@ -16,17 +16,10 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: UICollectionView!
     @IBOutlet private weak var sendButton: UIButton!
-    @IBOutlet private weak var chatDrawerButton: UIBarButtonItem!
+    @IBOutlet weak var chatDrawerButton: UIBarButtonItem!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
-    private weak var chatDrawerViewController: ChatDrawerViewController!
-    private let chatDrawerBehaviorRelay = BehaviorRelay(value: false)
-    private var chatDrawerWidth: CGFloat!
-    private var visualEffectView: UIVisualEffectView!
-    private var runningAnimations = [UIViewPropertyAnimator]()
-    private var animationProgressWhenInterrupted = CGFloat.zero
-    
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: ChatCoordinating?
     var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
     
@@ -41,13 +34,12 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        attachMicrophoneButton()
         bind()
         bindKeyboard()
     }
     
     func bind(reactor: ChatViewReactor) {
-        attachMicrophoneButton()
-        
         self.rx.viewWillAppear
             .map { _ in Reactor.Action.subscribeNewMessages }
             .bind(to: reactor.action)
@@ -66,16 +58,6 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         chatDrawerButton.rx.tap
             .map { Reactor.Action.chatDrawerButtonTapped }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-        
-        chatDrawerBehaviorRelay.filter { $0 }
-            .map { _ in Reactor.Action.chatDrawerButtonTapped }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-
-        microphoneButton.rx.tap
-            .map { Reactor.Action.microphoneButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -109,28 +91,13 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe()
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.toggleDrawer }
+        reactor.state.map { $0.toggleDrawer.drawerState }
             .distinctUntilChanged()
-            .do { [weak self] _ in
-                if !(self?.runningAnimations.isEmpty ?? true) {
-                    self?.runningAnimations.removeAll()
-                }
-            }
             .subscribe(onNext: { [weak self] in
-                ($0.drawerState) ?
-                    self?.configureChatDrawer(roomID: $0.roomID) : self?.configureAnimation(state: .closed, duration: 0.5)
-                self?.inputBarTextView.resignFirstResponder()
-            })
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.showSpeechView }
-            .distinctUntilChanged()
-            .compactMap { $0.data }
-            .filter { $0.0 }
-            .subscribe(onNext: { [weak self] _, roomID in
-                self?.microphoneButton?.moveForSpeech {
-                    self?.showSpeechView(roomID: roomID)
+                UIView.performWithoutAnimation {
+                    self?.inputBarTextView.resignFirstResponder()
                 }
+                self?.setDrawer(isPresent: $0)
             })
             .disposed(by: disposeBag)
     }
@@ -147,6 +114,16 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asObservable()
             .distinctUntilChanged()
             .bind(to: inputBarTextViewHeight.rx.constant)
+            .disposed(by: disposeBag)
+        
+        microphoneButton?.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                self?.microphoneButton.isUserInteractionEnabled = false
+                self?.microphoneButton?.moveForSpeech {
+                    self?.presentSpeech()
+                }
+            })
             .disposed(by: disposeBag)
     }
     
@@ -170,138 +147,21 @@ final class ChatViewController: UIViewController, StoryboardView {
         chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: true)
     }
     
-    // MARK: - configure ChatDrawer
+    private func presentSpeech() {
+        coordinator?.presentSpeech(from: self)
+    }
     
-    private func configureChatDrawer(roomID: Int) {
-        guard chatDrawerViewController == nil else {
+    private func setDrawer(isPresent: Bool) {
+        isPresent ? coordinator?.presentDrawer(from: self) : dismissDrawer()
+    }
+    
+    private func dismissDrawer() {
+        chatDrawerButton.isEnabled = false
+        guard let drawer = children.first as? ChatDrawerViewController else {
+            chatDrawerButton.isEnabled = true
             return
         }
-        configureVisualEffectView()
-        chatDrawerViewController = coordinator?.showChatDrawer(roomID: roomID, roomCode: "")
-        addChild(chatDrawerViewController)
-        view.addSubview(chatDrawerViewController.view)
-        
-        chatDrawerWidth = (view.frame.width * 3) / 4
-        chatDrawerViewController.view.frame = CGRect(x: view.frame.width,
-                                                     y: .zero,
-                                                     width: chatDrawerWidth,
-                                                     height: view.frame.height)
-        chatDrawerViewController.view.clipsToBounds = true
-        bindChatDrawerGesture()
-        configureAnimation(state: .opened, duration: 0.9)
-    }
-    
-    private func configureVisualEffectView() {
-        visualEffectView = UIVisualEffectView()
-        visualEffectView.frame = view.frame
-        view.addSubview(visualEffectView)
-    }
-    
-    private func bindChatDrawerGesture() {
-        chatDrawerViewController
-            .view.rx.panGesture()
-            .subscribe(onNext: { [weak self] in
-                self?.chatDrawerPanned(recognizer: $0)
-            })
-            .disposed(by: disposeBag)
-        
-        visualEffectView.rx.tapGesture()
-            .when(.recognized)
-            .do { _ in
-                self.chatDrawerBehaviorRelay.accept(true)
-            }
-            .subscribe()
-            .disposed(by: disposeBag)
-    }
-    
-    // MARK: - ChatDrawer Animation
-    
-    private func configureAnimation(state: ChatDrawerState, duration: TimeInterval) {
-        guard runningAnimations.isEmpty else {
-            DispatchQueue.main.async { [weak self] in
-                self?.runningAnimations.removeAll()
-                self?.configureAnimation(state: state, duration: duration)
-            }
-            return
-        }
-        
-        let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) { [weak self] in
-            guard let self = self, let chatDrawer = self.chatDrawerViewController else {
-                return
-            }
-            switch state {
-            case .opened:
-                chatDrawer.view.frame.origin.x = self.view.frame.width - self.chatDrawerWidth
-            case .closed:
-                chatDrawer.view.frame.origin.x = self.view.frame.width
-            }
-        }
-        frameAnimator.addCompletion { [weak self] _ in
-            self?.runningAnimations.removeAll()
-            guard let chatDrawer = self?.chatDrawerViewController, state == .closed else {
-                return
-            }
-            chatDrawer.dismiss(animated: false, completion: nil)
-            chatDrawer.view.removeFromSuperview()
-            chatDrawer.removeFromParent()
-            self?.chatDrawerViewController = nil
-        }
-        frameAnimator.startAnimation()
-        runningAnimations.append(frameAnimator)
-        
-        let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) { [weak self] in
-            guard let visualEffectView = self?.visualEffectView else {
-                return
-            }
-            switch state {
-            case .opened:
-                visualEffectView.effect = UIBlurEffect(style: .dark)
-                visualEffectView.alpha = 0.3
-            case .closed:
-                visualEffectView.removeFromSuperview()
-                visualEffectView.effect = nil
-            }
-        }
-        blurAnimator.startAnimation()
-        runningAnimations.append(blurAnimator)
-    }
-    
-    // MARK: - ChatDrawer PanGesture
-    
-    private func chatDrawerPanned(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
-        case .began:
-            startInteractiveTransition(state: .closed, duration: 0.5)
-        case .changed:
-            let translation = recognizer.translation(in: chatDrawerViewController.view)
-            updateInteractiveTransition(fractionCompleted: translation.x / chatDrawerWidth)
-        case .ended:
-            continueInteractiveTransition()
-        default:
-            break
-        }
-    }
-    
-    private func startInteractiveTransition(state: ChatDrawerState, duration: TimeInterval) {
-        if runningAnimations.isEmpty {
-            chatDrawerBehaviorRelay.accept(true)
-        }
-        runningAnimations.forEach({
-            $0.pauseAnimation()
-            animationProgressWhenInterrupted = $0.fractionComplete
-        })
-    }
-    
-    private func updateInteractiveTransition(fractionCompleted: CGFloat) {
-        runningAnimations.forEach({
-            $0.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
-        })
-    }
-    
-    private func continueInteractiveTransition() {
-        runningAnimations.forEach({
-            $0.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-        })
+        drawer.configureAnimation(state: .closed, duration: 0.5)
     }
 }
 
