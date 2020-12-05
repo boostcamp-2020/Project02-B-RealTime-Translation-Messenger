@@ -21,10 +21,12 @@ final class SpeechViewController: UIViewController, StoryboardView {
     
     weak var delegate: SpeechViewDelegate?
     var disposeBag = DisposeBag()
+    var roomID = 0 // Coordinator 적용시 제거
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reactor = SpeechViewReactor()
+        reactor?.roomID = roomID // Coordinator 적용시 제거
         bind()
     }
     
@@ -42,9 +44,30 @@ final class SpeechViewController: UIViewController, StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        originSendButton.rx.tap
+            .withLatestFrom(originTextView.rx.text)
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+            .map { _ in Reactor.Action.originSendButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        translatedSendButton.rx.tap
+            .withLatestFrom(translatedTextView.rx.text)
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+            .map { _ in Reactor.Action.translatedSendButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.speechRecognizedText }
             .distinctUntilChanged()
             .bind(to: originTextView.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.originText }
+            .distinctUntilChanged()
+            .bind(to: originTextView.rx.text )
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.translatedText }

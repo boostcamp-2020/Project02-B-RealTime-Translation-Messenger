@@ -20,13 +20,14 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     private weak var chatDrawerViewController: ChatDrawerViewController!
-    var microphoneButton: MicrophoneButton!
+    private let chatDrawerBehaviorRelay = BehaviorRelay(value: false)
     private var chatDrawerWidth: CGFloat!
     private var visualEffectView: UIVisualEffectView!
     private var runningAnimations = [UIViewPropertyAnimator]()
     private var animationProgressWhenInterrupted = CGFloat.zero
     
     weak var coordinator: MainCoordinator?
+    var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
     
     init?(coder: NSCoder, reactor: ChatViewReactor) {
@@ -40,12 +41,13 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        attachMicrophoneButton()
         bind()
         bindKeyboard()
     }
     
     func bind(reactor: ChatViewReactor) {
+        attachMicrophoneButton()
+        
         self.rx.viewWillAppear
             .map { _ in Reactor.Action.subscribeNewMessages }
             .bind(to: reactor.action)
@@ -64,6 +66,16 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         chatDrawerButton.rx.tap
             .map { Reactor.Action.chatDrawerButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        chatDrawerBehaviorRelay.filter { $0 }
+            .map { _ in Reactor.Action.chatDrawerButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        microphoneButton.rx.tap
+            .map { Reactor.Action.microphoneButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -97,7 +109,7 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe()
             .disposed(by: disposeBag)
         
-        reactor.state.map { ($0.toggleDrawer) }
+        reactor.state.map { $0.toggleDrawer }
             .distinctUntilChanged()
             .do { [weak self] _ in
                 if !(self?.runningAnimations.isEmpty ?? true) {
@@ -107,6 +119,18 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe(onNext: { [weak self] in
                 ($0.drawerState) ?
                     self?.configureChatDrawer(roomID: $0.roomID) : self?.configureAnimation(state: .closed, duration: 0.5)
+                self?.inputBarTextView.resignFirstResponder()
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.showSpeechView }
+            .distinctUntilChanged()
+            .compactMap { $0.data }
+            .filter { $0.0 }
+            .subscribe(onNext: { [weak self] _, roomID in
+                self?.microphoneButton?.moveForSpeech {
+                    self?.showSpeechView(roomID: roomID)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -123,16 +147,6 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asObservable()
             .distinctUntilChanged()
             .bind(to: inputBarTextViewHeight.rx.constant)
-            .disposed(by: disposeBag)
-        
-        microphoneButton.rx.tap
-            .asDriver()
-            .drive(onNext: { [weak self] in
-                self?.microphoneButton.moveForSpeech {
-                    self?.showSpeechView()
-                }
-                //self?.showSpeechView()
-            })
             .disposed(by: disposeBag)
     }
     
@@ -191,18 +205,13 @@ final class ChatViewController: UIViewController, StoryboardView {
             })
             .disposed(by: disposeBag)
         
-        /*
-         let chatDrawerButtonTap = chatDrawerButton.rx.tap.map { _ in return () }
-         let view: Observable<Void> = visualEffectView.rx.tapGesture().when(.recognized).map { _ in return () }
-         
-         Observable.of(chatDrawerButtonTap, view).merge()
-         
-         visualEffectView.rx.tapGesture()
-             .when(.recognized)
-             .map { $0.touchesBegan(.init(), with: .init()) }
-             .bind(to: chatDrawerButton.rx.tap.asControlEvent())
-             .disposed(by: disposeBag)
-        */
+        visualEffectView.rx.tapGesture()
+            .when(.recognized)
+            .do { _ in
+                self.chatDrawerBehaviorRelay.accept(true)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     // MARK: - ChatDrawer Animation
@@ -249,6 +258,7 @@ final class ChatViewController: UIViewController, StoryboardView {
                 visualEffectView.effect = UIBlurEffect(style: .dark)
                 visualEffectView.alpha = 0.3
             case .closed:
+                visualEffectView.removeFromSuperview()
                 visualEffectView.effect = nil
             }
         }
@@ -274,7 +284,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     private func startInteractiveTransition(state: ChatDrawerState, duration: TimeInterval) {
         if runningAnimations.isEmpty {
-            configureAnimation(state: state, duration: 0.9)
+            chatDrawerBehaviorRelay.accept(true)
         }
         runningAnimations.forEach({
             $0.pauseAnimation()

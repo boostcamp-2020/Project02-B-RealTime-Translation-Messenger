@@ -1,5 +1,5 @@
 //
-//  ChatViewController + SpeechView.swift
+//  ChatViewController+SpeechViewDelegate.swift
 //  PapagoTalk
 //
 //  Created by Byoung-Hwi Yoon on 2020/12/02.
@@ -14,11 +14,12 @@ extension ChatViewController: SpeechViewDelegate {
         view.addSubview(microphoneButton)
     }
     
-    func showSpeechView() {
+    func showSpeechView(roomID: Int) {
         guard let speechViewController = storyboard?.instantiateViewController(identifier: SpeechViewController.identifier) as? SpeechViewController else {
             return
         }
         speechViewController.delegate = self
+        speechViewController.roomID = roomID
         addChild(speechViewController)
         speechViewController.view.frame = CGRect(x: (view.frame.width - Constant.speechViewWidth)/2.0,
                                                  y: (view.frame.height - Constant.speechViewHeight)/2.0,

@@ -14,12 +14,14 @@ final class ChatViewReactor: Reactor {
         case subscribeNewMessages
         case sendMessage(String)
         case chatDrawerButtonTapped
+        case microphoneButtonTapped
     }
     
     enum Mutation {
         case appendNewMessage([Message])
         case setSendResult(Bool)
         case toggleDrawerState
+        case showSpeechView
     }
     
     struct State {
@@ -27,6 +29,7 @@ final class ChatViewReactor: Reactor {
         var sendResult: Bool = true
         var roomCode: String
         var toggleDrawer: ToggleDrawer
+        var showSpeechView: RevisionedData<(Bool,Int)>
         
         struct ToggleDrawer: Equatable {
             var drawerState: Bool
@@ -51,7 +54,8 @@ final class ChatViewReactor: Reactor {
         self.roomID = roomID
         initialState = State(messageBox: MessageBox(userID: userData.id),
                              roomCode: code,
-                             toggleDrawer: State.ToggleDrawer(drawerState: false, roomID: roomID))
+                             toggleDrawer: State.ToggleDrawer(drawerState: false, roomID: roomID),
+                             showSpeechView: RevisionedData(data: (false,roomID)))
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -62,6 +66,8 @@ final class ChatViewReactor: Reactor {
             return requestSendMessage(message: message)
         case .chatDrawerButtonTapped:
             return .just(.toggleDrawerState)
+        case .microphoneButtonTapped:
+            return .just(Mutation.showSpeechView)
         }
     }
     
@@ -75,6 +81,8 @@ final class ChatViewReactor: Reactor {
             state.sendResult = isSuccess
         case .toggleDrawerState:
             state.toggleDrawer.drawerState.toggle()
+        case .showSpeechView:
+            state.showSpeechView = state.showSpeechView.update((true,roomID))
         }
         return state
     }

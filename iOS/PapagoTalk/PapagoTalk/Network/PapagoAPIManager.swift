@@ -39,13 +39,24 @@ final class PapagoAPIManager {
 }
 
 struct PapagoAPIRequest: HTTPRequest {
-    var url: URL = APIEndPoint.naverPapagoOpenAPI
+    // NaverDevelopers OpenAPI
+    //    var url: URL = APIEndPoint.naverPapagoOpenAPI
+    //    var httpMethod: HTTPMethod = .post
+    //    var headers: [String: String] = [
+    //        "Content-Type": "application/json",
+    //        "X-Naver-Client-Id": APIEndPoint.naverPapagoOpenAPIclientID,
+    //        "X-Naver-Client-Secret": APIEndPoint.naverPapagoOpenAPIclientSecret
+    //    ]
+    
+    //  NCP
+    var url: URL = APIEndPoint.ncpPapagoAPI
     var httpMethod: HTTPMethod = .post
     var headers: [String: String] = [
-        "Content-Type": "Application/json",
-        "X-Naver-Client-Id": APIEndPoint.naverPapagoOpenAPIclientID,
-        "X-Naver-Client-Secret": APIEndPoint.naverPapagoOpenAPIclientSecret
+        "Content-Type": "application/json",
+        "X-NCP-APIGW-API-KEY-ID": APIEndPoint.ncpPapagoAPIclientID,
+        "X-NCP-APIGW-API-KEY": APIEndPoint.ncpPapagoAPIclientSecret
     ]
+    
     var body: Data?
     
     init(body: Data?) {

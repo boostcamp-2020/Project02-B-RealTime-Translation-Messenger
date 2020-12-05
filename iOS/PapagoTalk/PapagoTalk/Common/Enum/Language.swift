@@ -10,6 +10,8 @@ import Foundation
 enum Language: String, Codable, CaseIterable {
     case korean
     case english
+    case french
+    case japanese
     
     var localizedText: String {
         switch self {
@@ -17,6 +19,10 @@ enum Language: String, Codable, CaseIterable {
             return Strings.korean
         case .english:
             return Strings.english
+        case .french:
+            return "프랑스어"
+        case .japanese:
+            return "일본어"
         }
     }
     
@@ -26,6 +32,10 @@ enum Language: String, Codable, CaseIterable {
             return "ko"
         case .english:
             return "en"
+        case .french:
+            return "fr"
+        case .japanese:
+            return "ja"
         }
     }
     
@@ -35,6 +45,10 @@ enum Language: String, Codable, CaseIterable {
             return Locale(identifier: "ko-KR")
         case .english:
             return Locale(identifier: "en-US")
+        case .french:
+            return Locale(identifier: "fr_KR")
+        case .japanese:
+            return Locale(identifier: "ja_KR")
         }
     }
     
@@ -44,6 +58,10 @@ enum Language: String, Codable, CaseIterable {
             return 0
         case .english:
             return 1
+        case .french:
+            return 2
+        case .japanese:
+            return 3
         }
     }
     
@@ -53,6 +71,10 @@ enum Language: String, Codable, CaseIterable {
             return .korean
         case "en":
             return .english
+        case "fr":
+            return .french
+        case "ja":
+            return .japanese
         default:
             return .english
         }

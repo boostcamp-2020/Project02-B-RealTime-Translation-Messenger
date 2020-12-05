@@ -15,6 +15,8 @@ final class SpeechViewReactor: Reactor {
         case speechTextChanged(String)
         case originTextChanged(String)
         case speechRecognitionAvailabiltyChanged(Bool)
+        case originSendButtonTapped
+        case translatedSendButtonTapped
     }
     
     enum Mutation {
@@ -22,6 +24,7 @@ final class SpeechViewReactor: Reactor {
         case setOriginText(String)
         case setTranslatedText(String)
         case setIsMicrophoneButtonEnable(Bool)
+        case clearTextView
     }
     
     struct State {
@@ -34,11 +37,13 @@ final class SpeechViewReactor: Reactor {
     private let speechManager = SpeechManager()
     private let translationManager = PapagoAPIManager()
     private let userData = UserDataProvider()
+    private let networkService = ApolloNetworkService()
+    var roomID: Int = 0
     let initialState: State
     var disposeBag = DisposeBag()
     
     init() {
-        initialState = State(speechRecognizedText: "", originText: "", translatedText: "...", isMicrophoneButtonEnable: true)
+        initialState = State(speechRecognizedText: "", originText: "", translatedText: "", isMicrophoneButtonEnable: true)
         bind()
     }
     
@@ -51,11 +56,21 @@ final class SpeechViewReactor: Reactor {
             return .just(Mutation.setSpeechRecognition(output))
         case .originTextChanged(let input):
             return .concat([
-                translate(text: input),
-                .just(Mutation.setOriginText(input))
+                .just(Mutation.setOriginText(input)),
+                translate(text: input)
             ])
         case .speechRecognitionAvailabiltyChanged(let isAvailable):
             return .just(Mutation.setIsMicrophoneButtonEnable(isAvailable))
+        case .originSendButtonTapped:
+            return .concat([
+                requestSendMessage(message: currentState.originText),
+                .just(Mutation.clearTextView)
+            ])
+        case .translatedSendButtonTapped:
+            return .concat([
+                requestSendMessage(message: currentState.translatedText),
+                .just(Mutation.clearTextView)
+            ])
         }
     }
     
@@ -65,12 +80,15 @@ final class SpeechViewReactor: Reactor {
         switch mutation {
         case .setSpeechRecognition(let output):
             state.speechRecognizedText = output
-        case .setTranslatedText(let output):
-            state.translatedText = output
         case .setOriginText(let output):
             state.originText = output
+        case .setTranslatedText(let output):
+            state.translatedText = output
         case .setIsMicrophoneButtonEnable(let isEnable):
             state.isMicrophoneButtonEnable = isEnable
+        case .clearTextView:
+            state.originText = ""
+            state.translatedText = ""
         }
         return state
     }
@@ -95,5 +113,14 @@ final class SpeechViewReactor: Reactor {
                                                             text: text))
             .asObservable()
             .map { Mutation.setTranslatedText($0) }
+    }
+    
+    private func requestSendMessage(message: String) -> Observable<Mutation> {
+        return networkService.sendMessage(text: message,
+                                          source: userData.language.code,
+                                          userId: userData.id,
+                                          roomId: roomID)
+            .asObservable()
+            .map { _ in Mutation.clearTextView }
     }
 }
