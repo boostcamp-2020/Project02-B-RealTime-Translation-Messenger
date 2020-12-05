@@ -23,7 +23,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     private var languageSelection: BehaviorSubject<Language>
     private let alertFactory: AlertFactoryProviding
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: HomeCoordinating?
     var disposeBag = DisposeBag()
     
     init?(coder: NSCoder,
@@ -106,7 +106,7 @@ final class HomeViewController: UIViewController, StoryboardView {
         reactor.state.compactMap { $0.createRoomResponse }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
-                self?.coordinator?.showChat(roomID: $0.roomId, code: $0.code)
+                self?.coordinator?.pushChat(roomID: $0.roomId, code: $0.code)
             })
             .disposed(by: disposeBag)
         
@@ -126,27 +126,16 @@ final class HomeViewController: UIViewController, StoryboardView {
         languageSelectionButton.rx.tap
             .asDriver()
             .drive { [weak self] _ in
-                self?.showLanguageSelectionView()
+                self?.coordinator?.presentLanguageSelectionView(observer: self?.languageSelection)
             }
             .disposed(by: disposeBag)
         
         joinChatRoomButton.rx.tap
             .asDriver()
             .drive { [weak self] _ in
-                self?.coordinator?.showChatCodeInput()
+                self?.coordinator?.presentCodeInput()
             }
             .disposed(by: disposeBag)
-    }
-    
-    private func showLanguageSelectionView() {
-        let customAlertView =
-            storyboard?.instantiateViewController(identifier: LanguageSelectionView.identifier)
-            as? LanguageSelectionView
-        customAlertView?.pickerViewObserver = languageSelection
-        
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        alertController.setValue(customAlertView, forKey: "contentViewController")
-        present(alertController, animated: true)
     }
     
     private func alert(message: String) {
