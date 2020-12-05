@@ -8,12 +8,6 @@
 import UIKit
 import RxSwift
 
-protocol HomeCoordinating: class {
-    func presentCodeInput()
-    func pushChat(roomID: Int, code: String)
-    func presentLanguageSelectionView(observer: BehaviorSubject<Language>?)
-}
-
 final class HomeCoordinator: Coordinator {
     
     weak var parentCoordinator: MainCoordinating?
