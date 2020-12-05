@@ -924,6 +924,14 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GE-8G-G6N" customClass="SentMessageBubbleTail" customModule="PapagoTalk" customModuleProvider="target">
+                                                    <rect key="frame" x="396" y="40" width="12" height="12"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="Qwu-47-hsz"/>
+                                                        <constraint firstAttribute="width" constant="12" id="xdn-ZD-mJZ"/>
+                                                    </constraints>
+                                                </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVH-iM-tHV" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
                                                     <rect key="frame" x="314" y="40" width="88" height="42"/>
                                                     <color key="backgroundColor" name="PapagoSkyBlue"/>
@@ -968,8 +976,10 @@
                                                 <constraint firstItem="ZVH-iM-tHV" firstAttribute="top" secondItem="IJO-uC-sDU" secondAttribute="bottom" priority="999" constant="12" id="DDQ-Jx-Fub"/>
                                                 <constraint firstItem="hRr-JJ-sLX" firstAttribute="bottom" secondItem="ZVH-iM-tHV" secondAttribute="bottom" priority="999" id="ODT-iB-4TN"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZVH-iM-tHV" secondAttribute="trailing" constant="12" id="RVK-Su-zeE"/>
+                                                <constraint firstItem="0GE-8G-G6N" firstAttribute="trailing" secondItem="ZVH-iM-tHV" secondAttribute="trailing" constant="6" id="cZM-Bd-MUi"/>
                                                 <constraint firstItem="ZVH-iM-tHV" firstAttribute="leading" secondItem="hRr-JJ-sLX" secondAttribute="trailing" constant="10" id="jYW-Nu-9gN"/>
                                                 <constraint firstItem="IJO-uC-sDU" firstAttribute="top" secondItem="jq0-Iv-ZBe" secondAttribute="top" priority="999" constant="4" id="r71-jL-C7T"/>
+                                                <constraint firstItem="0GE-8G-G6N" firstAttribute="top" secondItem="ZVH-iM-tHV" secondAttribute="top" id="wJP-e1-Xvm"/>
                                                 <constraint firstAttribute="bottom" secondItem="ZVH-iM-tHV" secondAttribute="bottom" priority="999" constant="8" id="wz3-gc-tdJ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -988,6 +998,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0R-rB-fgy" customClass="ReceivedMessageBubbleTail" customModule="PapagoTalk" customModuleProvider="target">
+                                                    <rect key="frame" x="58" y="66" width="12" height="12"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="12" id="P0m-Mp-yaM"/>
+                                                        <constraint firstAttribute="height" constant="12" id="sPA-Pp-OLt"/>
+                                                    </constraints>
+                                                </view>
                                                 <button opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btx-gT-koo">
                                                     <rect key="frame" x="112" y="4" width="190" height="24"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1080,6 +1098,8 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ymh-Tr-sLT" secondAttribute="bottom" priority="999" constant="12" id="ez4-xq-Btw"/>
                                                 <constraint firstItem="Y1i-KZ-Cbi" firstAttribute="top" secondItem="zyP-S3-xoJ" secondAttribute="bottom" priority="999" constant="8" id="fNp-Cq-7ph"/>
                                                 <constraint firstItem="ymh-Tr-sLT" firstAttribute="leading" secondItem="BHL-qx-p9o" secondAttribute="leading" constant="12" id="moM-7G-GiF"/>
+                                                <constraint firstItem="s0R-rB-fgy" firstAttribute="leading" secondItem="Y1i-KZ-Cbi" secondAttribute="leading" constant="-6" id="q0l-uN-Xca"/>
+                                                <constraint firstItem="s0R-rB-fgy" firstAttribute="top" secondItem="Y1i-KZ-Cbi" secondAttribute="top" id="sCV-Q8-i6D"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y1i-KZ-Cbi" secondAttribute="trailing" constant="100" id="uwX-ro-NzV"/>
                                                 <constraint firstItem="d8P-YL-lNQ" firstAttribute="bottom" secondItem="Y1i-KZ-Cbi" secondAttribute="bottom" priority="999" id="xUk-qm-h74"/>
                                             </constraints>
