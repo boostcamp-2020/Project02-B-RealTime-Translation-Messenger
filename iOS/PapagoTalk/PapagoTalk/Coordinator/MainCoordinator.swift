@@ -13,6 +13,7 @@ protocol MainCoordinating: class {
     
     func presentCodeInput()
     func pushChat(roomID: Int, code: String)
+    func codeInputToChat(roomID: Int, code: String)
 }
 
 final class MainCoordinator: Coordinator {
@@ -21,6 +22,8 @@ final class MainCoordinator: Coordinator {
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
+    var translationManager: PapagoAPIManager
+    var speechManager: SpeechManager
     var childCoordinator: [Coordinator] = []
     
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -28,20 +31,33 @@ final class MainCoordinator: Coordinator {
     init(navigationController: UINavigationController,
          networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         alertFactory: AlertFactoryProviding) {
+         alertFactory: AlertFactoryProviding,
+         translationManager: PapagoAPIManager,
+         speechManager: SpeechManager) {
         
         self.navigationController = navigationController
         self.networkService = networkService
         self.userData = userData
         self.alertFactory = alertFactory
+        self.translationManager = translationManager
+        self.speechManager = speechManager
     }
     
     func start() {
         let homeCoordinator = HomeCoordinator(networkService: networkService,
                                               userData: userData,
                                               alertFactory: alertFactory)
-        childCoordinator.append(homeCoordinator)
+        
+        let chatCoordinator = ChatCoordinator(networkService: networkService,
+                                              userData: userData,
+                                              translationManager: translationManager,
+                                              speechManager: speechManager)
+        
         homeCoordinator.parentCoordinator = self
+        chatCoordinator.parentCoordinator = self
+        childCoordinator.append(homeCoordinator)
+        childCoordinator.append(chatCoordinator)
+        
         homeCoordinator.start()
     }
 }
@@ -63,18 +79,12 @@ extension MainCoordinator: MainCoordinating {
     }
     
     func pushChat(roomID: Int, code: String) {
-        let viewController = storyboard.instantiateViewController(
-            identifier: ChatViewController.identifier,
-            creator: { [unowned self] coder -> ChatViewController? in
-                let reactor = ChatViewReactor(networkService: networkService,
-                                              userData: userData,
-                                              roomID: roomID,
-                                              code: code)
-                return ChatViewController(coder: coder, reactor: reactor)
-            }
-        )
-        viewController.coordinator = self
-        navigationController.pushViewController(viewController, animated: true)
+        guard let chatCoordinator = childCoordinator[1] as? ChatCoordinator else {
+            return
+        }
+        chatCoordinator.roomID = roomID
+        chatCoordinator.code = code
+        chatCoordinator.start()
     }
     
     func presentCodeInput() {
@@ -89,20 +99,5 @@ extension MainCoordinator: MainCoordinating {
         )
         viewController.coordinator = self
         navigationController.present(viewController, animated: true)
-    }
-  
-    func showChatDrawer(roomID: Int, roomCode: String) -> ChatDrawerViewController {
-        let viewController = storyboard.instantiateViewController(
-            identifier: ChatDrawerViewController.identifier,
-            creator: { [unowned self] coder -> ChatDrawerViewController? in
-                let reactor = ChatDrawerViewReactor(networkService: networkService,
-                                                    userData: userData,
-                                                    roomID: roomID,
-                                                    roomCode: roomCode)
-                return ChatDrawerViewController(coder: coder,
-                                                reactor: reactor)
-            }
-        )
-        return viewController
     }
 }
