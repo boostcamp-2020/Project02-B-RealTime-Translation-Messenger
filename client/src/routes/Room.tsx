@@ -12,8 +12,6 @@ interface MatchParams {
   id: string;
 }
 
-const Wrapper = styled.div``;
-
 const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const roomId = +match.params.id;
   const location: any = useLocation();
@@ -44,12 +42,12 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   if (loading) return <div>Loading!</div>;
 
   return (
-    <Wrapper>
+    <>
       <Header visible={visible} setVisible={setVisible} />
       <SideBar visible={visible} setVisible={setVisible} />
       <ChatLog messages={data.allMessagesById} />
       <Input />
-    </Wrapper>
+    </>
   );
 };
 

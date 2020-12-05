@@ -20,10 +20,10 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   width: 30%;
   min-width: 360px;
   padding: 3rem;
-  flex-direction: column;
 `;
 
 const Home: React.FC = () => {

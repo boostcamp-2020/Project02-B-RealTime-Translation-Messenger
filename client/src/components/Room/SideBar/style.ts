@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 export default {
   SideBarWrapper: styled.div`
-    position: relative;
-    width: 15%;
-    min-width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
     height: 100vh;
+    min-width: 280px;
     color: ${(props) => props.theme.whiteColor};
     background-color: ${(props) => props.theme.blueColor};
-    border-bottom-right-radius: ${(props) => props.theme.borderRadius};
-    border-top-right-radius: ${(props) => props.theme.borderRadius};
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
     font-size: 1.2rem;
     z-index: 2;
   `,
@@ -20,7 +22,6 @@ export default {
     width: 100%;
     height: 5rem;
     padding: 1.5rem;
-
     svg {
       fill: ${(props) => props.theme.whiteColor};
     }
@@ -33,11 +34,11 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem 1.5rem 0 1.5rem;
   `,
   Avatar: styled.img`
     width: 20%;
-    border-radius: 100%;
     background-color: ${(props) => props.theme.whiteColor};
+    border-radius: 100%;
   `,
 };

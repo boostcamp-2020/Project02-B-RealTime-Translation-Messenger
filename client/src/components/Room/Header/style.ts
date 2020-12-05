@@ -12,7 +12,9 @@ export default {
     width: 100%;
     height: 5rem;
     padding: 0 2rem;
+    background: ${(props) => props.theme.bgColor};
     border-bottom: ${(props) => props.theme.boxBorder};
+    z-index: 1;
   `,
   HamburgerButton: styled.button`
     width: 24px;
@@ -36,8 +38,8 @@ export default {
     align-items: center;
   `,
   DoorButton: styled.button`
-    margin-left: 1rem;
     width: 24px;
     height: 24px;
+    margin-left: 1rem;
   `,
 };

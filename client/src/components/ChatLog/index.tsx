@@ -13,8 +13,10 @@ interface TranslatedText {
 }
 
 const Wrapper = styled.div`
+  /* position: absolute;
+  bottom: 0; */
   width: 100%;
-  margin-top: 6rem;
+  padding: 6rem 2rem 8rem 2rem;
 `;
 
 const ChatLog: FC<Props> = ({ messages }) => {

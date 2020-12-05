@@ -25,26 +25,29 @@ const Wrapper = styled.div<isOriginProps>`
   display: flex;
   justify-content: ${(props) => (props.isOrigin ? 'flex-end' : null)};
   width: 100%;
+  margin-bottom: 1rem;
 `;
 
-const Column = styled.div``;
+const Column = styled.div`
+  margin: 0 0.5rem;
+`;
+
+const Info = styled.div<isOriginProps>`
+  display: flex;
+  justify-content: ${(props) => (props.isOrigin ? 'flex-end' : null)};
+  margin: 0 0 0.4rem 0.2rem;
+`;
 
 const Text = styled.span`
-  margin-right: 5px;
-  font-size: 14px;
+  margin-right: 0.3rem;
 `;
 
 const DoubleBubble = styled.div`
   display: flex;
   align-items: center;
   div {
-    margin-right: 20px;
+    margin-right: 0.7rem;
   }
-`;
-
-const Info = styled.div<isOriginProps>`
-  display: flex;
-  justify-content: ${(props) => (props.isOrigin ? 'flex-end' : null)};
 `;
 
 const ChatRow: FC<Props> = ({ author, message, obj, createdAt }) => {

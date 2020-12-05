@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export default {
   Wrapper: styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    background: ${(props) => props.theme.bgColor};
   `,
   InputWrapper: styled.div`
     display: flex;
-    margin: 0 2rem 1.5rem 2rem;
     height: 6rem;
+    margin: 0 2rem 1.5rem 2rem;
   `,
   InputContainer: styled.div`
     position: relative;
@@ -17,8 +18,8 @@ export default {
     width: 100%;
     height: 100%;
     background: #f7f7f7;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   `,
   Input: styled.input`
     width: 100%;
@@ -27,14 +28,14 @@ export default {
   `,
   VoiceButton: styled.button`
     position: absolute;
-    margin-right: 1rem;
+    top: 50%;
+    right: 0;
     width: 50px;
     height: 50px;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-right: 1rem;
     background: ${(props) => props.theme.blueColor};
     border-radius: 50%;
-    right: 0;
+    transform: translateY(-50%);
     svg {
       margin: 10px;
       fill: ${(props) => props.theme.whiteColor};
@@ -44,12 +45,12 @@ export default {
     flex: 0.02 0 0;
   `,
   Translation: styled.div`
+    flex: 1 0 0;
     height: 100%;
     padding: 1rem;
-    font-size: 16px;
-    flex: 1 0 0;
     background: #f7f7f7;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: ${(props) => props.theme.borderRadius};
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
   `,
 };
