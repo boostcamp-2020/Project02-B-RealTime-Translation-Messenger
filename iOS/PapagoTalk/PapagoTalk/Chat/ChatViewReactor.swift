@@ -37,6 +37,7 @@ final class ChatViewReactor: Reactor {
     private let networkService: NetworkServiceProviding
     private let userData: UserDataProviding
     private let roomID: Int
+    private var socketObservable: Observable<Mutation>?
     
     let initialState: State
     
@@ -60,7 +61,9 @@ final class ChatViewReactor: Reactor {
         case .sendMessage(let message):
             return requestSendMessage(message: message)
         case .chatDrawerButtonTapped:
-            return .just(Mutation.toggleDrawerState)
+            return .just(.toggleDrawerState)
+        case .microphoneButtonTapped:
+            return .just(Mutation.showSpeechView)
         }
     }
     
