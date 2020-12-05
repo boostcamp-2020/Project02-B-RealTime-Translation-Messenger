@@ -19,11 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let networkService = ApolloNetworkService()
         let alertFactory = AlertFactory()
         let userData = UserDataProvider()
+        let translationManager = PapagoAPIManager()
+        let speechManager = SpeechManager()
+        
         window = UIWindow(windowScene: scene)
         coordinator = MainCoordinator(navigationController: navigationController,
                                       networkService: networkService,
                                       userData: userData,
-                                      alertFactory: alertFactory)
+                                      alertFactory: alertFactory,
+                                      translationManager: translationManager,
+                                      speechManager: speechManager)
         coordinator?.start()
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

@@ -16,7 +16,7 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var removeButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: MainCoordinating?
     var alertFactory: AlertFactoryProviding
     var disposeBag = DisposeBag()
     

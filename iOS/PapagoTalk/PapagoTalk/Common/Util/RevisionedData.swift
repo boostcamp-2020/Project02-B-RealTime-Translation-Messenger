@@ -29,4 +29,8 @@ struct RevisionedData<T>: Equatable {
 extension RevisionedData {
     func update(_ data: T?) -> RevisionedData {
         return RevisionedData<T>(revision: self.revision + 1, data: data) }
+    
+    func update() -> RevisionedData {
+        return RevisionedData<T>(revision: self.revision + 1, data: self.data)
+    }
 }

@@ -7,66 +7,87 @@
 
 import UIKit
 
+protocol MainCoordinating: class {
+    func push(_ viewController: UIViewController)
+    func present(_ viewController: UIViewController)
+    
+    func presentCodeInput()
+    func pushChat(roomID: Int, code: String)
+    func codeInputToChat(roomID: Int, code: String)
+}
+
 final class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
+    var translationManager: PapagoAPIManager
+    var speechManager: SpeechManager
+    var childCoordinator: [Coordinator] = []
     
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
     init(navigationController: UINavigationController,
          networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         alertFactory: AlertFactoryProviding) {
+         alertFactory: AlertFactoryProviding,
+         translationManager: PapagoAPIManager,
+         speechManager: SpeechManager) {
         
         self.navigationController = navigationController
         self.networkService = networkService
         self.userData = userData
         self.alertFactory = alertFactory
+        self.translationManager = translationManager
+        self.speechManager = speechManager
     }
     
     func start() {
-        let viewController = storyboard.instantiateViewController(
-            identifier: HomeViewController.identifier,
-            creator: { [unowned self] coder -> HomeViewController? in
-                let reactor = HomeViewReactor(networkService: networkService, userData: userData)
-                return HomeViewController(coder: coder,
-                                          reactor: reactor,
-                                          alertFactory: alertFactory,
-                                          currentLanguage: userData.language)
-            }
-        )
-        viewController.coordinator = self
-        navigationController.pushViewController(viewController, animated: true)
+        let homeCoordinator = HomeCoordinator(networkService: networkService,
+                                              userData: userData,
+                                              alertFactory: alertFactory)
+        
+        let chatCoordinator = ChatCoordinator(networkService: networkService,
+                                              userData: userData,
+                                              translationManager: translationManager,
+                                              speechManager: speechManager)
+        
+        homeCoordinator.parentCoordinator = self
+        chatCoordinator.parentCoordinator = self
+        childCoordinator.append(homeCoordinator)
+        childCoordinator.append(chatCoordinator)
+        
+        homeCoordinator.start()
     }
 }
 
-extension MainCoordinator {
+extension MainCoordinator: MainCoordinating {
     
-    func codeInputToChat(roomID: Int, code: String) {
-        navigationController.presentedViewController?.dismiss(animated: true, completion: { [weak self] in
-            self?.showChat(roomID: roomID, code: code)
-        })
-    }
-    
-    func showChat(roomID: Int, code: String) {
-        let viewController = storyboard.instantiateViewController(
-            identifier: ChatViewController.identifier,
-            creator: { [unowned self] coder -> ChatViewController? in
-                let reactor = ChatViewReactor(networkService: networkService,
-                                              userData: userData,
-                                              roomID: roomID,
-                                              code: code)
-                return ChatViewController(coder: coder, reactor: reactor)
-            }
-        )
-        viewController.coordinator = self
+    func push(_ viewController: UIViewController) {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showChatCodeInput() {
+    func present(_ viewController: UIViewController) {
+        navigationController.viewControllers.last?.present(viewController, animated: true)
+    }
+   
+    func codeInputToChat(roomID: Int, code: String) {
+        navigationController.presentedViewController?.dismiss(animated: true, completion: { [weak self] in
+            self?.pushChat(roomID: roomID, code: code)
+        })
+    }
+    
+    func pushChat(roomID: Int, code: String) {
+        guard let chatCoordinator = childCoordinator[1] as? ChatCoordinator else {
+            return
+        }
+        chatCoordinator.roomID = roomID
+        chatCoordinator.code = code
+        chatCoordinator.start()
+    }
+    
+    func presentCodeInput() {
         let viewController = storyboard.instantiateViewController(
             identifier: ChatCodeInputViewController.identifier,
             creator: { [unowned self] coder -> ChatCodeInputViewController? in
@@ -78,20 +99,5 @@ extension MainCoordinator {
         )
         viewController.coordinator = self
         navigationController.present(viewController, animated: true)
-    }
-  
-    func showChatDrawer(roomID: Int, roomCode: String) -> ChatDrawerViewController {
-        let viewController = storyboard.instantiateViewController(
-            identifier: ChatDrawerViewController.identifier,
-            creator: { [unowned self] coder -> ChatDrawerViewController? in
-                let reactor = ChatDrawerViewReactor(networkService: networkService,
-                                                    userData: userData,
-                                                    roomID: roomID,
-                                                    roomCode: roomCode)
-                return ChatDrawerViewController(coder: coder,
-                                                reactor: reactor)
-            }
-        )
-        return viewController
     }
 }

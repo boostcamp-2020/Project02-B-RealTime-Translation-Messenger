@@ -27,6 +27,11 @@
 		99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482D9A2578874000802B45 /* PapagoAPIManager.swift */; };
 		99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */; };
 		99482DFD2579425400802B45 /* RevisionedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DFC2579425400802B45 /* RevisionedData.swift */; };
+		99482E57257B558700802B45 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E56257B558700802B45 /* HomeCoordinator.swift */; };
+		99482E5B257B63E100802B45 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E5A257B63E100802B45 /* ChatCoordinator.swift */; };
+		99482E5F257BA37F00802B45 /* HomeCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E5E257BA37E00802B45 /* HomeCoordinating.swift */; };
+		99482E63257BA39B00802B45 /* MainCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E62257BA39B00802B45 /* MainCoordinating.swift */; };
+		99482E67257BA3B200802B45 /* ChatCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E66257BA3B200802B45 /* ChatCoordinating.swift */; };
 		99482E4D257B43D800802B45 /* SentMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E4C257B43D800802B45 /* SentMessageBubbleTail.swift */; };
 		99482E51257B461300802B45 /* ReceivedMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E50257B461300802B45 /* ReceivedMessageBubbleTail.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
@@ -130,6 +135,11 @@
 		99482D9A2578874000802B45 /* PapagoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIManager.swift; sourceTree = "<group>"; };
 		99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedMessageCell.swift; sourceTree = "<group>"; };
 		99482DFC2579425400802B45 /* RevisionedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisionedData.swift; sourceTree = "<group>"; };
+		99482E56257B558700802B45 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		99482E5A257B63E100802B45 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
+		99482E5E257BA37E00802B45 /* HomeCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinating.swift; sourceTree = "<group>"; };
+		99482E62257BA39B00802B45 /* MainCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinating.swift; sourceTree = "<group>"; };
+		99482E66257BA3B200802B45 /* ChatCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinating.swift; sourceTree = "<group>"; };
 		99482E4C257B43D800802B45 /* SentMessageBubbleTail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMessageBubbleTail.swift; sourceTree = "<group>"; };
 		99482E50257B461300802B45 /* ReceivedMessageBubbleTail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedMessageBubbleTail.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -247,6 +257,11 @@
 			children = (
 				995BE99E2575DF9400C15AC7 /* Coordinator.swift */,
 				995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */,
+				99482E62257BA39B00802B45 /* MainCoordinating.swift */,
+				99482E56257B558700802B45 /* HomeCoordinator.swift */,
+				99482E5E257BA37E00802B45 /* HomeCoordinating.swift */,
+				99482E5A257B63E100802B45 /* ChatCoordinator.swift */,
+				99482E66257BA3B200802B45 /* ChatCoordinating.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -742,7 +757,7 @@
 				BB4814C82577DCC800CFA6DB /* TranslationRequest.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
 				99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */,
-				996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */,
+				99482E67257BA3B200802B45 /* ChatCoordinating.swift in Sources */,
 				996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */,
 				99482DFD2579425400802B45 /* RevisionedData.swift in Sources */,
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
@@ -753,6 +768,8 @@
 				BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */,
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
 				BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */,
+				99482E57257B558700802B45 /* HomeCoordinator.swift in Sources */,
+				99482E5B257B63E100802B45 /* ChatCoordinator.swift in Sources */,
 				BBEA1A60256F46FE009B8B5F /* User.swift in Sources */,
 				BB20F4D7257394D800C5AC1D /* Data+.swift in Sources */,
 				BBF2DC9F256674A300F2EA7D /* SceneDelegate.swift in Sources */,
@@ -761,10 +778,12 @@
 				BB9A86A4257487C800FE14D6 /* MessageCell.swift in Sources */,
 				BB23C0A12576AABB001D74A0 /* NetworkServiceProviding.swift in Sources */,
 				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
+				99482E63257BA39B00802B45 /* MainCoordinating.swift in Sources */,
 				9964797E2577670A00CFF202 /* MicrophoneButton.swift in Sources */,
 				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
 				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
 				BB93C290257526DD00C68491 /* MessageType.swift in Sources */,
+				99482E5F257BA37F00802B45 /* HomeCoordinating.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */,
 				990DE9292572665400340A72 /* ChatCodeInputReactor.swift in Sources */,
 				99482E4D257B43D800802B45 /* SentMessageBubbleTail.swift in Sources */,
