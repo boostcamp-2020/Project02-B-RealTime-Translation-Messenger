@@ -66,16 +66,16 @@ class ApolloNetworkService: NetworkServiceProviding {
         return Observable.create { [weak self] observer in
             let cancellable = self?.client.subscribe(
                 subscription: GetMessageSubscription(roomId: roomId, language: language.code),
-                resultHandler: { result in
+                resultHandler: { [weak self] result in
                     switch result {
                     case let .success(gqlResult):
-                        if let errors = gqlResult.errors {
-                            observer.onError(errors.first!)
-                        } else if let data = gqlResult.data {
+                        if let data = gqlResult.data {
                             observer.onNext(data)
                         }
-                    case let .failure(error):
-                        observer.onError(error)
+                    case .failure:
+                        if !(self?.webSocketTransport.isConnected() ?? false) {
+                            self?.webSocketTransport.resumeWebSocketConnection()
+                        }
                     }
                 }
             )
