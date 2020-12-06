@@ -1,3 +1,7 @@
+type translationResponse {
+  translatedText: String!
+}
+
 type Mutation {
-  translation(text: String!, source: String!, target: String!): String!
+  translation(text: String!, source: String!, target: String!): translationResponse!
 }

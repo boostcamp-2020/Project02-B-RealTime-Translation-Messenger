@@ -8,11 +8,11 @@ interface TranslationForm {
 
 export default {
   Mutation: {
-    translation: async (_: any, args: TranslationForm): Promise<string> => {
+    translation: async (_: any, args: TranslationForm): Promise<{ translatedText: string }> => {
       try {
         const { text, source, target } = args;
         const translatedText = await req(text, source, target);
-        return translatedText;
+        return { translatedText: translatedText };
       } catch (e) {
         return e;
       }
