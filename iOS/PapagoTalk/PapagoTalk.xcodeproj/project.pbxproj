@@ -51,7 +51,7 @@
 		996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
-		996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionView.swift */; };
+		996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionViewController.swift */; };
 		996A1463256D364C00F21215 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1462256D364C00F21215 /* UIViewController+.swift */; };
 		996A1467256D3A5F00F21215 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1466256D3A5F00F21215 /* Language.swift */; };
 		996A146B256D5B6200F21215 /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A146A256D5B6200F21215 /* Locale+.swift */; };
@@ -160,7 +160,7 @@
 		996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+SpeechViewDelegate.swift"; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
-		996A145C256D324600F21215 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		996A145C256D324600F21215 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
 		996A1462256D364C00F21215 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		996A1466256D3A5F00F21215 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		996A146A256D5B6200F21215 /* Locale+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+.swift"; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 			children = (
 				99A2768325668EFA008BD24C /* HomeViewController.swift */,
 				9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */,
-				996A145C256D324600F21215 /* LanguageSelectionView.swift */,
+				996A145C256D324600F21215 /* LanguageSelectionViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -761,7 +761,7 @@
 				BB7AB0152577B49400D9EDF7 /* SpeechManager.swift in Sources */,
 				995BE9D525762AC500C15AC7 /* UserDataProviding.swift in Sources */,
 				BB15A5872577690F0006D258 /* SpeechViewController.swift in Sources */,
-				996A145D256D324600F21215 /* LanguageSelectionView.swift in Sources */,
+				996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */,
 				995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */,
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,

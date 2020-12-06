@@ -9,21 +9,34 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LanguageSelectionView: UIViewController {
+final class LanguageSelectionViewController: UIViewController {
     
     @IBOutlet private weak var pickerView: UIPickerView!
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var confirmButton: UIButton!
     
-    @UserDefault(type: .userInfo, default: User()) var user: User
-    
+    private let userData: UserDataProviding
     var disposeBag = DisposeBag()
-    var pickerViewObserver: BehaviorSubject<Language>?
+    var pickerViewObserver: BehaviorSubject<Language>
+    
+    init?(coder: NSCoder,
+          userData: UserDataProviding,
+          observer: BehaviorSubject<Language>) {
+        self.userData = userData
+        pickerViewObserver = observer
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        userData = UserDataProvider()
+        pickerViewObserver = BehaviorSubject(value: Language.english)
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         configurePickerView()
         bind()
-        initializePickerView(at: user.language.index)
+        initializePickerView(at: userData.user.language.index)
     }
     
     private func configurePickerView() {
@@ -42,17 +55,13 @@ final class LanguageSelectionView: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        guard let observer = pickerViewObserver else {
-            return
-        }
-        
         confirmButton.rx.tap
             .withLatestFrom(pickerView.rx.modelSelected(Language.self))
             .map { $0[0] }
             .do { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
             }
-            .bind(to: observer)
+            .bind(to: pickerViewObserver)
             .disposed(by: disposeBag)
     }
     

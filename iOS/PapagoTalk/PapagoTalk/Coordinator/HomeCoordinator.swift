@@ -43,11 +43,16 @@ final class HomeCoordinator: Coordinator {
 }
 
 extension HomeCoordinator: HomeCoordinating {
-    func presentLanguageSelectionView(observer: BehaviorSubject<Language>?) {
+    func presentLanguageSelectionView(observer: BehaviorSubject<Language>) {
         let viewController =
-            storyboard.instantiateViewController(identifier: LanguageSelectionView.identifier)
-            as? LanguageSelectionView
-        viewController?.pickerViewObserver = observer
+            storyboard.instantiateViewController(
+                identifier: LanguageSelectionViewController.identifier,
+                creator: { [unowned self] coder -> LanguageSelectionViewController? in
+                    return LanguageSelectionViewController(coder: coder,
+                                                           userData: userData,
+                                                           observer: observer)
+                }
+            )
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alertController.setValue(viewController, forKey: "contentViewController")

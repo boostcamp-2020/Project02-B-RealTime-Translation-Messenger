@@ -126,7 +126,7 @@ final class HomeViewController: UIViewController, StoryboardView {
         languageSelectionButton.rx.tap
             .asDriver()
             .drive { [weak self] _ in
-                self?.coordinator?.presentLanguageSelectionView(observer: self?.languageSelection)
+                self?.presentLanguageSelectionView()
             }
             .disposed(by: disposeBag)
         
@@ -140,6 +140,10 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     private func alert(message: String) {
         present(alertFactory.alert(message: message), animated: true)
+    }
+    
+    private func presentLanguageSelectionView() {
+        coordinator?.presentLanguageSelectionView(observer: languageSelection)
     }
 }
 
