@@ -12,7 +12,6 @@ final class HomeCoordinator: Coordinator {
     
     weak var parentCoordinator: MainCoordinating?
     
-    private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding

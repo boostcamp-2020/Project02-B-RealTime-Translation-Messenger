@@ -10,7 +10,6 @@ import UIKit
 final class ChatCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinating?
     
-    private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var translationManager: PapagoAPIServiceProviding

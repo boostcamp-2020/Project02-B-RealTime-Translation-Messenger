@@ -17,8 +17,6 @@ final class MainCoordinator: Coordinator {
     var speechManager: SpeechManager
     var childCoordinator: [Coordinator] = []
     
-    private let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    
     init(navigationController: UINavigationController,
          networkService: NetworkServiceProviding,
          userData: UserDataProviding,
