@@ -21,6 +21,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     
     var completion: (() -> Void)?
     var disposeBag = DisposeBag()
+    var currentToast: Toast?
     
     init?(coder: NSCoder, reactor: ChatDrawerViewReactor, visualEffectView: UIVisualEffectView) {
         self.visualEffectView = visualEffectView
@@ -45,6 +46,12 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     }
     
     func bind(reactor: ChatDrawerViewReactor) {
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
+    }
+    
+    // MARK: - Input
+    private func bindAction(reactor: ChatDrawerViewReactor) {
         self.rx.viewWillAppear
             .map { _ in
                 Reactor.Action.fetchUsers
@@ -61,7 +68,10 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             .map { Reactor.Action.leaveChatRoomButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
+    }
+    
+    // MARK: - Output
+    private func bindState(reactor: ChatDrawerViewReactor) {
         reactor.state.map { $0.users }
             .asObservable()
             .bind(to: userListCollectionView.rx.items) { [weak self] (_, row, element) in
@@ -80,18 +90,19 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             })
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.needToast }
-            .filter { $0 }
-            .do { [weak self] _ in
-                self?.configureToast()
-            }
-            .subscribe()
+        reactor.state.map { $0.toastMessage }
+            .compactMap { $0.data }
+            .filter { !$0.isEmpty }
+            .subscribe(onNext: { [weak self] in
+                self?.currentToast?.cancel()
+                self?.currentToast = Toast(text: $0, delay: 0, duration: 2)
+                self?.currentToast?.show()
+            })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.leaveChatRoom }
             .filter { $0 }
             .do { [weak self] _ in
-                // TODO: 알림 메시지?
                 self?.dismiss(animated: true, completion: {
                     self?.navigationController?.popViewController(animated: true)
                 })
@@ -112,10 +123,6 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         }
         cell.configureUserCell(with: element)
         return cell
-    }
-    
-    private func configureToast() {
-        Toast(text: "채팅방 코드가 복사되었습니다.", delay: 0, duration: 2).show()
     }
     
     // MARK: - configure ChatDrawer
