@@ -8,6 +8,7 @@ subscription GetMessage($roomId: Int!, $language: String!) {
       id
       nickname
       avatar
+      lang
     }
   }
 }

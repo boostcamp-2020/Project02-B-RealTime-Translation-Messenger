@@ -428,6 +428,7 @@ public final class GetMessageSubscription: GraphQLSubscription {
           id
           nickname
           avatar
+          lang
         }
       }
     }
@@ -562,6 +563,7 @@ public final class GetMessageSubscription: GraphQLSubscription {
             GraphQLField("id", type: .nonNull(.scalar(Int.self))),
             GraphQLField("nickname", type: .nonNull(.scalar(String.self))),
             GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
+            GraphQLField("lang", type: .nonNull(.scalar(String.self))),
           ]
         }
 
@@ -571,8 +573,8 @@ public final class GetMessageSubscription: GraphQLSubscription {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: Int, nickname: String, avatar: String) {
-          self.init(unsafeResultMap: ["__typename": "User", "id": id, "nickname": nickname, "avatar": avatar])
+        public init(id: Int, nickname: String, avatar: String, lang: String) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id, "nickname": nickname, "avatar": avatar, "lang": lang])
         }
 
         public var __typename: String {
@@ -608,6 +610,15 @@ public final class GetMessageSubscription: GraphQLSubscription {
           }
           set {
             resultMap.updateValue(newValue, forKey: "avatar")
+          }
+        }
+
+        public var lang: String {
+          get {
+            return resultMap["lang"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "lang")
           }
         }
       }
