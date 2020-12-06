@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { RouteComponentProps, useLocation } from 'react-router-dom';
 import { NEW_MESSAGE, ALL_MESSAGES_BY_ID } from '@/queries/room.queires';
 import { useQuery } from '@apollo/client';
