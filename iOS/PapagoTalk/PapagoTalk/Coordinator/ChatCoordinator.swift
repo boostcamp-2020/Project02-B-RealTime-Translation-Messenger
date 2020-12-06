@@ -14,6 +14,7 @@ final class ChatCoordinator: Coordinator {
     var userData: UserDataProviding
     var translationManager: PapagoAPIServiceProviding
     var speechManager: SpeechManager
+    var messageParser: MessageParser
     
     var roomID: Int?
     var code: String?
@@ -21,12 +22,14 @@ final class ChatCoordinator: Coordinator {
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          translationManager: PapagoAPIServiceProviding,
-         speechManager: SpeechManager) {
+         speechManager: SpeechManager,
+         messageParser: MessageParser) {
         
         self.networkService = networkService
         self.userData = userData
         self.translationManager = translationManager
         self.speechManager = speechManager
+        self.messageParser = messageParser
     }
     
     func start() {
@@ -40,6 +43,7 @@ final class ChatCoordinator: Coordinator {
             creator: { [unowned self] coder -> ChatViewController? in
                 let reactor = ChatViewReactor(networkService: networkService,
                                               userData: userData,
+                                              messageParser: messageParser,
                                               roomID: roomID,
                                               code: code)
                 return ChatViewController(coder: coder, reactor: reactor)

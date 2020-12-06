@@ -15,6 +15,7 @@ final class MainCoordinator: Coordinator {
     var alertFactory: AlertFactoryProviding
     var translationManager: PapagoAPIServiceProviding
     var speechManager: SpeechManager
+    var messageParser: MessageParser
     var childCoordinator: [Coordinator] = []
     
     init(navigationController: UINavigationController,
@@ -22,7 +23,8 @@ final class MainCoordinator: Coordinator {
          userData: UserDataProviding,
          alertFactory: AlertFactoryProviding,
          translationManager: PapagoAPIServiceProviding,
-         speechManager: SpeechManager) {
+         speechManager: SpeechManager,
+         messageParser: MessageParser) {
         
         self.navigationController = navigationController
         self.networkService = networkService
@@ -30,6 +32,7 @@ final class MainCoordinator: Coordinator {
         self.alertFactory = alertFactory
         self.translationManager = translationManager
         self.speechManager = speechManager
+        self.messageParser = messageParser
     }
     
     func start() {
@@ -40,7 +43,8 @@ final class MainCoordinator: Coordinator {
         let chatCoordinator = ChatCoordinator(networkService: networkService,
                                               userData: userData,
                                               translationManager: translationManager,
-                                              speechManager: speechManager)
+                                              speechManager: speechManager,
+                                              messageParser: messageParser)
         
         homeCoordinator.parentCoordinator = self
         chatCoordinator.parentCoordinator = self

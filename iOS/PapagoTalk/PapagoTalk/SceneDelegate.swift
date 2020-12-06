@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let userData = UserDataProvider()
         let translationManager = PapagoAPIManager()
         let speechManager = SpeechManager()
+        let messageParser = MessageParser(userData: userData)
         
         window = UIWindow(windowScene: scene)
         coordinator = MainCoordinator(navigationController: navigationController,
@@ -28,7 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                       userData: userData,
                                       alertFactory: alertFactory,
                                       translationManager: translationManager,
-                                      speechManager: speechManager)
+                                      speechManager: speechManager,
+                                      messageParser: messageParser)
         coordinator?.start()
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
