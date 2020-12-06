@@ -14,7 +14,7 @@ interface MatchParams {
 const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const roomId = +match.params.id;
   const location: any = useLocation();
-  const { lang } = location.state;
+  const { userId, lang } = location.state;
   const { data, loading, subscribeToMore } = useQuery(ALL_MESSAGES_BY_ID, {
     variables: {
       id: roomId,
@@ -45,7 +45,7 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
       <Header visible={visible} setVisible={setVisible} />
       <SideBar visible={visible} setVisible={setVisible} />
       <ChatLog messages={data.allMessagesById} />
-      <Input />
+      <Input userId={userId} lang={lang} roomId={roomId} />
     </>
   );
 };

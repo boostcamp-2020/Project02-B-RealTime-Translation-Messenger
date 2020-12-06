@@ -10,7 +10,13 @@ import { CREATE_MESSAGE, TRANSLATION } from '@queries/messege.queries';
 import { Microphone } from '@components/Icons';
 import S from './style';
 
-const Input: React.FC = () => {
+interface Props {
+  userId: number;
+  lang: string;
+  roomId: number;
+}
+
+const Input: React.FC<Props> = ({ userId, lang, roomId }) => {
   const [text, setText] = useState('');
   const [translatedText, setTranslatedText] = useState('텍스트를 입력하세요');
   const [createMessageMutation] = useMutation<MutationCreateMessageArgs>(
@@ -18,9 +24,9 @@ const Input: React.FC = () => {
     {
       variables: {
         text,
-        source: 'ko',
-        userId: 3,
-        roomId: 1,
+        source: lang,
+        userId,
+        roomId,
       },
     },
   );
@@ -30,20 +36,19 @@ const Input: React.FC = () => {
   >(TRANSLATION, {
     variables: {
       text,
-      source: 'ko',
-      target: 'en',
+      source: lang,
+      target: 'en', // TODO: target 언어 수정하기
     },
   });
 
   const getTranslatedText = debounce(async () => {
-    const checkText = text.replace(/(\s*)/g, '');
-    if (checkText.length === 0) return;
-
     const { data } = await translationMutation();
     setTranslatedText(data ? data.translation.translatedText : '...');
   }, 500);
 
   const onKeyUp = () => {
+    const checkText = text.replace(/\s/gi, '');
+    if (checkText.length === 0) return;
     getTranslatedText();
   };
 
@@ -54,6 +59,9 @@ const Input: React.FC = () => {
 
   const onKeyPressEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
+      const checkText = text.replace(/\s/gi, '');
+      if (checkText.length === 0) return;
+
       await createMessageMutation();
       setText('');
       setTranslatedText('텍스트를 입력하세요');
