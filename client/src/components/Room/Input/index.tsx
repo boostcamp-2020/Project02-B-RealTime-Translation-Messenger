@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { debounce } from 'lodash';
 import { useMutation } from '@apollo/client';
-import { MutationCreateMessageArgs } from '@generated/types';
-import { CREATE_MESSAGE } from '@queries/messege.queries';
+import {
+  MutationCreateMessageArgs,
+  MutationTranslationArgs,
+} from '@generated/types';
+import { CREATE_MESSAGE, TRANSLATION } from '@queries/messege.queries';
 import { Microphone } from '@components/Icons';
 import S from './style';
 
@@ -19,21 +22,37 @@ const Input: React.FC = () => {
       },
     },
   );
+  const [translationMutation] = useMutation<MutationTranslationArgs>(
+    TRANSLATION,
+    {
+      variables: {
+        text,
+        source: 'ko',
+        target: 'en',
+      },
+    },
+  );
 
-  const getTranslatedText = debounce(async (value: string) => {
-    // const result = await request(value, 'ko', 'en');
-  }, 1000);
+  const getTranslatedText = debounce(async () => {
+    const checkText = text.replace(/(\s*)/g, '');
+    if (checkText.length === 0) return;
+
+    const translatedText = await translationMutation();
+  }, 500);
+
+  const onKeyUp = () => {
+    getTranslatedText();
+  };
 
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
-    // getTranslatedText(e.target.value);
   };
 
   const onKeyPressEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       await createMessageMutation();
+      setText('');
     }
-    setText('');
   };
 
   return (
@@ -44,6 +63,7 @@ const Input: React.FC = () => {
             placeholder="텍스트를 입력하세요"
             value={text}
             onChange={onChangeText}
+            onKeyUp={onKeyUp}
             onKeyPress={onKeyPressEnter}
           />
           <S.VoiceButton>
