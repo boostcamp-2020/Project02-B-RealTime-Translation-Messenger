@@ -22,12 +22,11 @@ export default {
           messages: Messages,
           nextPage: page + 1,
         };
-      } else {
-        return {
-          messages: Messages,
-          nextPage: null,
-        };
       }
+      return {
+        messages: Messages,
+        nextPage: null,
+      };
     },
   },
 };
