@@ -17,7 +17,7 @@ final class SpeechViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var translatedSendButton: UIButton!
     @IBOutlet private weak var originTextView: UITextView!
     @IBOutlet private weak var translatedTextView: UITextView!
-    @IBOutlet private weak var microphoneButton: UIButton!
+    @IBOutlet private weak var microphoneButton: SpeechButton!
     
     weak var delegate: SpeechViewDelegate?
     var disposeBag = DisposeBag()
@@ -39,6 +39,9 @@ final class SpeechViewController: UIViewController, StoryboardView {
     func bind(reactor: SpeechViewReactor) {
         microphoneButton.rx.tap
             .map { Reactor.Action.microphoneButtonTapped }
+            .do(onNext: { [weak self] _ in
+                self?.microphoneButton.isSpeeching.toggle()
+            })
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         

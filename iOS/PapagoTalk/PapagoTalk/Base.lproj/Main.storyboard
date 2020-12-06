@@ -719,9 +719,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azd-LU-dRl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azd-LU-dRl" customClass="SpeechButton" customModule="PapagoTalk" customModuleProvider="target">
                                 <rect key="frame" x="150" y="332" width="50" height="50"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="MBr-hG-8HH"/>
                                     <constraint firstAttribute="width" constant="50" id="yT4-6s-PUn"/>
@@ -729,14 +728,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
-                                    <imageReference key="image" image="mic" catalog="system" symbolScale="default"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="default" weight="semibold">
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                     </preferredSymbolConfiguration>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="25"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
@@ -1422,7 +1420,6 @@
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="delete.left" catalog="system" width="128" height="104"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
-        <image name="mic" catalog="system" width="108" height="128"/>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
