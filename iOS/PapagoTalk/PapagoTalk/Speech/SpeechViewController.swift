@@ -37,6 +37,12 @@ final class SpeechViewController: UIViewController, StoryboardView {
     }
     
     func bind(reactor: SpeechViewReactor) {
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
+    }
+    
+    // MARK: - Input
+    private func bindAction(reactor: SpeechViewReactor) {
         microphoneButton.rx.tap
             .map { Reactor.Action.microphoneButtonTapped }
             .bind(to: reactor.action)
@@ -47,6 +53,13 @@ final class SpeechViewController: UIViewController, StoryboardView {
             .filter { !$0.isEmpty }
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .map { Reactor.Action.originTextChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        translatedTextView.rx.text
+            .orEmpty
+            .filter { !$0.isEmpty }
+            .map { Reactor.Action.translatedTextChaged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -65,7 +78,10 @@ final class SpeechViewController: UIViewController, StoryboardView {
             .map { _ in Reactor.Action.translatedSendButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
+    }
+    
+    // MARK: - Output
+    private func bindState(reactor: SpeechViewReactor) {
         reactor.state.map { $0.speechRecognizedText }
             .distinctUntilChanged()
             .bind(to: originTextView.rx.text)
@@ -85,6 +101,14 @@ final class SpeechViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
                 self?.microphoneButton.isEnabled = $0
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.messageDidSend }
+            .distinctUntilChanged()
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.dismiss()
             })
             .disposed(by: disposeBag)
     }
