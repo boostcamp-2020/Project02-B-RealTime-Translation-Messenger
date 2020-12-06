@@ -80,7 +80,7 @@ extension MainCoordinator: MainCoordinating {
         let viewController = storyboard.instantiateViewController(
             identifier: ChatCodeInputViewController.identifier,
             creator: { [unowned self] coder -> ChatCodeInputViewController? in
-                let reacter = ChatCodeInputReactor(networkService: networkService, userData: userData)
+                let reacter = ChatCodeInputViewReactor(networkService: networkService, userData: userData)
                 return ChatCodeInputViewController(coder: coder,
                                                    reactor: reacter,
                                                    alertFactory: alertFactory)

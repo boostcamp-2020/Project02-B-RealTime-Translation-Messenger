@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */; };
 		990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE922257265BB00340A72 /* ChatCodeInputViewController.swift */; };
-		990DE9292572665400340A72 /* ChatCodeInputReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9282572665400340A72 /* ChatCodeInputReactor.swift */; };
+		990DE9292572665400340A72 /* ChatCodeInputViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9282572665400340A72 /* ChatCodeInputViewReactor.swift */; };
 		990DE92D2572836B00340A72 /* EnterRoom.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990DE92C2572836B00340A72 /* EnterRoom.graphql */; };
 		990DE9392572860500340A72 /* SendMessage.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 990DE9382572860500340A72 /* SendMessage.graphql */; };
 		990DE947257336D900340A72 /* JoinChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE946257336D900340A72 /* JoinChatError.swift */; };
@@ -115,7 +115,7 @@
 		68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
 		990DE922257265BB00340A72 /* ChatCodeInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCodeInputViewController.swift; sourceTree = "<group>"; };
-		990DE9282572665400340A72 /* ChatCodeInputReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCodeInputReactor.swift; sourceTree = "<group>"; };
+		990DE9282572665400340A72 /* ChatCodeInputViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCodeInputViewReactor.swift; sourceTree = "<group>"; };
 		990DE92C2572836B00340A72 /* EnterRoom.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = EnterRoom.graphql; sourceTree = "<group>"; };
 		990DE9382572860500340A72 /* SendMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendMessage.graphql; sourceTree = "<group>"; };
 		990DE946257336D900340A72 /* JoinChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatError.swift; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				990DE922257265BB00340A72 /* ChatCodeInputViewController.swift */,
-				990DE9282572665400340A72 /* ChatCodeInputReactor.swift */,
+				990DE9282572665400340A72 /* ChatCodeInputViewReactor.swift */,
 			);
 			path = ChatCodeInput;
 			sourceTree = "<group>";
@@ -805,7 +805,7 @@
 				BB93C290257526DD00C68491 /* MessageType.swift in Sources */,
 				99482E5F257BA37F00802B45 /* HomeCoordinating.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */,
-				990DE9292572665400340A72 /* ChatCodeInputReactor.swift in Sources */,
+				990DE9292572665400340A72 /* ChatCodeInputViewReactor.swift in Sources */,
 				99482E4D257B43D800802B45 /* SentMessageBubbleTail.swift in Sources */,
 				995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */,
 				993AF67D2574E3E200416692 /* HomeError.swift in Sources */,
