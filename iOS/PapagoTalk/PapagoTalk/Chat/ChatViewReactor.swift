@@ -26,32 +26,30 @@ final class ChatViewReactor: Reactor {
         var messageBox: MessageBox
         var sendResult: Bool = true
         var roomCode: String
-        var toggleDrawer: ToggleDrawer
-        
-        struct ToggleDrawer: Equatable {
-            var drawerState: Bool
-            var roomID: Int
-        }
+        var presentDrawer: Bool
     }
     
     private let networkService: NetworkServiceProviding
     private let userData: UserDataProviding
     private let roomID: Int
     private var socketObservable: Observable<Mutation>?
+    private let messageParser: MessageParser
     
     let initialState: State
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
+         messageParser: MessageParser,
          roomID: Int,
          code: String) {
         
         self.networkService = networkService
         self.userData = userData
+        self.messageParser = messageParser
         self.roomID = roomID
         initialState = State(messageBox: MessageBox(userID: userData.id),
                              roomCode: code,
-                             toggleDrawer: State.ToggleDrawer(drawerState: false, roomID: roomID))
+                             presentDrawer: false)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -74,46 +72,15 @@ final class ChatViewReactor: Reactor {
         case .setSendResult(let isSuccess):
             state.sendResult = isSuccess
         case .toggleDrawerState:
-            state.toggleDrawer.drawerState.toggle()
+            state.presentDrawer.toggle()
         }
         return state
     }
-    
-    private func seperateMessage(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message] {
-        guard let timeStamp = newMessage.createdAt,
-              let json = newMessage.text.data(using: .utf8),
-              let translateResult: TranslatedResult = try? json.decoded() else {
-            return []
-        }
-        var messages = [Message]()
-        let time = String(timeStamp.prefix(10))
-        let sender = User(id: newMessage.user.id,
-                          nickName: newMessage.user.nickname,
-                          image: newMessage.user.avatar,
-                          language: .english) // 수정 필요
-        let originMessage = Message(id: newMessage.id,
-                                    of: translateResult.originText,
-                                    by: sender,
-                                    language: newMessage.source,
-                                    timeStamp: time)
-        messages.append(originMessage)
         
-        if newMessage.user.id != userData.id {
-            let translatedMessage = Message(id: newMessage.id,
-                                            of: translateResult.translatedText,
-                                            by: sender,
-                                            language: userData.language.code,
-                                            timeStamp: time,
-                                            isTranslated: true)
-            messages.append(translatedMessage)
-        }
-        return messages
-    }
-    
     private func subscribeMessages() -> Observable<Mutation> {
         return networkService.getMessage(roomId: roomID, language: userData.language)
             .compactMap { $0.newMessage }
-            .compactMap { [weak self] in self?.seperateMessage(newMessage: $0) }
+            .compactMap { [weak self] in self?.messageParser.parse(newMessage: $0) }
             .map { Mutation.appendNewMessage($0) }
     }
     
