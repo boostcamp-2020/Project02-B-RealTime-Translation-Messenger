@@ -19,6 +19,7 @@ const verifyJwt = async (payload: any, done: any) => {
 
     const user = {
       id: payload.id,
+      nickname: payload.nickname,
       avatar: payload.avatar,
       lang: payload.lang,
       roomId: payload.roomId,
