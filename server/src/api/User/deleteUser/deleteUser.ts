@@ -6,10 +6,11 @@ export default {
   Mutation: {
     deleteUser: async (_: any, __: any, { request, isAuthenticated }: any): Promise<boolean> => {
       isAuthenticated(request);
-      await prisma.$queryRaw`DELETE FROM User WHERE id = ${request.user.id}`;
-      const restUser = await prisma.$queryRaw`SELECT COUNT(*) FROM _RoomToUser WHERE A = ${request.user.roomId} `;
+      const { id: userId, roomId } = request.user;
+      await prisma.$queryRaw`DELETE FROM User WHERE id = ${userId}`;
+      const restUser = await prisma.$queryRaw`SELECT COUNT(*) FROM _RoomToUser WHERE A = ${roomId} `;
       if (!restUser[0]['COUNT(*)']) {
-        await prisma.$queryRaw`DELETE FROM Room WHERE id = ${request.user.roomId}`;
+        await prisma.$queryRaw`DELETE FROM Room WHERE id = ${roomId}`;
       }
       return true;
     },
