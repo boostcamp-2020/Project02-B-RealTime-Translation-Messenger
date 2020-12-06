@@ -13,7 +13,7 @@ final class ChatCoordinator: Coordinator {
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
-    var translationManager: PapagoAPIManager
+    var translationManager: PapagoAPIServiceProviding
     var speechManager: SpeechManager
     
     var roomID: Int?
@@ -21,7 +21,7 @@ final class ChatCoordinator: Coordinator {
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         translationManager: PapagoAPIManager,
+         translationManager: PapagoAPIServiceProviding,
          speechManager: SpeechManager) {
         
         self.networkService = networkService

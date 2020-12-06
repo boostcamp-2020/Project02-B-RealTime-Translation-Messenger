@@ -35,7 +35,7 @@ final class SpeechViewReactor: Reactor {
     }
     
     private let speechManager: SpeechManager
-    private let translationManager: PapagoAPIManager
+    private let translationManager: PapagoAPIServiceProviding
     private let userData: UserDataProviding
     private let networkService: NetworkServiceProviding
     var roomID: Int
@@ -44,7 +44,7 @@ final class SpeechViewReactor: Reactor {
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         translationManager: PapagoAPIManager,
+         translationManager: PapagoAPIServiceProviding,
          speechManager: SpeechManager,
          roomID: Int) {
         
