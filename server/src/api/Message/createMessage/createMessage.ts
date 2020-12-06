@@ -11,12 +11,18 @@ interface Message {
 
 export default {
   Mutation: {
-    createMessage: async (_: Message, args: Message, { pubsub }: any): Promise<boolean> => {
-      const { text, source, userId, roomId } = args;
+    createMessage: async (
+      _: Message,
+      args: Message,
+      { pubsub, isAuthenticated, request }: any,
+    ): Promise<boolean> => {
+      isAuthenticated(request);
+      const { id: userId, lang, roomId } = request.user;
+      const { text } = args;
       const newMessage = await prisma.message.create({
         data: {
           text,
-          source,
+          source: lang,
           user: {
             connect: {
               id: userId,
