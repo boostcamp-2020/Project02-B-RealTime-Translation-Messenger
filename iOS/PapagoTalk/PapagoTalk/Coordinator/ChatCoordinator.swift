@@ -10,24 +10,26 @@ import UIKit
 final class ChatCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinating?
     
-    private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
-    var translationManager: PapagoAPIManager
+    var translationManager: PapagoAPIServiceProviding
     var speechManager: SpeechManager
+    var messageParser: MessageParser
     
     var roomID: Int?
     var code: String?
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         translationManager: PapagoAPIManager,
-         speechManager: SpeechManager) {
+         translationManager: PapagoAPIServiceProviding,
+         speechManager: SpeechManager,
+         messageParser: MessageParser) {
         
         self.networkService = networkService
         self.userData = userData
         self.translationManager = translationManager
         self.speechManager = speechManager
+        self.messageParser = messageParser
     }
     
     func start() {
@@ -41,6 +43,7 @@ final class ChatCoordinator: Coordinator {
             creator: { [unowned self] coder -> ChatViewController? in
                 let reactor = ChatViewReactor(networkService: networkService,
                                               userData: userData,
+                                              messageParser: messageParser,
                                               roomID: roomID,
                                               code: code)
                 return ChatViewController(coder: coder, reactor: reactor)

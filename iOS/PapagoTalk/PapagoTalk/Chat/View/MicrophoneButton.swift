@@ -88,6 +88,7 @@ final class MicrophoneButton: UIButton {
     }
     
     func moveForSpeech(completion: (() -> Void)?) {
+        isUserInteractionEnabled = false
         guard let superviewCenter = superview?.center else { return }
         latestCenter = center
         let newY = superviewCenter.y + Constant.speechViewHeight/2 - Constant.speechViewBottomInset  - (frame.height/2)
@@ -95,7 +96,8 @@ final class MicrophoneButton: UIButton {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.center = CGPoint(x: superviewCenter.x, y: newY)
         }
-        completion: { _ in
+        completion: { [weak self] _ in
+            self?.isUserInteractionEnabled = true
             completion?()
         }
     }

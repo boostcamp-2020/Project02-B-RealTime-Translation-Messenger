@@ -13,18 +13,18 @@ final class MainCoordinator: Coordinator {
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
-    var translationManager: PapagoAPIManager
+    var translationManager: PapagoAPIServiceProviding
     var speechManager: SpeechManager
+    var messageParser: MessageParser
     var childCoordinator: [Coordinator] = []
-    
-    private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
     init(navigationController: UINavigationController,
          networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          alertFactory: AlertFactoryProviding,
-         translationManager: PapagoAPIManager,
-         speechManager: SpeechManager) {
+         translationManager: PapagoAPIServiceProviding,
+         speechManager: SpeechManager,
+         messageParser: MessageParser) {
         
         self.navigationController = navigationController
         self.networkService = networkService
@@ -32,6 +32,7 @@ final class MainCoordinator: Coordinator {
         self.alertFactory = alertFactory
         self.translationManager = translationManager
         self.speechManager = speechManager
+        self.messageParser = messageParser
     }
     
     func start() {
@@ -42,7 +43,8 @@ final class MainCoordinator: Coordinator {
         let chatCoordinator = ChatCoordinator(networkService: networkService,
                                               userData: userData,
                                               translationManager: translationManager,
-                                              speechManager: speechManager)
+                                              speechManager: speechManager,
+                                              messageParser: messageParser)
         
         homeCoordinator.parentCoordinator = self
         chatCoordinator.parentCoordinator = self
@@ -82,7 +84,7 @@ extension MainCoordinator: MainCoordinating {
         let viewController = storyboard.instantiateViewController(
             identifier: ChatCodeInputViewController.identifier,
             creator: { [unowned self] coder -> ChatCodeInputViewController? in
-                let reacter = ChatCodeInputReactor(networkService: networkService, userData: userData)
+                let reacter = ChatCodeInputViewReactor(networkService: networkService, userData: userData)
                 return ChatCodeInputViewController(coder: coder,
                                                    reactor: reacter,
                                                    alertFactory: alertFactory)

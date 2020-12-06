@@ -8,7 +8,7 @@
 import Foundation
 import ReactorKit
 
-final class ChatCodeInputReactor: Reactor {
+final class ChatCodeInputViewReactor: Reactor {
     
     enum Action {
         case numberButtonTapped(String)
@@ -32,7 +32,6 @@ final class ChatCodeInputReactor: Reactor {
     
     private let networkService: NetworkServiceProviding
     private var userData: UserDataProviding
-    private let maxCodeLength = 6
     
     let initialState: State
     
@@ -41,14 +40,14 @@ final class ChatCodeInputReactor: Reactor {
         
         self.networkService = networkService
         self.userData = userData
-        initialState = State(codeInput: [String](repeating: "", count: maxCodeLength),
+        initialState = State(codeInput: [String](repeating: "", count: Constant.maxCodeLength),
                              cusor: .zero)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .numberButtonTapped(let tappedNumber):
-            if currentState.cusor == maxCodeLength - 1 {
+            if currentState.cusor == Constant.maxCodeLength - 1 {
                 return .concat([
                     .just(Mutation.setCodeInput(tappedNumber)),
                     requestEnterRoom(state: currentState, lastInput: tappedNumber)
@@ -65,7 +64,7 @@ final class ChatCodeInputReactor: Reactor {
         
         switch mutation {
         case .setCodeInput(let tappedNumber):
-            guard (.zero..<maxCodeLength) ~= state.cusor else {
+            guard (.zero..<Constant.maxCodeLength) ~= state.cusor else {
                 return state
             }
             state.codeInput[state.cusor] = tappedNumber

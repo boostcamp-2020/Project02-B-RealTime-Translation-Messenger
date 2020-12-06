@@ -11,5 +11,5 @@ import RxSwift
 protocol HomeCoordinating: class {
     func presentCodeInput()
     func pushChat(roomID: Int, code: String)
-    func presentLanguageSelectionView(observer: BehaviorSubject<Language>?)
+    func presentLanguageSelectionView(observer: BehaviorSubject<Language>)
 }

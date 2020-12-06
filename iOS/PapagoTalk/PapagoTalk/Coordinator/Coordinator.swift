@@ -8,5 +8,12 @@
 import UIKit
 
 protocol Coordinator {
-    func start() 
+    func start()
+    var storyboard: UIStoryboard { get }
+}
+
+extension Coordinator {
+    var storyboard: UIStoryboard {
+        UIStoryboard(name: "Main", bundle: nil)
+    }
 }

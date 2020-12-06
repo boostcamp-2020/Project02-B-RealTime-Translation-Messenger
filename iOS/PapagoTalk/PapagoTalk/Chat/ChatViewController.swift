@@ -40,6 +40,12 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     func bind(reactor: ChatViewReactor) {
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
+    }
+    
+    // MARK: - Input
+    private func bindAction(reactor: ChatViewReactor) {
         self.rx.viewWillAppear
             .map { _ in Reactor.Action.subscribeNewMessages }
             .bind(to: reactor.action)
@@ -60,7 +66,10 @@ final class ChatViewController: UIViewController, StoryboardView {
             .map { Reactor.Action.chatDrawerButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
+    }
+    
+    // MARK: - Output
+    private func bindState(reactor: ChatViewReactor) {
         reactor.state.map { $0.roomCode }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
@@ -91,12 +100,9 @@ final class ChatViewController: UIViewController, StoryboardView {
             .subscribe()
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.toggleDrawer.drawerState }
+        reactor.state.map { $0.presentDrawer }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
-                UIView.performWithoutAnimation {
-                    self?.inputBarTextView.resignFirstResponder()
-                }
                 self?.setDrawer(isPresent: $0)
             })
             .disposed(by: disposeBag)
@@ -119,7 +125,6 @@ final class ChatViewController: UIViewController, StoryboardView {
         microphoneButton?.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
-                self?.microphoneButton.isUserInteractionEnabled = false
                 self?.microphoneButton?.moveForSpeech {
                     self?.presentSpeech()
                 }
@@ -143,15 +148,20 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     private func scrollToLastMessage() {
+        view.layoutIfNeeded()
         let newY = chatCollectionView.contentSize.height - chatCollectionView.bounds.height
-        chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: true)
+        chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: false)
     }
     
     private func presentSpeech() {
+        hideKeyboard()
         coordinator?.presentSpeech(from: self)
     }
     
     private func setDrawer(isPresent: Bool) {
+        if isPresent {
+            hideKeyboard()
+        }
         isPresent ? coordinator?.presentDrawer(from: self) : dismissDrawer()
     }
     
@@ -162,6 +172,12 @@ final class ChatViewController: UIViewController, StoryboardView {
             return
         }
         drawer.configureAnimation(state: .closed, duration: 0.5)
+    }
+    
+    private func hideKeyboard() {
+        UIView.performWithoutAnimation {
+            inputBarTextView.resignFirstResponder()
+        }
     }
 }
 
