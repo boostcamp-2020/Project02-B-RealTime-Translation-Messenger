@@ -27,17 +27,17 @@
 		99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482D9A2578874000802B45 /* PapagoAPIManager.swift */; };
 		99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */; };
 		99482DFD2579425400802B45 /* RevisionedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DFC2579425400802B45 /* RevisionedData.swift */; };
-		99482E4D257B43D800802B45 /* SentMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E4C257B43D800802B45 /* SentMessageBubbleTail.swift */; };
-		99482E51257B461300802B45 /* ReceivedMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E50257B461300802B45 /* ReceivedMessageBubbleTail.swift */; };
 		99482E57257B558700802B45 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E56257B558700802B45 /* HomeCoordinator.swift */; };
 		99482E5B257B63E100802B45 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E5A257B63E100802B45 /* ChatCoordinator.swift */; };
 		99482E5F257BA37F00802B45 /* HomeCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E5E257BA37E00802B45 /* HomeCoordinating.swift */; };
 		99482E63257BA39B00802B45 /* MainCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E62257BA39B00802B45 /* MainCoordinating.swift */; };
 		99482E67257BA3B200802B45 /* ChatCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E66257BA3B200802B45 /* ChatCoordinating.swift */; };
+		99482E81257BE06D00802B45 /* SpeechButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E80257BE06C00802B45 /* SpeechButton.swift */; };
 		99482E8B257CB91D00802B45 /* PapagoAPIServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */; };
 		99482E99257CEE2500802B45 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E98257CEE2500802B45 /* MessageParser.swift */; };
 		99482EA1257CEFD200802B45 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EA0257CEFD200802B45 /* API.swift */; };
-		99482E81257BE06D00802B45 /* SpeechButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E80257BE06C00802B45 /* SpeechButton.swift */; };
+		99482EAD257DB34800802B45 /* SentMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */; };
+		99482EB1257DB35200802B45 /* ReceivedMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9C32576093400C15AC7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 995BE9C22576093400C15AC7 /* schema.json */; };
@@ -138,17 +138,17 @@
 		99482D9A2578874000802B45 /* PapagoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIManager.swift; sourceTree = "<group>"; };
 		99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedMessageCell.swift; sourceTree = "<group>"; };
 		99482DFC2579425400802B45 /* RevisionedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisionedData.swift; sourceTree = "<group>"; };
-		99482E4C257B43D800802B45 /* SentMessageBubbleTail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMessageBubbleTail.swift; sourceTree = "<group>"; };
-		99482E50257B461300802B45 /* ReceivedMessageBubbleTail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedMessageBubbleTail.swift; sourceTree = "<group>"; };
 		99482E56257B558700802B45 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		99482E5A257B63E100802B45 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		99482E5E257BA37E00802B45 /* HomeCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinating.swift; sourceTree = "<group>"; };
 		99482E62257BA39B00802B45 /* MainCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinating.swift; sourceTree = "<group>"; };
 		99482E66257BA3B200802B45 /* ChatCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinating.swift; sourceTree = "<group>"; };
+		99482E80257BE06C00802B45 /* SpeechButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechButton.swift; sourceTree = "<group>"; };
 		99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIServiceProviding.swift; sourceTree = "<group>"; };
 		99482E98257CEE2500802B45 /* MessageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
 		99482EA0257CEFD200802B45 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		99482E80257BE06C00802B45 /* SpeechButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechButton.swift; sourceTree = "<group>"; };
+		99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMessageBubbleTail.swift; sourceTree = "<group>"; };
+		99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedMessageBubbleTail.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C22576093400C15AC7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -280,8 +280,8 @@
 		99482EA4257CF30600802B45 /* MessageCell */ = {
 			isa = PBXGroup;
 			children = (
-				99482E4C257B43D800802B45 /* SentMessageBubbleTail.swift */,
-				99482E50257B461300802B45 /* ReceivedMessageBubbleTail.swift */,
+				99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */,
+				99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */,
 				996479362576854900CFF202 /* MessageText.swift */,
 				99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */,
 				BB9A86A3257487C800FE14D6 /* MessageCell.swift */,
@@ -378,8 +378,6 @@
 				99482EA4257CF30600802B45 /* MessageCell */,
 				9964793A2576901200CFF202 /* InputBarTextView.swift */,
 				9964797D2577670A00CFF202 /* MicrophoneButton.swift */,
-				99482E4C257B43D800802B45 /* SentMessageBubbleTail.swift */,
-				99482E50257B461300802B45 /* ReceivedMessageBubbleTail.swift */,
 				99482E80257BE06C00802B45 /* SpeechButton.swift */,
 			);
 			path = View;
@@ -786,7 +784,6 @@
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,
 				996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */,
-				99482E51257B461300802B45 /* ReceivedMessageBubbleTail.swift in Sources */,
 				BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */,
 				99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */,
 				BB4814C82577DCC800CFA6DB /* TranslationRequest.swift in Sources */,
@@ -816,15 +813,16 @@
 				BB9A86A4257487C800FE14D6 /* MessageCell.swift in Sources */,
 				BB23C0A12576AABB001D74A0 /* NetworkServiceProviding.swift in Sources */,
 				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
+				99482EAD257DB34800802B45 /* SentMessageBubbleTail.swift in Sources */,
 				99482E63257BA39B00802B45 /* MainCoordinating.swift in Sources */,
 				9964797E2577670A00CFF202 /* MicrophoneButton.swift in Sources */,
 				996A1463256D364C00F21215 /* UIViewController+.swift in Sources */,
 				BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */,
+				99482EB1257DB35200802B45 /* ReceivedMessageBubbleTail.swift in Sources */,
 				BB93C290257526DD00C68491 /* MessageType.swift in Sources */,
 				99482E5F257BA37F00802B45 /* HomeCoordinating.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */,
 				990DE9292572665400340A72 /* ChatCodeInputViewReactor.swift in Sources */,
-				99482E4D257B43D800802B45 /* SentMessageBubbleTail.swift in Sources */,
 				995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */,
 				993AF67D2574E3E200416692 /* HomeError.swift in Sources */,
 				993AF6792574DF2F00416692 /* CreateRoomResponse.swift in Sources */,
