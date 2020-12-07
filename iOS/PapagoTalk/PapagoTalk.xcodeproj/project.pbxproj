@@ -91,6 +91,9 @@
 		BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97AE07256CDC0400307DAD /* UIView+.swift */; };
 		BB9A86A02574879500FE14D6 /* ChatDrawerUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A869F2574879500FE14D6 /* ChatDrawerUserCell.swift */; };
 		BB9A86A4257487C800FE14D6 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A86A3257487C800FE14D6 /* MessageCell.swift */; };
+		BBC5B31C257E089900739CD8 /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B31B257E089900739CD8 /* KeychainAccess.swift */; };
+		BBC5B322257E0CFC00739CD8 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B321257E0CFC00739CD8 /* KeychainError.swift */; };
+		BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B327257E0E4500739CD8 /* Keychain.swift */; };
 		BBE140772573D374000B0604 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE140762573D374000B0604 /* DateFormatter+.swift */; };
 		BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5B256F4678009B8B5F /* Message.swift */; };
 		BBEA1A60256F46FE009B8B5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5F256F46FE009B8B5F /* User.swift */; };
@@ -204,6 +207,9 @@
 		BB97AE07256CDC0400307DAD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		BB9A869F2574879500FE14D6 /* ChatDrawerUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerUserCell.swift; sourceTree = "<group>"; };
 		BB9A86A3257487C800FE14D6 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		BBC5B31B257E089900739CD8 /* KeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
+		BBC5B321257E0CFC00739CD8 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
+		BBC5B327257E0E4500739CD8 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		BBE140762573D374000B0604 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		BBEA1A5B256F4678009B8B5F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BBEA1A5F256F46FE009B8B5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -396,6 +402,7 @@
 		BB1FFD4A257685EA00E4668C /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				BBC5B321257E0CFC00739CD8 /* KeychainError.swift */,
 				990DE946257336D900340A72 /* JoinChatError.swift */,
 				993AF67C2574E3E200416692 /* HomeError.swift */,
 			);
@@ -459,6 +466,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		BBC5B31A257E084300739CD8 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				BBC5B31B257E089900739CD8 /* KeychainAccess.swift */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
 		BBEA1A63256F49A8009B8B5F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				BB20F4C525738D2C00C5AC1D /* UserDefault.swift */,
+				BBC5B327257E0E4500739CD8 /* Keychain.swift */,
 			);
 			path = PropertyWrapper;
 			sourceTree = "<group>";
@@ -509,6 +525,7 @@
 				995BE99D2575DF7E00C15AC7 /* Coordinator */,
 				BBEA1A63256F49A8009B8B5F /* Entity */,
 				996C4E4F256E7B900015F9F4 /* Network */,
+				BBC5B31A257E084300739CD8 /* DataLayer */,
 				996C4E3D256E5F2C0015F9F4 /* GraphQL */,
 				996A146E256D5B8E00F21215 /* Common */,
 				99A2767F25668E13008BD24C /* Home */,
@@ -778,9 +795,11 @@
 				996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */,
 				995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */,
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
+				BBC5B31C257E089900739CD8 /* KeychainAccess.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
 				996479372576854900CFF202 /* MessageText.swift in Sources */,
+				BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,
 				996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */,
@@ -836,6 +855,7 @@
 				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
 				990DE9512573499500340A72 /* AlertFactoryProviding.swift in Sources */,
 				993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */,
+				BBC5B322257E0CFC00739CD8 /* KeychainError.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				990DE9782573A67C00340A72 /* String+.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
