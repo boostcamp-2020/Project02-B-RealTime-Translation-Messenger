@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { RouteComponentProps, useLocation } from 'react-router-dom';
 import { NEW_MESSAGE, ALL_MESSAGES_BY_ID } from '@/queries/room.queires';
 import { useQuery } from '@apollo/client';
@@ -12,12 +11,10 @@ interface MatchParams {
   id: string;
 }
 
-const Wrapper = styled.div``;
-
 const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const roomId = +match.params.id;
   const location: any = useLocation();
-  const { lang } = location.state;
+  const { userId, lang } = location.state;
   const { data, loading, subscribeToMore } = useQuery(ALL_MESSAGES_BY_ID, {
     variables: {
       id: roomId,
@@ -44,12 +41,12 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   if (loading) return <div>Loading!</div>;
 
   return (
-    <Wrapper>
+    <>
       <Header visible={visible} setVisible={setVisible} />
       <SideBar visible={visible} setVisible={setVisible} />
       <ChatLog messages={data.allMessagesById} />
-      <Input />
-    </Wrapper>
+      <Input userId={userId} lang={lang} roomId={roomId} />
+    </>
   );
 };
 

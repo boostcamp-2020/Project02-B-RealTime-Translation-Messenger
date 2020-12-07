@@ -19,7 +19,7 @@ const Container = styled.div<ContainerProps>`
   width: 200px;
   height: fit-content;
   min-height: 50px;
-  padding: 5px;
+  padding: 0.5rem;
   color: ${(props) => props.color};
   background-color: ${(props) => props.bgColor};
   border: 0;

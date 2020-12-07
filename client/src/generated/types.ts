@@ -66,10 +66,17 @@ export type User = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  translation: TranslationResponse;
   createMessage: Scalars['Boolean'];
   createRoom: CreateRoomResponse;
   enterRoom: EnterRoomResponse;
   deleteUser: Scalars['Boolean'];
+};
+
+export type MutationTranslationArgs = {
+  text: Scalars['String'];
+  source: Scalars['String'];
+  target: Scalars['String'];
 };
 
 export type MutationCreateMessageArgs = {
@@ -95,6 +102,11 @@ export type MutationEnterRoomArgs = {
 export type MutationDeleteUserArgs = {
   userId: Scalars['Int'];
   roomId: Scalars['Int'];
+};
+
+export type TranslationResponse = {
+  __typename?: 'translationResponse';
+  translatedText: Scalars['String'];
 };
 
 export type CreateRoomResponse = {

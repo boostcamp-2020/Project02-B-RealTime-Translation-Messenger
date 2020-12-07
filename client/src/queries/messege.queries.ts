@@ -16,3 +16,11 @@ export const CREATE_MESSAGE = gql`
     )
   }
 `;
+
+export const TRANSLATION = gql`
+  mutation translation($text: String!, $source: String!, $target: String!) {
+    translation(text: $text, source: $source, target: $target) {
+      translatedText
+    }
+  }
+`;
