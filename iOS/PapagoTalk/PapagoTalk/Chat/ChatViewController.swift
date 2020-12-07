@@ -14,7 +14,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     @IBOutlet private weak var inputBarTextView: UITextView!
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
-    @IBOutlet private weak var chatCollectionView: UICollectionView!
+    @IBOutlet weak var chatCollectionView: UICollectionView!
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet weak var chatDrawerButton: UIBarButtonItem!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
@@ -125,6 +125,7 @@ final class ChatViewController: UIViewController, StoryboardView {
         microphoneButton?.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
+                self?.hideKeyboard()
                 self?.microphoneButton?.moveForSpeech {
                     self?.presentSpeech()
                 }
@@ -175,9 +176,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     private func hideKeyboard() {
-        UIView.performWithoutAnimation {
-            inputBarTextView.resignFirstResponder()
-        }
+        inputBarTextView.resignFirstResponder()
     }
 }
 
