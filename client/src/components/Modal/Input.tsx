@@ -1,60 +1,34 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import OtpInput from 'react-otp-input';
+import CSS from 'csstype';
 
 interface Props {
-  placeholder?: string;
-  required?: boolean;
-  index?: number;
   value?: string;
-  onChange?: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    index: number,
-  ) => void;
+  onChange: React.Dispatch<React.SetStateAction<string>>;
   type?: string;
-  maxLength?: number;
-  name?: string;
+  numInputs: number;
 }
 
-const Container = styled.input`
-  width: 15%;
-  height: 80px;
-  padding: 0px 15px;
-  border: 0;
-  border-radius: ${(props) => props.theme.borderRadiusSmall};
-  color: ${(props) => props.theme.blackColor};
-  background-color: ${(props) => props.theme.whiteColor};
-  font-size: 25px;
-  font-weight: 600;
-  text-align: center;
-`;
-
-const Input: FC<Props> = ({
-  placeholder,
-  required,
-  index,
-  value,
-  onChange,
-  type,
-  maxLength,
-  name,
-}) => {
-  return (
-    <Container
-      placeholder={placeholder}
-      required={required}
-      value={value}
-      onChange={(e) => onChange && onChange(e, index as number)}
-      type={type}
-      maxLength={maxLength}
-      name={name}
-    />
-  );
+const InputStyle: CSS.Properties = {
+  width: '3rem',
+  height: '4rem',
+  margin: '0 0.3rem',
+  color: 'black',
+  background: 'white',
+  border: 'none',
+  borderRadius: '8px',
+  fontSize: '20px',
 };
 
-Input.defaultProps = {
-  type: 'text',
-  required: true,
-  name: '',
-};
+const Input: FC<Props> = ({ value, onChange, numInputs }) => (
+  <OtpInput
+    value={value}
+    onChange={onChange}
+    numInputs={numInputs}
+    separator={<span>-</span>}
+    inputStyle={InputStyle}
+    shouldAutoFocus
+  />
+);
 
 export default Input;
