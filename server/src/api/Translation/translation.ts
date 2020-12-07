@@ -19,7 +19,7 @@ export default {
         const translatedText = await req(text, source, target);
         return { translatedText: translatedText };
       } catch (e) {
-        return e;
+        return { translatedText: '텍스트를 입력하세요' };
       }
     },
   },
