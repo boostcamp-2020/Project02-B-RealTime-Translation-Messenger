@@ -1,5 +1,4 @@
 import React from 'react';
-import { User } from '@contexts/UserContext';
 import { Hamburger } from '@components/Icons';
 import { useQuery } from '@apollo/client';
 import { ROOM_BY_ID } from '@/queries/room.queires';
@@ -8,12 +7,18 @@ import S from './style';
 interface Props {
   visible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  roomId: number;
 }
 
-const SideBar: React.FC<Props> = ({ visible, setVisible }) => {
-  if (!visible) return null;
+interface User {
+  id: number;
+  nickname: string;
+  avatar: string;
+  lang: string;
+}
 
-  const roomId = 1; // HACK: mock data
+const SideBar: React.FC<Props> = ({ visible, setVisible, roomId }) => {
+  if (!visible) return null;
 
   const { loading, error, data } = useQuery(ROOM_BY_ID, {
     variables: { id: roomId },
@@ -34,8 +39,7 @@ const SideBar: React.FC<Props> = ({ visible, setVisible }) => {
         </S.SideBarHeader>
         <S.UserList>
           {users.map((user) => (
-            // eslint-disable-next-line react/jsx-key
-            <li>
+            <li key={user.id}>
               <S.UserInfo>
                 <S.Avatar src={user.avatar} />
                 <div>{user.nickname}</div>
