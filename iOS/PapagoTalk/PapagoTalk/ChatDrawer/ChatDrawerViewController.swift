@@ -17,7 +17,6 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var leaveChatRoomButton: UIButton!
     private var visualEffectView: UIVisualEffectView
     private var runningAnimations = [UIViewPropertyAnimator]()
-    private var animationProgressWhenInterrupted = CGFloat.zero
     
     var completion: (() -> Void)?
     var disposeBag = DisposeBag()
@@ -75,10 +74,8 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         reactor.state.map { $0.users }
             .asObservable()
             .bind(to: userListCollectionView.rx.items) { [weak self] (_, row, element) in
-                guard let cell = self?.configureChatDrawerUserCell(at: row, with: element) else {
-                    return UICollectionViewCell()
-                }
-                return cell
+                guard let self = self else { return UICollectionViewCell() }
+                return self.configureChatDrawerUserCell(at: row, with: element)
             }
             .disposed(by: disposeBag)
         
@@ -200,39 +197,32 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     // MARK: - ChatDrawer PanGesture
     
     private func chatDrawerPanned(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
-        case .began:
-            startInteractiveTransition(state: .closed, duration: 0.5)
-        case .changed:
-            let translation = recognizer.translation(in: view)
-            updateInteractiveTransition(fractionCompleted: translation.x / view.frame.width)
-        case .ended:
-            continueInteractiveTransition()
-        default:
-            break
+        let velocity = recognizer.velocity(in: view)
+
+        guard abs(velocity.x) > abs(velocity.y), let superview = view.superview else {
+            return
         }
-    }
-    
-    private func startInteractiveTransition(state: ChatDrawerState, duration: TimeInterval) {
-        if runningAnimations.isEmpty {
-            configureAnimation(state: state, duration: duration)
+        
+        let translation = recognizer.translation(in: view)
+        let superviewWidth = superview.frame.width
+        let viewWidth = view.frame.width
+        var newX = view.center.x + translation.x
+        
+        if newX + viewWidth/2 < superviewWidth {
+            newX = superviewWidth - viewWidth/2
         }
-        runningAnimations.forEach({
-            $0.pauseAnimation()
-            animationProgressWhenInterrupted = $0.fractionComplete
-        })
-    }
-    
-    private func updateInteractiveTransition(fractionCompleted: CGFloat) {
-        runningAnimations.forEach({
-            $0.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
-        })
-    }
-    
-    private func continueInteractiveTransition() {
-        runningAnimations.forEach({
-            $0.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-        })
+        view.center.x = newX
+        recognizer.setTranslation(.zero, in: view)
+        
+        guard recognizer.state == .ended else {
+            return
+        }
+        
+        guard view.center.x + viewWidth/2 > superviewWidth + viewWidth * 0.1 else {
+            view.center.x = superviewWidth - viewWidth/2
+            return
+        }
+        configureAnimation(state: .closed, duration: 0.9)
     }
 }
 
