@@ -66,6 +66,8 @@
 		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
 		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
 		BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */; };
+		BB0B6EA0257EB2F3005EDF22 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6E9F257EB2F3005EDF22 /* HomeViewControllerTests.swift */; };
+		BB0B6EA6257EB307005EDF22 /* HomeReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */; };
 		BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200A025701B4000CC8020 /* RxSwift+.swift */; };
 		BB15A5872577690F0006D258 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15A5862577690F0006D258 /* SpeechViewController.swift */; };
 		BB15A58F25776D2F0006D258 /* SpeechViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15A58E25776D2F0006D258 /* SpeechViewReactor.swift */; };
@@ -184,6 +186,8 @@
 		99A2768325668EFA008BD24C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB0B6E9F257EB2F3005EDF22 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactorTests.swift; sourceTree = "<group>"; };
 		BB1200A025701B4000CC8020 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		BB15A5862577690F0006D258 /* SpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		BB15A58E25776D2F0006D258 /* SpeechViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewReactor.swift; sourceTree = "<group>"; };
@@ -420,6 +424,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		BB0B6E9E257EB2C1005EDF22 /* HomeTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB0B6E9F257EB2F3005EDF22 /* HomeViewControllerTests.swift */,
+				BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */,
+			);
+			path = HomeTests;
+			sourceTree = "<group>";
+		};
 		BB1FFD4A257685EA00E4668C /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +582,7 @@
 		BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB0B6E9E257EB2C1005EDF22 /* HomeTests */,
 				BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */,
 				BBF2DCB5256674A500F2EA7D /* Info.plist */,
 			);
@@ -903,6 +917,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBF2DCB4256674A500F2EA7D /* PapagoTalkTests.swift in Sources */,
+				BB0B6EA0257EB2F3005EDF22 /* HomeViewControllerTests.swift in Sources */,
+				BB0B6EA6257EB307005EDF22 /* HomeReactorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
