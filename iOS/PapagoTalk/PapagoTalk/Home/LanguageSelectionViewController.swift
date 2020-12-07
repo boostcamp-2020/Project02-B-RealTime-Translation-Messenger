@@ -37,6 +37,13 @@ final class LanguageSelectionViewController: UIViewController {
         configurePickerView()
         bind()
         initializePickerView(at: userData.user.language.index)
+        
+        guard pickerView.subviews.count > 1 else {
+            return
+        }
+        pickerView.subviews[1].backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 1, alpha: 0)
+        pickerView.subviews[1].layer.borderWidth = 2
+        pickerView.subviews[1].layer.borderColor = UIColor(named: "PapagoBlue")?.cgColor
     }
     
     private func configurePickerView() {
