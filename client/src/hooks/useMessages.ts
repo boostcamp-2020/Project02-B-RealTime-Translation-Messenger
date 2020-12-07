@@ -13,7 +13,7 @@ interface QueryReturnType {
   loading: boolean;
 }
 
-const useUserList = ({ roomId, page, lang }: Variables): QueryReturnType => {
+const useMessages = ({ roomId, page, lang }: Variables): QueryReturnType => {
   const { data, loading, subscribeToMore } = useQuery(ALL_MESSAGES_BY_ID, {
     variables: {
       id: roomId,
@@ -45,4 +45,4 @@ const useUserList = ({ roomId, page, lang }: Variables): QueryReturnType => {
   return { data, loading };
 };
 
-export default useUserList;
+export default useMessages;
