@@ -300,6 +300,14 @@
 			path = MessageCell;
 			sourceTree = "<group>";
 		};
+		99482EDB257E4DCB00802B45 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				99482ED7257E3D0400802B45 /* LaunchScreenViewController.swift */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		995BE99D2575DF7E00C15AC7 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +532,7 @@
 		BBF2DC9B256674A300F2EA7D /* PapagoTalk */ = {
 			isa = PBXGroup;
 			children = (
+				99482EDB257E4DCB00802B45 /* LaunchScreen */,
 				995BE99D2575DF7E00C15AC7 /* Coordinator */,
 				BBEA1A63256F49A8009B8B5F /* Entity */,
 				996C4E4F256E7B900015F9F4 /* Network */,
@@ -542,7 +551,6 @@
 				BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */,
 				BBF2DCAA256674A500F2EA7D /* Info.plist */,
 				990DE96F2573A59B00340A72 /* Localizable.strings */,
-				99482ED7257E3D0400802B45 /* LaunchScreenViewController.swift */,
 			);
 			path = PapagoTalk;
 			sourceTree = "<group>";

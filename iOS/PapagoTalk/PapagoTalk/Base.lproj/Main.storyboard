@@ -670,13 +670,76 @@
                     <view key="view" contentMode="scaleToFill" id="rmI-se-TGc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46G-J1-PhE">
+                                <rect key="frame" x="132" y="378" width="150" height="150"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PapagoImageRed" translatesAutoresizingMaskIntoConstraints="NO" id="Y4G-YU-OXK">
+                                        <rect key="frame" x="54" y="37.5" width="112.5" height="112.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PapagoImageBlue" translatesAutoresizingMaskIntoConstraints="NO" id="F99-jf-2HP">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="CQe-xv-WV9"/>
+                                            <constraint firstAttribute="height" constant="150" id="dhA-VQ-TcK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PapagoImageYellow" translatesAutoresizingMaskIntoConstraints="NO" id="lMi-rh-Urh">
+                                        <rect key="frame" x="-16" y="37.5" width="112.5" height="112.5"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2I0-hm-fiq"/>
+                                    <constraint firstItem="lMi-rh-Urh" firstAttribute="width" secondItem="Y4G-YU-OXK" secondAttribute="width" id="SIg-ul-fep"/>
+                                    <constraint firstItem="Y4G-YU-OXK" firstAttribute="bottom" secondItem="F99-jf-2HP" secondAttribute="bottom" id="XGZ-eI-r3f"/>
+                                    <constraint firstItem="F99-jf-2HP" firstAttribute="centerY" secondItem="46G-J1-PhE" secondAttribute="centerY" id="YT8-QK-xP9"/>
+                                    <constraint firstItem="lMi-rh-Urh" firstAttribute="centerX" secondItem="F99-jf-2HP" secondAttribute="centerX" constant="-35" id="YoQ-HC-iOU"/>
+                                    <constraint firstItem="lMi-rh-Urh" firstAttribute="bottom" secondItem="F99-jf-2HP" secondAttribute="bottom" id="apa-ZL-Siv"/>
+                                    <constraint firstItem="F99-jf-2HP" firstAttribute="centerX" secondItem="46G-J1-PhE" secondAttribute="centerX" id="i6Q-5f-pAa"/>
+                                    <constraint firstAttribute="height" constant="150" id="kRt-ms-dc1"/>
+                                    <constraint firstItem="Y4G-YU-OXK" firstAttribute="height" secondItem="F99-jf-2HP" secondAttribute="height" multiplier="0.75" id="nFP-QI-MMl"/>
+                                    <constraint firstItem="Y4G-YU-OXK" firstAttribute="centerX" secondItem="F99-jf-2HP" secondAttribute="centerX" constant="35" id="xO3-jD-eYa"/>
+                                    <constraint firstItem="lMi-rh-Urh" firstAttribute="height" secondItem="Y4G-YU-OXK" secondAttribute="height" id="xgB-pF-UOz"/>
+                                    <constraint firstItem="Y4G-YU-OXK" firstAttribute="width" secondItem="F99-jf-2HP" secondAttribute="width" multiplier="0.75" id="zsK-NA-Rd0"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7j-2f-7Zg">
+                                <rect key="frame" x="117" y="742" width="180" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="98X-0b-vg1"/>
+                                    <constraint firstAttribute="height" constant="40" id="Cf2-DU-XAi"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="papago talk">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="23" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="QG0-pC-hFv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="D7j-2f-7Zg" firstAttribute="centerX" secondItem="QG0-pC-hFv" secondAttribute="centerX" id="TSL-MT-WCe"/>
+                            <constraint firstItem="QG0-pC-hFv" firstAttribute="bottom" secondItem="D7j-2f-7Zg" secondAttribute="bottom" constant="80" id="Zus-A8-hS1"/>
+                            <constraint firstItem="46G-J1-PhE" firstAttribute="centerX" secondItem="QG0-pC-hFv" secondAttribute="centerX" id="g0P-p3-QqN"/>
+                            <constraint firstItem="46G-J1-PhE" firstAttribute="centerY" secondItem="QG0-pC-hFv" secondAttribute="centerY" id="kxE-4i-gVn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="centerImageView" destination="F99-jf-2HP" id="gMX-e4-rwC"/>
+                        <outlet property="imageContainerView" destination="46G-J1-PhE" id="gbz-WD-dm1"/>
+                        <outlet property="leftImageView" destination="lMi-rh-Urh" id="an4-KE-sbV"/>
+                        <outlet property="rightImageView" destination="Y4G-YU-OXK" id="UlI-JY-Z8F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGo-3S-qgx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="795"/>
+            <point key="canvasLocation" x="131.8840579710145" y="794.86607142857144"/>
         </scene>
         <!--Speech View Controller-->
         <scene sceneID="MaF-1y-YI3">
@@ -1431,6 +1494,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="PapagoImageBlue" width="241.5" height="256"/>
+        <image name="PapagoImageRed" width="241.5" height="256"/>
+        <image name="PapagoImageYellow" width="241.5" height="256"/>
         <image name="arrow.2.circlepath" catalog="system" width="128" height="101"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="delete.left" catalog="system" width="128" height="104"/>
