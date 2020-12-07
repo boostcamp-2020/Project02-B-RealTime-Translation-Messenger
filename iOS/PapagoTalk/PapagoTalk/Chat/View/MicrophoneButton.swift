@@ -78,7 +78,7 @@ final class MicrophoneButton: UIButton {
         isUserInteractionEnabled = false
         guard let superview = superview else { return }
         latestCenter = center
-        let newY = superview.center.y + Constant.speechViewHeight/2 - Constant.speechViewBottomInset  - (frame.height/2) - superview.frame.minY - 8
+        let newY = superview.center.y + Constant.speechViewHeight/2 - Constant.speechViewBottomInset  - (frame.height/2)
         
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.center = CGPoint(x: superview.center.x, y: newY)
@@ -179,7 +179,10 @@ final class MicrophoneButton: UIButton {
         }
         let newX = translation.x + center.x
         var newY = translation.y + center.y
-        newY = (CGFloat(frame.height/2)...(superview.frame.height - frame.height/2)) ~= newY ? newY : center.y
+        
+        let topBound = CGFloat(frame.height/2) + superview.safeAreaInsets.top
+        let bottomBound = (superview.frame.height - frame.height/2) - superview.safeAreaInsets.bottom - 50
+        newY = (topBound...bottomBound) ~= newY ? newY : center.y
         
         return CGPoint(x: newX, y: newY)
     }
