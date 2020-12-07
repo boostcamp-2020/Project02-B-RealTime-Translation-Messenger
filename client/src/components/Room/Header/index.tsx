@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import { Hamburger, Copy, Door } from '@components/Icons';
 import { AvatarStack, Avatar } from '@primer/components';
 import S from './style';
@@ -7,9 +8,10 @@ import S from './style';
 interface Props {
   visible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  code: string;
 }
 
-const Header: React.FC<Props> = ({ visible, setVisible }) => {
+const Header: React.FC<Props> = ({ visible, setVisible, code }) => {
   const history = useHistory();
 
   return (
@@ -17,10 +19,16 @@ const Header: React.FC<Props> = ({ visible, setVisible }) => {
       <S.HamburgerButton onClick={() => setVisible(!visible)}>
         <Hamburger size={24} />
       </S.HamburgerButton>
-      <S.CodeWrapper>
-        <S.Code>#601 235</S.Code>
-        <Copy size={20} />
-      </S.CodeWrapper>
+      <CopyToClipboard
+        text={code}
+        onCopy={() => alert('코드가 복사되었습니다.')}
+      >
+        <S.CodeWrapper>
+          {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+          <S.Code>#{code}</S.Code>
+          <Copy size={20} />
+        </S.CodeWrapper>
+      </CopyToClipboard>
       <S.RightWrapper>
         <AvatarStack alignRight>
           <Avatar
