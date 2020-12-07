@@ -6,6 +6,7 @@ import ChatLog from '@components/ChatLog';
 import Header from '@components/Room/Header';
 import SideBar from '@components/Room/SideBar';
 import Input from '@components/Room/Input';
+import useMessages from '@/hooks/useMessages';
 
 interface MatchParams {
   id: string;
@@ -21,33 +22,13 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const roomId = +match.params.id;
   const location = useLocation<LocationState>();
   const { lang, code } = location.state;
-  const { data, loading, subscribeToMore } = useQuery(ALL_MESSAGES_BY_ID, {
-    variables: {
-      id: roomId,
-      page: 1,
-    },
+  const { data, loading } = useMessages({
+    roomId,
+    page: 1,
+    lang,
   });
 
   const [visible, setVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    const unsubscribe = subscribeToMore({
-      document: NEW_MESSAGE,
-      variables: { roomId, lang },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const { newMessage } = subscriptionData.data;
-        return {
-          allMessagesById: {
-            messages: [...prev.allMessagesById.messages, newMessage],
-          },
-        };
-      },
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
 
   if (loading) return <div>Loading!</div>;
 
