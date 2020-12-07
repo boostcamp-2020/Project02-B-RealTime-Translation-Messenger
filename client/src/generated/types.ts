@@ -1,3 +1,5 @@
+import { gql } from '@apollo/client';
+
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
@@ -17,7 +19,7 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  allMessagesById?: Maybe<Array<Maybe<Message>>>;
+  allMessagesById?: Maybe<AllMessages>;
   allRooms?: Maybe<Array<Maybe<Room>>>;
   roomById?: Maybe<Room>;
   allUsers?: Maybe<Array<Maybe<User>>>;
@@ -25,10 +27,17 @@ export type Query = {
 
 export type QueryAllMessagesByIdArgs = {
   id: Scalars['Int'];
+  page: Scalars['Int'];
 };
 
 export type QueryRoomByIdArgs = {
   id: Scalars['Int'];
+};
+
+export type AllMessages = {
+  __typename?: 'allMessages';
+  messages?: Maybe<Array<Maybe<Message>>>;
+  nextPage?: Maybe<Scalars['Int']>;
 };
 
 export type Message = {
@@ -75,15 +84,11 @@ export type Mutation = {
 
 export type MutationTranslationArgs = {
   text: Scalars['String'];
-  source: Scalars['String'];
   target: Scalars['String'];
 };
 
 export type MutationCreateMessageArgs = {
   text: Scalars['String'];
-  source: Scalars['String'];
-  userId: Scalars['Int'];
-  roomId: Scalars['Int'];
 };
 
 export type MutationCreateRoomArgs = {
@@ -99,11 +104,6 @@ export type MutationEnterRoomArgs = {
   code: Scalars['String'];
 };
 
-export type MutationDeleteUserArgs = {
-  userId: Scalars['Int'];
-  roomId: Scalars['Int'];
-};
-
 export type TranslationResponse = {
   __typename?: 'translationResponse';
   translatedText: Scalars['String'];
@@ -114,20 +114,27 @@ export type CreateRoomResponse = {
   userId: Scalars['Int'];
   roomId: Scalars['Int'];
   code: Scalars['String'];
+  token: Scalars['String'];
 };
 
 export type EnterRoomResponse = {
   __typename?: 'enterRoomResponse';
   userId: Scalars['Int'];
   roomId: Scalars['Int'];
+  token: Scalars['String'];
 };
 
 export type Subscription = {
   __typename?: 'Subscription';
   newMessage?: Maybe<Message>;
+  newUser?: Maybe<User>;
 };
 
 export type SubscriptionNewMessageArgs = {
   roomId: Scalars['Int'];
   lang: Scalars['String'];
+};
+
+export type SubscriptionNewUserArgs = {
+  roomId: Scalars['Int'];
 };
