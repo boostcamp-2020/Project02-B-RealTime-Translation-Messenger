@@ -32,7 +32,6 @@ final class MicrophoneButton: UIButton {
         }
     }
     
-    var buttonColor: UIColor?
     private var latestCenter: CGPoint?
     private let disposeBag = DisposeBag()
     
@@ -70,21 +69,9 @@ final class MicrophoneButton: UIButton {
     }
  
     override func draw(_ rect: CGRect) {
-        
-        let center = CGPoint(x: rect.midX, y: rect.midY)
-        let offset = rect.width * 0.5 / 2
-        
         let circlePath = UIBezierPath(ovalIn: rect)
-        (buttonColor ?? UIColor.systemGreen).set()
+        UIColor.systemGreen.set()
         circlePath.fill()
-        
-        let plusPath = UIBezierPath()
-        plusPath.move(to: CGPoint(x: center.x - offset, y: center.y))
-        plusPath.addLine(to: CGPoint(x: center.x + offset, y: center.y))
-        
-        plusPath.move(to: CGPoint(x: center.x, y: center.y - offset))
-        plusPath.addLine(to: CGPoint(x: center.x, y: center.y + offset))
-        plusPath.close()
     }
     
     func moveForSpeech(completion: (() -> Void)?) {
@@ -138,7 +125,7 @@ final class MicrophoneButton: UIButton {
               .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 let translation = $0.translation(in: self)
-                self.center = CGPoint(x: self.center.x + translation.x, y: self.center.y + translation.y)
+                self.center = self.movedPosition(by: translation)
                 $0.setTranslation(.zero, in: self)
                 
                 if $0.state == .ended {
@@ -158,6 +145,16 @@ final class MicrophoneButton: UIButton {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.center = CGPoint(x: nexX, y: movedY)
         }
+    }
+    
+    private func movedPosition(by translation: CGPoint) -> CGPoint {
+        guard let superview = superview else {
+            return center
+        }
+        let newX = translation.x + center.x
+        var newY = translation.y + center.y
+        newY = (CGFloat(frame.height/2)...(superview.frame.height - frame.height/2)) ~= newY ? newY : center.y
         
+        return CGPoint(x: newX, y: newY)
     }
 }

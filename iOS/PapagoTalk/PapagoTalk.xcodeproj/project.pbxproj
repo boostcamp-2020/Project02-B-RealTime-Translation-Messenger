@@ -273,6 +273,7 @@
 		99482E87257CB7C100802B45 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				99482E80257BE06C00802B45 /* SpeechButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -378,7 +379,6 @@
 				99482EA4257CF30600802B45 /* MessageCell */,
 				9964793A2576901200CFF202 /* InputBarTextView.swift */,
 				9964797D2577670A00CFF202 /* MicrophoneButton.swift */,
-				99482E80257BE06C00802B45 /* SpeechButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
