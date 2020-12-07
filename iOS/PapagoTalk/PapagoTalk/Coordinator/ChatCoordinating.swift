@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import RxCocoa
 
 protocol ChatCoordinating: class {
     func presentSpeech(from presentingViewController: UIViewController)
-    func presentDrawer(from presentingViewController: UIViewController)
+    func presentDrawer(from presentingViewController: UIViewController, with observer: BehaviorRelay<Bool>)
 }
