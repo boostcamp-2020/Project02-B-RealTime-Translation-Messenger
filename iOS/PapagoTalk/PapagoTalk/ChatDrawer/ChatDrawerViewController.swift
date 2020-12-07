@@ -194,25 +194,25 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         runningAnimations.append(blurAnimator)
     }
     
-    // MARK: - ChatDrawer PanGesture
-    
     private func chatDrawerPanned(recognizer: UIPanGestureRecognizer) {
-        let velocity = recognizer.velocity(in: view)
-
-        guard abs(velocity.x) > abs(velocity.y), let superview = view.superview else {
+        guard let superview = view.superview else {
             return
         }
         
-        let translation = recognizer.translation(in: view)
+        let velocity = recognizer.velocity(in: view)
         let superviewWidth = superview.frame.width
         let viewWidth = view.frame.width
-        var newX = view.center.x + translation.x
         
-        if newX + viewWidth/2 < superviewWidth {
-            newX = superviewWidth - viewWidth/2
+        if abs(velocity.x) > abs(velocity.y) {
+            let translation = recognizer.translation(in: view)
+            var newX = view.center.x + translation.x
+            
+            if newX + viewWidth/2 < superviewWidth {
+                newX = superviewWidth - viewWidth/2
+            }
+            view.center.x = newX
+            recognizer.setTranslation(.zero, in: view)
         }
-        view.center.x = newX
-        recognizer.setTranslation(.zero, in: view)
         
         guard recognizer.state == .ended else {
             return
@@ -222,7 +222,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             view.center.x = superviewWidth - viewWidth/2
             return
         }
-        configureAnimation(state: .closed, duration: 0.9)
+        chatDrawerObserver.accept(true)
     }
 }
 
