@@ -125,6 +125,7 @@ final class ChatViewController: UIViewController, StoryboardView {
         microphoneButton?.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] in
+                self?.hideKeyboard()
                 self?.microphoneButton?.moveForSpeech {
                     self?.presentSpeech()
                 }
@@ -175,9 +176,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     private func hideKeyboard() {
-        UIView.performWithoutAnimation {
-            inputBarTextView.resignFirstResponder()
-        }
+        inputBarTextView.resignFirstResponder()
     }
 }
 

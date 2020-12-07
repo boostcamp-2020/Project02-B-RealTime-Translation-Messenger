@@ -76,12 +76,12 @@ final class MicrophoneButton: UIButton {
     
     func moveForSpeech(completion: (() -> Void)?) {
         isUserInteractionEnabled = false
-        guard let superviewCenter = superview?.center else { return }
+        guard let superview = superview else { return }
         latestCenter = center
-        let newY = superviewCenter.y + Constant.speechViewHeight/2 - Constant.speechViewBottomInset  - (frame.height/2)
+        let newY = superview.center.y + Constant.speechViewHeight/2 - Constant.speechViewBottomInset  - (frame.height/2) - superview.frame.minY - 8
         
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
-            self?.center = CGPoint(x: superviewCenter.x, y: newY)
+            self?.center = CGPoint(x: superview.center.x, y: newY)
         }
         completion: { [weak self] _ in
             self?.isUserInteractionEnabled = true
@@ -117,6 +117,8 @@ final class MicrophoneButton: UIButton {
         tintColor = .white
         contentMode = .center
         imageView?.contentMode = .scaleAspectFit
+        
+        bindKeyboard()
     }
     
     private func attachGesture() {
@@ -135,6 +137,28 @@ final class MicrophoneButton: UIButton {
               .disposed(by: disposeBag)
     }
     
+    private func bindKeyboard() {
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .asObservable()
+            .compactMap {
+                ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            }
+            .asDriver(onErrorJustReturn: .zero)
+            .drive(onNext: { [weak self] keyboardFrame in
+                self?.keyboardWillAppear(keyboardOriginY: keyboardFrame.minY)
+            })
+            .disposed(by: disposeBag)
+        
+        return NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+            .asObservable()
+            .map { _ in Void.self }
+            .asDriver(onErrorJustReturn: Void.self)
+            .drive(onNext: { [weak self] _ in
+                self?.moveToLatest()
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func moveButtonToSide() {
         guard let superViewWidth = superview?.bounds.width else {
             return
@@ -142,8 +166,10 @@ final class MicrophoneButton: UIButton {
         let isLeft = center.x < superViewWidth/2
         let nexX = isLeft ? 12 + bounds.width/2 : superViewWidth - 12 - bounds.width/2
         let movedY = center.y
+        let newCenter = CGPoint(x: nexX, y: movedY)
+        latestCenter = newCenter
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
-            self?.center = CGPoint(x: nexX, y: movedY)
+            self?.center = newCenter
         }
     }
     
@@ -156,5 +182,19 @@ final class MicrophoneButton: UIButton {
         newY = (CGFloat(frame.height/2)...(superview.frame.height - frame.height/2)) ~= newY ? newY : center.y
         
         return CGPoint(x: newX, y: newY)
+    }
+    
+    private func keyboardWillAppear(keyboardOriginY: CGFloat) {
+        guard let superview = superview else {
+            return
+        }
+        let yBound = keyboardOriginY - superview.frame.minY - frame.height/2 - 50
+        let originCenter = center
+        if center.y >= yBound {
+            latestCenter = originCenter
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+                self?.center = CGPoint(x: originCenter.x, y: yBound - 10)
+            }
+        }
     }
 }
