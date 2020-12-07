@@ -1,42 +1,22 @@
 import React, { useState } from 'react';
 import { debounce } from 'lodash';
 import { useMutation } from '@apollo/client';
-import {
-  MutationCreateMessageArgs,
-  MutationTranslationArgs,
-  TranslationResponse,
-} from '@generated/types';
 import { CREATE_MESSAGE, TRANSLATION } from '@queries/messege.queries';
 import { Microphone } from '@components/Icons';
 import S from './style';
 
-interface Props {
-  userId: number;
-  lang: string;
-  roomId: number;
-}
-
-const Input: React.FC<Props> = ({ userId, lang, roomId }) => {
+const Input: React.FC = () => {
   const [text, setText] = useState('');
   const [translatedText, setTranslatedText] = useState('텍스트를 입력하세요');
-  const [createMessageMutation] = useMutation<MutationCreateMessageArgs>(
-    CREATE_MESSAGE,
-    {
-      variables: {
-        text,
-        source: lang,
-        userId,
-        roomId,
-      },
-    },
-  );
-  const [translationMutation] = useMutation<
-    { translation: TranslationResponse },
-    MutationTranslationArgs
-  >(TRANSLATION, {
+  const [createMessageMutation] = useMutation(CREATE_MESSAGE, {
     variables: {
       text,
-      source: lang,
+    },
+  });
+
+  const [translationMutation] = useMutation(TRANSLATION, {
+    variables: {
+      text,
       target: 'en', // TODO: target 언어 수정하기
     },
   });

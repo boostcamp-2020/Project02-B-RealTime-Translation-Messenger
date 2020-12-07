@@ -53,6 +53,8 @@ const Home: React.FC = () => {
     const roomId = data?.createRoom.roomId;
     const code = data?.createRoom.code;
     const userId = data?.createRoom.userId;
+    if (typeof data?.createRoom.token === 'string')
+      localStorage.setItem('token', data?.createRoom.token);
     history.push({
       pathname: `/room/${roomId}`,
       state: {

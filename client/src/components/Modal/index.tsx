@@ -89,6 +89,8 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
     const { data } = await enterRoomMutation();
     const roomId = data?.enterRoom.roomId;
     const userId = data?.enterRoom.roomId;
+    if (typeof data?.enterRoom.token === 'string')
+      localStorage.setItem('token', data.enterRoom.token);
     history.push({
       pathname: `/room/${roomId}`,
       state: {

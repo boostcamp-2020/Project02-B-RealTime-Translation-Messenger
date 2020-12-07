@@ -2,11 +2,19 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+interface Args {
+  id: number;
+  page: number;
+}
+
 export default {
   Query: {
-    allMessagesById: async (_: any, { id, page }: { id: number; page: number }) => {
+    allMessagesById: async (_: any, args: Args, { request, isAuthenticated }: any) => {
+      isAuthenticated(request);
+      const { id, page } = args;
       const maxId = await prisma.$queryRaw`SELECT MAX(id) from Message WHERE roomId = ${id}`;
       const lastId = maxId[0]['MAX(id)'];
+      if (!lastId) return { messages: [], nextPage: null };
       const Messages: any = await prisma.message.findMany({
         where: {
           room: { id },
@@ -15,6 +23,9 @@ export default {
         skip: 10 * (page - 1),
         cursor: {
           id: lastId,
+        },
+        include: {
+          user: true,
         },
       });
       if (Messages.length === 10) {
