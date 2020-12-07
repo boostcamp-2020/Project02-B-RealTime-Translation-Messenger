@@ -110,8 +110,8 @@ final class HomeViewReactor: Reactor {
         let needShake = nickName.count > maxLength
 
         return .concat([
-            .just(Mutation.shakeNickNameTextField(needShake)),
-            .just(Mutation.setNickName(String(nickName.prefix(maxLength))))
+            .just(Mutation.setNickName(String(nickName.prefix(maxLength)))),
+            .just(Mutation.shakeNickNameTextField(needShake))
         ])
     }
     

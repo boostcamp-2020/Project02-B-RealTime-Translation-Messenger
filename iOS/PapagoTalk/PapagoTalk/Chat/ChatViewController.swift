@@ -80,11 +80,8 @@ final class ChatViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.messageBox.messages }
-            .do(afterNext: { [weak self] in
-                guard let currentMessageType = $0.last?.type,
-                      currentMessageType == .sent else {
-                    return
-                }
+            .observeOn(MainScheduler.instance)
+            .do(afterNext: { [weak self] _ in
                 self?.scrollToLastMessage()
             })
             .bind(to: chatCollectionView.rx.items) { [weak self] (_, row, element) in
