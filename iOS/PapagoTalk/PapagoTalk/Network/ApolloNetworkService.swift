@@ -73,9 +73,7 @@ class ApolloNetworkService: NetworkServiceProviding {
                             observer.onNext(data)
                         }
                     case .failure:
-                        if !(self?.webSocketTransport.isConnected() ?? false) {
-                            self?.webSocketTransport.resumeWebSocketConnection()
-                        }
+                        self?.reconnect()
                     }
                 }
             )
@@ -158,6 +156,12 @@ class ApolloNetworkService: NetworkServiceProviding {
             return Disposables.create {
                 cancellable?.cancel()
             }
+        }
+    }
+    
+    func reconnect() {
+        if !webSocketTransport.isConnected() {
+            webSocketTransport.resumeWebSocketConnection()
         }
     }
 }

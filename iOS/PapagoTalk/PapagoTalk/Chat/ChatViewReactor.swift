@@ -20,6 +20,8 @@ final class ChatViewReactor: Reactor {
         case appendNewMessage([Message])
         case setSendResult(Bool)
         case toggleDrawerState
+        case connectSocket
+        case reconnectSocket
     }
     
     struct State {
@@ -27,6 +29,7 @@ final class ChatViewReactor: Reactor {
         var sendResult: Bool = true
         var roomCode: String
         var presentDrawer: Bool
+        var isSubscribingMessage: Bool = false
     }
     
     private let networkService: NetworkServiceProviding
@@ -55,7 +58,8 @@ final class ChatViewReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .subscribeNewMessages:
-            return subscribeMessages()
+            return currentState.isSubscribingMessage ?
+                .just(.reconnectSocket) : .concat([ .just(.connectSocket), subscribeMessages()])
         case .sendMessage(let message):
             return requestSendMessage(message: message)
         case .chatDrawerButtonTapped:
@@ -73,6 +77,10 @@ final class ChatViewReactor: Reactor {
             state.sendResult = isSuccess
         case .toggleDrawerState:
             state.presentDrawer.toggle()
+        case .connectSocket:
+            state.isSubscribingMessage = true
+        case .reconnectSocket:
+            networkService.reconnect()
         }
         return state
     }

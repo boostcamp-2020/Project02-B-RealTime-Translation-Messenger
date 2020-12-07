@@ -23,4 +23,6 @@ protocol NetworkServiceProviding {
     func createRoom(user: User) -> Maybe<CreateRoomResponse>
     
     func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data>
+    
+    func reconnect()
 }
