@@ -4,10 +4,9 @@ const prisma = new PrismaClient();
 
 export default {
   Mutation: {
-    deleteUser: async (
-      _: any,
-      { userId, roomId }: { userId: number; roomId: number },
-    ): Promise<boolean> => {
+    deleteUser: async (_: any, __: any, { request, isAuthenticated }: any): Promise<boolean> => {
+      isAuthenticated(request);
+      const { id: userId, roomId } = request.user;
       await prisma.$queryRaw`DELETE FROM User WHERE id = ${userId}`;
       const restUser = await prisma.$queryRaw`SELECT COUNT(*) FROM _RoomToUser WHERE A = ${roomId} `;
       if (!restUser[0]['COUNT(*)']) {

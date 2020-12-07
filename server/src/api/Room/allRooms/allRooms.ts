@@ -4,12 +4,14 @@ const prisma = new PrismaClient();
 
 export default {
   Query: {
-    allRooms: () =>
-      prisma.room.findMany({
+    allRooms: (_: any, __: any, { request, isAuthenticated }: any) => {
+      isAuthenticated(request);
+      return prisma.room.findMany({
         include: {
           users: true,
           messages: true,
         },
-      }),
+      });
+    },
   },
 };
