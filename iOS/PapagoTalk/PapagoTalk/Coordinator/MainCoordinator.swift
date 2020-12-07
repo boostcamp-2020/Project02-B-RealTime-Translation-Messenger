@@ -33,6 +33,10 @@ final class MainCoordinator: Coordinator {
         self.translationManager = translationManager
         self.speechManager = speechManager
         self.messageParser = messageParser
+        
+        navigationController.navigationBar.barTintColor = UIColor(named: "NavigationBarColor")
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.tintColor = UIColor(named: "PapagoBlue")
     }
     
     func start() {

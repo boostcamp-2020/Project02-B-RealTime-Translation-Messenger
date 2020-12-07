@@ -968,7 +968,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-jw-dz3">
-                                <rect key="frame" x="0.0" y="52" width="414" height="764"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pbJ-PR-6ix">
                                     <size key="itemSize" width="414" height="59"/>
@@ -1259,19 +1259,27 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUb-Gw-ivA">
-                                <rect key="frame" x="0.0" y="816" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="814" width="414" height="48"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va8-FQ-vZP">
-                                        <rect key="frame" x="356" y="8" width="42" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va8-FQ-vZP">
+                                        <rect key="frame" x="366" y="8" width="32" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="t1d-el-k0J"/>
+                                            <constraint firstAttribute="width" constant="32" id="t1d-el-k0J"/>
+                                            <constraint firstAttribute="width" secondItem="va8-FQ-vZP" secondAttribute="height" multiplier="1:1" id="yMa-Dw-Jcf"/>
                                         </constraints>
-                                        <state key="normal" title="Send">
+                                        <color key="tintColor" name="PapagoBlue"/>
+                                        <state key="normal" image="paperplane.fill" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-12-yAe" customClass="InputBarTextView" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="336" height="30"/>
+                                        <rect key="frame" x="8" y="8" width="346" height="32"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="250" constant="30" id="SCD-Tw-v2T"/>
