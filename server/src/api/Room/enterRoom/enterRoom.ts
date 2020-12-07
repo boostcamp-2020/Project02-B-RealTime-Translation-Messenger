@@ -16,8 +16,9 @@ export default {
     enterRoom: async (
       _: any,
       { nickname, avatar, lang, code }: EnterInfo,
+      { pubsub }: any,
     ): Promise<{ userId: number; roomId: number; token: string }> => {
-      const result = await prisma.user.create({
+      const newUser = await prisma.user.create({
         data: {
           nickname,
           lang,
@@ -28,8 +29,9 @@ export default {
         },
         include: { rooms: true },
       });
-      const jwtToken = generateToken(result.id, nickname, avatar, lang, result.rooms[0].id);
-      return { userId: result.id, roomId: result.rooms[0].id, token: jwtToken };
+      const jwtToken = generateToken(newUser.id, nickname, avatar, lang, newUser.rooms[0].id);
+      pubsub.publish('NEW_USER', { newUser });
+      return { userId: newUser.id, roomId: newUser.rooms[0].id, token: jwtToken };
     },
   },
 };

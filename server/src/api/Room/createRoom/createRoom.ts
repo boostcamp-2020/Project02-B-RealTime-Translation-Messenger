@@ -17,7 +17,7 @@ export default {
       args: User,
     ): Promise<{ userId: number; roomId: number; code: string; token: string }> => {
       const { nickname, avatar, lang } = args;
-      const user = await prisma.user.create({
+      const newUser = await prisma.user.create({
         data: {
           nickname,
           lang,
@@ -29,15 +29,15 @@ export default {
         data: {
           users: {
             connect: {
-              id: user.id,
+              id: newUser.id,
             },
           },
           avatar: randomImage(),
           code: randomCode,
         },
       });
-      const jwtToken = generateToken(user.id, nickname, avatar, lang, newRoom.id);
-      return { userId: user.id, roomId: newRoom.id, code: randomCode, token: jwtToken };
+      const jwtToken = generateToken(newUser.id, nickname, avatar, lang, newRoom.id);
+      return { userId: newUser.id, roomId: newRoom.id, code: randomCode, token: jwtToken };
     },
   },
 };

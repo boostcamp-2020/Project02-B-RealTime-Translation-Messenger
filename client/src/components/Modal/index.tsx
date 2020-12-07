@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
 import Button from '@components/Button';
 import { ENTER_ROOM } from '@queries/room.queires';
 import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
-import { useUserState, useUserDispatch } from '@contexts/UserContext';
+import { useUserState } from '@contexts/UserContext';
 import { useLocalizationState } from '@/contexts/LocalizationContext';
 import Overlay from './Overlay';
 import Code from './Code';
@@ -65,16 +65,12 @@ const Text = styled.div`
 
 const Modal: FC<Props> = ({ visible, setVisible }) => {
   const history = useHistory();
-  const { nickname, avatar, lang, code } = useUserState();
-  const dispatch = useUserDispatch();
+  const [pinValue, setPinValue] = useState('');
+  const { nickname, avatar, lang } = useUserState();
   const { enterCode, submitCode } = useLocalizationState();
 
   const onClickOverlay = () => {
     if (setVisible) setVisible(!visible);
-    dispatch({
-      type: 'SET_CODE',
-      code: '',
-    });
   };
 
   const [enterRoomMutation] = useMutation<
@@ -85,7 +81,7 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
       nickname,
       lang,
       avatar,
-      code,
+      code: pinValue,
     },
   });
 
@@ -97,7 +93,7 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
       pathname: `/room/${roomId}`,
       state: {
         userId,
-        code,
+        code: pinValue,
         nickname,
         avatar,
         lang,
@@ -114,7 +110,11 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
             <Text>{enterCode}</Text>
           </ModalHeader>
           <ModalBody>
-            <Code visible={visible} />
+            <Code
+              pinValue={pinValue}
+              setPinValue={setPinValue}
+              visible={visible}
+            />
           </ModalBody>
           <ModalFooter>
             <Button text={submitCode} onClick={onClickEnterRoom} />
