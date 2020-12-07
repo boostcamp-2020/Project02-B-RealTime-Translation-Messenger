@@ -2,15 +2,20 @@ import req from '@utils/request';
 
 interface TranslationForm {
   text: string;
-  source: string;
   target: string;
 }
 
 export default {
   Mutation: {
-    translation: async (_: any, args: TranslationForm): Promise<{ translatedText: string }> => {
+    translation: async (
+      _: any,
+      args: TranslationForm,
+      { request, isAuthenticated }: any,
+    ): Promise<{ translatedText: string }> => {
       try {
-        const { text, source, target } = args;
+        isAuthenticated(request);
+        const { text, target } = args;
+        const { lang: source } = request.user;
         const translatedText = await req(text, source, target);
         return { translatedText: translatedText };
       } catch (e) {
