@@ -18,25 +18,27 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     private var visualEffectView: UIVisualEffectView
     private var runningAnimations = [UIViewPropertyAnimator]()
     
+    var chatDrawerObserver: BehaviorRelay<Bool>
     var completion: (() -> Void)?
     var disposeBag = DisposeBag()
     var currentToast: Toast?
     
-    init?(coder: NSCoder, reactor: ChatDrawerViewReactor, visualEffectView: UIVisualEffectView) {
+    init?(coder: NSCoder, reactor: ChatDrawerViewReactor, visualEffectView: UIVisualEffectView, observer: BehaviorRelay<Bool> ) {
         self.visualEffectView = visualEffectView
+        self.chatDrawerObserver = observer
         super.init(coder: coder)
         self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
         self.visualEffectView = UIVisualEffectView()
+        self.chatDrawerObserver = BehaviorRelay(value: false)
         super.init(coder: coder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
-        bindChatDrawerGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,6 +113,19 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     private func bind() {
         userListCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        view.rx.panGesture()
+            .subscribe(onNext: { [weak self] in
+                self?.chatDrawerPanned(recognizer: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        visualEffectView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.chatDrawerObserver.accept(true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configureChatDrawerUserCell(at row: Int, with element: User) -> UICollectionViewCell {
@@ -122,28 +137,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         return cell
     }
     
-    // MARK: - configure ChatDrawer
-    
-    private func bindChatDrawerGesture() {
-        view.rx.panGesture()
-            .subscribe(onNext: { [weak self] in
-                self?.chatDrawerPanned(recognizer: $0)
-            })
-            .disposed(by: disposeBag)
-        
-        visualEffectView.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-                self?.configureAnimation(state: .closed, duration: 0.9)
-                
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    // MARK: - ChatDrawer Animation
-    
     func configureAnimation(state: ChatDrawerState, duration: TimeInterval) {
-
         guard runningAnimations.isEmpty else {
             DispatchQueue.main.async { [weak self] in
                 self?.runningAnimations.removeAll()
