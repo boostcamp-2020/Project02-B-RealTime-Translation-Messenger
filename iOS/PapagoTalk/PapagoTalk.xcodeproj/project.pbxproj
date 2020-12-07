@@ -39,6 +39,7 @@
 		99482EAD257DB34800802B45 /* SentMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */; };
 		99482EB1257DB35200802B45 /* ReceivedMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */; };
 		99482ED8257E3D0400802B45 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482ED7257E3D0400802B45 /* LaunchScreenViewController.swift */; };
+		99482EE6257E537700802B45 /* RoundShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EE5257E537700802B45 /* RoundShadowButton.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9C32576093400C15AC7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 995BE9C22576093400C15AC7 /* schema.json */; };
@@ -154,6 +155,7 @@
 		99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMessageBubbleTail.swift; sourceTree = "<group>"; };
 		99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedMessageBubbleTail.swift; sourceTree = "<group>"; };
 		99482ED7257E3D0400802B45 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		99482EE5257E537700802B45 /* RoundShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowButton.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C22576093400C15AC7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -308,6 +310,14 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		99482EE4257E535800802B45 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99482EE5257E537700802B45 /* RoundShadowButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		995BE99D2575DF7E00C15AC7 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +335,7 @@
 		996A146E256D5B8E00F21215 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				99482EE4257E535800802B45 /* View */,
 				993AF6962575177900416692 /* Util */,
 				BB6F7ED1256D798400D66F8E /* Constant */,
 				996A1470256D5BC100F21215 /* Enum */,
@@ -802,6 +813,7 @@
 				BB20F4DF2573959500C5AC1D /* UserDefaultType.swift in Sources */,
 				BB7AB0152577B49400D9EDF7 /* SpeechManager.swift in Sources */,
 				995BE9D525762AC500C15AC7 /* UserDataProviding.swift in Sources */,
+				99482EE6257E537700802B45 /* RoundShadowButton.swift in Sources */,
 				BB15A5872577690F0006D258 /* SpeechViewController.swift in Sources */,
 				996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */,
 				995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */,

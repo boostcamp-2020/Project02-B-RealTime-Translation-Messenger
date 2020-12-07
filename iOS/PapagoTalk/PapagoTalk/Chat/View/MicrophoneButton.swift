@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import RxGesture
 
-final class MicrophoneButton: UIButton {
+final class MicrophoneButton: RoundShadowButton {
     
     enum ContentsMode {
         case big
@@ -95,20 +95,6 @@ final class MicrophoneButton: UIButton {
         }
     }
     
-    private func configureShadow() {
-        layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
-        layer.shadowOffset = CGSize(width: 2, height: 8)
-        layer.shadowOpacity = 0.5
-        layer.shadowRadius = 2.0
-        layer.masksToBounds = false
-        
-        updateShadow()
-    }
-    
-    private func updateShadow() {
-        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.width).cgPath
-    }
-    
     private func commonInit() {
         let image = UIImage(systemName: "mic",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: mode.size/2,
@@ -117,6 +103,7 @@ final class MicrophoneButton: UIButton {
         tintColor = .white
         contentMode = .center
         imageView?.contentMode = .scaleAspectFit
+        buttonColor = .systemGreen
         
         bindKeyboard()
     }
