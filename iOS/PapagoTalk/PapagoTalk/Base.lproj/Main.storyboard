@@ -780,9 +780,8 @@
                                     <constraint firstAttribute="height" constant="1" id="Kyd-WJ-FUx"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8M-6R-f59">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8M-6R-f59" customClass="RoundShadowButton" customModule="PapagoTalk" customModuleProvider="target">
                                 <rect key="frame" x="298" y="97" width="40" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="17h-EW-LFT"/>
                                     <constraint firstAttribute="width" constant="40" id="NEW-BL-VJu"/>
@@ -793,7 +792,10 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
@@ -844,9 +846,8 @@
                                     <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pti-V4-ICE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pti-V4-ICE" customClass="RoundShadowButton" customModule="PapagoTalk" customModuleProvider="target">
                                 <rect key="frame" x="298" y="286" width="40" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0IC-MV-Lfy"/>
                                     <constraint firstAttribute="width" constant="40" id="mEw-57-2b7"/>
@@ -857,7 +858,10 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
@@ -916,17 +920,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lVC-27-gc6">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="zHf-X9-PaD"/>
+                                    <constraint firstAttribute="height" constant="120" id="zHf-X9-PaD"/>
                                 </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgZ-xC-wWt">
-                                <rect key="frame" x="60" y="100" width="48" height="60"/>
+                                <rect key="frame" x="0.0" y="130" width="150" height="50"/>
+                                <color key="backgroundColor" name="PapagoBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1YK-dl-zvb"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Cancel"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvs-zu-QQw">
-                                <rect key="frame" x="185" y="100" width="55" height="60"/>
+                                <rect key="frame" x="150" y="130" width="150" height="50"/>
+                                <color key="backgroundColor" name="PapagoBlue"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Confirm"/>
                             </button>
                         </subviews>
@@ -935,13 +947,15 @@
                         <constraints>
                             <constraint firstItem="lVC-27-gc6" firstAttribute="top" secondItem="gHc-P8-lmL" secondAttribute="top" id="30O-4P-RFx"/>
                             <constraint firstItem="lVC-27-gc6" firstAttribute="leading" secondItem="2DH-4S-EF5" secondAttribute="leading" id="3Qb-cH-uYT"/>
-                            <constraint firstItem="2DH-4S-EF5" firstAttribute="bottom" secondItem="DgZ-xC-wWt" secondAttribute="bottom" constant="20" id="4Hs-Jh-Vi0"/>
-                            <constraint firstItem="2DH-4S-EF5" firstAttribute="trailing" secondItem="jvs-zu-QQw" secondAttribute="trailing" constant="60" id="5J6-UQ-wct"/>
+                            <constraint firstItem="DgZ-xC-wWt" firstAttribute="width" secondItem="gHc-P8-lmL" secondAttribute="width" multiplier="0.5" id="46l-dT-m1H"/>
+                            <constraint firstItem="2DH-4S-EF5" firstAttribute="bottom" secondItem="DgZ-xC-wWt" secondAttribute="bottom" id="4Hs-Jh-Vi0"/>
+                            <constraint firstItem="2DH-4S-EF5" firstAttribute="trailing" secondItem="jvs-zu-QQw" secondAttribute="trailing" id="5J6-UQ-wct"/>
                             <constraint firstAttribute="trailing" secondItem="lVC-27-gc6" secondAttribute="trailing" id="HzJ-0H-lrn"/>
-                            <constraint firstItem="2DH-4S-EF5" firstAttribute="bottom" secondItem="jvs-zu-QQw" secondAttribute="bottom" constant="20" id="cj0-KT-NfC"/>
-                            <constraint firstItem="DgZ-xC-wWt" firstAttribute="leading" secondItem="2DH-4S-EF5" secondAttribute="leading" constant="60" id="hKd-DF-zZY"/>
-                            <constraint firstItem="DgZ-xC-wWt" firstAttribute="top" secondItem="lVC-27-gc6" secondAttribute="bottom" constant="20" id="rXJ-e2-mP3"/>
+                            <constraint firstItem="jvs-zu-QQw" firstAttribute="height" secondItem="DgZ-xC-wWt" secondAttribute="height" id="IFL-qa-UKs"/>
+                            <constraint firstItem="DgZ-xC-wWt" firstAttribute="leading" secondItem="2DH-4S-EF5" secondAttribute="leading" id="hKd-DF-zZY"/>
+                            <constraint firstItem="DgZ-xC-wWt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lVC-27-gc6" secondAttribute="bottom" constant="10" id="rXJ-e2-mP3"/>
                             <constraint firstItem="DgZ-xC-wWt" firstAttribute="centerY" secondItem="jvs-zu-QQw" secondAttribute="centerY" id="whx-g9-OJt"/>
+                            <constraint firstItem="jvs-zu-QQw" firstAttribute="width" secondItem="DgZ-xC-wWt" secondAttribute="width" id="zJB-Xs-kLa"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="300" height="180"/>
@@ -964,7 +978,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-jw-dz3">
-                                <rect key="frame" x="0.0" y="52" width="414" height="764"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pbJ-PR-6ix">
                                     <size key="itemSize" width="414" height="59"/>
@@ -1255,19 +1269,27 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUb-Gw-ivA">
-                                <rect key="frame" x="0.0" y="816" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="814" width="414" height="48"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va8-FQ-vZP">
-                                        <rect key="frame" x="356" y="8" width="42" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va8-FQ-vZP">
+                                        <rect key="frame" x="366" y="8" width="32" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="t1d-el-k0J"/>
+                                            <constraint firstAttribute="width" constant="32" id="t1d-el-k0J"/>
+                                            <constraint firstAttribute="width" secondItem="va8-FQ-vZP" secondAttribute="height" multiplier="1:1" id="yMa-Dw-Jcf"/>
                                         </constraints>
-                                        <state key="normal" title="Send">
+                                        <color key="tintColor" name="PapagoBlue"/>
+                                        <state key="normal" image="paperplane.fill" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2E6-12-yAe" customClass="InputBarTextView" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="336" height="30"/>
+                                        <rect key="frame" x="8" y="8" width="346" height="32"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="250" constant="30" id="SCD-Tw-v2T"/>
