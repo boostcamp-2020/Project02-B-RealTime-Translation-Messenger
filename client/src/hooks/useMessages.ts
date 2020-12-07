@@ -10,7 +10,7 @@ interface Variables {
 
 interface QueryReturnType {
   data: any;
-  loading: any;
+  loading: boolean;
 }
 
 const useUserList = ({ roomId, page, lang }: Variables): QueryReturnType => {
