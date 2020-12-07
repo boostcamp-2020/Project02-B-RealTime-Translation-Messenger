@@ -32,7 +32,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                       speechManager: speechManager,
                                       messageParser: messageParser)
         coordinator?.start()
-        window?.rootViewController = navigationController
+        
+        guard let launchScreenViewContorller =
+                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(
+                    identifier: LaunchScreenViewController.identifier) as? LaunchScreenViewController else {
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+            return
+        }
+        launchScreenViewContorller.coordinator = coordinator
+        window?.rootViewController = launchScreenViewContorller
         window?.makeKeyAndVisible()
     }
 }
