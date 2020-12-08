@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export default {
   Wrapper: styled.div`
-    position: fixed;
     bottom: 0;
     width: 100%;
+    height: 20vh;
     background: ${(props) => props.theme.bgColor};
   `,
   InputWrapper: styled.div`

@@ -20,14 +20,19 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const roomId = +match.params.id;
   const location = useLocation<LocationState>();
   const { lang, code } = location.state;
-  const { data: messagesData, loading: messagesLoading } = useMessages({
+  const [visible, setVisible] = useState<boolean>(false);
+  const [page, setPage] = useState(2);
+
+  const { data: usersData, loading: usersLoading } = useUsers({ roomId });
+  const {
+    data: messagesData,
+    loading: messagesLoading,
+    onLoadMore,
+  } = useMessages({
     roomId,
     page: 1,
     lang,
   });
-  const { data: usersData, loading: usersLoading } = useUsers({ roomId });
-
-  const [visible, setVisible] = useState<boolean>(false);
 
   if (messagesLoading || usersLoading) return <div>Loading!</div>;
 
@@ -44,7 +49,12 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
         setVisible={setVisible}
         users={usersData.roomById.users}
       />
-      <ChatLog messages={messagesData.allMessagesById.messages} />
+      <ChatLog
+        messages={messagesData.allMessagesById.messages}
+        page={page}
+        setPage={setPage}
+        onLoadMore={onLoadMore}
+      />
       <Input />
     </>
   );

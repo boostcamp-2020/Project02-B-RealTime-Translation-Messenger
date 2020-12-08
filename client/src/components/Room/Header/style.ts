@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export default {
   Wrapper: styled.div`
-    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -10,7 +9,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 5rem;
+    height: 10vh;
     padding: 0 2rem;
     background: ${(props) => props.theme.bgColor};
     border-bottom: ${(props) => props.theme.boxBorder};
