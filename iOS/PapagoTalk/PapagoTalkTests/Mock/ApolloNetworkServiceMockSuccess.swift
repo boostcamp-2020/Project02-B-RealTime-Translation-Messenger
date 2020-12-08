@@ -21,8 +21,8 @@ struct ApolloNetworkServiceMockSuccess: NetworkServiceProviding {
         return Observable.just(.init(newMessage: .init(id: 1,
                                                        text: "안녕하세요",
                                                        source: "ko",
-                                                       createdAt: "2020",
-                                                       user: .init(id: 1,
+                                                       createdAt: "1607480160000",
+                                                       user: .init(id: 2,
                                                                    nickname: "testUser",
                                                                    avatar: "",
                                                                    lang: "ko"))))
