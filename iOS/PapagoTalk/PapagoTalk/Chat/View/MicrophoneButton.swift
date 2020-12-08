@@ -33,7 +33,9 @@ final class MicrophoneButton: RoundShadowButton {
     }
     
     private var latestCenter: CGPoint?
-    private var latestCenterForKeyboard: CGPoint?
+    private var isOnSpeeching: Bool = false
+    private var isKeyboardAppear: Bool = false
+    private var bottomBoundWhenKeyboardAppear: CGFloat = 0
     private let disposeBag = DisposeBag()
     
     var mode: ContentsMode = .small {
@@ -76,6 +78,7 @@ final class MicrophoneButton: RoundShadowButton {
     }
     
     func moveForSpeech(completion: (() -> Void)?) {
+        isOnSpeeching = true
         isUserInteractionEnabled = false
         guard let superview = superview else { return }
         latestCenter = center
@@ -91,6 +94,7 @@ final class MicrophoneButton: RoundShadowButton {
     }
     
     func moveToLatest() {
+        isOnSpeeching = false
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.center = self?.latestCenter ?? .zero
         }
@@ -128,21 +132,30 @@ final class MicrophoneButton: RoundShadowButton {
     private func bindKeyboard() {
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
             .asObservable()
+            .filter { [unowned self] _ in
+                !self.isOnSpeeching
+            }
             .compactMap {
                 ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             }
             .asDriver(onErrorJustReturn: .zero)
-            .drive(onNext: { [weak self] keyboardFrame in
-                self?.keyboardWillAppear(keyboardOriginY: keyboardFrame.minY)
+            .drive(onNext: { [unowned self] keyboardFrame in
+                self.isKeyboardAppear = true
+                self.bottomBoundWhenKeyboardAppear = calculateBottomBound(with: keyboardFrame.origin.y)
+                self.keyboardWillAppear(keyboardOriginY: keyboardFrame.minY)
             })
             .disposed(by: disposeBag)
         
         return NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
             .asObservable()
+            .filter { [unowned self] _ in
+                !self.isOnSpeeching
+            }
             .map { _ in Void.self }
             .asDriver(onErrorJustReturn: Void.self)
-            .drive(onNext: { [weak self] _ in
-                self?.keyboardWillHide()
+            .drive(onNext: { [unowned self] _ in
+                self.isKeyboardAppear = false
+                self.moveToLatest()
             })
             .disposed(by: disposeBag)
     }
@@ -169,29 +182,28 @@ final class MicrophoneButton: RoundShadowButton {
         var newY = translation.y + center.y
         
         let topBound = CGFloat(frame.height/2) + superview.safeAreaInsets.top
-        let bottomBound = (superview.frame.height - frame.height/2) - superview.safeAreaInsets.bottom - 50
+        let bottomBound = isKeyboardAppear ? bottomBoundWhenKeyboardAppear :
+            (superview.frame.height - frame.height/2) - superview.safeAreaInsets.bottom - 50
         newY = (topBound...bottomBound) ~= newY ? newY : center.y
         
         return CGPoint(x: newX, y: newY)
     }
     
     private func keyboardWillAppear(keyboardOriginY: CGFloat) {
-        guard let superview = superview else {
-            return
-        }
-        let yBound = keyboardOriginY - superview.frame.minY - frame.height/2 - 50
+        let yBound = calculateBottomBound(with: keyboardOriginY)
         let originCenter = center
         if center.y >= yBound {
-            latestCenterForKeyboard = originCenter
+            latestCenter = originCenter
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
                 self?.center = CGPoint(x: originCenter.x, y: yBound - 10)
             }
         }
     }
     
-    private func keyboardWillHide() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
-            self?.center = self?.latestCenterForKeyboard ?? .zero
+    private func calculateBottomBound(with keyboardOriginY: CGFloat) -> CGFloat {
+        guard let superview = superview else {
+            return 300
         }
+        return keyboardOriginY - superview.frame.minY - frame.height/2 - 50
     }
 }
