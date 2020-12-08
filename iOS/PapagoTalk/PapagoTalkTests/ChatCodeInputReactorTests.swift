@@ -75,5 +75,37 @@ class ChatCodeInputReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.cusor, 6)
     }
     
+    func test_codeNumberRemove_fifthNumber() throws {
+        // Given
+        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                               userData: UserDataProviderMock())
+        reactor.action.onNext(.numberButtonTapped("2"))
+        reactor.action.onNext(.numberButtonTapped("4"))
+        reactor.action.onNext(.numberButtonTapped("3"))
+        reactor.action.onNext(.numberButtonTapped("7"))
+        reactor.action.onNext(.numberButtonTapped("9"))
+
+        // When
+        reactor.action.onNext(.removeButtonTapped)
+
+        // Then
+        XCTAssertEqual(reactor.currentState.codeInput[4], "")
+        XCTAssertEqual(reactor.currentState.cusor, 4)
+    }
+    
+    func test_codeNumberRemove_firstNumber() throws {
+        // Given
+        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                               userData: UserDataProviderMock())
+        reactor.action.onNext(.numberButtonTapped("1"))
+
+        // When
+        reactor.action.onNext(.removeButtonTapped)
+
+        // Then
+        XCTAssertEqual(reactor.currentState.codeInput[0], "")
+        XCTAssertEqual(reactor.currentState.cusor, 0)
+    }
+    
     
 }
