@@ -99,5 +99,29 @@ class HomeReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.errorMessage.data, HomeError.networkError.message)
     }
 
+    func test_joinChatRoom() throws {
+        // Given
+        let reactor = HomeViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                      userData: UserDataProviderMock())
+
+        // When
+        reactor.action.onNext(.joinChatRoomButtonTapped)
+
+        // Then
+        XCTAssertEqual(reactor.currentState.joinRoom.data, true)
+    }
     
+    func test_joinChatRoom_invalidNickName() throws {
+        // Given
+        let userMock = UserDataProviderMock(nickName: "a")
+        let reactor = HomeViewReactor(networkService: ApolloNetworkServiceMockFailure(),
+                                      userData: userMock)
+
+        // When
+        reactor.action.onNext(.joinChatRoomButtonTapped)
+
+        // Then
+        XCTAssertEqual(reactor.currentState.joinRoom.data, false)
+        XCTAssertEqual(reactor.currentState.errorMessage.data, Strings.Home.invalidNickNameAlertMessage)
+    }
 }
