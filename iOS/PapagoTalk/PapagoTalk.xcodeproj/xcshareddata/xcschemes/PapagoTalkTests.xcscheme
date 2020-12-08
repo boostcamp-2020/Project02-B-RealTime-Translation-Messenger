@@ -53,6 +53,16 @@
                ReferencedContainer = "container:PapagoTalk.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BB0B6EB7257F355E005EDF22"
+               BuildableName = "PapagoTalkHomeTests.xctest"
+               BlueprintName = "PapagoTalkHomeTests"
+               ReferencedContainer = "container:PapagoTalk.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

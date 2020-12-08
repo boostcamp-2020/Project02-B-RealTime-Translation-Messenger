@@ -27,7 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "BBF2DC98256674A300F2EA7D"
+            BuildableName = "PapagoTalk.app"
+            BlueprintName = "PapagoTalk"
+            ReferencedContainer = "container:PapagoTalk.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -36,16 +46,6 @@
                BlueprintIdentifier = "BBF2DCAE256674A500F2EA7D"
                BuildableName = "PapagoTalkTests.xctest"
                BlueprintName = "PapagoTalkTests"
-               ReferencedContainer = "container:PapagoTalk.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BB0B6E8E257EB1F3005EDF22"
-               BuildableName = "PapagoTalkChatTests.xctest"
-               BlueprintName = "PapagoTalkChatTests"
                ReferencedContainer = "container:PapagoTalk.xcodeproj">
             </BuildableReference>
          </TestableReference>
