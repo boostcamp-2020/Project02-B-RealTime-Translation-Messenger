@@ -15,6 +15,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var userListCollectionView: UICollectionView!
     @IBOutlet private weak var chatRoomCodeButton: UIButton!
     @IBOutlet private weak var leaveChatRoomButton: UIButton!
+    @IBOutlet private weak var micButtonSettingButton: UIButton!
     private var visualEffectView: UIVisualEffectView
     private var runningAnimations = [UIViewPropertyAnimator]()
     
@@ -126,6 +127,42 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
                 self?.chatDrawerObserver.accept(true)
             })
             .disposed(by: disposeBag)
+        
+        micButtonSettingButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                self?.presentMicButtonSettingActionSheet()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func presentMicButtonSettingActionSheet() {
+        let actionSheetController = UIAlertController(title: "마이크 버튼 설정", message: "마이크 버튼의 크기를 선택해주세요", preferredStyle: .actionSheet)
+
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        actionSheetController.addAction(cancelAction)
+
+        let bigAction = UIAlertAction(title: "크게", style: .default) { action -> Void in
+            
+        }
+        actionSheetController.addAction(bigAction)
+
+        let midiumAction = UIAlertAction(title: "중간", style: .default) { action -> Void in
+            
+        }
+        actionSheetController.addAction(midiumAction)
+        
+        let smallAction = UIAlertAction(title: "작게", style: .default) { action -> Void in
+            
+        }
+        actionSheetController.addAction(smallAction)
+        
+        let noneAction = UIAlertAction(title: "사용안함", style: .destructive) { action -> Void in
+            
+        }
+        actionSheetController.addAction(noneAction)
+
+        present(actionSheetController, animated: true, completion: nil)
     }
     
     private func configureChatDrawerUserCell(at row: Int, with element: User) -> UICollectionViewCell {

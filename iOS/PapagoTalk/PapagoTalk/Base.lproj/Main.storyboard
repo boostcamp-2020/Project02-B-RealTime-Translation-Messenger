@@ -1512,6 +1512,7 @@
                     <connections>
                         <outlet property="chatRoomCodeButton" destination="fJr-yc-L8f" id="OQm-kn-gdv"/>
                         <outlet property="leaveChatRoomButton" destination="M2b-ut-9Qf" id="HTm-Dw-Oty"/>
+                        <outlet property="micButtonSettingButton" destination="cmR-TY-HPj" id="MKa-kp-h2N"/>
                         <outlet property="userListCollectionView" destination="74A-iu-lKE" id="HBF-z7-zXo"/>
                     </connections>
                 </viewController>
