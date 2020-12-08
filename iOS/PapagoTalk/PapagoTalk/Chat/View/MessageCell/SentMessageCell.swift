@@ -19,6 +19,6 @@ extension SentMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
         configureDate(of: dateBadge, dateBadgeHeight: dateBadgeHeight, with: message.timeStamp, isFirst: message.isFirstOfDay)
         configureMessage(of: messageTextView, with: message.text)
-        configureTime(of: timeLabel, with: message.timeStamp)
+        configureTime(of: timeLabel, with: message.timeStamp, shouldShow: message.shouldTimeShow)
     }
 }

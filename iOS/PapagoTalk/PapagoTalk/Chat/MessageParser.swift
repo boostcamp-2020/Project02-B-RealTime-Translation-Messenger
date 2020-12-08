@@ -30,7 +30,8 @@ struct MessageParser: MessageParseProviding {
                                     timeStamp: time)
         messages.append(originMessage)
         
-        if newMessage.user.id != userData.id {
+        if newMessage.user.id != userData.id &&
+            Language.codeToLanguage(of: newMessage.user.lang) != userData.language {
             let translatedMessage = Message(id: newMessage.id,
                                             of: translateResult.translatedText,
                                             by: sender,

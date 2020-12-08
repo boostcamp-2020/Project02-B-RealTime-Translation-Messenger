@@ -23,8 +23,8 @@ extension MessageCell {
         messageTextView.textColor = UIColor.init(named: "MessageTextColor")
     }
     
-    func configureTime(of timeLabel: UILabel, with timeStamp: Date) {
-        timeLabel.text = convertToTimeFormat(of: timeStamp)
+    func configureTime(of timeLabel: UILabel, with timeStamp: Date, shouldShow: Bool) {
+        timeLabel.text = shouldShow ? convertToTimeFormat(of: timeStamp) : nil
     }
     
     private func convertToDateFormat(of timeStamp: Date) -> String {
