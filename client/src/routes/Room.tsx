@@ -13,7 +13,6 @@ interface MatchParams {
 
 interface LocationState {
   lang: string;
-  userId: number;
   code: string;
 }
 

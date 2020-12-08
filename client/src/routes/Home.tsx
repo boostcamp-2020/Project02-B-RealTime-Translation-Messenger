@@ -58,11 +58,9 @@ const Home: React.FC = () => {
     history.push({
       pathname: `/room/${roomId}`,
       state: {
-        userId,
-        code,
-        nickname,
-        avatar,
         lang,
+        code,
+        userId,
       },
     });
   };
