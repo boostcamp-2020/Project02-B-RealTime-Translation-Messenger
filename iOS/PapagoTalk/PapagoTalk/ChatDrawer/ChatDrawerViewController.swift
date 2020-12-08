@@ -17,27 +17,28 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var leaveChatRoomButton: UIButton!
     private var visualEffectView: UIVisualEffectView
     private var runningAnimations = [UIViewPropertyAnimator]()
-    private var animationProgressWhenInterrupted = CGFloat.zero
     
+    var chatDrawerObserver: BehaviorRelay<Bool>
     var completion: (() -> Void)?
     var disposeBag = DisposeBag()
     var currentToast: Toast?
     
-    init?(coder: NSCoder, reactor: ChatDrawerViewReactor, visualEffectView: UIVisualEffectView) {
+    init?(coder: NSCoder, reactor: ChatDrawerViewReactor, visualEffectView: UIVisualEffectView, observer: BehaviorRelay<Bool> ) {
         self.visualEffectView = visualEffectView
+        self.chatDrawerObserver = observer
         super.init(coder: coder)
         self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
         self.visualEffectView = UIVisualEffectView()
+        self.chatDrawerObserver = BehaviorRelay(value: false)
         super.init(coder: coder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
-        bindChatDrawerGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,10 +76,8 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         reactor.state.map { $0.users }
             .asObservable()
             .bind(to: userListCollectionView.rx.items) { [weak self] (_, row, element) in
-                guard let cell = self?.configureChatDrawerUserCell(at: row, with: element) else {
-                    return UICollectionViewCell()
-                }
-                return cell
+                guard let self = self else { return UICollectionViewCell() }
+                return self.configureChatDrawerUserCell(at: row, with: element)
             }
             .disposed(by: disposeBag)
         
@@ -114,6 +113,19 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     private func bind() {
         userListCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        view.rx.panGesture()
+            .subscribe(onNext: { [weak self] in
+                self?.chatDrawerPanned(recognizer: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        visualEffectView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.chatDrawerObserver.accept(true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configureChatDrawerUserCell(at row: Int, with element: User) -> UICollectionViewCell {
@@ -125,28 +137,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         return cell
     }
     
-    // MARK: - configure ChatDrawer
-    
-    private func bindChatDrawerGesture() {
-        view.rx.panGesture()
-            .subscribe(onNext: { [weak self] in
-                self?.chatDrawerPanned(recognizer: $0)
-            })
-            .disposed(by: disposeBag)
-        
-        visualEffectView.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-                self?.configureAnimation(state: .closed, duration: 0.9)
-                
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    // MARK: - ChatDrawer Animation
-    
     func configureAnimation(state: ChatDrawerState, duration: TimeInterval) {
-
         guard runningAnimations.isEmpty else {
             DispatchQueue.main.async { [weak self] in
                 self?.runningAnimations.removeAll()
@@ -197,42 +188,35 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         runningAnimations.append(blurAnimator)
     }
     
-    // MARK: - ChatDrawer PanGesture
-    
     private func chatDrawerPanned(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
-        case .began:
-            startInteractiveTransition(state: .closed, duration: 0.5)
-        case .changed:
+        guard let superview = view.superview else {
+            return
+        }
+        
+        let velocity = recognizer.velocity(in: view)
+        let superviewWidth = superview.frame.width
+        let viewWidth = view.frame.width
+        
+        if abs(velocity.x) > abs(velocity.y) {
             let translation = recognizer.translation(in: view)
-            updateInteractiveTransition(fractionCompleted: translation.x / view.frame.width)
-        case .ended:
-            continueInteractiveTransition()
-        default:
-            break
+            var newX = view.center.x + translation.x
+            
+            if newX + viewWidth/2 < superviewWidth {
+                newX = superviewWidth - viewWidth/2
+            }
+            view.center.x = newX
+            recognizer.setTranslation(.zero, in: view)
         }
-    }
-    
-    private func startInteractiveTransition(state: ChatDrawerState, duration: TimeInterval) {
-        if runningAnimations.isEmpty {
-            configureAnimation(state: state, duration: duration)
+        
+        guard recognizer.state == .ended else {
+            return
         }
-        runningAnimations.forEach({
-            $0.pauseAnimation()
-            animationProgressWhenInterrupted = $0.fractionComplete
-        })
-    }
-    
-    private func updateInteractiveTransition(fractionCompleted: CGFloat) {
-        runningAnimations.forEach({
-            $0.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
-        })
-    }
-    
-    private func continueInteractiveTransition() {
-        runningAnimations.forEach({
-            $0.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-        })
+        
+        guard view.center.x + viewWidth/2 > superviewWidth + viewWidth * 0.1 else {
+            view.center.x = superviewWidth - viewWidth/2
+            return
+        }
+        chatDrawerObserver.accept(true)
     }
 }
 

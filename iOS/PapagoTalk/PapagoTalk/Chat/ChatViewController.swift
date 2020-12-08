@@ -19,6 +19,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet weak var chatDrawerButton: UIBarButtonItem!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
+    private var chatDrawerObserver = BehaviorRelay(value: false)
     weak var coordinator: ChatCoordinating?
     var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
@@ -64,6 +65,11 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         chatDrawerButton.rx.tap
             .map { Reactor.Action.chatDrawerButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        chatDrawerObserver.filter { $0 }
+            .map { _ in Reactor.Action.chatDrawerButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -160,7 +166,7 @@ final class ChatViewController: UIViewController, StoryboardView {
         if isPresent {
             hideKeyboard()
         }
-        isPresent ? coordinator?.presentDrawer(from: self) : dismissDrawer()
+        isPresent ? coordinator?.presentDrawer(from: self, with: chatDrawerObserver) : dismissDrawer()
     }
     
     private func dismissDrawer() {

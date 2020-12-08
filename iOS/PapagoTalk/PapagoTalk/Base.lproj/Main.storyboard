@@ -909,7 +909,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WxS-q5-ims" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011.5942028985507" y="922.76785714285711"/>
+            <point key="canvasLocation" x="1048" y="883"/>
         </scene>
         <!--Language Selection View Controller-->
         <scene sceneID="Nc3-Cl-Xbg">

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class ChatCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinating?
@@ -86,7 +87,7 @@ extension ChatCoordinator: ChatCoordinating {
         }
     }
     
-    func presentDrawer(from presentingViewController: UIViewController) {
+    func presentDrawer(from presentingViewController: UIViewController, with observer: BehaviorRelay<Bool>) {
         guard let roomID = roomID,
               let code = code else {
             return
@@ -104,7 +105,8 @@ extension ChatCoordinator: ChatCoordinating {
                                                     roomCode: code)
                 return ChatDrawerViewController(coder: coder,
                                                 reactor: reactor,
-                                                visualEffectView: visualEffectView)
+                                                visualEffectView: visualEffectView,
+                                                observer: observer)
             }
         )
         drawerViewController.completion = {
