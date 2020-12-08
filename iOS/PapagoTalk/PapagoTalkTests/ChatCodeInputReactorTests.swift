@@ -55,5 +55,25 @@ class ChatCodeInputReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.cusor, 6)
     }
     
+    func test_codeNumberInput_above_maxLength() throws {
+        // Given
+        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                               userData: UserDataProviderMock())
+        reactor.action.onNext(.numberButtonTapped("1"))
+        reactor.action.onNext(.numberButtonTapped("2"))
+        reactor.action.onNext(.numberButtonTapped("3"))
+        reactor.action.onNext(.numberButtonTapped("4"))
+        reactor.action.onNext(.numberButtonTapped("5"))
+        reactor.action.onNext(.numberButtonTapped("6"))
+
+        // When
+        reactor.action.onNext(.numberButtonTapped("7"))
+
+        // Then
+        XCTAssertEqual(reactor.currentState.codeInput[5], "6")
+        XCTAssertEqual(reactor.currentState.codeInput.count, 6)
+        XCTAssertEqual(reactor.currentState.cusor, 6)
+    }
+    
     
 }
