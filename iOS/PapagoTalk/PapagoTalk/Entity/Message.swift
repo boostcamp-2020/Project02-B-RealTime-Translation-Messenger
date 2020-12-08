@@ -16,6 +16,8 @@ struct Message: Codable {
     var isFirstOfDay: Bool
     var type: MessageType
     var isTranslated: Bool
+    var shouldTimeShow: Bool = true
+    var shouldImageShow: Bool = true
     
     init(of text: String, by sender: User) {
         self.id = nil
