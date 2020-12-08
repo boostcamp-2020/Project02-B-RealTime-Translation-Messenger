@@ -29,7 +29,8 @@ final class MessageBox {
             return
         }
         message = setMessageIsFirst(of: message, comparedBy: lastMessage)
-        messages.append(message)
+        message = setShouldImageShow(of: message, comparedBy: lastMessage)
+        setShouldTimeShow(of: message, comparedBy: lastMessage)
     }
     
     func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
@@ -43,5 +44,29 @@ final class MessageBox {
         var message = newMessage
         message.setType(by: currentUserID)
         return message
+    }
+    
+    private func setShouldImageShow(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
+        guard newMessage.type == .received,
+              lastMessage.type == .received,
+              newMessage.sender.id == lastMessage.sender.id,
+              DateFormatter.chatTimeFormat(of: newMessage.timeStamp) == DateFormatter.chatTimeFormat(of: lastMessage.timeStamp) else {
+            return newMessage
+        }
+        var message = newMessage
+        message.shouldImageShow = false
+        return message
+    }
+    
+    private func setShouldTimeShow(of newMessage: Message, comparedBy lastMessage: Message) {
+        guard newMessage.sender.id == lastMessage.sender.id,
+              DateFormatter.chatTimeFormat(of: newMessage.timeStamp) == DateFormatter.chatTimeFormat(of: lastMessage.timeStamp) else {
+            messages.append(newMessage)
+            return
+        }
+        var lastMessage = lastMessage
+        lastMessage.shouldTimeShow = false
+        messages.removeLast()
+        messages.append(contentsOf: [lastMessage, newMessage])
     }
 }

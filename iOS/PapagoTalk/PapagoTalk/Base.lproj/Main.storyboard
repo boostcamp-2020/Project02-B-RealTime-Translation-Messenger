@@ -1053,8 +1053,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 6:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRr-JJ-sLX">
-                                                    <rect key="frame" x="253" y="67.5" width="51" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRr-JJ-sLX">
+                                                    <rect key="frame" x="304" y="82" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1167,8 +1167,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 8:13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8P-YL-lNQ">
-                                                    <rect key="frame" x="162" y="87.5" width="48.5" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8P-YL-lNQ">
+                                                    <rect key="frame" x="162" y="102" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1176,6 +1176,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="btx-gT-koo" firstAttribute="top" secondItem="BHL-qx-p9o" secondAttribute="top" priority="999" constant="4" id="0ou-wv-zAf"/>
+                                                <constraint firstItem="zyP-S3-xoJ" firstAttribute="top" secondItem="ymh-Tr-sLT" secondAttribute="top" id="1qK-76-dgi"/>
                                                 <constraint firstItem="ymh-Tr-sLT" firstAttribute="top" secondItem="btx-gT-koo" secondAttribute="bottom" priority="999" constant="12" id="2Er-jt-ZyQ"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zyP-S3-xoJ" secondAttribute="trailing" constant="12" id="4eI-Jm-EzT"/>
                                                 <constraint firstItem="btx-gT-koo" firstAttribute="centerX" secondItem="BHL-qx-p9o" secondAttribute="centerX" id="6uf-0Z-95E"/>
@@ -1184,7 +1185,6 @@
                                                 <constraint firstItem="Y1i-KZ-Cbi" firstAttribute="leading" secondItem="ymh-Tr-sLT" secondAttribute="trailing" constant="10" id="Vhf-Vo-OJA"/>
                                                 <constraint firstItem="d8P-YL-lNQ" firstAttribute="leading" secondItem="Y1i-KZ-Cbi" secondAttribute="trailing" constant="10" id="ZKO-VM-glt"/>
                                                 <constraint firstAttribute="bottom" secondItem="Y1i-KZ-Cbi" secondAttribute="bottom" priority="999" constant="8" id="a8D-NX-4iU"/>
-                                                <constraint firstItem="zyP-S3-xoJ" firstAttribute="top" secondItem="btx-gT-koo" secondAttribute="bottom" priority="999" constant="12" id="bIP-yq-vCQ"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ymh-Tr-sLT" secondAttribute="bottom" priority="999" constant="12" id="ez4-xq-Btw"/>
                                                 <constraint firstItem="Y1i-KZ-Cbi" firstAttribute="top" secondItem="zyP-S3-xoJ" secondAttribute="bottom" priority="999" constant="8" id="fNp-Cq-7ph"/>
                                                 <constraint firstItem="ymh-Tr-sLT" firstAttribute="leading" secondItem="BHL-qx-p9o" secondAttribute="leading" constant="12" id="moM-7G-GiF"/>
@@ -1198,8 +1198,12 @@
                                         <connections>
                                             <outlet property="dateBadge" destination="btx-gT-koo" id="Zh4-56-IP7"/>
                                             <outlet property="dateBadgeHeight" destination="gWW-lI-9B9" id="7mQ-oJ-tKI"/>
+                                            <outlet property="messageBubbleTail" destination="s0R-rB-fgy" id="BH4-L3-Qaj"/>
                                             <outlet property="messageTextView" destination="Y1i-KZ-Cbi" id="seu-1M-1nm"/>
+                                            <outlet property="messageTopInset" destination="fNp-Cq-7ph" id="nwX-5r-DNQ"/>
                                             <outlet property="nickNameLabel" destination="zyP-S3-xoJ" id="rwX-Ua-6Zr"/>
+                                            <outlet property="profileImageHeight" destination="blP-3z-br4" id="y36-Fl-S1h"/>
+                                            <outlet property="profileImageTopInset" destination="2Er-jt-ZyQ" id="dyd-jQ-2M7"/>
                                             <outlet property="profileImageView" destination="ymh-Tr-sLT" id="ekO-5O-I7y"/>
                                             <outlet property="timeLabel" destination="d8P-YL-lNQ" id="8cZ-We-Yrh"/>
                                         </connections>
@@ -1243,8 +1247,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 8:13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-5M-TlD">
-                                                    <rect key="frame" x="164" y="27" width="48.5" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-5M-TlD">
+                                                    <rect key="frame" x="164" y="41.5" width="0.0" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="LLW-gC-he8"/>
                                                     </constraints>
