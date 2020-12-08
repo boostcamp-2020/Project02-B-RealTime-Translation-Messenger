@@ -9,12 +9,11 @@ import Foundation
 import RxSwift
 
 struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
-    // need 수정
     func sendMessage(text: String,
                      source: String,
                      userId: Int,
                      roomId: Int) -> Maybe<SendMessageMutation.Data> {
-        return Maybe.just(.init(createMessage: true))
+        return Maybe.just(.init(createMessage: false))
     }
     
     // need 수정

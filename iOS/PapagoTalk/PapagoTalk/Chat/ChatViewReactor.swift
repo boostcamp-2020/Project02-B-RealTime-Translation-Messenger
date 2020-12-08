@@ -36,13 +36,13 @@ final class ChatViewReactor: Reactor {
     private let userData: UserDataProviding
     private let roomID: Int
     private var socketObservable: Observable<Mutation>?
-    private let messageParser: MessageParser
+    private let messageParser: MessageParseProviding
     
     let initialState: State
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         messageParser: MessageParser,
+         messageParser: MessageParseProviding,
          roomID: Int,
          code: String) {
         

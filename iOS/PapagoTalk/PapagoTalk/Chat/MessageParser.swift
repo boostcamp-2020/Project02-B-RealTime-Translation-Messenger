@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MessageParser {
+struct MessageParser: MessageParseProviding {
     
     var userData: UserDataProviding
     
