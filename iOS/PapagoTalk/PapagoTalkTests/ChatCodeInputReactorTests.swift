@@ -120,5 +120,22 @@ class ChatCodeInputReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.cusor, 0)
     }
     
+    func test_joinChatRoom_success() throws {
+        // Given
+        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                               userData: UserDataProviderMock())
+        reactor.action.onNext(.numberButtonTapped("5"))
+        reactor.action.onNext(.numberButtonTapped("4"))
+        reactor.action.onNext(.numberButtonTapped("5"))
+        reactor.action.onNext(.numberButtonTapped("3"))
+        reactor.action.onNext(.numberButtonTapped("0"))
+
+        // When
+        reactor.action.onNext(.numberButtonTapped("5"))
+
+        // Then
+        XCTAssertEqual(reactor.currentState.chatRoomInfo, ChatRoomInfo(roomID: 8, code: "545305"))
+    }
+    
     
 }
