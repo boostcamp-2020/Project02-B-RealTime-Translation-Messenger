@@ -16,7 +16,6 @@ struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
         return Maybe.just(.init(createMessage: false))
     }
     
-    // need 수정
     func getMessage(roomId: Int,
                     language: Language) -> Observable<GetMessageSubscription.Data> {
         return Observable.just(.init(newMessage: .init(id: 1,
@@ -29,17 +28,15 @@ struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
                                                                    lang: "ko"))))
     }
     
-    // need 수정
     func enterRoom(user: User,
                    code: String) -> Maybe<JoinChatResponse> {
-        return Maybe.just(JoinChatResponse.init(userId: 1, roomId: 8))
+        return Maybe.error(JoinChatError.networkError)
     }
     
     func createRoom(user: User) -> Maybe<CreateRoomResponse> {
         return Maybe.error(JoinChatError.networkError)
     }
     
-    // need 수정
     func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data> {
         return Maybe.just(.init(roomById: .init(code: "545305",
                                                 users: [
