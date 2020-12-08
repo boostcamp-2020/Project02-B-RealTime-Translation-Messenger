@@ -6,10 +6,10 @@ export default {
   Query: {
     me: async (_: any, __: any, { request, isAuthenticated }: any) => {
       isAuthenticated(request);
-      const { id: userId } = request.user;
+      const { id } = request.user;
       return prisma.user.findOne({
         where: {
-          id: userId,
+          id,
         },
       });
     },
