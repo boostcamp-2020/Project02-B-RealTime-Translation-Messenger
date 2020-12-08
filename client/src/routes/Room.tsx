@@ -4,8 +4,8 @@ import ChatLog from '@components/ChatLog';
 import Header from '@components/Room/Header';
 import SideBar from '@components/Room/SideBar';
 import Input from '@components/Room/Input';
-import useMessages from '@/hooks/useMessages';
-import useUsers from '@/hooks/useUsers';
+import useMessages from '@hooks/useMessages';
+import useUsers from '@hooks/useUsers';
 
 interface MatchParams {
   id: string;
