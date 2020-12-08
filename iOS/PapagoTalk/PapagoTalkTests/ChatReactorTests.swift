@@ -62,5 +62,34 @@ class ChatReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.sendResult, false)
     }
     
+    func test_presentChatDrawer() throws {
+        // Given
+        let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                      userData: UserDataProviderMock(),
+                                      messageParser: MessageParserMock(),
+                                      roomID: 8,
+                                      code: "")
+
+        // When
+        reactor.action.onNext(.chatDrawerButtonTapped)
+
+        // Then
+        XCTAssertEqual(reactor.currentState.presentDrawer, true)
+    }
     
+    func test_dismissChatDrawer() throws {
+        // Given
+        let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                      userData: UserDataProviderMock(),
+                                      messageParser: MessageParserMock(),
+                                      roomID: 8,
+                                      code: "")
+        reactor.action.onNext(.chatDrawerButtonTapped)
+
+        // When
+        reactor.action.onNext(.chatDrawerButtonTapped)
+
+        // Then
+        XCTAssertEqual(reactor.currentState.presentDrawer, false)
+    }
 }
