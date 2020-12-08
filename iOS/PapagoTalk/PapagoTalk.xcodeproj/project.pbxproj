@@ -40,6 +40,8 @@
 		99482EB1257DB35200802B45 /* ReceivedMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */; };
 		99482ED8257E3D0400802B45 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482ED7257E3D0400802B45 /* LaunchScreenViewController.swift */; };
 		99482EE6257E537700802B45 /* RoundShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EE5257E537700802B45 /* RoundShadowButton.swift */; };
+		99482F2A257FA10200802B45 /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
+		99482F2D257FA13000802B45 /* ChatDrawerViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9C32576093400C15AC7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 995BE9C22576093400C15AC7 /* schema.json */; };
@@ -181,6 +183,7 @@
 		99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedMessageBubbleTail.swift; sourceTree = "<group>"; };
 		99482ED7257E3D0400802B45 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		99482EE5257E537700802B45 /* RoundShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowButton.swift; sourceTree = "<group>"; };
+		99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerReactorTests.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C22576093400C15AC7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -614,6 +617,7 @@
 			children = (
 				BB987E8E257F4D3E00F4C258 /* Mock */,
 				BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */,
+				99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */,
 				BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */,
 				BBF2DCB5256674A500F2EA7D /* Info.plist */,
 			);
@@ -971,7 +975,9 @@
 				BB987E8B257F4CF800F4C258 /* ImageFactoryStub.swift in Sources */,
 				BB987E81257F4CA800F4C258 /* AlertFactoryStub.swift in Sources */,
 				BB987EA9257F4F5C00F4C258 /* HomeViewReactor.swift in Sources */,
+				99482F2A257FA10200802B45 /* ChatDrawerReactorTests.swift in Sources */,
 				BB987E74257F470B00F4C258 /* HomeReactorTests.swift in Sources */,
+				99482F2D257FA13000802B45 /* ChatDrawerViewReactor.swift in Sources */,
 				BBF2DCB4256674A500F2EA7D /* PapagoTalkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
