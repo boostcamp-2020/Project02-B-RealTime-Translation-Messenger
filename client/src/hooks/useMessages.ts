@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ALL_MESSAGES_BY_ID, NEW_MESSAGE } from '@/queries/messege.queries';
+import { ALL_MESSAGES_BY_PAGE, NEW_MESSAGE } from '@/queries/messege.queries';
 import { useQuery } from '@apollo/client';
 
 interface VariablesType {
@@ -20,10 +20,9 @@ const useMessages = ({
   lang,
 }: VariablesType): QueryReturnType => {
   const { data, loading, subscribeToMore, fetchMore } = useQuery(
-    ALL_MESSAGES_BY_ID,
+    ALL_MESSAGES_BY_PAGE,
     {
       variables: {
-        id: roomId,
         page,
       },
     },
@@ -38,9 +37,9 @@ const useMessages = ({
         const { newMessage } = subscriptionData.data;
         return {
           ...prev,
-          allMessagesById: {
-            ...prev.allMessagesById,
-            messages: [...prev.allMessagesById.messages, newMessage],
+          allMessagesByPage: {
+            ...prev.allMessagesByPage,
+            messages: [...prev.allMessagesByPage.messages, newMessage],
           },
         };
       },
@@ -57,13 +56,13 @@ const useMessages = ({
         if (!fetchMoreResult) return prev;
         return {
           ...prev,
-          allMessagesById: {
-            ...prev.allMessagesById,
+          allMessagesByPage: {
+            ...prev.allMessagesByPage,
             messages: [
-              ...fetchMoreResult.allMessagesById.messages,
-              ...prev.allMessagesById.messages,
+              ...fetchMoreResult.allMessagesByPage.messages,
+              ...prev.allMessagesByPage.messages,
             ],
-            nextPage: fetchMoreResult.allMessagesById.nextPage,
+            nextPage: fetchMoreResult.allMessagesByPage.nextPage,
           },
         };
       },

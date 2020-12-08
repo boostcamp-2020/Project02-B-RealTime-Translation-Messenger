@@ -50,7 +50,7 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
         users={usersData.roomById.users}
       />
       <ChatLog
-        messages={messagesData.allMessagesById.messages}
+        messages={messagesData.allMessagesByPage.messages}
         page={page}
         setPage={setPage}
         onLoadMore={onLoadMore}
