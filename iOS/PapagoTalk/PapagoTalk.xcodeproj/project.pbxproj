@@ -43,11 +43,12 @@
 		99482EF0257F7C9C00802B45 /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
 		99482EF5257F7CE600802B45 /* SpeechViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15A58E25776D2F0006D258 /* SpeechViewReactor.swift */; };
 		99482EF8257F7D0700802B45 /* PapagoAPIServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */; };
-		99482EFB257F7D1700802B45 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7AB0142577B49400D9EDF7 /* SpeechManager.swift */; };
-		99482F05257F7DA400802B45 /* PapagoAPIServiceMockSuccsess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F04257F7DA400802B45 /* PapagoAPIServiceMockSuccsess.swift */; };
+		99482F05257F7DA400802B45 /* PapagoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F04257F7DA400802B45 /* PapagoAPIServiceMock.swift */; };
 		99482F12257F7EE700802B45 /* TranslationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */; };
 		99482F13257F7EE800802B45 /* TranslationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */; };
 		99482F19257F826800802B45 /* SpeechServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F18257F826800802B45 /* SpeechServiceProviding.swift */; };
+		99482F1F257F83D300802B45 /* SpeechManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F1E257F83D300802B45 /* SpeechManagerMock.swift */; };
+		99482F24257F83E900802B45 /* SpeechServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F18257F826800802B45 /* SpeechServiceProviding.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9C32576093400C15AC7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 995BE9C22576093400C15AC7 /* schema.json */; };
@@ -189,8 +190,9 @@
 		99482ED7257E3D0400802B45 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		99482EE5257E537700802B45 /* RoundShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowButton.swift; sourceTree = "<group>"; };
 		99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechReactorTests.swift; sourceTree = "<group>"; };
-		99482F04257F7DA400802B45 /* PapagoAPIServiceMockSuccsess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIServiceMockSuccsess.swift; sourceTree = "<group>"; };
+		99482F04257F7DA400802B45 /* PapagoAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIServiceMock.swift; sourceTree = "<group>"; };
 		99482F18257F826800802B45 /* SpeechServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechServiceProviding.swift; sourceTree = "<group>"; };
+		99482F1E257F83D300802B45 /* SpeechManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManagerMock.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C22576093400C15AC7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -529,7 +531,8 @@
 				BB987E80257F4CA800F4C258 /* AlertFactoryStub.swift */,
 				BB987E8A257F4CF800F4C258 /* ImageFactoryStub.swift */,
 				BB987E86257F4CD100F4C258 /* UserDataProviderMock.swift */,
-				99482F04257F7DA400802B45 /* PapagoAPIServiceMockSuccsess.swift */,
+				99482F04257F7DA400802B45 /* PapagoAPIServiceMock.swift */,
+				99482F1E257F83D300802B45 /* SpeechManagerMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -962,19 +965,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB987E9A257F4EA700F4C258 /* User.swift in Sources */,
-				99482EFB257F7D1700802B45 /* SpeechManager.swift in Sources */,
 				BB987E9D257F4EAC00F4C258 /* Language.swift in Sources */,
 				BB987EB8257F4FF200F4C258 /* RevisionedData.swift in Sources */,
 				BB987EC7257F505900F4C258 /* Constant.swift in Sources */,
 				BB987EA3257F4F0200F4C258 /* Strings.swift in Sources */,
 				BB987EAF257F4F9600F4C258 /* String+.swift in Sources */,
+				99482F1F257F83D300802B45 /* SpeechManagerMock.swift in Sources */,
 				BB987EAC257F4F8100F4C258 /* Locale+.swift in Sources */,
 				BB987EA6257F4F3C00F4C258 /* API.swift in Sources */,
-				99482F05257F7DA400802B45 /* PapagoAPIServiceMockSuccsess.swift in Sources */,
+				99482F05257F7DA400802B45 /* PapagoAPIServiceMock.swift in Sources */,
 				BB987EBB257F4FFB00F4C258 /* NetworkServiceProviding.swift in Sources */,
 				BB987EC1257F503700F4C258 /* JoinChatResponse.swift in Sources */,
 				BB987EC4257F503900F4C258 /* CreateRoomResponse.swift in Sources */,
 				99482F13257F7EE800802B45 /* TranslationRequest.swift in Sources */,
+				99482F24257F83E900802B45 /* SpeechServiceProviding.swift in Sources */,
 				BB987E97257F4E6200F4C258 /* UserDataProviding.swift in Sources */,
 				BB987E91257F4E3D00F4C258 /* ImageFactoryProviding.swift in Sources */,
 				BB987E94257F4E5300F4C258 /* AlertFactoryProviding.swift in Sources */,
