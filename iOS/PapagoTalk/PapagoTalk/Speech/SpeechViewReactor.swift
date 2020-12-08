@@ -7,6 +7,7 @@
 
 import Foundation
 import ReactorKit
+import RxCocoa
 
 final class SpeechViewReactor: Reactor {
     
