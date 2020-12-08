@@ -137,5 +137,22 @@ class ChatCodeInputReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.chatRoomInfo, ChatRoomInfo(roomID: 8, code: "545305"))
     }
     
-    
+    func test_joinChatRoom_fail() throws {
+        // Given
+        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockFailure(),
+                                               userData: UserDataProviderMock())
+        reactor.action.onNext(.numberButtonTapped("6"))
+        reactor.action.onNext(.numberButtonTapped("3"))
+        reactor.action.onNext(.numberButtonTapped("4"))
+        reactor.action.onNext(.numberButtonTapped("2"))
+        reactor.action.onNext(.numberButtonTapped("1"))
+
+        // When
+        reactor.action.onNext(.numberButtonTapped("7"))
+
+        // Then
+        // XCTAssertEqual(reactor.currentState.errorMessage, JoinChatError.networkError.message)
+        XCTAssertEqual(reactor.currentState.codeInput[0], "")
+        XCTAssertEqual(reactor.currentState.cusor, 0)
+    }
 }
