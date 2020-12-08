@@ -34,6 +34,7 @@ module.exports = {
           ['@routes', './src/routes'],
           ['@styles', './src/styles'],
           ['@utils', './src/utils'],
+          ['@hooks', './src/hooks'],
         ],
       },
     },

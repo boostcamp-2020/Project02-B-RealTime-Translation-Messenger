@@ -3,16 +3,27 @@ import { useHistory } from 'react-router-dom';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { Hamburger, Copy, Door } from '@components/Icons';
 import { AvatarStack, Avatar } from '@primer/components';
+import { useMutation } from '@apollo/client';
+import { DELETE_USER } from '@/queries/user.queries';
+import { User } from '@/generated/types';
 import S from './style';
 
 interface Props {
   visible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   code: string;
+  users: User[];
 }
 
-const Header: React.FC<Props> = ({ visible, setVisible, code }) => {
+const Header: React.FC<Props> = ({ visible, setVisible, code, users }) => {
   const history = useHistory();
+  const [deleteUser] = useMutation(DELETE_USER);
+
+  const leaveRoom = async () => {
+    await deleteUser();
+    localStorage.removeItem('token');
+    history.push('/');
+  };
 
   return (
     <S.Wrapper>
@@ -31,18 +42,16 @@ const Header: React.FC<Props> = ({ visible, setVisible, code }) => {
       </CopyToClipboard>
       <S.RightWrapper>
         <AvatarStack alignRight>
-          <Avatar
-            style={{ width: '24px', height: '24px' }}
-            alt="Primer"
-            src="https://avatars.githubusercontent.com/primer"
-          />
-          <Avatar
-            style={{ width: '24px', height: '24px' }}
-            alt="GitHub"
-            src="https://avatars.githubusercontent.com/github"
-          />
+          {users.map((user) => (
+            <Avatar
+              key={user.id}
+              style={{ width: '24px', height: '24px' }}
+              alt={user.nickname}
+              src={user.avatar}
+            />
+          ))}
         </AvatarStack>
-        <S.DoorButton onClick={() => history.push('/')}>
+        <S.DoorButton onClick={leaveRoom}>
           <Door size={24} />
         </S.DoorButton>
       </S.RightWrapper>
