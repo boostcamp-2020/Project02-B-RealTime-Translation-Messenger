@@ -33,6 +33,7 @@ final class MicrophoneButton: RoundShadowButton {
     }
     
     private var latestCenter: CGPoint?
+    private var latestCenterForKeyboard: CGPoint?
     private let disposeBag = DisposeBag()
     
     var mode: ContentsMode = .small {
@@ -141,7 +142,7 @@ final class MicrophoneButton: RoundShadowButton {
             .map { _ in Void.self }
             .asDriver(onErrorJustReturn: Void.self)
             .drive(onNext: { [weak self] _ in
-                self?.moveToLatest()
+                self?.keyboardWillHide()
             })
             .disposed(by: disposeBag)
     }
@@ -181,10 +182,16 @@ final class MicrophoneButton: RoundShadowButton {
         let yBound = keyboardOriginY - superview.frame.minY - frame.height/2 - 50
         let originCenter = center
         if center.y >= yBound {
-            latestCenter = originCenter
+            latestCenterForKeyboard = originCenter
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
                 self?.center = CGPoint(x: originCenter.x, y: yBound - 10)
             }
+        }
+    }
+    
+    private func keyboardWillHide() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.center = self?.latestCenterForKeyboard ?? .zero
         }
     }
 }
