@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { debounce } from 'lodash';
 import { useMutation } from '@apollo/client';
 import { CREATE_MESSAGE, TRANSLATION } from '@queries/messege.queries';
-import { Microphone } from '@components/Icons';
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from 'react-speech-recognition';
+import Listening from '@components/Listening';
 import S from './style';
 
 const Input: React.FC = () => {
   const [text, setText] = useState('');
   const [translatedText, setTranslatedText] = useState('텍스트를 입력하세요');
+  const [isListening, setIsListening] = useState(false);
+  const { transcript } = useSpeechRecognition();
   const [createMessageMutation] = useMutation(CREATE_MESSAGE, {
     variables: {
       text,
@@ -48,6 +53,20 @@ const Input: React.FC = () => {
     }
   };
 
+  const onClickVoiceButton = () => {
+    if (!isListening) {
+      SpeechRecognition.startListening({ language: 'ko' });
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsListening(false), 2000);
+    setText(transcript);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [transcript]);
+
   return (
     <S.Wrapper>
       <S.InputWrapper>
@@ -59,8 +78,12 @@ const Input: React.FC = () => {
             onKeyUp={onKeyUp}
             onKeyPress={onKeyPressEnter}
           />
-          <S.VoiceButton>
-            <Microphone size={30} />
+          <S.VoiceButton onClick={onClickVoiceButton}>
+            <Listening
+              isListening={isListening}
+              setIsListening={setIsListening}
+              setText={setText}
+            />
           </S.VoiceButton>
         </S.InputContainer>
         <S.Margin />
