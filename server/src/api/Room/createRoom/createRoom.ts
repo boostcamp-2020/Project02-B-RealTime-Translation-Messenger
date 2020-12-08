@@ -36,7 +36,7 @@ export default {
           code: randomCode,
         },
       });
-      const jwtToken = generateToken(newUser.id, nickname, avatar, lang, newRoom.id);
+      const jwtToken = generateToken(newUser, newRoom.id);
       return { userId: newUser.id, roomId: newRoom.id, code: randomCode, token: jwtToken };
     },
   },
