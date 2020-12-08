@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { useUserState } from '@contexts/UserContext';
 import Avatar from '@components/Avatar';
 import { Message } from '@generated/types';
 import Balloon from './Balloon';
@@ -11,10 +11,8 @@ interface TranslatedMessage {
 }
 
 interface Props {
-  author?: string;
   message?: Message;
   obj?: TranslatedMessage;
-  createdAt?: string;
 }
 
 interface isOriginProps {
@@ -45,19 +43,20 @@ const Text = styled.span`
 const DoubleBubble = styled.div`
   display: flex;
   align-items: center;
-  div {
-    margin-right: 0.7rem;
-  }
 `;
 
-const ChatRow: FC<Props> = ({ author, message, obj, createdAt }) => {
-  console.log('author, message, obj :>> ', author, message, obj);
-  const { nickname, avatar } = useUserState();
-  const isOrigin = nickname === author;
+const ChatRow: FC<Props> = ({ message, obj }) => {
+  const location = useLocation<{ userId: number }>();
+  const { userId } = location.state;
+  const isOrigin = userId === message?.user.id;
+  const author = message?.user.nickname;
+  const createdAt = message?.createdAt;
+  const avatar = message?.user.avatar;
+
   return (
     <Wrapper isOrigin={isOrigin}>
       <>
-        {!isOrigin && <Avatar size={50} profile={message?.user.avatar} />}
+        {!isOrigin && <Avatar size={50} profile={avatar} />}
         <Column>
           {obj ? (
             <>
@@ -66,11 +65,12 @@ const ChatRow: FC<Props> = ({ author, message, obj, createdAt }) => {
                 <Text>{createdAt}</Text>
               </Info>
               <DoubleBubble>
-                <Balloon author={author} originText={obj?.originText} />
+                <Balloon isOrigin={isOrigin} originText={obj?.originText} />
                 {obj?.originText === obj?.translatedText ? null : (
                   <Balloon
-                    author={author}
+                    isOrigin={isOrigin}
                     translatedText={obj?.translatedText}
+                    isLeft
                   />
                 )}
               </DoubleBubble>
@@ -78,10 +78,10 @@ const ChatRow: FC<Props> = ({ author, message, obj, createdAt }) => {
           ) : (
             <>
               <Info isOrigin={isOrigin}>
-                <Text>{message?.user.nickname}</Text>
-                <Text>{message?.createdAt}</Text>
+                <Text>{author}</Text>
+                <Text>{createdAt}</Text>
               </Info>
-              <Balloon author={author} text={message?.text} />
+              <Balloon isOrigin={isOrigin} text={message?.text} />
             </>
           )}
         </Column>

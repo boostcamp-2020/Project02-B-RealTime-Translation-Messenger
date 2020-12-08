@@ -25,25 +25,11 @@ const ChatLog: FC<Props> = ({ messages }) => {
       {messages.map((message) => {
         try {
           const obj: TranslatedText = JSON.parse(message.text);
-          return (
-            <ChatRow
-              key={message.id}
-              obj={obj}
-              author={message.user.nickname}
-              createdAt={message.createdAt as string}
-              message={message}
-            />
-          );
+          return <ChatRow key={message.id} obj={obj} message={message} />;
         } catch {
           // TODO: Logic 수정 필요 return
         }
-        return (
-          <ChatRow
-            key={message.id}
-            message={message}
-            author={message.user.nickname}
-          />
-        );
+        return <ChatRow key={message.id} message={message} />;
       })}
     </Wrapper>
   );
