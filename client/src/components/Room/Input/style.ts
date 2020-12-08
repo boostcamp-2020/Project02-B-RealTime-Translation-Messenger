@@ -30,16 +30,8 @@ export default {
     position: absolute;
     top: 50%;
     right: 0;
-    width: 50px;
-    height: 50px;
     margin-right: 1rem;
-    background: ${(props) => props.theme.blueColor};
-    border-radius: 50%;
     transform: translateY(-50%);
-    svg {
-      margin: 10px;
-      fill: ${(props) => props.theme.whiteColor};
-    }
   `,
   Margin: styled.div`
     flex: 0.02 0 0;
