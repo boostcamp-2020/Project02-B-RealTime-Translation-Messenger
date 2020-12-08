@@ -3,8 +3,7 @@ import req from '@utils/request';
 
 const prisma = new PrismaClient();
 
-interface Args {
-  id: number;
+interface Pagination {
   page: number;
 }
 
@@ -16,15 +15,16 @@ interface Message {
 
 export default {
   Query: {
-    allMessagesById: async (_: any, args: Args, { request, isAuthenticated }: any) => {
+    allMessagesByPage: async (_: any, args: Pagination, { request, isAuthenticated }: any) => {
       isAuthenticated(request);
-      const { id, page } = args;
-      const maxId = await prisma.$queryRaw`SELECT MAX(id) from Message WHERE roomId = ${id}`;
+      const { page } = args;
+      const { roomId } = request.user;
+      const maxId = await prisma.$queryRaw`SELECT MAX(id) from Message WHERE roomId = ${roomId}`;
       const lastId = maxId[0]['MAX(id)'];
       if (!lastId) return { messages: [], nextPage: null };
       const Messages: any = await prisma.message.findMany({
         where: {
-          room: { id },
+          room: { id: roomId },
         },
         take: -10,
         skip: 10 * (page - 1),
