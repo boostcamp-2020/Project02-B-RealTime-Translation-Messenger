@@ -51,51 +51,42 @@ const DoubleBubble = styled.div`
 `;
 
 const ChatRow: FC<Props> = ({ author, message, obj, createdAt }) => {
+  console.log('author, message, obj :>> ', author, message, obj);
   const { nickname, avatar } = useUserState();
   const isOrigin = nickname === author;
   return (
     <Wrapper isOrigin={isOrigin}>
-      {isOrigin ? (
-        <>
-          <Column>
-            <Info isOrigin={isOrigin}>
-              <Text>{message?.user.nickname}</Text>
-              <Text>{message?.createdAt}</Text>
-            </Info>
-            <Balloon author={author} originText={obj?.originText} />
-          </Column>
-          <Avatar size={50} profile={avatar} />
-        </>
-      ) : (
-        <>
-          <Avatar size={50} profile={message?.user.avatar} />
-          <Column>
-            {obj ? (
-              <>
-                <Info isOrigin={isOrigin}>
-                  <Text>{author}</Text>
-                  <Text>{createdAt}</Text>
-                </Info>
-                <DoubleBubble>
+      <>
+        {!isOrigin && <Avatar size={50} profile={message?.user.avatar} />}
+        <Column>
+          {obj ? (
+            <>
+              <Info isOrigin={isOrigin}>
+                <Text>{author}</Text>
+                <Text>{createdAt}</Text>
+              </Info>
+              <DoubleBubble>
+                <Balloon author={author} originText={obj?.originText} />
+                {obj?.originText === obj?.translatedText ? null : (
                   <Balloon
                     author={author}
                     translatedText={obj?.translatedText}
                   />
-                  <Balloon author={author} originText={obj?.originText} />
-                </DoubleBubble>
-              </>
-            ) : (
-              <>
-                <Info isOrigin={isOrigin}>
-                  <Text>{message?.user.nickname}</Text>
-                  <Text>{message?.createdAt}</Text>
-                </Info>
-                <Balloon author={author} text={message?.text} />
-              </>
-            )}
-          </Column>
-        </>
-      )}
+                )}
+              </DoubleBubble>
+            </>
+          ) : (
+            <>
+              <Info isOrigin={isOrigin}>
+                <Text>{message?.user.nickname}</Text>
+                <Text>{message?.createdAt}</Text>
+              </Info>
+              <Balloon author={author} text={message?.text} />
+            </>
+          )}
+        </Column>
+        {isOrigin && <Avatar size={50} profile={avatar} />}
+      </>
     </Wrapper>
   );
 };
