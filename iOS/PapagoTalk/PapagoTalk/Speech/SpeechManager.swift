@@ -9,18 +9,21 @@ import Foundation
 import Speech
 import RxSwift
 
-final class SpeechManager: NSObject {
-    
-    private let speechRecognizer = SFSpeechRecognizer(locale: UserDataProvider().language.locale)
+final class SpeechManager: NSObject, SpeechServiceProviding {
+   
+    private let userData: UserDataProviding
+    private var speechRecognizer: SFSpeechRecognizer?
     private let audioEngine = AVAudioEngine()
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     
-    let recognizedSpeech = BehaviorSubject<String>(value: "")
-    let isAvailable = BehaviorSubject<Bool>(value: true)
-    
-    override init() {
+    var recognizedSpeech = BehaviorSubject<String>(value: "")
+    var isAvailable = BehaviorSubject<Bool>(value: true)
+        
+    init(userData: UserDataProviding) {
+        self.userData = userData
         super.init()
+        speechRecognizer = SFSpeechRecognizer(locale: userData.language.locale)
         speechRecognizer?.delegate = self
     }
     
