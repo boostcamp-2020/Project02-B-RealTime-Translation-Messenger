@@ -2,13 +2,13 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-interface Args {
+interface Timestamp {
   time: string;
 }
 
 export default {
   Query: {
-    allMessagesByTime: async (_: any, args: Args, { request, isAuthenticated }: any) => {
+    allMessagesByTime: async (_: any, args: Timestamp, { request, isAuthenticated }: any) => {
       isAuthenticated(request);
       const { time } = args;
       const { roomId } = request.user;

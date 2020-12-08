@@ -2,14 +2,14 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-interface Args {
+interface Pagination {
   id: number;
   page: number;
 }
 
 export default {
   Query: {
-    allMessagesById: async (_: any, args: Args, { request, isAuthenticated }: any) => {
+    allMessagesById: async (_: any, args: Pagination, { request, isAuthenticated }: any) => {
       isAuthenticated(request);
       const { id, page } = args;
       const maxId = await prisma.$queryRaw`SELECT MAX(id) from Message WHERE roomId = ${id}`;
