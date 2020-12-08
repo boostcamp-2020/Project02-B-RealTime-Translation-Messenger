@@ -21,4 +21,30 @@ class HomeReactorTests: XCTestCase {
         // Then
         XCTAssertEqual(reactor.currentState.profileImageURL, "1.png")
     }
+
+    func test_changeNickName() throws {
+        // Given
+        let reactor = HomeViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                      userData: UserDataProviderMock())
+
+        // When
+        reactor.action.onNext(.nickNameChanged("test"))
+
+        // Then
+        XCTAssertEqual(reactor.currentState.nickName, "test")
+    }
+
+    func test_selectLanguage() throws {
+        // Given
+        let reactor = HomeViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                      userData: UserDataProviderMock())
+
+        // When
+        reactor.action.onNext(.languageSelected(.english))
+
+        // Then
+        XCTAssertEqual(reactor.currentState.language, .english)
+    }
+    
+    
 }
