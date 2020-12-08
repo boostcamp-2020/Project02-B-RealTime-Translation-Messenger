@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { useUserState } from '@contexts/UserContext';
 import Avatar from '@components/Avatar';
 import { Message } from '@generated/types';
 import Balloon from './Balloon';
@@ -11,10 +11,8 @@ interface TranslatedMessage {
 }
 
 interface Props {
-  author?: string;
   message?: Message;
   obj?: TranslatedMessage;
-  createdAt?: string;
 }
 
 interface isOriginProps {
@@ -45,57 +43,50 @@ const Text = styled.span`
 const DoubleBubble = styled.div`
   display: flex;
   align-items: center;
-  div {
-    margin-right: 0.7rem;
-  }
 `;
 
-const ChatRow: FC<Props> = ({ author, message, obj, createdAt }) => {
-  const { nickname, avatar } = useUserState();
-  const isOrigin = nickname === author;
+const ChatRow: FC<Props> = ({ message, obj }) => {
+  const location = useLocation<{ userId: number }>();
+  const { userId } = location.state;
+  const isOrigin = userId === message?.user.id;
+  const author = message?.user.nickname;
+  const createdAt = message?.createdAt;
+  const avatar = message?.user.avatar;
+
   return (
     <Wrapper isOrigin={isOrigin}>
-      {isOrigin ? (
-        <>
-          <Column>
-            <Info isOrigin={isOrigin}>
-              <Text>{message?.user.nickname}</Text>
-              <Text>{message?.createdAt}</Text>
-            </Info>
-            <Balloon author={author} originText={obj?.originText} />
-          </Column>
-          <Avatar size={50} profile={avatar} />
-        </>
-      ) : (
-        <>
-          <Avatar size={50} profile={message?.user.avatar} />
-          <Column>
-            {obj ? (
-              <>
-                <Info isOrigin={isOrigin}>
-                  <Text>{author}</Text>
-                  <Text>{createdAt}</Text>
-                </Info>
-                <DoubleBubble>
+      <>
+        {!isOrigin && <Avatar size={50} profile={avatar} />}
+        <Column>
+          {obj ? (
+            <>
+              <Info isOrigin={isOrigin}>
+                <Text>{author}</Text>
+                <Text>{createdAt}</Text>
+              </Info>
+              <DoubleBubble>
+                <Balloon isOrigin={isOrigin} originText={obj?.originText} />
+                {obj?.originText === obj?.translatedText ? null : (
                   <Balloon
-                    author={author}
+                    isOrigin={isOrigin}
                     translatedText={obj?.translatedText}
+                    isLeft
                   />
-                  <Balloon author={author} originText={obj?.originText} />
-                </DoubleBubble>
-              </>
-            ) : (
-              <>
-                <Info isOrigin={isOrigin}>
-                  <Text>{message?.user.nickname}</Text>
-                  <Text>{message?.createdAt}</Text>
-                </Info>
-                <Balloon author={author} text={message?.text} />
-              </>
-            )}
-          </Column>
-        </>
-      )}
+                )}
+              </DoubleBubble>
+            </>
+          ) : (
+            <>
+              <Info isOrigin={isOrigin}>
+                <Text>{author}</Text>
+                <Text>{createdAt}</Text>
+              </Info>
+              <Balloon isOrigin={isOrigin} text={message?.text} />
+            </>
+          )}
+        </Column>
+        {isOrigin && <Avatar size={50} profile={avatar} />}
+      </>
     </Wrapper>
   );
 };

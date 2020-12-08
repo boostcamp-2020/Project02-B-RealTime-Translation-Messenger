@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { ALL_MESSAGES_BY_ID, NEW_MESSAGE } from '@/queries/messege.queries';
 import { useQuery } from '@apollo/client';
 
