@@ -107,5 +107,18 @@ class ChatCodeInputReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.cusor, 0)
     }
     
+    func test_codeNumberRemove_below_minLength() throws {
+        // Given
+        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                               userData: UserDataProviderMock())
+
+        // When
+        reactor.action.onNext(.removeButtonTapped)
+
+        // Then
+        XCTAssertEqual(reactor.currentState.codeInput[0], "")
+        XCTAssertEqual(reactor.currentState.cusor, 0)
+    }
+    
     
 }
