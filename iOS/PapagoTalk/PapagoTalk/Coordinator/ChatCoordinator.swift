@@ -47,7 +47,7 @@ final class ChatCoordinator: Coordinator {
                                               messageParser: messageParser,
                                               roomID: roomID,
                                               code: code)
-                return ChatViewController(coder: coder, reactor: reactor)
+                return ChatViewController(coder: coder, reactor: reactor, micButtonObserver: BehaviorRelay(value: userData.micButtonSize))
             }
         )
         viewController.coordinator = self
@@ -87,7 +87,9 @@ extension ChatCoordinator: ChatCoordinating {
         }
     }
     
-    func presentDrawer(from presentingViewController: UIViewController, with observer: BehaviorRelay<Bool>) {
+    func presentDrawer(from presentingViewController: UIViewController,
+                       with stateObserver: BehaviorRelay<Bool>,
+                       micButtonSizeObserver: BehaviorRelay<MicButtonSize>) {
         guard let roomID = roomID,
               let code = code else {
             return
@@ -106,7 +108,8 @@ extension ChatCoordinator: ChatCoordinating {
                 return ChatDrawerViewController(coder: coder,
                                                 reactor: reactor,
                                                 visualEffectView: visualEffectView,
-                                                observer: observer)
+                                                stateObserver: stateObserver,
+                                                buttonSizeObserver: micButtonSizeObserver)
             }
         )
         drawerViewController.completion = {

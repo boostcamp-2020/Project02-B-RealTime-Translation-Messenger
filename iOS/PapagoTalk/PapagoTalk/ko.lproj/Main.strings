@@ -79,3 +79,6 @@
 
 /* Class = "UIButton"; normalTitle = "채팅방 나가기"; ObjectID = "M2b-ut-9Qf"; */
 "M2b-ut-9Qf.normalTitle" = "채팅방 나가기";
+
+/* Class = "UIButton"; normalTitle = "마이크 버튼 크기 설정"; ObjectID = "cmR-TY-HPj"; */
+"cmR-TY-HPj.normalTitle" = "마이크 버튼 크기 설정";

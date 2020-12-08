@@ -51,6 +51,7 @@
 		99482F24257F83E900802B45 /* SpeechServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F18257F826800802B45 /* SpeechServiceProviding.swift */; };
 		99482F2A257FA10200802B45 /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
 		99482F2D257FA13000802B45 /* ChatDrawerViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */; };
+		99482F46257FCE1800802B45 /* MicButtonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F45257FCE1700802B45 /* MicButtonSize.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9C32576093400C15AC7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 995BE9C22576093400C15AC7 /* schema.json */; };
@@ -219,6 +220,7 @@
 		99482F18257F826800802B45 /* SpeechServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechServiceProviding.swift; sourceTree = "<group>"; };
 		99482F1E257F83D300802B45 /* SpeechManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManagerMock.swift; sourceTree = "<group>"; };
 		99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerReactorTests.swift; sourceTree = "<group>"; };
+		99482F45257FCE1700802B45 /* MicButtonSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicButtonSize.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C22576093400C15AC7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				BB93C28F257526DD00C68491 /* MessageType.swift */,
 				BB20F4DE2573959500C5AC1D /* UserDefaultType.swift */,
 				BB1FFD1425761BB100E4668C /* ChatDrawerState.swift */,
+				99482F45257FCE1700802B45 /* MicButtonSize.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -918,6 +921,7 @@
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
 				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */,
+				99482F46257FCE1800802B45 /* MicButtonSize.swift in Sources */,
 				99482F19257F826800802B45 /* SpeechServiceProviding.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,

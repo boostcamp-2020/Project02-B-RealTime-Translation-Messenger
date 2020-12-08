@@ -9,11 +9,14 @@ import Foundation
 
 enum UserDefaultType {
     case userInfo
+    case micButtonSize
     
     var key: String {
         switch self {
         case .userInfo:
             return "userInfo"
+        case .micButtonSize:
+            return "micButtonSize"
         }
     }
 }

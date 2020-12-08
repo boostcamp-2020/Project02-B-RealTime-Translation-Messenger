@@ -1370,7 +1370,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="74A-iu-lKE">
-                                <rect key="frame" x="20" y="129" width="300" height="573"/>
+                                <rect key="frame" x="20" y="129" width="300" height="513"/>
                                 <color key="backgroundColor" name="PapagoBlue"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4lY-MQ-0Nx">
                                     <size key="itemSize" width="297" height="60"/>
@@ -1434,22 +1434,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJr-yc-L8f">
-                                <rect key="frame" x="20" y="722" width="300" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="pLv-Ne-kDk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <state key="normal" title="Copy ChatRoom Code">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2b-ut-9Qf">
                                 <rect key="frame" x="20" y="782" width="300" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1466,14 +1450,47 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmR-TY-HPj">
+                                <rect key="frame" x="20" y="722" width="300" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GhQ-ez-rxW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="Mic Button Size">
+                                    <color key="titleColor" name="PapagoGreen"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJr-yc-L8f">
+                                <rect key="frame" x="20" y="662" width="300" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pLv-Ne-kDk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="Copy ChatRoom Code">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Uec-13-aoS"/>
                         <color key="backgroundColor" name="PapagoBlue"/>
                         <constraints>
                             <constraint firstItem="M2b-ut-9Qf" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="8on-3v-l9M"/>
-                            <constraint firstItem="fJr-yc-L8f" firstAttribute="top" secondItem="74A-iu-lKE" secondAttribute="bottom" constant="20" id="A8A-YP-lf4"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="bottom" secondItem="M2b-ut-9Qf" secondAttribute="bottom" constant="40" id="Ahn-HR-q2N"/>
-                            <constraint firstItem="M2b-ut-9Qf" firstAttribute="top" secondItem="fJr-yc-L8f" secondAttribute="bottom" constant="20" id="Btc-gz-O0T"/>
+                            <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="cmR-TY-HPj" secondAttribute="trailing" constant="20" id="BTd-Xi-HAl"/>
+                            <constraint firstItem="cmR-TY-HPj" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="F4N-2c-h5a"/>
+                            <constraint firstItem="M2b-ut-9Qf" firstAttribute="top" secondItem="cmR-TY-HPj" secondAttribute="bottom" constant="20" id="FCt-ey-WYF"/>
                             <constraint firstItem="okh-F7-eqj" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="FVg-8k-Swh"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="M2b-ut-9Qf" secondAttribute="trailing" constant="20" id="HMP-xw-H3q"/>
                             <constraint firstItem="ORh-Z2-djo" firstAttribute="top" secondItem="okh-F7-eqj" secondAttribute="bottom" constant="12" id="JGt-kn-8yl"/>
@@ -1481,10 +1498,12 @@
                             <constraint firstItem="74A-iu-lKE" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="QDa-PI-kcY"/>
                             <constraint firstItem="okh-F7-eqj" firstAttribute="top" secondItem="Uec-13-aoS" secondAttribute="top" constant="30" id="QU2-gL-edo"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="74A-iu-lKE" secondAttribute="trailing" constant="20" id="ZgR-6H-Hwc"/>
+                            <constraint firstItem="fJr-yc-L8f" firstAttribute="top" secondItem="74A-iu-lKE" secondAttribute="bottom" constant="20" id="aZO-9s-Cb7"/>
                             <constraint firstItem="fJr-yc-L8f" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="c5o-5c-nOZ"/>
                             <constraint firstItem="74A-iu-lKE" firstAttribute="top" secondItem="ORh-Z2-djo" secondAttribute="bottom" constant="12" id="jfx-iU-FZa"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="fJr-yc-L8f" secondAttribute="trailing" constant="20" id="mGk-hi-aWp"/>
                             <constraint firstItem="ORh-Z2-djo" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="ohx-Bx-bCm"/>
+                            <constraint firstItem="cmR-TY-HPj" firstAttribute="top" secondItem="fJr-yc-L8f" secondAttribute="bottom" constant="20" id="u9U-sZ-QHc"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="ORh-Z2-djo" secondAttribute="trailing" constant="20" id="uPh-LZ-iFQ"/>
                         </constraints>
                     </view>
@@ -1493,6 +1512,7 @@
                     <connections>
                         <outlet property="chatRoomCodeButton" destination="fJr-yc-L8f" id="OQm-kn-gdv"/>
                         <outlet property="leaveChatRoomButton" destination="M2b-ut-9Qf" id="HTm-Dw-Oty"/>
+                        <outlet property="micButtonSettingButton" destination="cmR-TY-HPj" id="MKa-kp-h2N"/>
                         <outlet property="userListCollectionView" destination="74A-iu-lKE" id="HBF-z7-zXo"/>
                     </connections>
                 </viewController>
