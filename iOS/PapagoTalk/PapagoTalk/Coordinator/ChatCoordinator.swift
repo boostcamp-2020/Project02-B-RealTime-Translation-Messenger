@@ -14,7 +14,7 @@ final class ChatCoordinator: Coordinator {
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var translationManager: PapagoAPIServiceProviding
-    var speechManager: SpeechManager
+    var speechManager: SpeechServiceProviding
     var messageParser: MessageParser
     
     var roomID: Int?
@@ -23,7 +23,7 @@ final class ChatCoordinator: Coordinator {
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          translationManager: PapagoAPIServiceProviding,
-         speechManager: SpeechManager,
+         speechManager: SpeechServiceProviding,
          messageParser: MessageParser) {
         
         self.networkService = networkService

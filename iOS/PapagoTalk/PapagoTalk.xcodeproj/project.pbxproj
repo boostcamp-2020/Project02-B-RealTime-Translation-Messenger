@@ -42,6 +42,15 @@
 		99482EE6257E537700802B45 /* RoundShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EE5257E537700802B45 /* RoundShadowButton.swift */; };
 		99482F2A257FA10200802B45 /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
 		99482F2D257FA13000802B45 /* ChatDrawerViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */; };
+		99482EF0257F7C9C00802B45 /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
+		99482EF5257F7CE600802B45 /* SpeechViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15A58E25776D2F0006D258 /* SpeechViewReactor.swift */; };
+		99482EF8257F7D0700802B45 /* PapagoAPIServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */; };
+		99482F05257F7DA400802B45 /* PapagoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F04257F7DA400802B45 /* PapagoAPIServiceMock.swift */; };
+		99482F12257F7EE700802B45 /* TranslationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */; };
+		99482F13257F7EE800802B45 /* TranslationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */; };
+		99482F19257F826800802B45 /* SpeechServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F18257F826800802B45 /* SpeechServiceProviding.swift */; };
+		99482F1F257F83D300802B45 /* SpeechManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F1E257F83D300802B45 /* SpeechManagerMock.swift */; };
+		99482F24257F83E900802B45 /* SpeechServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F18257F826800802B45 /* SpeechServiceProviding.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9C32576093400C15AC7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 995BE9C22576093400C15AC7 /* schema.json */; };
@@ -83,7 +92,6 @@
 		BB38252B25740B22000425FD /* ChatDrawerViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */; };
 		BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */; };
 		BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814A12577D79B00CFA6DB /* HTTPMethod.swift */; };
-		BB4814C82577DCC800CFA6DB /* TranslationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */; };
 		BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */; };
 		BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */; };
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
@@ -184,6 +192,10 @@
 		99482ED7257E3D0400802B45 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		99482EE5257E537700802B45 /* RoundShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowButton.swift; sourceTree = "<group>"; };
 		99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerReactorTests.swift; sourceTree = "<group>"; };
+		99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechReactorTests.swift; sourceTree = "<group>"; };
+		99482F04257F7DA400802B45 /* PapagoAPIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIServiceMock.swift; sourceTree = "<group>"; };
+		99482F18257F826800802B45 /* SpeechServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechServiceProviding.swift; sourceTree = "<group>"; };
+		99482F1E257F83D300802B45 /* SpeechManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManagerMock.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C22576093400C15AC7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -310,6 +322,7 @@
 				BB15A5862577690F0006D258 /* SpeechViewController.swift */,
 				BB15A58E25776D2F0006D258 /* SpeechViewReactor.swift */,
 				BB7AB0142577B49400D9EDF7 /* SpeechManager.swift */,
+				99482F18257F826800802B45 /* SpeechServiceProviding.swift */,
 			);
 			path = Speech;
 			sourceTree = "<group>";
@@ -521,6 +534,8 @@
 				BB987E80257F4CA800F4C258 /* AlertFactoryStub.swift */,
 				BB987E8A257F4CF800F4C258 /* ImageFactoryStub.swift */,
 				BB987E86257F4CD100F4C258 /* UserDataProviderMock.swift */,
+				99482F04257F7DA400802B45 /* PapagoAPIServiceMock.swift */,
+				99482F1E257F83D300802B45 /* SpeechManagerMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -618,6 +633,7 @@
 				BB987E8E257F4D3E00F4C258 /* Mock */,
 				BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */,
 				99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */,
+				99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */,
 				BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */,
 				BBF2DCB5256674A500F2EA7D /* Info.plist */,
 			);
@@ -867,17 +883,18 @@
 				996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */,
 				995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */,
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
+				99482F12257F7EE700802B45 /* TranslationRequest.swift in Sources */,
 				BBC5B31C257E089900739CD8 /* KeychainAccess.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
 				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */,
+				99482F19257F826800802B45 /* SpeechServiceProviding.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,
 				996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */,
 				BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */,
 				99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */,
-				BB4814C82577DCC800CFA6DB /* TranslationRequest.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
 				99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */,
 				99482E8B257CB91D00802B45 /* PapagoAPIServiceProviding.swift in Sources */,
@@ -957,25 +974,32 @@
 				BB987EC7257F505900F4C258 /* Constant.swift in Sources */,
 				BB987EA3257F4F0200F4C258 /* Strings.swift in Sources */,
 				BB987EAF257F4F9600F4C258 /* String+.swift in Sources */,
+				99482F1F257F83D300802B45 /* SpeechManagerMock.swift in Sources */,
 				BB987EAC257F4F8100F4C258 /* Locale+.swift in Sources */,
 				BB987EA6257F4F3C00F4C258 /* API.swift in Sources */,
+				99482F05257F7DA400802B45 /* PapagoAPIServiceMock.swift in Sources */,
 				BB987EBB257F4FFB00F4C258 /* NetworkServiceProviding.swift in Sources */,
 				BB987EC1257F503700F4C258 /* JoinChatResponse.swift in Sources */,
 				BB987EC4257F503900F4C258 /* CreateRoomResponse.swift in Sources */,
+				99482F13257F7EE800802B45 /* TranslationRequest.swift in Sources */,
+				99482F24257F83E900802B45 /* SpeechServiceProviding.swift in Sources */,
 				BB987E97257F4E6200F4C258 /* UserDataProviding.swift in Sources */,
 				BB987E91257F4E3D00F4C258 /* ImageFactoryProviding.swift in Sources */,
 				BB987E94257F4E5300F4C258 /* AlertFactoryProviding.swift in Sources */,
 				BB987EBE257F503000F4C258 /* NetworkError.swift in Sources */,
 				BB987EB5257F4FE600F4C258 /* HomeError.swift in Sources */,
+				99482EF0257F7C9C00802B45 /* SpeechReactorTests.swift in Sources */,
 				BB987EB2257F4FE400F4C258 /* JoinChatError.swift in Sources */,
 				BB987EA0257F4EE400F4C258 /* ImageFactory.swift in Sources */,
 				BB15693E257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift in Sources */,
 				BB987E75257F470B00F4C258 /* ApolloNetworkServiceMockSuccess.swift in Sources */,
+				99482EF5257F7CE600802B45 /* SpeechViewReactor.swift in Sources */,
 				BB987E87257F4CD100F4C258 /* UserDataProviderMock.swift in Sources */,
 				BB987E8B257F4CF800F4C258 /* ImageFactoryStub.swift in Sources */,
 				BB987E81257F4CA800F4C258 /* AlertFactoryStub.swift in Sources */,
 				BB987EA9257F4F5C00F4C258 /* HomeViewReactor.swift in Sources */,
 				99482F2A257FA10200802B45 /* ChatDrawerReactorTests.swift in Sources */,
+				99482EF8257F7D0700802B45 /* PapagoAPIServiceProviding.swift in Sources */,
 				BB987E74257F470B00F4C258 /* HomeReactorTests.swift in Sources */,
 				99482F2D257FA13000802B45 /* ChatDrawerViewReactor.swift in Sources */,
 				BBF2DCB4256674A500F2EA7D /* PapagoTalkTests.swift in Sources */,
