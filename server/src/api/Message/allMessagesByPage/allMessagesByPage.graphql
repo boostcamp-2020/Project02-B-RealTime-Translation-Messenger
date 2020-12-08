@@ -4,5 +4,5 @@ type allMessages {
 }
 
 type Query {
-  allMessagesById(page: Int!): allMessages
+  allMessagesByPage(page: Int!): allMessages
 }

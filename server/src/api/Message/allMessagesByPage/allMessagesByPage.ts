@@ -8,7 +8,7 @@ interface Pagination {
 
 export default {
   Query: {
-    allMessagesById: async (_: any, args: Pagination, { request, isAuthenticated }: any) => {
+    allMessagesByPage: async (_: any, args: Pagination, { request, isAuthenticated }: any) => {
       isAuthenticated(request);
       const { page } = args;
       const { roomId } = request.user;
