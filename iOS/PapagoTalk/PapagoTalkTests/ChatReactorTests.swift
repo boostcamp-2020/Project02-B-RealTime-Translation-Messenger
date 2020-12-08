@@ -32,5 +32,35 @@ class ChatReactorTests: XCTestCase {
 
     }
     
+    func test_sendMessage_success() throws {
+        // Given
+        let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                      userData: UserDataProviderMock(),
+                                      messageParser: MessageParserMock(),
+                                      roomID: 8,
+                                      code: "")
+
+        // When
+        reactor.action.onNext(.sendMessage("sendMessageTest"))
+
+        // Then
+        XCTAssertEqual(reactor.currentState.sendResult, true)
+    }
+    
+    func test_sendMessage_fail() throws {
+        // Given
+        let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockFailure(),
+                                      userData: UserDataProviderMock(),
+                                      messageParser: MessageParserMock(),
+                                      roomID: 8,
+                                      code: "")
+
+        // When
+        reactor.action.onNext(.sendMessage("sendMessageTest"))
+
+        // Then
+        XCTAssertEqual(reactor.currentState.sendResult, false)
+    }
+    
     
 }
