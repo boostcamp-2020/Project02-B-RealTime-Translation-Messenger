@@ -49,7 +49,8 @@ final class MessageBox {
     private func setShouldImageShow(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
         guard newMessage.type == .received,
               lastMessage.type == .received,
-              newMessage.sender.id == lastMessage.sender.id else {
+              newMessage.sender.id == lastMessage.sender.id,
+              DateFormatter.chatTimeFormat(of: newMessage.timeStamp) == DateFormatter.chatTimeFormat(of: lastMessage.timeStamp) else {
             return newMessage
         }
         var message = newMessage
