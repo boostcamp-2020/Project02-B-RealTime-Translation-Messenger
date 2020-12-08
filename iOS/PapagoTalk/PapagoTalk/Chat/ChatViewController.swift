@@ -20,27 +20,30 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     
     private var chatDrawerObserver = BehaviorRelay(value: false)
+    private var micButtonSizeObserver: BehaviorRelay<MicButtonSize>
     weak var coordinator: ChatCoordinating?
     var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
     
-    init?(coder: NSCoder, reactor: ChatViewReactor) {
+    init?(coder: NSCoder, reactor: ChatViewReactor, micButtonObserver: BehaviorRelay<MicButtonSize>) {
+        self.micButtonSizeObserver = micButtonObserver
         super.init(coder: coder)
         self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
+        self.micButtonSizeObserver = BehaviorRelay(value: .small)
         super.init(coder: coder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        attachMicrophoneButton()
         bind()
         bindKeyboard()
     }
     
     func bind(reactor: ChatViewReactor) {
+        attachMicrophoneButton()
         bindAction(reactor: reactor)
         bindState(reactor: reactor)
     }
@@ -70,6 +73,12 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         chatDrawerObserver.filter { $0 }
             .map { _ in Reactor.Action.chatDrawerButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        micButtonSizeObserver
+            .distinctUntilChanged()
+            .map { Reactor.Action.micButtonSizeChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -107,6 +116,13 @@ final class ChatViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
                 self?.setDrawer(isPresent: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.micButtonSize }
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] in
+                self?.microphoneButton.mode = $0
             })
             .disposed(by: disposeBag)
     }
@@ -166,7 +182,9 @@ final class ChatViewController: UIViewController, StoryboardView {
         if isPresent {
             hideKeyboard()
         }
-        isPresent ? coordinator?.presentDrawer(from: self, with: chatDrawerObserver) : dismissDrawer()
+        isPresent ? coordinator?.presentDrawer(from: self,
+                                               with: chatDrawerObserver,
+                                               micButtonSizeObserver: micButtonSizeObserver) : dismissDrawer()
     }
     
     private func dismissDrawer() {

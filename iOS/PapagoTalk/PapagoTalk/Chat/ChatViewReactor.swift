@@ -14,12 +14,14 @@ final class ChatViewReactor: Reactor {
         case subscribeNewMessages
         case sendMessage(String)
         case chatDrawerButtonTapped
+        case micButtonSizeChanged(MicButtonSize)
     }
     
     enum Mutation {
         case appendNewMessage([Message])
         case setSendResult(Bool)
         case toggleDrawerState
+        case setMicButtonSize(MicButtonSize)
         case connectSocket
         case reconnectSocket
     }
@@ -30,10 +32,11 @@ final class ChatViewReactor: Reactor {
         var roomCode: String
         var presentDrawer: Bool
         var isSubscribingMessage: Bool = false
+        var micButtonSize: MicButtonSize
     }
     
     private let networkService: NetworkServiceProviding
-    private let userData: UserDataProviding
+    private var userData: UserDataProviding
     private let roomID: Int
     private var socketObservable: Observable<Mutation>?
     private let messageParser: MessageParseProviding
@@ -52,7 +55,8 @@ final class ChatViewReactor: Reactor {
         self.roomID = roomID
         initialState = State(messageBox: MessageBox(userID: userData.id),
                              roomCode: code,
-                             presentDrawer: false)
+                             presentDrawer: false,
+                             micButtonSize: userData.micButtonSize)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -64,6 +68,9 @@ final class ChatViewReactor: Reactor {
             return requestSendMessage(message: message)
         case .chatDrawerButtonTapped:
             return .just(.toggleDrawerState)
+        case .micButtonSizeChanged(let size):
+            userData.micButtonSize = size
+            return .just((.setMicButtonSize(size)))
         }
     }
     
@@ -81,6 +88,8 @@ final class ChatViewReactor: Reactor {
             state.isSubscribingMessage = true
         case .reconnectSocket:
             networkService.reconnect()
+        case .setMicButtonSize(let size):
+            state.micButtonSize = size
         }
         return state
     }

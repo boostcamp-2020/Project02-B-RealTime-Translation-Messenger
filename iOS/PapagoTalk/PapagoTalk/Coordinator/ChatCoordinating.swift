@@ -10,5 +10,7 @@ import RxCocoa
 
 protocol ChatCoordinating: class {
     func presentSpeech(from presentingViewController: UIViewController)
-    func presentDrawer(from presentingViewController: UIViewController, with observer: BehaviorRelay<Bool>)
+    func presentDrawer(from presentingViewController: UIViewController,
+                       with stateObserver: BehaviorRelay<Bool>,
+                       micButtonSizeObserver: BehaviorRelay<MicButtonSize>)
 }

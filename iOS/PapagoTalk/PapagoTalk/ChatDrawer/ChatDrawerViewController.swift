@@ -20,13 +20,19 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     private var runningAnimations = [UIViewPropertyAnimator]()
     
     var chatDrawerObserver: BehaviorRelay<Bool>
+    var buttonSizeObserver: BehaviorRelay<MicButtonSize>
     var completion: (() -> Void)?
     var disposeBag = DisposeBag()
     var currentToast: Toast?
     
-    init?(coder: NSCoder, reactor: ChatDrawerViewReactor, visualEffectView: UIVisualEffectView, observer: BehaviorRelay<Bool> ) {
+    init?(coder: NSCoder,
+          reactor: ChatDrawerViewReactor,
+          visualEffectView: UIVisualEffectView,
+          stateObserver: BehaviorRelay<Bool>,
+          buttonSizeObserver: BehaviorRelay<MicButtonSize>) {
         self.visualEffectView = visualEffectView
-        self.chatDrawerObserver = observer
+        self.chatDrawerObserver = stateObserver
+        self.buttonSizeObserver = buttonSizeObserver
         super.init(coder: coder)
         self.reactor = reactor
     }
@@ -34,6 +40,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     required init?(coder: NSCoder) {
         self.visualEffectView = UIVisualEffectView()
         self.chatDrawerObserver = BehaviorRelay(value: false)
+        self.buttonSizeObserver = BehaviorRelay(value: .small)
         super.init(coder: coder)
     }
     
@@ -142,23 +149,23 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         actionSheetController.addAction(cancelAction)
 
-        let bigAction = UIAlertAction(title: "크게", style: .default) { action -> Void in
-            
+        let bigAction = UIAlertAction(title: "크게", style: .default) { [weak self] _ in
+            self?.buttonSizeObserver.accept(.big)
         }
         actionSheetController.addAction(bigAction)
 
-        let midiumAction = UIAlertAction(title: "중간", style: .default) { action -> Void in
-            
+        let midiumAction = UIAlertAction(title: "중간", style: .default) { [weak self] _ in
+            self?.buttonSizeObserver.accept(.midium)
         }
         actionSheetController.addAction(midiumAction)
         
-        let smallAction = UIAlertAction(title: "작게", style: .default) { action -> Void in
-            
+        let smallAction = UIAlertAction(title: "작게", style: .default) { [weak self] _ in
+            self?.buttonSizeObserver.accept(.small)
         }
         actionSheetController.addAction(smallAction)
         
-        let noneAction = UIAlertAction(title: "사용안함", style: .destructive) { action -> Void in
-            
+        let noneAction = UIAlertAction(title: "사용안함", style: .destructive) { [weak self] _ in
+            self?.buttonSizeObserver.accept(.none)
         }
         actionSheetController.addAction(noneAction)
 

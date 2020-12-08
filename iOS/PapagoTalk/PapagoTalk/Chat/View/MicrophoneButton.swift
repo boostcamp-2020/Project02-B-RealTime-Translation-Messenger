@@ -11,39 +11,26 @@ import RxCocoa
 import RxGesture
 
 final class MicrophoneButton: RoundShadowButton {
-    
-    enum ContentsMode {
-        case big
-        case midium
-        case small
-        case none
         
-        var size: CGFloat {
-            switch self {
-            case .big:
-                return 70
-            case .midium:
-                return 70
-            case .small:
-                return 50
-            case .none:
-                return 0
-            }
-        }
-    }
-    
     private var latestCenter: CGPoint?
     private var isOnSpeeching: Bool = false
     private var isKeyboardAppear: Bool = false
     private var bottomBoundWhenKeyboardAppear: CGFloat = 0
     private let disposeBag = DisposeBag()
     
-    var mode: ContentsMode = .small {
+    var mode: MicButtonSize = .small {
         didSet {
             let newSize = CGSize(width: mode.size, height: mode.size)
             frame.size = newSize
             bounds.size = newSize
             updateShadow()
+            layoutSubviews()
+            setNeedsDisplay()
+            
+            let image = UIImage(systemName: "mic",
+                                withConfiguration: UIImage.SymbolConfiguration(pointSize: mode.size/2,
+                                                                               weight: .semibold))
+            setImage(image, for: .normal)
         }
     }
     
@@ -61,7 +48,7 @@ final class MicrophoneButton: RoundShadowButton {
         attachGesture()
     }
     
-    init(mode: ContentsMode, origin: CGPoint) {
+    init(mode: MicButtonSize, origin: CGPoint) {
         let size = CGSize(width: mode.size, height: mode.size)
         let rect = CGRect(origin: origin, size: size)
         super.init(frame: rect)
