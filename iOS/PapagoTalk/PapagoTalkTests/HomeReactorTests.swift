@@ -46,5 +46,19 @@ class HomeReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.language, .english)
     }
     
+    func test_blockNickNameMaxLength() throws {
+        // Given
+        let userMock = UserDataProviderMock(nickName: "abcdefghijklmnop")
+        let reactor = HomeViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+                                      userData: userMock)
+
+        // When
+        reactor.action.onNext(.nickNameChanged(userMock.nickName))
+
+        // Then
+        XCTAssertEqual(reactor.currentState.needShake.data, true)
+        XCTAssertEqual(reactor.currentState.nickName.count, 12)
+    }
+
     
 }
