@@ -67,6 +67,7 @@
 		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
 		BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */; };
 		BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200A025701B4000CC8020 /* RxSwift+.swift */; };
+		BB15693E257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift */; };
 		BB15A5872577690F0006D258 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15A5862577690F0006D258 /* SpeechViewController.swift */; };
 		BB15A58F25776D2F0006D258 /* SpeechViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15A58E25776D2F0006D258 /* SpeechViewReactor.swift */; };
 		BB1FFD1525761BB100E4668C /* ChatDrawerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1FFD1425761BB100E4668C /* ChatDrawerState.swift */; };
@@ -91,6 +92,30 @@
 		BB93C2942575345200C68491 /* Calendar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C2932575345200C68491 /* Calendar+.swift */; };
 		BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9725A7256FA5DD00C4938D /* MessageBox.swift */; };
 		BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97AE07256CDC0400307DAD /* UIView+.swift */; };
+		BB987E74257F470B00F4C258 /* HomeReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */; };
+		BB987E75257F470B00F4C258 /* ApolloNetworkServiceMockSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* ApolloNetworkServiceMockSuccess.swift */; };
+		BB987E81257F4CA800F4C258 /* AlertFactoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E80257F4CA800F4C258 /* AlertFactoryStub.swift */; };
+		BB987E87257F4CD100F4C258 /* UserDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* UserDataProviderMock.swift */; };
+		BB987E8B257F4CF800F4C258 /* ImageFactoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E8A257F4CF800F4C258 /* ImageFactoryStub.swift */; };
+		BB987E91257F4E3D00F4C258 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
+		BB987E94257F4E5300F4C258 /* AlertFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9502573499500340A72 /* AlertFactoryProviding.swift */; };
+		BB987E97257F4E6200F4C258 /* UserDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D425762AC500C15AC7 /* UserDataProviding.swift */; };
+		BB987E9A257F4EA700F4C258 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5F256F46FE009B8B5F /* User.swift */; };
+		BB987E9D257F4EAC00F4C258 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1466256D3A5F00F21215 /* Language.swift */; };
+		BB987EA0257F4EE400F4C258 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
+		BB987EA3257F4F0200F4C258 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE97B2573A80B00340A72 /* Strings.swift */; };
+		BB987EA6257F4F3C00F4C258 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EA0257CEFD200802B45 /* API.swift */; };
+		BB987EA9257F4F5C00F4C258 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932CF5A256CC6A4002459D0 /* HomeViewReactor.swift */; };
+		BB987EAC257F4F8100F4C258 /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A146A256D5B6200F21215 /* Locale+.swift */; };
+		BB987EAF257F4F9600F4C258 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9772573A67C00340A72 /* String+.swift */; };
+		BB987EB2257F4FE400F4C258 /* JoinChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE946257336D900340A72 /* JoinChatError.swift */; };
+		BB987EB5257F4FE600F4C258 /* HomeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF67C2574E3E200416692 /* HomeError.swift */; };
+		BB987EB8257F4FF200F4C258 /* RevisionedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DFC2579425400802B45 /* RevisionedData.swift */; };
+		BB987EBB257F4FFB00F4C258 /* NetworkServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23C0A02576AABB001D74A0 /* NetworkServiceProviding.swift */; };
+		BB987EBE257F503000F4C258 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23C09A2576979C001D74A0 /* NetworkError.swift */; };
+		BB987EC1257F503700F4C258 /* JoinChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE956257367B800340A72 /* JoinChatResponse.swift */; };
+		BB987EC4257F503900F4C258 /* CreateRoomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF6782574DF2F00416692 /* CreateRoomResponse.swift */; };
+		BB987EC7257F505900F4C258 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
 		BB9A86A02574879500FE14D6 /* ChatDrawerUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A869F2574879500FE14D6 /* ChatDrawerUserCell.swift */; };
 		BB9A86A4257487C800FE14D6 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A86A3257487C800FE14D6 /* MessageCell.swift */; };
 		BBC5B31C257E089900739CD8 /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B31B257E089900739CD8 /* KeychainAccess.swift */; };
@@ -184,7 +209,10 @@
 		99A2768325668EFA008BD24C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactorTests.swift; sourceTree = "<group>"; };
+		BB0B6EEB257F3681005EDF22 /* ApolloNetworkServiceMockSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloNetworkServiceMockSuccess.swift; sourceTree = "<group>"; };
 		BB1200A025701B4000CC8020 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
+		BB15693D257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloNetworkServiceMockFailure.swift; sourceTree = "<group>"; };
 		BB15A5862577690F0006D258 /* SpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		BB15A58E25776D2F0006D258 /* SpeechViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewReactor.swift; sourceTree = "<group>"; };
 		BB1FFD1425761BB100E4668C /* ChatDrawerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerState.swift; sourceTree = "<group>"; };
@@ -209,6 +237,9 @@
 		BB93C2932575345200C68491 /* Calendar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+.swift"; sourceTree = "<group>"; };
 		BB9725A7256FA5DD00C4938D /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		BB97AE07256CDC0400307DAD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		BB987E80257F4CA800F4C258 /* AlertFactoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactoryStub.swift; sourceTree = "<group>"; };
+		BB987E86257F4CD100F4C258 /* UserDataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProviderMock.swift; sourceTree = "<group>"; };
+		BB987E8A257F4CF800F4C258 /* ImageFactoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryStub.swift; sourceTree = "<group>"; };
 		BB9A869F2574879500FE14D6 /* ChatDrawerUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerUserCell.swift; sourceTree = "<group>"; };
 		BB9A86A3257487C800FE14D6 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		BBC5B31B257E089900739CD8 /* KeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
@@ -479,6 +510,18 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		BB987E8E257F4D3E00F4C258 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				BB0B6EEB257F3681005EDF22 /* ApolloNetworkServiceMockSuccess.swift */,
+				BB15693D257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift */,
+				BB987E80257F4CA800F4C258 /* AlertFactoryStub.swift */,
+				BB987E8A257F4CF800F4C258 /* ImageFactoryStub.swift */,
+				BB987E86257F4CD100F4C258 /* UserDataProviderMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		BB9A8696257486F800FE14D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +612,8 @@
 		BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB987E8E257F4D3E00F4C258 /* Mock */,
+				BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */,
 				BBF2DCB3256674A500F2EA7D /* PapagoTalkTests.swift */,
 				BBF2DCB5256674A500F2EA7D /* Info.plist */,
 			);
@@ -902,6 +947,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB987E9A257F4EA700F4C258 /* User.swift in Sources */,
+				BB987E9D257F4EAC00F4C258 /* Language.swift in Sources */,
+				BB987EB8257F4FF200F4C258 /* RevisionedData.swift in Sources */,
+				BB987EC7257F505900F4C258 /* Constant.swift in Sources */,
+				BB987EA3257F4F0200F4C258 /* Strings.swift in Sources */,
+				BB987EAF257F4F9600F4C258 /* String+.swift in Sources */,
+				BB987EAC257F4F8100F4C258 /* Locale+.swift in Sources */,
+				BB987EA6257F4F3C00F4C258 /* API.swift in Sources */,
+				BB987EBB257F4FFB00F4C258 /* NetworkServiceProviding.swift in Sources */,
+				BB987EC1257F503700F4C258 /* JoinChatResponse.swift in Sources */,
+				BB987EC4257F503900F4C258 /* CreateRoomResponse.swift in Sources */,
+				BB987E97257F4E6200F4C258 /* UserDataProviding.swift in Sources */,
+				BB987E91257F4E3D00F4C258 /* ImageFactoryProviding.swift in Sources */,
+				BB987E94257F4E5300F4C258 /* AlertFactoryProviding.swift in Sources */,
+				BB987EBE257F503000F4C258 /* NetworkError.swift in Sources */,
+				BB987EB5257F4FE600F4C258 /* HomeError.swift in Sources */,
+				BB987EB2257F4FE400F4C258 /* JoinChatError.swift in Sources */,
+				BB987EA0257F4EE400F4C258 /* ImageFactory.swift in Sources */,
+				BB15693E257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift in Sources */,
+				BB987E75257F470B00F4C258 /* ApolloNetworkServiceMockSuccess.swift in Sources */,
+				BB987E87257F4CD100F4C258 /* UserDataProviderMock.swift in Sources */,
+				BB987E8B257F4CF800F4C258 /* ImageFactoryStub.swift in Sources */,
+				BB987E81257F4CA800F4C258 /* AlertFactoryStub.swift in Sources */,
+				BB987EA9257F4F5C00F4C258 /* HomeViewReactor.swift in Sources */,
+				BB987E74257F470B00F4C258 /* HomeReactorTests.swift in Sources */,
 				BBF2DCB4256674A500F2EA7D /* PapagoTalkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
