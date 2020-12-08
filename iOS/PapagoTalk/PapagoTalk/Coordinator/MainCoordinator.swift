@@ -14,7 +14,7 @@ final class MainCoordinator: Coordinator {
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
     var translationManager: PapagoAPIServiceProviding
-    var speechManager: SpeechManager
+    var speechManager: SpeechServiceProviding
     var messageParser: MessageParser
     var childCoordinator: [Coordinator] = []
     
@@ -23,7 +23,7 @@ final class MainCoordinator: Coordinator {
          userData: UserDataProviding,
          alertFactory: AlertFactoryProviding,
          translationManager: PapagoAPIServiceProviding,
-         speechManager: SpeechManager,
+         speechManager: SpeechServiceProviding,
          messageParser: MessageParser) {
         
         self.navigationController = navigationController
