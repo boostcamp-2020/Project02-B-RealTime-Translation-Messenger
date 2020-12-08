@@ -88,7 +88,7 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
   const onClickEnterRoom = async () => {
     const { data } = await enterRoomMutation();
     const roomId = data?.enterRoom.roomId;
-    const userId = data?.enterRoom.roomId;
+    const userId = data?.enterRoom.userId;
     if (typeof data?.enterRoom.token === 'string')
       localStorage.setItem('token', data.enterRoom.token);
     history.push({
@@ -96,8 +96,6 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
       state: {
         userId,
         code: pinValue,
-        nickname,
-        avatar,
         lang,
       },
     });
