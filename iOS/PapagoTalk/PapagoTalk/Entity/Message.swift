@@ -41,6 +41,17 @@ struct Message: Codable {
         self.isTranslated = isTranslated
     }
     
+    init(systemText: String) {
+        self.id = 0
+        self.text = systemText
+        self.sender = User()
+        self.language = ""
+        self.timeStamp = Date()
+        self.isFirstOfDay = true
+        self.type = .system
+        self.isTranslated = false
+    }
+    
     mutating func setIsFirst(with isFirst: Bool) {
         isFirstOfDay = isFirst
     }
