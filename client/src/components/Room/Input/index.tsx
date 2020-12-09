@@ -11,7 +11,6 @@ import S from './style';
 
 interface LocationState {
   lang: string;
-  code: string;
 }
 
 const Input: React.FC = () => {
