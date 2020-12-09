@@ -13,6 +13,7 @@ class LaunchScreenViewController: UIViewController {
     @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var centerImageView: UIImageView!
     @IBOutlet weak var leftImageView: UIImageView!
+    @IBOutlet weak var logoTextLabel: UILabel!
     
     var coordinator: MainCoordinator?
     private var circleLayer: CAShapeLayer?
@@ -21,6 +22,7 @@ class LaunchScreenViewController: UIViewController {
         super.viewDidLoad()
         configureCircleLayer()
         imageContainerView.layer.masksToBounds = true
+        logoTextLabel.textColor = UIColor(named: "MessageTextColor")
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "연노랑-1.png",
+      "filename" : "PapagoImageYellow.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "연노랑-3.png",
+      "filename" : "PapagoImageYellow-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "연노랑-4.png",
+      "filename" : "PapagoImageYellow-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "원본님-1.png",
+      "filename" : "PapagoImageBlue.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "원본님-3.png",
+      "filename" : "PapagoImageBlue-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "원본님-4.png",
+      "filename" : "PapagoImageBlue-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
