@@ -9,13 +9,14 @@ import Foundation
 import RxDataSources
 
 struct MessageSection {
-  var header: String
-  var items: [Item]
+    var header: String
+    var items: [Item]
 }
+
 extension MessageSection: SectionModelType {
     
-  typealias Item = Message
-
+    typealias Item = Message
+    
     init(original: MessageSection, items: [Item]) {
         self = original
         self.items = items

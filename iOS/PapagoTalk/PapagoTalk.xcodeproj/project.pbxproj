@@ -115,6 +115,8 @@
 		BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814A12577D79B00CFA6DB /* HTTPMethod.swift */; };
 		BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */; };
 		BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */; };
+		BB5EFE7C25812991001A121C /* UserSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5EFE7B25812991001A121C /* UserSection.swift */; };
+		BB5EFE9125812A90001A121C /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5EFE9025812A90001A121C /* UserDataSource.swift */; };
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
 		BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
@@ -275,6 +277,8 @@
 		BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRequest.swift; sourceTree = "<group>"; };
 		BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
 		BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
+		BB5EFE7B25812991001A121C /* UserSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSection.swift; sourceTree = "<group>"; };
+		BB5EFE9025812A90001A121C /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
 		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
 		BB6F7ED2256D799B00D66F8E /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -516,6 +520,8 @@
 				BB9A8696257486F800FE14D6 /* View */,
 				BB3825242574050A000425FD /* ChatDrawerViewController.swift */,
 				BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */,
+				BB5EFE7B25812991001A121C /* UserSection.swift */,
+				BB5EFE9025812A90001A121C /* UserDataSource.swift */,
 			);
 			path = ChatDrawer;
 			sourceTree = "<group>";
@@ -924,11 +930,13 @@
 				99482F12257F7EE700802B45 /* TranslationRequest.swift in Sources */,
 				BBC5B31C257E089900739CD8 /* KeychainAccess.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
+				BB5EFE7C25812991001A121C /* UserSection.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
 				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */,
 				99482F46257FCE1800802B45 /* MicButtonSize.swift in Sources */,
 				99482F19257F826800802B45 /* SpeechServiceProviding.swift in Sources */,
+				BB5EFE9125812A90001A121C /* UserDataSource.swift in Sources */,
 				99482FC625811E2300802B45 /* MessageSection.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,
