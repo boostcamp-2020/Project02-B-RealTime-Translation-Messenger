@@ -46,6 +46,16 @@ const DoubleBubble = styled.div`
   align-items: center;
 `;
 
+const UserChangedPopup = styled.div`
+  width: fit-content;
+  margin: 1.5rem auto 0 auto;
+  padding: 0.3rem 1rem;
+  color: #fff;
+  background-color: #000;
+  border-radius: ${(props) => props.theme.borderRadiusSmall};
+  font-size: 12px;
+`;
+
 const ChatRow: FC<Props> = ({ message, obj }) => {
   const location = useLocation<{ userId: number; lang: string }>();
   const { lang, userId } = location.state;
@@ -54,6 +64,11 @@ const ChatRow: FC<Props> = ({ message, obj }) => {
   const author = message?.user.nickname;
   const createdAt = formatTime(message?.createdAt as string, lang);
   const avatar = message?.user.avatar;
+  const source = message?.source;
+
+  if (source === 'in' || source === 'out') {
+    return <UserChangedPopup>{message?.text}</UserChangedPopup>;
+  }
 
   return (
     <Wrapper isOrigin={isOrigin}>

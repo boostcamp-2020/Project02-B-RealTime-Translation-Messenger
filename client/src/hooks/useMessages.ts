@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ALL_MESSAGES_BY_PAGE, NEW_MESSAGE } from '@/queries/messege.queries';
+import { ALL_MESSAGES_BY_PAGE, NEW_MESSAGE } from '@queries/messege.queries';
 import { useQuery } from '@apollo/client';
 
 interface VariablesType {
