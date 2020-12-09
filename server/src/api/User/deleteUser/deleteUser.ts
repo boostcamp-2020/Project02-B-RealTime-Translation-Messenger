@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { withFilter } from 'graphql-subscriptions';
+import TRIGGER from '@utils/trigger';
 
 const prisma = new PrismaClient();
 
@@ -17,7 +18,7 @@ export default {
       if (!restUser[0]['COUNT(*)']) {
         await prisma.$queryRaw`DELETE FROM Room WHERE id = ${roomId}`;
       }
-      pubsub.publish('DELETE_USER', { deleteUser: { id: userId, roomId } });
+      pubsub.publish(TRIGGER.DELETE_USER, { deleteUser: { id: userId, roomId } });
       return true;
     },
   },
