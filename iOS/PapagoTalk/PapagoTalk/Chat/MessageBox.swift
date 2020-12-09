@@ -34,7 +34,8 @@ final class MessageBox {
     }
     
     func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
-        let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.timeStamp, with: lastMessage.timeStamp)
+        let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.time,
+                                                  with: lastMessage.time)
         var message = newMessage
         message.setIsFirst(with: !isNotFirstOfDay)
         return message
@@ -50,7 +51,7 @@ final class MessageBox {
         guard newMessage.type == .received,
               lastMessage.type == .received,
               newMessage.sender.id == lastMessage.sender.id,
-              DateFormatter.chatTimeFormat(of: newMessage.timeStamp) == DateFormatter.chatTimeFormat(of: lastMessage.timeStamp)
+              DateFormatter.chatTimeFormat(of: newMessage.time) == DateFormatter.chatTimeFormat(of: lastMessage.time)
         else {
             return newMessage
         }
@@ -61,7 +62,7 @@ final class MessageBox {
     
     private func setShouldTimeShow(of newMessage: Message, comparedBy lastMessage: Message) {
         guard newMessage.sender.id == lastMessage.sender.id,
-              DateFormatter.chatTimeFormat(of: newMessage.timeStamp) == DateFormatter.chatTimeFormat(of: lastMessage.timeStamp) else {
+              DateFormatter.chatTimeFormat(of: newMessage.time) == DateFormatter.chatTimeFormat(of: lastMessage.time) else {
             messages.append(newMessage)
             return
         }
