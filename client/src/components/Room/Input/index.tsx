@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { debounce } from 'lodash';
+import { useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { CREATE_MESSAGE, TRANSLATION } from '@queries/messege.queries';
 import SpeechRecognition, {
@@ -8,11 +9,18 @@ import SpeechRecognition, {
 import Listening from '@components/Listening';
 import S from './style';
 
+interface LocationState {
+  lang: string;
+  code: string;
+}
+
 const Input: React.FC = () => {
   const [text, setText] = useState('');
   const [translatedText, setTranslatedText] = useState('텍스트를 입력하세요');
   const [isListening, setIsListening] = useState(false);
   const { transcript } = useSpeechRecognition();
+  const location = useLocation<LocationState>();
+  const { lang } = location.state;
   const [createMessageMutation] = useMutation(CREATE_MESSAGE, {
     variables: {
       text,
@@ -55,7 +63,7 @@ const Input: React.FC = () => {
 
   const onClickVoiceButton = () => {
     if (!isListening) {
-      SpeechRecognition.startListening({ language: 'ko' });
+      SpeechRecognition.startListening({ language: lang });
     }
   };
 
