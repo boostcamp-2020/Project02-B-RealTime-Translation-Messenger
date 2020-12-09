@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { Message } from '@generated/types';
+import { Message, User } from '@generated/types';
 import ChatRow from './ChatRow';
 
 interface Props {
@@ -9,6 +9,12 @@ interface Props {
   page: number;
   setPage: any;
   onLoadMore: any;
+  changeUser: ChangeUserType | undefined;
+}
+
+interface ChangeUserType {
+  type: string;
+  user: User;
 }
 
 interface TranslatedText {
@@ -25,7 +31,13 @@ const Wrapper = styled.div`
   overflow-y: scroll;
 `;
 
-const ChatLog: FC<Props> = ({ messages, page, setPage, onLoadMore }) => {
+const ChatLog: FC<Props> = ({
+  messages,
+  page,
+  setPage,
+  onLoadMore,
+  changeUser,
+}) => {
   const location = useLocation<{ roomId: number }>();
   const { roomId } = location.state;
   const chatLogRef = useRef<HTMLDivElement>(null);
@@ -33,6 +45,16 @@ const ChatLog: FC<Props> = ({ messages, page, setPage, onLoadMore }) => {
   useEffect(() => {
     chatLogRef.current!.scrollTop = chatLogRef.current!.scrollHeight;
   }, [messages]);
+
+  useEffect(() => {
+    if (!changeUser) return;
+    // test code
+    alert(
+      `${changeUser?.user.nickname}님이 ${
+        changeUser?.type === 'CREATE' ? '입장' : '퇴장'
+      }`,
+    );
+  }, [changeUser]);
 
   const onScrollEvent = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
     if (e.currentTarget.scrollTop === 0) {

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Avatar from '@components/Avatar';
 import { Message } from '@generated/types';
+import formatTime from '@utils/formatTimezone';
 import Balloon from './Balloon';
 
 interface TranslatedMessage {
@@ -46,11 +47,12 @@ const DoubleBubble = styled.div`
 `;
 
 const ChatRow: FC<Props> = ({ message, obj }) => {
-  const location = useLocation<{ userId: number }>();
-  const { userId } = location.state;
+  const location = useLocation<{ userId: number; lang: string }>();
+  const { lang, userId } = location.state;
+
   const isOrigin = userId === message?.user.id;
   const author = message?.user.nickname;
-  const createdAt = message?.createdAt;
+  const createdAt = formatTime(message?.createdAt as string, lang);
   const avatar = message?.user.avatar;
 
   return (
