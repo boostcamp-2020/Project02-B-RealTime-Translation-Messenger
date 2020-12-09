@@ -11,13 +11,31 @@ export default {
       { pubsub, request, isAuthenticated }: any,
     ): Promise<boolean> => {
       isAuthenticated(request);
-      const { id: userId, roomId } = request.user;
-      await prisma.$queryRaw`DELETE FROM User WHERE id = ${userId}`;
-      const restUser = await prisma.$queryRaw`SELECT COUNT(*) FROM _RoomToUser WHERE A = ${roomId} `;
-      if (!restUser[0]['COUNT(*)']) {
+      const { id, roomId } = request.user;
+      await prisma.user.update({
+        where: {
+          id,
+        },
+        data: {
+          isDeleted: true,
+        },
+      });
+      const restUser = await prisma.user.count({
+        where: {
+          isDeleted: false,
+          rooms: {
+            some: {
+              id: roomId,
+            },
+          },
+        },
+      });
+      if (!restUser) {
+        await prisma.$queryRaw`delete from user where user.id in (select B from room join _roomtouser on A = ${roomId} AND room.id = A );`;
         await prisma.$queryRaw`DELETE FROM Room WHERE id = ${roomId}`;
+        return true;
       }
-      pubsub.publish('DELETE_USER', { deleteUser: { id: userId, roomId } });
+      pubsub.publish('DELETE_USER', { deleteUser: { id, roomId } });
       return true;
     },
   },
