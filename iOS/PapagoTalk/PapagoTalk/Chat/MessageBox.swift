@@ -21,6 +21,11 @@ final class MessageBox {
     }
     
     func append(_ message: Message) {
+        guard message.type != .system else {
+            messages.append(message)
+            return
+        }
+        
         var message = message
         message = setType(of: message)
         
