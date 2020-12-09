@@ -50,7 +50,7 @@ struct Message: Codable {
         self.text = systemText
         self.sender = User()
         self.language = ""
-        self.timeStamp = Date()
+        self.timeStamp = ""
         self.isFirstOfDay = true
         self.type = .system
         self.isTranslated = false

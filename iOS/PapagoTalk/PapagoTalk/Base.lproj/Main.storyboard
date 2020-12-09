@@ -734,6 +734,7 @@
                         <outlet property="centerImageView" destination="F99-jf-2HP" id="gMX-e4-rwC"/>
                         <outlet property="imageContainerView" destination="46G-J1-PhE" id="gbz-WD-dm1"/>
                         <outlet property="leftImageView" destination="lMi-rh-Urh" id="an4-KE-sbV"/>
+                        <outlet property="logoTextLabel" destination="D7j-2f-7Zg" id="es3-uD-gry"/>
                         <outlet property="rightImageView" destination="Y4G-YU-OXK" id="UlI-JY-Z8F"/>
                     </connections>
                 </viewController>
