@@ -17,8 +17,8 @@ final class ChatViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: UICollectionView!
     @IBOutlet private weak var sendButton: UIButton!
-    @IBOutlet weak var chatDrawerButton: UIBarButtonItem!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var chatDrawerButton: UIBarButtonItem!
     
     private var chatDrawerObserver = BehaviorRelay(value: false)
     private var micButtonSizeObserver: BehaviorRelay<MicButtonSize>
@@ -53,7 +53,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     // MARK: - Input
     private func bindAction(reactor: ChatViewReactor) {
         self.rx.viewWillAppear
-            .map { _ in Reactor.Action.subscribeNewMessages }
+            .map { _ in Reactor.Action.subscribeChatRoom }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         

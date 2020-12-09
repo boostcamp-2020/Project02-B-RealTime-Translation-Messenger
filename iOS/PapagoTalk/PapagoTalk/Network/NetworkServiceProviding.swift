@@ -9,10 +9,7 @@ import Foundation
 import RxSwift
 
 protocol NetworkServiceProviding {
-    func sendMessage(text: String,
-                     source: String,
-                     userId: Int,
-                     roomId: Int) -> Maybe<SendMessageMutation.Data>
+    func sendMessage(text: String) -> Maybe<SendMessageMutation.Data>
     
     func getMessage(roomId: Int,
                     language: Language) -> Observable<GetMessageSubscription.Data>
@@ -23,6 +20,12 @@ protocol NetworkServiceProviding {
     func createRoom(user: User) -> Maybe<CreateRoomResponse>
     
     func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data>
+    
+    func subscribeLeavedUser(roomID: Int) -> Observable<LeavedUserSubscription.Data>
+    
+    func subscribeNewUser(roomID: Int) -> Observable<NewUserSubscription.Data>
+    
+    func leaveRoom()
     
     func reconnect()
 }

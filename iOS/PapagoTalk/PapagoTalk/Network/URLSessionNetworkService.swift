@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol HTTPRequest {
+protocol PapagoHTTPRequest {
     var url: URL { get set }
     var httpMethod: HTTPMethod { get set }
     var headers: [String: String] { get set }
@@ -15,7 +15,7 @@ protocol HTTPRequest {
 }
 
 protocol URLSessionNetworkServiceProviding {
-    func request(request: HTTPRequest, handler: @escaping (Result<Data, NetworkError>) -> Void)
+    func request(request: PapagoHTTPRequest, handler: @escaping (Result<Data, NetworkError>) -> Void)
 }
 
 final class URLSessionNetworkService: URLSessionNetworkServiceProviding {
@@ -26,7 +26,7 @@ final class URLSessionNetworkService: URLSessionNetworkServiceProviding {
         session = urlSession
     }
     
-    func request(request: HTTPRequest, handler: @escaping (Result<Data, NetworkError>) -> Void) {
+    func request(request: PapagoHTTPRequest, handler: @escaping (Result<Data, NetworkError>) -> Void) {
         let urlRequest = configureURLRequest(request: request)
         
         session.dataTask(with: urlRequest) { data, response, error in
@@ -66,7 +66,7 @@ final class URLSessionNetworkService: URLSessionNetworkServiceProviding {
         }.resume()
     }
     
-    private func configureURLRequest(request: HTTPRequest) -> URLRequest {
+    private func configureURLRequest(request: PapagoHTTPRequest) -> URLRequest {
         var urlRequest = URLRequest(url: request.url)
         urlRequest.httpMethod = request.httpMethod.description
         urlRequest.allHTTPHeaderFields = request.headers

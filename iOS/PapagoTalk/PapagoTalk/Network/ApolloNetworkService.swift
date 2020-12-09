@@ -12,6 +12,7 @@ import RxSwift
 class ApolloNetworkService: NetworkServiceProviding {
     
     let store = ApolloStore()
+    let urlClient = URLSessionClient()
     var socketURL = APIEndPoint.socketURL
     var requestURL = APIEndPoint.requestURL
     
@@ -23,7 +24,7 @@ class ApolloNetworkService: NetworkServiceProviding {
     
     private lazy var normalTransport: RequestChainNetworkTransport = {
         let url = requestURL
-        return RequestChainNetworkTransport(interceptorProvider: LegacyInterceptorProvider(store: store), endpointURL: url)
+        return RequestChainNetworkTransport(interceptorProvider: NetworkInterceptorProvider(store: store, client: urlClient), endpointURL: url)
     }()
     
     private lazy var splitNetworkTransport = SplitNetworkTransport(
@@ -33,14 +34,11 @@ class ApolloNetworkService: NetworkServiceProviding {
     
     private(set) lazy var client = ApolloClient(networkTransport: self.splitNetworkTransport, store: store)
     
-    func sendMessage(text: String,
-                     source: String,
-                     userId: Int,
-                     roomId: Int) -> Maybe<SendMessageMutation.Data> {
+    func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.perform(
-                mutation: SendMessageMutation(text: text, source: source, userId: userId, roomId: roomId),
+                mutation: SendMessageMutation(text: text),
                 resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):
@@ -93,7 +91,7 @@ class ApolloNetworkService: NetworkServiceProviding {
                         if gqlResult.errors != nil {
                             observer(.error(JoinChatError.cannotFindRoom))
                         } else if let data = gqlResult.data {
-                            let response = JoinChatResponse(userId: data.enterRoom.userId, roomId: data.enterRoom.roomId)
+                            let response = JoinChatResponse(userId: data.enterRoom.userId, roomId: data.enterRoom.roomId, token: data.enterRoom.token)
                             observer(.success(response))
                         } else {
                             observer(.completed)
@@ -138,6 +136,7 @@ class ApolloNetworkService: NetworkServiceProviding {
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.fetch(
                 query: FindRoomByIdQuery(roomID: roomID),
+                cachePolicy: .fetchIgnoringCacheCompletely,
                 resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):
@@ -157,6 +156,52 @@ class ApolloNetworkService: NetworkServiceProviding {
                 cancellable?.cancel()
             }
         }
+    }
+    
+    func subscribeNewUser(roomID: Int) -> Observable<NewUserSubscription.Data> {
+        return .create { [weak self] observer in
+            let cancellable = self?.client.subscribe(
+                subscription: NewUserSubscription(roomId: roomID),
+                resultHandler: { [weak self] result in
+                    switch result {
+                    case let .success(gqlResult):
+                        if let data = gqlResult.data {
+                            observer.onNext(data)
+                        }
+                    case .failure:
+                        self?.reconnect()
+                    }
+                }
+            )
+            return Disposables.create {
+                cancellable?.cancel()
+            }
+        }
+    }
+    
+    func subscribeLeavedUser(roomID: Int) -> Observable<LeavedUserSubscription.Data> {
+        return .create { [weak self] observer in
+            let cancellable = self?.client.subscribe(
+                subscription: LeavedUserSubscription(roomId: roomID),
+                resultHandler: { [weak self] result in
+                    switch result {
+                    case let .success(gqlResult):
+                        if let data = gqlResult.data {
+                            observer.onNext(data)
+                        }
+                    case .failure:
+                        self?.reconnect()
+                    }
+                }
+            )
+            return Disposables.create {
+                cancellable?.cancel()
+            }
+        }
+    }
+    
+    func leaveRoom() {
+        client.perform(mutation: LeaveRoomMutation())
     }
     
     func reconnect() {

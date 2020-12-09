@@ -10,4 +10,5 @@ import Foundation
 struct UserDataProvider: UserDataProviding {
     @UserDefault(type: .userInfo, default: User()) var user: User
     @UserDefault(type: .micButtonSize, default: .small) var micButtonSize: MicButtonSize
+    @Keychain(key: "jwt", defaultValue: "") var token: String
 }

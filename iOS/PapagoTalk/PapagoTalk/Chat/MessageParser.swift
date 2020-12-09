@@ -13,33 +13,39 @@ struct MessageParser: MessageParseProviding {
     
     func parse(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message] {
         guard let timeStamp = newMessage.createdAt,
-              let json = newMessage.text.data(using: .utf8),
-              let translateResult: TranslatedResult = try? json.decoded() else {
+              let data = newMessage.text.data(using: .utf8),
+              let translatedResult: TranslatedResult = try? data.decoded()
+        else {
             return []
         }
+        
         var messages = [Message]()
-        let time = String(timeStamp.prefix(10))
         let sender = User(id: newMessage.user.id,
                           nickName: newMessage.user.nickname,
                           image: newMessage.user.avatar,
                           language: Language.codeToLanguage(of: newMessage.user.lang))
         let originMessage = Message(id: newMessage.id,
-                                    of: translateResult.originText,
+                                    of: translatedResult.originText,
                                     by: sender,
                                     language: newMessage.source,
-                                    timeStamp: time)
+                                    timeStamp: timeStamp)
         messages.append(originMessage)
         
-        if newMessage.user.id != userData.id &&
-            Language.codeToLanguage(of: newMessage.user.lang) != userData.language {
-            let translatedMessage = Message(id: newMessage.id,
-                                            of: translateResult.translatedText,
-                                            by: sender,
-                                            language: userData.language.code,
-                                            timeStamp: time,
-                                            isTranslated: true)
-            messages.append(translatedMessage)
+        let messageLanguage = Language.codeToLanguage(of: newMessage.source)
+        let setting = false
+        
+        guard messageLanguage != userData.language || messageLanguage != sender.language || setting else {
+            return messages
         }
+        
+        let translatedMessage = Message(id: newMessage.id,
+                                        of: translatedResult.translatedText,
+                                        by: sender,
+                                        language: newMessage.source,
+                                        timeStamp: timeStamp,
+                                        isTranslated: true)
+        messages.append(translatedMessage)
+        
         return messages
     }
 }

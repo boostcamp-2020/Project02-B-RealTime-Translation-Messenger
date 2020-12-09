@@ -38,7 +38,7 @@ final class PapagoAPIManager: PapagoAPIServiceProviding {
     }
 }
 
-struct PapagoAPIRequest: HTTPRequest {
+struct PapagoAPIRequest: PapagoHTTPRequest {
     // MARK: - NaverDevelopers OpenAPI
     //    var url: URL = APIEndPoint.naverPapagoOpenAPI
     //    var httpMethod: HTTPMethod = .post
