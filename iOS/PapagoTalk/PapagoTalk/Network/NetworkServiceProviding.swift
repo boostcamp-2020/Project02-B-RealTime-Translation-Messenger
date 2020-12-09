@@ -21,6 +21,10 @@ protocol NetworkServiceProviding {
     
     func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data>
     
+    func subscribeLeavedUser(roomID: Int) -> Observable<LeavedUserSubscription.Data>
+    
+    func subscribeNewUser(roomID: Int) -> Observable<NewUserSubscription.Data>
+    
     func leaveRoom()
     
     func reconnect()

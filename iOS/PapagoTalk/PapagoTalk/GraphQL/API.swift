@@ -860,6 +860,99 @@ public final class GetMessageByTimeQuery: GraphQLQuery {
   }
 }
 
+public final class LeavedUserSubscription: GraphQLSubscription {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    subscription LeavedUser($roomId: Int!) {
+      deleteUser(roomId: $roomId) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName: String = "LeavedUser"
+
+  public var roomId: Int
+
+  public init(roomId: Int) {
+    self.roomId = roomId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["roomId": roomId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Subscription"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("deleteUser", arguments: ["roomId": GraphQLVariable("roomId")], type: .object(DeleteUser.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(deleteUser: DeleteUser? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Subscription", "deleteUser": deleteUser.flatMap { (value: DeleteUser) -> ResultMap in value.resultMap }])
+    }
+
+    public var deleteUser: DeleteUser? {
+      get {
+        return (resultMap["deleteUser"] as? ResultMap).flatMap { DeleteUser(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "deleteUser")
+      }
+    }
+
+    public struct DeleteUser: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["deleteUserResponse"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: Int) {
+        self.init(unsafeResultMap: ["__typename": "deleteUserResponse", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: Int {
+        get {
+          return resultMap["id"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}
+
 public final class LeaveRoomMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
