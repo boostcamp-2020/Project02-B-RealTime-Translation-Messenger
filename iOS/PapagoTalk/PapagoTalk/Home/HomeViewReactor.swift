@@ -124,6 +124,7 @@ final class HomeViewReactor: Reactor {
             .asObservable()
             .do(onNext: { [weak self] in 
                 self?.userData.id = $0.userId
+                self?.userData.token = $0.token
             })
             .map { Mutation.createRoom($0) }
             .catchError { _ in

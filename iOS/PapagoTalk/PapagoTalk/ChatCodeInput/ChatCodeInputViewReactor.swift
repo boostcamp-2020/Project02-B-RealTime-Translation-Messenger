@@ -88,6 +88,7 @@ final class ChatCodeInputViewReactor: Reactor {
             .asObservable()
             .do(onNext: { [weak self] in 
                 self?.userData.id = $0.userId
+                self?.userData.token = $0.token
             })
             .map { Mutation.joinChatRoom(ChatRoomInfo(roomID: $0.roomId, code: code)) }
             .catchError { [weak self] in

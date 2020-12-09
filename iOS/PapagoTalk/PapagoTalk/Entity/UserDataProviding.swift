@@ -15,6 +15,7 @@ protocol UserDataProviding {
     var language: Language { get set }
     
     var micButtonSize: MicButtonSize { get set }
+    var token: String { get set }
 }
 
 extension UserDataProviding {
