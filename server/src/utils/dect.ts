@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async (query: string): Promise<string> => {
   const data = {
-    query: query,
+    query,
   };
   const config = {
     headers: {
