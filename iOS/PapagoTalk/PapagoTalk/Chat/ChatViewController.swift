@@ -51,7 +51,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     // MARK: - Input
     private func bindAction(reactor: ChatViewReactor) {
         self.rx.viewWillAppear
-            .map { _ in Reactor.Action.subscribeNewMessages }
+            .map { _ in Reactor.Action.subscribeChatRoom }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
