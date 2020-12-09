@@ -136,6 +136,7 @@ class ApolloNetworkService: NetworkServiceProviding {
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.fetch(
                 query: FindRoomByIdQuery(roomID: roomID),
+                cachePolicy: .fetchIgnoringCacheCompletely,
                 resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):
