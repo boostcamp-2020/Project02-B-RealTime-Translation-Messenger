@@ -11,12 +11,6 @@ interface Variables {
 interface QueryReturnType {
   data: any;
   loading: boolean;
-  changeUser: ChangeUserType | undefined;
-}
-
-interface ChangeUserType {
-  type: string;
-  user: User;
 }
 
 const useUsers = ({ roomId }: Variables): QueryReturnType => {
@@ -25,9 +19,6 @@ const useUsers = ({ roomId }: Variables): QueryReturnType => {
       id: roomId,
     },
   });
-  const [changeUser, setChangeUser] = useState<ChangeUserType | undefined>(
-    undefined,
-  );
 
   useEffect(() => {
     const unsubscribe = subscribeToMore({
@@ -36,7 +27,6 @@ const useUsers = ({ roomId }: Variables): QueryReturnType => {
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const { newUser } = subscriptionData.data;
-        setChangeUser({ type: 'CREATE', user: newUser });
         return {
           ...prev,
           roomById: {
@@ -61,7 +51,6 @@ const useUsers = ({ roomId }: Variables): QueryReturnType => {
 
         const newList = prev.roomById.users.filter((user: User) => {
           if (user.id !== deleteUser.id) return true;
-          setChangeUser({ type: 'DELETE', user });
           return false;
         });
         return {
@@ -78,7 +67,7 @@ const useUsers = ({ roomId }: Variables): QueryReturnType => {
     };
   }, []);
 
-  return { data, loading, changeUser };
+  return { data, loading };
 };
 
 export default useUsers;
