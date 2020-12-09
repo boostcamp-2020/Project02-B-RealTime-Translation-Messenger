@@ -69,6 +69,7 @@ const Input: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => setIsListening(false), 2000);
     setText(transcript);
+    getTranslatedText();
     return () => {
       clearTimeout(timer);
     };
