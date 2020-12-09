@@ -158,6 +158,10 @@ class ApolloNetworkService: NetworkServiceProviding {
         }
     }
     
+    func leaveRoom() {
+        client.perform(mutation: LeaveRoomMutation())
+    }
+    
     func reconnect() {
         if !webSocketTransport.isConnected() {
             webSocketTransport.resumeWebSocketConnection()

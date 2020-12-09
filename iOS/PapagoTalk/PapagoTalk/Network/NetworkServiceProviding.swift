@@ -21,5 +21,7 @@ protocol NetworkServiceProviding {
     
     func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data>
     
+    func leaveRoom()
+    
     func reconnect()
 }
