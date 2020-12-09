@@ -10,12 +10,18 @@ export default {
           if (payload.newMessage.roomId === variables.roomId) {
             const { text, source } = payload.newMessage;
             const target = variables.lang;
-            const translatedText = await req(text, source, target);
-            const texts = {
-              originText: text,
-              translatedText,
-            };
-            payload.newMessage.text = JSON.stringify(texts);
+
+            if (source === 'in' || source === 'out') {
+              payload.newMessage.text = text;
+            } else {
+              const translatedText = await req(text, source, target);
+              const texts = {
+                originText: text,
+                translatedText,
+              };
+              payload.newMessage.text = JSON.stringify(texts);
+            }
+
             return true;
           }
           return false;

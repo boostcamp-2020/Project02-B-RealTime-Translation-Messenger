@@ -39,12 +39,17 @@ export default {
       const promises = Messages.map(async (message: Message) => {
         const { text, source } = message;
         const { lang: target } = request.user;
-        const translatedText = await req(text, source, target);
-        const texts = {
-          originText: text,
-          translatedText,
-        };
-        message.text = JSON.stringify(texts);
+
+        if (source === 'in' || source === 'out') {
+          message.text = text;
+        } else {
+          const translatedText = await req(text, source, target);
+          const texts = {
+            originText: text,
+            translatedText,
+          };
+          message.text = JSON.stringify(texts);
+        }
       });
 
       await Promise.all(promises);
