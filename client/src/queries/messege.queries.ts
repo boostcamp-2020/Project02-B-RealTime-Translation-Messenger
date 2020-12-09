@@ -15,9 +15,9 @@ export const TRANSLATION = gql`
   }
 `;
 
-export const ALL_MESSAGES_BY_ID = gql`
-  query allMessagesById($id: Int!, $page: Int!) {
-    allMessagesById(id: $id, page: $page) {
+export const ALL_MESSAGES_BY_PAGE = gql`
+  query allMessagesByPage($page: Int!) {
+    allMessagesByPage(page: $page) {
       messages {
         id
         text

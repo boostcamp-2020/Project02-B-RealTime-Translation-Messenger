@@ -898,6 +898,14 @@
     "@babel/helper-create-regexp-features-plugin" "^7.12.1"
     "@babel/helper-plugin-utils" "^7.10.4"
 
+"@babel/polyfill@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.12.1.tgz#1f2d6371d1261bbd961f3c5d5909150e12d0bd96"
+  integrity sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==
+  dependencies:
+    core-js "^2.6.5"
+    regenerator-runtime "^0.13.4"
+
 "@babel/preset-env@7.12.1":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.12.1.tgz#9c7e5ca82a19efc865384bb4989148d2ee5d7ac2"
@@ -2056,6 +2064,11 @@
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
+
+"@types/react-speech-recognition@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-speech-recognition/-/react-speech-recognition-3.1.0.tgz#0c214e4f8c751b9f9f32aaf1a851ee7432a080df"
+  integrity sha512-wrf1L/pSDoXQHM97CKweKfyWRSnDBuh8eK6X/NVznKMm7N5f943yJcMy97Yl1IGp7lbyGtOWxS53taZeD0Z5vQ==
 
 "@types/react@*", "@types/react@^17.0.0":
   version "17.0.0"
@@ -3495,6 +3508,11 @@ core-js-pure@^3.0.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.8.0.tgz#4cdd2eca37d49cda206b66e26204818dba77884a"
   integrity sha512-fRjhg3NeouotRoIV0L1FdchA6CK7ZD+lyINyMoz19SyV+ROpC4noS1xItWHFtwZdlqfMfVPJEyEGdfri2bD1pA==
+
+core-js@^2.6.5:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -7327,6 +7345,11 @@ react-router@5.2.0:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
+
+react-speech-recognition@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-speech-recognition/-/react-speech-recognition-3.3.0.tgz#9051c7757fff27ee5f553eb9a88132c809bafaa3"
+  integrity sha512-/1CBszYsIKIDOkHQTLnoa6hf9iEAznMhvy9MangpanZDt8cZre0Yb+8tEE7Lei808r9pZ63KdRkRJx3bJiTvdQ==
 
 react-style-singleton@^2.1.0:
   version "2.1.1"

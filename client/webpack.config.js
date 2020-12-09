@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   mode: process.env.NODE_ENV,
 
-  entry: './src/index',
+  entry: ['@babel/polyfill', './src/index'],
 
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
