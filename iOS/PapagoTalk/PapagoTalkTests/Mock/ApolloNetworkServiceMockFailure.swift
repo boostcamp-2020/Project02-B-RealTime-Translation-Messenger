@@ -9,10 +9,7 @@ import Foundation
 import RxSwift
 
 struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
-    func sendMessage(text: String,
-                     source: String,
-                     userId: Int,
-                     roomId: Int) -> Maybe<SendMessageMutation.Data> {
+    func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.just(.init(createMessage: false))
     }
     
