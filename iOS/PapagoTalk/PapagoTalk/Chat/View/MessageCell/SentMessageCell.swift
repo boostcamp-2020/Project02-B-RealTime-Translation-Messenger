@@ -17,8 +17,8 @@ final class SentMessageCell: UICollectionViewCell {
 
 extension SentMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
-        configureDate(of: dateBadge, dateBadgeHeight: dateBadgeHeight, with: message.timeStamp, isFirst: message.isFirstOfDay)
+        configureDate(of: dateBadge, dateBadgeHeight: dateBadgeHeight, with: message.time, isFirst: message.isFirstOfDay)
         configureMessage(of: messageTextView, with: message.text)
-        configureTime(of: timeLabel, with: message.timeStamp, shouldShow: message.shouldTimeShow)
+        configureTime(of: timeLabel, with: message.time, shouldShow: message.shouldTimeShow)
     }
 }
