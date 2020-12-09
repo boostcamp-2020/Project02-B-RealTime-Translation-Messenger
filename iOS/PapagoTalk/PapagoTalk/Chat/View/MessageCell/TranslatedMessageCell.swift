@@ -15,6 +15,6 @@ final class TranslatedMessageCell: UICollectionViewCell {
 extension TranslatedMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
         configureMessage(of: messageTextView, with: message.text)
-        configureTime(of: timeLabel, with: message.timeStamp, shouldShow: message.shouldTimeShow)
+        configureTime(of: timeLabel, with: message.time, shouldShow: message.shouldTimeShow)
     }
 }

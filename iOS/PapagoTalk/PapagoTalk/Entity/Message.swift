@@ -12,19 +12,23 @@ struct Message: Codable {
     let text: String
     let sender: User
     let language: String
-    let timeStamp: Date
+    let timeStamp: String
     var isFirstOfDay: Bool
     var type: MessageType
     var isTranslated: Bool
     var shouldTimeShow: Bool = true
     var shouldImageShow: Bool = true
     
+    var time: Date {
+        return timeStamp.toDate()
+    }
+    
     init(of text: String, by sender: User) {
         self.id = nil
         self.text = text
         self.sender = sender
         self.language = sender.language.code
-        self.timeStamp = Date()
+        self.timeStamp = ""
         self.isFirstOfDay = true
         self.type = .sent
         isTranslated = false
@@ -35,7 +39,7 @@ struct Message: Codable {
         self.text = text
         self.sender = sender
         self.language = language
-        self.timeStamp = timeStamp.toDate()
+        self.timeStamp = timeStamp
         self.isFirstOfDay = true
         self.type = .received
         self.isTranslated = isTranslated
