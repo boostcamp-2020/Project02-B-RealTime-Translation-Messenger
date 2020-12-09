@@ -33,14 +33,11 @@ class ApolloNetworkService: NetworkServiceProviding {
     
     private(set) lazy var client = ApolloClient(networkTransport: self.splitNetworkTransport, store: store)
     
-    func sendMessage(text: String,
-                     source: String,
-                     userId: Int,
-                     roomId: Int) -> Maybe<SendMessageMutation.Data> {
+    func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.perform(
-                mutation: SendMessageMutation(text: text, source: source, userId: userId, roomId: roomId),
+                mutation: SendMessageMutation(text: text),
                 resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):
@@ -93,7 +90,7 @@ class ApolloNetworkService: NetworkServiceProviding {
                         if gqlResult.errors != nil {
                             observer(.error(JoinChatError.cannotFindRoom))
                         } else if let data = gqlResult.data {
-                            let response = JoinChatResponse(userId: data.enterRoom.userId, roomId: data.enterRoom.roomId)
+                            let response = JoinChatResponse(userId: data.enterRoom.userId, roomId: data.enterRoom.roomId, token: data.enterRoom.token)
                             observer(.success(response))
                         } else {
                             observer(.completed)

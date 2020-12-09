@@ -102,10 +102,7 @@ final class ChatViewReactor: Reactor {
     }
     
     private func requestSendMessage(message: String) -> Observable<Mutation> {
-        return networkService.sendMessage(text: message,
-                                          source: userData.language.code,
-                                          userId: userData.id,
-                                          roomId: roomID)
+        return networkService.sendMessage(text: message)
             .asObservable()
             .map { Mutation.setSendResult($0.createMessage) }
     }

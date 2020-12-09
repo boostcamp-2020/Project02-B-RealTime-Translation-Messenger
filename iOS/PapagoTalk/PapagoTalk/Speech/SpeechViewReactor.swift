@@ -125,10 +125,7 @@ final class SpeechViewReactor: Reactor {
     }
     
     private func requestSendMessage(message: String) -> Observable<Mutation> {
-        return networkService.sendMessage(text: message,
-                                          source: userData.language.code,
-                                          userId: userData.id,
-                                          roomId: roomID)
+        return networkService.sendMessage(text: message)
             .asObservable()
             .map { _ in Mutation.sendMessage }
     }
