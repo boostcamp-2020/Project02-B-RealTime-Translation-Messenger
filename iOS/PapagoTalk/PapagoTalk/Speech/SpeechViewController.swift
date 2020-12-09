@@ -34,6 +34,7 @@ final class SpeechViewController: UIViewController, StoryboardView {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        bindKeyboard()
     }
     
     func bind(reactor: SpeechViewReactor) {
@@ -138,5 +139,25 @@ final class SpeechViewController: UIViewController, StoryboardView {
         view.removeFromSuperview()
         removeFromParent()
         dismiss(animated: true)
+    }
+}
+
+extension SpeechViewController: KeyboardProviding {
+    private func bindKeyboard() {
+        tapToDissmissKeyboard
+            .drive()
+            .disposed(by: disposeBag)
+        
+        keyboardWillShow
+            .drive(onNext: { [weak self] keyboardFrame in
+                guard let self = self, let superView = self.parent as? ChatViewController else { return }
+                superView.microphoneButton.isHidden = true
+                self.view.frame.origin.y += keyboardFrame.origin.y - self.view.frame.maxY
+                UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
+        
     }
 }
