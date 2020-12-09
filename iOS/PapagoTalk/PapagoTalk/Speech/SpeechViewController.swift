@@ -159,5 +159,15 @@ extension SpeechViewController: KeyboardProviding {
             })
             .disposed(by: disposeBag)
         
+        keyboardWillHide
+            .drive(onNext: { [weak self] _ in
+                guard let self = self, let superView = self.parent as? ChatViewController else { return }
+                self.view.frame.origin.y = (superView.view.frame.height - Constant.speechViewHeight)/2.0
+                UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+                    self.view.layoutIfNeeded()
+                    superView.microphoneButton.isHidden = false
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
