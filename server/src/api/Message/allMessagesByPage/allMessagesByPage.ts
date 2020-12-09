@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import req from '@utils/request';
+import translateText from '@utils/translateText';
 
 const prisma = new PrismaClient();
 
@@ -7,15 +7,27 @@ interface Pagination {
   page: number;
 }
 
+interface User {
+  id: number;
+  avatar: string;
+  nickname: string;
+  lang: string;
+}
+
 interface Message {
   id: number;
   text: string;
   source: string;
+  user: User;
 }
 
 export default {
   Query: {
-    allMessagesByPage: async (_: any, args: Pagination, { request, isAuthenticated }: any) => {
+    allMessagesByPage: async (
+      _: any,
+      args: Pagination,
+      { request, isAuthenticated }: any,
+    ): Promise<any> => {
       isAuthenticated(request);
       const { page } = args;
       const { roomId } = request.user;
@@ -36,15 +48,17 @@ export default {
         },
       });
 
+      const users = await prisma.room
+        .findOne({
+          where: {
+            id: roomId,
+          },
+        })
+        .users();
+
       const promises = Messages.map(async (message: Message) => {
-        const { text, source } = message;
-        const { lang: target } = request.user;
-        const translatedText = await req(text, source, target);
-        const texts = {
-          originText: text,
-          translatedText,
-        };
-        message.text = JSON.stringify(texts);
+        const { lang } = request.user;
+        message.text = await translateText(message, lang, users);
       });
 
       await Promise.all(promises);
