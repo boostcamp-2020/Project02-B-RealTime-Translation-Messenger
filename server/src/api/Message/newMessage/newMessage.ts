@@ -13,14 +13,14 @@ export default {
 
             if (source === 'in' || source === 'out') {
               payload.newMessage.text = text;
-            } else {
-              const translatedText = await req(text, source, target);
-              const texts = {
-                originText: text,
-                translatedText,
-              };
-              payload.newMessage.text = JSON.stringify(texts);
+              return true;
             }
+            const translatedText = await req(text, source, target);
+            const texts = {
+              originText: text,
+              translatedText,
+            };
+            payload.newMessage.text = JSON.stringify(texts);
 
             return true;
           }
