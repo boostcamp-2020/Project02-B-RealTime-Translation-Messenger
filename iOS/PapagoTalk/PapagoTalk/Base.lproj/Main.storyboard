@@ -749,23 +749,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulf-oi-Pau">
-                                <rect key="frame" x="6" y="156" width="286" height="170"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-B6-ers">
+                                <rect key="frame" x="6" y="6" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="SZI-ks-xQY"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ysf-KU-ImM"/>
+                                    <constraint firstAttribute="width" constant="24" id="QVb-DH-Ktr"/>
+                                    <constraint firstAttribute="height" constant="24" id="fNr-xc-F5j"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="...">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="24" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-PK-5XA">
                                 <rect key="frame" x="0.0" y="36" width="350" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -773,6 +767,42 @@
                                     <constraint firstAttribute="height" constant="1" id="EQs-P0-sez"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRa-JV-K4c">
+                                <rect key="frame" x="6" y="43" width="286" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="27o-T6-8vB"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="HKy-q9-vfW"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="15" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8M-6R-f59" customClass="RoundShadowButton" customModule="PapagoTalk" customModuleProvider="target">
+                                <rect key="frame" x="298" y="97" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="17h-EW-LFT"/>
+                                    <constraint firstAttribute="width" constant="40" id="NEW-BL-VJu"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="paperplane.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-4D-EsY">
                                 <rect key="frame" x="0.0" y="149" width="350" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -780,11 +810,11 @@
                                     <constraint firstAttribute="height" constant="1" id="Kyd-WJ-FUx"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8M-6R-f59" customClass="RoundShadowButton" customModule="PapagoTalk" customModuleProvider="target">
-                                <rect key="frame" x="298" y="97" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pti-V4-ICE" customClass="RoundShadowButton" customModule="PapagoTalk" customModuleProvider="target">
+                                <rect key="frame" x="298" y="286" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="17h-EW-LFT"/>
-                                    <constraint firstAttribute="width" constant="40" id="NEW-BL-VJu"/>
+                                    <constraint firstAttribute="height" constant="40" id="0IC-MV-Lfy"/>
+                                    <constraint firstAttribute="width" constant="40" id="mEw-57-2b7"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal">
@@ -818,53 +848,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRa-JV-K4c">
-                                <rect key="frame" x="6" y="43" width="286" height="100"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulf-oi-Pau">
+                                <rect key="frame" x="6" y="156" width="286" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="27o-T6-8vB"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="HKy-q9-vfW"/>
+                                    <constraint firstAttribute="height" constant="170" id="SZI-ks-xQY"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ysf-KU-ImM"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content=" ">
+                                    <fragment content="...">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="Helvetica"/>
+                                            <font key="NSFont" size="24" name="Helvetica"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-B6-ers">
-                                <rect key="frame" x="6" y="6" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="QVb-DH-Ktr"/>
-                                    <constraint firstAttribute="height" constant="24" id="fNr-xc-F5j"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pti-V4-ICE" customClass="RoundShadowButton" customModule="PapagoTalk" customModuleProvider="target">
-                                <rect key="frame" x="298" y="286" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0IC-MV-Lfy"/>
-                                    <constraint firstAttribute="width" constant="40" id="mEw-57-2b7"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemGreenColor"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="paperplane.fill" catalog="system" symbolScale="large"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GSN-kQ-Uou"/>
                         <color key="backgroundColor" name="PapagoGreen"/>

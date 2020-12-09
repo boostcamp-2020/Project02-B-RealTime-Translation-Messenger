@@ -230,7 +230,6 @@ extension ChatViewController: KeyboardProviding {
     }
 }
 
-// TODO: Rx로 수정
 extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.width, height: 40)

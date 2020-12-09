@@ -127,7 +127,8 @@ final class SpeechViewController: UIViewController, StoryboardView {
     }
     
     private func dismiss() {
-        guard let superview = view.superview else { return }
+        guard let superview = view.superview, let parent = self.parent as? ChatViewController else { return }
+        parent.microphoneButton.isHidden = false
         UIView.transition(with: superview,
                           duration: 0.4,
                           options: [.transitionCrossDissolve]) { [weak self] in
@@ -135,7 +136,6 @@ final class SpeechViewController: UIViewController, StoryboardView {
         } completion: { [weak self] _ in
             self?.delegate?.speechViewDidDismiss()
         }
-        
         view.removeFromSuperview()
         removeFromParent()
         dismiss(animated: true)
@@ -150,9 +150,10 @@ extension SpeechViewController: KeyboardProviding {
         
         keyboardWillShow
             .drive(onNext: { [weak self] keyboardFrame in
-                guard let self = self, let superView = self.parent as? ChatViewController else { return }
-                superView.microphoneButton.isHidden = true
+                guard let self = self, let superview = self.parent as? ChatViewController else { return }
+                superview.microphoneButton.isHidden = true
                 self.view.frame.origin.y += keyboardFrame.origin.y - self.view.frame.maxY
+                self.view.frame = self.view.frame.offsetBy(dx: .zero, dy: 30)
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
                 }
@@ -165,7 +166,6 @@ extension SpeechViewController: KeyboardProviding {
                 self.view.frame.origin.y = (superView.view.frame.height - Constant.speechViewHeight)/2.0
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
-                    superView.microphoneButton.isHidden = false
                 }
             })
             .disposed(by: disposeBag)
