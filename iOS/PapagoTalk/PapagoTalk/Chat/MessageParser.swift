@@ -32,8 +32,9 @@ struct MessageParser: MessageParseProviding {
         messages.append(originMessage)
         
         let messageLanguage = Language.codeToLanguage(of: newMessage.source)
+        let setting = false
         
-        guard messageLanguage != userData.language else {
+        guard messageLanguage != userData.language || messageLanguage != sender.language || setting else {
             return messages
         }
         
@@ -48,16 +49,3 @@ struct MessageParser: MessageParseProviding {
         return messages
     }
 }
-
-/*
- if newMessage.user.id != userData.id &&
-     Language.codeToLanguage(of: newMessage.user.lang) != userData.language {
-     let translatedMessage = Message(id: newMessage.id,
-                                     of: translatedResult.translatedText,
-                                     by: sender,
-                                     language: userData.language.code,
-                                     timeStamp: timeStamp,
-                                     isTranslated: true)
-     messages.append(translatedMessage)
- }
-*/
