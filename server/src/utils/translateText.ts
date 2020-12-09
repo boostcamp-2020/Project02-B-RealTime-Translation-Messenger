@@ -34,13 +34,12 @@ export default async (message: Message, lang: string, users: User[]): Promise<st
       };
       return JSON.stringify(texts);
     }
-  } else {
-    const secondLang = getSecondLang(users, lang);
-    const translatedText = await req(text, source, secondLang);
-    const texts = {
-      originText: text,
-      translatedText,
-    };
-    return JSON.stringify(texts);
   }
+  const secondLang = getSecondLang(users, lang);
+  const translatedText = await req(text, source, secondLang);
+  const texts = {
+    originText: text,
+    translatedText,
+  };
+  return JSON.stringify(texts);
 };

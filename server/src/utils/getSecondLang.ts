@@ -27,10 +27,9 @@ export default (users: User[], lang: string): string => {
       countObj[key1] > countObj[key2] ? key1 : key2,
     );
     return key;
-  } else {
-    if (lang === 'en') {
-      return 'ko';
-    }
-    return 'en';
   }
+  if (lang === 'en') {
+    return 'ko';
+  }
+  return 'en';
 };
