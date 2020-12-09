@@ -57,6 +57,7 @@ final class ChatDrawerViewReactor: Reactor {
                 .just(Mutation.setToastMessage(Strings.ChatDrawer.chatCodeDidCopyMessage))
             ])
         case .leaveChatRoomButtonTapped:
+            networkService.leaveRoom()
             return .just(Mutation.setLeaveChatRoom(true))
         }
     }
