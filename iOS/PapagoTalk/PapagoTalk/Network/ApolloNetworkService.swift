@@ -12,6 +12,7 @@ import RxSwift
 class ApolloNetworkService: NetworkServiceProviding {
     
     let store = ApolloStore()
+    let urlClient = URLSessionClient()
     var socketURL = APIEndPoint.socketURL
     var requestURL = APIEndPoint.requestURL
     
@@ -23,7 +24,7 @@ class ApolloNetworkService: NetworkServiceProviding {
     
     private lazy var normalTransport: RequestChainNetworkTransport = {
         let url = requestURL
-        return RequestChainNetworkTransport(interceptorProvider: LegacyInterceptorProvider(store: store), endpointURL: url)
+        return RequestChainNetworkTransport(interceptorProvider: NetworkInterceptorProvider(store: store, client: urlClient), endpointURL: url)
     }()
     
     private lazy var splitNetworkTransport = SplitNetworkTransport(

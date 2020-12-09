@@ -49,6 +49,8 @@
 		99482F2D257FA13000802B45 /* ChatDrawerViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */; };
 		99482F46257FCE1800802B45 /* MicButtonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F45257FCE1700802B45 /* MicButtonSize.swift */; };
 		99482F8C2580B83D00802B45 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F8B2580B83D00802B45 /* API.swift */; };
+		99482F902580BC9E00802B45 /* TokenAddingIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */; };
+		99482F942580BE5900802B45 /* NetworkIntercepterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D0257621B700C15AC7 /* UserDataProvider.swift */; };
@@ -221,6 +223,8 @@
 		99482F702580AD4500802B45 /* NewUser.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NewUser.graphql; sourceTree = "<group>"; };
 		99482F772580B15A00802B45 /* LeavedUser */ = {isa = PBXFileReference; lastKnownFileType = text; path = LeavedUser; sourceTree = "<group>"; };
 		99482F8B2580B83D00802B45 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAddingIntercepter.swift; sourceTree = "<group>"; };
+		99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIntercepterProvider.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C625760ADD00C15AC7 /* FindRoomByID.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindRoomByID.graphql; sourceTree = "<group>"; };
@@ -476,6 +480,8 @@
 				993AF6782574DF2F00416692 /* CreateRoomResponse.swift */,
 				99482D9A2578874000802B45 /* PapagoAPIManager.swift */,
 				99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */,
+				99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */,
+				99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -954,6 +960,7 @@
 				BB20F4C625738D2C00C5AC1D /* UserDefault.swift in Sources */,
 				BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */,
 				BB9A86A4257487C800FE14D6 /* MessageCell.swift in Sources */,
+				99482F902580BC9E00802B45 /* TokenAddingIntercepter.swift in Sources */,
 				BB23C0A12576AABB001D74A0 /* NetworkServiceProviding.swift in Sources */,
 				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
 				99482EAD257DB34800802B45 /* SentMessageBubbleTail.swift in Sources */,
@@ -973,6 +980,7 @@
 				990DE947257336D900340A72 /* JoinChatError.swift in Sources */,
 				BB9A86A02574879500FE14D6 /* ChatDrawerUserCell.swift in Sources */,
 				996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */,
+				99482F942580BE5900802B45 /* NetworkIntercepterProvider.swift in Sources */,
 				996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */,
 				9964793B2576901200CFF202 /* InputBarTextView.swift in Sources */,
 				BBE140772573D374000B0604 /* DateFormatter+.swift in Sources */,
