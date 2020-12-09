@@ -11,6 +11,7 @@ enum MessageType: String, Codable {
     case sent
     case received
     case translated
+    case system
     
     var identifier: String {
         switch self {
@@ -20,6 +21,8 @@ enum MessageType: String, Codable {
             return ReceivedMessageCell.identifier
         case .translated:
             return TranslatedMessageCell.identifier
+        case .system:
+            return SystemMessageCell.identifier
         }
     }
 }

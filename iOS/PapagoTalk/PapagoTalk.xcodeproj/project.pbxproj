@@ -51,6 +51,7 @@
 		99482F8C2580B83D00802B45 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F8B2580B83D00802B45 /* API.swift */; };
 		99482F902580BC9E00802B45 /* TokenAddingIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */; };
 		99482F942580BE5900802B45 /* NetworkIntercepterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */; };
+		99482F9A2580ED6800802B45 /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F992580ED6700802B45 /* SystemMessageCell.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D0257621B700C15AC7 /* UserDataProvider.swift */; };
@@ -225,6 +226,7 @@
 		99482F8B2580B83D00802B45 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAddingIntercepter.swift; sourceTree = "<group>"; };
 		99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIntercepterProvider.swift; sourceTree = "<group>"; };
+		99482F992580ED6700802B45 /* SystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCell.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C625760ADD00C15AC7 /* FindRoomByID.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindRoomByID.graphql; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				BB9A86A3257487C800FE14D6 /* MessageCell.swift */,
 				996C4E91257005C20015F9F4 /* SentMessageCell.swift */,
 				996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */,
+				99482F992580ED6700802B45 /* SystemMessageCell.swift */,
 			);
 			path = MessageCell;
 			sourceTree = "<group>";
@@ -952,6 +955,7 @@
 				BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */,
 				99482E57257B558700802B45 /* HomeCoordinator.swift in Sources */,
 				99482ED8257E3D0400802B45 /* LaunchScreenViewController.swift in Sources */,
+				99482F9A2580ED6800802B45 /* SystemMessageCell.swift in Sources */,
 				99482E5B257B63E100802B45 /* ChatCoordinator.swift in Sources */,
 				BBEA1A60256F46FE009B8B5F /* User.swift in Sources */,
 				BB20F4D7257394D800C5AC1D /* Data+.swift in Sources */,

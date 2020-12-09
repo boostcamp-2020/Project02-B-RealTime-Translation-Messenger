@@ -1270,6 +1270,47 @@
                                             <outlet property="timeLabel" destination="mF7-5M-TlD" id="E3b-6A-DsP"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SystemMessageCell" id="9UL-52-m31" customClass="SystemMessageCell" customModule="PapagoTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="249.5" width="414" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="y0M-9g-FR0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMh-Aw-S72">
+                                                    <rect key="frame" x="125.5" y="4" width="163" height="24"/>
+                                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                                                    </accessibility>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="24" id="4JH-e9-Ryo"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="75E-1a-Cqg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                    <state key="normal" title="마마고님이 퇴장하셨습니다.">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VMh-Aw-S72" firstAttribute="top" secondItem="y0M-9g-FR0" secondAttribute="top" constant="4" id="5G5-hx-HzY"/>
+                                                <constraint firstItem="VMh-Aw-S72" firstAttribute="centerX" secondItem="y0M-9g-FR0" secondAttribute="centerX" id="Ngd-vp-dW8"/>
+                                                <constraint firstItem="VMh-Aw-S72" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y0M-9g-FR0" secondAttribute="leading" constant="8" id="PTV-ZK-H0x"/>
+                                                <constraint firstAttribute="bottom" secondItem="VMh-Aw-S72" secondAttribute="bottom" constant="4" id="Wxw-1O-xfs"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VMh-Aw-S72" secondAttribute="trailing" constant="8" id="abe-TM-8ep"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="systemMessageBadge" destination="VMh-Aw-S72" id="QV7-4k-gGu"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUb-Gw-ivA">
