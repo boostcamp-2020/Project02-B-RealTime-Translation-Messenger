@@ -19,6 +19,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     private var visualEffectView: UIVisualEffectView
     private var runningAnimations = [UIViewPropertyAnimator]()
     
+    private let userDataSource = UserDataSource()
     var chatDrawerObserver: BehaviorRelay<Bool>
     var buttonSizeObserver: BehaviorRelay<MicButtonSize>
     var completion: (() -> Void)?
@@ -82,11 +83,8 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     // MARK: - Output
     private func bindState(reactor: ChatDrawerViewReactor) {
         reactor.state.map { $0.users }
-            .asObservable()
-            .bind(to: userListCollectionView.rx.items) { [weak self] (_, row, element) in
-                guard let self = self else { return UICollectionViewCell() }
-                return self.configureChatDrawerUserCell(at: row, with: element)
-            }
+            .map { [UserSection(items: $0)] }
+            .bind(to: userListCollectionView.rx.items(dataSource: userDataSource))
             .disposed(by: disposeBag)
         
         reactor.state.compactMap { $0.roomCode }
@@ -170,15 +168,6 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         actionSheetController.addAction(noneAction)
 
         present(actionSheetController, animated: true, completion: nil)
-    }
-    
-    private func configureChatDrawerUserCell(at row: Int, with element: User) -> UICollectionViewCell {
-        guard let cell = userListCollectionView.dequeueReusableCell(withReuseIdentifier: ChatDrawerUserCell.identifier,
-                                                                    for: IndexPath(row: row, section: .zero)) as? ChatDrawerUserCell else {
-            return UICollectionViewCell()
-        }
-        cell.configureUserCell(with: element)
-        return cell
     }
     
     func configureAnimation(state: ChatDrawerState, duration: TimeInterval) {

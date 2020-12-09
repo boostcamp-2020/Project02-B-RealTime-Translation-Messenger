@@ -9,6 +9,7 @@ import UIKit
 import ReactorKit
 import RxCocoa
 import RxGesture
+import RxDataSources
 
 final class ChatViewController: UIViewController, StoryboardView {
     
@@ -21,6 +22,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     private var chatDrawerObserver = BehaviorRelay(value: false)
     private var micButtonSizeObserver: BehaviorRelay<MicButtonSize>
+    private let messageDataSource = MessageDataSource()
     weak var coordinator: ChatCoordinating?
     var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
@@ -99,12 +101,8 @@ final class ChatViewController: UIViewController, StoryboardView {
             .do(afterNext: { [weak self] _ in
                 self?.scrollToLastMessage()
             })
-            .bind(to: chatCollectionView.rx.items) { [weak self] (_, row, element) in
-                guard let cell = self?.configureChatMessageCell(at: row, with: element) else {
-                    return UICollectionViewCell()
-                }
-                return cell
-            }
+            .map { [MessageSection(items: $0)] }
+            .bind(to: chatCollectionView.rx.items(dataSource: messageDataSource))
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.sendResult }
@@ -156,15 +154,6 @@ final class ChatViewController: UIViewController, StoryboardView {
         let size = inputBarTextView.sizeThatFits(CGSize(width: inputBarTextView.bounds.size.width,
                                                         height: CGFloat.greatestFiniteMagnitude))
         return min(Constant.inputBarTextViewMaxHeight, size.height)
-    }
-    
-    private func configureChatMessageCell(at row: Int, with element: Message) -> UICollectionViewCell {
-        guard let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: element.type.identifier,
-                                                                for: IndexPath(row: row, section: .zero)) as? MessageCell else {
-            return UICollectionViewCell()
-        }
-        cell.configureMessageCell(message: element)
-        return cell
     }
     
     private func scrollToLastMessage() {
