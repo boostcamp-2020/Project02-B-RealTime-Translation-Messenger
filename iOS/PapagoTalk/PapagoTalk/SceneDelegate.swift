@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let alertFactory = AlertFactory()
         let userData = UserDataProvider()
         let translationManager = PapagoAPIManager()
-        let speechManager = SpeechManager(userData: userData)
         let messageParser = MessageParser(userData: userData)
         
         window = UIWindow(windowScene: scene)
@@ -29,7 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                       userData: userData,
                                       alertFactory: alertFactory,
                                       translationManager: translationManager,
-                                      speechManager: speechManager,
                                       messageParser: messageParser)
         coordinator?.start()
         
