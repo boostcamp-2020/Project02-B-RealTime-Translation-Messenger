@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Apollo
 
 struct User: Codable {
     var id: Int
@@ -20,10 +21,20 @@ struct User: Codable {
         self.language = language
     }
     
+    typealias GetMessageUserData = GetMessageSubscription.Data.NewMessage.User
+    
+    init(data: GetMessageUserData) {
+        self.id = data.id
+        self.nickName = data.nickname
+        self.image = data.avatar
+        self.language = .codeToLanguage(of: data.lang)
+        // self.isMe = false
+    }
+    
     init(_ imageFactory: ImageFactoryProviding = ImageFactory()) {
-        id = 0
-        nickName = ""
-        image = imageFactory.randomImageURL()
-        language = Locale.currentLanguage
+        self.id = 0
+        self.nickName = ""
+        self.image = imageFactory.randomImageURL()
+        self.language = Locale.currentLanguage
     }
 }
