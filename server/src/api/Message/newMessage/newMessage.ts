@@ -12,8 +12,14 @@ export default {
         (_: any, __: any, { pubsub }: any) => pubsub.asyncIterator(TRIGGER.NEW_MESSAGE),
         async (payload, variables): Promise<boolean> => {
           if (payload.newMessage.roomId === variables.roomId) {
+
             const message = payload.newMessage;
             const { roomId, lang } = variables;
+
+            if (message.source === 'in' || message.source === 'out') {
+              return true;
+            }
+
             const users = await prisma.room
               .findOne({
                 where: {

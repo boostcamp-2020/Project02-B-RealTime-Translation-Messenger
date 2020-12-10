@@ -24,7 +24,7 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState(2);
 
-  const { data: usersData, loading: usersLoading, changeUser } = useUsers({
+  const { data: usersData, loading: usersLoading } = useUsers({
     roomId,
   });
   const {
@@ -56,7 +56,6 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
         page={page}
         setPage={setPage}
         onLoadMore={onLoadMore}
-        changeUser={changeUser}
       />
       <Input />
     </>

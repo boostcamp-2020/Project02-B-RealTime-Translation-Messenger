@@ -9,7 +9,6 @@ interface Props {
   page: number;
   setPage: any;
   onLoadMore: any;
-  changeUser: ChangeUserType | undefined;
 }
 
 interface ChangeUserType {
@@ -31,13 +30,7 @@ const Wrapper = styled.div`
   overflow-y: scroll;
 `;
 
-const ChatLog: FC<Props> = ({
-  messages,
-  page,
-  setPage,
-  onLoadMore,
-  changeUser,
-}) => {
+const ChatLog: FC<Props> = ({ messages, page, setPage, onLoadMore }) => {
   const location = useLocation<{ roomId: number }>();
   const { roomId } = location.state;
   const chatLogRef = useRef<HTMLDivElement>(null);
@@ -45,16 +38,6 @@ const ChatLog: FC<Props> = ({
   useEffect(() => {
     chatLogRef.current!.scrollTop = chatLogRef.current!.scrollHeight;
   }, [messages]);
-
-  useEffect(() => {
-    if (!changeUser) return;
-    // test code
-    alert(
-      `${changeUser?.user.nickname}님이 ${
-        changeUser?.type === 'CREATE' ? '입장' : '퇴장'
-      }`,
-    );
-  }, [changeUser]);
 
   const onScrollEvent = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
     if (e.currentTarget.scrollTop === 0) {

@@ -12,7 +12,30 @@ export default {
       { pubsub, request, isAuthenticated }: any,
     ): Promise<boolean> => {
       isAuthenticated(request);
-      const { id, roomId } = request.user;
+
+      const { id, nickname, roomId } = request.user;
+
+      const newMessage = await prisma.message.create({
+        data: {
+          text: `${nickname}님이 나갔습니다`,
+          source: 'out',
+          user: {
+            connect: {
+              id,
+            },
+          },
+          room: {
+            connect: {
+              id: roomId,
+            },
+          },
+        },
+        include: {
+          user: true,
+        },
+      });
+
+
       await prisma.user.update({
         where: {
           id,
@@ -26,17 +49,29 @@ export default {
           isDeleted: false,
           rooms: {
             some: {
+
               id: roomId,
             },
           },
         },
+
+        include: {
+          user: true,
+        },
       });
+
       if (!restUser) {
         await prisma.$queryRaw`delete from user where user.id in (select B from room join _roomtouser on A = ${roomId} AND room.id = A );`;
+
         await prisma.$queryRaw`DELETE FROM Room WHERE id = ${roomId}`;
         return true;
       }
+
+
+      pubsub.publish(TRIGGER.NEW_MESSAGE, { newMessage });
+
       pubsub.publish(TRIGGER.DELETE_USER, { deleteUser: { id, roomId } });
+
       return true;
     },
   },
