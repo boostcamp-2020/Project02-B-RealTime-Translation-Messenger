@@ -83,7 +83,8 @@ final class MicrophoneButton: RoundShadowButton {
     func moveToLatest() {
         isOnSpeeching = false
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
-            self?.center = self?.latestCenter ?? .zero
+            guard let self = self else { return }
+            self.center = self.latestCenter ?? self.center
         }
     }
     
