@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import PapagoTalk
 
 struct ImageFactoryStub: ImageFactoryProviding {
     func randomImageURL() -> String {

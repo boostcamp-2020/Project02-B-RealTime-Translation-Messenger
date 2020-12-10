@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+@testable import PapagoTalk
 
 class PapagoAPIServiceMock: PapagoAPIServiceProviding {
     func requestTranslation(request: TranslationRequest) -> Maybe<String> {

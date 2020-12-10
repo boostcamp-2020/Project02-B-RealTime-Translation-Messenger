@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import PapagoTalk
 
 struct MessageParserMock: MessageParseProviding {
     func parse(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message] {

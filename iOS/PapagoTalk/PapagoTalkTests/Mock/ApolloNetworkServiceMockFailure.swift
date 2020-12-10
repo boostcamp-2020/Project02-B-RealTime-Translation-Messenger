@@ -7,8 +7,15 @@
 
 import Foundation
 import RxSwift
+@testable import PapagoTalk
+
 
 struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
+    
+    func getMessage(roomID: Int, userID: Int) -> Observable<GetMessageSubscription.Data> {
+        getMessage(roomId: roomID, language: .korean)
+    }
+    
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.just(.init(createMessage: false))
     }
