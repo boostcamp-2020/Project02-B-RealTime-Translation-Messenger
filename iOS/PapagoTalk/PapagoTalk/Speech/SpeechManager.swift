@@ -46,8 +46,9 @@ final class SpeechManager: NSObject, SpeechServiceProviding {
     
     private func stopSpeechRecognizing() {
         audioEngine.stop()
+        audioEngine.inputNode.removeTap(onBus: .zero)
         recognitionRequest?.endAudio()
-    }
+      }
     
     private func configureAVAudioSession() {
         let audioSession = AVAudioSession.sharedInstance()
@@ -88,8 +89,7 @@ final class SpeechManager: NSObject, SpeechServiceProviding {
             guard error != nil || isFinal else {
                 return
             }
-            self?.audioEngine.stop()
-            inputNode.removeTap(onBus: .zero)
+            self?.stopSpeechRecognizing()
 
             self?.recognitionRequest = nil
             self?.recognitionTask = nil
