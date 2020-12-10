@@ -4,6 +4,7 @@ type User {
   avatar: String!
   password: String
   lang: String!
+  isDeleted: Boolean!
   rooms: [Room!]!
   messages: [Message]!
 }
@@ -19,11 +20,11 @@ type Room {
 }
 
 type Message {
-  id: Int!   
+  id: Int!
   text: String!
   source: String!
-  room: Room!     
-  user: User!  
+  room: Room!
+  user: User!
   createdAt: String
-  updatedAt: String   
+  updatedAt: String
 }
