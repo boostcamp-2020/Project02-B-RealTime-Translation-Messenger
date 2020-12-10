@@ -83,6 +83,7 @@ final class ChatCodeInputViewReactor: Reactor {
     }
     
     private func requestEnterRoom(state: State, lastInput: String) -> Observable<Mutation> {
+        networkService.leaveRoom()
         let code = state.codeInput.reduce("") { $0 + $1 } + lastInput
         return networkService.enterRoom(user: userData.user, code: code)
             .asObservable()

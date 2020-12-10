@@ -120,6 +120,7 @@ final class HomeViewReactor: Reactor {
     }
     
     private func requestCreateRoom() -> Observable<Mutation> {
+        networkService.leaveRoom()
         return networkService.createRoom(user: userData.user)
             .asObservable()
             .do(onNext: { [weak self] in 
