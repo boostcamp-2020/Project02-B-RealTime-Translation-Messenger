@@ -52,13 +52,23 @@ export default async (message: Message, me: User, users: User[]): Promise<string
         translatedText,
       };
       return JSON.stringify(texts);
+    } else {
+      if (message.source === myLang) {
+        const secondLang = getSecondLang(users, myLang);
+        const translatedText = await req(text, source, secondLang);
+        const texts = {
+          originText: text,
+          translatedText,
+        };
+        return JSON.stringify(texts);
+      } else {
+        const translatedText = await req(text, source, myLang);
+        const texts = {
+          originText: text,
+          translatedText,
+        };
+        return JSON.stringify(texts);
+      }
     }
   }
-  const secondLang = getSecondLang(users, myLang);
-  const translatedText = await req(text, source, secondLang);
-  const texts = {
-    originText: text,
-    translatedText,
-  };
-  return JSON.stringify(texts);
 };
