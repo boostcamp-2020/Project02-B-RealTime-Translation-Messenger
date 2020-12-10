@@ -1,3 +1,4 @@
+import { theme } from '@primer/components';
 import { DefaultTheme } from 'styled-components';
 
 export const Theme = {
@@ -24,6 +25,7 @@ export const lightTheme: DefaultTheme = {
   blackColor: Theme.blackColor,
   blueColor: Theme.blueColor,
   greenColor: Theme.greenColor,
+  reverseColor: Theme.blackColor,
   borderRadius: Theme.borderRadius,
   borderRadiusSmall: Theme.borderRadiusSmall,
   boxBorder: Theme.boxBorder,
@@ -40,6 +42,7 @@ export const darkTheme: DefaultTheme = {
   blackColor: Theme.blackColor,
   blueColor: Theme.blueColor,
   greenColor: Theme.greenColor,
+  reverseColor: Theme.whiteColor,
   borderRadius: Theme.borderRadius,
   borderRadiusSmall: Theme.borderRadiusSmall,
   boxBorder: Theme.boxBorder,
