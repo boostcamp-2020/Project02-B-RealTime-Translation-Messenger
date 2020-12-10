@@ -35,7 +35,6 @@ export default {
         },
       });
 
-
       await prisma.user.update({
         where: {
           id,
@@ -44,34 +43,26 @@ export default {
           isDeleted: true,
         },
       });
+
       const restUser = await prisma.user.count({
         where: {
           isDeleted: false,
           rooms: {
             some: {
-
               id: roomId,
             },
           },
-        },
-
-        include: {
-          user: true,
         },
       });
 
       if (!restUser) {
         await prisma.$queryRaw`delete from user where user.id in (select B from room join _roomtouser on A = ${roomId} AND room.id = A );`;
-
         await prisma.$queryRaw`DELETE FROM Room WHERE id = ${roomId}`;
         return true;
       }
 
-
       pubsub.publish(TRIGGER.NEW_MESSAGE, { newMessage });
-
       pubsub.publish(TRIGGER.DELETE_USER, { deleteUser: { id, roomId } });
-
       return true;
     },
   },
