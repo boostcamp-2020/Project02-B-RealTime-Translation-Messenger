@@ -31,6 +31,16 @@ struct User: Codable {
         // self.isMe = false
     }
     
+    typealias GetUserListUserData = FindRoomByIdQuery.Data.RoomById.User
+    
+    init(data: GetUserListUserData, userID: Int) {
+        self.id = data.id
+        self.nickName = data.nickname
+        self.image = data.avatar
+        self.language = .codeToLanguage(of: data.lang)
+        // self.isMe = (id == userID) ? true : false
+    }
+    
     init(_ imageFactory: ImageFactoryProviding = ImageFactory()) {
         self.id = 0
         self.nickName = ""
