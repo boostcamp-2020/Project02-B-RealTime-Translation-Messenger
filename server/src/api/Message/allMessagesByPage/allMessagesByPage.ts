@@ -57,10 +57,9 @@ export default {
         .users();
 
       const promises = Messages.map(async (message: Message) => {
-        const { text, source } = message;
-        const { lang } = request.user;
-        if (source !== 'in' && source !== 'out') {  
-          message.text = await translateText(message, lang, users);
+        const { source } = message;
+        if (source !== 'in' && source !== 'out') {
+          message.text = await translateText(message, request.user, users);
         }
       });
 
