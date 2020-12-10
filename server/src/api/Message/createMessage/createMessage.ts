@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import TRIGGER from '@utils/trigger';
 
 const prisma = new PrismaClient();
 
@@ -38,7 +39,7 @@ export default {
           user: true,
         },
       });
-      pubsub.publish('NEW_MESSAGE', {
+      pubsub.publish(TRIGGER.NEW_MESSAGE, {
         newMessage,
       });
       return true;
