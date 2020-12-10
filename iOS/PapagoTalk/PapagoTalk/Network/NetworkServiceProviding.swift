@@ -11,8 +11,8 @@ import RxSwift
 protocol NetworkServiceProviding {
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data>
     
-    func getMessage(roomId: Int,
-                    language: Language) -> Observable<GetMessageSubscription.Data>
+    func getMessage(roomID: Int,
+                    userID: Int) -> Observable<GetMessageSubscription.Data>
     
     func enterRoom(user: User,
                    code: String) -> Maybe<JoinChatResponse>

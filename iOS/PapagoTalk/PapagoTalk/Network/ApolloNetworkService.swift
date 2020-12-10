@@ -60,10 +60,10 @@ class ApolloNetworkService: NetworkServiceProviding {
         }
     }
     
-    func getMessage(roomId: Int, language: Language) -> Observable<GetMessageSubscription.Data> {
+    func getMessage(roomID: Int, userID: Int) -> Observable<GetMessageSubscription.Data> {
         return Observable.create { [weak self] observer in
             let cancellable = self?.client.subscribe(
-                subscription: GetMessageSubscription(roomId: roomId, language: language.code),
+                subscription: GetMessageSubscription(roomID: roomID, userID: userID),
                 resultHandler: { [weak self] result in
                     switch result {
                     case let .success(gqlResult):
