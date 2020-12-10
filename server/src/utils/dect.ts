@@ -11,6 +11,6 @@ export default async (query: string): Promise<string> => {
       'Content-Type': 'application/json',
     },
   };
-  const res = await axios.post('https://naveropenapi.apigw.ntruss.com/langs/v1/dect', data, config);
+  const res = await axios.post(process.env.PAPAGO_DECT_URL as string, data, config);
   return res.data.langCode;
 };
