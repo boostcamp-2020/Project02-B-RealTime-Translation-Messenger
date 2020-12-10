@@ -438,8 +438,8 @@ public final class GetMessageSubscription: GraphQLSubscription {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    subscription GetMessage($roomId: Int!, $language: String!) {
-      newMessage(roomId: $roomId, lang: $language) {
+    subscription GetMessage($roomID: Int!, $userID: Int!) {
+      newMessage(roomId: $roomID, id: $userID) {
         __typename
         id
         text
@@ -458,16 +458,16 @@ public final class GetMessageSubscription: GraphQLSubscription {
 
   public let operationName: String = "GetMessage"
 
-  public var roomId: Int
-  public var language: String
+  public var roomID: Int
+  public var userID: Int
 
-  public init(roomId: Int, language: String) {
-    self.roomId = roomId
-    self.language = language
+  public init(roomID: Int, userID: Int) {
+    self.roomID = roomID
+    self.userID = userID
   }
 
   public var variables: GraphQLMap? {
-    return ["roomId": roomId, "language": language]
+    return ["roomID": roomID, "userID": userID]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -475,7 +475,7 @@ public final class GetMessageSubscription: GraphQLSubscription {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("newMessage", arguments: ["roomId": GraphQLVariable("roomId"), "lang": GraphQLVariable("language")], type: .object(NewMessage.selections)),
+        GraphQLField("newMessage", arguments: ["roomId": GraphQLVariable("roomID"), "id": GraphQLVariable("userID")], type: .object(NewMessage.selections)),
       ]
     }
 
@@ -1178,8 +1178,8 @@ public final class TranslationMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation Translation($text: String!, $target: String!) {
-      translation(text: $text, target: $target) {
+    mutation Translation($text: String!) {
+      translation(text: $text) {
         __typename
         translatedText
       }
@@ -1189,15 +1189,13 @@ public final class TranslationMutation: GraphQLMutation {
   public let operationName: String = "Translation"
 
   public var text: String
-  public var target: String
 
-  public init(text: String, target: String) {
+  public init(text: String) {
     self.text = text
-    self.target = target
   }
 
   public var variables: GraphQLMap? {
-    return ["text": text, "target": target]
+    return ["text": text]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -1205,7 +1203,7 @@ public final class TranslationMutation: GraphQLMutation {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("translation", arguments: ["text": GraphQLVariable("text"), "target": GraphQLVariable("target")], type: .nonNull(.object(Translation.selections))),
+        GraphQLField("translation", arguments: ["text": GraphQLVariable("text")], type: .nonNull(.object(Translation.selections))),
       ]
     }
 
