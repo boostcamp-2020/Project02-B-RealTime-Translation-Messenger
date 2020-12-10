@@ -69,7 +69,8 @@ class HomeReactorTests: XCTestCase {
         reactor.action.onNext(.makeChatRoomButtonTapped)
 
         // Then
-        XCTAssertEqual(reactor.currentState.createRoomResponse, .init(userId: 1, roomId: 8, code: "545305"))
+        XCTAssertEqual(reactor.currentState.createRoomResponse,
+                       .init(userId: 1, roomId: 8, code: "545305", token: "testToken"))
     }
     
     func test_makeChatRoom_invalidNickName() throws {
