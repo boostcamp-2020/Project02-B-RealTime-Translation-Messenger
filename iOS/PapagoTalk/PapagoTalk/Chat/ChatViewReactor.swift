@@ -103,7 +103,7 @@ final class ChatViewReactor: Reactor {
     }
         
     private func subscribeMessages() -> Observable<Mutation> {
-        return networkService.getMessage(roomId: roomID, language: userData.language)
+        return networkService.getMessage(roomID: roomID, userID: userData.id)
             .compactMap { $0.newMessage }
             .compactMap { [weak self] in
                 self?.messageParser.parse(newMessage: $0)
