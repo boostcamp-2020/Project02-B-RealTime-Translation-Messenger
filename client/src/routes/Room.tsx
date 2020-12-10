@@ -13,14 +13,14 @@ interface MatchParams {
 }
 
 interface LocationState {
-  lang: string;
+  userId: number;
   code: string;
 }
 
 const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const roomId = +match.params.id;
   const location = useLocation<LocationState>();
-  const { lang, code } = location.state;
+  const { userId, code } = location.state;
   const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState(2);
 
@@ -34,7 +34,7 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   } = useMessages({
     roomId,
     page: 1,
-    lang,
+    id: userId,
   });
 
   if (messagesLoading || usersLoading) return <div>Loading!</div>;

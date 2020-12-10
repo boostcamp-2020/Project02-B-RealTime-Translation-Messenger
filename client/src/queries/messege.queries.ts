@@ -36,8 +36,8 @@ export const ALL_MESSAGES_BY_PAGE = gql`
 `;
 
 export const NEW_MESSAGE = gql`
-  subscription($roomId: Int!, $lang: String!) {
-    newMessage(roomId: $roomId, lang: $lang) {
+  subscription($roomId: Int!, $id: Int!) {
+    newMessage(roomId: $roomId, id: $id) {
       id
       text
       source
