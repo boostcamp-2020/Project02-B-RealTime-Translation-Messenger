@@ -18,7 +18,6 @@ final class ChatViewReactor: Reactor {
     }
     
     enum Mutation {
-        case fetchUserList([Int: String])
         case appendNewMessage([Message])
         case setSendResult(Bool)
         case toggleDrawerState
@@ -40,7 +39,6 @@ final class ChatViewReactor: Reactor {
     private var userData: UserDataProviding
     private let roomID: Int
     private let messageParser: MessageParseProviding
-    private var userListCache: [Int: String] = [:]
     
     let initialState: State
     
@@ -64,11 +62,8 @@ final class ChatViewReactor: Reactor {
         switch action {
         case .subscribeChatRoom:
             return currentState.isSubscribingMessage ?
-                .just(.reconnectSocket) : .merge([ fetchUserList(),
-                                                    .just(.connectSocket),
-                                                    subscribeMessages(),
-                                                    subscribeNewUser(),
-                                                    subscribeLeavedUser()
+                .just(.reconnectSocket) : .merge([ .just(.connectSocket),
+                                                    subscribeMessages()
                                                     ])
         case .sendMessage(let message):
             return requestSendMessage(message: message)
@@ -84,8 +79,6 @@ final class ChatViewReactor: Reactor {
         var state = state
         
         switch mutation {
-        case .fetchUserList(let cache):
-            userListCache = cache
         case .appendNewMessage(let messages):
             state.messageBox.append(messages)
         case .setSendResult(let isSuccess):
@@ -103,58 +96,17 @@ final class ChatViewReactor: Reactor {
     }
         
     private func subscribeMessages() -> Observable<Mutation> {
-        return networkService.getMessage(roomId: roomID, language: userData.language)
+        return networkService.getMessage(roomID: roomID, userID: userData.id)
             .compactMap { $0.newMessage }
             .compactMap { [weak self] in
                 self?.messageParser.parse(newMessage: $0)
             }
             .map { Mutation.appendNewMessage($0) }
     }
-    
-    private func subscribeNewUser() -> Observable<Mutation> {
-        return networkService.subscribeNewUser(roomID: roomID)
-            .compactMap { $0.newUser }
-            .compactMap { [weak self] in
-                guard let self = self else {
-                    return []
-                }
-                self.userListCache.updateValue($0.nickname, forKey: $0.id)
-                return [Message(systemText: "\($0.nickname)\(Strings.Chat.userJoinMessage)")]
-            }
-            .map { Mutation.appendNewMessage($0) }
-    }
-    
-    private func subscribeLeavedUser() -> Observable<Mutation> {
-        return networkService.subscribeLeavedUser(roomID: roomID)
-            .compactMap { $0.deleteUser?.id }
-            .compactMap { [weak self] in
-                guard let self = self else {
-                    return []
-                }
-                let nickName = self.userListCache[$0]
-                self.userListCache.removeValue(forKey: $0)
-                return [Message(systemText: "\(nickName ?? Strings.Chat.unknownUserNickname)\(Strings.Chat.userLeaveMessage)")]
-            }
-            .map { Mutation.appendNewMessage($0) }
-    }
-    
+        
     private func requestSendMessage(message: String) -> Observable<Mutation> {
         return networkService.sendMessage(text: message)
             .asObservable()
             .map { Mutation.setSendResult($0.createMessage) }
-    }
-    
-    private func fetchUserList() -> Observable<Mutation> {
-        return networkService.getUserList(of: roomID)
-            .asObservable()
-            .compactMap { $0.roomById?.users }
-            .map {
-                $0.reduce([Int: String]()) { cache, user in
-                    var cache = cache
-                    cache.updateValue(user.nickname, forKey: user.id)
-                    return cache
-                }
-            }
-            .map { Mutation.fetchUserList($0) }
     }
 }

@@ -1,5 +1,5 @@
-subscription GetMessage($roomId: Int!, $language: String!) {
-  newMessage(roomId: $roomId, lang: $language) {
+subscription GetMessage($roomID: Int!, $userID: Int!) {
+  newMessage(roomId: $roomID, id: $userID) {
     id
     text
     source
