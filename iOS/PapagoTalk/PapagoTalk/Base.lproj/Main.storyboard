@@ -747,26 +747,20 @@
             <objects>
                 <viewController storyboardIdentifier="SpeechViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2hK-um-IpQ" customClass="SpeechViewController" customModule="PapagoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BfQ-Og-bzX">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulf-oi-Pau">
-                                <rect key="frame" x="6" y="156" width="286" height="170"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-B6-ers">
+                                <rect key="frame" x="6" y="6" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="SZI-ks-xQY"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ysf-KU-ImM"/>
+                                    <constraint firstAttribute="width" constant="24" id="QVb-DH-Ktr"/>
+                                    <constraint firstAttribute="height" constant="24" id="fNr-xc-F5j"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="...">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="24" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4u-PK-5XA">
                                 <rect key="frame" x="0.0" y="36" width="350" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -774,15 +768,25 @@
                                     <constraint firstAttribute="height" constant="1" id="EQs-P0-sez"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-4D-EsY">
-                                <rect key="frame" x="0.0" y="149" width="350" height="1"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRa-JV-K4c">
+                                <rect key="frame" x="6" y="43" width="286" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="Kyd-WJ-FUx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="27o-T6-8vB"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="HKy-q9-vfW"/>
                                 </constraints>
-                            </view>
+                                <attributedString key="attributedText">
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="15" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8M-6R-f59" customClass="RoundShadowButton" customModule="PapagoTalk" customModuleProvider="target">
-                                <rect key="frame" x="298" y="97" width="40" height="40"/>
+                                <rect key="frame" x="298" y="67" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="17h-EW-LFT"/>
                                     <constraint firstAttribute="width" constant="40" id="NEW-BL-VJu"/>
@@ -800,55 +804,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azd-LU-dRl" customClass="SpeechButton" customModule="PapagoTalk" customModuleProvider="target">
-                                <rect key="frame" x="150" y="332" width="50" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-4D-EsY">
+                                <rect key="frame" x="0.0" y="119" width="350" height="1"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="MBr-hG-8HH"/>
-                                    <constraint firstAttribute="width" constant="50" id="yT4-6s-PUn"/>
+                                    <constraint firstAttribute="height" constant="1" id="Kyd-WJ-FUx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="default" weight="semibold">
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                    </preferredSymbolConfiguration>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRa-JV-K4c">
-                                <rect key="frame" x="6" y="43" width="286" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="27o-T6-8vB"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="HKy-q9-vfW"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-B6-ers">
-                                <rect key="frame" x="6" y="6" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="QVb-DH-Ktr"/>
-                                    <constraint firstAttribute="height" constant="24" id="fNr-xc-F5j"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pti-V4-ICE" customClass="RoundShadowButton" customModule="PapagoTalk" customModuleProvider="target">
-                                <rect key="frame" x="298" y="286" width="40" height="40"/>
+                                <rect key="frame" x="298" y="180" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0IC-MV-Lfy"/>
                                     <constraint firstAttribute="width" constant="40" id="mEw-57-2b7"/>
@@ -866,6 +830,42 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azd-LU-dRl" customClass="SpeechButton" customModule="PapagoTalk" customModuleProvider="target">
+                                <rect key="frame" x="150" y="232" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="MBr-hG-8HH"/>
+                                    <constraint firstAttribute="width" constant="50" id="yT4-6s-PUn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="default" weight="semibold">
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulf-oi-Pau">
+                                <rect key="frame" x="6" y="126" width="286" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="170" id="SZI-ks-xQY"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ysf-KU-ImM"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="24" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GSN-kQ-Uou"/>
                         <color key="backgroundColor" name="PapagoGreen"/>
@@ -882,14 +882,14 @@
                             <constraint firstItem="GSN-kQ-Uou" firstAttribute="bottom" secondItem="azd-LU-dRl" secondAttribute="bottom" constant="18" id="VOe-nE-Lif"/>
                             <constraint firstItem="Ulf-oi-Pau" firstAttribute="top" secondItem="aRI-4D-EsY" secondAttribute="bottom" constant="6" id="W3T-xW-noO"/>
                             <constraint firstItem="Pti-V4-ICE" firstAttribute="leading" secondItem="Ulf-oi-Pau" secondAttribute="trailing" constant="6" id="WFF-1X-wZj"/>
-                            <constraint firstItem="Pti-V4-ICE" firstAttribute="bottom" secondItem="Ulf-oi-Pau" secondAttribute="bottom" id="dH5-wO-YZz"/>
+                            <constraint firstItem="h8M-6R-f59" firstAttribute="bottom" secondItem="rRa-JV-K4c" secondAttribute="bottom" constant="-6" id="axJ-m5-ebx"/>
+                            <constraint firstItem="Pti-V4-ICE" firstAttribute="bottom" secondItem="Ulf-oi-Pau" secondAttribute="bottom" constant="-6" id="dH5-wO-YZz"/>
                             <constraint firstItem="6rh-B6-ers" firstAttribute="leading" secondItem="BfQ-Og-bzX" secondAttribute="leading" constant="6" id="gWE-4b-0JV"/>
                             <constraint firstItem="azd-LU-dRl" firstAttribute="centerX" secondItem="GSN-kQ-Uou" secondAttribute="centerX" id="gsc-4x-KZq"/>
                             <constraint firstItem="aRI-4D-EsY" firstAttribute="leading" secondItem="BfQ-Og-bzX" secondAttribute="leading" id="nwB-od-v6b"/>
                             <constraint firstAttribute="trailing" secondItem="aRI-4D-EsY" secondAttribute="trailing" id="p1C-tc-8qI"/>
                             <constraint firstItem="rRa-JV-K4c" firstAttribute="top" secondItem="P4u-PK-5XA" secondAttribute="bottom" constant="6" id="qaW-g6-esh"/>
                             <constraint firstItem="Ulf-oi-Pau" firstAttribute="leading" secondItem="GSN-kQ-Uou" secondAttribute="leading" constant="6" id="rj9-KL-HPh"/>
-                            <constraint firstItem="aRI-4D-EsY" firstAttribute="top" secondItem="h8M-6R-f59" secondAttribute="bottom" constant="12" id="ssd-PQ-mve"/>
                             <constraint firstItem="6rh-B6-ers" firstAttribute="top" secondItem="BfQ-Og-bzX" secondAttribute="top" constant="6" id="vMd-vc-t8h"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -898,7 +898,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <size key="freeformSize" width="350" height="400"/>
+                    <size key="freeformSize" width="350" height="300"/>
                     <connections>
                         <outlet property="cancelButton" destination="6rh-B6-ers" id="co4-9S-0Yz"/>
                         <outlet property="microphoneButton" destination="azd-LU-dRl" id="1Hw-jU-ttD"/>

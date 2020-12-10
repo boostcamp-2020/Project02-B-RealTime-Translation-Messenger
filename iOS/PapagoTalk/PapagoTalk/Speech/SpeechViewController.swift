@@ -34,6 +34,7 @@ final class SpeechViewController: UIViewController, StoryboardView {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        bindKeyboard()
     }
     
     func bind(reactor: SpeechViewReactor) {
@@ -126,7 +127,9 @@ final class SpeechViewController: UIViewController, StoryboardView {
     }
     
     private func dismiss() {
-        guard let superview = view.superview else { return }
+        guard let superview = view.superview, let parent = self.parent as? ChatViewController else { return }
+        view.endEditing(true)
+        parent.microphoneButton.isHidden = false
         UIView.transition(with: superview,
                           duration: 0.4,
                           options: [.transitionCrossDissolve]) { [weak self] in
@@ -134,9 +137,37 @@ final class SpeechViewController: UIViewController, StoryboardView {
         } completion: { [weak self] _ in
             self?.delegate?.speechViewDidDismiss()
         }
-        
         view.removeFromSuperview()
         removeFromParent()
         dismiss(animated: true)
+    }
+}
+
+extension SpeechViewController: KeyboardProviding {
+    private func bindKeyboard() {
+        tapToDissmissKeyboard
+            .drive()
+            .disposed(by: disposeBag)
+        
+        keyboardWillShow
+            .drive(onNext: { [weak self] keyboardFrame in
+                guard let self = self, let superview = self.parent as? ChatViewController else { return }
+                superview.microphoneButton.isHidden = true
+                self.view.frame.origin.y += keyboardFrame.origin.y - self.view.frame.maxY
+                UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        keyboardWillHide
+            .drive(onNext: { [weak self] _ in
+                guard let self = self, let superView = self.parent as? ChatViewController else { return }
+                self.view.frame.origin.y = superView.view.frame.height/4
+                UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
