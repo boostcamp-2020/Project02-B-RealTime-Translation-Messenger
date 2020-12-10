@@ -19,15 +19,20 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  allMessagesById?: Maybe<AllMessages>;
+  allMessagesByPage?: Maybe<AllMessages>;
+  allMessagesByTime?: Maybe<Array<Maybe<Message>>>;
   allRooms?: Maybe<Array<Maybe<Room>>>;
   roomById?: Maybe<Room>;
   allUsers?: Maybe<Array<Maybe<User>>>;
+  me: User;
 };
 
-export type QueryAllMessagesByIdArgs = {
-  id: Scalars['Int'];
+export type QueryAllMessagesByPageArgs = {
   page: Scalars['Int'];
+};
+
+export type QueryAllMessagesByTimeArgs = {
+  time: Scalars['String'];
 };
 
 export type QueryRoomByIdArgs = {
@@ -69,6 +74,7 @@ export type User = {
   avatar: Scalars['String'];
   password?: Maybe<Scalars['String']>;
   lang: Scalars['String'];
+  isDeleted: Scalars['Boolean'];
   rooms: Array<Room>;
   messages: Array<Maybe<Message>>;
 };
@@ -127,6 +133,7 @@ export type EnterRoomResponse = {
 export type Subscription = {
   __typename?: 'Subscription';
   newMessage?: Maybe<Message>;
+  deleteUser?: Maybe<DeleteUserResponse>;
   newUser?: Maybe<User>;
 };
 
@@ -135,6 +142,16 @@ export type SubscriptionNewMessageArgs = {
   lang: Scalars['String'];
 };
 
+export type SubscriptionDeleteUserArgs = {
+  roomId: Scalars['Int'];
+};
+
 export type SubscriptionNewUserArgs = {
+  roomId: Scalars['Int'];
+};
+
+export type DeleteUserResponse = {
+  __typename?: 'deleteUserResponse';
+  id: Scalars['Int'];
   roomId: Scalars['Int'];
 };
