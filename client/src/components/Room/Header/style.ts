@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface Props {
+  visible?: boolean;
+}
+
 export default {
   Wrapper: styled.div`
     top: 0;
@@ -20,9 +24,42 @@ export default {
       transform: translate(-50%, 0);
     }
   `,
-  HamburgerButton: styled.button`
-    width: 24px;
-    height: 24px;
+  HamburgerButton: styled.button<Props>`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: transparent;
+    z-index: 10;
+
+    div {
+      position: relative;
+      width: 2rem;
+      height: 0.25rem;
+      background: ${({ theme, visible }) =>
+        visible ? theme.whiteColor : theme.blackColor};
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      transform-origin: 1px;
+
+      :first-child {
+        transform: ${({ visible }) =>
+          visible ? 'rotate(45deg)' : 'rotate(0)'};
+      }
+
+      :nth-child(2) {
+        opacity: ${({ visible }) => (visible ? '0' : '1')};
+        transform: ${({ visible }) =>
+          visible ? 'translateX(20px)' : 'translateX(0)'};
+      }
+
+      :nth-child(3) {
+        transform: ${({ visible }) =>
+          visible ? 'rotate(-45deg)' : 'rotate(0)'};
+      }
+    }
   `,
   CodeWrapper: styled.div`
     display: flex;
