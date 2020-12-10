@@ -14,6 +14,11 @@ export default {
     background: ${(props) => props.theme.bgColor};
     border-bottom: ${(props) => props.theme.boxBorder};
     z-index: 1;
+    .reveal {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
   `,
   HamburgerButton: styled.button`
     width: 24px;
@@ -40,5 +45,20 @@ export default {
     width: 24px;
     height: 24px;
     margin-left: 1rem;
+  `,
+  Toast: styled.div`
+    position: fixed;
+    top: 5.5rem;
+    left: 50%;
+    padding: 1rem 1.5rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    font-size: 0.8rem;
+    transform: translate(-50%, 10px);
+    transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10000;
   `,
 };

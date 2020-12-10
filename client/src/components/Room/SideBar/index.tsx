@@ -1,6 +1,6 @@
 import React from 'react';
 import { Hamburger } from '@components/Icons';
-import { User } from '@/generated/types';
+import { User } from '@generated/types';
 import S from './style';
 
 interface Props {
