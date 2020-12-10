@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 interface VariablesType {
   roomId: number;
   page: number;
-  lang: string;
+  id: number;
 }
 
 interface QueryReturnType {
@@ -14,11 +14,7 @@ interface QueryReturnType {
   onLoadMore: any;
 }
 
-const useMessages = ({
-  roomId,
-  page,
-  lang,
-}: VariablesType): QueryReturnType => {
+const useMessages = ({ roomId, page, id }: VariablesType): QueryReturnType => {
   const { data, loading, subscribeToMore, fetchMore } = useQuery(
     ALL_MESSAGES_BY_PAGE,
     {
@@ -31,7 +27,7 @@ const useMessages = ({
   useEffect(() => {
     const unsubscribe = subscribeToMore({
       document: NEW_MESSAGE,
-      variables: { roomId, lang },
+      variables: { roomId, id },
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const { newMessage } = subscriptionData.data;
