@@ -9,6 +9,7 @@ import Foundation
 
 enum MessageType: String, Codable {
     case sent
+    case sentTranslated
     case received
     case translated
     case system
@@ -17,6 +18,8 @@ enum MessageType: String, Codable {
         switch self {
         case .sent:
             return SentMessageCell.identifier
+        case .sentTranslated:
+            return UserTranslatedMessageCell.identifier
         case .received:
             return ReceivedMessageCell.identifier
         case .translated:

@@ -107,6 +107,7 @@
 		BB20F4DF2573959500C5AC1D /* UserDefaultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20F4DE2573959500C5AC1D /* UserDefaultType.swift */; };
 		BB23C09B2576979C001D74A0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23C09A2576979C001D74A0 /* NetworkError.swift */; };
 		BB23C0A12576AABB001D74A0 /* NetworkServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23C0A02576AABB001D74A0 /* NetworkServiceProviding.swift */; };
+		BB2772BC2581F02900F6A47B /* UserTranslatedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2772BB2581F02900F6A47B /* UserTranslatedMessageCell.swift */; };
 		BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3825242574050A000425FD /* ChatDrawerViewController.swift */; };
 		BB38252B25740B22000425FD /* ChatDrawerViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */; };
 		BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */; };
@@ -277,6 +278,7 @@
 		BB20F4DE2573959500C5AC1D /* UserDefaultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultType.swift; sourceTree = "<group>"; };
 		BB23C09A2576979C001D74A0 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BB23C0A02576AABB001D74A0 /* NetworkServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProviding.swift; sourceTree = "<group>"; };
+		BB2772BB2581F02900F6A47B /* UserTranslatedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslatedMessageCell.swift; sourceTree = "<group>"; };
 		BB3825242574050A000425FD /* ChatDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerViewController.swift; sourceTree = "<group>"; };
 		BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerViewReactor.swift; sourceTree = "<group>"; };
 		BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
@@ -384,10 +386,11 @@
 				99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */,
 				99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */,
 				996479362576854900CFF202 /* MessageText.swift */,
-				99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */,
 				BB9A86A3257487C800FE14D6 /* MessageCell.swift */,
 				996C4E91257005C20015F9F4 /* SentMessageCell.swift */,
+				BB2772BB2581F02900F6A47B /* UserTranslatedMessageCell.swift */,
 				996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */,
+				99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */,
 				99482F992580ED6700802B45 /* SystemMessageCell.swift */,
 			);
 			path = MessageCell;
@@ -1009,6 +1012,7 @@
 				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
 				990DE9512573499500340A72 /* AlertFactoryProviding.swift in Sources */,
 				993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */,
+				BB2772BC2581F02900F6A47B /* UserTranslatedMessageCell.swift in Sources */,
 				BBC5B322257E0CFC00739CD8 /* KeychainError.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				990DE9782573A67C00340A72 /* String+.swift in Sources */,

@@ -64,7 +64,7 @@ struct Message: Codable {
     
     mutating func setType(by userID: Int) {
         guard sender.id != userID else {
-            type = .sent
+            type = isTranslated ? .sentTranslated : .sent
             return
         }
         type = isTranslated ? .translated : .received
