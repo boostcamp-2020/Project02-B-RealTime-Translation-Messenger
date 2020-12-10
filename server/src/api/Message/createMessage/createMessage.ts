@@ -1,4 +1,6 @@
 import { PrismaClient } from '@prisma/client';
+import dect from '@utils/dect';
+import TRIGGER from '@utils/trigger';
 
 const prisma = new PrismaClient();
 
@@ -17,8 +19,9 @@ export default {
       { pubsub, isAuthenticated, request }: any,
     ): Promise<boolean> => {
       isAuthenticated(request);
-      const { id: userId, lang, roomId } = request.user;
+      const { id: userId, roomId } = request.user;
       const { text } = args;
+      const lang = await dect(text);
       const newMessage = await prisma.message.create({
         data: {
           text,
@@ -38,7 +41,7 @@ export default {
           user: true,
         },
       });
-      pubsub.publish('NEW_MESSAGE', {
+      pubsub.publish(TRIGGER.NEW_MESSAGE, {
         newMessage,
       });
       return true;

@@ -1,5 +1,6 @@
 import generateToken from '@utils/generateToken';
 import { PrismaClient } from '@prisma/client';
+import TRIGGER from '@utils/trigger';
 
 const prisma = new PrismaClient();
 
@@ -30,7 +31,30 @@ export default {
         include: { rooms: true },
       });
       const jwtToken = generateToken(newUser, newUser.rooms[0].id);
-      pubsub.publish('NEW_USER', { newUser });
+
+      const newMessage = await prisma.message.create({
+        data: {
+          text: `${nickname}님이 들어왔습니다`,
+          source: 'in',
+          user: {
+            connect: {
+              id: newUser.id,
+            },
+          },
+          room: {
+            connect: {
+              id: newUser.rooms[0].id,
+            },
+          },
+        },
+        include: {
+          user: true,
+        },
+      });
+
+      pubsub.publish(TRIGGER.NEW_MESSAGE, { newMessage });
+      pubsub.publish(TRIGGER.NEW_USER, { newUser });
+
       return { userId: newUser.id, roomId: newUser.rooms[0].id, token: jwtToken };
     },
   },

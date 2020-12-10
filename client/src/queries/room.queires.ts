@@ -34,6 +34,7 @@ export const ROOM_BY_ID = gql`
         avatar
         nickname
         lang
+        isDeleted
       }
     }
   }

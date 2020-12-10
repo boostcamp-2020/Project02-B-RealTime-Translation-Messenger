@@ -1,5 +1,5 @@
+import translateText from '@utils/translateText';
 import { PrismaClient } from '@prisma/client';
-import req from '@utils/request';
 
 const prisma = new PrismaClient();
 
@@ -7,15 +7,27 @@ interface Timestamp {
   time: string;
 }
 
+interface User {
+  id: number;
+  avatar: string;
+  nickname: string;
+  lang: string;
+}
+
 interface Message {
   id: number;
   text: string;
   source: string;
+  user: User;
 }
 
 export default {
   Query: {
-    allMessagesByTime: async (_: any, args: Timestamp, { request, isAuthenticated }: any) => {
+    allMessagesByTime: async (
+      _: any,
+      args: Timestamp,
+      { request, isAuthenticated }: any,
+    ): Promise<Message[]> => {
       isAuthenticated(request);
       const { time } = args;
       const { roomId } = request.user;
@@ -38,15 +50,18 @@ export default {
           user: true,
         },
       });
+
+      const users = await prisma.room
+        .findOne({
+          where: {
+            id: roomId,
+          },
+        })
+        .users();
+
       const promises = Messages.map(async (message: Message) => {
-        const { text, source } = message;
-        const { lang: target } = request.user;
-        const translatedText = await req(text, source, target); // 번역돌리는 요청
-        const texts = {
-          originText: text,
-          translatedText,
-        };
-        message.text = JSON.stringify(texts);
+        const { lang } = request.user;
+        message.text = await translateText(message, lang, users);
       });
 
       await Promise.all(promises);

@@ -29,7 +29,6 @@ const Input: React.FC = () => {
   const [translationMutation] = useMutation(TRANSLATION, {
     variables: {
       text,
-      target: 'en', // TODO: target 언어 수정하기
     },
   });
 
@@ -69,6 +68,7 @@ const Input: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => setIsListening(false), 2000);
     setText(transcript);
+    getTranslatedText();
     return () => {
       clearTimeout(timer);
     };

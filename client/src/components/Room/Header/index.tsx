@@ -6,6 +6,7 @@ import { AvatarStack, Avatar } from '@primer/components';
 import { useMutation } from '@apollo/client';
 import { DELETE_USER } from '@queries/user.queries';
 import { User } from '@generated/types';
+import client from '@/apollo/Client';
 import S from './style';
 
 interface Props {
@@ -20,9 +21,10 @@ const Header: React.FC<Props> = ({ visible, setVisible, code, users }) => {
   const [deleteUser] = useMutation(DELETE_USER);
 
   const leaveRoom = async () => {
+    history.push('/');
     await deleteUser();
     localStorage.removeItem('token');
-    history.push('/');
+    client.resetStore();
   };
 
   const toast = () => {
