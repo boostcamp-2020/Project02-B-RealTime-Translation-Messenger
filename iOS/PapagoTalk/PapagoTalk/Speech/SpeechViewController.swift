@@ -128,6 +128,7 @@ final class SpeechViewController: UIViewController, StoryboardView {
     
     private func dismiss() {
         guard let superview = view.superview, let parent = self.parent as? ChatViewController else { return }
+        view.endEditing(true)
         parent.microphoneButton.isHidden = false
         UIView.transition(with: superview,
                           duration: 0.4,
@@ -153,7 +154,6 @@ extension SpeechViewController: KeyboardProviding {
                 guard let self = self, let superview = self.parent as? ChatViewController else { return }
                 superview.microphoneButton.isHidden = true
                 self.view.frame.origin.y += keyboardFrame.origin.y - self.view.frame.maxY
-                self.view.frame = self.view.frame.offsetBy(dx: .zero, dy: 30)
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
                 }
@@ -163,7 +163,7 @@ extension SpeechViewController: KeyboardProviding {
         keyboardWillHide
             .drive(onNext: { [weak self] _ in
                 guard let self = self, let superView = self.parent as? ChatViewController else { return }
-                self.view.frame.origin.y = (superView.view.frame.height - Constant.speechViewHeight)/2.0
+                self.view.frame.origin.y = superView.view.frame.height/4
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
                 }

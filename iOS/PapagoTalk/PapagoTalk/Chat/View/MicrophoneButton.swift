@@ -69,7 +69,7 @@ final class MicrophoneButton: RoundShadowButton {
         isUserInteractionEnabled = false
         guard let superview = superview else { return }
         latestCenter = center
-        let newY = superview.center.y + Constant.speechViewHeight/2 - Constant.speechViewBottomInset  - (frame.height/2)
+        let newY = superview.center.y + superview.frame.height/4 - Constant.speechViewBottomInset  - (frame.height/2) - superview.safeAreaInsets.bottom
         
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.center = CGPoint(x: superview.center.x, y: newY)
