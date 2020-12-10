@@ -153,7 +153,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         actionSheetController.addAction(bigAction)
 
         let midiumAction = UIAlertAction(title: "중간", style: .default) { [weak self] _ in
-            self?.buttonSizeObserver.accept(.midium)
+            self?.buttonSizeObserver.accept(.medium)
         }
         actionSheetController.addAction(midiumAction)
         

@@ -9,7 +9,7 @@ import UIKit
 
 enum MicButtonSize: Int, Codable {
     case big
-    case midium
+    case medium
     case small
     case none
     
@@ -17,7 +17,7 @@ enum MicButtonSize: Int, Codable {
         switch self {
         case .big:
             return 70
-        case .midium:
+        case .medium:
             return 60
         case .small:
             return 50
