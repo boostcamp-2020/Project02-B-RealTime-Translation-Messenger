@@ -13,12 +13,22 @@ struct User: Codable {
     var nickName: String
     var image: String
     var language: Language
+    var isMe: Bool
     
     init(id: Int, nickName: String, image: String, language: Language) {
         self.id = id
         self.nickName = nickName
         self.image = image
         self.language = language
+        self.isMe = false
+    }
+    
+    init(id: Int, nickName: String, image: String, language: Language, userID: Int) {
+        self.id = id
+        self.nickName = nickName
+        self.image = image
+        self.language = language
+        self.isMe = (id == userID) ? true : false
     }
     
     typealias GetMessageUserData = GetMessageSubscription.Data.NewMessage.User

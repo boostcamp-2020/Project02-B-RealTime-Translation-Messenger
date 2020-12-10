@@ -16,8 +16,8 @@ final class ChatDrawerUserCell: UICollectionViewCell {
     
     func configureUserCell(with user: User) {
         configureImage(with: user.image)
-        nickNameLabel.text = user.nickName
-        languageLabel.text = user.language.localizedText
+        configureNickName(by: user.nickName, with: user.isMe)
+        configureLanguage(by: user.language)
     }
     
     private func configureImage(with imageURL: String) {
@@ -25,5 +25,15 @@ final class ChatDrawerUserCell: UICollectionViewCell {
             return
         }
         profileImageView.kf.setImage(with: imageURL)
+    }
+    
+    private func configureNickName(by nickName: String, with isMe: Bool) {
+        var text = nickName + "  "
+        text += (isMe) ? Strings.ChatDrawer.userIsMe : ""
+        nickNameLabel.text = text
+    }
+    
+    private func configureLanguage(by language: Language) {
+        languageLabel.text = language.localizedText
     }
 }

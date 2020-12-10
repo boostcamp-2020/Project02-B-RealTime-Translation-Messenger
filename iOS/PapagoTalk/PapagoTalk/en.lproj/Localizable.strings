@@ -25,6 +25,7 @@
 
 //MARK: - ChatDrawer
 "Chat Code is copied" = "Chat Code is copied";
+"(ME)" = "(ME)";
 
 //MARK: - DateFormatter
 "yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";

@@ -39,5 +39,6 @@ struct Strings {
     // MARK: - ChatDrawer
     struct ChatDrawer {
         static let chatCodeDidCopyMessage = "Chat Code is copied".localized
+        static let userIsMe = "(ME)".localized
     }
 }
