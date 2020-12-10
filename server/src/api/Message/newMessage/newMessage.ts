@@ -1,6 +1,9 @@
+import { PrismaClient } from '@prisma/client';
+import translateText from '@utils/translateText';
 import { withFilter } from 'graphql-subscriptions';
-import req from '@utils/request';
 import TRIGGER from '@utils/trigger';
+
+const prisma = new PrismaClient();
 
 export default {
   Subscription: {
@@ -9,14 +12,16 @@ export default {
         (_: any, __: any, { pubsub }: any) => pubsub.asyncIterator(TRIGGER.NEW_MESSAGE),
         async (payload, variables): Promise<boolean> => {
           if (payload.newMessage.roomId === variables.roomId) {
-            const { text, source } = payload.newMessage;
-            const target = variables.lang;
-            const translatedText = await req(text, source, target);
-            const texts = {
-              originText: text,
-              translatedText,
-            };
-            payload.newMessage.text = JSON.stringify(texts);
+            const message = payload.newMessage;
+            const { roomId, lang } = variables;
+            const users = await prisma.room
+              .findOne({
+                where: {
+                  id: roomId,
+                },
+              })
+              .users();
+            payload.newMessage.text = await translateText(message, lang, users);
             return true;
           }
           return false;

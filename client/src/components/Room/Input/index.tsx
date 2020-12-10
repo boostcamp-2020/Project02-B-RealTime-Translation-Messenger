@@ -29,7 +29,6 @@ const Input: React.FC = () => {
   const [translationMutation] = useMutation(TRANSLATION, {
     variables: {
       text,
-      target: 'en', // TODO: target 언어 수정하기
     },
   });
 
