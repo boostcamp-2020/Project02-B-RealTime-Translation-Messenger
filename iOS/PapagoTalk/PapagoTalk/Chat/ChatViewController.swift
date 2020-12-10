@@ -13,7 +13,7 @@ import RxDataSources
 
 final class ChatViewController: UIViewController, StoryboardView {
     
-    @IBOutlet private weak var inputBarTextView: UITextView!
+    @IBOutlet weak var inputBarTextView: UITextView!
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: UICollectionView!
     @IBOutlet private weak var sendButton: UIButton!
@@ -143,6 +143,7 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asDriver()
             .drive(onNext: { [weak self] in
                 self?.hideKeyboard()
+                self?.inputBarTextView.isUserInteractionEnabled = false
                 self?.microphoneButton?.moveForSpeech {
                     self?.presentSpeech()
                 }
