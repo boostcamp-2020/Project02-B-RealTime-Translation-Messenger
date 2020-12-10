@@ -1082,8 +1082,66 @@
                                             <outlet property="timeLabel" destination="hRr-JJ-sLX" id="URR-W0-GwE"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserTranslatedMessageCell" id="fzk-N6-jp8" customClass="UserTranslatedMessageCell" customModule="PapagoTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="90" width="414" height="41.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pMV-b3-04c">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gL9-E7-yI6" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
+                                                    <rect key="frame" x="314" y="0.0" width="88" height="33.5"/>
+                                                    <color key="backgroundColor" name="PapagoSkyBlue"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="NhI-bR-rWG"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="b5E-Vd-GAx"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" id="jFH-nq-d9e"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="안녕하세요">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" Hi">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lol-Lr-l9j">
+                                                    <rect key="frame" x="308" y="33.5" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lol-Lr-l9j" firstAttribute="bottom" secondItem="gL9-E7-yI6" secondAttribute="bottom" id="O1e-ed-pYR"/>
+                                                <constraint firstAttribute="trailing" secondItem="gL9-E7-yI6" secondAttribute="trailing" constant="12" id="Zf4-6H-KGd"/>
+                                                <constraint firstAttribute="bottom" secondItem="gL9-E7-yI6" secondAttribute="bottom" priority="999" constant="8" id="eDT-wU-Pej"/>
+                                                <constraint firstItem="gL9-E7-yI6" firstAttribute="top" secondItem="pMV-b3-04c" secondAttribute="top" priority="999" id="gvG-Yr-RcN"/>
+                                                <constraint firstItem="gL9-E7-yI6" firstAttribute="leading" secondItem="lol-Lr-l9j" secondAttribute="trailing" constant="6" id="zXE-Po-X8q"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageTextView" destination="gL9-E7-yI6" id="U5P-2z-1xr"/>
+                                            <outlet property="timeLabel" destination="lol-Lr-l9j" id="5y2-XX-ncm"/>
+                                        </connections>
+                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReceivedMessageCell" id="39B-qn-dKO" customClass="ReceivedMessageCell" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="90" width="414" height="110"/>
+                                        <rect key="frame" x="0.0" y="131.5" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BHL-qx-p9o">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
@@ -1210,14 +1268,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TranslatedMessageCell" id="gHZ-8k-9Wd" customClass="TranslatedMessageCell" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="200" width="414" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="241.5" width="414" height="41.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wfa-x1-yLv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="41.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2k-0w-q3r" customClass="MessageText" customModule="PapagoTalk" customModuleProvider="target">
-                                                    <rect key="frame" x="64" y="8" width="88" height="33.5"/>
+                                                    <rect key="frame" x="64" y="0.0" width="88" height="33.5"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" id="gzc-rD-VbF"/>
@@ -1249,7 +1307,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-5M-TlD">
-                                                    <rect key="frame" x="164" y="41.5" width="0.0" height="0.0"/>
+                                                    <rect key="frame" x="164" y="33.5" width="0.0" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="LLW-gC-he8"/>
                                                     </constraints>
@@ -1259,11 +1317,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="X2k-0w-q3r" secondAttribute="bottom" constant="8" id="7mA-P4-4aU"/>
+                                                <constraint firstAttribute="bottom" secondItem="X2k-0w-q3r" secondAttribute="bottom" priority="999" constant="8" id="7mA-P4-4aU"/>
                                                 <constraint firstItem="X2k-0w-q3r" firstAttribute="leading" secondItem="wfa-x1-yLv" secondAttribute="leading" constant="64" id="995-Ve-NCe"/>
                                                 <constraint firstItem="mF7-5M-TlD" firstAttribute="leading" secondItem="X2k-0w-q3r" secondAttribute="trailing" constant="12" id="G4s-C9-Y7v"/>
                                                 <constraint firstItem="mF7-5M-TlD" firstAttribute="bottom" secondItem="X2k-0w-q3r" secondAttribute="bottom" id="T8r-mU-B1o"/>
-                                                <constraint firstItem="X2k-0w-q3r" firstAttribute="top" secondItem="wfa-x1-yLv" secondAttribute="top" constant="8" id="cgQ-cC-U7R"/>
+                                                <constraint firstItem="X2k-0w-q3r" firstAttribute="top" secondItem="wfa-x1-yLv" secondAttribute="top" priority="999" id="cgQ-cC-U7R"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
@@ -1272,7 +1330,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SystemMessageCell" id="9UL-52-m31" customClass="SystemMessageCell" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="249.5" width="414" height="32"/>
+                                        <rect key="frame" x="0.0" y="283" width="414" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="y0M-9g-FR0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
