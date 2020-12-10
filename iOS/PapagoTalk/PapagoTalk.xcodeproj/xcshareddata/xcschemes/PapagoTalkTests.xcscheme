@@ -43,26 +43,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BB0B6E8E257EB1F3005EDF22"
-               BuildableName = "PapagoTalkChatTests.xctest"
-               BlueprintName = "PapagoTalkChatTests"
-               ReferencedContainer = "container:PapagoTalk.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BB0B6EB7257F355E005EDF22"
-               BuildableName = "PapagoTalkHomeTests.xctest"
-               BlueprintName = "PapagoTalkHomeTests"
-               ReferencedContainer = "container:PapagoTalk.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
