@@ -13,7 +13,6 @@ final class MainCoordinator: Coordinator {
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
-    var speechManager: SpeechServiceProviding
     var messageParser: MessageParser
     var childCoordinator: [Coordinator] = []
     
@@ -21,14 +20,12 @@ final class MainCoordinator: Coordinator {
          networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          alertFactory: AlertFactoryProviding,
-         speechManager: SpeechServiceProviding,
          messageParser: MessageParser) {
         
         self.navigationController = navigationController
         self.networkService = networkService
         self.userData = userData
         self.alertFactory = alertFactory
-        self.speechManager = speechManager
         self.messageParser = messageParser
         
         navigationController.navigationBar.barTintColor = UIColor(named: "NavigationBarColor")
@@ -43,7 +40,6 @@ final class MainCoordinator: Coordinator {
         
         let chatCoordinator = ChatCoordinator(networkService: networkService,
                                               userData: userData,
-                                              speechManager: speechManager,
                                               messageParser: messageParser)
         
         homeCoordinator.parentCoordinator = self

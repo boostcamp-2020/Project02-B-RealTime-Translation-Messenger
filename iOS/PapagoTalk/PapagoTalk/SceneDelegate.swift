@@ -19,7 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let networkService = ApolloNetworkService()
         let alertFactory = AlertFactory()
         let userData = UserDataProvider()
-        let speechManager = SpeechManager(userData: userData)
         let messageParser = MessageParser(userData: userData)
         
         window = UIWindow(windowScene: scene)
@@ -27,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                       networkService: networkService,
                                       userData: userData,
                                       alertFactory: alertFactory,
-                                      speechManager: speechManager,
                                       messageParser: messageParser)
         coordinator?.start()
         

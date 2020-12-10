@@ -57,7 +57,7 @@ extension ChatCoordinator: ChatCoordinating {
         guard let roomID = roomID else {
             return
         }
-        
+        let speechManager = SpeechManager(userData: userData)
         let speechViewController = storyboard.instantiateViewController(
             identifier: SpeechViewController.identifier,
             creator: { [unowned self] coder -> SpeechViewController? in
