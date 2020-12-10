@@ -36,7 +36,11 @@ export default {
           return { translatedText: translatedText };
         }
         const translatedText = await req(text, source, lang);
-        return { translatedText: translatedText };
+        if (translatedText) {
+          return { translatedText: translatedText };
+        } else {
+          return { translatedText: translatedText };
+        }
       } catch (e) {
         return { translatedText: '텍스트를 입력하세요' };
       }
