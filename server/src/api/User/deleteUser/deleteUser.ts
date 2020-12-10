@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { withFilter } from 'graphql-subscriptions';
+import TRIGGER from '@utils/trigger';
 
 const prisma = new PrismaClient();
 
@@ -11,7 +12,8 @@ export default {
       { pubsub, request, isAuthenticated }: any,
     ): Promise<boolean> => {
       isAuthenticated(request);
-      const { id: userId, nickname, roomId } = request.user;
+
+      const { id, nickname, roomId } = request.user;
 
       const newMessage = await prisma.message.create({
         data: {
@@ -19,7 +21,7 @@ export default {
           source: 'out',
           user: {
             connect: {
-              id: userId,
+              id,
             },
           },
           room: {
@@ -33,15 +35,43 @@ export default {
         },
       });
 
-      await prisma.$queryRaw`DELETE FROM User WHERE id = ${userId}`;
 
-      const restUser = await prisma.$queryRaw`SELECT COUNT(*) FROM _RoomToUser WHERE A = ${roomId} `;
-      if (!restUser[0]['COUNT(*)']) {
+      await prisma.user.update({
+        where: {
+          id,
+        },
+        data: {
+          isDeleted: true,
+        },
+      });
+      const restUser = await prisma.user.count({
+        where: {
+          isDeleted: false,
+          rooms: {
+            some: {
+
+              id: roomId,
+            },
+          },
+        },
+
+        include: {
+          user: true,
+        },
+      });
+
+      if (!restUser) {
+        await prisma.$queryRaw`delete from user where user.id in (select B from room join _roomtouser on A = ${roomId} AND room.id = A );`;
+
         await prisma.$queryRaw`DELETE FROM Room WHERE id = ${roomId}`;
+        return true;
       }
 
-      pubsub.publish('NEW_MESSAGE', { newMessage });
-      pubsub.publish('DELETE_USER', { deleteUser: { id: userId, roomId } });
+
+      pubsub.publish(TRIGGER.NEW_MESSAGE, { newMessage });
+
+      pubsub.publish(TRIGGER.DELETE_USER, { deleteUser: { id, roomId } });
+
       return true;
     },
   },

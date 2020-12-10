@@ -8,8 +8,8 @@ export const CREATE_MESSAGE = gql`
 `;
 
 export const TRANSLATION = gql`
-  mutation translation($text: String!, $target: String!) {
-    translation(text: $text, target: $target) {
+  mutation translation($text: String!) {
+    translation(text: $text) {
       translatedText
     }
   }

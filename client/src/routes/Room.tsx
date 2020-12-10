@@ -6,6 +6,7 @@ import SideBar from '@components/Room/SideBar';
 import Input from '@components/Room/Input';
 import useMessages from '@hooks/useMessages';
 import useUsers from '@hooks/useUsers';
+import { User } from '@/generated/types';
 
 interface MatchParams {
   id: string;
@@ -38,19 +39,18 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
 
   if (messagesLoading || usersLoading) return <div>Loading!</div>;
 
+  const validUser = usersData.roomById.users.filter(
+    (user: User) => !user.isDeleted,
+  );
   return (
     <>
       <Header
         visible={visible}
         setVisible={setVisible}
         code={code}
-        users={usersData.roomById.users}
+        users={validUser}
       />
-      <SideBar
-        visible={visible}
-        setVisible={setVisible}
-        users={usersData.roomById.users}
-      />
+      <SideBar visible={visible} setVisible={setVisible} users={validUser} />
       <ChatLog
         messages={messagesData.allMessagesByPage.messages}
         page={page}
