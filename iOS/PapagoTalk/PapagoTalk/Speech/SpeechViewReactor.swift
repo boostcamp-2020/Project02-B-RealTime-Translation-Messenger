@@ -112,13 +112,6 @@ final class SpeechViewReactor: Reactor {
     }
     
     private func translate(text: String) -> Observable<Mutation> {
-//        let oppositeLanguage: Language = userData.language == .korean ? .english : .korean
-//        return translationManager
-//            .requestTranslation(request: TranslationRequest(source: userData.language.code,
-//                                                            target: oppositeLanguage.code,
-//                                                            text: text))
-//            .asObservable()
-//            .map { Mutation.setTranslatedText($0) }
         return networkService.translate(text: text)
             .asObservable()
             .map { Mutation.setTranslatedText($0) }
