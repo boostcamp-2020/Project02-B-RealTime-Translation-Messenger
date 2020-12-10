@@ -25,6 +25,7 @@
 
 //MARK: - ChatDrawer
 "Chat Code is copied" = "채팅방 코드가 복사되었습니다.";
+"(ME)" = "(나)";
 
 //MARK: - DateFormatter
 "yyyy MMMM dd EEEE" = "yyyy년 M월 d일 EEEE";

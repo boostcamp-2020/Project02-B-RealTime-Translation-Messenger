@@ -82,10 +82,13 @@ final class ChatDrawerViewReactor: Reactor {
         return networkService.getUserList(of: roomID)
             .asObservable()
             .compactMap { $0.roomById?.users }
-            .map { $0.map { User(id: $0.id,
+            .map { [weak self] in
+                $0.map { User(id: $0.id,
                                  nickName: $0.nickname,
                                  image: $0.avatar,
-                                 language: .codeToLanguage(of: $0.lang)) } }
+                                 language: .codeToLanguage(of: $0.lang),
+                                 userID: self?.userData.id ?? 0) }
+            }
             .map { Mutation.setUsers($0) }
     }
 }
