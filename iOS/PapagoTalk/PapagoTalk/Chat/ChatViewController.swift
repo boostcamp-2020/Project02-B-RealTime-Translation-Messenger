@@ -143,6 +143,7 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asDriver()
             .drive(onNext: { [weak self] in
                 self?.hideKeyboard()
+                self?.chatDrawerButton.isEnabled = false
                 self?.inputBarTextView.isUserInteractionEnabled = false
                 self?.microphoneButton?.moveForSpeech {
                     self?.presentSpeech()
