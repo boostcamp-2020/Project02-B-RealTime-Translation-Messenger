@@ -9,6 +9,8 @@ import Foundation
 
 struct UserDataProviderMock: UserDataProviding {
     var user: User
+    var micButtonSize = MicButtonSize.medium
+    var token = "testToken"
     
     init() {
         user = User(id: 1, nickName: "test", image: "", language: .english)

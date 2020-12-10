@@ -27,11 +27,11 @@ struct ApolloNetworkServiceMockSuccess: NetworkServiceProviding {
     
     func enterRoom(user: User,
                    code: String) -> Maybe<JoinChatResponse> {
-        return Maybe.just(JoinChatResponse.init(userId: 1, roomId: 8))
+        return Maybe.just(JoinChatResponse.init(userId: 1, roomId: 8, token: "testToken"))
     }
     
     func createRoom(user: User) -> Maybe<CreateRoomResponse> {
-        return Maybe.just(CreateRoomResponse.init(userId: 1, roomId: 8, code: "545305"))
+        return Maybe.just(CreateRoomResponse.init(userId: 1, roomId: 8, code: "545305", token: "testToken"))
     }
     
     func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data> {
@@ -51,7 +51,19 @@ struct ApolloNetworkServiceMockSuccess: NetworkServiceProviding {
                                                           lang: "fr")])))
     }
     
+    func subscribeLeavedUser(roomID: Int) -> Observable<LeavedUserSubscription.Data> {
+        return Observable.just(.init(deleteUser: .init(id: 0)))
+    }
+    
+    func subscribeNewUser(roomID: Int) -> Observable<NewUserSubscription.Data> {
+        return Observable.just(.init(newUser: .init(id: 0, nickname: "", avatar: "", lang: "")))
+    }
+    
+    func leaveRoom() {
+        
+    }
+    
     func reconnect() {
-
+        
     }
 }

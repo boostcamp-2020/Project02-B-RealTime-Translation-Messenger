@@ -123,7 +123,6 @@
 		BB93C2942575345200C68491 /* Calendar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C2932575345200C68491 /* Calendar+.swift */; };
 		BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9725A7256FA5DD00C4938D /* MessageBox.swift */; };
 		BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97AE07256CDC0400307DAD /* UIView+.swift */; };
-		BB987E74257F470B00F4C258 /* HomeReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */; };
 		BB987E75257F470B00F4C258 /* ApolloNetworkServiceMockSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* ApolloNetworkServiceMockSuccess.swift */; };
 		BB987E81257F4CA800F4C258 /* AlertFactoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E80257F4CA800F4C258 /* AlertFactoryStub.swift */; };
 		BB987E87257F4CD100F4C258 /* UserDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* UserDataProviderMock.swift */; };
@@ -164,6 +163,10 @@
 		BBF3B6F7257FB927004578D4 /* ChatRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964795225769BD500CFF202 /* ChatRoomInfo.swift */; };
 		BBF3B6FA257FB942004578D4 /* ReceivedMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */; };
 		BBF3B6FD257FB946004578D4 /* SentMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */; };
+		BBFFC1C92581CE7200B241F0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482FA52580F25500802B45 /* API.swift */; };
+		BBFFC1CC2581CEC100B241F0 /* UserDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D425762AC500C15AC7 /* UserDataProviding.swift */; };
+		BBFFC1CF2581CFA400B241F0 /* MicButtonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F45257FCE1700802B45 /* MicButtonSize.swift */; };
+		BBFFC1D22581CFB600B241F0 /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F992580ED6700802B45 /* SystemMessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1029,6 +1032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB987E9A257F4EA700F4C258 /* User.swift in Sources */,
+				BBFFC1C92581CE7200B241F0 /* API.swift in Sources */,
 				BB987E9D257F4EAC00F4C258 /* Language.swift in Sources */,
 				BB1569A4257F8C5B00A2C0F9 /* MessageParserMock.swift in Sources */,
 				BB987EB8257F4FF200F4C258 /* RevisionedData.swift in Sources */,
@@ -1047,6 +1051,7 @@
 				BB987EC4257F503900F4C258 /* CreateRoomResponse.swift in Sources */,
 				BB156974257F71E600A2C0F9 /* TranslatedResult.swift in Sources */,
 				99482F13257F7EE800802B45 /* TranslationRequest.swift in Sources */,
+				BBFFC1CF2581CFA400B241F0 /* MicButtonSize.swift in Sources */,
 				99482F24257F83E900802B45 /* SpeechServiceProviding.swift in Sources */,
 				BB15695F257F716A00A2C0F9 /* Message.swift in Sources */,
 				BB15697E257F722200A2C0F9 /* MessageText.swift in Sources */,
@@ -1060,6 +1065,7 @@
 				BBF3B6FA257FB942004578D4 /* ReceivedMessageBubbleTail.swift in Sources */,
 				BB987EA0257F4EE400F4C258 /* ImageFactory.swift in Sources */,
 				BB15693E257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift in Sources */,
+				BBFFC1CC2581CEC100B241F0 /* UserDataProviding.swift in Sources */,
 				BB987E75257F470B00F4C258 /* ApolloNetworkServiceMockSuccess.swift in Sources */,
 				BB156981257F723000A2C0F9 /* Data+.swift in Sources */,
 				BB156978257F71F700A2C0F9 /* Calendar+.swift in Sources */,
@@ -1073,16 +1079,15 @@
 				BB987E87257F4CD100F4C258 /* UserDataProviderMock.swift in Sources */,
 				BB987E8B257F4CF800F4C258 /* ImageFactoryStub.swift in Sources */,
 				BBF3B6F4257FB8CE004578D4 /* ChatCodeInputViewReactor.swift in Sources */,
+				BBFFC1D22581CFB600B241F0 /* SystemMessageCell.swift in Sources */,
 				BB987E81257F4CA800F4C258 /* AlertFactoryStub.swift in Sources */,
 				BB987EA9257F4F5C00F4C258 /* HomeViewReactor.swift in Sources */,
 				BB15694B257F710C00A2C0F9 /* ChatViewReactor.swift in Sources */,
 				BB156962257F716E00A2C0F9 /* MessageBox.swift in Sources */,
-				BB987E74257F470B00F4C258 /* HomeReactorTests.swift in Sources */,
 				BBF2DCB4256674A500F2EA7D /* ChatReactorTests.swift in Sources */,
 				BBF3B6FD257FB946004578D4 /* SentMessageBubbleTail.swift in Sources */,
 				99482F2A257FA10200802B45 /* ChatDrawerReactorTests.swift in Sources */,
 				99482EF8257F7D0700802B45 /* PapagoAPIServiceProviding.swift in Sources */,
-				BB987E74257F470B00F4C258 /* HomeReactorTests.swift in Sources */,
 				99482F2D257FA13000802B45 /* ChatDrawerViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

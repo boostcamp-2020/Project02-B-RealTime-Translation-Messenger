@@ -10,17 +10,12 @@ import Foundation
 struct MessageParserMock: MessageParseProviding {
     func parse(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message] {
         var messages = [Message]()
-        let time = String((newMessage.createdAt ?? "").prefix(10))
-        let sender = User(id: newMessage.user.id,
-                          nickName: newMessage.user.nickname,
-                          image: newMessage.user.avatar,
-                          language: Language.codeToLanguage(of: newMessage.user.lang))
-        let originMessage = Message(id: newMessage.id,
-                                    of: newMessage.text,
-                                    by: sender,
-                                    language: newMessage.source,
-                                    timeStamp: time)
-        messages.append(originMessage)
+        
+        let translatedMock = TranslatedResult(originText: newMessage.text, translatedText: newMessage.text)
+        let timeStamp = newMessage.createdAt ?? ""
+        let messageMock = Message(data: newMessage, with: translatedMock, timeStamp: timeStamp)
+        
+        messages.append(messageMock)
         return messages
     }
 }

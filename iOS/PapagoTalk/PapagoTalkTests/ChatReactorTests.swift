@@ -18,7 +18,7 @@ class ChatReactorTests: XCTestCase {
                                       code: "")
         
         // When
-        reactor.action.onNext(.subscribeNewMessages)
+        reactor.action.onNext(.subscribeChatRoom)
         
         // Then
         XCTAssertEqual(reactor.currentState.isSubscribingMessage, true)

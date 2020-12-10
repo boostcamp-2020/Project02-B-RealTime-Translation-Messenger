@@ -48,7 +48,20 @@ struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
                                                     .init(id: 3,
                                                           nickname: "test3",
                                                           avatar: "",
-                                                          lang: "fr")])))
+                                                          lang: "fr")
+                                                ])))
+    }
+    
+    func subscribeLeavedUser(roomID: Int) -> Observable<LeavedUserSubscription.Data> {
+        return Observable.error(NetworkError.invalidResponse(message: "error"))
+    }
+    
+    func subscribeNewUser(roomID: Int) -> Observable<NewUserSubscription.Data> {
+        return Observable.error(NetworkError.serverError(message: "400"))
+    }
+    
+    func leaveRoom() {
+        
     }
     
     func reconnect() {
