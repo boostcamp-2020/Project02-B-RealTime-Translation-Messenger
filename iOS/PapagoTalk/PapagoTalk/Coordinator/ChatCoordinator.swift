@@ -67,7 +67,7 @@ extension ChatCoordinator: ChatCoordinating {
                 let reactor = SpeechViewReactor(networkService: networkService,
                                                 userData: userData,
                                                 translationManager: translationManager,
-                                                speechManager: speechManager,
+                                                speechManager: SpeechManager(userData: userData),
                                                 roomID: roomID)
                 return SpeechViewController(coder: coder, reactor: reactor)
             }
