@@ -14,20 +14,39 @@ interface Message {
   user: User;
 }
 
-export default async (message: Message, lang: string, users: User[]): Promise<string> => {
+// TODO: Need Refactoring! :(
+export default async (message: Message, me: User, users: User[]): Promise<string> => {
   const authorLang = message.user.lang;
   const { text, source } = message;
+  const { id, lang: myLang } = me;
 
-  if (authorLang !== lang) {
-    if (message.source === lang) {
-      const translatedText = await req(text, source, authorLang); // 원본: 내가 사용하는 언어, 번역본: 메시지 작성자의 언어
+  if (authorLang !== myLang) {
+    if (message.source === myLang) {
+      const translatedText = await req(text, source, authorLang);
       const texts = {
         originText: text,
         translatedText,
       };
       return JSON.stringify(texts);
-    } else {
-      const translatedText = await req(text, source, lang); // 원본: 내가 사용하는 언어, 번역본: 메시지 작성자의 언어
+    }
+    const translatedText = await req(text, source, myLang);
+    const texts = {
+      originText: text,
+      translatedText,
+    };
+    return JSON.stringify(texts);
+  } else {
+    if (message.user.id === id) {
+      if (message.source === myLang) {
+        const secondLang = getSecondLang(users, myLang);
+        const translatedText = await req(text, source, secondLang);
+        const texts = {
+          originText: text,
+          translatedText,
+        };
+        return JSON.stringify(texts);
+      }
+      const translatedText = await req(text, source, myLang);
       const texts = {
         originText: text,
         translatedText,
@@ -35,7 +54,7 @@ export default async (message: Message, lang: string, users: User[]): Promise<st
       return JSON.stringify(texts);
     }
   }
-  const secondLang = getSecondLang(users, lang);
+  const secondLang = getSecondLang(users, myLang);
   const translatedText = await req(text, source, secondLang);
   const texts = {
     originText: text,

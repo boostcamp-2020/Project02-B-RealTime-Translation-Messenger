@@ -1,3 +1,3 @@
 type Subscription {
-  newMessage(roomId: Int!, lang: String!): Message
+  newMessage(roomId: Int!, id: Int!): Message
 }

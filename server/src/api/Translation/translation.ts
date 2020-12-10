@@ -21,7 +21,7 @@ export default {
         isAuthenticated(request);
         const { text } = args;
         const source = await dect(text);
-        const { roomId } = request.user;
+        const { roomId, lang } = request.user;
         const users = await prisma.room
           .findOne({
             where: {
@@ -30,8 +30,12 @@ export default {
           })
           .users();
 
-        const target = getSecondLang(users, source);
-        const translatedText = await req(text, source, target);
+        if (lang === source) {
+          const target = getSecondLang(users, source);
+          const translatedText = await req(text, source, target);
+          return { translatedText: translatedText };
+        }
+        const translatedText = await req(text, source, lang);
         return { translatedText: translatedText };
       } catch (e) {
         return { translatedText: '텍스트를 입력하세요' };
