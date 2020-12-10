@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Apollo
 
 struct User: Codable {
     var id: Int
@@ -30,11 +31,30 @@ struct User: Codable {
         self.isMe = (id == userID) ? true : false
     }
     
+    typealias GetMessageUserData = GetMessageSubscription.Data.NewMessage.User
+    
+    init(data: GetMessageUserData) {
+        self.id = data.id
+        self.nickName = data.nickname
+        self.image = data.avatar
+        self.language = .codeToLanguage(of: data.lang)
+        // self.isMe = false
+    }
+    
+    typealias GetUserListUserData = FindRoomByIdQuery.Data.RoomById.User
+    
+    init(data: GetUserListUserData, userID: Int) {
+        self.id = data.id
+        self.nickName = data.nickname
+        self.image = data.avatar
+        self.language = .codeToLanguage(of: data.lang)
+        // self.isMe = (id == userID) ? true : false
+    }
+    
     init(_ imageFactory: ImageFactoryProviding = ImageFactory()) {
-        id = 0
-        nickName = ""
-        image = imageFactory.randomImageURL()
-        language = Locale.currentLanguage
-        isMe = false
+        self.id = 0
+        self.nickName = ""
+        self.image = imageFactory.randomImageURL()
+        self.language = Locale.currentLanguage
     }
 }

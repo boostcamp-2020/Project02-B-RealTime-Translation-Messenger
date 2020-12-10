@@ -20,10 +20,7 @@ struct MessageParser: MessageParseProviding {
         }
         
         var messages = [Message]()
-        let sender = User(id: newMessage.user.id,
-                          nickName: newMessage.user.nickname,
-                          image: newMessage.user.avatar,
-                          language: Language.codeToLanguage(of: newMessage.user.lang))
+        let sender = User(data: newMessage.user)
         let originMessage = Message(id: newMessage.id,
                                     of: translatedResult.originText,
                                     by: sender,
