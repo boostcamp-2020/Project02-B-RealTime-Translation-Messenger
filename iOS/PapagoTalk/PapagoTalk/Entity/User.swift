@@ -38,7 +38,7 @@ struct User: Codable {
         self.nickName = data.nickname
         self.image = data.avatar
         self.language = .codeToLanguage(of: data.lang)
-        // self.isMe = false
+        self.isMe = false
     }
     
     typealias GetUserListUserData = FindRoomByIdQuery.Data.RoomById.User
@@ -48,7 +48,7 @@ struct User: Codable {
         self.nickName = data.nickname
         self.image = data.avatar
         self.language = .codeToLanguage(of: data.lang)
-        // self.isMe = (id == userID) ? true : false
+        self.isMe = (id == userID) ? true : false
     }
     
     init(_ imageFactory: ImageFactoryProviding = ImageFactory()) {
@@ -56,5 +56,6 @@ struct User: Codable {
         self.nickName = ""
         self.image = imageFactory.randomImageURL()
         self.language = Locale.currentLanguage
+        self.isMe = true
     }
 }
