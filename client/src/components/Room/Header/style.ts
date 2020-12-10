@@ -11,7 +11,7 @@ export default {
     width: 100%;
     height: 10vh;
     padding: 0 2rem;
-    background: ${(props) => props.theme.bgColor};
+    background: ${(props) => props.theme.whiteColor};
     border-bottom: ${(props) => props.theme.boxBorder};
     z-index: 1;
     .reveal {
