@@ -20,12 +20,9 @@ struct MessageParser: MessageParseProviding {
         }
         
         var messages = [Message]()
+      
         let sender = User(data: newMessage.user)
-        let originMessage = Message(id: newMessage.id,
-                                    of: translatedResult.originText,
-                                    by: sender,
-                                    language: newMessage.source,
-                                    timeStamp: timeStamp)
+        let originMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp)
         messages.append(originMessage)
         
         let messageLanguage = Language.codeToLanguage(of: newMessage.source)
@@ -35,12 +32,7 @@ struct MessageParser: MessageParseProviding {
             return messages
         }
         
-        let translatedMessage = Message(id: newMessage.id,
-                                        of: translatedResult.translatedText,
-                                        by: sender,
-                                        language: newMessage.source,
-                                        timeStamp: timeStamp,
-                                        isTranslated: true)
+        let translatedMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp, isTranslated: true)
         messages.append(translatedMessage)
         
         return messages
