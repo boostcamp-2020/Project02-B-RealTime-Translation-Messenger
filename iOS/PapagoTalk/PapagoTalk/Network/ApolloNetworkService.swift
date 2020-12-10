@@ -158,39 +158,22 @@ class ApolloNetworkService: NetworkServiceProviding {
         }
     }
     
-    func subscribeNewUser(roomID: Int) -> Observable<NewUserSubscription.Data> {
-        return .create { [weak self] observer in
-            let cancellable = self?.client.subscribe(
-                subscription: NewUserSubscription(roomId: roomID),
-                resultHandler: { [weak self] result in
+    func translate(text: String) -> Maybe<String> {
+        return Maybe.create { [weak self] observer in
+            let cancellable = self?.client.perform(
+                mutation: TranslationMutation(text: text),
+                resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):
-                        if let data = gqlResult.data {
-                            observer.onNext(data)
+                        if let error = gqlResult.errors?.first {
+                            observer(.error(error))
+                        } else if let data = gqlResult.data {
+                            observer(.success(data.translation.translatedText))
+                        } else {
+                            observer(.completed)
                         }
-                    case .failure:
-                        self?.reconnect()
-                    }
-                }
-            )
-            return Disposables.create {
-                cancellable?.cancel()
-            }
-        }
-    }
-    
-    func subscribeLeavedUser(roomID: Int) -> Observable<LeavedUserSubscription.Data> {
-        return .create { [weak self] observer in
-            let cancellable = self?.client.subscribe(
-                subscription: LeavedUserSubscription(roomId: roomID),
-                resultHandler: { [weak self] result in
-                    switch result {
-                    case let .success(gqlResult):
-                        if let data = gqlResult.data {
-                            observer.onNext(data)
-                        }
-                    case .failure:
-                        self?.reconnect()
+                    case let .failure(error):
+                        observer(.error(error))
                     }
                 }
             )
