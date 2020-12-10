@@ -12,6 +12,16 @@ struct MessageParser: MessageParseProviding {
     var userData: UserDataProviding
     
     func parse(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message] {
+        
+        guard newMessage.source != "in",
+              newMessage.source != "out" else {
+            let systemMessageText = newMessage.source == "in" ?
+                Strings.Chat.userJoinMessage : Strings.Chat.userLeaveMessage
+
+            return [Message(systemText: newMessage.user.nickname + systemMessageText,
+                            timeStamp: newMessage.createdAt ?? "")]
+        }
+
         guard let timeStamp = newMessage.createdAt,
               let data = newMessage.text.data(using: .utf8),
               let translatedResult: TranslatedResult = try? data.decoded()

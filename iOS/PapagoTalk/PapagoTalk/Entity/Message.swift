@@ -47,12 +47,12 @@ struct Message: Codable {
         self.isTranslated = isTranslated
     }
     
-    init(systemText: String) {
+    init(systemText: String, timeStamp: String) {
         self.id = 0
         self.text = systemText
         self.sender = User()
         self.language = ""
-        self.timeStamp = ""
+        self.timeStamp = timeStamp
         self.isFirstOfDay = true
         self.type = .system
         self.isTranslated = false
