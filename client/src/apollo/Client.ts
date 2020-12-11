@@ -11,6 +11,8 @@ const wsLink = new WebSocketLink({
   uri: `ws://${process.env.HOST_URL}/`,
   options: {
     reconnect: true,
+    lazy: true,
+    connectionParams: () => localStorage.getItem('token'),
   },
 });
 
