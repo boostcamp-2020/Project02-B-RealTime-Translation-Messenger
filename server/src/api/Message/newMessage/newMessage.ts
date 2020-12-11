@@ -5,6 +5,13 @@ import TRIGGER from '@utils/trigger';
 
 const prisma = new PrismaClient();
 
+interface User {
+  id: number;
+  avatar: string;
+  nickname: string;
+  lang: string;
+}
+
 export default {
   Subscription: {
     newMessage: {
@@ -12,14 +19,13 @@ export default {
         (_: any, __: any, { pubsub }: any) => pubsub.asyncIterator(TRIGGER.NEW_MESSAGE),
         async (payload, variables): Promise<boolean> => {
           if (payload.newMessage.roomId === variables.roomId) {
-
             const message = payload.newMessage;
-            const { roomId, lang } = variables;
+            const { roomId, id } = variables;
 
             if (message.source === 'in' || message.source === 'out') {
               return true;
             }
-
+            const user = await prisma.user.findOne({ where: { id } });
             const users = await prisma.room
               .findOne({
                 where: {
@@ -27,7 +33,7 @@ export default {
                 },
               })
               .users();
-            payload.newMessage.text = await translateText(message, lang, users);
+            payload.newMessage.text = await translateText(message, user as User, users);
             return true;
           }
           return false;

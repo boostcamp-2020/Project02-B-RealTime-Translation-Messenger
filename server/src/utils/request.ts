@@ -14,6 +14,10 @@ export default async (text: string, source: string, target: string): Promise<str
       'Content-Type': 'application/json',
     },
   };
-  const res = await axios.post(process.env.PAPAGO_TRANSLTE_URL as string, data, config);
-  return res.data.message.result.translatedText;
+  try {
+    const res = await axios.post(process.env.PAPAGO_TRANSLTE_URL as string, data, config);
+    return res.data.message.result.translatedText;
+  } catch (err) {
+    return '';
+  }
 };
