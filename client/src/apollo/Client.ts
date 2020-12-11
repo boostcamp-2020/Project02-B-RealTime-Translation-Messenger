@@ -12,7 +12,7 @@ const wsLink = new WebSocketLink({
   options: {
     reconnect: true,
     lazy: true,
-    connectionParams: () => localStorage.getItem('token'),
+    connectionParams: () => ({ authToken: localStorage.getItem('token') }),
   },
 });
 

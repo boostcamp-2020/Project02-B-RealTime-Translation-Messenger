@@ -28,7 +28,9 @@ server.start(
     cors: { origin: true },
     subscriptions: {
       onConnect: async (connectionParams: any, webSocket: any) => {
-        const user: any = verify(connectionParams, process.env.JWT_SECRET_KEY as string);
+        const { authToken } = connectionParams;
+        console.log('authToken :>> ', authToken);
+        const user: any = verify(authToken, process.env.JWT_SECRET_KEY as string);
         const findUser = await prisma.user.findOne({ where: { id: user.id } });
         if (!findUser) throw new Error('Not valid user token');
         return { user: { ...findUser, roomId: user.roomId } };
