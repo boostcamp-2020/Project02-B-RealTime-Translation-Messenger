@@ -13,8 +13,9 @@ protocol NetworkServiceProviding {
     
     func getMessage() -> Observable<GetMessageSubscription.Data>
     
-    func enterRoom(user: User,
-                   code: String) -> Maybe<JoinChatResponse>
+    func getMissingMessage(timeStamp: String) -> Maybe<GetMessageByTimeQuery.Data>
+    
+    func enterRoom(user: User, code: String) -> Maybe<JoinChatResponse>
     
     func createRoom(user: User) -> Maybe<CreateRoomResponse>
     

@@ -36,7 +36,6 @@ class ApolloNetworkService: NetworkServiceProviding {
     private(set) lazy var client = ApolloClient(networkTransport: self.splitNetworkTransport, store: store)
     
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
-        
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.perform(
                 mutation: SendMessageMutation(text: text),
@@ -73,6 +72,32 @@ class ApolloNetworkService: NetworkServiceProviding {
                         }
                     case .failure:
                         self?.reconnect()
+                    }
+                }
+            )
+            return Disposables.create {
+                cancellable?.cancel()
+            }
+        }
+    }
+    
+    func getMissingMessage(timeStamp: String) -> Maybe<GetMessageByTimeQuery.Data> {
+        return Maybe.create { [weak self] observer in
+            let cancellable = self?.client.fetch(
+                query: GetMessageByTimeQuery(timeStamp: timeStamp),
+                cachePolicy: .fetchIgnoringCacheCompletely,
+                resultHandler: { result in
+                    switch result {
+                    case let .success(gqlResult):
+                        if let errors = gqlResult.errors {
+                            observer(.error(errors.first!))
+                        } else if let data = gqlResult.data {
+                            observer(.success(data))
+                        } else {
+                            observer(.completed)
+                        }
+                    case let .failure(error):
+                        observer(.error(error))
                     }
                 }
             )

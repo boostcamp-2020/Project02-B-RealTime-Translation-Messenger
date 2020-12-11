@@ -151,6 +151,9 @@
 		BBC5B31C257E089900739CD8 /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B31B257E089900739CD8 /* KeychainAccess.swift */; };
 		BBC5B322257E0CFC00739CD8 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B321257E0CFC00739CD8 /* KeychainError.swift */; };
 		BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5B327257E0E4500739CD8 /* Keychain.swift */; };
+		BBDE2C6B25825C720068D7DE /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDE2C6A25825C720068D7DE /* Date+.swift */; };
+		BBDE2C7725830AB90068D7DE /* Userable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDE2C7625830AB90068D7DE /* Userable.swift */; };
+		BBDE2C7D25830B3C0068D7DE /* Messageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDE2C7C25830B3C0068D7DE /* Messageable.swift */; };
 		BBE140772573D374000B0604 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE140762573D374000B0604 /* DateFormatter+.swift */; };
 		BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5B256F4678009B8B5F /* Message.swift */; };
 		BBEA1A60256F46FE009B8B5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5F256F46FE009B8B5F /* User.swift */; };
@@ -305,6 +308,9 @@
 		BBC5B31B257E089900739CD8 /* KeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
 		BBC5B321257E0CFC00739CD8 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		BBC5B327257E0E4500739CD8 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		BBDE2C6A25825C720068D7DE /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		BBDE2C7625830AB90068D7DE /* Userable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userable.swift; sourceTree = "<group>"; };
+		BBDE2C7C25830B3C0068D7DE /* Messageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messageable.swift; sourceTree = "<group>"; };
 		BBE140762573D374000B0604 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		BBEA1A5B256F4678009B8B5F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BBEA1A5F256F46FE009B8B5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -582,6 +588,7 @@
 				990DE9772573A67C00340A72 /* String+.swift */,
 				996A146A256D5B6200F21215 /* Locale+.swift */,
 				BB93C2932575345200C68491 /* Calendar+.swift */,
+				BBDE2C6A25825C720068D7DE /* Date+.swift */,
 				BBE140762573D374000B0604 /* DateFormatter+.swift */,
 			);
 			path = Extension;
@@ -623,9 +630,11 @@
 		BBEA1A63256F49A8009B8B5F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				BBEA1A5B256F4678009B8B5F /* Message.swift */,
-				995BE9F62576350A00C15AC7 /* TranslatedResult.swift */,
 				BBEA1A5F256F46FE009B8B5F /* User.swift */,
+				BBDE2C7625830AB90068D7DE /* Userable.swift */,
+				BBEA1A5B256F4678009B8B5F /* Message.swift */,
+				BBDE2C7C25830B3C0068D7DE /* Messageable.swift */,
+				995BE9F62576350A00C15AC7 /* TranslatedResult.swift */,
 				9964795225769BD500CFF202 /* ChatRoomInfo.swift */,
 				BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */,
 				BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */,
@@ -949,8 +958,10 @@
 				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */,
 				99482F46257FCE1800802B45 /* MicButtonSize.swift in Sources */,
+				BBDE2C6B25825C720068D7DE /* Date+.swift in Sources */,
 				99482F19257F826800802B45 /* SpeechServiceProviding.swift in Sources */,
 				BB5EFE9125812A90001A121C /* UserDataSource.swift in Sources */,
+				BBDE2C7D25830B3C0068D7DE /* Messageable.swift in Sources */,
 				99482FC625811E2300802B45 /* MessageSection.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,
@@ -1018,6 +1029,7 @@
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				990DE9782573A67C00340A72 /* String+.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
+				BBDE2C7725830AB90068D7DE /* Userable.swift in Sources */,
 				BB15A58F25776D2F0006D258 /* SpeechViewReactor.swift in Sources */,
 				BB23C09B2576979C001D74A0 /* NetworkError.swift in Sources */,
 				BB1FFD1525761BB100E4668C /* ChatDrawerState.swift in Sources */,
