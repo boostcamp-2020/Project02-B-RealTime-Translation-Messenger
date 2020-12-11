@@ -7,6 +7,7 @@ import { ENTER_ROOM } from '@queries/room.queires';
 import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
 import { useUserState } from '@contexts/UserContext';
 import { useLocalizationState } from '@/contexts/LocalizationContext';
+import { CREATE_SYSTEM_MESSAGE } from '@/queries/messege.queries';
 import Overlay from './Overlay';
 import Code from './Code';
 
@@ -85,12 +86,17 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
     },
   });
 
+  const [createSystemMessageMutation] = useMutation(CREATE_SYSTEM_MESSAGE, {
+    variables: { source: 'in' },
+  });
+
   const onClickEnterRoom = async () => {
     const { data } = await enterRoomMutation();
     const roomId = data?.enterRoom.roomId;
     const userId = data?.enterRoom.userId;
     if (typeof data?.enterRoom.token === 'string')
       localStorage.setItem('token', data.enterRoom.token);
+    await createSystemMessageMutation();
     history.push({
       pathname: `/room/${roomId}`,
       state: {

@@ -9,8 +9,10 @@ import { Theme } from '@styles/Theme';
 import Modal from '@components/Modal';
 import { CreateRoomResponse, MutationCreateRoomArgs } from '@generated/types';
 import { CREATE_ROOM } from '@queries/room.queires';
+import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import { useUserState } from '@contexts/UserContext';
-import { useLocalizationState } from '@/contexts/LocalizationContext';
+import { useLocalizationState } from '@contexts/LocalizationContext';
+import client from '@/apollo/Client';
 
 const Wrapper = styled.div`
   display: flex;
@@ -48,6 +50,10 @@ const Home: React.FC = () => {
     },
   });
 
+  const [createSystemMessageMutation] = useMutation(CREATE_SYSTEM_MESSAGE, {
+    variables: { source: 'in' },
+  });
+
   const onClickCreateRoom = async () => {
     const { data } = await createRoomMutation();
     const roomId = data?.createRoom.roomId;
@@ -55,6 +61,7 @@ const Home: React.FC = () => {
     const userId = data?.createRoom.userId;
     if (typeof data?.createRoom.token === 'string')
       localStorage.setItem('token', data?.createRoom.token);
+    await createSystemMessageMutation();
     history.push({
       pathname: `/room/${roomId}`,
       state: {
