@@ -269,6 +269,7 @@ public final class FindRoomByIdQuery: GraphQLQuery {
           nickname
           avatar
           lang
+          isDeleted
         }
       }
     }
@@ -372,6 +373,7 @@ public final class FindRoomByIdQuery: GraphQLQuery {
             GraphQLField("nickname", type: .nonNull(.scalar(String.self))),
             GraphQLField("avatar", type: .nonNull(.scalar(String.self))),
             GraphQLField("lang", type: .nonNull(.scalar(String.self))),
+            GraphQLField("isDeleted", type: .nonNull(.scalar(Bool.self))),
           ]
         }
 
@@ -381,8 +383,8 @@ public final class FindRoomByIdQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: Int, nickname: String, avatar: String, lang: String) {
-          self.init(unsafeResultMap: ["__typename": "User", "id": id, "nickname": nickname, "avatar": avatar, "lang": lang])
+        public init(id: Int, nickname: String, avatar: String, lang: String, isDeleted: Bool) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id, "nickname": nickname, "avatar": avatar, "lang": lang, "isDeleted": isDeleted])
         }
 
         public var __typename: String {
@@ -427,6 +429,15 @@ public final class FindRoomByIdQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "lang")
+          }
+        }
+
+        public var isDeleted: Bool {
+          get {
+            return resultMap["isDeleted"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "isDeleted")
           }
         }
       }

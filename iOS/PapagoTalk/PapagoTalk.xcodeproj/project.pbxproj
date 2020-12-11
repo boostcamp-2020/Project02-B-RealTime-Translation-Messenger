@@ -53,7 +53,6 @@
 		99482F9A2580ED6800802B45 /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F992580ED6700802B45 /* SystemMessageCell.swift */; };
 		99482FC625811E2300802B45 /* MessageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482FC525811E2300802B45 /* MessageSection.swift */; };
 		99482FCC2581243500802B45 /* MessageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482FCB2581243500802B45 /* MessageDataSource.swift */; };
-		994830312583087500802B45 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994830302583087500802B45 /* API.swift */; };
 		99483035258309D000802B45 /* ChatWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99483034258309D000802B45 /* ChatWebSocket.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
@@ -66,6 +65,7 @@
 		9964797E2577670A00CFF202 /* MicrophoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964797D2577670A00CFF202 /* MicrophoneButton.swift */; };
 		996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479912577BF4900CFF202 /* SpeechViewDelegate.swift */; };
 		996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */; };
+		9968472C258325F6006C116E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968472B258325F6006C116E /* API.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionViewController.swift */; };
@@ -238,7 +238,6 @@
 		99482FCB2581243500802B45 /* MessageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataSource.swift; sourceTree = "<group>"; };
 		994830202583077D00802B45 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		99483026258307E400802B45 /* SendSystemMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendSystemMessage.graphql; sourceTree = "<group>"; };
-		994830302583087500802B45 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		99483034258309D000802B45 /* ChatWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWebSocket.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -252,6 +251,7 @@
 		9964797D2577670A00CFF202 /* MicrophoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneButton.swift; sourceTree = "<group>"; };
 		996479912577BF4900CFF202 /* SpeechViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewDelegate.swift; sourceTree = "<group>"; };
 		996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+SpeechViewDelegate.swift"; sourceTree = "<group>"; };
+		9968472B258325F6006C116E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -474,7 +474,7 @@
 		996C4E3D256E5F2C0015F9F4 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				994830302583087500802B45 /* API.swift */,
+				9968472B258325F6006C116E /* API.swift */,
 				994830202583077D00802B45 /* schema.json */,
 				996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */,
 				990DE92C2572836B00340A72 /* EnterRoom.graphql */,
@@ -1036,11 +1036,11 @@
 				BB20F4DB257394F800C5AC1D /* Encodable+.swift in Sources */,
 				BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */,
 				990DE957257367B800340A72 /* JoinChatResponse.swift in Sources */,
+				9968472C258325F6006C116E /* API.swift in Sources */,
 				990DE94D2573479600340A72 /* AlertFactory.swift in Sources */,
 				995BE9F72576350A00C15AC7 /* TranslatedResult.swift in Sources */,
 				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
 				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,
-				994830312583087500802B45 /* API.swift in Sources */,
 				BB38252B25740B22000425FD /* ChatDrawerViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1203,7 +1203,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1259,7 +1259,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1286,7 +1286,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.PapagoTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1307,7 +1307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.PapagoTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
