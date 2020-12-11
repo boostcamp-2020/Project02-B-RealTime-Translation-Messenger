@@ -21,18 +21,21 @@ final class MessageBox {
     }
     
     func append(_ message: Message) {
-        guard message.type != .system else {
+        guard let lastMessage = messages.last else {
+            var message = message
+            if message.type != .system {
+                message = setType(of: message)
+            }
             messages.append(message)
+            return
+        }
+        
+        guard lastMessage.time <= message.time else {
             return
         }
         
         var message = message
         message = setType(of: message)
-        
-        guard let lastMessage = messages.last else {
-            messages.append(message)
-            return
-        }
         message = setMessageIsFirst(of: message, comparedBy: lastMessage)
         message = setShouldImageShow(of: message, comparedBy: lastMessage)
         setShouldTimeShow(of: message, comparedBy: lastMessage)
