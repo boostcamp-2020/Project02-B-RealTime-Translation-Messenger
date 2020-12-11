@@ -12,6 +12,7 @@ final class ChatViewReactor: Reactor {
     
     enum Action {
         case subscribeChatRoom
+        case fetchMissingMessages
         case sendMessage(String)
         case chatDrawerButtonTapped
         case micButtonSizeChanged(MicButtonSize)
@@ -65,6 +66,8 @@ final class ChatViewReactor: Reactor {
                 .just(.reconnectSocket) : .merge([ .just(.connectSocket),
                                                     subscribeMessages()
                                                     ])
+        case .fetchMissingMessages:
+            return fetchMissingMessages(by: currentState.messageBox.lastMessageTimeStamp())
         case .sendMessage(let message):
             return requestSendMessage(message: message)
         case .chatDrawerButtonTapped:
@@ -100,6 +103,16 @@ final class ChatViewReactor: Reactor {
             .compactMap { $0.newMessage }
             .compactMap { [weak self] in
                 self?.messageParser.parse(newMessage: $0)
+            }
+            .map { Mutation.appendNewMessage($0) }
+    }
+    
+    private func fetchMissingMessages(by timeStamp: String) -> Observable<Mutation> {
+        return networkService.getMissingMessage(timeStamp: timeStamp)
+            .asObservable()
+            .compactMap { $0.allMessagesByTime }
+            .compactMap { [weak self] in
+                self?.messageParser.parse(missingMessages: $0)
             }
             .map { Mutation.appendNewMessage($0) }
     }
