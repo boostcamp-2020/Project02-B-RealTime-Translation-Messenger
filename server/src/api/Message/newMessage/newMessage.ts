@@ -16,11 +16,11 @@ export default {
   Subscription: {
     newMessage: {
       subscribe: withFilter(
-        (_: any, __: any, { pubsub }: any) => pubsub.asyncIterator(TRIGGER.NEW_MESSAGE),
-        async (payload, variables): Promise<boolean> => {
-          if (payload.newMessage.roomId === variables.roomId) {
+        (_: any, __: any, { pubsub }: any): any => pubsub.asyncIterator(TRIGGER.NEW_MESSAGE),
+        async (payload, variables, context): Promise<boolean> => {
+          const { id, roomId } = context.connection.context.user;
+          if (payload.newMessage.roomId === roomId) {
             const message = payload.newMessage;
-            const { roomId, id } = variables;
 
             if (message.source === 'in' || message.source === 'out') {
               return true;

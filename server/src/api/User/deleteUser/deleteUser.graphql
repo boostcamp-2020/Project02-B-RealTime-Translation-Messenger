@@ -8,5 +8,5 @@ type deleteUserResponse {
 }
 
 type Subscription {
-  deleteUser(roomId: Int!): deleteUserResponse
+  deleteUser: deleteUserResponse
 }

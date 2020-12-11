@@ -6,34 +6,10 @@ const prisma = new PrismaClient();
 
 export default {
   Mutation: {
-    deleteUser: async (
-      _: any,
-      __: any,
-      { pubsub, request, isAuthenticated }: any,
-    ): Promise<boolean> => {
+    deleteUser: async (_: any, __: any, { request, isAuthenticated }: any): Promise<boolean> => {
       isAuthenticated(request);
 
-      const { id, nickname, roomId } = request.user;
-
-      const newMessage = await prisma.message.create({
-        data: {
-          text: `${nickname}님이 나갔습니다`,
-          source: 'out',
-          user: {
-            connect: {
-              id,
-            },
-          },
-          room: {
-            connect: {
-              id: roomId,
-            },
-          },
-        },
-        include: {
-          user: true,
-        },
-      });
+      const { id, roomId } = request.user;
 
       await prisma.user.update({
         where: {
@@ -58,11 +34,7 @@ export default {
       if (!restUser) {
         await prisma.$queryRaw`delete from User where User.id in (select B from Room join _RoomToUser on A = ${roomId} AND Room.id = A );`;
         await prisma.$queryRaw`DELETE FROM Room WHERE id = ${roomId}`;
-        return true;
       }
-
-      pubsub.publish(TRIGGER.NEW_MESSAGE, { newMessage });
-      pubsub.publish(TRIGGER.DELETE_USER, { deleteUser: { id, roomId } });
       return true;
     },
   },
@@ -70,9 +42,10 @@ export default {
   Subscription: {
     deleteUser: {
       subscribe: withFilter(
-        (_: any, __: any, { pubsub }: any) => pubsub.asyncIterator('DELETE_USER'),
-        async (payload, variables): Promise<boolean> => {
-          if (payload.deleteUser.roomId === variables.roomId) return true;
+        (_: any, __: any, { pubsub }: any) => pubsub.asyncIterator(TRIGGER.DELETE_USER),
+        async (payload, variables, context): Promise<boolean> => {
+          const { roomId } = context.connection.context.user;
+          if (payload.deleteUser.roomId === roomId) return true;
           return false;
         },
       ),
