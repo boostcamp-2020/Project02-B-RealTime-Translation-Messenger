@@ -60,8 +60,7 @@ export default {
         .users();
 
       const promises = Messages.map(async (message: Message) => {
-        const { lang } = request.user;
-        message.text = await translateText(message, lang, users);
+        message.text = await translateText(message, request.user, users);
       });
 
       await Promise.all(promises);

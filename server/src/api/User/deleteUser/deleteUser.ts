@@ -32,7 +32,7 @@ export default {
       });
 
       if (!restUser) {
-        await prisma.$queryRaw`delete from user where user.id in (select B from room join _roomtouser on A = ${roomId} AND room.id = A );`;
+        await prisma.$queryRaw`delete from User where User.id in (select B from Room join _RoomToUser on A = ${roomId} AND Room.id = A );`;
         await prisma.$queryRaw`DELETE FROM Room WHERE id = ${roomId}`;
       }
       return true;

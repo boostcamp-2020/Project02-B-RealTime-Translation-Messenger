@@ -10,17 +10,14 @@ interface Props {
 }
 
 const SideBar: React.FC<Props> = ({ visible, setVisible, users }) => {
-  if (!visible) return null;
-
   return (
     <>
-      <S.SideBarWrapper>
+      <S.SideBarWrapper visible={visible}>
         <S.SideBarHeader>
-          <S.HamburgerButton onClick={() => setVisible(!visible)}>
-            <Hamburger size={24} />
-          </S.HamburgerButton>
-          <div>대화 상대</div>
-          {users.length}
+          <S.HeaderText>
+            <div>대화 상대</div>
+            <div>{users.length}</div>
+          </S.HeaderText>
         </S.SideBarHeader>
         <S.UserList>
           {users.map((user) => (

@@ -39,6 +39,7 @@ const Info = styled.div<isOriginProps>`
 
 const Text = styled.span`
   margin-right: 0.3rem;
+  color: ${({ theme }) => theme.reverseColor};
 `;
 
 const DoubleBubble = styled.div`
@@ -75,32 +76,22 @@ const ChatRow: FC<Props> = ({ message, obj }) => {
       <>
         {!isOrigin && <Avatar size={50} profile={avatar} />}
         <Column>
-          {obj ? (
-            <>
-              <Info isOrigin={isOrigin}>
-                <Text>{author}</Text>
-                <Text>{createdAt}</Text>
-              </Info>
-              <DoubleBubble>
-                <Balloon isOrigin={isOrigin} originText={obj?.originText} />
-                {obj?.originText === obj?.translatedText ? null : (
-                  <Balloon
-                    isOrigin={isOrigin}
-                    translatedText={obj?.translatedText}
-                    isLeft
-                  />
-                )}
-              </DoubleBubble>
-            </>
-          ) : (
-            <>
-              <Info isOrigin={isOrigin}>
-                <Text>{author}</Text>
-                <Text>{createdAt}</Text>
-              </Info>
-              <Balloon isOrigin={isOrigin} text={message?.text} />
-            </>
-          )}
+          <>
+            <Info isOrigin={isOrigin}>
+              <Text>{author}</Text>
+              <Text>{createdAt}</Text>
+            </Info>
+            <DoubleBubble>
+              <Balloon isOrigin={isOrigin} originText={obj?.originText} />
+              {obj?.translatedText && (
+                <Balloon
+                  isOrigin={isOrigin}
+                  translatedText={obj?.translatedText}
+                  isLeft
+                />
+              )}
+            </DoubleBubble>
+          </>
         </Column>
         {isOrigin && <Avatar size={50} profile={avatar} />}
       </>
