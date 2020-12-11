@@ -31,7 +31,6 @@ const useMessages = ({
   useEffect(() => {
     const unsubscribe = subscribeToMore({
       document: NEW_MESSAGE,
-      variables: { roomId, lang },
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const { newMessage } = subscriptionData.data;
