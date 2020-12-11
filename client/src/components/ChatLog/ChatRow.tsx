@@ -39,6 +39,7 @@ const Info = styled.div<isOriginProps>`
 
 const Text = styled.span`
   margin-right: 0.3rem;
+  color: ${({ theme }) => theme.reverseColor};
 `;
 
 const DoubleBubble = styled.div`

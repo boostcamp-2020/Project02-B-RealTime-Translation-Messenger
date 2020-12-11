@@ -18,7 +18,8 @@ export default {
     width: 100%;
     height: 100%;
     background: #f7f7f7;
-    border-radius: 20px;
+    border-radius: ${({ theme }) => theme.borderRadius};
+    overflow: hidden;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   `,
   Input: styled.input`
