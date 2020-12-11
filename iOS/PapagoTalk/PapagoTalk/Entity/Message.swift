@@ -34,12 +34,10 @@ struct Message: Codable {
         isTranslated = false
     }
     
-    typealias GetMessageData = GetMessageSubscription.Data.NewMessage
-    
-    init(data: GetMessageData, with text: TranslatedResult, timeStamp: String, isTranslated: Bool = false) {
+    init(data: Messageable, with text: TranslatedResult, timeStamp: String, isTranslated: Bool = false) {
         self.id = data.id
         self.text = isTranslated ? text.translatedText : text.originText
-        self.sender = User(data: data.user)
+        self.sender = User(data: data.userData)
         self.language = data.source
         self.timeStamp = timeStamp
         self.isFirstOfDay = true
