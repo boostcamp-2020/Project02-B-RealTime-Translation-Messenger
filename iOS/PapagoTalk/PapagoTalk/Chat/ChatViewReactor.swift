@@ -12,6 +12,7 @@ final class ChatViewReactor: Reactor {
     
     enum Action {
         case subscribeChatRoom
+        case fetchMissingMessages
         case sendMessage(String)
         case chatDrawerButtonTapped
         case micButtonSizeChanged(MicButtonSize)
@@ -39,6 +40,7 @@ final class ChatViewReactor: Reactor {
     private var userData: UserDataProviding
     private let roomID: Int
     private let messageParser: MessageParseProviding
+    private let chatWebSocket = ChatWebSocket()
     
     let initialState: State
     
@@ -65,6 +67,8 @@ final class ChatViewReactor: Reactor {
                 .just(.reconnectSocket) : .merge([ .just(.connectSocket),
                                                     subscribeMessages()
                                                     ])
+        case .fetchMissingMessages:
+            return fetchMissingMessages(by: currentState.messageBox.lastMessageTimeStamp())
         case .sendMessage(let message):
             return requestSendMessage(message: message)
         case .chatDrawerButtonTapped:
@@ -88,7 +92,7 @@ final class ChatViewReactor: Reactor {
         case .connectSocket:
             state.isSubscribingMessage = true
         case .reconnectSocket:
-            networkService.reconnect()
+            chatWebSocket.reconnect()
         case .setMicButtonSize(let size):
             state.micButtonSize = size
         }
@@ -96,10 +100,27 @@ final class ChatViewReactor: Reactor {
     }
         
     private func subscribeMessages() -> Observable<Mutation> {
-        return networkService.getMessage(roomID: roomID, userID: userData.id)
+//        return networkService.getMessage()
+//            .compactMap { $0.newMessage }
+//            .compactMap { [weak self] in
+//                self?.messageParser.parse(newMessage: $0)
+//            }
+//            .map { Mutation.appendNewMessage($0) }
+        networkService.sendSystemMessage(type: "in")
+        return chatWebSocket.getMessage()
             .compactMap { $0.newMessage }
             .compactMap { [weak self] in
                 self?.messageParser.parse(newMessage: $0)
+            }
+            .map { Mutation.appendNewMessage($0) }
+    }
+    
+    private func fetchMissingMessages(by timeStamp: String) -> Observable<Mutation> {
+        return networkService.getMissingMessage(timeStamp: timeStamp)
+            .asObservable()
+            .compactMap { $0.allMessagesByTime }
+            .compactMap { [weak self] in
+                self?.messageParser.parse(missingMessages: $0)
             }
             .map { Mutation.appendNewMessage($0) }
     }

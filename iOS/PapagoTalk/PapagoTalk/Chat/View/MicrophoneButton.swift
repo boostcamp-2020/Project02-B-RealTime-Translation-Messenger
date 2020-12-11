@@ -13,7 +13,7 @@ import RxGesture
 final class MicrophoneButton: RoundShadowButton {
         
     private var latestCenter: CGPoint?
-    private var isOnSpeeching: Bool = false
+    private var latestCenterForKeyboard: CGPoint?
     private var isKeyboardAppear: Bool = false
     private var bottomBoundWhenKeyboardAppear: CGFloat = 0
     private let disposeBag = DisposeBag()
@@ -65,7 +65,6 @@ final class MicrophoneButton: RoundShadowButton {
     }
     
     func moveForSpeech(completion: (() -> Void)?) {
-        isOnSpeeching = true
         isUserInteractionEnabled = false
         guard let superview = superview else { return }
         latestCenter = center
@@ -81,7 +80,6 @@ final class MicrophoneButton: RoundShadowButton {
     }
     
     func moveToLatest() {
-        isOnSpeeching = false
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             guard let self = self else { return }
             self.center = self.latestCenter ?? self.center
@@ -120,9 +118,6 @@ final class MicrophoneButton: RoundShadowButton {
     private func bindKeyboard() {
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
             .asObservable()
-            .filter { [unowned self] _ in
-                !self.isOnSpeeching
-            }
             .compactMap {
                 ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             }
@@ -136,14 +131,11 @@ final class MicrophoneButton: RoundShadowButton {
         
         return NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
             .asObservable()
-            .filter { [unowned self] _ in
-                !self.isOnSpeeching
-            }
             .map { _ in Void.self }
             .asDriver(onErrorJustReturn: Void.self)
             .drive(onNext: { [unowned self] _ in
                 self.isKeyboardAppear = false
-                self.moveToLatest()
+                self.keyboardWillHide()
             })
             .disposed(by: disposeBag)
     }
@@ -157,6 +149,7 @@ final class MicrophoneButton: RoundShadowButton {
         let movedY = center.y
         let newCenter = CGPoint(x: nexX, y: movedY)
         latestCenter = newCenter
+        latestCenterForKeyboard = newCenter
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.center = newCenter
         }
@@ -181,10 +174,17 @@ final class MicrophoneButton: RoundShadowButton {
         let yBound = calculateBottomBound(with: keyboardOriginY)
         let originCenter = center
         if center.y >= yBound {
-            latestCenter = originCenter
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+            latestCenterForKeyboard = originCenter
+            UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) { [weak self] in
                 self?.center = CGPoint(x: originCenter.x, y: yBound - 10)
             }
+        }
+    }
+    
+    private func keyboardWillHide() {
+        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) { [weak self] in
+            guard let self = self else { return }
+            self.center = self.latestCenterForKeyboard ?? self.center
         }
     }
     

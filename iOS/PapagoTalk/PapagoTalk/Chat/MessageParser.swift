@@ -43,8 +43,42 @@ struct MessageParser: MessageParseProviding {
         //        }
         
         let translatedMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp, isTranslated: true)
+        guard !translatedMessage.text.isEmpty else {
+            return messages
+        }
         messages.append(translatedMessage)
         
         return messages
+    }
+    
+    func parse(missingMessages: [GetMessageByTimeQuery.Data.AllMessagesByTime?]?) -> [Message] {
+        guard let messages = missingMessages, !messages.isEmpty else {
+            return []
+        }
+        var parsedMessages = [Message]()
+        
+        for message in messages {
+            guard let message = message else { return parsedMessages }
+            
+            if message.source == "in" || message.source == "out" {
+                let systemMessageText = message.source == "in" ?
+                   Strings.Chat.userJoinMessage : Strings.Chat.userLeaveMessage
+                parsedMessages.append(Message(systemText: message.user.nickname + systemMessageText,
+                                       timeStamp: message.createdAt ?? ""))
+                break
+            }
+            
+            if let timeStamp = message.createdAt,
+               let data = message.text.data(using: .utf8),
+               let translatedResult: TranslatedResult = try? data.decoded() {
+                
+                let originMessage = Message(data: message, with: translatedResult, timeStamp: timeStamp)
+                parsedMessages.append(originMessage)
+                
+                let translatedMessage = Message(data: message, with: translatedResult, timeStamp: timeStamp, isTranslated: true)
+                parsedMessages.append(translatedMessage)
+            }
+        }
+        return parsedMessages
     }
 }

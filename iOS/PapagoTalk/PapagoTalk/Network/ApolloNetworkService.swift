@@ -19,7 +19,8 @@ class ApolloNetworkService: NetworkServiceProviding {
     private lazy var webSocketTransport: WebSocketTransport = {
         let url = socketURL
         let request = URLRequest(url: url)
-        return WebSocketTransport(request: request)
+        let authPayload = ["authToken": UserDataProvider().token]
+        return WebSocketTransport(request: request, connectingPayload: authPayload)
     }()
     
     private lazy var normalTransport: RequestChainNetworkTransport = {
@@ -35,7 +36,6 @@ class ApolloNetworkService: NetworkServiceProviding {
     private(set) lazy var client = ApolloClient(networkTransport: self.splitNetworkTransport, store: store)
     
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
-        
         return Maybe.create { [weak self] observer in
             let cancellable = self?.client.perform(
                 mutation: SendMessageMutation(text: text),
@@ -60,10 +60,10 @@ class ApolloNetworkService: NetworkServiceProviding {
         }
     }
     
-    func getMessage(roomID: Int, userID: Int) -> Observable<GetMessageSubscription.Data> {
+    func getMessage() -> Observable<GetMessageSubscription.Data> {
         return Observable.create { [weak self] observer in
             let cancellable = self?.client.subscribe(
-                subscription: GetMessageSubscription(roomID: roomID, userID: userID),
+                subscription: GetMessageSubscription(),
                 resultHandler: { [weak self] result in
                     switch result {
                     case let .success(gqlResult):
@@ -72,6 +72,32 @@ class ApolloNetworkService: NetworkServiceProviding {
                         }
                     case .failure:
                         self?.reconnect()
+                    }
+                }
+            )
+            return Disposables.create {
+                cancellable?.cancel()
+            }
+        }
+    }
+    
+    func getMissingMessage(timeStamp: String) -> Maybe<GetMessageByTimeQuery.Data> {
+        return Maybe.create { [weak self] observer in
+            let cancellable = self?.client.fetch(
+                query: GetMessageByTimeQuery(timeStamp: timeStamp),
+                cachePolicy: .fetchIgnoringCacheCompletely,
+                resultHandler: { result in
+                    switch result {
+                    case let .success(gqlResult):
+                        if let errors = gqlResult.errors {
+                            observer(.error(errors.first!))
+                        } else if let data = gqlResult.data {
+                            observer(.success(data))
+                        } else {
+                            observer(.completed)
+                        }
+                    case let .failure(error):
+                        observer(.error(error))
                     }
                 }
             )
@@ -158,18 +184,26 @@ class ApolloNetworkService: NetworkServiceProviding {
         }
     }
     
-    func subscribeNewUser(roomID: Int) -> Observable<NewUserSubscription.Data> {
-        return .create { [weak self] observer in
-            let cancellable = self?.client.subscribe(
-                subscription: NewUserSubscription(roomId: roomID),
-                resultHandler: { [weak self] result in
+    func sendSystemMessage(type: String) {
+        client.perform(mutation: SendSystemMessageMutation(type: type))
+    }
+  
+    func translate(text: String) -> Maybe<String> {
+        return Maybe.create { [weak self] observer in
+            let cancellable = self?.client.perform(
+                mutation: TranslationMutation(text: text),
+                resultHandler: { result in
                     switch result {
                     case let .success(gqlResult):
-                        if let data = gqlResult.data {
-                            observer.onNext(data)
+                        if let error = gqlResult.errors?.first {
+                            observer(.error(error))
+                        } else if let data = gqlResult.data {
+                            observer(.success(data.translation.translatedText))
+                        } else {
+                            observer(.completed)
                         }
-                    case .failure:
-                        self?.reconnect()
+                    case let .failure(error):
+                        observer(.error(error))
                     }
                 }
             )
@@ -178,29 +212,9 @@ class ApolloNetworkService: NetworkServiceProviding {
             }
         }
     }
-    
-    func subscribeLeavedUser(roomID: Int) -> Observable<LeavedUserSubscription.Data> {
-        return .create { [weak self] observer in
-            let cancellable = self?.client.subscribe(
-                subscription: LeavedUserSubscription(roomId: roomID),
-                resultHandler: { [weak self] result in
-                    switch result {
-                    case let .success(gqlResult):
-                        if let data = gqlResult.data {
-                            observer.onNext(data)
-                        }
-                    case .failure:
-                        self?.reconnect()
-                    }
-                }
-            )
-            return Disposables.create {
-                cancellable?.cancel()
-            }
-        }
-    }
-    
+  
     func leaveRoom() {
+        sendSystemMessage(type: "out")
         client.perform(mutation: LeaveRoomMutation())
     }
     

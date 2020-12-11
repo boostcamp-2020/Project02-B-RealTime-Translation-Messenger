@@ -8,6 +8,8 @@
 import Foundation
 
 struct ChatRoomInfo: Equatable {
+    var userID: Int
     var roomID: Int
     var code: String
+    var token: String
 }

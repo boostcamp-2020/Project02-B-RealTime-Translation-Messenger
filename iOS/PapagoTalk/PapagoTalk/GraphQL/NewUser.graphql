@@ -1,8 +1,0 @@
-subscription NewUser($roomId: Int!) {
-  newUser(roomId: $roomId) {
-    id
-    nickname
-    avatar
-    lang
-  }
-}

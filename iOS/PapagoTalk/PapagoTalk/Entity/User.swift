@@ -31,9 +31,7 @@ struct User: Codable {
         self.isMe = (id == userID) ? true : false
     }
     
-    typealias GetMessageUserData = GetMessageSubscription.Data.NewMessage.User
-    
-    init(data: GetMessageUserData) {
+    init(data: Userable) {
         self.id = data.id
         self.nickName = data.nickname
         self.image = data.avatar
@@ -41,9 +39,7 @@ struct User: Codable {
         self.isMe = false
     }
     
-    typealias GetUserListUserData = FindRoomByIdQuery.Data.RoomById.User
-    
-    init(data: GetUserListUserData, userID: Int) {
+    init(data: Userable, userID: Int) {
         self.id = data.id
         self.nickName = data.nickname
         self.image = data.avatar

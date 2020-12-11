@@ -13,7 +13,7 @@ import RxDataSources
 
 final class ChatViewController: UIViewController, StoryboardView {
     
-    @IBOutlet private weak var inputBarTextView: UITextView!
+    @IBOutlet weak var inputBarTextView: UITextView!
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: UICollectionView!
     @IBOutlet private weak var sendButton: UIButton!
@@ -54,6 +54,12 @@ final class ChatViewController: UIViewController, StoryboardView {
     private func bindAction(reactor: ChatViewReactor) {
         self.rx.viewWillAppear
             .map { _ in Reactor.Action.subscribeChatRoom }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification)
+            .asObservable()
+            .map { _ in Reactor.Action.fetchMissingMessages }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -143,6 +149,8 @@ final class ChatViewController: UIViewController, StoryboardView {
             .asDriver()
             .drive(onNext: { [weak self] in
                 self?.hideKeyboard()
+                self?.chatDrawerButton.isEnabled = false
+                self?.inputBarTextView.isUserInteractionEnabled = false
                 self?.microphoneButton?.moveForSpeech {
                     self?.presentSpeech()
                 }
