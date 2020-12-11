@@ -9,4 +9,5 @@ import Foundation
 
 protocol MessageParseProviding {
     func parse(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message]
+    func parse(missingMessages: [GetMessageByTimeQuery.Data.AllMessagesByTime?]?) -> [Message]
 }
