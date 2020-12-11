@@ -13,8 +13,6 @@ final class MainCoordinator: Coordinator {
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
-    var translationManager: PapagoAPIServiceProviding
-    var speechManager: SpeechServiceProviding
     var messageParser: MessageParser
     var childCoordinator: [Coordinator] = []
     
@@ -22,16 +20,12 @@ final class MainCoordinator: Coordinator {
          networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          alertFactory: AlertFactoryProviding,
-         translationManager: PapagoAPIServiceProviding,
-         speechManager: SpeechServiceProviding,
          messageParser: MessageParser) {
         
         self.navigationController = navigationController
         self.networkService = networkService
         self.userData = userData
         self.alertFactory = alertFactory
-        self.translationManager = translationManager
-        self.speechManager = speechManager
         self.messageParser = messageParser
         
         navigationController.navigationBar.barTintColor = UIColor(named: "NavigationBarColor")
@@ -46,8 +40,6 @@ final class MainCoordinator: Coordinator {
         
         let chatCoordinator = ChatCoordinator(networkService: networkService,
                                               userData: userData,
-                                              translationManager: translationManager,
-                                              speechManager: speechManager,
                                               messageParser: messageParser)
         
         homeCoordinator.parentCoordinator = self

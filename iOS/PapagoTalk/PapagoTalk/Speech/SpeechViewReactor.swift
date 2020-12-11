@@ -38,7 +38,6 @@ final class SpeechViewReactor: Reactor {
     }
     
     private let speechManager: SpeechServiceProviding
-    private let translationManager: PapagoAPIServiceProviding
     private let userData: UserDataProviding
     private let networkService: NetworkServiceProviding
     private let roomID: Int
@@ -47,13 +46,11 @@ final class SpeechViewReactor: Reactor {
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         translationManager: PapagoAPIServiceProviding,
          speechManager: SpeechServiceProviding,
          roomID: Int) {
         
         self.networkService = networkService
         self.userData = userData
-        self.translationManager = translationManager
         self.speechManager = speechManager
         self.roomID = roomID
         
@@ -115,11 +112,7 @@ final class SpeechViewReactor: Reactor {
     }
     
     private func translate(text: String) -> Observable<Mutation> {
-        let oppositeLanguage: Language = userData.language == .korean ? .english : .korean
-        return translationManager
-            .requestTranslation(request: TranslationRequest(source: userData.language.code,
-                                                            target: oppositeLanguage.code,
-                                                            text: text))
+        return networkService.translate(text: text)
             .asObservable()
             .map { Mutation.setTranslatedText($0) }
     }

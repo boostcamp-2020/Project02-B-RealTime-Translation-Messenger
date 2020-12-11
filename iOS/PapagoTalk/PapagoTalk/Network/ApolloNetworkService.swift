@@ -162,7 +162,32 @@ class ApolloNetworkService: NetworkServiceProviding {
     func sendSystemMessage(type: String) {
         client.perform(mutation: SendSystemMessageMutation(type: type))
     }
-    
+  
+    func translate(text: String) -> Maybe<String> {
+        return Maybe.create { [weak self] observer in
+            let cancellable = self?.client.perform(
+                mutation: TranslationMutation(text: text),
+                resultHandler: { result in
+                    switch result {
+                    case let .success(gqlResult):
+                        if let error = gqlResult.errors?.first {
+                            observer(.error(error))
+                        } else if let data = gqlResult.data {
+                            observer(.success(data.translation.translatedText))
+                        } else {
+                            observer(.completed)
+                        }
+                    case let .failure(error):
+                        observer(.error(error))
+                    }
+                }
+            )
+            return Disposables.create {
+                cancellable?.cancel()
+            }
+        }
+    }
+  
     func leaveRoom() {
         sendSystemMessage(type: "out")
         client.perform(mutation: LeaveRoomMutation())

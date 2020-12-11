@@ -13,7 +13,6 @@ final class ChatCoordinator: Coordinator {
     
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
-    var translationManager: PapagoAPIServiceProviding
     var speechManager: SpeechServiceProviding
     var messageParser: MessageParser
     
@@ -22,13 +21,11 @@ final class ChatCoordinator: Coordinator {
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         translationManager: PapagoAPIServiceProviding,
          speechManager: SpeechServiceProviding,
          messageParser: MessageParser) {
         
         self.networkService = networkService
         self.userData = userData
-        self.translationManager = translationManager
         self.speechManager = speechManager
         self.messageParser = messageParser
     }
@@ -60,13 +57,12 @@ extension ChatCoordinator: ChatCoordinating {
         guard let roomID = roomID else {
             return
         }
-        
+        let speechManager = SpeechManager(userData: userData)
         let speechViewController = storyboard.instantiateViewController(
             identifier: SpeechViewController.identifier,
             creator: { [unowned self] coder -> SpeechViewController? in
                 let reactor = SpeechViewReactor(networkService: networkService,
                                                 userData: userData,
-                                                translationManager: translationManager,
                                                 speechManager: speechManager,
                                                 roomID: roomID)
                 return SpeechViewController(coder: coder, reactor: reactor)

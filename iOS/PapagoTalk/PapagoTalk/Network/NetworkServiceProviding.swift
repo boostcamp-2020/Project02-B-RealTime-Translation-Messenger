@@ -20,6 +20,8 @@ protocol NetworkServiceProviding {
     
     func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data>
     
+    func translate(text: String) -> Maybe<String>
+
     func leaveRoom()
     
     func sendSystemMessage(type: String)
