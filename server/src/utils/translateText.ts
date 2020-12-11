@@ -14,14 +14,13 @@ interface Message {
   user: User;
 }
 
-// TODO: Need Refactoring! :(
 export default async (message: Message, me: User, users: User[]): Promise<string> => {
-  const authorLang = message.user.lang;
+  const { id: authorId, lang: authorLang } = message.user;
   const { text, source } = message;
-  const { id, lang: myLang } = me;
+  const { id: myId, lang: myLang } = me;
 
   if (authorLang !== myLang) {
-    if (message.source === myLang) {
+    if (source === myLang) {
       const translatedText = await req(text, source, authorLang);
       const texts = {
         originText: text,
@@ -36,7 +35,7 @@ export default async (message: Message, me: User, users: User[]): Promise<string
     };
     return JSON.stringify(texts);
   } else {
-    if (message.user.id === id) {
+    if (authorId === myId) {
       if (message.source === myLang) {
         const secondLang = getSecondLang(users, myLang);
         const translatedText = await req(text, source, secondLang);
@@ -61,14 +60,13 @@ export default async (message: Message, me: User, users: User[]): Promise<string
           translatedText,
         };
         return JSON.stringify(texts);
-      } else {
-        const translatedText = await req(text, source, myLang);
-        const texts = {
-          originText: text,
-          translatedText,
-        };
-        return JSON.stringify(texts);
       }
+      const translatedText = await req(text, source, myLang);
+      const texts = {
+        originText: text,
+        translatedText,
+      };
+      return JSON.stringify(texts);
     }
   }
 };
