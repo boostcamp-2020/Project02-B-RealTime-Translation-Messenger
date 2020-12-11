@@ -15,6 +15,7 @@ extension ChatViewController: SpeechViewDelegate {
     }
     
     func speechViewDidDismiss() {
+        inputBarTextView.isUserInteractionEnabled = true
         microphoneButton.moveToLatest()
     }
 }

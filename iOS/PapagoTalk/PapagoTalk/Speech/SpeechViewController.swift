@@ -137,7 +137,6 @@ final class SpeechViewController: UIViewController, StoryboardView {
         } completion: { [weak self] _ in
             self?.delegate?.speechViewDidDismiss()
         }
-        view.removeFromSuperview()
         removeFromParent()
         dismiss(animated: true)
     }
