@@ -41,6 +41,13 @@ final class MessageBox {
         setShouldTimeShow(of: message, comparedBy: lastMessage)
     }
     
+    func lastMessageTimeStamp() -> String {
+        guard let lastMessage = messages.last else {
+            return Date.presentTimeStamp()
+        }
+        return lastMessage.timeStamp
+    }
+    
     func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
         let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.time,
                                                   with: lastMessage.time)
