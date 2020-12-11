@@ -57,6 +57,12 @@ final class ChatViewController: UIViewController, StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification)
+            .asObservable()
+            .map { _ in Reactor.Action.fetchMissingMessages }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         sendButton.rx.tap
             .withLatestFrom(inputBarTextView.rx.text)
             .compactMap { $0 }
