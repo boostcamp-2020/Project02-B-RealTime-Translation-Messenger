@@ -34,6 +34,11 @@ final class MessageBox {
             return
         }
         
+        guard message.type != .system else {
+            messages.append(message)
+            return
+        }
+        
         var message = message
         message = setType(of: message)
         message = setMessageIsFirst(of: message, comparedBy: lastMessage)
