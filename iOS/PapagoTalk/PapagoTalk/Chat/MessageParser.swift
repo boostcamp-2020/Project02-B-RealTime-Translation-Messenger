@@ -43,6 +43,9 @@ struct MessageParser: MessageParseProviding {
         //        }
         
         let translatedMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp, isTranslated: true)
+        guard !translatedMessage.text.isEmpty else {
+            return messages
+        }
         messages.append(translatedMessage)
         
         return messages
