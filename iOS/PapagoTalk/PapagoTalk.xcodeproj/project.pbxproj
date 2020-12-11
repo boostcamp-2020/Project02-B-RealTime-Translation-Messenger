@@ -53,7 +53,8 @@
 		99482F9A2580ED6800802B45 /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F992580ED6700802B45 /* SystemMessageCell.swift */; };
 		99482FC625811E2300802B45 /* MessageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482FC525811E2300802B45 /* MessageSection.swift */; };
 		99482FCC2581243500802B45 /* MessageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482FCB2581243500802B45 /* MessageDataSource.swift */; };
-		994830042581DE0D00802B45 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994830032581DE0D00802B45 /* API.swift */; };
+		994830312583087500802B45 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994830302583087500802B45 /* API.swift */; };
+		99483035258309D000802B45 /* ChatWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99483034258309D000802B45 /* ChatWebSocket.swift */; };
 		995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE99E2575DF9400C15AC7 /* Coordinator.swift */; };
 		995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */; };
 		995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D0257621B700C15AC7 /* UserDataProvider.swift */; };
@@ -164,7 +165,7 @@
 		BBF3B6F7257FB927004578D4 /* ChatRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964795225769BD500CFF202 /* ChatRoomInfo.swift */; };
 		BBF3B6FA257FB942004578D4 /* ReceivedMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */; };
 		BBF3B6FD257FB946004578D4 /* SentMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */; };
-		BBFFC1C92581CE7200B241F0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482FA52580F25500802B45 /* API.swift */; };
+		BBFFC1C92581CE7200B241F0 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		BBFFC1CC2581CEC100B241F0 /* UserDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D425762AC500C15AC7 /* UserDataProviding.swift */; };
 		BBFFC1CF2581CFA400B241F0 /* MicButtonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F45257FCE1700802B45 /* MicButtonSize.swift */; };
 		BBFFC1D22581CFB600B241F0 /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F992580ED6700802B45 /* SystemMessageCell.swift */; };
@@ -227,15 +228,15 @@
 		99482F642580AA1300802B45 /* GetMessageByTime.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetMessageByTime.graphql; sourceTree = "<group>"; };
 		99482F682580AAFF00802B45 /* LeaveRoom.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LeaveRoom.graphql; sourceTree = "<group>"; };
 		99482F6C2580AB9800802B45 /* Translation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Translation.graphql; sourceTree = "<group>"; };
-		99482F702580AD4500802B45 /* NewUser.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NewUser.graphql; sourceTree = "<group>"; };
-		99482F772580B15A00802B45 /* LeavedUser.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LeavedUser.graphql; sourceTree = "<group>"; };
 		99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAddingIntercepter.swift; sourceTree = "<group>"; };
 		99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIntercepterProvider.swift; sourceTree = "<group>"; };
 		99482F992580ED6700802B45 /* SystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCell.swift; sourceTree = "<group>"; };
 		99482FC525811E2300802B45 /* MessageSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSection.swift; sourceTree = "<group>"; };
 		99482FCB2581243500802B45 /* MessageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataSource.swift; sourceTree = "<group>"; };
-		99482FFD2581DD6000802B45 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		994830032581DE0D00802B45 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		994830202583077D00802B45 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		99483026258307E400802B45 /* SendSystemMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SendSystemMessage.graphql; sourceTree = "<group>"; };
+		994830302583087500802B45 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		99483034258309D000802B45 /* ChatWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWebSocket.swift; sourceTree = "<group>"; };
 		995BE99E2575DF9400C15AC7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		995BE9AA2575E8E500C15AC7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		995BE9C625760ADD00C15AC7 /* FindRoomByID.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = FindRoomByID.graphql; sourceTree = "<group>"; };
@@ -467,8 +468,8 @@
 		996C4E3D256E5F2C0015F9F4 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				994830032581DE0D00802B45 /* API.swift */,
-				99482FFD2581DD6000802B45 /* schema.json */,
+				994830302583087500802B45 /* API.swift */,
+				994830202583077D00802B45 /* schema.json */,
 				996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */,
 				990DE92C2572836B00340A72 /* EnterRoom.graphql */,
 				990DE9382572860500340A72 /* SendMessage.graphql */,
@@ -477,8 +478,7 @@
 				99482F642580AA1300802B45 /* GetMessageByTime.graphql */,
 				99482F682580AAFF00802B45 /* LeaveRoom.graphql */,
 				99482F6C2580AB9800802B45 /* Translation.graphql */,
-				99482F702580AD4500802B45 /* NewUser.graphql */,
-				99482F772580B15A00802B45 /* LeavedUser.graphql */,
+				99483026258307E400802B45 /* SendSystemMessage.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -498,6 +498,7 @@
 				99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */,
 				99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */,
 				99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */,
+				99483034258309D000802B45 /* ChatWebSocket.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -971,7 +972,6 @@
 				BB1569A0257F8C2F00A2C0F9 /* MessageParseProviding.swift in Sources */,
 				BBF2DC9D256674A300F2EA7D /* AppDelegate.swift in Sources */,
 				BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */,
-				994830042581DE0D00802B45 /* API.swift in Sources */,
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
 				BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */,
 				99482E57257B558700802B45 /* HomeCoordinator.swift in Sources */,
@@ -1012,6 +1012,7 @@
 				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
 				990DE9512573499500340A72 /* AlertFactoryProviding.swift in Sources */,
 				993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */,
+				99483035258309D000802B45 /* ChatWebSocket.swift in Sources */,
 				BB2772BC2581F02900F6A47B /* UserTranslatedMessageCell.swift in Sources */,
 				BBC5B322257E0CFC00739CD8 /* KeychainError.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
@@ -1027,6 +1028,7 @@
 				995BE9F72576350A00C15AC7 /* TranslatedResult.swift in Sources */,
 				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
 				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,
+				994830312583087500802B45 /* API.swift in Sources */,
 				BB38252B25740B22000425FD /* ChatDrawerViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1036,7 +1038,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB987E9A257F4EA700F4C258 /* User.swift in Sources */,
-				BBFFC1C92581CE7200B241F0 /* API.swift in Sources */,
+				BBFFC1C92581CE7200B241F0 /* (null) in Sources */,
 				BB987E9D257F4EAC00F4C258 /* Language.swift in Sources */,
 				BB1569A4257F8C5B00A2C0F9 /* MessageParserMock.swift in Sources */,
 				BB987EB8257F4FF200F4C258 /* RevisionedData.swift in Sources */,

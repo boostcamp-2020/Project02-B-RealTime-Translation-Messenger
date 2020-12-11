@@ -1,5 +1,0 @@
-subscription LeavedUser($roomId: Int!) {
-  deleteUser(roomId: $roomId) {
-    id
-  }
-}

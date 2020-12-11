@@ -96,6 +96,8 @@ final class HomeViewReactor: Reactor {
             state.language = language
             userData.language = language 
         case .createRoom(let response):
+            userData.id = response.userId
+            userData.token = response.token
             state.createRoomResponse = response
         case .joinRoom(let isAvaliable):
             state.joinRoom = state.joinRoom.update(isAvaliable)
@@ -122,10 +124,6 @@ final class HomeViewReactor: Reactor {
     private func requestCreateRoom() -> Observable<Mutation> {
         return networkService.createRoom(user: userData.user)
             .asObservable()
-            .do(onNext: { [weak self] in 
-                self?.userData.id = $0.userId
-                self?.userData.token = $0.token
-            })
             .map { Mutation.createRoom($0) }
             .catchError { _ in
                 .just(.alertError(.networkError))
