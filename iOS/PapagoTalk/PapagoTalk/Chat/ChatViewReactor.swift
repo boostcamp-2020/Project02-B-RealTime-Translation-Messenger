@@ -40,6 +40,7 @@ final class ChatViewReactor: Reactor {
     private var userData: UserDataProviding
     private let roomID: Int
     private let messageParser: MessageParseProviding
+    private let chatWebSocket = ChatWebSocket()
     
     let initialState: State
     
@@ -91,7 +92,7 @@ final class ChatViewReactor: Reactor {
         case .connectSocket:
             state.isSubscribingMessage = true
         case .reconnectSocket:
-            networkService.reconnect()
+            chatWebSocket.reconnect()
         case .setMicButtonSize(let size):
             state.micButtonSize = size
         }
@@ -99,7 +100,14 @@ final class ChatViewReactor: Reactor {
     }
         
     private func subscribeMessages() -> Observable<Mutation> {
-        return networkService.getMessage(roomID: roomID, userID: userData.id)
+//        return networkService.getMessage()
+//            .compactMap { $0.newMessage }
+//            .compactMap { [weak self] in
+//                self?.messageParser.parse(newMessage: $0)
+//            }
+//            .map { Mutation.appendNewMessage($0) }
+        networkService.sendSystemMessage(type: "in")
+        return chatWebSocket.getMessage()
             .compactMap { $0.newMessage }
             .compactMap { [weak self] in
                 self?.messageParser.parse(newMessage: $0)

@@ -73,6 +73,8 @@ final class ChatCodeInputViewReactor: Reactor {
             state.cusor = (state.cusor <= .zero) ? .zero : state.cusor - 1
             state.codeInput[state.cusor] = ""
         case .joinChatRoom(let roomInfo):
+            userData.id = roomInfo.userID
+            userData.token = roomInfo.token
             state.chatRoomInfo = roomInfo
         case .alertError(let error):
             state.errorMessage = error.message
@@ -87,11 +89,10 @@ final class ChatCodeInputViewReactor: Reactor {
         let code = state.codeInput.reduce("") { $0 + $1 } + lastInput
         return networkService.enterRoom(user: userData.user, code: code)
             .asObservable()
-            .do(onNext: { [weak self] in 
-                self?.userData.id = $0.userId
-                self?.userData.token = $0.token
-            })
-            .map { Mutation.joinChatRoom(ChatRoomInfo(roomID: $0.roomId, code: code)) }
+            .map { Mutation.joinChatRoom(ChatRoomInfo(userID: $0.userId,
+                                                      roomID: $0.roomId,
+                                                      code: code,
+                                                      token: $0.token)) }
             .catchError { [weak self] in
                 guard let self = self else {
                     return .just(Mutation.alertError(.networkError))
