@@ -23,7 +23,6 @@ const useUsers = ({ roomId }: Variables): QueryReturnType => {
   useEffect(() => {
     const unsubscribe = subscribeToMore({
       document: NEW_USER,
-      variables: { roomId },
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const { newUser } = subscriptionData.data;
@@ -44,7 +43,6 @@ const useUsers = ({ roomId }: Variables): QueryReturnType => {
   useEffect(() => {
     const unsubscribe = subscribeToMore({
       document: SUBSCRIBE_DELETE_USER,
-      variables: { roomId },
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const { deleteUser } = subscriptionData.data;

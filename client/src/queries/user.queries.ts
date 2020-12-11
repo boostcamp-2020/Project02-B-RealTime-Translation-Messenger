@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const NEW_USER = gql`
-  subscription newUser($roomId: Int!) {
-    newUser(roomId: $roomId) {
+  subscription newUser {
+    newUser {
       id
       avatar
       nickname
@@ -18,8 +18,8 @@ export const DELETE_USER = gql`
 `;
 
 export const SUBSCRIBE_DELETE_USER = gql`
-  subscription deleteUser($roomId: Int!) {
-    deleteUser(roomId: $roomId) {
+  subscription deleteUser {
+    deleteUser {
       id
     }
   }

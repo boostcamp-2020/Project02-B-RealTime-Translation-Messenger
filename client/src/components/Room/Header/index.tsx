@@ -7,6 +7,7 @@ import { useMutation } from '@apollo/client';
 import { DELETE_USER } from '@queries/user.queries';
 import { User } from '@generated/types';
 import client from '@/apollo/Client';
+import { CREATE_SYSTEM_MESSAGE } from '@/queries/messege.queries';
 import S from './style';
 
 interface Props {
@@ -20,7 +21,12 @@ const Header: React.FC<Props> = ({ visible, setVisible, code, users }) => {
   const history = useHistory();
   const [deleteUser] = useMutation(DELETE_USER);
 
+  const [createSystemMessageMutation] = useMutation(CREATE_SYSTEM_MESSAGE, {
+    variables: { source: 'out' },
+  });
+
   const leaveRoom = async () => {
+    createSystemMessageMutation();
     history.push('/');
     await deleteUser();
     localStorage.removeItem('token');

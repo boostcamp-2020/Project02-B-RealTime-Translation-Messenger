@@ -27,7 +27,6 @@ const useMessages = ({ roomId, page, id }: VariablesType): QueryReturnType => {
   useEffect(() => {
     const unsubscribe = subscribeToMore({
       document: NEW_MESSAGE,
-      variables: { roomId, id },
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const { newMessage } = subscriptionData.data;
