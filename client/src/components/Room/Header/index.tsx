@@ -41,8 +41,10 @@ const Header: React.FC<Props> = ({ visible, setVisible, code, users }) => {
 
   return (
     <S.Wrapper>
-      <S.HamburgerButton onClick={() => setVisible(!visible)}>
-        <Hamburger size={24} />
+      <S.HamburgerButton visible={visible} onClick={() => setVisible(!visible)}>
+        <div />
+        <div />
+        <div />
       </S.HamburgerButton>
       <CopyToClipboard text={code} onCopy={toast}>
         <S.CodeWrapper>

@@ -15,5 +15,6 @@ declare module 'styled-components' {
     borderRadiusSmall: string;
     boxBorder: string;
     Overlay: string;
+    mediaSize: string;
   }
 }

@@ -12,6 +12,7 @@ export const Theme = {
   borderRadius: '12px',
   borderRadiusSmall: '8px',
   Overlay: 'rgba(0, 0, 0, 0.6)',
+  mediaSize: '576px',
 };
 
 export const lightTheme: DefaultTheme = {
@@ -28,6 +29,7 @@ export const lightTheme: DefaultTheme = {
   borderRadiusSmall: Theme.borderRadiusSmall,
   boxBorder: Theme.boxBorder,
   Overlay: Theme.Overlay,
+  mediaSize: Theme.mediaSize,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -44,4 +46,5 @@ export const darkTheme: DefaultTheme = {
   borderRadiusSmall: Theme.borderRadiusSmall,
   boxBorder: Theme.boxBorder,
   Overlay: Theme.Overlay,
+  mediaSize: Theme.mediaSize,
 };
