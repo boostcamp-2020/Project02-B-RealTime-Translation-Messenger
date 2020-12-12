@@ -1,55 +1,64 @@
-import React, { FC, useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { FC, useState } from 'react';
 import { RouteComponentProps, useLocation } from 'react-router-dom';
-import { NEW_MESSAGE, ALL_MESSAGES_BY_ID } from '@/queries/room.queires';
-import { useQuery } from '@apollo/client';
 import ChatLog from '@components/ChatLog';
 import Header from '@components/Room/Header';
 import SideBar from '@components/Room/SideBar';
 import Input from '@components/Room/Input';
+import useMessages from '@hooks/useMessages';
+import useUsers from '@hooks/useUsers';
+import { User } from '@/generated/types';
 
 interface MatchParams {
   id: string;
 }
 
-const Wrapper = styled.div``;
+interface LocationState {
+  userId: number;
+  code: string;
+}
 
 const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const roomId = +match.params.id;
-  const location: any = useLocation();
-  const { lang } = location.state;
-  const { data, loading, subscribeToMore } = useQuery(ALL_MESSAGES_BY_ID, {
-    variables: {
-      id: roomId,
-    },
-  });
+  const location = useLocation<LocationState>();
+  const { userId, code } = location.state;
   const [visible, setVisible] = useState<boolean>(false);
+  const [page, setPage] = useState(2);
 
-  useEffect(() => {
-    const unsubscribe = subscribeToMore({
-      document: NEW_MESSAGE,
-      variables: { roomId, lang },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        const { newMessage } = subscriptionData.data;
-        return {
-          allMessagesById: [...prev.allMessagesById, newMessage],
-        };
-      },
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-  if (loading) return <div>Loading!</div>;
+  const { data: usersData, loading: usersLoading } = useUsers({
+    roomId,
+  });
+  const {
+    data: messagesData,
+    loading: messagesLoading,
+    onLoadMore,
+  } = useMessages({
+    roomId,
+    page: 1,
+    id: userId,
+  });
 
+  if (messagesLoading || usersLoading) return <div>Loading!</div>;
+
+  const validUser = usersData.roomById.users.filter(
+    (user: User) => !user.isDeleted,
+  );
   return (
-    <Wrapper>
-      <Header visible={visible} setVisible={setVisible} />
-      <SideBar visible={visible} setVisible={setVisible} />
-      <ChatLog messages={data.allMessagesById} />
+    <>
+      <Header
+        visible={visible}
+        setVisible={setVisible}
+        code={code}
+        users={validUser}
+      />
+      <SideBar visible={visible} setVisible={setVisible} users={validUser} />
+      <ChatLog
+        messages={messagesData.allMessagesByPage.messages}
+        page={page}
+        setPage={setPage}
+        onLoadMore={onLoadMore}
+      />
       <Input />
-    </Wrapper>
+    </>
   );
 };
 

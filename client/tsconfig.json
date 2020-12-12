@@ -25,6 +25,7 @@
       "@utils/*": ["src/utils/*"],
       "@queries/*": ["src/queries/*"],
       "@generated/*": ["src/generated/*"],
+      "@hooks/*": ["src/hooks/*"],
     }
   },
   "exclude": ["node_modules"],

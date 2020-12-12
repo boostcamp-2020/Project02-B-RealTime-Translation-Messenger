@@ -1,3 +1,4 @@
+import { theme } from '@primer/components';
 import { DefaultTheme } from 'styled-components';
 
 export const Theme = {
@@ -12,6 +13,7 @@ export const Theme = {
   borderRadius: '12px',
   borderRadiusSmall: '8px',
   Overlay: 'rgba(0, 0, 0, 0.6)',
+  mediaSize: '576px',
 };
 
 export const lightTheme: DefaultTheme = {
@@ -24,10 +26,12 @@ export const lightTheme: DefaultTheme = {
   blackColor: Theme.blackColor,
   blueColor: Theme.blueColor,
   greenColor: Theme.greenColor,
+  reverseColor: Theme.blackColor,
   borderRadius: Theme.borderRadius,
   borderRadiusSmall: Theme.borderRadiusSmall,
   boxBorder: Theme.boxBorder,
   Overlay: Theme.Overlay,
+  mediaSize: Theme.mediaSize,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -40,8 +44,10 @@ export const darkTheme: DefaultTheme = {
   blackColor: Theme.blackColor,
   blueColor: Theme.blueColor,
   greenColor: Theme.greenColor,
+  reverseColor: Theme.whiteColor,
   borderRadius: Theme.borderRadius,
   borderRadiusSmall: Theme.borderRadiusSmall,
   boxBorder: Theme.boxBorder,
   Overlay: Theme.Overlay,
+  mediaSize: Theme.mediaSize,
 };

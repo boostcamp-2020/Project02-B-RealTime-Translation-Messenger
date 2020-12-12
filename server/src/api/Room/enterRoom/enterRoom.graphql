@@ -1,6 +1,7 @@
 type enterRoomResponse {
   userId: Int!
   roomId: Int!
+  token: String!
 }
 
 type Mutation {

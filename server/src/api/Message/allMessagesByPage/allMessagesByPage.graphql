@@ -1,0 +1,8 @@
+type allMessages {
+  messages: [Message]
+  nextPage: Int
+}
+
+type Query {
+  allMessagesByPage(page: Int!): allMessages
+}
