@@ -71,6 +71,7 @@
 		9968474325847B73006C116E /* ChatCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968474225847B73006C116E /* ChatCollectionView.swift */; };
 		9968475925851778006C116E /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968475825851778006C116E /* HistoryCell.swift */; };
 		9968475F25851833006C116E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968475E25851833006C116E /* HistoryViewController.swift */; };
+		9968476425851988006C116E /* HistoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9968476225851988006C116E /* HistoryModel.xcdatamodeld */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionViewController.swift */; };
@@ -262,6 +263,7 @@
 		9968474225847B73006C116E /* ChatCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionView.swift; sourceTree = "<group>"; };
 		9968475825851778006C116E /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		9968475E25851833006C116E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		9968476325851988006C116E /* HistoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryModel.xcdatamodel; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 				BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */,
 				BBF2DCAA256674A500F2EA7D /* Info.plist */,
 				990DE96F2573A59B00340A72 /* Localizable.strings */,
+				9968476225851988006C116E /* HistoryModel.xcdatamodeld */,
 			);
 			path = PapagoTalk;
 			sourceTree = "<group>";
@@ -1065,6 +1068,7 @@
 				990DE9782573A67C00340A72 /* String+.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
 				BBDE2C7725830AB90068D7DE /* Userable.swift in Sources */,
+				9968476425851988006C116E /* HistoryModel.xcdatamodeld in Sources */,
 				BB15A58F25776D2F0006D258 /* SpeechViewReactor.swift in Sources */,
 				BB23C09B2576979C001D74A0 /* NetworkError.swift in Sources */,
 				BB1FFD1525761BB100E4668C /* ChatDrawerState.swift in Sources */,
@@ -1424,6 +1428,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9968476225851988006C116E /* HistoryModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9968476325851988006C116E /* HistoryModel.xcdatamodel */,
+			);
+			currentVersion = 9968476325851988006C116E /* HistoryModel.xcdatamodel */;
+			path = HistoryModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BBF2DC91256674A300F2EA7D /* Project object */;
 }
