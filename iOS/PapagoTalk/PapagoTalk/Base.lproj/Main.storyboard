@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--History View Controller-->
         <scene sceneID="ZWf-IN-BBA">
             <objects>
-                <viewController id="lzy-yg-FVQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HistoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lzy-yg-FVQ" customClass="HistoryViewController" customModule="PapagoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uVE-uK-JZQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="-1" rowHeight="97" id="asb-Ja-mca">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="HistoryCell" rowHeight="97" id="asb-Ja-mca" customClass="HistoryCell" customModule="PapagoTalk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="asb-Ja-mca" id="fcK-7K-HdB">
@@ -116,6 +116,14 @@
                                                 <constraint firstItem="A3q-pW-255" firstAttribute="top" secondItem="fcK-7K-HdB" secondAttribute="topMargin" constant="8" id="xFn-0O-r0I"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="yOG-pL-ejC" id="pmt-Oe-p68"/>
+                                            <outlet property="languageLabel" destination="a5W-ft-o8t" id="luv-Bf-wpz"/>
+                                            <outlet property="nicknameLabel" destination="luv-MB-NB0" id="dj1-4q-LdM"/>
+                                            <outlet property="profileImageView" destination="A3q-pW-255" id="TcL-V3-WkS"/>
+                                            <outlet property="reEnterButton" destination="eHY-2u-taz" id="TJF-EA-eGb"/>
+                                            <outlet property="titleLabel" destination="cqP-sC-kH8" id="PTd-Ai-Gsk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -129,6 +137,9 @@
                             <constraint firstItem="fjC-Iq-h75" firstAttribute="trailing" secondItem="hSd-I6-OUh" secondAttribute="trailing" id="yeT-AQ-w2M"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="historyTableView" destination="hSd-I6-OUh" id="wTv-l9-ppd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1SK-1d-f2F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
