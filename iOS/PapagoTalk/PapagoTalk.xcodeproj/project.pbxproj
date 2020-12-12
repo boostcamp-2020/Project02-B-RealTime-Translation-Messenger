@@ -72,6 +72,7 @@
 		9968475925851778006C116E /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968475825851778006C116E /* HistoryCell.swift */; };
 		9968475F25851833006C116E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968475E25851833006C116E /* HistoryViewController.swift */; };
 		9968476425851988006C116E /* HistoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9968476225851988006C116E /* HistoryModel.xcdatamodeld */; };
+		9968476825851D6D006C116E /* ChatRoomHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476725851D6D006C116E /* ChatRoomHistory.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionViewController.swift */; };
@@ -264,6 +265,7 @@
 		9968475825851778006C116E /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		9968475E25851833006C116E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		9968476325851988006C116E /* HistoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryModel.xcdatamodel; sourceTree = "<group>"; };
+		9968476725851D6D006C116E /* ChatRoomHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomHistory.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				9964795225769BD500CFF202 /* ChatRoomInfo.swift */,
 				BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */,
 				BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */,
+				9968476725851D6D006C116E /* ChatRoomHistory.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */,
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
 				996847362583AFCC006C116E /* MessageSizeDelegate.swift in Sources */,
+				9968476825851D6D006C116E /* ChatRoomHistory.swift in Sources */,
 				99482F12257F7EE700802B45 /* TranslationRequest.swift in Sources */,
 				BBC5B31C257E089900739CD8 /* KeychainAccess.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
