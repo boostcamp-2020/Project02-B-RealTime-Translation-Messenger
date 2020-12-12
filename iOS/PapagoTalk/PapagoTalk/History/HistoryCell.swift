@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HistoryCell: UITableViewCell {
     
@@ -16,4 +17,19 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var reEnterButton: UIButton!
     
+    
+    func configure(with history: ChatRoomHistory) {
+        configureImage(with: history.usedImage)
+        titleLabel.text = history.title
+        nicknameLabel.text = history.usedNickname
+        languageLabel.text = history.usedLanguage.localizedText
+        dateLabel.text = DateFormatter.chatDateFormat(of: history.enterDate)
+    }
+    
+    private func configureImage(with imageURL: String) {
+        guard let imageURL = try? imageURL.asURL() else {
+            return
+        }
+        profileImageView.kf.setImage(with: imageURL)
+    }
 }
