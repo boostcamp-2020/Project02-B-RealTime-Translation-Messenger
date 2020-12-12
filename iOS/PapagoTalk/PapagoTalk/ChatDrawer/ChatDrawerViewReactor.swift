@@ -83,7 +83,8 @@ final class ChatDrawerViewReactor: Reactor {
             .asObservable()
             .compactMap { $0.roomById?.users }
             .map { [weak self] in
-                $0.map { User(data: $0, userID: self?.userData.id ?? 0) }
+                $0.filter { !$0.isDeleted }
+                    .map { User(data: $0, userID: self?.userData.id ?? 0) }
             }
             .map { Mutation.setUsers($0) }
     }
