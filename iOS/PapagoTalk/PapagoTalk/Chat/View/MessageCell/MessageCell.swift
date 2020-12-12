@@ -15,7 +15,7 @@ extension MessageCell {
     func configureDate(of dateBadge: UIButton, dateBadgeHeight: NSLayoutConstraint, with timeStamp: Date, isFirst: Bool) {
         dateBadge.setTitle(convertToDateFormat(of: timeStamp), for: .normal)
         dateBadge.isHidden = !isFirst
-        dateBadgeHeight.constant = isFirst ? 24 : 0
+        dateBadgeHeight.constant = isFirst ? Constant.dateBadgeHeight : 0
     }
     
     func configureMessage(of messageTextView: UITextView, with message: String) {

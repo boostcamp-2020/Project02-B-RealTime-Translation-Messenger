@@ -19,6 +19,7 @@ final class MessageText: UITextView {
     }
     
     private func configureInset() {
-        textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        let inset = Constant.messageInset
+        textContainerInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
 }
