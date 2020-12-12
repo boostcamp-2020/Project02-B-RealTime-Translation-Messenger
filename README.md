@@ -35,6 +35,7 @@
 음성인식을 통해 실시간으로 번역 결과를 확인하며, 음성인식 결과를 채팅으로 전송할 수 있습니다.
 
 <br>
+
 ### [Web팀의 큐티뽀짝한 서비스 URL 🕸]()
 ### [iOS팀의 큐티뽀짝한 배포 URL 🍎](https://kr.object.ncloudstorage.com/papagotalk/release/1.0.0/download.html)
 ### [마다가스카팀이 더 궁금하시다면 Wiki 보러가기 ✨](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/wiki)
@@ -47,6 +48,8 @@
 | :------------: | :------------: | :------------: | :------------: | :------------: |
 |  ![](https://media0.giphy.com/media/lqMg6hf8Mie9cvsrmi/giphy.gif?cid=ecf05e479nfqvz5ni655bqbdb5agtzvb471t33hfwxuwx01d&rid=giphy.gif)  |  ![](https://media.giphy.com/media/VbKLOdvCxBFNZpYvhL/giphy.gif)  |  ![](https://media4.giphy.com/media/YrZH2QxktEcTOtGwqL/giphy.gif)  |  ![](https://media.giphy.com/media/XbgzkpzueQjzepnhLy/giphy.gif)  |  ![](https://media.giphy.com/media/SwyTq2jJxc9im6BYnN/giphy.gif)  |
 |  `J012` [공태경 🐃](https://github.com/Taeg92)  |  `J046` [김예진 🐿](https://github.com/johnyejin)  |  `J212` [하이현 🐅](https://github.com/hyh1016)  |  `S026` [송민관 🦥](https://github.com/Minkwan-Song)  |  `S037` [윤병휘 🐧](https://github.com/ByoungHwi)  |
+
+<br>
 
 <div align="center">
   
