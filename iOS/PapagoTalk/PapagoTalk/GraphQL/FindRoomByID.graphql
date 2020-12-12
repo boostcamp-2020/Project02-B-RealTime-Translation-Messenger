@@ -6,6 +6,7 @@ query FindRoomById($roomID: Int!) {
       nickname
       avatar
       lang
+      isDeleted
     }
   }
 }
