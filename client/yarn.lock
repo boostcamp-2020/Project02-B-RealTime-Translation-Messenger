@@ -898,6 +898,14 @@
     "@babel/helper-create-regexp-features-plugin" "^7.12.1"
     "@babel/helper-plugin-utils" "^7.10.4"
 
+"@babel/polyfill@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.12.1.tgz#1f2d6371d1261bbd961f3c5d5909150e12d0bd96"
+  integrity sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==
+  dependencies:
+    core-js "^2.6.5"
+    regenerator-runtime "^0.13.4"
+
 "@babel/preset-env@7.12.1":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.12.1.tgz#9c7e5ca82a19efc865384bb4989148d2ee5d7ac2"
@@ -2019,6 +2027,13 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
+"@types/react-copy-to-clipboard@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-4.3.0.tgz#8e07becb4f11cfced4bd36038cb5bdf5c2658be5"
+  integrity sha512-iideNPRyroENqsOFh1i2Dv3zkviYS9r/9qD9Uh3Z9NNoAAqqa2x53i7iGndGNnJFIo20wIu7Hgh77tx1io8bgw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@*", "@types/react-dom@^17.0.0":
   version "17.0.0"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.0.tgz#b3b691eb956c4b3401777ee67b900cb28415d95a"
@@ -2049,6 +2064,11 @@
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
+
+"@types/react-speech-recognition@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-speech-recognition/-/react-speech-recognition-3.1.0.tgz#0c214e4f8c751b9f9f32aaf1a851ee7432a080df"
+  integrity sha512-wrf1L/pSDoXQHM97CKweKfyWRSnDBuh8eK6X/NVznKMm7N5f943yJcMy97Yl1IGp7lbyGtOWxS53taZeD0Z5vQ==
 
 "@types/react@*", "@types/react@^17.0.0":
   version "17.0.0"
@@ -3469,6 +3489,13 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
+copy-to-clipboard@^3:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
+  integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
+  dependencies:
+    toggle-selection "^1.0.6"
+
 core-js-compat@^3.6.2, core-js-compat@^3.7.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.8.0.tgz#3248c6826f4006793bd637db608bca6e4cd688b1"
@@ -3481,6 +3508,11 @@ core-js-pure@^3.0.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.8.0.tgz#4cdd2eca37d49cda206b66e26204818dba77884a"
   integrity sha512-fRjhg3NeouotRoIV0L1FdchA6CK7ZD+lyINyMoz19SyV+ROpC4noS1xItWHFtwZdlqfMfVPJEyEGdfri2bD1pA==
+
+core-js@^2.6.5:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -7094,7 +7126,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -7198,6 +7230,14 @@ react-clientside-effect@^1.2.2:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
+react-copy-to-clipboard@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.2.tgz#d82a437e081e68dfca3761fbd57dbf2abdda1316"
+  integrity sha512-/2t5mLMMPuN5GmdXo6TebFa8IoFxZ+KTDDqYhcDm0PhkgEzSxVvIX26G20s1EB02A4h2UZgwtfymZ3lGJm0OLg==
+  dependencies:
+    copy-to-clipboard "^3"
+    prop-types "^15.5.8"
+
 react-dom@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.1.tgz#1de2560474ec9f0e334285662ede52dbc5426fc6"
@@ -7253,6 +7293,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-otp-input@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-otp-input/-/react-otp-input-2.3.0.tgz#2457b47540e2de2751c3a3e14311452b0c8313a8"
+  integrity sha512-xzljlohVaPkUqO4H61x4r7KMRSq2ZPYFFZeSqqVXid+kJNL1UekSBP1xPafvI0eGNpus/PA1447jYZf2EJRY0A==
+
 react-remove-scroll-bar@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-2.1.1.tgz#5876428dfd546f2f63a4d277aea2197925505c1e"
@@ -7300,6 +7345,11 @@ react-router@5.2.0:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
+
+react-speech-recognition@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-speech-recognition/-/react-speech-recognition-3.3.0.tgz#9051c7757fff27ee5f553eb9a88132c809bafaa3"
+  integrity sha512-/1CBszYsIKIDOkHQTLnoa6hf9iEAznMhvy9MangpanZDt8cZre0Yb+8tEE7Lei808r9pZ63KdRkRJx3bJiTvdQ==
 
 react-style-singleton@^2.1.0:
   version "2.1.1"
@@ -8516,6 +8566,11 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+toggle-selection@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 toidentifier@1.0.0:
   version "1.0.0"

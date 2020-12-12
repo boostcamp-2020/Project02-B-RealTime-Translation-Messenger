@@ -11,9 +11,11 @@ declare module 'styled-components' {
     blackColor: string;
     blueColor: string;
     greenColor: string;
+    reverseColor: string;
     borderRadius: string;
     borderRadiusSmall: string;
     boxBorder: string;
     Overlay: string;
+    mediaSize: string;
   }
 }

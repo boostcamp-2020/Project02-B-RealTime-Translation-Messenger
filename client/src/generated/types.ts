@@ -1,3 +1,5 @@
+import { gql } from '@apollo/client';
+
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
@@ -17,18 +19,30 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  allMessagesById?: Maybe<Array<Maybe<Message>>>;
+  allMessagesByPage?: Maybe<AllMessages>;
+  allMessagesByTime?: Maybe<Array<Maybe<Message>>>;
   allRooms?: Maybe<Array<Maybe<Room>>>;
   roomById?: Maybe<Room>;
   allUsers?: Maybe<Array<Maybe<User>>>;
+  me: User;
 };
 
-export type QueryAllMessagesByIdArgs = {
-  id: Scalars['Int'];
+export type QueryAllMessagesByPageArgs = {
+  page: Scalars['Int'];
+};
+
+export type QueryAllMessagesByTimeArgs = {
+  time: Scalars['String'];
 };
 
 export type QueryRoomByIdArgs = {
   id: Scalars['Int'];
+};
+
+export type AllMessages = {
+  __typename?: 'allMessages';
+  messages?: Maybe<Array<Maybe<Message>>>;
+  nextPage?: Maybe<Scalars['Int']>;
 };
 
 export type Message = {
@@ -60,23 +74,27 @@ export type User = {
   avatar: Scalars['String'];
   password?: Maybe<Scalars['String']>;
   lang: Scalars['String'];
+  isDeleted: Scalars['Boolean'];
   rooms: Array<Room>;
   messages: Array<Maybe<Message>>;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
+  translation: TranslationResponse;
   createMessage: Scalars['Boolean'];
   createRoom: CreateRoomResponse;
   enterRoom: EnterRoomResponse;
   deleteUser: Scalars['Boolean'];
 };
 
+export type MutationTranslationArgs = {
+  text: Scalars['String'];
+  target: Scalars['String'];
+};
+
 export type MutationCreateMessageArgs = {
   text: Scalars['String'];
-  source: Scalars['String'];
-  userId: Scalars['Int'];
-  roomId: Scalars['Int'];
 };
 
 export type MutationCreateRoomArgs = {
@@ -92,9 +110,9 @@ export type MutationEnterRoomArgs = {
   code: Scalars['String'];
 };
 
-export type MutationDeleteUserArgs = {
-  userId: Scalars['Int'];
-  roomId: Scalars['Int'];
+export type TranslationResponse = {
+  __typename?: 'translationResponse';
+  translatedText: Scalars['String'];
 };
 
 export type CreateRoomResponse = {
@@ -102,20 +120,38 @@ export type CreateRoomResponse = {
   userId: Scalars['Int'];
   roomId: Scalars['Int'];
   code: Scalars['String'];
+  token: Scalars['String'];
 };
 
 export type EnterRoomResponse = {
   __typename?: 'enterRoomResponse';
   userId: Scalars['Int'];
   roomId: Scalars['Int'];
+  token: Scalars['String'];
 };
 
 export type Subscription = {
   __typename?: 'Subscription';
   newMessage?: Maybe<Message>;
+  deleteUser?: Maybe<DeleteUserResponse>;
+  newUser?: Maybe<User>;
 };
 
 export type SubscriptionNewMessageArgs = {
   roomId: Scalars['Int'];
   lang: Scalars['String'];
+};
+
+export type SubscriptionDeleteUserArgs = {
+  roomId: Scalars['Int'];
+};
+
+export type SubscriptionNewUserArgs = {
+  roomId: Scalars['Int'];
+};
+
+export type DeleteUserResponse = {
+  __typename?: 'deleteUserResponse';
+  id: Scalars['Int'];
+  roomId: Scalars['Int'];
 };

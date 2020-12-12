@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   mode: process.env.NODE_ENV,
 
-  entry: './src/index',
+  entry: ['@babel/polyfill', './src/index'],
 
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -21,6 +21,7 @@ module.exports = {
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@queries': path.resolve(__dirname, 'src/queries'),
       '@generated': path.resolve(__dirname, 'src/generated'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
     },
   },
 

@@ -1,40 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { debounce } from 'lodash';
+import { useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { MutationCreateMessageArgs } from '@generated/types';
-import { CREATE_MESSAGE } from '@queries/messege.queries';
-import { Microphone } from '@components/Icons';
+import { CREATE_MESSAGE, TRANSLATION } from '@queries/messege.queries';
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from 'react-speech-recognition';
+import Listening from '@components/Listening';
 import S from './style';
+
+interface LocationState {
+  lang: string;
+}
 
 const Input: React.FC = () => {
   const [text, setText] = useState('');
-  const [createMessageMutation] = useMutation<MutationCreateMessageArgs>(
-    CREATE_MESSAGE,
-    {
-      variables: {
-        text,
-        source: 'ko',
-        userId: 3,
-        roomId: 1,
-      },
+  const [translatedText, setTranslatedText] = useState('텍스트를 입력하세요');
+  const [isListening, setIsListening] = useState(false);
+  const { transcript } = useSpeechRecognition();
+  const location = useLocation<LocationState>();
+  const { lang } = location.state;
+  const [createMessageMutation] = useMutation(CREATE_MESSAGE, {
+    variables: {
+      text,
     },
-  );
+  });
 
-  const getTranslatedText = debounce(async (value: string) => {
-    // const result = await request(value, 'ko', 'en');
-  }, 1000);
+  const [translationMutation] = useMutation(TRANSLATION, {
+    variables: {
+      text,
+    },
+  });
+
+  const getTranslatedText = debounce(async () => {
+    const { data } = await translationMutation();
+    setTranslatedText(data ? data.translation.translatedText : '...');
+  }, 500);
+
+  const onKeyUp = () => {
+    const checkText = text.replace(/\s/gi, '');
+    if (checkText.length === 0) return;
+    getTranslatedText();
+  };
 
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
-    // getTranslatedText(e.target.value);
+    setTranslatedText('...');
   };
 
   const onKeyPressEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
+      const checkText = text.replace(/\s/gi, '');
+      if (checkText.length === 0) return;
+
       await createMessageMutation();
+      setText('');
+      setTranslatedText('텍스트를 입력하세요');
     }
-    setText('');
   };
+
+  const onClickVoiceButton = () => {
+    if (!isListening) {
+      SpeechRecognition.startListening({ language: lang });
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsListening(false), 2000);
+    setText(transcript);
+    getTranslatedText();
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [transcript]);
 
   return (
     <S.Wrapper>
@@ -44,14 +82,19 @@ const Input: React.FC = () => {
             placeholder="텍스트를 입력하세요"
             value={text}
             onChange={onChangeText}
+            onKeyUp={onKeyUp}
             onKeyPress={onKeyPressEnter}
           />
-          <S.VoiceButton>
-            <Microphone size={30} />
+          <S.VoiceButton onClick={onClickVoiceButton}>
+            <Listening
+              isListening={isListening}
+              setIsListening={setIsListening}
+              setText={setText}
+            />
           </S.VoiceButton>
         </S.InputContainer>
         <S.Margin />
-        <S.Translation>blabla</S.Translation>
+        <S.Translation>{translatedText}</S.Translation>
       </S.InputWrapper>
     </S.Wrapper>
   );
