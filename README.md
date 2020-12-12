@@ -4,8 +4,6 @@
   <img src="https://user-images.githubusercontent.com/60081031/99608166-b48fb800-2a50-11eb-8d25-505f65fe6370.png" width=700 alt="Madagascar team Logo" />
 </h1>
 
-<br>
-
 ## 프로젝트 소개 🎶
 
 <div align="center">
@@ -37,7 +35,6 @@
 음성인식을 통해 실시간으로 번역 결과를 확인하며, 음성인식 결과를 채팅으로 전송할 수 있습니다.
 
 <br>
-
 ### [Web팀의 큐티뽀짝한 서비스 URL 🕸]()
 ### [iOS팀의 큐티뽀짝한 배포 URL 🍎](https://kr.object.ncloudstorage.com/papagotalk/release/1.0.0/download.html)
 ### [마다가스카팀이 더 궁금하시다면 Wiki 보러가기 ✨](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/wiki)
@@ -50,6 +47,15 @@
 | :------------: | :------------: | :------------: | :------------: | :------------: |
 |  ![](https://media0.giphy.com/media/lqMg6hf8Mie9cvsrmi/giphy.gif?cid=ecf05e479nfqvz5ni655bqbdb5agtzvb471t33hfwxuwx01d&rid=giphy.gif)  |  ![](https://media.giphy.com/media/VbKLOdvCxBFNZpYvhL/giphy.gif)  |  ![](https://media4.giphy.com/media/YrZH2QxktEcTOtGwqL/giphy.gif)  |  ![](https://media.giphy.com/media/XbgzkpzueQjzepnhLy/giphy.gif)  |  ![](https://media.giphy.com/media/SwyTq2jJxc9im6BYnN/giphy.gif)  |
 |  `J012` [공태경 🐃](https://github.com/Taeg92)  |  `J046` [김예진 🐿](https://github.com/johnyejin)  |  `J212` [하이현 🐅](https://github.com/hyh1016)  |  `S026` [송민관 🦥](https://github.com/Minkwan-Song)  |  `S037` [윤병휘 🐧](https://github.com/ByoungHwi)  |
+
+<div align="center">
+  
+[![GitHub Open Issues](https://img.shields.io/github/issues-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=green)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/issues)
+[![GitHub Closed Issues](https://img.shields.io/github/issues-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub Open PR](https://img.shields.io/github/issues-pr-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=green)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls)
+[![GitHub Closed PR](https://img.shields.io/github/issues-pr-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls?q=is%3Apr+is%3Aclosed)
+
+</div>
 
 <br>
 
@@ -127,10 +133,5 @@
 [![Typescript](https://img.shields.io/badge/typescript-v4.0.3-white?logo=typescript)](https://www.typescriptlang.org/)
 [![react](https://img.shields.io/badge/react-0.0-9cf?logo=react)](https://reactjs.org/)
 [![NodeJS](https://img.shields.io/badge/node.js-v12.18.3-green?logo=node.js)](https://nodejs.org/ko/)
-
-[![GitHub Open Issues](https://img.shields.io/github/issues-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=green)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/issues)
-[![GitHub Closed Issues](https://img.shields.io/github/issues-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/issues?q=is%3Aissue+is%3Aclosed)
-[![GitHub Open PR](https://img.shields.io/github/issues-pr-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=green)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls)
-[![GitHub Closed PR](https://img.shields.io/github/issues-pr-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls?q=is%3Apr+is%3Aclosed)
 
 </div>
