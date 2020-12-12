@@ -14,25 +14,9 @@ extension ChatViewController: SpeechViewDelegate {
         view.addSubview(microphoneButton)
     }
     
-    func showSpeechView(roomID: Int) {
-        guard let speechViewController = storyboard?.instantiateViewController(identifier: SpeechViewController.identifier) as? SpeechViewController else {
-            return
-        }
-        speechViewController.delegate = self
-        speechViewController.roomID = roomID
-        addChild(speechViewController)
-        speechViewController.view.frame = CGRect(x: (view.frame.width - Constant.speechViewWidth)/2.0,
-                                                 y: (view.frame.height - Constant.speechViewHeight)/2.0,
-                                                 width: Constant.speechViewWidth,
-                                                 height: Constant.speechViewHeight)
-        UIView.transition(with: self.view,
-                          duration: 0.4,
-                          options: [.transitionCrossDissolve]) { [weak self] in
-            self?.view.addSubview(speechViewController.view)
-        }
-    }
-    
     func speechViewDidDismiss() {
+        chatDrawerButton.isEnabled = true
+        inputBarTextView.isUserInteractionEnabled = true
         microphoneButton.moveToLatest()
     }
 }

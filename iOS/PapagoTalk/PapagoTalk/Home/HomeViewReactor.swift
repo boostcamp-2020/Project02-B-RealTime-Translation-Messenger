@@ -15,6 +15,7 @@ final class HomeViewReactor: Reactor {
         case nickNameChanged(String)
         case languageSelected(Language)
         case makeChatRoomButtonTapped
+        case joinChatRoomButtonTapped
     }
     
     enum Mutation {
@@ -23,17 +24,18 @@ final class HomeViewReactor: Reactor {
         case shakeNickNameTextField(Bool)
         case setLanguage(Language)
         case createRoom(CreateRoomResponse)
+        case joinRoom(Bool)
         case alertError(HomeError)
-        case clearErrorMessage
     }
     
     struct State {
         var profileImageURL: String
         var nickName: String
-        var needShake: Bool
+        var needShake: RevisionedData<Bool>
         var language: Language
         var createRoomResponse: CreateRoomResponse?
-        var errorMessage: String?
+        var joinRoom: RevisionedData<Bool>
+        var errorMessage: RevisionedData<String?>
         
         var isNickNameValid: Bool {
             (Constant.minNickNameLength...Constant.maxNickNameLength) ~= nickName.count
@@ -55,8 +57,10 @@ final class HomeViewReactor: Reactor {
         defaultImageFactory = imageFactory
         initialState = State(profileImageURL: userData.image,
                              nickName: userData.nickName,
-                             needShake: false,
-                             language: userData.language)
+                             needShake: RevisionedData(data: false),
+                             language: userData.language,
+                             joinRoom: RevisionedData(data: false),
+                             errorMessage: RevisionedData(data: nil))
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -69,8 +73,10 @@ final class HomeViewReactor: Reactor {
             return .just(Mutation.setLanguage(language))
         case .makeChatRoomButtonTapped:
             return currentState.isNickNameValid ?
-                requestCreateRoom() : .concat([.just(.alertError(.invalidNickName)),
-                                               .just(.clearErrorMessage)])
+                requestCreateRoom() : .just(.alertError(.invalidNickName))
+        case .joinChatRoomButtonTapped:
+            return currentState.isNickNameValid ?
+                .just(.joinRoom(true)) : .just(.alertError(.invalidNickName))
         }
     }
     
@@ -80,21 +86,23 @@ final class HomeViewReactor: Reactor {
         switch mutation {
         case .setNickName(let nickName):
             state.nickName = nickName
-            userData.nickName = nickName //위치 변경(Swift계의 젊은천재 전수열님께 여쭤보고 바꾸기)
+            userData.nickName = nickName
         case .shakeNickNameTextField(let needShake):
-            state.needShake = needShake
+            state.needShake = state.needShake.update(needShake)
         case .setImage(let imageURL):
             state.profileImageURL = imageURL
-            userData.image = imageURL //위치 변경
+            userData.image = imageURL
         case .setLanguage(let language):
             state.language = language
-            userData.language = language //위치변경
+            userData.language = language 
         case .createRoom(let response):
+            userData.id = response.userId
+            userData.token = response.token
             state.createRoomResponse = response
+        case .joinRoom(let isAvaliable):
+            state.joinRoom = state.joinRoom.update(isAvaliable)
         case .alertError(let error):
-            state.errorMessage = error.message
-        case .clearErrorMessage:
-            state.errorMessage = nil
+            state.errorMessage = state.errorMessage.update(error.message)
         }
         return state
     }
@@ -102,14 +110,10 @@ final class HomeViewReactor: Reactor {
     private func blockNickNameMaxLength(input nickName: String) -> Observable<Mutation> {
         let maxLength = Constant.maxNickNameLength
         let needShake = nickName.count > maxLength
-        
-        guard needShake else {
-            return .just(Mutation.setNickName(String(nickName.prefix(maxLength))))
-        }
+
         return .concat([
-            .just(Mutation.shakeNickNameTextField(needShake)),
             .just(Mutation.setNickName(String(nickName.prefix(maxLength)))),
-            .just(Mutation.shakeNickNameTextField(!needShake))
+            .just(Mutation.shakeNickNameTextField(needShake))
         ])
     }
     
@@ -118,15 +122,12 @@ final class HomeViewReactor: Reactor {
     }
     
     private func requestCreateRoom() -> Observable<Mutation> {
+        networkService.leaveRoom()
         return networkService.createRoom(user: userData.user)
             .asObservable()
-            .do(onNext: { [weak self] in 
-                self?.userData.id = $0.userId
-            })
             .map { Mutation.createRoom($0) }
             .catchError { _ in
-                .concat([ .just(.alertError(.networkError)),
-                          .just(.clearErrorMessage)])
+                .just(.alertError(.networkError))
             }
     }
 }

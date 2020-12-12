@@ -19,13 +19,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let networkService = ApolloNetworkService()
         let alertFactory = AlertFactory()
         let userData = UserDataProvider()
+        let messageParser = MessageParser(userData: userData)
+        
         window = UIWindow(windowScene: scene)
         coordinator = MainCoordinator(navigationController: navigationController,
                                       networkService: networkService,
                                       userData: userData,
-                                      alertFactory: alertFactory)
+                                      alertFactory: alertFactory,
+                                      messageParser: messageParser)
         coordinator?.start()
-        window?.rootViewController = navigationController
+        
+        guard let launchScreenViewContorller =
+                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(
+                    identifier: LaunchScreenViewController.identifier) as? LaunchScreenViewController else {
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+            return
+        }
+        launchScreenViewContorller.coordinator = coordinator
+        window?.rootViewController = launchScreenViewContorller
         window?.makeKeyAndVisible()
     }
 }

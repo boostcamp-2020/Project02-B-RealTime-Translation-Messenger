@@ -12,31 +12,48 @@ struct Message: Codable {
     let text: String
     let sender: User
     let language: String
-    let timeStamp: Date
+    let timeStamp: String
     var isFirstOfDay: Bool
     var type: MessageType
     var isTranslated: Bool
+    var shouldTimeShow: Bool = true
+    var shouldImageShow: Bool = true
+    
+    var time: Date {
+        return timeStamp.toDate()
+    }
     
     init(of text: String, by sender: User) {
         self.id = nil
         self.text = text
         self.sender = sender
         self.language = sender.language.code
-        self.timeStamp = Date()
+        self.timeStamp = ""
         self.isFirstOfDay = true
         self.type = .sent
         isTranslated = false
     }
     
-    init(id: Int, of text: String, by sender: User, language: String, timeStamp: String, isTranslated: Bool = false) {
-        self.id = id
-        self.text = text
-        self.sender = sender
-        self.language = language
-        self.timeStamp = timeStamp.toDate()
+    init(data: Messageable, with text: TranslatedResult, timeStamp: String, isTranslated: Bool = false) {
+        self.id = data.id
+        self.text = isTranslated ? text.translatedText : text.originText
+        self.sender = User(data: data.userData)
+        self.language = data.source
+        self.timeStamp = timeStamp
         self.isFirstOfDay = true
         self.type = .received
         self.isTranslated = isTranslated
+    }
+    
+    init(systemText: String, timeStamp: String) {
+        self.id = 0
+        self.text = systemText
+        self.sender = User()
+        self.language = ""
+        self.timeStamp = timeStamp
+        self.isFirstOfDay = true
+        self.type = .system
+        self.isTranslated = false
     }
     
     mutating func setIsFirst(with isFirst: Bool) {
@@ -44,10 +61,10 @@ struct Message: Codable {
     }
     
     mutating func setType(by userID: Int) {
-        if isTranslated {
-            type = .translated
+        guard sender.id != userID else {
+            type = isTranslated ? .sentTranslated : .sent
             return
         }
-        type = (sender.id == userID) ? .sent : .received
+        type = isTranslated ? .translated : .received
     }
 }

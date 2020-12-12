@@ -28,4 +28,17 @@ struct Strings {
     struct JoinChat {
         static let noSuchRoomAlertMessage = "Chat Room is Doesn't Exist \n Or already Deleted".localized
     }
+    
+    // MARK: - Chat
+    struct Chat {
+        static let userJoinMessage = " joined this chatroom".localized
+        static let userLeaveMessage = " left this chatroom".localized
+        static let unknownUserNickname = "Unknown User".localized
+    }
+    
+    // MARK: - ChatDrawer
+    struct ChatDrawer {
+        static let chatCodeDidCopyMessage = "Chat Code is copied".localized
+        static let userIsMe = "(ME)".localized
+    }
 }

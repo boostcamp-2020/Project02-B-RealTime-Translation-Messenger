@@ -18,5 +18,14 @@
 "Chat Room is Doesn't Exist \n Or already Deleted" = "Chat Room is Doesn't Exist \n Or already Deleted";
 "Please Check your Network Connection" = "Please Check your Network Connection";
 
+//Mark: - Chat
+" joined this chatroom" = " joined this chatroom";
+" left this chatroom" = " left this chatroom";
+"Unknown User" = "Unknown User";
+
+//MARK: - ChatDrawer
+"Chat Code is copied" = "Chat Code is copied";
+"(ME)" = "(ME)";
+
 //MARK: - DateFormatter
 "yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";

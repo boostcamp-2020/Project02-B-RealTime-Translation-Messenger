@@ -9,18 +9,23 @@ import Foundation
 import RxSwift
 
 protocol NetworkServiceProviding {
-    func sendMessage(text: String,
-                     source: String,
-                     userId: Int,
-                     roomId: Int) -> Maybe<SendMessageMutation.Data>
+    func sendMessage(text: String) -> Maybe<SendMessageMutation.Data>
     
-    func getMessage(roomId: Int,
-                    language: Language) -> Observable<GetMessageSubscription.Data>
+    func getMessage() -> Observable<GetMessageSubscription.Data>
     
-    func enterRoom(user: User,
-                   code: String) -> Maybe<JoinChatResponse>
+    func getMissingMessage(timeStamp: String) -> Maybe<GetMessageByTimeQuery.Data>
+    
+    func enterRoom(user: User, code: String) -> Maybe<JoinChatResponse>
     
     func createRoom(user: User) -> Maybe<CreateRoomResponse>
     
     func getUserList(of roomID: Int) -> Maybe<FindRoomByIdQuery.Data>
+    
+    func translate(text: String) -> Maybe<String>
+
+    func leaveRoom()
+    
+    func sendSystemMessage(type: String)
+    
+    func reconnect()
 }

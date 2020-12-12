@@ -1,0 +1,3 @@
+mutation SendSystemMessage($type: String!) {
+  createSystemMessage(source: $type)
+}

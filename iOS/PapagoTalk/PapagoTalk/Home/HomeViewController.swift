@@ -23,7 +23,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     private var languageSelection: BehaviorSubject<Language>
     private let alertFactory: AlertFactoryProviding
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: HomeCoordinating?
     var disposeBag = DisposeBag()
     
     init?(coder: NSCoder,
@@ -51,6 +51,12 @@ final class HomeViewController: UIViewController, StoryboardView {
     }
     
     func bind(reactor: HomeViewReactor) {
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
+    }
+    
+    // MARK: - Input
+    private func bindAction(reactor: HomeViewReactor) {
         profileImageView.rx.tapGesture()
             .when(.recognized)
             .map { _ in
@@ -76,6 +82,14 @@ final class HomeViewController: UIViewController, StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        joinChatRoomButton.rx.tap
+            .map { Reactor.Action.joinChatRoomButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Output
+    private func bindState(reactor: HomeViewReactor) {
         reactor.state.map { $0.profileImageURL }
             .distinctUntilChanged()
             .compactMap { URL(string: $0) }
@@ -90,11 +104,11 @@ final class HomeViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.needShake }
             .distinctUntilChanged()
+            .compactMap { $0.data }
             .filter { $0 }
-            .do { [weak self] _ in
+            .subscribe(onNext: { [weak self] _ in
                 self?.nickNameTextField.shake()
-            }
-            .subscribe()
+            })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.language }
@@ -106,13 +120,23 @@ final class HomeViewController: UIViewController, StoryboardView {
         reactor.state.compactMap { $0.createRoomResponse }
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
-                self?.coordinator?.showChat(roomID: $0.roomId, code: $0.code)
+                self?.coordinator?.pushChat(roomID: $0.roomId, code: $0.code)
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.joinRoom }
+            .distinctUntilChanged()
+            .compactMap { $0.data }
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.coordinator?.presentCodeInput()
             })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.errorMessage }
             .distinctUntilChanged()
             .subscribeOn(MainScheduler.instance)
+            .compactMap { $0.data }
             .subscribe(onNext: { [weak self] errorMessage in
                 guard let message = errorMessage else {
                     return
@@ -126,31 +150,17 @@ final class HomeViewController: UIViewController, StoryboardView {
         languageSelectionButton.rx.tap
             .asDriver()
             .drive { [weak self] _ in
-                self?.showLanguageSelectionView()
+                self?.presentLanguageSelectionView()
             }
             .disposed(by: disposeBag)
-        
-        joinChatRoomButton.rx.tap
-            .asDriver()
-            .drive { [weak self] _ in
-                self?.coordinator?.showChatCodeInput()
-            }
-            .disposed(by: disposeBag)
-    }
-    
-    private func showLanguageSelectionView() {
-        let customAlertView =
-            storyboard?.instantiateViewController(identifier: LanguageSelectionView.identifier)
-            as? LanguageSelectionView
-        customAlertView?.pickerViewObserver = languageSelection
-        
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        alertController.setValue(customAlertView, forKey: "contentViewController")
-        present(alertController, animated: true)
     }
     
     private func alert(message: String) {
         present(alertFactory.alert(message: message), animated: true)
+    }
+    
+    private func presentLanguageSelectionView() {
+        coordinator?.presentLanguageSelectionView(observer: languageSelection)
     }
 }
 

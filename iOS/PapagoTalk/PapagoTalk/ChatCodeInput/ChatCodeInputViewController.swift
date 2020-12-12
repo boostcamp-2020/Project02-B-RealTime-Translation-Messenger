@@ -16,11 +16,11 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var removeButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: MainCoordinating?
     var alertFactory: AlertFactoryProviding
     var disposeBag = DisposeBag()
     
-    init?(coder: NSCoder, reactor: ChatCodeInputReactor, alertFactory: AlertFactoryProviding) {
+    init?(coder: NSCoder, reactor: ChatCodeInputViewReactor, alertFactory: AlertFactoryProviding) {
         self.alertFactory = alertFactory
         super.init(coder: coder)
         self.reactor = reactor
@@ -36,7 +36,13 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
         bind()
     }
     
-    func bind(reactor: ChatCodeInputReactor) {
+    func bind(reactor: ChatCodeInputViewReactor) {
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
+    }
+    
+    // MARK: - Input
+    private func bindAction(reactor: ChatCodeInputViewReactor) {
         numberButtons.forEach { button in
             button.rx.tap
                 .compactMap { button.currentTitle }
@@ -56,7 +62,10 @@ final class ChatCodeInputViewController: UIViewController, StoryboardView {
                 .bind(to: label.rx.text)
                 .disposed(by: disposeBag)
         }
-        
+    }
+    
+    // MARK: - Output
+    private func bindState(reactor: ChatCodeInputViewReactor) {
         reactor.state.compactMap { $0.chatRoomInfo }
             .distinctUntilChanged()
             .do(onNext: { [weak self] roomInfo in

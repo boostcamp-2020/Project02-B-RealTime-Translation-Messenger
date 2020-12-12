@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-final class PapagoAPIManager {
+final class PapagoAPIManager: PapagoAPIServiceProviding {
    
     private let service: URLSessionNetworkServiceProviding
     
@@ -38,8 +38,8 @@ final class PapagoAPIManager {
     }
 }
 
-struct PapagoAPIRequest: HTTPRequest {
-    // NaverDevelopers OpenAPI
+struct PapagoAPIRequest: PapagoHTTPRequest {
+    // MARK: - NaverDevelopers OpenAPI
     //    var url: URL = APIEndPoint.naverPapagoOpenAPI
     //    var httpMethod: HTTPMethod = .post
     //    var headers: [String: String] = [
@@ -48,7 +48,7 @@ struct PapagoAPIRequest: HTTPRequest {
     //        "X-Naver-Client-Secret": APIEndPoint.naverPapagoOpenAPIclientSecret
     //    ]
     
-    //  NCP
+    // MARK: - NCP
     var url: URL = APIEndPoint.ncpPapagoAPI
     var httpMethod: HTTPMethod = .post
     var headers: [String: String] = [

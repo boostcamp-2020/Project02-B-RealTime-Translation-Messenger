@@ -20,15 +20,15 @@ final class ChatDrawerViewReactor: Reactor {
     
     enum Mutation {
         case setUsers(UserList)
-        case copyRoomCode(String)
-        case setNeedToast(Bool)
+        case copyRoomCode
+        case setToastMessage(String)
         case setLeaveChatRoom(Bool)
     }
     
     struct State {
         var users: UserList
-        var roomCode: String?
-        var needToast: Bool
+        var roomCode: RevisionedData<String>
+        var toastMessage: RevisionedData<String>
         var leaveChatRoom: Bool
     }
     
@@ -41,7 +41,10 @@ final class ChatDrawerViewReactor: Reactor {
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
-        initialState = State(users: UserList(), roomCode: nil, needToast: false, leaveChatRoom: false)
+        initialState = State(users: UserList(),
+                             roomCode: RevisionedData(data: roomCode),
+                             toastMessage: RevisionedData(data: ""),
+                             leaveChatRoom: false)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -50,11 +53,11 @@ final class ChatDrawerViewReactor: Reactor {
             return requestGetUserList(by: roomID)
         case .chatRoomCodeButtonTapped:
             return .concat ([
-                .just(Mutation.setNeedToast(true)),
-                .just(Mutation.copyRoomCode("554305")),
-                .just(Mutation.setNeedToast(false))
+                .just(Mutation.copyRoomCode),
+                .just(Mutation.setToastMessage(Strings.ChatDrawer.chatCodeDidCopyMessage))
             ])
         case .leaveChatRoomButtonTapped:
+            networkService.leaveRoom()
             return .just(Mutation.setLeaveChatRoom(true))
         }
     }
@@ -65,10 +68,10 @@ final class ChatDrawerViewReactor: Reactor {
         switch mutation {
         case .setUsers(let users):
             state.users = users
-        case .copyRoomCode(let roomCode):
-            state.roomCode = roomCode
-        case .setNeedToast(let needToast):
-            state.needToast = needToast
+        case .copyRoomCode:
+            state.roomCode = state.roomCode.update()
+        case .setToastMessage(let toast):
+            state.toastMessage = state.toastMessage.update(toast)
         case .setLeaveChatRoom(let leaveChatRoom):
             state.leaveChatRoom = leaveChatRoom
         }
@@ -79,10 +82,10 @@ final class ChatDrawerViewReactor: Reactor {
         return networkService.getUserList(of: roomID)
             .asObservable()
             .compactMap { $0.roomById?.users }
-            .map { $0.map { User(id: $0.id,
-                                 nickName: $0.nickname,
-                                 image: $0.avatar,
-                                 language: .codeToLanguage(of: $0.lang)) } }
+            .map { [weak self] in
+                $0.filter { !$0.isDeleted }
+                    .map { User(data: $0, userID: self?.userData.id ?? 0) }
+            }
             .map { Mutation.setUsers($0) }
     }
 }
