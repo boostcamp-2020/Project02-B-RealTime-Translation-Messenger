@@ -168,12 +168,6 @@ final class ChatViewController: UIViewController, StoryboardView {
         return min(Constant.inputBarTextViewMaxHeight, size.height)
     }
     
-//    private func scrollToLastMessage() {
-//        view.layoutIfNeeded()
-//        let newY = chatCollectionView.contentSize.height - chatCollectionView.bounds.height
-//        chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: false)
-//    }
-    
     private func presentSpeech() {
         hideKeyboard()
         coordinator?.presentSpeech(from: self)
@@ -231,21 +225,4 @@ extension ChatViewController: KeyboardProviding {
             })
             .disposed(by: disposeBag)
     }
-    
-//    private func keyboardWillShow(keyboardHeight: CGFloat) {
-//        var offset = chatCollectionView.contentOffset
-//        var yOffSet = keyboardHeight - view.safeAreaInsets.bottom
-//        let maxYOffSet = chatCollectionView.contentSize.height - chatCollectionView.bounds.height
-//        yOffSet = yOffSet > maxYOffSet ? maxYOffSet : yOffSet
-//        offset.y += yOffSet
-//        chatCollectionView.setContentOffset(offset, animated: false)
-//    }
-//
-//    private func keyboardWillHide(keyboardHeight: CGFloat) {
-//        var offset = chatCollectionView.contentOffset
-//        let yOffSet = keyboardHeight - view.safeAreaInsets.bottom
-//        offset.y -= yOffSet
-//        offset.y = offset.y < 0 ? 0 : offset.y
-//        chatCollectionView.setContentOffset(offset, animated: false)
-//    }
 }
