@@ -18,4 +18,14 @@ struct Constant {
     static let speechViewWidth: CGFloat = 350
     static let speechViewHeight: CGFloat = 400
     static let speechViewBottomInset: CGFloat = 18
+    
+    static let messageInset: CGFloat = 8
+    static let dateBadgeHeight: CGFloat = 24
+    static let dateBadgeInset: CGFloat = 4
+    static let profileImageHeight: CGFloat = 42
+    static let profileImageTopInset: CGFloat = 12
+    static let nicknameTextHeight: CGFloat = 18
+    static let nicknameTextInset: CGFloat = 8
+    static let translatedMessageBottomInset: CGFloat = 8
+    static let systemMessageCellHeight: CGFloat = 32
 }

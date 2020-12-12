@@ -15,7 +15,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     @IBOutlet weak var inputBarTextView: UITextView!
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
-    @IBOutlet private weak var chatCollectionView: UICollectionView!
+    @IBOutlet private weak var chatCollectionView: ChatCollectionView!
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatDrawerButton: UIBarButtonItem!
@@ -23,6 +23,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     private var chatDrawerObserver = BehaviorRelay(value: false)
     private var micButtonSizeObserver: BehaviorRelay<MicButtonSize>
     private let messageDataSource = MessageDataSource()
+    private let messageCollectionViewLayout = MessageSizeDelegate()
     weak var coordinator: ChatCoordinating?
     var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
@@ -104,8 +105,11 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.messageBox.messages }
             .observeOn(MainScheduler.instance)
-            .do(afterNext: { [weak self] _ in
-                self?.scrollToLastMessage()
+            .do(onNext: { [weak self] in
+                self?.messageCollectionViewLayout.updateSizes(messages: $0)
+            },
+            afterNext: { [weak self] _ in
+                self?.chatCollectionView.scrollToLast()
             })
             .map { [MessageSection(items: $0)] }
             .bind(to: chatCollectionView.rx.items(dataSource: messageDataSource))
@@ -132,7 +136,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     private func bind() {
-        chatCollectionView.rx.setDelegate(self)
+        chatCollectionView.rx.setDelegate(messageCollectionViewLayout)
             .disposed(by: disposeBag)
         
         inputBarTextView.rx.text
@@ -162,12 +166,6 @@ final class ChatViewController: UIViewController, StoryboardView {
         let size = inputBarTextView.sizeThatFits(CGSize(width: inputBarTextView.bounds.size.width,
                                                         height: CGFloat.greatestFiniteMagnitude))
         return min(Constant.inputBarTextViewMaxHeight, size.height)
-    }
-    
-    private func scrollToLastMessage() {
-        view.layoutIfNeeded()
-        let newY = chatCollectionView.contentSize.height - chatCollectionView.bounds.height
-        chatCollectionView.setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: false)
     }
     
     private func presentSpeech() {
@@ -209,6 +207,7 @@ extension ChatViewController: KeyboardProviding {
                 guard let self = self else {
                     return
                 }
+                self.chatCollectionView.keyboardWillShow(keyboardHeight: keyboardFrame.height)
                 self.bottomConstraint.constant = keyboardFrame.height - self.view.safeAreaInsets.bottom
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
@@ -217,18 +216,13 @@ extension ChatViewController: KeyboardProviding {
             .disposed(by: disposeBag)
         
         keyboardWillHide
-            .drive(onNext: { [weak self] _ in
+            .drive(onNext: { [weak self] keyboardFrame in
+                self?.chatCollectionView.keyboardWillHide(keyboardHeight: keyboardFrame.height)
                 self?.bottomConstraint.constant = 0
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self?.view.layoutIfNeeded()
                 }
             })
             .disposed(by: disposeBag)
-    }
-}
-
-extension ChatViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.width, height: 40)
     }
 }

@@ -100,12 +100,6 @@ final class ChatViewReactor: Reactor {
     }
         
     private func subscribeMessages() -> Observable<Mutation> {
-//        return networkService.getMessage()
-//            .compactMap { $0.newMessage }
-//            .compactMap { [weak self] in
-//                self?.messageParser.parse(newMessage: $0)
-//            }
-//            .map { Mutation.appendNewMessage($0) }
         networkService.sendSystemMessage(type: "in")
         return chatWebSocket.getMessage()
             .compactMap { $0.newMessage }

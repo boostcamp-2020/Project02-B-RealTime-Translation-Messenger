@@ -35,9 +35,9 @@ extension ReceivedMessageCell: MessageCell {
     }
     
     private func configureSenderInfo(image: String, nickName: String, shouldImageShow: Bool) {
-        profileImageHeight.constant = shouldImageShow ? 42 : 0
-        profileImageTopInset.constant = shouldImageShow ? 12 : 0
-        messageTopInset.constant = shouldImageShow ? 8 : 0
+        profileImageHeight.constant = shouldImageShow ? Constant.profileImageHeight : 0
+        profileImageTopInset.constant = shouldImageShow ? Constant.profileImageTopInset : 0
+        messageTopInset.constant = shouldImageShow ? Constant.messageInset : 0
         messageBubbleTail.isHidden = !shouldImageShow
         nickNameLabel.text = nil
         if shouldImageShow {
