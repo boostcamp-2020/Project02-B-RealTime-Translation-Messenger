@@ -5,7 +5,119 @@
 </h1>
 
 <br>
+
+## 프로젝트 소개 🎶
+
+<div align="center">
+
+![https://user-images.githubusercontent.com/48614208/101977209-2ee9db80-3c8f-11eb-9815-9085f950fa83.gif](https://user-images.githubusercontent.com/48614208/101977209-2ee9db80-3c8f-11eb-9815-9085f950fa83.gif)
+
+</div>
+
+## PapagoTalk
+
+>**`PapagoTalk`** 은 다자간 채팅이 가능한 **`실시간 번역 채팅 웹/앱 서비스`** 입니다.
+>저희 Team Madagascar는 세계의 다양한 언어를 사용하는 사람들이 언어의 장벽을 허물고 
+>어우러져 살아갈 수 있기를 희망합니다.
+
+### ✅ 로그인 없이 간편하게 이용하세요
+
+저희 서비스는 단순히 사용자명과 사용 언어, 파파고톡이 제공하는 알록달록한 앵무새 프로필을 통해 채팅에 참여할 수 있습니다.
+
+### ✅ 친구와 함께 이용하세요
+
+참여하고 있는 채팅방의 코드를 복사하여 다른 사람에게 공유할 수 있습니다. 친구를 초대해 함께 채팅해보세요.
+
+### ✅ 실시간으로 번역 결과를 확인하세요
+
+채팅을 입력함과 동시에 번역 결과를 확인할 수 있습니다. 또한, 자신이 전송한 채팅의 번역 결과도 확인할 수 있습니다.
+
+### ✅ 음성인식을 사용해 보세요
+
+음성인식을 통해 실시간으로 번역 결과를 확인하며, 음성인식 결과를 채팅으로 전송할 수 있습니다.
+
 <br>
+
+### [Web팀의 큐티뽀짝한 서비스 URL 🕸]()
+### [iOS팀의 큐티뽀짝한 배포 URL 🍎](https://kr.object.ncloudstorage.com/papagotalk/release/1.0.0/download.html)
+### [마다가스카팀이 더 궁금하시다면 Wiki 보러가기 ✨](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/wiki)
+
+<br>
+
+## Members 👯‍♀️
+
+|  🕸 WEB  |  🕸 WEB  |  🕸 WEB  |  🍎 iOS  |  🍎 iOS  |
+| :------------: | :------------: | :------------: | :------------: | :------------: |
+|  ![](https://media0.giphy.com/media/lqMg6hf8Mie9cvsrmi/giphy.gif?cid=ecf05e479nfqvz5ni655bqbdb5agtzvb471t33hfwxuwx01d&rid=giphy.gif)  |  ![](https://media.giphy.com/media/VbKLOdvCxBFNZpYvhL/giphy.gif)  |  ![](https://media4.giphy.com/media/YrZH2QxktEcTOtGwqL/giphy.gif)  |  ![](https://media.giphy.com/media/XbgzkpzueQjzepnhLy/giphy.gif)  |  ![](https://media.giphy.com/media/SwyTq2jJxc9im6BYnN/giphy.gif)  |
+|  `J012` [공태경 🐃](https://github.com/Taeg92)  |  `J046` [김예진 🐿](https://github.com/johnyejin)  |  `J212` [하이현 🐅](https://github.com/hyh1016)  |  `S026` [송민관 🦥](https://github.com/Minkwan-Song)  |  `S037` [윤병휘 🐧](https://github.com/ByoungHwi)  |
+
+<br>
+
+## Demo Video 🎬
+
+
+
+## Tech Stack 🛠
+
+### Web 🕸
+![web_tech_stack](https://i.imgur.com/UbpX2vq.png)
+
+### iOS 🍎
+![iOS 기술 스택](https://user-images.githubusercontent.com/68672528/101985046-c6b7eb80-3cc8-11eb-8938-fea5683cae2c.png)
+
+
+## 🗃 Project Folder
+```
+        
+📁server
+├── 📁node_modules
+└── 📁src
+    ├── 📁api
+    ├── 📁middlewares
+    ├── 📁utils
+    ├── 📄server.ts
+    └── 📄schema.ts
+    
+📁client
+├── 📁node_modules
+├── 📁public
+└── 📁src
+    ├── 📁apollo
+    ├── 📁components
+    ├── 📁constants
+    ├── 📁contexts
+    ├── 📁generated
+    ├── 📁hooks
+    ├── 📁queries
+    ├── 📁routes
+    ├── 📁styles
+    ├── 📁utils
+    ├── 📄App.tsx
+    └── 📄index.tsx
+
+📁iOS
+├── 📁PapagoTalkTests
+└── 📁PapagoTalk
+    ├── 📁Network
+    ├── 📁GraphQL
+    ├── 📁DataLayer
+    ├── 📁Entity
+    ├── 📁Coordinator
+    ├── 📁LaunchScreen
+    ├── 📁Home
+    ├── 📁Chat
+    ├── 📁ChatCodeInput
+    ├── 📁ChatDrawer
+    ├── 📁Speech
+    └── 📁Common
+        ├── 📁Constant
+        ├── 📁Enums
+        ├── 📁Extensions
+        ├── 📁Factory
+        ├── 📁PropertyWrapper
+        ├── 📁Util
+        └── 📁View
+```
 
 <div align="center">
 
@@ -22,14 +134,3 @@
 [![GitHub Closed PR](https://img.shields.io/github/issues-pr-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls?q=is%3Apr+is%3Aclosed)
 
 </div>
-
-<br>
-
-### [Wiki 구경가기](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/wiki)
-
-<br>
-
-## iOS 배포 🍎
-> v1.0.1
-
-주소 ➡️ https://kr.object.ncloudstorage.com/papagotalk/release/1.0.0/download.html
