@@ -67,6 +67,6 @@ extension HomeCoordinator: HomeCoordinating {
     }
     
     func presentSetting() {
-        parentCoordinator?.presentSetting()
+        parentCoordinator?.presentSetting(nil)
     }
 }

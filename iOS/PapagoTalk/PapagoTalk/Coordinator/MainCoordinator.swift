@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class MainCoordinator: Coordinator {
     
@@ -90,12 +91,14 @@ extension MainCoordinator: MainCoordinating {
         navigationController.present(viewController, animated: true)
     }
     
-    func presentSetting() {
+    func presentSetting(_ micButtonSizeObserver: BehaviorRelay<MicButtonSize>?) {
         let viewController = storyboard.instantiateViewController(
             identifier: SettingViewController.identifier,
             creator: { [unowned self] coder -> SettingViewController? in
                 let reacter = SettingViewReactor(userData: userData)
-                return SettingViewController(coder: coder, reactor: reacter)
+                return SettingViewController(coder: coder,
+                                             reactor: reacter,
+                                             micButtonObserver: micButtonSizeObserver)
             }
         )
         navigationController.present(viewController, animated: true)

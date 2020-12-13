@@ -118,4 +118,8 @@ extension ChatCoordinator: ChatCoordinating {
         presentingViewController.addChild(drawerViewController)
         presentingViewController.view.addSubview(drawerViewController.view)
     }
+    
+    func presentSetting(micButtonSizeObserver: BehaviorRelay<MicButtonSize>) {
+        parentCoordinator?.presentSetting(micButtonSizeObserver)
+    }
 }
