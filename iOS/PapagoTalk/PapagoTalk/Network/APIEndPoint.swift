@@ -9,7 +9,7 @@ import Foundation
 
 struct APIEndPoint {
     
-    static let baseURL = "www.madagascar.kro.kr:3000/"
+    static let baseURL = "49.50.164.243:3000/graphql"
     
     static var requestURL: URL {
         URL(string: "http://" + baseURL)!

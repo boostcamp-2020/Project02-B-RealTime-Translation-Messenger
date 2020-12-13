@@ -66,4 +66,17 @@ extension HomeCoordinator: HomeCoordinating {
     func pushChat(roomID: Int, code: String) {
         parentCoordinator?.pushChat(roomID: roomID, code: code)
     }
+    
+    func pushHistory() {
+        let persistenceManager = PersistenceManager(name: "HistoryModel")
+        let historyManager = HistoryManager(persistenceManager: persistenceManager)
+        let viewContoroller = storyboard.instantiateViewController(
+            identifier: HistoryViewController.identifier,
+            creator: { coder -> HistoryViewController? in
+                return HistoryViewController(coder: coder, reactor: HistoryViewReactor(historyManager: historyManager) )
+            }
+        )
+        viewContoroller.coordinator = self
+        parentCoordinator?.push(viewContoroller)
+    }
 }
