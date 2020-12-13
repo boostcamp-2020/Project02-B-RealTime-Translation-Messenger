@@ -31,5 +31,20 @@ final class SettingViewController: UIViewController, StoryboardView {
         bindState(reactor: reactor)
     }
     
+    // MARK: - Input
+    private func bindAction(reactor: SettingViewReactor) {
+        sizeSettingSegmentedControl.rx.value
+            .changed
+            .map { Reactor.Action.sizeSegmentedControlChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        translationSettingSwitch.rx.value
+            .changed
+            .map { Reactor.Action.translationSettingSwitchChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
     
 }
