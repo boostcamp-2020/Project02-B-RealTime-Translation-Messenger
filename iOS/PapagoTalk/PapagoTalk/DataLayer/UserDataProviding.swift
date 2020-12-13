@@ -13,8 +13,8 @@ protocol UserDataProviding {
     var nickName: String { get set }
     var image: String { get set }
     var language: Language { get set }
-    
     var micButtonSize: MicButtonSize { get set }
+    var sameLanguageTranslation: Bool { get set }
     var token: String { get set }
 }
 
