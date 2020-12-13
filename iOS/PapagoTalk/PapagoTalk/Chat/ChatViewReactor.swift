@@ -34,30 +34,37 @@ final class ChatViewReactor: Reactor {
         var presentDrawer: Bool
         var isSubscribingMessage: Bool = false
         var micButtonSize: MicButtonSize
+        var roomTitle: String
     }
     
     private let networkService: NetworkServiceProviding
     private var userData: UserDataProviding
     private let roomID: Int
     private let messageParser: MessageParseProviding
-    private let chatWebSocket = ChatWebSocket()
+    private let chatWebSocket: WebsocketServiceProviding
+    private let historyManager: HistoryServiceProviding
     
     let initialState: State
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          messageParser: MessageParseProviding,
+         chatWebSocket: WebsocketServiceProviding,
+         historyManager: HistoryServiceProviding,
          roomID: Int,
          code: String) {
         
         self.networkService = networkService
         self.userData = userData
         self.messageParser = messageParser
+        self.chatWebSocket = chatWebSocket
+        self.historyManager = historyManager
         self.roomID = roomID
         initialState = State(messageBox: MessageBox(userID: userData.id),
                              roomCode: code,
                              presentDrawer: false,
-                             micButtonSize: userData.micButtonSize)
+                             micButtonSize: userData.micButtonSize,
+                             roomTitle: code.prefix(3) + "-" + code.suffix(3))
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -101,6 +108,7 @@ final class ChatViewReactor: Reactor {
         
     private func subscribeMessages() -> Observable<Mutation> {
         networkService.sendSystemMessage(type: "in")
+        saveHistory()
         return chatWebSocket.getMessage()
             .compactMap { $0.newMessage }
             .compactMap { [weak self] in
@@ -123,5 +131,15 @@ final class ChatViewReactor: Reactor {
         return networkService.sendMessage(text: message)
             .asObservable()
             .map { Mutation.setSendResult($0.createMessage) }
+    }
+    
+    private func saveHistory() {
+        historyManager.insert(of: ChatRoomHistory(roomID: roomID,
+                                                  code: currentState.roomCode,
+                                                  title: currentState.roomTitle,
+                                                  usedNickname: userData.nickName,
+                                                  usedLanguage: userData.language,
+                                                  usedImage: userData.image,
+                                                  enterDate: Date()))
     }
 }

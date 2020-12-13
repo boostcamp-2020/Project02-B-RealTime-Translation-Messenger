@@ -85,6 +85,7 @@ final class ChatDrawerViewReactor: Reactor {
             .map { [weak self] in
                 $0.filter { !$0.isDeleted }
                     .map { User(data: $0, userID: self?.userData.id ?? 0) }
+                    .sorted()
             }
             .map { Mutation.setUsers($0) }
     }

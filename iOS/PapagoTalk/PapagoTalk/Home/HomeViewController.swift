@@ -153,6 +153,14 @@ final class HomeViewController: UIViewController, StoryboardView {
                 self?.presentLanguageSelectionView()
             }
             .disposed(by: disposeBag)
+        
+//        historyButton.rx.tap
+//            .asDriver()
+//            .drive { [weak self] _ in
+//                self?.coordinator?.pushHistory()
+//            }
+//            .disposed(by: disposeBag)
+        
     }
     
     private func alert(message: String) {

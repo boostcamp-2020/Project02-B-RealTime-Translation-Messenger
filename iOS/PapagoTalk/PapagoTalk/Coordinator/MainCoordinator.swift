@@ -14,19 +14,22 @@ final class MainCoordinator: Coordinator {
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
     var messageParser: MessageParser
+    var historyManager: HistoryServiceProviding
     var childCoordinator: [Coordinator] = []
     
     init(navigationController: UINavigationController,
          networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          alertFactory: AlertFactoryProviding,
-         messageParser: MessageParser) {
+         messageParser: MessageParser,
+         historyManager: HistoryServiceProviding) {
         
         self.navigationController = navigationController
         self.networkService = networkService
         self.userData = userData
         self.alertFactory = alertFactory
         self.messageParser = messageParser
+        self.historyManager = historyManager
         
         navigationController.navigationBar.barTintColor = UIColor(named: "NavigationBarColor")
         navigationController.navigationBar.shadowImage = UIImage()
@@ -36,11 +39,13 @@ final class MainCoordinator: Coordinator {
     func start() {
         let homeCoordinator = HomeCoordinator(networkService: networkService,
                                               userData: userData,
-                                              alertFactory: alertFactory)
+                                              alertFactory: alertFactory,
+                                              historyManager: historyManager)
         
         let chatCoordinator = ChatCoordinator(networkService: networkService,
                                               userData: userData,
-                                              messageParser: messageParser)
+                                              messageParser: messageParser,
+                                              historyManager: historyManager)
         
         homeCoordinator.parentCoordinator = self
         chatCoordinator.parentCoordinator = self

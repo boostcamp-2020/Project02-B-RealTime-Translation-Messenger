@@ -93,14 +93,10 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     // MARK: - Output
-    private func bindState(reactor: ChatViewReactor) {
-        reactor.state.map { $0.roomCode }
+    private func bindState(reactor: ChatViewReactor) {        
+        reactor.state.map { $0.roomTitle }
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] in
-                var code = $0
-                code.insert("-", at: code.index(code.startIndex, offsetBy: 3))
-                self?.navigationItem.title = code
-            })
+            .bind(to: navigationItem.rx.title)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.messageBox.messages }
@@ -158,6 +154,13 @@ final class ChatViewController: UIViewController, StoryboardView {
                 self?.microphoneButton?.moveForSpeech {
                     self?.presentSpeech()
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        navigationItem.titleView?.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: {  _ in
+                print("Haha")
             })
             .disposed(by: disposeBag)
     }

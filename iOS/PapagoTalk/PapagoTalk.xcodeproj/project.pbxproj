@@ -69,6 +69,18 @@
 		996847362583AFCC006C116E /* MessageSizeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996847352583AFCC006C116E /* MessageSizeDelegate.swift */; };
 		9968473C25847AB2006C116E /* MessageHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968473B25847AB2006C116E /* MessageHeightCalculator.swift */; };
 		9968474325847B73006C116E /* ChatCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968474225847B73006C116E /* ChatCollectionView.swift */; };
+		9968475925851778006C116E /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968475825851778006C116E /* HistoryCell.swift */; };
+		9968475F25851833006C116E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968475E25851833006C116E /* HistoryViewController.swift */; };
+		9968476425851988006C116E /* HistoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9968476225851988006C116E /* HistoryModel.xcdatamodeld */; };
+		9968476825851D6D006C116E /* ChatRoomHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476725851D6D006C116E /* ChatRoomHistory.swift */; };
+		9968476C2585C979006C116E /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476B2585C979006C116E /* PersistenceManager.swift */; };
+		996847702585DA1E006C116E /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476F2585DA1E006C116E /* HistoryManager.swift */; };
+		996847742585DAC5006C116E /* HistoryViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996847732585DAC5006C116E /* HistoryViewReactor.swift */; };
+		996847782585DFD0006C116E /* HistoryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996847772585DFD0006C116E /* HistoryDatasource.swift */; };
+		9968477C2585EC5D006C116E /* HistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968477B2585EC5D006C116E /* HistorySection.swift */; };
+		9968478025862C5F006C116E /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968477F25862C5F006C116E /* Notification+.swift */; };
+		9968478425863A6F006C116E /* HistoryServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968478325863A6F006C116E /* HistoryServiceProviding.swift */; };
+		9968478825863B9F006C116E /* WebsocketServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968478725863B9E006C116E /* WebsocketServiceProviding.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionViewController.swift */; };
@@ -258,6 +270,18 @@
 		996847352583AFCC006C116E /* MessageSizeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSizeDelegate.swift; sourceTree = "<group>"; };
 		9968473B25847AB2006C116E /* MessageHeightCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeightCalculator.swift; sourceTree = "<group>"; };
 		9968474225847B73006C116E /* ChatCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionView.swift; sourceTree = "<group>"; };
+		9968475825851778006C116E /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		9968475E25851833006C116E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		9968476325851988006C116E /* HistoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryModel.xcdatamodel; sourceTree = "<group>"; };
+		9968476725851D6D006C116E /* ChatRoomHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomHistory.swift; sourceTree = "<group>"; };
+		9968476B2585C979006C116E /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		9968476F2585DA1E006C116E /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
+		996847732585DAC5006C116E /* HistoryViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewReactor.swift; sourceTree = "<group>"; };
+		996847772585DFD0006C116E /* HistoryDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDatasource.swift; sourceTree = "<group>"; };
+		9968477B2585EC5D006C116E /* HistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySection.swift; sourceTree = "<group>"; };
+		9968477F25862C5F006C116E /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		9968478325863A6F006C116E /* HistoryServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryServiceProviding.swift; sourceTree = "<group>"; };
+		9968478725863B9E006C116E /* WebsocketServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketServiceProviding.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -453,6 +477,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		996847512585170A006C116E /* History */ = {
+			isa = PBXGroup;
+			children = (
+				9968475825851778006C116E /* HistoryCell.swift */,
+				9968475E25851833006C116E /* HistoryViewController.swift */,
+				996847732585DAC5006C116E /* HistoryViewReactor.swift */,
+				996847772585DFD0006C116E /* HistoryDatasource.swift */,
+				9968477B2585EC5D006C116E /* HistorySection.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		996A146E256D5B8E00F21215 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +561,7 @@
 				99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */,
 				99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */,
 				99483034258309D000802B45 /* ChatWebSocket.swift */,
+				9968478725863B9E006C116E /* WebsocketServiceProviding.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -607,6 +644,7 @@
 				BB93C2932575345200C68491 /* Calendar+.swift */,
 				BBDE2C6A25825C720068D7DE /* Date+.swift */,
 				BBE140762573D374000B0604 /* DateFormatter+.swift */,
+				9968477F25862C5F006C116E /* Notification+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -640,6 +678,9 @@
 				995BE9D0257621B700C15AC7 /* UserDataProvider.swift */,
 				995BE9D425762AC500C15AC7 /* UserDataProviding.swift */,
 				BBC5B31B257E089900739CD8 /* KeychainAccess.swift */,
+				9968476B2585C979006C116E /* PersistenceManager.swift */,
+				9968476F2585DA1E006C116E /* HistoryManager.swift */,
+				9968478325863A6F006C116E /* HistoryServiceProviding.swift */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -655,6 +696,7 @@
 				9964795225769BD500CFF202 /* ChatRoomInfo.swift */,
 				BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */,
 				BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */,
+				9968476725851D6D006C116E /* ChatRoomHistory.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -700,6 +742,7 @@
 				996C4E3D256E5F2C0015F9F4 /* GraphQL */,
 				996A146E256D5B8E00F21215 /* Common */,
 				99A2767F25668E13008BD24C /* Home */,
+				996847512585170A006C116E /* History */,
 				990DE9212572657300340A72 /* ChatCodeInput */,
 				BB6F7EBE256D693800D66F8E /* Chat */,
 				BB38252325740153000425FD /* ChatDrawer */,
@@ -711,6 +754,7 @@
 				BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */,
 				BBF2DCAA256674A500F2EA7D /* Info.plist */,
 				990DE96F2573A59B00340A72 /* Localizable.strings */,
+				9968476225851988006C116E /* HistoryModel.xcdatamodeld */,
 			);
 			path = PapagoTalk;
 			sourceTree = "<group>";
@@ -968,16 +1012,19 @@
 				995BE99F2575DF9400C15AC7 /* Coordinator.swift in Sources */,
 				996A146B256D5B6200F21215 /* Locale+.swift in Sources */,
 				996847362583AFCC006C116E /* MessageSizeDelegate.swift in Sources */,
+				9968476825851D6D006C116E /* ChatRoomHistory.swift in Sources */,
 				99482F12257F7EE700802B45 /* TranslationRequest.swift in Sources */,
 				BBC5B31C257E089900739CD8 /* KeychainAccess.swift in Sources */,
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB5EFE7C25812991001A121C /* UserSection.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
+				9968476C2585C979006C116E /* PersistenceManager.swift in Sources */,
 				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */,
 				99482F46257FCE1800802B45 /* MicButtonSize.swift in Sources */,
 				BBDE2C6B25825C720068D7DE /* Date+.swift in Sources */,
 				99482F19257F826800802B45 /* SpeechServiceProviding.swift in Sources */,
+				9968478425863A6F006C116E /* HistoryServiceProviding.swift in Sources */,
 				BB5EFE9125812A90001A121C /* UserDataSource.swift in Sources */,
 				BBDE2C7D25830B3C0068D7DE /* Messageable.swift in Sources */,
 				99482FC625811E2300802B45 /* MessageSection.swift in Sources */,
@@ -986,16 +1033,19 @@
 				996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */,
 				BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */,
 				99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */,
+				9968478025862C5F006C116E /* Notification+.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
 				99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */,
 				99482FCC2581243500802B45 /* MessageDataSource.swift in Sources */,
 				99482E8B257CB91D00802B45 /* PapagoAPIServiceProviding.swift in Sources */,
 				99482E99257CEE2500802B45 /* MessageParser.swift in Sources */,
 				99482E67257BA3B200802B45 /* ChatCoordinating.swift in Sources */,
+				9968475F25851833006C116E /* HistoryViewController.swift in Sources */,
 				996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */,
 				99482DFD2579425400802B45 /* RevisionedData.swift in Sources */,
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
 				996A1433256D040B00F21215 /* ImageFactory.swift in Sources */,
+				996847782585DFD0006C116E /* HistoryDatasource.swift in Sources */,
 				996C4E51256E7BF90015F9F4 /* ApolloNetworkService.swift in Sources */,
 				9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */,
 				BB1569A0257F8C2F00A2C0F9 /* MessageParseProviding.swift in Sources */,
@@ -1004,6 +1054,7 @@
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
 				BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */,
 				99482E57257B558700802B45 /* HomeCoordinator.swift in Sources */,
+				9968478825863B9F006C116E /* WebsocketServiceProviding.swift in Sources */,
 				99482ED8257E3D0400802B45 /* LaunchScreenViewController.swift in Sources */,
 				9968473C25847AB2006C116E /* MessageHeightCalculator.swift in Sources */,
 				99482F9A2580ED6800802B45 /* SystemMessageCell.swift in Sources */,
@@ -1015,6 +1066,7 @@
 				BB20F4C625738D2C00C5AC1D /* UserDefault.swift in Sources */,
 				BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */,
 				BB9A86A4257487C800FE14D6 /* MessageCell.swift in Sources */,
+				996847702585DA1E006C116E /* HistoryManager.swift in Sources */,
 				99482F902580BC9E00802B45 /* TokenAddingIntercepter.swift in Sources */,
 				BB23C0A12576AABB001D74A0 /* NetworkServiceProviding.swift in Sources */,
 				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
@@ -1050,13 +1102,17 @@
 				990DE9782573A67C00340A72 /* String+.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
 				BBDE2C7725830AB90068D7DE /* Userable.swift in Sources */,
+				9968476425851988006C116E /* HistoryModel.xcdatamodeld in Sources */,
 				BB15A58F25776D2F0006D258 /* SpeechViewReactor.swift in Sources */,
 				BB23C09B2576979C001D74A0 /* NetworkError.swift in Sources */,
 				BB1FFD1525761BB100E4668C /* ChatDrawerState.swift in Sources */,
 				BB20F4DB257394F800C5AC1D /* Encodable+.swift in Sources */,
 				BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */,
+				9968477C2585EC5D006C116E /* HistorySection.swift in Sources */,
 				990DE957257367B800340A72 /* JoinChatResponse.swift in Sources */,
+				996847742585DAC5006C116E /* HistoryViewReactor.swift in Sources */,
 				9968472C258325F6006C116E /* API.swift in Sources */,
+				9968475925851778006C116E /* HistoryCell.swift in Sources */,
 				990DE94D2573479600340A72 /* AlertFactory.swift in Sources */,
 				995BE9F72576350A00C15AC7 /* TranslatedResult.swift in Sources */,
 				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
@@ -1408,6 +1464,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9968476225851988006C116E /* HistoryModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9968476325851988006C116E /* HistoryModel.xcdatamodel */,
+			);
+			currentVersion = 9968476325851988006C116E /* HistoryModel.xcdatamodel */;
+			path = HistoryModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BBF2DC91256674A300F2EA7D /* Project object */;
 }

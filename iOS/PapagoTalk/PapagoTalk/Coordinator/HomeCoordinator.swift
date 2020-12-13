@@ -15,14 +15,17 @@ final class HomeCoordinator: Coordinator {
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
+    var historyManager: HistoryServiceProviding
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         alertFactory: AlertFactoryProviding) {
+         alertFactory: AlertFactoryProviding,
+         historyManager: HistoryServiceProviding) {
         
         self.networkService = networkService
         self.userData = userData
         self.alertFactory = alertFactory
+        self.historyManager = historyManager
     }
     
     func start() {
@@ -64,6 +67,25 @@ extension HomeCoordinator: HomeCoordinating {
     }
     
     func pushChat(roomID: Int, code: String) {
+        parentCoordinator?.pushChat(roomID: roomID, code: code)
+    }
+    
+    func pushHistory() {
+        let viewContoroller = storyboard.instantiateViewController(
+            identifier: HistoryViewController.identifier,
+            creator: { [unowned self] coder -> HistoryViewController? in
+                return HistoryViewController(coder: coder,
+                                             reactor: HistoryViewReactor(networkService: networkService,
+                                                                         userData: userData,
+                                                                         historyManager: historyManager),
+                                             alertFactory: alertFactory)
+            }
+        )
+        viewContoroller.coordinator = self
+        parentCoordinator?.push(viewContoroller)
+    }
+    
+    func historyToChat(roomID: Int, code: String) {
         parentCoordinator?.pushChat(roomID: roomID, code: code)
     }
 }

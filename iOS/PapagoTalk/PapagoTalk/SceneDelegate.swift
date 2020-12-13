@@ -20,13 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let alertFactory = AlertFactory()
         let userData = UserDataProvider()
         let messageParser = MessageParser(userData: userData)
+        let persistenceManager = PersistenceManager(name: "HistoryModel")
+        let historyManager = HistoryManager(persistenceManager: persistenceManager)
         
         window = UIWindow(windowScene: scene)
         coordinator = MainCoordinator(navigationController: navigationController,
                                       networkService: networkService,
                                       userData: userData,
                                       alertFactory: alertFactory,
-                                      messageParser: messageParser)
+                                      messageParser: messageParser,
+                                      historyManager: historyManager)
         coordinator?.start()
         
         guard let launchScreenViewContorller =

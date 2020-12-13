@@ -8,7 +8,7 @@
 import Apollo
 import RxSwift
 
-final class ChatWebSocket {
+final class ChatWebSocket: WebsocketServiceProviding {
     
     let store = ApolloStore()
     var socketURL = APIEndPoint.socketURL
@@ -19,7 +19,6 @@ final class ChatWebSocket {
         let authPayload = ["authToken": UserDataProvider().token]
         return WebSocketTransport(request: request, connectingPayload: authPayload)
     }()
-    
     
     private(set) lazy var client = ApolloClient(networkTransport: webSocketTransport, store: store)
     
