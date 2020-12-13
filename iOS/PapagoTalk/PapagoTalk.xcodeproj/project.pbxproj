@@ -73,6 +73,9 @@
 		9968475F25851833006C116E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968475E25851833006C116E /* HistoryViewController.swift */; };
 		9968476425851988006C116E /* HistoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9968476225851988006C116E /* HistoryModel.xcdatamodeld */; };
 		9968476825851D6D006C116E /* ChatRoomHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476725851D6D006C116E /* ChatRoomHistory.swift */; };
+		9968476C2585C979006C116E /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476B2585C979006C116E /* PersistenceManager.swift */; };
+		996847702585DA1E006C116E /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476F2585DA1E006C116E /* HistoryManager.swift */; };
+		996847742585DAC5006C116E /* HistoryViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996847732585DAC5006C116E /* HistoryViewReactor.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionViewController.swift */; };
@@ -266,6 +269,9 @@
 		9968475E25851833006C116E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		9968476325851988006C116E /* HistoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HistoryModel.xcdatamodel; sourceTree = "<group>"; };
 		9968476725851D6D006C116E /* ChatRoomHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomHistory.swift; sourceTree = "<group>"; };
+		9968476B2585C979006C116E /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		9968476F2585DA1E006C116E /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
+		996847732585DAC5006C116E /* HistoryViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewReactor.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -466,6 +472,7 @@
 			children = (
 				9968475825851778006C116E /* HistoryCell.swift */,
 				9968475E25851833006C116E /* HistoryViewController.swift */,
+				996847732585DAC5006C116E /* HistoryViewReactor.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -657,6 +664,8 @@
 				995BE9D0257621B700C15AC7 /* UserDataProvider.swift */,
 				995BE9D425762AC500C15AC7 /* UserDataProviding.swift */,
 				BBC5B31B257E089900739CD8 /* KeychainAccess.swift */,
+				9968476B2585C979006C116E /* PersistenceManager.swift */,
+				9968476F2585DA1E006C116E /* HistoryManager.swift */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -994,6 +1003,7 @@
 				996A1467256D3A5F00F21215 /* Language.swift in Sources */,
 				BB5EFE7C25812991001A121C /* UserSection.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
+				9968476C2585C979006C116E /* PersistenceManager.swift in Sources */,
 				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */,
 				99482F46257FCE1800802B45 /* MicButtonSize.swift in Sources */,
@@ -1037,6 +1047,7 @@
 				BB20F4C625738D2C00C5AC1D /* UserDefault.swift in Sources */,
 				BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */,
 				BB9A86A4257487C800FE14D6 /* MessageCell.swift in Sources */,
+				996847702585DA1E006C116E /* HistoryManager.swift in Sources */,
 				99482F902580BC9E00802B45 /* TokenAddingIntercepter.swift in Sources */,
 				BB23C0A12576AABB001D74A0 /* NetworkServiceProviding.swift in Sources */,
 				BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */,
@@ -1079,6 +1090,7 @@
 				BB20F4DB257394F800C5AC1D /* Encodable+.swift in Sources */,
 				BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */,
 				990DE957257367B800340A72 /* JoinChatResponse.swift in Sources */,
+				996847742585DAC5006C116E /* HistoryViewReactor.swift in Sources */,
 				9968472C258325F6006C116E /* API.swift in Sources */,
 				9968475925851778006C116E /* HistoryCell.swift in Sources */,
 				990DE94D2573479600340A72 /* AlertFactory.swift in Sources */,
