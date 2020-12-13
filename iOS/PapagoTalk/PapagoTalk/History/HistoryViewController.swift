@@ -15,22 +15,35 @@ final class HistoryViewController: UIViewController, StoryboardView {
     
     @IBOutlet weak var historyTableView: UITableView!
     
-    let datasource = HistoryDatasource()
+    private let alertFactory: AlertFactoryProviding
+    private let datasource = HistoryDatasource()
     var disposeBag = DisposeBag()
     weak var coordinator: HomeCoordinating?
     
-    init?(coder: NSCoder, reactor: HistoryViewReactor) {
+    init?(coder: NSCoder, reactor: HistoryViewReactor, alertFactory: AlertFactoryProviding) {
+        self.alertFactory = alertFactory
         super.init(coder: coder)
         self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
+        self.alertFactory = AlertFactory()
         super.init(coder: coder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = UIColor.systemGray6
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.barTintColor = UIColor(named: "NavigationBarColor")
     }
     
     func bind(reactor: HistoryViewReactor) {
@@ -68,17 +81,30 @@ final class HistoryViewController: UIViewController, StoryboardView {
                 self?.coordinator?.pushChat(roomID: roomInfo.roomID, code: roomInfo.code)
             })
             .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.errorMessage }
+            .distinctUntilChanged()
+            .compactMap { $0.data }
+            .filter { !$0.isEmpty }
+            .subscribe(onNext: { [weak self] in
+                self?.alert(message: $0)
+            })
+            .disposed(by: disposeBag)
     }
     
     func bind() {
         historyTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
+    
+    func alert(message: String) {
+        present(alertFactory.alert(message: message), animated: true)
+    }
 }
 
 extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90.0
+        100.0
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

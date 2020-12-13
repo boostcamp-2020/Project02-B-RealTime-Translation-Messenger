@@ -18,7 +18,7 @@ final class HistoryViewReactor: Reactor {
     enum Mutation {
         case fetchHistory([ChatRoomHistory])
         case joinChatRoom(ChatRoomInfo)
-        case alertError
+        case alertError(JoinChatError)
     }
     
     struct State {
@@ -47,7 +47,7 @@ final class HistoryViewReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewWillAppear:
-            return Observable.just(historyManager.fetch())
+            return Observable.just(historyManager.fetch().reversed())
                 .map { Mutation.fetchHistory($0) }
         case .reEnterButtonTapped(let code):
             return requestEnterRoom(code: code)
@@ -64,8 +64,8 @@ final class HistoryViewReactor: Reactor {
             userData.id = roomInfo.userID
             userData.token = roomInfo.token
             state.chatRoomInfo = roomInfo
-        case .alertError:
-            state.errorMessage = state.errorMessage.update(Strings.Network.connectionAlertMessage)
+        case .alertError(let error):
+            state.errorMessage = state.errorMessage.update(error.message)
         }
         
         return state
@@ -79,6 +79,18 @@ final class HistoryViewReactor: Reactor {
                                                       roomID: $0.roomId,
                                                       code: code,
                                                       token: $0.token)) }
-            .catchErrorJustReturn(.alertError)
+            .catchError { [weak self] in
+                guard let self = self else {
+                    return .just(Mutation.alertError(.networkError))
+                }
+                return self.handleError($0)
+            }
+    }
+    
+    private func handleError(_ error: Error) -> Observable<Mutation> {
+        guard let error = error as? JoinChatError else {
+            return .just(.alertError(.networkError))
+        }
+        return .just(.alertError(error))
     }
 }
