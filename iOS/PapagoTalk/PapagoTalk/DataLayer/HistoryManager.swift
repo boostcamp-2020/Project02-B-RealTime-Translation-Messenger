@@ -7,7 +7,7 @@
 
 import CoreData
 
-struct HistoryManager {
+struct HistoryManager: HistoryServiceProviding {
     
     let persistenceManager: PersistenceManager
     

@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol HistoryServiceProviding {
+    func fetch() -> [ChatRoomHistory]
+    func insert(of history: ChatRoomHistory)
+}

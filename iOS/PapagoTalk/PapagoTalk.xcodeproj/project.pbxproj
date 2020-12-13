@@ -80,6 +80,7 @@
 		9968477C2585EC5D006C116E /* HistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968477B2585EC5D006C116E /* HistorySection.swift */; };
 		9968478025862C5F006C116E /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968477F25862C5F006C116E /* Notification+.swift */; };
 		9968478425863A6F006C116E /* HistoryServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968478325863A6F006C116E /* HistoryServiceProviding.swift */; };
+		9968478825863B9F006C116E /* WebsocketServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968478725863B9E006C116E /* WebsocketServiceProviding.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionViewController.swift */; };
@@ -280,6 +281,7 @@
 		9968477B2585EC5D006C116E /* HistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySection.swift; sourceTree = "<group>"; };
 		9968477F25862C5F006C116E /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		9968478325863A6F006C116E /* HistoryServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryServiceProviding.swift; sourceTree = "<group>"; };
+		9968478725863B9E006C116E /* WebsocketServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketServiceProviding.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 				99482F8F2580BC9D00802B45 /* TokenAddingIntercepter.swift */,
 				99482F932580BE5900802B45 /* NetworkIntercepterProvider.swift */,
 				99483034258309D000802B45 /* ChatWebSocket.swift */,
+				9968478725863B9E006C116E /* WebsocketServiceProviding.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1051,6 +1054,7 @@
 				BBEA1A5C256F4678009B8B5F /* Message.swift in Sources */,
 				BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */,
 				99482E57257B558700802B45 /* HomeCoordinator.swift in Sources */,
+				9968478825863B9F006C116E /* WebsocketServiceProviding.swift in Sources */,
 				99482ED8257E3D0400802B45 /* LaunchScreenViewController.swift in Sources */,
 				9968473C25847AB2006C116E /* MessageHeightCalculator.swift in Sources */,
 				99482F9A2580ED6800802B45 /* SystemMessageCell.swift in Sources */,

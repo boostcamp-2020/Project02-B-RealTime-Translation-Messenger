@@ -14,17 +14,20 @@ final class ChatCoordinator: Coordinator {
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var messageParser: MessageParser
+    var historyManager: HistoryServiceProviding
     
     var roomID: Int?
     var code: String?
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         messageParser: MessageParser) {
+         messageParser: MessageParser,
+         historyManager: HistoryServiceProviding) {
         
         self.networkService = networkService
         self.userData = userData
         self.messageParser = messageParser
+        self.historyManager = historyManager
     }
     
     func start() {
@@ -32,13 +35,15 @@ final class ChatCoordinator: Coordinator {
               let code = code else {
             return
         }
-        
+        let chatWebSocket = ChatWebSocket()
         let viewController = storyboard.instantiateViewController(
             identifier: ChatViewController.identifier,
             creator: { [unowned self] coder -> ChatViewController? in
                 let reactor = ChatViewReactor(networkService: networkService,
                                               userData: userData,
                                               messageParser: messageParser,
+                                              chatWebSocket: chatWebSocket,
+                                              historyManager: historyManager,
                                               roomID: roomID,
                                               code: code)
                 return ChatViewController(coder: coder, reactor: reactor, micButtonObserver: BehaviorRelay(value: userData.micButtonSize))
