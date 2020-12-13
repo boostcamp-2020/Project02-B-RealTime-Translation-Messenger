@@ -15,7 +15,8 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var reEnterButton: UIButton!
+    
+    var buttonHandler: (() -> Void)?
     
     func configure(with history: ChatRoomHistory) {
         configureImage(with: history.usedImage)
@@ -30,5 +31,9 @@ class HistoryCell: UITableViewCell {
             return
         }
         profileImageView.kf.setImage(with: imageURL)
+    }
+    
+    @IBAction func reEnterButtonTapped(_ sender: UIButton) {
+        buttonHandler?()
     }
 }

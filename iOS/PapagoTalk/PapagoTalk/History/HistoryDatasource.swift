@@ -16,6 +16,9 @@ class HistoryDatasource: RxTableViewSectionedReloadDataSource<HistorySection> {
                 return UITableViewCell()
             }
             cell.configure(with: item)
+            cell.buttonHandler = {
+                NotificationCenter.default.post(.init(name: .reEnterButtonDidTap, object: nil, userInfo: ["code": item.code]))
+            }
             return cell
         })
     }
