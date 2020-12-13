@@ -73,5 +73,22 @@ final class SettingViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
     }
     
+    private func initailizeMicButton(by size: MicButtonSize) {
+        micButtonDisplayView.addSubview(microphoneButton)
+        
+        microphoneButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            microphoneButton.centerXAnchor.constraint(equalTo: micButtonDisplayView.centerXAnchor),
+            microphoneButton.centerYAnchor.constraint(equalTo: micButtonDisplayView.centerYAnchor)
+        ])
+    }
     
+    private func initailizeSizeSettingSegmentedControl() {
+        guard MicButtonSize.allCases.count <= sizeSettingSegmentedControl.numberOfSegments else {
+            return
+        }
+        MicButtonSize.allCases.forEach {
+            sizeSettingSegmentedControl.setTitle($0.description, forSegmentAt: $0.index)
+        }
+    }
 }
