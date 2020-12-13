@@ -17,7 +17,6 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var reEnterButton: UIButton!
     
-    
     func configure(with history: ChatRoomHistory) {
         configureImage(with: history.usedImage)
         titleLabel.text = history.title
