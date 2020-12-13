@@ -44,6 +44,13 @@ final class HistoryViewController: UIViewController, StoryboardView {
             .map { _ in Reactor.Action.viewWillAppear }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.reEnterButtonDidTap)
+            .asObservable()
+            .compactMap { $0.userInfo?["code"] as? String }
+            .map { Reactor.Action.reEnterButtonTapped($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Output
@@ -51,6 +58,15 @@ final class HistoryViewController: UIViewController, StoryboardView {
         reactor.state.map { $0.historyList }
             .map { [HistorySection(items: $0)] }
             .bind(to: historyTableView.rx.items(dataSource: datasource))
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.chatRoomInfo }
+            .distinctUntilChanged()
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] roomInfo in
+                self?.navigationController?.popViewController(animated: false)
+                self?.coordinator?.pushChat(roomID: roomInfo.roomID, code: roomInfo.code)
+            })
             .disposed(by: disposeBag)
     }
     

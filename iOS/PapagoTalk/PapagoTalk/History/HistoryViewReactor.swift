@@ -12,23 +12,36 @@ final class HistoryViewReactor: Reactor {
     
     enum Action {
         case viewWillAppear
+        case reEnterButtonTapped(String)
     }
     
     enum Mutation {
         case fetchHistory([ChatRoomHistory])
+        case joinChatRoom(ChatRoomInfo)
+        case alertError
     }
     
     struct State {
         var historyList: [ChatRoomHistory]
+        var errorMessage: RevisionedData<String>
+        var chatRoomInfo: ChatRoomInfo?
     }
     
-    private let historyManager: HistoryManager
+    private let historyManager: HistoryServiceProviding
+    private let networkService: NetworkServiceProviding
+    private var userData: UserDataProviding
     
     let initialState: State
     
-    init(historyManager: HistoryManager) {
+    init(networkService: NetworkServiceProviding,
+         userData: UserDataProviding,
+         historyManager: HistoryServiceProviding) {
+        
+        self.networkService = networkService
+        self.userData = userData
         self.historyManager = historyManager
-        initialState = State(historyList: [])
+        initialState = State(historyList: [],
+                             errorMessage: RevisionedData(data: ""))
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -36,6 +49,8 @@ final class HistoryViewReactor: Reactor {
         case .viewWillAppear:
             return Observable.just(historyManager.fetch())
                 .map { Mutation.fetchHistory($0) }
+        case .reEnterButtonTapped(let code):
+            return requestEnterRoom(code: code)
         }
     }
     
@@ -45,8 +60,25 @@ final class HistoryViewReactor: Reactor {
         switch mutation {
         case .fetchHistory(let historyList):
             state.historyList = historyList
+        case .joinChatRoom(let roomInfo):
+            userData.id = roomInfo.userID
+            userData.token = roomInfo.token
+            state.chatRoomInfo = roomInfo
+        case .alertError:
+            state.errorMessage = state.errorMessage.update(Strings.Network.connectionAlertMessage)
         }
         
         return state
+    }
+    
+    private func requestEnterRoom(code: String) -> Observable<Mutation> {
+        networkService.leaveRoom()
+        return networkService.enterRoom(user: userData.user, code: code)
+            .asObservable()
+            .map { Mutation.joinChatRoom(ChatRoomInfo(userID: $0.userId,
+                                                      roomID: $0.roomId,
+                                                      code: code,
+                                                      token: $0.token)) }
+            .catchErrorJustReturn(.alertError)
     }
 }
