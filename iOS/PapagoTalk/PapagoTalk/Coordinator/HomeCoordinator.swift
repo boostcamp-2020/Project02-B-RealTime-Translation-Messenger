@@ -39,7 +39,6 @@ final class HomeCoordinator: Coordinator {
         homeViewController.coordinator = self
         parentCoordinator?.push(homeViewController)
     }
-    
 }
 
 extension HomeCoordinator: HomeCoordinating {
@@ -65,5 +64,9 @@ extension HomeCoordinator: HomeCoordinating {
     
     func pushChat(roomID: Int, code: String) {
         parentCoordinator?.pushChat(roomID: roomID, code: code)
+    }
+    
+    func presentSetting() {
+        parentCoordinator?.presentSetting()
     }
 }
