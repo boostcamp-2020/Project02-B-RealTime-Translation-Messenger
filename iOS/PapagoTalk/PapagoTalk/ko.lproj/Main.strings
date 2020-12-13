@@ -82,3 +82,15 @@
 
 /* Class = "UIButton"; normalTitle = "마이크 버튼 크기 설정"; ObjectID = "cmR-TY-HPj"; */
 "cmR-TY-HPj.normalTitle" = "마이크 버튼 크기 설정";
+
+/* Class = "UINavigationItem"; title = "설정"; ObjectID = "ioF-XR-3ge"; */
+"ioF-XR-3ge.title" = "설정";
+
+/* Class = "UILabel"; text = "음성 인식 버튼 사이즈"; ObjectID = "Pe3-cF-AGK"; */
+"Pe3-cF-AGK.text" = "음성 인식 버튼 사이즈";
+
+/* Class = "UILabel"; text = "번역 설정"; ObjectID = "d14-0i-ZpS"; */
+"d14-0i-ZpS.text" = "번역 설정";
+
+/* Class = "UILabel"; text = "동일 언어 번역"; ObjectID = "cK6-us-NJ0"; */
+"cK6-us-NJ0.text" = "동일 언어 번역";
