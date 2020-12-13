@@ -82,3 +82,15 @@
 
 /* Class = "UIButton"; normalTitle = "마이크 버튼 크기 설정"; ObjectID = "cmR-TY-HPj"; */
 "cmR-TY-HPj.normalTitle" = "마이크 버튼 크기 설정";
+
+/* Class = "UILabel"; text = "My Nickname : "; ObjectID = "tw3-KO-rR3"; */
+"tw3-KO-rR3.text" = "내 닉네임 : ";
+
+/* Class = "UILabel"; text = "My Language : "; ObjectID = "OmL-yO-6V3"; */
+"OmL-yO-6V3.text" = "내 언어 : ";
+
+/* Class = "UIButton"; normalTitle = "Enter"; ObjectID = "eHY-2u-taz; */
+"eHY-2u-taz.normalTitle" = "재입장";
+
+/* Class = "UILabel"; text = "Recent ChatRoom"; ObjectID = "YAJ-aN-PmS"; */
+"YAJ-aN-PmS.text" = "최근 대화방 목록";

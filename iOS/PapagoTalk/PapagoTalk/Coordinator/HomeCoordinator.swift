@@ -77,7 +77,8 @@ extension HomeCoordinator: HomeCoordinating {
                 return HistoryViewController(coder: coder,
                                              reactor: HistoryViewReactor(networkService: networkService,
                                                                          userData: userData,
-                                                                         historyManager: historyManager))
+                                                                         historyManager: historyManager),
+                                             alertFactory: alertFactory)
             }
         )
         viewContoroller.coordinator = self
