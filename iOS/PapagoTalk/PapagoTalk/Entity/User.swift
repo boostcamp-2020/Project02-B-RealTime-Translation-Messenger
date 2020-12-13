@@ -55,3 +55,9 @@ struct User: Codable {
         self.isMe = true
     }
 }
+
+extension User: Comparable {
+    static func < (lhs: User, rhs: User) -> Bool {
+        return lhs.isMe
+    }
+}
