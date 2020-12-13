@@ -35,5 +35,26 @@ final class SettingViewReactor: Reactor {
                              translationSetting: userData.sameLanguageTranslation)
     }
     
-
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .sizeSegmentedControlChanged(let index):
+            return .just(.displayMicButton(MicButtonSize.indexToType(of: index)))
+        case .translationSettingSwitchChanged(let value):
+            return .just(.applyTranslationSetting(value))
+        }
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        
+        switch mutation {
+        case .displayMicButton(let size):
+            state.microphoneButtonState = size
+            userData.micButtonSize = size
+        case .applyTranslationSetting(let setting):
+            state.translationSetting = setting
+            userData.sameLanguageTranslation = setting
+        }
+        return state
+    }
 }
