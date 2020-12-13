@@ -31,7 +31,7 @@ struct User: Codable {
         self.isMe = (id == userID) ? true : false
     }
     
-    init(data: Userable) {
+    init(data: UserData) {
         self.id = data.id
         self.nickName = data.nickname
         self.image = data.avatar
@@ -39,7 +39,7 @@ struct User: Codable {
         self.isMe = false
     }
     
-    init(data: Userable, userID: Int) {
+    init(data: UserData, userID: Int) {
         self.id = data.id
         self.nickName = data.nickname
         self.image = data.avatar

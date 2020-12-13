@@ -1,5 +1,5 @@
 //
-//  Userable.swift
+//  UserData.swift
 //  PapagoTalk
 //
 //  Created by 송민관 on 2020/12/11.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Userable {
+protocol UserData {
     var id: Int { get set }
     var nickname: String { get set }
     var avatar: String { get set }
@@ -18,11 +18,11 @@ typealias GetMessageUserData = GetMessageSubscription.Data.NewMessage.User
 typealias GetMissingMessageUserData = GetMessageByTimeQuery.Data.AllMessagesByTime.User
 typealias GetUserListData = FindRoomByIdQuery.Data.RoomById.User
 
-extension GetMessageUserData: Userable {
+extension GetMessageUserData: UserData {
 }
 
-extension GetMissingMessageUserData: Userable {
+extension GetMissingMessageUserData: UserData {
 }
 
-extension GetUserListData: Userable {
+extension GetUserListData: UserData {
 }
