@@ -18,7 +18,14 @@ final class SettingViewController: UIViewController, StoryboardView {
     var microphoneButton = MicrophoneButton(mode: .none)
     var disposeBag = DisposeBag()
     
-    
+    init?(coder: NSCoder, reactor: SettingViewReactor) {
+        super.init(coder: coder)
+        self.reactor = reactor
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
