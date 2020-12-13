@@ -19,6 +19,8 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var selectedLanguageLabel: UILabel!
     @IBOutlet private weak var joinChatRoomButton: UIButton!
     @IBOutlet private weak var makeChatRoomButton: UIButton!
+    @IBOutlet private weak var chatHistoryButton: UIBarButtonItem!
+    @IBOutlet private weak var settingButton: UIBarButtonItem!
     
     private var languageSelection: BehaviorSubject<Language>
     private let alertFactory: AlertFactoryProviding
@@ -152,6 +154,13 @@ final class HomeViewController: UIViewController, StoryboardView {
             .drive { [weak self] _ in
                 self?.presentLanguageSelectionView()
             }
+            .disposed(by: disposeBag)
+        
+        settingButton.rx.tap
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.presentSetting()
+            })
             .disposed(by: disposeBag)
     }
     
