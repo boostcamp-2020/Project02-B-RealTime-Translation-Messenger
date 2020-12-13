@@ -15,11 +15,14 @@ final class SettingViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var micButtonDisplayView: UIView!
     @IBOutlet private weak var translationSettingSwitch: UISwitch!
     
+    var buttonObserver: BehaviorRelay<MicButtonSize>?
     var microphoneButton = MicrophoneButton(mode: .none)
     var disposeBag = DisposeBag()
     
-    init?(coder: NSCoder, reactor: SettingViewReactor) {
+    init?(coder: NSCoder, reactor: SettingViewReactor,
+          micButtonObserver: BehaviorRelay<MicButtonSize>?) {
         super.init(coder: coder)
+        self.buttonObserver = micButtonObserver
         self.reactor = reactor
     }
 
@@ -59,6 +62,8 @@ final class SettingViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .do(onNext: { [weak self] in
                 self?.microphoneButton.mode = $0
+                guard let buttonObserver = self?.buttonObserver else { return }
+                buttonObserver.accept($0)
             })
             .map { $0.index }
             .filter { [weak self] in
