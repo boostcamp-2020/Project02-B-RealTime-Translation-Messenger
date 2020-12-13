@@ -76,6 +76,8 @@
 		9968476C2585C979006C116E /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476B2585C979006C116E /* PersistenceManager.swift */; };
 		996847702585DA1E006C116E /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968476F2585DA1E006C116E /* HistoryManager.swift */; };
 		996847742585DAC5006C116E /* HistoryViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996847732585DAC5006C116E /* HistoryViewReactor.swift */; };
+		996847782585DFD0006C116E /* HistoryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996847772585DFD0006C116E /* HistoryDatasource.swift */; };
+		9968477C2585EC5D006C116E /* HistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968477B2585EC5D006C116E /* HistorySection.swift */; };
 		996A1433256D040B00F21215 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
 		996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
 		996A145D256D324600F21215 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A145C256D324600F21215 /* LanguageSelectionViewController.swift */; };
@@ -272,6 +274,8 @@
 		9968476B2585C979006C116E /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		9968476F2585DA1E006C116E /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
 		996847732585DAC5006C116E /* HistoryViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewReactor.swift; sourceTree = "<group>"; };
+		996847772585DFD0006C116E /* HistoryDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDatasource.swift; sourceTree = "<group>"; };
+		9968477B2585EC5D006C116E /* HistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySection.swift; sourceTree = "<group>"; };
 		996A1432256D040B00F21215 /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
 		996A1445256D187900F21215 /* ImageFactoryProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactoryProviding.swift; sourceTree = "<group>"; };
 		996A145C256D324600F21215 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -473,6 +477,8 @@
 				9968475825851778006C116E /* HistoryCell.swift */,
 				9968475E25851833006C116E /* HistoryViewController.swift */,
 				996847732585DAC5006C116E /* HistoryViewReactor.swift */,
+				996847772585DFD0006C116E /* HistoryDatasource.swift */,
+				9968477B2585EC5D006C116E /* HistorySection.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -1028,6 +1034,7 @@
 				99482DFD2579425400802B45 /* RevisionedData.swift in Sources */,
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
 				996A1433256D040B00F21215 /* ImageFactory.swift in Sources */,
+				996847782585DFD0006C116E /* HistoryDatasource.swift in Sources */,
 				996C4E51256E7BF90015F9F4 /* ApolloNetworkService.swift in Sources */,
 				9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */,
 				BB1569A0257F8C2F00A2C0F9 /* MessageParseProviding.swift in Sources */,
@@ -1089,6 +1096,7 @@
 				BB1FFD1525761BB100E4668C /* ChatDrawerState.swift in Sources */,
 				BB20F4DB257394F800C5AC1D /* Encodable+.swift in Sources */,
 				BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */,
+				9968477C2585EC5D006C116E /* HistorySection.swift in Sources */,
 				990DE957257367B800340A72 /* JoinChatResponse.swift in Sources */,
 				996847742585DAC5006C116E /* HistoryViewReactor.swift in Sources */,
 				9968472C258325F6006C116E /* API.swift in Sources */,
