@@ -1444,7 +1444,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="604-392" id="c2Q-0K-ftg">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="sJd-dO-18v"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="line.horizontal.3" catalog="system" id="sJd-dO-18v"/>
+                            <barButtonItem image="gearshape" catalog="system" id="oqa-2T-3Gn"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="thH-v8-Fzc" id="C4I-q2-Qw8"/>
@@ -1577,21 +1580,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmR-TY-HPj">
-                                <rect key="frame" x="20" y="762" width="300" height="0.0"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="GhQ-ez-rxW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <state key="normal" title="Mic Button Size">
-                                    <color key="titleColor" name="PapagoGreen"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFb-gH-UcB">
+                                <rect key="frame" x="287" y="77" width="21" height="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="gearshape" catalog="system"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Uec-13-aoS"/>
@@ -1600,9 +1592,6 @@
                             <constraint firstItem="fJr-yc-L8f" firstAttribute="top" secondItem="74A-iu-lKE" secondAttribute="bottom" constant="40" id="6ZU-nR-xqT"/>
                             <constraint firstItem="M2b-ut-9Qf" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="8on-3v-l9M"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="bottom" secondItem="M2b-ut-9Qf" secondAttribute="bottom" constant="40" id="Ahn-HR-q2N"/>
-                            <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="cmR-TY-HPj" secondAttribute="trailing" constant="20" id="BTd-Xi-HAl"/>
-                            <constraint firstItem="cmR-TY-HPj" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="F4N-2c-h5a"/>
-                            <constraint firstItem="M2b-ut-9Qf" firstAttribute="top" secondItem="cmR-TY-HPj" secondAttribute="bottom" constant="20" id="FCt-ey-WYF"/>
                             <constraint firstItem="okh-F7-eqj" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="FVg-8k-Swh"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="M2b-ut-9Qf" secondAttribute="trailing" constant="20" id="HMP-xw-H3q"/>
                             <constraint firstItem="ORh-Z2-djo" firstAttribute="top" secondItem="okh-F7-eqj" secondAttribute="bottom" constant="12" id="JGt-kn-8yl"/>
@@ -1613,8 +1602,10 @@
                             <constraint firstItem="fJr-yc-L8f" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="c5o-5c-nOZ"/>
                             <constraint firstItem="M2b-ut-9Qf" firstAttribute="top" secondItem="fJr-yc-L8f" secondAttribute="bottom" constant="20" id="cFo-Jl-x1P"/>
                             <constraint firstItem="74A-iu-lKE" firstAttribute="top" secondItem="ORh-Z2-djo" secondAttribute="bottom" constant="12" id="jfx-iU-FZa"/>
+                            <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="HFb-gH-UcB" secondAttribute="trailing" constant="32" id="l3e-TY-Ayd"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="fJr-yc-L8f" secondAttribute="trailing" constant="20" id="mGk-hi-aWp"/>
                             <constraint firstItem="ORh-Z2-djo" firstAttribute="leading" secondItem="Uec-13-aoS" secondAttribute="leading" constant="20" id="ohx-Bx-bCm"/>
+                            <constraint firstItem="HFb-gH-UcB" firstAttribute="top" secondItem="Uec-13-aoS" secondAttribute="top" constant="33" id="pDa-rP-008"/>
                             <constraint firstItem="Uec-13-aoS" firstAttribute="trailing" secondItem="ORh-Z2-djo" secondAttribute="trailing" constant="20" id="uPh-LZ-iFQ"/>
                         </constraints>
                     </view>
@@ -1623,7 +1614,7 @@
                     <connections>
                         <outlet property="chatRoomCodeButton" destination="fJr-yc-L8f" id="OQm-kn-gdv"/>
                         <outlet property="leaveChatRoomButton" destination="M2b-ut-9Qf" id="HTm-Dw-Oty"/>
-                        <outlet property="micButtonSettingButton" destination="cmR-TY-HPj" id="MKa-kp-h2N"/>
+                        <outlet property="settingButton" destination="HFb-gH-UcB" id="WaB-9f-a1I"/>
                         <outlet property="userListCollectionView" destination="74A-iu-lKE" id="HBF-z7-zXo"/>
                     </connections>
                 </viewController>
