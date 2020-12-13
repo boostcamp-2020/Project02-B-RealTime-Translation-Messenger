@@ -14,4 +14,5 @@ protocol MainCoordinating: class {
     func presentCodeInput()
     func pushChat(roomID: Int, code: String)
     func codeInputToChat(roomID: Int, code: String)
+    func presentSetting()
 }

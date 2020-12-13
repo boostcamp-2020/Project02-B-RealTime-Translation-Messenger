@@ -89,4 +89,15 @@ extension MainCoordinator: MainCoordinating {
         viewController.coordinator = self
         navigationController.present(viewController, animated: true)
     }
+    
+    func presentSetting() {
+        let viewController = storyboard.instantiateViewController(
+            identifier: SettingViewController.identifier,
+            creator: { [unowned self] coder -> SettingViewController? in
+                let reacter = SettingViewReactor(userData: userData)
+                return SettingViewController(coder: coder, reactor: reacter)
+            }
+        )
+        navigationController.present(viewController, animated: true)
+    }
 }
