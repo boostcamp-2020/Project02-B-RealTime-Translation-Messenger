@@ -134,7 +134,15 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             })
             .disposed(by: disposeBag)
         
-
+        settingButton.rx.tap
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self, let superView = self.parent as? ChatViewController else {
+                    return
+                }
+                superView.coordinator?.presentSetting(micButtonSizeObserver: self.buttonSizeObserver)
+            })
+            .disposed(by: disposeBag)
     }
     
     func configureAnimation(state: ChatDrawerState, duration: TimeInterval) {
