@@ -57,6 +57,15 @@ final class MicrophoneButton: RoundShadowButton {
         commonInit()
         attachGesture()
     }
+    
+    init(mode: MicButtonSize) {
+        let size = CGSize(width: mode.size, height: mode.size)
+        let rect = CGRect(origin: .zero, size: size)
+        super.init(frame: rect)
+        self.mode = mode
+        configureShadow()
+        initailizeButton()
+    }
  
     override func draw(_ rect: CGRect) {
         let circlePath = UIBezierPath(ovalIn: rect)
@@ -97,6 +106,17 @@ final class MicrophoneButton: RoundShadowButton {
         buttonColor = .systemGreen
         
         bindKeyboard()
+    }
+    
+    private func initailizeButton() {
+        let image = UIImage(systemName: "mic",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: mode.size/2,
+                                                                           weight: .semibold))
+        setImage(image, for: .normal)
+        tintColor = .white
+        contentMode = .center
+        imageView?.contentMode = .scaleAspectFit
+        buttonColor = .systemGreen
     }
     
     private func attachGesture() {
