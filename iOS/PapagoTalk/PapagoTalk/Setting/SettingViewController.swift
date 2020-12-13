@@ -46,5 +46,32 @@ final class SettingViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - Output
+    private func bindState(reactor: SettingViewReactor) {
+        reactor.state.map { $0.microphoneButtonState }
+            .distinctUntilChanged()
+            .do(onNext: { [weak self] in
+                self?.microphoneButton.mode = $0
+            })
+            .map { $0.index }
+            .filter { [weak self] in
+                self?.sizeSettingSegmentedControl.selectedSegmentIndex != $0
+            }
+            .subscribe(onNext: { [weak self] in
+                self?.sizeSettingSegmentedControl.selectedSegmentIndex = $0
+            })
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.translationSetting }
+            .distinctUntilChanged()
+            .filter { [weak self] in
+                self?.translationSettingSwitch.isOn != $0
+            }
+            .subscribe(onNext: { [weak self] in
+                self?.translationSettingSwitch.isOn = $0
+            })
+            .disposed(by: disposeBag)
+    }
+    
     
 }
