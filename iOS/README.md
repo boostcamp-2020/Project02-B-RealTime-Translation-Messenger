@@ -58,7 +58,7 @@
 
 ➡️ `State` 의 변경을 View에 Binding
 
-![](https://i.imgur.com/f8ZaeOk.png)
+<img width="700" alt="ReactorKit" src="https://i.imgur.com/f8ZaeOk.png">
 
 #### 좋았던 점
 
@@ -82,7 +82,7 @@
 
 #### 적용 방식
 
-![Coordinator](https://user-images.githubusercontent.com/68672528/102089445-8dfe4a80-3e5f-11eb-95a2-9c9095d1811d.png)
+<img width="700" alt="Coordinator" src="https://user-images.githubusercontent.com/68672528/102089445-8dfe4a80-3e5f-11eb-95a2-9c9095d1811d.png">
 
 #### 좋았던 점
 
@@ -166,7 +166,7 @@
 
 ➡️ App이 Launching되는 동안 애니메이션 추가
 
-![Launch Screen](https://user-images.githubusercontent.com/68672528/102089558-bede7f80-3e5f-11eb-8efd-2cf941977610.gif)
+<img width="350" alt="Launch Screen" src="https://user-images.githubusercontent.com/68672528/102089558-bede7f80-3e5f-11eb-8efd-2cf941977610.gif">
 
 <br>
 
@@ -201,7 +201,7 @@
 - 원본 메시지와 번역 메시지가 함께 올 경우, 다음 메시지와의 구분을 위하여 메시지 마다 상대방의 닉네임과 이미지 표시
 - 원본 메시지만 연속적으로 오는 경우, 분단위로 상대방의 닉네임과 이미지를 표시
 
-<img width="523" alt="ChatView" src="https://user-images.githubusercontent.com/68672528/102090561-f4d03380-3e60-11eb-9b09-ea1057c2c264.png">
+<img width="800" alt="ChatView" src="https://user-images.githubusercontent.com/68672528/102090561-f4d03380-3e60-11eb-9b09-ea1057c2c264.png">
 
 <br>
 
@@ -211,7 +211,7 @@
 
 ➡️ 채팅방의 코드 복사 버튼을 통해 현재 채팅방의 코드 복사 기능
 
-![Drawer](https://user-images.githubusercontent.com/68672528/102090588-fc8fd800-3e60-11eb-9e25-69a6bb55b200.gif)
+<img width="350" alt="Drawer" src="https://user-images.githubusercontent.com/68672528/102090588-fc8fd800-3e60-11eb-9e25-69a6bb55b200.gif">
 
 <br>
 
@@ -221,7 +221,7 @@
 
 - 사용자와 같은 언어를 사용하는 사람과 대화할 때, 메시지의 번역본이 원문과 중복되는 결과가 나오는 경우, 사용자의 선택에 따라 그것을 화면에 표시할지 여부 설정 가능
 
-<img width="464" alt="ChatRoomSetting" src="https://user-images.githubusercontent.com/68672528/102090680-1af5d380-3e61-11eb-9bf9-408c2aa92631.png">
+<img width="800" alt="ChatRoomSetting" src="https://user-images.githubusercontent.com/68672528/102090680-1af5d380-3e61-11eb-9bf9-408c2aa92631.png">
 
 <br>
 
@@ -231,7 +231,7 @@
 
 ➡️  키보드가 보여지고 숨겨질 때, 보고있던 마지막 메시지를 기준으로 정렬되도록 처리 
 
-![Keyboard](https://user-images.githubusercontent.com/68672528/102091335-0b2abf00-3e62-11eb-8a90-244f2355ab46.gif)
+<img width="350" alt="Keyboard" src="https://user-images.githubusercontent.com/68672528/102091335-0b2abf00-3e62-11eb-8a90-244f2355ab46.gif">
 
 <br>
 
@@ -243,7 +243,7 @@
 
 ➡️ 음성 인식을 시작하면, 소리를 인식하고 있다는 것을 인지시켜주는 애니메이션
 
-![STT](https://user-images.githubusercontent.com/68672528/102091508-42996b80-3e62-11eb-80d0-404cdb273f40.gif)
+<img width="350" alt="STT" src="https://user-images.githubusercontent.com/68672528/102091508-42996b80-3e62-11eb-80d0-404cdb273f40.gif">
 
 <br>
 
@@ -253,23 +253,15 @@
 
 ➡️ 위치에 따라 채팅을 가릴 수 있는 문제점을 인식하여, 사용자가 드래그를 통해서 버튼 위치를 자유롭게 지정하도록 처리
 
-
-
 ➡️ 사용자의 빈도 및 기호에 맞게 음성 인식 버튼 사이즈를 크게, 중간, 작게, 사용 안함으로 설정 가능
-
-
 
 ➡️ 키보드의 Show에 따라 가려지지 않고 함께 위치 변경 및 키보드 Hide에 따라 제자리로 이동
 
-
-
 ➡️ 음성 인식 버튼을 눌러서 음성 인식 화면을 Present할 때, 자연스러운 애니메이션
-
-
 
 | 위치 이동 | 크기 조절 | 키보드 처리 | 애니메이션 |
 |:----:|:----:|:----:|:----:|
-|![SpeechRecognizer](https://user-images.githubusercontent.com/68672528/102091570-580e9580-3e62-11eb-9c20-dba211e4ab89.gif)|![SpeechSettingButton](./gif/5_SpeechButtonSetting.gif)|![SpeechButtonKeyboard](https://user-images.githubusercontent.com/68672528/102094469-b426e900-3e65-11eb-9621-3b870cc0a61c.gif)|![SpeechRecognitionAnimation](https://user-images.githubusercontent.com/68672528/102094476-b5f0ac80-3e65-11eb-9e68-a6dea3086fd0.gif)|
+| <img width="350" alt="SpeechRecognizer" src="https://user-images.githubusercontent.com/68672528/102091570-580e9580-3e62-11eb-9c20-dba211e4ab89.gif"> | <img width="350" alt="SpeechSettingButton" src="./gif/5_SpeechButtonSetting.gif"> | <img width="350" alt="SpeechButtonKeyboard" src="https://user-images.githubusercontent.com/68672528/102094469-b426e900-3e65-11eb-9621-3b870cc0a61c.gif"> | <img width="350" alt="SpeechRecognitionAnimation" src="https://user-images.githubusercontent.com/68672528/102094476-b5f0ac80-3e65-11eb-9e68-a6dea3086fd0.gif"> |
 
 <br>
 
