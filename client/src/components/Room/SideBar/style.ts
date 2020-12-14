@@ -45,7 +45,7 @@ export default {
     width: 100%;
     margin-left: 3rem;
     padding-left: 0.5rem;
-    font-weight: 700;
+    font-weight: 500;
   `,
   UserList: styled.ul`
     width: 100%;
