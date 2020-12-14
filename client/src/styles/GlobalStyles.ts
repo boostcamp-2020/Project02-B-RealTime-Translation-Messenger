@@ -39,4 +39,16 @@ export default createGlobalStyle`
       outline: none;
     }
   }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.blueColor};
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 16px;
+  }
 `;
