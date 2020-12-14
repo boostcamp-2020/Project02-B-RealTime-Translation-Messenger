@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { RouteComponentProps, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ChatLog from '@components/ChatLog';
 import Header from '@components/Room/Header';
 import SideBar from '@components/Room/SideBar';
@@ -8,19 +8,15 @@ import useMessages from '@hooks/useMessages';
 import useUsers from '@hooks/useUsers';
 import { User } from '@/generated/types';
 
-interface MatchParams {
-  id: string;
-}
-
 interface LocationState {
   userId: number;
+  roomId: number;
   code: string;
 }
 
-const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
-  const roomId = +match.params.id;
+const Room: FC = () => {
   const location = useLocation<LocationState>();
-  const { userId, code } = location.state;
+  const { userId, roomId, code } = location.state;
   const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState(2);
 

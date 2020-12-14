@@ -20,6 +20,11 @@ interface isOriginProps {
   isOrigin: boolean;
 }
 
+interface LocationState {
+  lang: string;
+  userId: number;
+}
+
 const Wrapper = styled.div<isOriginProps>`
   display: flex;
   justify-content: ${(props) => (props.isOrigin ? 'flex-end' : null)};
@@ -58,7 +63,7 @@ const UserChangedPopup = styled.div`
 `;
 
 const ChatRow: FC<Props> = ({ message, obj }) => {
-  const location = useLocation<{ userId: number; lang: string }>();
+  const location = useLocation<LocationState>();
   const { lang, userId } = location.state;
 
   const isOrigin = userId === message?.user.id;

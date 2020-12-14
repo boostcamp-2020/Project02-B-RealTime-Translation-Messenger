@@ -11,6 +11,10 @@ interface Props {
   onLoadMore: any;
 }
 
+interface LocationState {
+  roomId: number;
+}
+
 interface TranslatedText {
   originText: string;
   translatedText: string;
@@ -26,7 +30,7 @@ const Wrapper = styled.div`
 `;
 
 const ChatLog: FC<Props> = ({ messages, page, setPage, onLoadMore }) => {
-  const location = useLocation<{ roomId: number }>();
+  const location = useLocation<LocationState>();
   const { roomId } = location.state;
   const chatLogRef = useRef<HTMLDivElement>(null);
 
