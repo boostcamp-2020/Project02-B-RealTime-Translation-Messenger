@@ -29,3 +29,9 @@
 
 //MARK: - DateFormatter
 "yyyy MMMM dd EEEE" = "yyyy년 M월 d일 EEEE";
+
+//MARK: - MicButtonSize
+"Big" = "크게";
+"Medium" = "중간";
+"Small" = "작게";
+"None" = "사용안함";

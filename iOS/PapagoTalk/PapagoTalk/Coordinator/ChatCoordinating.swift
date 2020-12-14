@@ -13,4 +13,5 @@ protocol ChatCoordinating: class {
     func presentDrawer(from presentingViewController: UIViewController,
                        with stateObserver: BehaviorRelay<Bool>,
                        micButtonSizeObserver: BehaviorRelay<MicButtonSize>)
+    func pushSetting(micButtonSizeObserver: BehaviorRelay<MicButtonSize>)
 }

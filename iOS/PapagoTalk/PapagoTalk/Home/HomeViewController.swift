@@ -19,6 +19,8 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var selectedLanguageLabel: UILabel!
     @IBOutlet private weak var joinChatRoomButton: UIButton!
     @IBOutlet private weak var makeChatRoomButton: UIButton!
+    @IBOutlet private weak var chatHistoryButton: UIBarButtonItem!
+    @IBOutlet private weak var settingButton: UIBarButtonItem!
     
     private var languageSelection: BehaviorSubject<Language>
     private let alertFactory: AlertFactoryProviding
@@ -154,13 +156,19 @@ final class HomeViewController: UIViewController, StoryboardView {
             }
             .disposed(by: disposeBag)
         
-//        historyButton.rx.tap
-//            .asDriver()
-//            .drive { [weak self] _ in
-//                self?.coordinator?.pushHistory()
-//            }
-//            .disposed(by: disposeBag)
+        chatHistoryButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.coordinator?.pushHistory()
+            }
+            .disposed(by: disposeBag)
         
+        settingButton.rx.tap
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator?.pushSetting()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func alert(message: String) {

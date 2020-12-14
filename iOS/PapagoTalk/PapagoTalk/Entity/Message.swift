@@ -34,7 +34,7 @@ struct Message: Codable {
         isTranslated = false
     }
     
-    init(data: Messageable, with text: TranslatedResult, timeStamp: String, isTranslated: Bool = false) {
+    init(data: MessageData, with text: TranslatedResult, timeStamp: String, isTranslated: Bool = false) {
         self.id = data.id
         self.text = isTranslated ? text.translatedText : text.originText
         self.sender = User(data: data.userData)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 protocol MainCoordinating: class {
     func push(_ viewController: UIViewController)
@@ -14,4 +15,5 @@ protocol MainCoordinating: class {
     func presentCodeInput()
     func pushChat(roomID: Int, code: String)
     func codeInputToChat(roomID: Int, code: String)
+    func pushSetting(_ micButtonSizeObserver: BehaviorRelay<MicButtonSize>?)
 }

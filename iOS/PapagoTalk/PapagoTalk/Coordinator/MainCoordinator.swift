@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class MainCoordinator: Coordinator {
     
@@ -79,6 +80,19 @@ extension MainCoordinator: MainCoordinating {
         chatCoordinator.roomID = roomID
         chatCoordinator.code = code
         chatCoordinator.start()
+    }
+    
+    func pushSetting(_ micButtonSizeObserver: BehaviorRelay<MicButtonSize>?) {
+        let viewController = storyboard.instantiateViewController(
+            identifier: SettingViewController.identifier,
+            creator: { [unowned self] coder -> SettingViewController? in
+                let reacter = SettingViewReactor(userData: userData)
+                return SettingViewController(coder: coder,
+                                             reactor: reacter,
+                                             micButtonObserver: micButtonSizeObserver)
+            }
+        )
+        push(viewController)
     }
     
     func presentCodeInput() {

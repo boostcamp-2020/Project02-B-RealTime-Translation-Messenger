@@ -29,3 +29,9 @@
 
 //MARK: - DateFormatter
 "yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";
+
+//MARK: - MicButtonSize
+"Big" = "Big";
+"Medium" = "Medium";
+"Small" = "Small";
+"None" = "None";
