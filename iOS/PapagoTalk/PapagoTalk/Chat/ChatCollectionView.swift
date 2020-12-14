@@ -24,6 +24,7 @@ class ChatCollectionView: UICollectionView {
             yOffSet = yOffSet > maxYOffSet ? maxYOffSet : yOffSet
             offset.y += yOffSet
             setContentOffset(offset, animated: false)
+            superview.layoutIfNeeded()
         }
     
         func keyboardWillHide(keyboardHeight: CGFloat) {
@@ -35,5 +36,6 @@ class ChatCollectionView: UICollectionView {
             offset.y -= yOffSet
             offset.y = offset.y < 0 ? 0 : offset.y
             setContentOffset(offset, animated: false)
+            superview.layoutIfNeeded()
         }
 }

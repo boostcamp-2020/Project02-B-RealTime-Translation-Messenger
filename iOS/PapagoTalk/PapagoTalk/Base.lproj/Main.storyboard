@@ -1378,7 +1378,7 @@
                                                     <rect key="frame" x="64" y="66" width="88" height="36"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="9N2-rt-4rW"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="9N2-rt-4rW"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" id="WNt-WN-QQI"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="eSp-R1-g44"/>
                                                     </constraints>
@@ -1459,7 +1459,7 @@
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" id="gzc-rD-VbF"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="lYJ-sK-KS7"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="lYJ-sK-KS7"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ty1-kS-FqF"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
