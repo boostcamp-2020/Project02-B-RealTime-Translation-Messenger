@@ -8,7 +8,7 @@
 
 <br>
 
-## RxSwift와 ReactorKit을 이용한 Architecture
+## 📌 RxSwift와 ReactorKit을 이용한 Architecture
 
 ### RxSwift
 
@@ -94,7 +94,7 @@
 
 <br>
 
-## 확장성과 유지보수를 고려한 설계
+## 📌 확장성과 유지보수를 고려한 설계
 
 ### Dependency Injection (DI)
 
@@ -160,7 +160,7 @@
 
 <br>
 
-## 더 나은 사용자 경험을 위한 UX/UI
+## 📌 더 나은 사용자 경험을 위한 UX/UI
 
 ### Launch Screen
 
@@ -265,7 +265,7 @@
 
 <br>
 
-## Apollo-iOS를 활용한 GraphQL 통신
+## 📌 Apollo-iOS를 활용한 GraphQL 통신
 
 #### 도입 배경
 
@@ -289,7 +289,7 @@
 
 <br>
 
-## 사용자의 Data Storage
+## 📌 사용자의 Data Storage
 
 ### UserDefaults
 
@@ -313,7 +313,7 @@
 
 <br>
 
-## 핵심 로직 Unit Test
+## 📌 핵심 로직 Unit Test
 
 ### Reactor Tests
 
