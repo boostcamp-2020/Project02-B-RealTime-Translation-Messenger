@@ -253,19 +253,23 @@
 
 ➡️ 위치에 따라 채팅을 가릴 수 있는 문제점을 인식하여, 사용자가 드래그를 통해서 버튼 위치를 자유롭게 지정하도록 처리
 
-![SpeechRecognizer](https://user-images.githubusercontent.com/68672528/102091570-580e9580-3e62-11eb-9c20-dba211e4ab89.gif)
+
 
 ➡️ 사용자의 빈도 및 기호에 맞게 음성 인식 버튼 사이즈를 크게, 중간, 작게, 사용 안함으로 설정 가능
 
-![SpeechSettingButton](./gif/5_SpeechButtonSetting.gif)
+
 
 ➡️ 키보드의 Show에 따라 가려지지 않고 함께 위치 변경 및 키보드 Hide에 따라 제자리로 이동
 
-![SpeechButtonKeyboard](https://user-images.githubusercontent.com/68672528/102094469-b426e900-3e65-11eb-9621-3b870cc0a61c.gif)
+
 
 ➡️ 음성 인식 버튼을 눌러서 음성 인식 화면을 Present할 때, 자연스러운 애니메이션
 
-![SpeechRecognitionAnimation](https://user-images.githubusercontent.com/68672528/102094476-b5f0ac80-3e65-11eb-9e68-a6dea3086fd0.gif)
+
+
+| 위치 이동 | 크기 조절 | 키보드 처리 | 애니메이션 |
+|:----:|:----:|:----:|:----:|
+|![SpeechRecognizer](https://user-images.githubusercontent.com/68672528/102091570-580e9580-3e62-11eb-9c20-dba211e4ab89.gif)|![SpeechSettingButton](./gif/5_SpeechButtonSetting.gif)|![SpeechButtonKeyboard](https://user-images.githubusercontent.com/68672528/102094469-b426e900-3e65-11eb-9621-3b870cc0a61c.gif)|![SpeechRecognitionAnimation](https://user-images.githubusercontent.com/68672528/102094476-b5f0ac80-3e65-11eb-9e68-a6dea3086fd0.gif)|
 
 <br>
 
