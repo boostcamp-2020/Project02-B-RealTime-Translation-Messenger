@@ -1444,10 +1444,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="604-392" id="c2Q-0K-ftg">
-                        <rightBarButtonItems>
-                            <barButtonItem image="line.horizontal.3" catalog="system" id="sJd-dO-18v"/>
-                            <barButtonItem image="gearshape" catalog="system" id="oqa-2T-3Gn"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="line.horizontal.3" catalog="system" id="sJd-dO-18v"/>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="thH-v8-Fzc" id="C4I-q2-Qw8"/>
