@@ -24,6 +24,7 @@ final class ChatViewController: UIViewController, StoryboardView {
     private var micButtonSizeObserver: BehaviorRelay<MicButtonSize>
     private let messageDataSource = MessageDataSource()
     private let messageCollectionViewLayout = MessageSizeDelegate()
+    private var isKeyboardShowing: Bool = false
     weak var coordinator: ChatCoordinating?
     var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
@@ -215,7 +216,8 @@ extension ChatViewController: KeyboardProviding {
         
         keyboardWillShow
             .drive(onNext: { [weak self] keyboardFrame in
-                guard let self = self else {
+                guard let self = self,
+                      !self.isKeyboardShowing else {
                     return
                 }
                 self.chatCollectionView.keyboardWillShow(keyboardHeight: keyboardFrame.height)
@@ -223,16 +225,21 @@ extension ChatViewController: KeyboardProviding {
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
                 }
+                self.isKeyboardShowing = true
             })
             .disposed(by: disposeBag)
         
         keyboardWillHide
             .drive(onNext: { [weak self] keyboardFrame in
+                guard self?.isKeyboardShowing ?? false else {
+                    return
+                }
                 self?.chatCollectionView.keyboardWillHide(keyboardHeight: keyboardFrame.height)
                 self?.bottomConstraint.constant = 0
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self?.view.layoutIfNeeded()
                 }
+                self?.isKeyboardShowing = false
             })
             .disposed(by: disposeBag)
     }
