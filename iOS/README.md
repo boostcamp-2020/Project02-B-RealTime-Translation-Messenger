@@ -2,9 +2,9 @@
 # PapagoTalk iOS App
 > [프로젝트02-B] 실시간 번역 메신저
 
-[![Releases](https://img.shields.io/github/v/release/boostcamp-2020/Project02-B-RealTime-Translation-Messenger)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/releases)
 [![Swift](https://img.shields.io/badge/swift-v5.1-orange?logo=swift)](https://developer.apple.com/kr/swift/)
 [![Xcode](https://img.shields.io/badge/xcode-v12.1-blue?logo=xcode)](https://developer.apple.com/kr/xcode/)
+[![Releases](https://img.shields.io/github/v/release/boostcamp-2020/Project02-B-RealTime-Translation-Messenger)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/releases)
 
 <br>
 
@@ -82,7 +82,7 @@
 
 #### 적용 방식
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cdf0904e-d3d0-4f2b-97a1-56a4ee39fc62/Coordinator.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cdf0904e-d3d0-4f2b-97a1-56a4ee39fc62/Coordinator.png)
+![Coordinator](https://user-images.githubusercontent.com/68672528/102089445-8dfe4a80-3e5f-11eb-95a2-9c9095d1811d.png)
 
 #### 좋았던 점
 
@@ -166,7 +166,7 @@
 
 ➡️ App이 Launching되는 동안 애니메이션 추가
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/33fb3626-6a29-4812-8de1-d7ee7bed33be/__2020-12-13__11.25.04.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/33fb3626-6a29-4812-8de1-d7ee7bed33be/__2020-12-13__11.25.04.gif)
+![Launch Screen](https://user-images.githubusercontent.com/68672528/102089558-bede7f80-3e5f-11eb-8efd-2cf941977610.gif)
 
 <br>
 
@@ -178,15 +178,15 @@
 
 ➡️ 현재 지원 언어 : 한국어, 영어, 일본어, 중국어
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5145f775-c929-44d8-a444-51c481646b10/_2020-12-13__10.40.15.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5145f775-c929-44d8-a444-51c481646b10/_2020-12-13__10.40.15.png)
+<img width="955" alt="Localization" src="https://user-images.githubusercontent.com/68672528/102090417-ce11fd00-3e60-11eb-994d-e8c938771060.png">
 
 <br>
 
 ### 다크모드 지원
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97de0db-ecbf-4968-872f-45db2a383f25/_2020-12-13__10.50.48.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97de0db-ecbf-4968-872f-45db2a383f25/_2020-12-13__10.50.48.png)
+<img width="975" alt="DarkMode1" src="https://user-images.githubusercontent.com/68672528/102090459-d833fb80-3e60-11eb-9db2-0f4706edb072.png">
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8fd1bdfb-f6ef-424a-92f2-f4ae9d854002/_2020-12-14__5.45.33.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8fd1bdfb-f6ef-424a-92f2-f4ae9d854002/_2020-12-14__5.45.33.png)
+<img width="975" alt="DarkMode2" src="https://user-images.githubusercontent.com/68672528/102090474-dcf8af80-3e60-11eb-92f2-2172eafa9253.png">
 
 <br>
 
@@ -201,6 +201,8 @@
 - 원본 메시지와 번역 메시지가 함께 올 경우, 다음 메시지와의 구분을 위하여 메시지 마다 상대방의 닉네임과 이미지 표시
 - 원본 메시지만 연속적으로 오는 경우, 분단위로 상대방의 닉네임과 이미지를 표시
 
+<img width="523" alt="ChatView" src="https://user-images.githubusercontent.com/68672528/102090561-f4d03380-3e60-11eb-9b09-ea1057c2c264.png">
+
 <br>
 
 #### 채팅방 서랍(Drawer)
@@ -209,7 +211,7 @@
 
 ➡️ 채팅방의 코드 복사 버튼을 통해 현재 채팅방의 코드 복사 기능
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1153c695-276c-45f8-9abd-9f668ce67776/.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1153c695-276c-45f8-9abd-9f668ce67776/.gif)
+![Drawer](https://user-images.githubusercontent.com/68672528/102090588-fc8fd800-3e60-11eb-9e25-69a6bb55b200.gif)
 
 <br>
 
@@ -219,7 +221,7 @@
 
 - 사용자와 같은 언어를 사용하는 사람과 대화할 때, 메시지의 번역본이 원문과 중복되는 결과가 나오는 경우, 사용자의 선택에 따라 그것을 화면에 표시할지 여부 설정 가능
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/67d8963f-933a-4d25-8934-0c598b911496/__2020-12-14__7.22.05.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/67d8963f-933a-4d25-8934-0c598b911496/__2020-12-14__7.22.05.gif)
+<img width="464" alt="ChatRoomSetting" src="https://user-images.githubusercontent.com/68672528/102090680-1af5d380-3e61-11eb-9bf9-408c2aa92631.png">
 
 <br>
 
@@ -229,7 +231,7 @@
 
 ➡️  키보드가 보여지고 숨겨질 때, 보고있던 마지막 메시지를 기준으로 정렬되도록 처리 
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/36fe5e5a-56d9-425c-8985-4ec36389aced/_2020-12-14__7.18.51.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/36fe5e5a-56d9-425c-8985-4ec36389aced/_2020-12-14__7.18.51.png)
+![Keyboard](https://user-images.githubusercontent.com/68672528/102091335-0b2abf00-3e62-11eb-8a90-244f2355ab46.gif)
 
 <br>
 
@@ -241,7 +243,7 @@
 
 ➡️ 음성 인식을 시작하면, 소리를 인식하고 있다는 것을 인지시켜주는 애니메이션
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/093bfc45-6ed6-4d8b-b3ff-9a28905859c7/.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/093bfc45-6ed6-4d8b-b3ff-9a28905859c7/.gif)
+![STT](https://user-images.githubusercontent.com/68672528/102091508-42996b80-3e62-11eb-80d0-404cdb273f40.gif)
 
 <br>
 
@@ -251,19 +253,19 @@
 
 ➡️ 위치에 따라 채팅을 가릴 수 있는 문제점을 인식하여, 사용자가 드래그를 통해서 버튼 위치를 자유롭게 지정하도록 처리
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6efbe384-9a65-4822-b6f5-22dab57ae3e1/_.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6efbe384-9a65-4822-b6f5-22dab57ae3e1/_.gif)
+![SpeechRecognizer](https://user-images.githubusercontent.com/68672528/102091570-580e9580-3e62-11eb-9c20-dba211e4ab89.gif)
 
 ➡️ 사용자의 빈도 및 기호에 맞게 음성 인식 버튼 사이즈를 크게, 중간, 작게, 사용 안함으로 설정 가능
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e6d20fcd-e8a3-4afc-aded-bab0c24bc686/.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e6d20fcd-e8a3-4afc-aded-bab0c24bc686/.gif)
+![SpeechSettingButton](./gif/5_SpeechButtonSetting.gif)
 
 ➡️ 키보드의 Show에 따라 가려지지 않고 함께 위치 변경 및 키보드 Hide에 따라 제자리로 이동
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fa33d9cf-d300-4806-acd1-35d7da5d41ea/.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fa33d9cf-d300-4806-acd1-35d7da5d41ea/.gif)
+![SpeechButtonKeyboard](https://user-images.githubusercontent.com/68672528/102094469-b426e900-3e65-11eb-9621-3b870cc0a61c.gif)
 
 ➡️ 음성 인식 버튼을 눌러서 음성 인식 화면을 Present할 때, 자연스러운 애니메이션
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/55b5ad14-e79d-4c12-a84c-78901d0cf1d9/.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/55b5ad14-e79d-4c12-a84c-78901d0cf1d9/.gif)
+![SpeechRecognitionAnimation](https://user-images.githubusercontent.com/68672528/102094476-b5f0ac80-3e65-11eb-9e68-a6dea3086fd0.gif)
 
 <br>
 
