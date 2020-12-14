@@ -32,8 +32,12 @@ final class SettingViewController: UIViewController, StoryboardView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initailizeMicButton(by: .none)
         initailizeSizeSettingSegmentedControl()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        initailizeMicButton(by: .none)
     }
     
     func bind(reactor: SettingViewReactor) {
@@ -87,12 +91,9 @@ final class SettingViewController: UIViewController, StoryboardView {
     
     private func initailizeMicButton(by size: MicButtonSize) {
         micButtonDisplayView.addSubview(microphoneButton)
-        
-        microphoneButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            microphoneButton.centerXAnchor.constraint(equalTo: micButtonDisplayView.centerXAnchor),
-            microphoneButton.centerYAnchor.constraint(equalTo: micButtonDisplayView.centerYAnchor)
-        ])
+        microphoneButton.isUserInteractionEnabled = false
+        microphoneButton.frame.origin.x += micButtonDisplayView.frame.width/2 - microphoneButton.frame.width/2
+        microphoneButton.frame.origin.y += micButtonDisplayView.frame.height/2 - microphoneButton.frame.height/2
     }
     
     private func initailizeSizeSettingSegmentedControl() {
