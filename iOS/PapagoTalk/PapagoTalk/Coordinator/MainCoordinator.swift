@@ -77,6 +77,19 @@ extension MainCoordinator: MainCoordinating {
         chatCoordinator.start()
     }
     
+    func pushSetting(_ micButtonSizeObserver: BehaviorRelay<MicButtonSize>?) {
+        let viewController = storyboard.instantiateViewController(
+            identifier: SettingViewController.identifier,
+            creator: { [unowned self] coder -> SettingViewController? in
+                let reacter = SettingViewReactor(userData: userData)
+                return SettingViewController(coder: coder,
+                                             reactor: reacter,
+                                             micButtonObserver: micButtonSizeObserver)
+            }
+        )
+        push(viewController)
+    }
+    
     func presentCodeInput() {
         let viewController = storyboard.instantiateViewController(
             identifier: ChatCodeInputViewController.identifier,
@@ -88,19 +101,6 @@ extension MainCoordinator: MainCoordinating {
             }
         )
         viewController.coordinator = self
-        navigationController.present(viewController, animated: true)
-    }
-    
-    func presentSetting(_ micButtonSizeObserver: BehaviorRelay<MicButtonSize>?) {
-        let viewController = storyboard.instantiateViewController(
-            identifier: SettingViewController.identifier,
-            creator: { [unowned self] coder -> SettingViewController? in
-                let reacter = SettingViewReactor(userData: userData)
-                return SettingViewController(coder: coder,
-                                             reactor: reacter,
-                                             micButtonObserver: micButtonSizeObserver)
-            }
-        )
         navigationController.present(viewController, animated: true)
     }
 }

@@ -66,7 +66,7 @@ extension HomeCoordinator: HomeCoordinating {
         parentCoordinator?.pushChat(roomID: roomID, code: code)
     }
     
-    func presentSetting() {
-        parentCoordinator?.presentSetting(nil)
+    func pushSetting() {
+        parentCoordinator?.pushSetting(nil)
     }
 }

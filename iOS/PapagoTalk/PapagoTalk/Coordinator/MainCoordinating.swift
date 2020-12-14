@@ -15,5 +15,5 @@ protocol MainCoordinating: class {
     func presentCodeInput()
     func pushChat(roomID: Int, code: String)
     func codeInputToChat(roomID: Int, code: String)
-    func presentSetting(_ micButtonSizeObserver: BehaviorRelay<MicButtonSize>?)
+    func pushSetting(_ micButtonSizeObserver: BehaviorRelay<MicButtonSize>?)
 }

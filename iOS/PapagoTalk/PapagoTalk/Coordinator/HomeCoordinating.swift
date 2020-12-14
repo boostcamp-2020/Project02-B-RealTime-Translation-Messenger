@@ -12,5 +12,5 @@ protocol HomeCoordinating: class {
     func presentCodeInput()
     func pushChat(roomID: Int, code: String)
     func presentLanguageSelectionView(observer: BehaviorSubject<Language>)
-    func presentSetting()
+    func pushSetting()
 }
