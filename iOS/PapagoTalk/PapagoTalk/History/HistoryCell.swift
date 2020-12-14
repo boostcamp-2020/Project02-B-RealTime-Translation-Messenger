@@ -23,7 +23,7 @@ class HistoryCell: UITableViewCell {
         titleLabel.text = history.title
         nicknameLabel.text = history.usedNickname
         languageLabel.text = history.usedLanguage.localizedText
-        dateLabel.text = DateFormatter.chatDateFormat(of: history.enterDate)
+        configureDateLabel(by: history.enterDate)
     }
     
     private func configureImage(with imageURL: String) {
@@ -31,6 +31,22 @@ class HistoryCell: UITableViewCell {
             return
         }
         profileImageView.kf.setImage(with: imageURL)
+    }
+    
+    private func configureDateLabel(by date: Date) {
+        var type: TimeFormatType
+        
+        switch date {
+        case date where Calendar.isToday(of: date):
+            type = .time
+        case date where Calendar.isYesterday(of: date):
+            type = .yesterday
+        case date where Calendar.isSameYear(of: date):
+            type = .date
+        default:
+            type = .fullDate
+        }
+        dateLabel.text = DateFormatter.chatHistoryTimeFormat(of: date, type: type)
     }
     
     @IBAction func reEnterButtonTapped(_ sender: UIButton) {
