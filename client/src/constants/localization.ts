@@ -14,7 +14,7 @@ const textList = {
     selectLanguage: '언어 선택',
     enterRoom: '대화 참여하기',
     createRoom: '방 만들기',
-    enterCode: '참여 코드 6자리를 입력해주세요.',
+    enterCode: '참여 코드(6자리의 숫자)를 입력해주세요.',
     submitCode: '입장',
     userList: '대화 상대',
   },
