@@ -22,4 +22,10 @@ extension DateFormatter {
         dateFormatter.locale = Locale(identifier: Locale.autoupdatingCurrent.identifier)
         return dateFormatter.string(from: date)
     }
+    
+    static func chatHistoryTimeFormat(of date: Date, type: TimeFormatType) -> String {
+        dateFormatter.dateFormat = type.format
+        dateFormatter.locale = Locale(identifier: Locale.autoupdatingCurrent.identifier)
+        return dateFormatter.string(from: date)
+    }
 }

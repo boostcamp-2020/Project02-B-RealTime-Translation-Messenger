@@ -127,6 +127,7 @@
 		BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */; };
 		BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814A12577D79B00CFA6DB /* HTTPMethod.swift */; };
 		BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */; };
+		BB4985802587438100896432 /* TimeFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49857F2587438100896432 /* TimeFormatType.swift */; };
 		BB52F51B2570977300B7577B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */; };
 		BB5EFE7C25812991001A121C /* UserSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5EFE7B25812991001A121C /* UserSection.swift */; };
 		BB5EFE9125812A90001A121C /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5EFE9025812A90001A121C /* UserDataSource.swift */; };
@@ -317,6 +318,7 @@
 		BB4814A12577D79B00CFA6DB /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRequest.swift; sourceTree = "<group>"; };
 		BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
+		BB49857F2587438100896432 /* TimeFormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatType.swift; sourceTree = "<group>"; };
 		BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		BB5EFE7B25812991001A121C /* UserSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSection.swift; sourceTree = "<group>"; };
 		BB5EFE9025812A90001A121C /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				BB20F4DE2573959500C5AC1D /* UserDefaultType.swift */,
 				BB1FFD1425761BB100E4668C /* ChatDrawerState.swift */,
 				99482F45257FCE1700802B45 /* MicButtonSize.swift */,
+				BB49857F2587438100896432 /* TimeFormatType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1088,6 +1091,7 @@
 				99482E5F257BA37F00802B45 /* HomeCoordinating.swift in Sources */,
 				9968474325847B73006C116E /* ChatCollectionView.swift in Sources */,
 				996A1446256D187900F21215 /* ImageFactoryProviding.swift in Sources */,
+				BB4985802587438100896432 /* TimeFormatType.swift in Sources */,
 				990DE9292572665400340A72 /* ChatCodeInputViewReactor.swift in Sources */,
 				995BE9AB2575E8E500C15AC7 /* MainCoordinator.swift in Sources */,
 				993AF67D2574E3E200416692 /* HomeError.swift in Sources */,
@@ -1109,9 +1113,8 @@
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				990DE9782573A67C00340A72 /* String+.swift in Sources */,
 				BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */,
-				BBDE2C7725830AB90068D7DE /* Userable.swift in Sources */,
-				9968476425851988006C116E /* HistoryModel.xcdatamodeld in Sources */,
 				BBDE2C7725830AB90068D7DE /* UserData.swift in Sources */,
+				9968476425851988006C116E /* HistoryModel.xcdatamodeld in Sources */,
 				BB15A58F25776D2F0006D258 /* SpeechViewReactor.swift in Sources */,
 				BB23C09B2576979C001D74A0 /* NetworkError.swift in Sources */,
 				BB1FFD1525761BB100E4668C /* ChatDrawerState.swift in Sources */,

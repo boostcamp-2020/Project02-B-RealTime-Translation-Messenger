@@ -30,6 +30,11 @@
 //MARK: - DateFormatter
 "yyyy MMMM dd EEEE" = "yyyy년 M월 d일 EEEE";
 
+//MARK: - TimeFormatType
+"yesterday" = "어제";
+"MMMM dd" = "M월 d일";
+"M. d. yyyy." = "yyyy. M. d.";
+
 //MARK: - MicButtonSize
 "Big" = "크게";
 "Medium" = "중간";

@@ -30,6 +30,11 @@
 //MARK: - DateFormatter
 "yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";
 
+//MARK: - TimeFormatType
+"yesterday" = "yesterday";
+"MMMM dd" = "MMMM dd";
+"M. d. yyyy." = "M. d. yyyy.";
+
 //MARK: - MicButtonSize
 "Big" = "Big";
 "Medium" = "Medium";
