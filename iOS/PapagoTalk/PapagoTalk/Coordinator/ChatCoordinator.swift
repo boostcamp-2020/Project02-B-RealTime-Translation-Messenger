@@ -70,9 +70,7 @@ extension ChatCoordinator: ChatCoordinating {
                 return SpeechViewController(coder: coder, reactor: reactor)
             }
         )
-        
-        speechViewController.delegate = presentingViewController as? ChatViewController
-        
+              
         presentingViewController.addChild(speechViewController)
         let height = presentingViewController.view.frame.height/2 - presentingViewController.view.safeAreaInsets.bottom
         speechViewController.view.frame = CGRect(x: (presentingViewController.view.frame.width - Constant.speechViewWidth)/2.0,
