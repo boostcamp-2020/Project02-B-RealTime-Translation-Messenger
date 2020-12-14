@@ -35,11 +35,11 @@ final class SettingViewController: UIViewController, StoryboardView {
         initailizeSizeSettingSegmentedControl()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initailizeMicButton(by: .none)
     }
-    
+        
     func bind(reactor: SettingViewReactor) {
         bindAction(reactor: reactor)
         bindState(reactor: reactor)
@@ -66,6 +66,7 @@ final class SettingViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .do(onNext: { [weak self] in
                 self?.microphoneButton.mode = $0
+                self?.setMicButtonPosition()
                 guard let buttonObserver = self?.buttonObserver else { return }
                 buttonObserver.accept($0)
             })
@@ -92,8 +93,12 @@ final class SettingViewController: UIViewController, StoryboardView {
     private func initailizeMicButton(by size: MicButtonSize) {
         micButtonDisplayView.addSubview(microphoneButton)
         microphoneButton.isUserInteractionEnabled = false
-        microphoneButton.frame.origin.x += micButtonDisplayView.frame.width/2 - microphoneButton.frame.width/2
-        microphoneButton.frame.origin.y += micButtonDisplayView.frame.height/2 - microphoneButton.frame.height/2
+        setMicButtonPosition()
+    }
+    
+    private func setMicButtonPosition() {
+        let xCenter = view.frame.width/2 - micButtonDisplayView.frame.origin.x
+        microphoneButton.center = CGPoint(x: xCenter, y: micButtonDisplayView.frame.height/2)
     }
     
     private func initailizeSizeSettingSegmentedControl() {
