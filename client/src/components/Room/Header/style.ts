@@ -31,6 +31,10 @@ export default {
         color: #e5e5e5;
         border: none;
       `};
+
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      padding: 0 1.5rem;
+    }
   `,
   HamburgerWrapper: styled.div`
     width: 10rem;
@@ -100,6 +104,9 @@ export default {
     margin-left: 1rem;
     svg {
       fill: ${({ theme }) => (theme.isLight ? theme.blackColor : '#545759')};
+    }
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      margin-left: 0.3rem;
     }
   `,
   Toast: styled.div`
