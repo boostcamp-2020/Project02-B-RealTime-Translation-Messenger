@@ -23,13 +23,17 @@ const Wrapper = styled.div<Props>`
   left: 50%;
   transform: translate(-50%, 10%);
   display: ${(props) => (props.visible ? 'block' : 'none')};
-  width: 20vw;
+  width: 400px;
   height: 350px;
-  min-width: 400px;
+  min-width: 250px;
   border-radius: ${(props) => props.theme.borderRadius};
   background-color: ${(props) => props.theme.blackColor};
   overflow: hidden;
   z-index: 2;
+
+  @media (max-width: 400px) {
+    width: 25vw;
+  }
 `;
 
 const ModalContainer = styled.div`
