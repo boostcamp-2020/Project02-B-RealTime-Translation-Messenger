@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { Hamburger, Copy, Door } from '@components/Icons';
+import { Copy, Door } from '@components/Icons';
 import { AvatarStack, Avatar } from '@primer/components';
 import { useMutation } from '@apollo/client';
 import { DELETE_USER } from '@queries/user.queries';
@@ -45,13 +45,19 @@ const Header: React.FC<Props> = ({ visible, setVisible, code, users }) => {
     toastMsg.classList.add('reveal');
   };
 
+  const onClickHamburger = () => {
+    setVisible(!visible);
+  };
+
   return (
     <S.Wrapper>
-      <S.HamburgerButton visible={visible} onClick={() => setVisible(!visible)}>
-        <div />
-        <div />
-        <div />
-      </S.HamburgerButton>
+      <S.HamburgerWrapper>
+        <S.HamburgerButton visible={visible} onClick={onClickHamburger}>
+          <div />
+          <div />
+          <div />
+        </S.HamburgerButton>
+      </S.HamburgerWrapper>
       <CopyToClipboard text={code} onCopy={toast}>
         <S.CodeWrapper>
           {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
@@ -64,7 +70,11 @@ const Header: React.FC<Props> = ({ visible, setVisible, code, users }) => {
           {users.map((user) => (
             <Avatar
               key={user.id}
-              style={{ width: '24px', height: '24px' }}
+              style={{
+                width: '24px',
+                height: '24px',
+                backgroundColor: `${(props: any) => props.theme.whiteColor}`,
+              }}
               alt={user.nickname}
               src={user.avatar}
             />

@@ -1,4 +1,3 @@
-import { theme } from '@primer/components';
 import { DefaultTheme } from 'styled-components';
 
 export const Theme = {

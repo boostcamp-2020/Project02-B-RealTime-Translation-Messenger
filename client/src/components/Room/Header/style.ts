@@ -10,10 +10,9 @@ export default {
     right: 0;
     left: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 10vh;
+    height: 5rem;
     padding: 0 2rem;
     background: ${(props) => props.theme.whiteColor};
     border-bottom: ${(props) => props.theme.boxBorder};
@@ -24,11 +23,13 @@ export default {
       transform: translate(-50%, 0);
     }
   `,
+  HamburgerWrapper: styled.div`
+    width: 10rem;
+  `,
   HamburgerButton: styled.button<Props>`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 2rem;
     height: 2rem;
     padding: 0;
     background: transparent;
@@ -43,18 +44,17 @@ export default {
       border-radius: 10px;
       transition: all 0.3s linear;
       transform-origin: 1px;
+      z-index: 100;
 
       :first-child {
         transform: ${({ visible }) =>
           visible ? 'rotate(45deg)' : 'rotate(0)'};
       }
-
       :nth-child(2) {
         opacity: ${({ visible }) => (visible ? '0' : '1')};
         transform: ${({ visible }) =>
           visible ? 'translateX(20px)' : 'translateX(0)'};
       }
-
       :nth-child(3) {
         transform: ${({ visible }) =>
           visible ? 'rotate(-45deg)' : 'rotate(0)'};
@@ -63,9 +63,7 @@ export default {
   `,
   CodeWrapper: styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto !important;
+    margin: 0 auto;
     cursor: pointer;
   `,
   Code: styled.div`
@@ -75,8 +73,9 @@ export default {
   `,
   RightWrapper: styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    width: 10rem;
   `,
   DoorButton: styled.button`
     width: 24px;
