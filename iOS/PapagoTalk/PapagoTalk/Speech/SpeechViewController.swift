@@ -19,7 +19,6 @@ final class SpeechViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var translatedTextView: UITextView!
     @IBOutlet private weak var microphoneButton: SpeechButton!
     
-    weak var delegate: SpeechViewDelegate?
     var disposeBag = DisposeBag()
     
     init?(coder: NSCoder, reactor: SpeechViewReactor) {
@@ -134,8 +133,8 @@ final class SpeechViewController: UIViewController, StoryboardView {
                           duration: 0.4,
                           options: [.transitionCrossDissolve]) { [weak self] in
             self?.view.removeFromSuperview()
-        } completion: { [weak self] _ in
-            self?.delegate?.speechViewDidDismiss()
+        } completion: { _ in
+            NotificationCenter.default.post(.init(name: .speechViewDidDismiss))
         }
         removeFromParent()
         dismiss(animated: true)

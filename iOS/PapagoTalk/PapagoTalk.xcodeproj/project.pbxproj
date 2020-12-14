@@ -63,8 +63,6 @@
 		9964793B2576901200CFF202 /* InputBarTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964793A2576901200CFF202 /* InputBarTextView.swift */; };
 		9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964795225769BD500CFF202 /* ChatRoomInfo.swift */; };
 		9964797E2577670A00CFF202 /* MicrophoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964797D2577670A00CFF202 /* MicrophoneButton.swift */; };
-		996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479912577BF4900CFF202 /* SpeechViewDelegate.swift */; };
-		996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */; };
 		9968472C258325F6006C116E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968472B258325F6006C116E /* API.swift */; };
 		996847362583AFCC006C116E /* MessageSizeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996847352583AFCC006C116E /* MessageSizeDelegate.swift */; };
 		9968473C25847AB2006C116E /* MessageHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968473B25847AB2006C116E /* MessageHeightCalculator.swift */; };
@@ -266,8 +264,6 @@
 		9964793A2576901200CFF202 /* InputBarTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarTextView.swift; sourceTree = "<group>"; };
 		9964795225769BD500CFF202 /* ChatRoomInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomInfo.swift; sourceTree = "<group>"; };
 		9964797D2577670A00CFF202 /* MicrophoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneButton.swift; sourceTree = "<group>"; };
-		996479912577BF4900CFF202 /* SpeechViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewDelegate.swift; sourceTree = "<group>"; };
-		996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+SpeechViewDelegate.swift"; sourceTree = "<group>"; };
 		9968472B258325F6006C116E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		996847352583AFCC006C116E /* MessageSizeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSizeDelegate.swift; sourceTree = "<group>"; };
 		9968473B25847AB2006C116E /* MessageHeightCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeightCalculator.swift; sourceTree = "<group>"; };
@@ -404,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				99482E87257CB7C100802B45 /* View */,
-				996479912577BF4900CFF202 /* SpeechViewDelegate.swift */,
 				BB15A5862577690F0006D258 /* SpeechViewController.swift */,
 				BB15A58E25776D2F0006D258 /* SpeechViewReactor.swift */,
 				BB7AB0142577B49400D9EDF7 /* SpeechManager.swift */,
@@ -618,7 +613,6 @@
 				9968473F25847AB9006C116E /* Model */,
 				996C4E90257004FA0015F9F4 /* View */,
 				BB6F7EBF256D697500D66F8E /* ChatViewController.swift */,
-				996479952577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift */,
 				BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */,
 				9968474225847B73006C116E /* ChatCollectionView.swift */,
 			);
@@ -1044,7 +1038,6 @@
 				99482FC625811E2300802B45 /* MessageSection.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
 				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,
-				996479922577BF4900CFF202 /* SpeechViewDelegate.swift in Sources */,
 				BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */,
 				99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */,
 				9968478025862C5F006C116E /* Notification+.swift in Sources */,
@@ -1056,7 +1049,6 @@
 				99482E99257CEE2500802B45 /* MessageParser.swift in Sources */,
 				99482E67257BA3B200802B45 /* ChatCoordinating.swift in Sources */,
 				9968475F25851833006C116E /* HistoryViewController.swift in Sources */,
-				996479962577BFAA00CFF202 /* ChatViewController+SpeechViewDelegate.swift in Sources */,
 				99482DFD2579425400802B45 /* RevisionedData.swift in Sources */,
 				995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */,
 				996A1433256D040B00F21215 /* ImageFactory.swift in Sources */,

@@ -157,10 +157,12 @@ final class ChatViewController: UIViewController, StoryboardView {
             })
             .disposed(by: disposeBag)
         
-        navigationItem.titleView?.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: {  _ in
-                print("Haha")
+        NotificationCenter.default.rx.notification(.speechViewDidDismiss)
+            .asObservable()
+            .subscribe(onNext: { [weak self] _ in
+                self?.chatDrawerButton.isEnabled = true
+                self?.inputBarTextView.isUserInteractionEnabled = true
+                self?.microphoneButton.moveToLatest()
             })
             .disposed(by: disposeBag)
     }
@@ -196,6 +198,12 @@ final class ChatViewController: UIViewController, StoryboardView {
     
     private func hideKeyboard() {
         inputBarTextView.resignFirstResponder()
+    }
+    
+    private func attachMicrophoneButton() {
+        let origin = CGPoint(x: view.frame.width - 80, y: view.frame.height - 200)
+        microphoneButton = MicrophoneButton(mode: .small, origin: origin)
+        view.addSubview(microphoneButton)
     }
 }
 
