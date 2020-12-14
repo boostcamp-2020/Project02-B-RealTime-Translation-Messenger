@@ -15,9 +15,13 @@ import { useLocalizationState } from '@contexts/LocalizationContext';
 import client from '@/apollo/Client';
 
 const Wrapper = styled.div`
+  min-width: inherit;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-self: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
 `;
 
 const Container = styled.div`
