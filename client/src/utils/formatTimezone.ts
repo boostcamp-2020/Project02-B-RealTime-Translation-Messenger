@@ -5,7 +5,7 @@ interface OffsetTable {
 const timeOffsetTable: OffsetTable = {
   ko: 9,
   en: -5,
-  'zh-cn': 8,
+  'zh-CN': 8,
   ja: 9,
   fr: 1,
 };

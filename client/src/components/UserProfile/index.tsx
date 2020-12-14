@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LANGUAGE from '@constants/language';
 import util from '@utils/utils';
 import {
@@ -10,10 +10,13 @@ import { Refresh } from '@components/Icons';
 import S from './style';
 
 const UserProfile: React.FC = () => {
-  const { avatar, nickname, lang } = useUserState();
+  const { avatar, nickname } = useUserState();
   const dispatch = useUserDispatch();
   const { inputNickName, selectLanguage } = useLocalizationState();
   const localDispatch = useLocalizationDispatch();
+
+  const [selectedLangNum, setSelectedLangNum] = useState(0);
+  const [selectedLangValue, setSelectedLangValue] = useState('한');
 
   const onClickRefresh = () => {
     const randomAvatar: string = util.getRandomAvatar();
@@ -30,14 +33,24 @@ const UserProfile: React.FC = () => {
     });
   };
 
-  const onClickLang = (language: string) => {
+  const onClickLanguageRefresh = () => {
+    let selectedNum = selectedLangNum + 1;
+    if (selectedNum >= 4) {
+      selectedNum = 0;
+    }
+
+    const selected: any = Object.values(LANGUAGE)[selectedNum];
+    setSelectedLangNum(selectedNum);
+    setSelectedLangValue(selected.value);
+
     dispatch({
       type: 'SET_LANG',
-      lang: language,
+      lang: selected.code,
     });
+
     localDispatch({
       type: 'SET_LOCAL',
-      lang: language as 'ko' | 'en',
+      lang: selected.code === 'en' ? 'en' : 'ko',
     });
   };
 
@@ -56,18 +69,12 @@ const UserProfile: React.FC = () => {
       />
       <S.LanguageWrapper>
         <S.LanguageTitle>{selectLanguage}</S.LanguageTitle>
-        <S.LanguageButton
-          type="button"
-          value="한"
-          selected={lang === LANGUAGE.KO}
-          onClick={() => onClickLang(LANGUAGE.KO)}
-        />
-        <S.LanguageButton
-          type="button"
-          value="En"
-          selected={lang === LANGUAGE.EN}
-          onClick={() => onClickLang(LANGUAGE.EN)}
-        />
+        <S.LanguageButtonWrapper>
+          <S.LanguageButton>{selectedLangValue}</S.LanguageButton>
+          <S.LanguageRefreshButton onClick={onClickLanguageRefresh}>
+            <Refresh size={24} />
+          </S.LanguageRefreshButton>
+        </S.LanguageButtonWrapper>
       </S.LanguageWrapper>
     </S.ProfileWrapper>
   );
