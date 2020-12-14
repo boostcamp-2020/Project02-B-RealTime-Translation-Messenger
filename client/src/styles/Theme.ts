@@ -6,7 +6,7 @@ export const Theme = {
   lightGrayColor: '#E5E5E5',
   grayColor: '#C4C4C4',
   darkGrayColor: '#707070',
-  blackColor: '#262626',
+  blackColor: '#222224',
   whiteColor: '#FAFAFA',
   boxBorder: '1px solid #C4C4C4',
   borderRadius: '12px',
@@ -16,6 +16,7 @@ export const Theme = {
 };
 
 export const lightTheme: DefaultTheme = {
+  isLight: true,
   bgColor: Theme.whiteColor,
   text: Theme.darkGrayColor,
   lightGrayColor: Theme.lightGrayColor,
@@ -34,6 +35,7 @@ export const lightTheme: DefaultTheme = {
 };
 
 export const darkTheme: DefaultTheme = {
+  isLight: false,
   bgColor: Theme.blackColor,
   text: Theme.lightGrayColor,
   lightGrayColor: Theme.lightGrayColor,
