@@ -1,23 +1,46 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Avatar from '@components/Avatar';
-import { Message } from '@generated/types';
 import formatTime from '@utils/formatTimezone';
+import comparePrevMessage from '@utils/comparePrevMessage';
 import Balloon from './Balloon';
+import AvatarText from './AvatarText';
+import TimeText from './TimeText';
 
 interface TranslatedMessage {
   originText: string;
   translatedText: string;
 }
 
+interface User {
+  id: number;
+  nickname: string;
+  avatar: string;
+  lang: string;
+}
+
+interface Message {
+  id: number;
+  text: string;
+  createdAt: string;
+  source: string;
+  user: User;
+}
+
 interface Props {
   message?: Message;
   obj?: TranslatedMessage;
+  allMessages: Message[];
 }
 
 interface isOriginProps {
   isOrigin: boolean;
+}
+
+interface Props {
+  isAvatarVisible?: boolean;
+  isTimeVisible?: boolean;
 }
 
 const Wrapper = styled.div<isOriginProps>`
@@ -35,11 +58,6 @@ const Info = styled.div<isOriginProps>`
   display: flex;
   justify-content: ${(props) => (props.isOrigin ? 'flex-end' : null)};
   margin: 0 0 0.4rem 0.2rem;
-`;
-
-const Text = styled.span`
-  margin-right: 0.3rem;
-  color: ${({ theme }) => theme.reverseColor};
 `;
 
 const DoubleBubble = styled.div`
@@ -71,15 +89,26 @@ const UserChangedPopup = styled.div`
   font-size: 12px;
 `;
 
-const ChatRow: FC<Props> = ({ message, obj }) => {
+const ChatRow: FC<Props> = ({ message, obj, allMessages }) => {
   const location = useLocation<{ userId: number; lang: string }>();
+  const [isVisbleAvatar, setIsVisbleAvatar] = useState(true);
+  const [isVisibleTime, setIsVisibleTime] = useState(true);
   const { lang, userId } = location.state;
-
   const isOrigin = userId === message?.user.id;
   const author = message?.user.nickname;
   const createdAt = formatTime(message?.createdAt as string, lang);
   const avatar = message?.user.avatar;
   const source = message?.source;
+  const messageId = message?.id;
+
+  useEffect(() => {
+    const { isAvatarVisible, isTimeVisible } = comparePrevMessage(
+      messageId as number,
+      allMessages,
+    );
+    setIsVisbleAvatar(isAvatarVisible);
+    setIsVisibleTime(isTimeVisible);
+  }, [allMessages]);
 
   if (source === 'in' || source === 'out') {
     return <UserChangedPopup>{message?.text}</UserChangedPopup>;
@@ -88,12 +117,14 @@ const ChatRow: FC<Props> = ({ message, obj }) => {
   return (
     <Wrapper isOrigin={isOrigin}>
       <>
-        {!isOrigin && <Avatar size={50} profile={avatar} />}
+        {!isOrigin && (
+          <Avatar size={50} profile={avatar} isAvatarVisible={isVisbleAvatar} />
+        )}
         <Column>
           <>
             <Info isOrigin={isOrigin}>
-              <Text>{author}</Text>
-              <Text>{createdAt}</Text>
+              <AvatarText text={author} isAvatarVisible={isVisbleAvatar} />
+              <TimeText text={createdAt} isTimeVisible={isVisibleTime} />
             </Info>
             <DoubleBubble>
               <Balloon isOrigin={isOrigin} originText={obj?.originText} />
@@ -107,7 +138,9 @@ const ChatRow: FC<Props> = ({ message, obj }) => {
             </DoubleBubble>
           </>
         </Column>
-        {isOrigin && <Avatar size={50} profile={avatar} />}
+        {isOrigin && (
+          <Avatar size={50} profile={avatar} isAvatarVisible={isVisbleAvatar} />
+        )}
       </>
     </Wrapper>
   );
