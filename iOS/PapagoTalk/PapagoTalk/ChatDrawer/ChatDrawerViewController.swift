@@ -140,7 +140,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
                 guard let self = self, let superView = self.parent as? ChatViewController else {
                     return
                 }
-                superView.coordinator?.presentSetting(micButtonSizeObserver: self.buttonSizeObserver)
+                superView.coordinator?.pushSetting(micButtonSizeObserver: self.buttonSizeObserver)
             })
             .disposed(by: disposeBag)
     }

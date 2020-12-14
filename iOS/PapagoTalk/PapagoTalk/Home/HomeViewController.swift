@@ -159,7 +159,7 @@ final class HomeViewController: UIViewController, StoryboardView {
         settingButton.rx.tap
             .asObservable()
             .subscribe(onNext: { [weak self] in
-                self?.coordinator?.presentSetting()
+                self?.coordinator?.pushSetting()
             })
             .disposed(by: disposeBag)
     }
