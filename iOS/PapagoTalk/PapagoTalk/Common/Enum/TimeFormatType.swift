@@ -18,11 +18,11 @@ enum TimeFormatType {
         case .time:
             return "a h:mm"
         case .yesterday:
-            return "yesterday".localized
+            return "Yesterday".localized
         case .date:
-            return "MMMM dd".localized
+            return "MMM d".localized
         case .fullDate:
-            return "M. d. yyyy.".localized
+            return "yyyy/MM/dd".localized
         }
     }
 }

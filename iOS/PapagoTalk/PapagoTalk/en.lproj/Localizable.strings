@@ -31,9 +31,9 @@
 "yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";
 
 //MARK: - TimeFormatType
-"yesterday" = "yesterday";
-"MMMM dd" = "MMMM dd";
-"M. d. yyyy." = "M. d. yyyy.";
+"Yesterday" = "Yesterday";
+"MMM d" = "MMM d";
+"yyyy/MM/dd" = "yyyy/MM/dd";
 
 //MARK: - MicButtonSize
 "Big" = "Big";
