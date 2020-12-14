@@ -2,13 +2,11 @@
 # PapagoTalk iOS App
 > [프로젝트02-B] 실시간 번역 메신저
 
-<div align="center">
-
 [![Releases](https://img.shields.io/github/v/release/boostcamp-2020/Project02-B-RealTime-Translation-Messenger)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/releases)
 [![Swift](https://img.shields.io/badge/swift-v5.1-orange?logo=swift)](https://developer.apple.com/kr/swift/)
 [![Xcode](https://img.shields.io/badge/xcode-v12.1-blue?logo=xcode)](https://developer.apple.com/kr/xcode/)
 
-</div>
+<br>
 
 ## RxSwift와 ReactorKit을 이용한 Architecture
 
@@ -37,6 +35,8 @@
 2️⃣ Operator를 통한 흐름 처리
 
 3️⃣ 관련 내용의 코드가 선언적으로 모여 있음
+
+<br>
 
 ### ReactorKit
 
@@ -67,6 +67,8 @@
 2️⃣ 테스트 가능한 구조로 테스트 용이
 
 3️⃣ 표준화된 코드 틀로 협업 과정에서 코드 이해도 & 생산성 향상
+
+<br>
 
 ### Coordinator Pattern
 
@@ -118,6 +120,8 @@
 
 2️⃣ Mock객체를 통한 테스트 가능
 
+<br>
+
 ### Case 1 - Language
 
 #### 과정
@@ -135,6 +139,8 @@
 ➡️  실제적으로 프로젝트 중반 지원하는 언어를 추가하는 과정에서 Language Enum type의 case를 추가하는 것 만으로 변경사항 적용하였으며, 현재 한국어/영어/일본어/중국어 지원 가능
 
 ➡️  Papago NMT API의 번역 지원 언어 추가와 Papago Language Detection API 감지 언어 추가에 따라, 적은 변화로 추가적인 언어 지원 가능
+
+<br>
 
 ### Case 2 - Message
 
@@ -162,6 +168,8 @@
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/33fb3626-6a29-4812-8de1-d7ee7bed33be/__2020-12-13__11.25.04.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/33fb3626-6a29-4812-8de1-d7ee7bed33be/__2020-12-13__11.25.04.gif)
 
+<br>
+
 ### Localization
 
 ➡️ 번역 채팅 앱 특성상 다양한 언어를 가진 사용자가 이용할 수 있다는 점을 고려하여 Localization 적용
@@ -172,11 +180,15 @@
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5145f775-c929-44d8-a444-51c481646b10/_2020-12-13__10.40.15.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5145f775-c929-44d8-a444-51c481646b10/_2020-12-13__10.40.15.png)
 
+<br>
+
 ### 다크모드 지원
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97de0db-ecbf-4968-872f-45db2a383f25/_2020-12-13__10.50.48.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97de0db-ecbf-4968-872f-45db2a383f25/_2020-12-13__10.50.48.png)
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8fd1bdfb-f6ef-424a-92f2-f4ae9d854002/_2020-12-14__5.45.33.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8fd1bdfb-f6ef-424a-92f2-f4ae9d854002/_2020-12-14__5.45.33.png)
+
+<br>
 
 ### 채팅 화면
 
@@ -189,6 +201,8 @@
 - 원본 메시지와 번역 메시지가 함께 올 경우, 다음 메시지와의 구분을 위하여 메시지 마다 상대방의 닉네임과 이미지 표시
 - 원본 메시지만 연속적으로 오는 경우, 분단위로 상대방의 닉네임과 이미지를 표시
 
+<br>
+
 #### 채팅방 서랍(Drawer)
 
 ➡️ 채팅방의 Drawer를 통해 현재 참가중인 사용자 목록 확인 가능
@@ -196,6 +210,8 @@
 ➡️ 채팅방의 코드 복사 버튼을 통해 현재 채팅방의 코드 복사 기능
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1153c695-276c-45f8-9abd-9f668ce67776/.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1153c695-276c-45f8-9abd-9f668ce67776/.gif)
+
+<br>
 
 #### 채팅방 설정
 
@@ -205,6 +221,8 @@
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/67d8963f-933a-4d25-8934-0c598b911496/__2020-12-14__7.22.05.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/67d8963f-933a-4d25-8934-0c598b911496/__2020-12-14__7.22.05.gif)
 
+<br>
+
 #### 키보드 처리
 
 ➡️  키보드의 Show와 Hide에 따른 InputBar 및 음성인식 버튼 애니메이션
@@ -212,6 +230,8 @@
 ➡️  키보드가 보여지고 숨겨질 때, 보고있던 마지막 메시지를 기준으로 정렬되도록 처리 
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/36fe5e5a-56d9-425c-8985-4ec36389aced/_2020-12-14__7.18.51.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/36fe5e5a-56d9-425c-8985-4ec36389aced/_2020-12-14__7.18.51.png)
+
+<br>
 
 ### 음성 인식 & 실시간 번역
 
@@ -222,6 +242,8 @@
 ➡️ 음성 인식을 시작하면, 소리를 인식하고 있다는 것을 인지시켜주는 애니메이션
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/093bfc45-6ed6-4d8b-b3ff-9a28905859c7/.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/093bfc45-6ed6-4d8b-b3ff-9a28905859c7/.gif)
+
+<br>
 
 ### 음성 인식 버튼
 
