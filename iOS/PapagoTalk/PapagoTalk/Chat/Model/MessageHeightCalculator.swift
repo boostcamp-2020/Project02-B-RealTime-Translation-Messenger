@@ -40,7 +40,9 @@ struct MessageHeightCalculator {
     }
     
     private func systemMessageHeight(of message: Message) -> CGFloat {
-        Constant.systemMessageCellHeight
+        let dateBadgeHeight = message.isFirstOfDay ? Constant.dateBadgeHeight : 0
+        let inset = message.isFirstOfDay ? Constant.messageInset : Constant.dateBadgeInset
+        return Constant.systemMessageCellHeight + dateBadgeHeight + inset
     }
     
     private func translatedMessageHeight(of message: Message) -> CGFloat {
