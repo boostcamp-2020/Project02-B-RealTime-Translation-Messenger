@@ -50,6 +50,21 @@ export default {
   `,
   UserList: styled.ul`
     width: 100%;
+    height: 85vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background-color: inherit;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${(props) => props.theme.whiteColor};
+      background-clip: padding-box;
+      border: 2px solid transparent;
+      border-radius: 16px;
+    }
   `,
   UserInfo: styled.div`
     display: flex;
