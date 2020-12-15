@@ -36,7 +36,7 @@ interface TranslatedText {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 70vh;
+  height: 65vh;
   margin: 1rem 0;
   padding: 0 2rem;
   overflow-x: hidden;
