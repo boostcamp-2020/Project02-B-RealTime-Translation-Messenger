@@ -80,6 +80,7 @@ final class HomeViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         makeChatRoomButton.rx.tap
+            .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.instance)
             .map { Reactor.Action.makeChatRoomButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
