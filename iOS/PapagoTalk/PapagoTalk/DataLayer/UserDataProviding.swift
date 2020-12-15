@@ -16,6 +16,8 @@ protocol UserDataProviding {
     var micButtonSize: MicButtonSize { get set }
     var sameLanguageTranslation: Bool { get set }
     var token: String { get set }
+    
+    func removeToken()
 }
 
 extension UserDataProviding {
