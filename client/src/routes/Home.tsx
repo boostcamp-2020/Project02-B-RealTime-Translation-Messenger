@@ -12,7 +12,7 @@ import { CREATE_ROOM } from '@queries/room.queires';
 import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import { useUserState } from '@contexts/UserContext';
 import { useLocalizationState } from '@contexts/LocalizationContext';
-import client from '@/apollo/Client';
+import encrypt from '@/utils/encryption';
 
 const Wrapper = styled.div`
   min-width: inherit;
@@ -61,18 +61,17 @@ const Home: React.FC = () => {
 
   const onClickCreateRoom = async () => {
     const { data } = await createRoomMutation();
-    const roomId = data?.createRoom.roomId;
-    const code = data?.createRoom.code;
-    const userId = data?.createRoom.userId;
-    if (typeof data?.createRoom.token === 'string')
-      localStorage.setItem('token', data?.createRoom.token);
+    if (!data) return;
+    const { roomId, code, userId } = data.createRoom;
+    localStorage.setItem('token', data?.createRoom.token);
     await createSystemMessageMutation();
     history.push({
-      pathname: `/room/${roomId}`,
+      pathname: `/room/${encrypt(`${roomId}`)}`,
       state: {
         lang,
         code,
         userId,
+        roomId,
       },
     });
   };

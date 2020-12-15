@@ -38,6 +38,12 @@ interface isOriginProps {
   isOrigin: boolean;
 }
 
+
+interface LocationState {
+  lang: string;
+  userId: number;
+}
+
 interface Props {
   isAvatarVisible?: boolean;
   isTimeVisible?: boolean;
@@ -90,7 +96,7 @@ const UserChangedPopup = styled.div`
 `;
 
 const ChatRow: FC<Props> = ({ message, obj, allMessages }) => {
-  const location = useLocation<{ userId: number; lang: string }>();
+  const location = useLocation<LocationState>();
   const [isVisbleAvatar, setIsVisbleAvatar] = useState(true);
   const [isVisibleTime, setIsVisibleTime] = useState(true);
   const { lang, userId } = location.state;
