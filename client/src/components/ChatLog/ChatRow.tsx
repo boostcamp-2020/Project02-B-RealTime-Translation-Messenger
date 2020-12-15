@@ -45,11 +45,25 @@ const Text = styled.span`
 const DoubleBubble = styled.div`
   display: flex;
   align-items: center;
+  min-width: 400px;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    flex-direction: column;
+    min-width: 50px;
+    max-width: 200px;
+    div {
+      :first-child {
+        margin-bottom: 0.5rem;
+      }
+      :nth-child(2) {
+        margin: 0;
+      }
+    }
+  }
 `;
 
 const UserChangedPopup = styled.div`
   width: fit-content;
-  margin: 1.5rem auto 0 auto;
+  margin: 1.5rem auto;
   padding: 0.3rem 1rem;
   color: #fff;
   background-color: #000;
