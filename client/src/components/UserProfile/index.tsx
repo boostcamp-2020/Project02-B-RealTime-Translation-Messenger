@@ -34,10 +34,7 @@ const UserProfile: React.FC = () => {
   };
 
   const onClickLanguageRefresh = () => {
-    let selectedNum = selectedLangNum + 1;
-    if (selectedNum >= 4) {
-      selectedNum = 0;
-    }
+    const selectedNum = (selectedLangNum + 1) % 4;
 
     const selected: any = Object.values(LANGUAGE)[selectedNum];
     setSelectedLangNum(selectedNum);
