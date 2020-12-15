@@ -9,6 +9,8 @@ import { useUserState } from '@contexts/UserContext';
 import { useLocalizationState } from '@contexts/LocalizationContext';
 import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import encrypt from '@utils/encryption';
+import floatToast from '@utils/toast';
+import S from '@styles/toast';
 import Overlay from './Overlay';
 import Code from './Code';
 
@@ -96,24 +98,31 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
   });
 
   const onClickEnterRoom = async () => {
-    const { data } = await enterRoomMutation();
-    if (!data) return;
-    const { roomId, userId } = data.enterRoom;
-    localStorage.setItem('token', data.enterRoom.token);
-    await createSystemMessageMutation();
-    history.push({
-      pathname: `/room/${encrypt(`${roomId}`)}`,
-      state: {
-        userId,
-        roomId,
-        code: pinValue,
-        lang,
-      },
-    });
+    try {
+      const { data } = await enterRoomMutation();
+      if (!data) return;
+
+      const { roomId, userId } = data.enterRoom;
+      localStorage.setItem('token', data.enterRoom.token);
+
+      await createSystemMessageMutation();
+
+      history.push({
+        pathname: `/room/${encrypt(`${roomId}`)}`,
+        state: {
+          userId,
+          roomId,
+          code: pinValue,
+          lang,
+        },
+      });
+    } catch (e) {
+      floatToast('.modal-toast');
+    }
   };
 
   return (
-    <>
+    <S.ToastWrapper>
       <Overlay visible={visible} onClick={onClickOverlay} />
       <Wrapper visible={visible}>
         <ModalContainer>
@@ -132,7 +141,10 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
           </ModalFooter>
         </ModalContainer>
       </Wrapper>
-    </>
+      <S.Toast className="modal-toast" isTop>
+        잘못된 방코드입니다!
+      </S.Toast>
+    </S.ToastWrapper>
   );
 };
 
