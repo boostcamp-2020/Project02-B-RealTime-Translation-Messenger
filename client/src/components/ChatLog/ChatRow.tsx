@@ -38,7 +38,6 @@ interface isOriginProps {
   isOrigin: boolean;
 }
 
-
 interface LocationState {
   lang: string;
   userId: number;
