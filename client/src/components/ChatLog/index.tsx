@@ -41,6 +41,10 @@ const Wrapper = styled.div`
   padding: 0 2rem;
   overflow-x: hidden;
   overflow-y: scroll;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    height: 55vh;
+    padding: 0 1rem;
+  }
 `;
 
 const ChatLog: FC<Props> = ({ messages, page, setPage, onLoadMore }) => {
