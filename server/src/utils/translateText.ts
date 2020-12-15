@@ -37,7 +37,10 @@ export default async (message: Message, me: User, users: User[]): Promise<string
   } else {
     if (authorId === myId) {
       if (message.source === myLang) {
-        const secondLang = getSecondLang(users, myLang);
+        const secondLang = getSecondLang(
+          users.filter((user) => !user.isDeleted),
+          myLang,
+        );
         const translatedText = await req(text, source, secondLang);
         const texts = {
           originText: text,
