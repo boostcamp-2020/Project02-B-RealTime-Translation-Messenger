@@ -19,7 +19,7 @@ const Container = styled.span<Props>`
   font-size: 8px;
   text-align: center;
   @media (max-width: ${(props) => props.theme.mediaSize}) {
-    top: 13.5rem;
+    top: 10.5rem;
   }
 `;
 
