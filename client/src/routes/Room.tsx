@@ -7,6 +7,7 @@ import Input from '@components/Room/Input';
 import useMessages from '@hooks/useMessages';
 import useUsers from '@hooks/useUsers';
 import { User } from '@/generated/types';
+import Loader from '@components/Loader';
 
 interface MatchParams {
   id: string;
@@ -37,7 +38,7 @@ const Room: FC<RouteComponentProps<MatchParams>> = ({ match }) => {
     id: userId,
   });
 
-  if (messagesLoading || usersLoading) return <div>Loading!</div>;
+  if (messagesLoading || usersLoading) return <Loader />;
 
   const validUser = usersData.roomById.users.filter(
     (user: User) => !user.isDeleted,
