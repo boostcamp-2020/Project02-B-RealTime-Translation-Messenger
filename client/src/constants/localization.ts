@@ -7,9 +7,15 @@ interface TextList {
   enterCode: string;
   submitCode: string;
   userList: string;
+  enterText: string;
+  translationText: string;
 }
 
-const textList = {
+interface TextObj {
+  [key: string]: TextList;
+}
+
+const textList: TextObj = {
   ko: {
     inputNickName: '닉네임 입력',
     nicknameError: '닉네임은 1~12자 사이여야 합니다.',
@@ -19,6 +25,8 @@ const textList = {
     enterCode: '참여 코드(6자리의 숫자)를 입력해주세요.',
     submitCode: '입장',
     userList: '대화 상대',
+    enterText: '채팅을 입력해주세요',
+    translationText: '번역',
   },
   en: {
     inputNickName: 'Enter Nickname',
@@ -29,10 +37,36 @@ const textList = {
     enterCode: 'Please enter 6 digits of the participating code.',
     submitCode: 'Enter',
     userList: 'User List',
+    enterText: 'Please enter a chat',
+    translationText: 'Translation',
+  },
+  ja: {
+    inputNickName: 'ニックネーム 入力',
+    nicknameError: 'ニックネームは1~12字の間でなければなりません。',
+    selectLanguage: '言語選択',
+    enterRoom: '会話に参加する',
+    createRoom: 'トークルーム作成',
+    enterCode: '参加コード(6桁数字)を入力してください。',
+    submitCode: '参加',
+    userList: 'メンバー',
+    enterText: 'チャットを入力してください',
+    translationText: '翻訳',
+  },
+  'zh-CN': {
+    inputNickName: '输入昵称',
+    nicknameError: '昵称必须介于1到12个字符之间。',
+    selectLanguage: '语言选择',
+    enterRoom: '加入聊天室',
+    createRoom: '创建聊天室',
+    enterCode: '请输入参加代码（6位数字）。',
+    submitCode: '参与度',
+    userList: '参加者名单',
+    enterText: '请输入您的聊天内容',
+    translationText: '翻译',
   },
 };
 
-const getText = (lang: 'ko' | 'en'): TextList => {
+const getText = (lang: string): TextList => {
   return textList[lang];
 };
 

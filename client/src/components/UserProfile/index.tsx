@@ -71,7 +71,7 @@ const UserProfile: React.FC<Props> = ({
 
     localDispatch({
       type: 'SET_LOCAL',
-      lang: selected.code === 'en' ? 'en' : 'ko',
+      lang: selected.code,
     });
   };
 
