@@ -34,14 +34,15 @@ final class MessageBox {
             return
         }
         
+        var message = message
+        message = setMessageIsFirst(of: message, comparedBy: lastMessage)
+        
         guard message.type != .system else {
             messages.append(message)
             return
         }
         
-        var message = message
         message = setType(of: message)
-        message = setMessageIsFirst(of: message, comparedBy: lastMessage)
         message = setShouldImageShow(of: message, comparedBy: lastMessage)
         setShouldTimeShow(of: message, comparedBy: lastMessage)
     }
