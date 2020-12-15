@@ -54,10 +54,10 @@ export default {
     text-align: center;
   `,
   NicknameValidator: styled.div`
-    margin-top: 0.3rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 0.3rem;
 
     span {
       &:first-child {
