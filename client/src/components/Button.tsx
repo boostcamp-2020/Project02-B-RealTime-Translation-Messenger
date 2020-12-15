@@ -6,6 +6,7 @@ interface Props {
   text: string;
   color?: string;
   onClick?: () => void;
+  isValid?: boolean;
 }
 
 const { blueColor } = Theme;
@@ -21,10 +22,14 @@ const Container = styled.button`
   font-size: 20px;
   font-weight: 400;
   text-align: center;
+
+  &:disabled {
+    opacity: 0.6;
+  }
 `;
 
-const Button: FC<Props> = ({ text, color, onClick }) => (
-  <Container onClick={onClick} color={color}>
+const Button: FC<Props> = ({ text, color, onClick, isValid }) => (
+  <Container onClick={onClick} color={color} disabled={!isValid}>
     {text}
   </Container>
 );

@@ -12,7 +12,6 @@ export default createGlobalStyle`
     background-color: ${(props) => props.theme.bgColor};
     font-size: 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    overflow: hidden;
   }
   a {
     color: ${(props) => props.theme.blueColor};
@@ -38,5 +37,17 @@ export default createGlobalStyle`
       cursor: pointer;
       outline: none;
     }
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.blueColor};
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 16px;
   }
 `;
