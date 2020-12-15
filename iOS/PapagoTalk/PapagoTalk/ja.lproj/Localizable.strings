@@ -29,7 +29,7 @@
 "(ME)" = "(私)";
 
 //MARK: - DateFormatter
-"yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";
+"yyyy MMMM dd EEEE" = "yyyy年 MMMM dd日 EEEE";
 
 //MARK: - TimeFormatType
 "Yesterday" = "昨日";
