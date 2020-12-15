@@ -144,7 +144,7 @@
 "znw-ev-qsy.segmentTitles[2]" = "小";
 
 /* Class = "UISegmentedControl"; znw-ev-qsy.segmentTitles[3] = "None"; ObjectID = "znw-ev-qsy"; */
-"znw-ev-qsy.segmentTitles[3]" = "一个都没有";
+"znw-ev-qsy.segmentTitles[3]" = "隐形的";
 
 /* Class = "UILabel"; text = "마마고"; ObjectID = "zyP-S3-xoJ"; */
 "zyP-S3-xoJ.text" = "마마고";
