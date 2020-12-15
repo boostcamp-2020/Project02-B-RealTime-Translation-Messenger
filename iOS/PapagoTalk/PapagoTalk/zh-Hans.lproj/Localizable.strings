@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  PapagoTalk
+
+  Created by Byoung-Hwi Yoon on 2020/11/29.
+  
+*/
+
+//Mark: - Common
+"English" = "英语";
+"Korean" = "韩国语";
+"Japanese" = "日本语";
+"Chinese" = "汉语";
+"OK" = "好";
+
+//Mark: - Home
+"Please Enter 2-12 Characters for NickName" = "请输入2-12个字符以确定姓名";
+
+//Mark: - JoinChat
+"Chat Room is Doesn't Exist \n Or already Deleted" = "聊天室没有删除或已经删除";
+"Please Check your Network Connection" = "请检查你的网络连接";
+
+//Mark: - Chat
+" joined this chatroom" = " 加入这个聊天室";
+" left this chatroom" = " 离开这个聊天室";
+"Unknown User" = "未知用户";
+
+//MARK: - ChatDrawer
+"Chat Code is copied" = "聊天代码被复制";
+"(ME)" = "(数学科)";
+
+//MARK: - DateFormatter
+"yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";
+
+//MARK: - TimeFormatType
+"Yesterday" = "昨天";
+"MMM d" = "MMM d";
+"yyyy/MM/dd" = "yyyy/MM/dd";
+
+//MARK: - MicButtonSize
+"Big" = "大";
+"Medium" = "中";
+"Small" = "小";
+"None" = "一个都没有";

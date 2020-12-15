@@ -294,6 +294,9 @@
 		99CF543A2588711F00440F37 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		99CF543B2588711F00440F37 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		99CF543C2588711F00440F37 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		99CF54542588943100440F37 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		99CF54552588943100440F37 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		99CF54562588943100440F37 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactorTests.swift; sourceTree = "<group>"; };
@@ -873,6 +876,7 @@
 				Base,
 				ko,
 				ja,
+				"zh-Hans",
 			);
 			mainGroup = BBF2DC90256674A300F2EA7D;
 			productRefGroup = BBF2DC9A256674A300F2EA7D /* Products */;
@@ -1213,6 +1217,7 @@
 				990DE96E2573A59B00340A72 /* en */,
 				990DE9742573A5FF00340A72 /* ko */,
 				99CF543C2588711F00440F37 /* ja */,
+				99CF54562588943100440F37 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1223,6 +1228,7 @@
 				BBF2DCA3256674A300F2EA7D /* Base */,
 				990DE9722573A5FF00340A72 /* ko */,
 				99CF543A2588711F00440F37 /* ja */,
+				99CF54542588943100440F37 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1233,6 +1239,7 @@
 				BBF2DCA8256674A500F2EA7D /* Base */,
 				990DE9732573A5FF00340A72 /* ko */,
 				99CF543B2588711F00440F37 /* ja */,
+				99CF54552588943100440F37 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
