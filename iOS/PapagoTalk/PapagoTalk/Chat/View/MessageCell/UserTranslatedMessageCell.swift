@@ -9,13 +9,13 @@ import UIKit
 
 final class UserTranslatedMessageCell: UICollectionViewCell {
     
-    @IBOutlet private weak var messageTextView: MessageText!
+    @IBOutlet weak var messageTextLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
 }
 
 extension UserTranslatedMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
-        configureMessage(of: messageTextView, with: message.text)
+        configureMessage(of: messageTextLabel, with: message.text)
         configureTime(of: timeLabel, with: message.time, shouldShow: message.shouldTimeShow)
     }
 }

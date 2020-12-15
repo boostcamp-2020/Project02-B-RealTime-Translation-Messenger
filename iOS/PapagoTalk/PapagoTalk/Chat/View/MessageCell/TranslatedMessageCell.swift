@@ -8,13 +8,14 @@
 import UIKit
 
 final class TranslatedMessageCell: UICollectionViewCell {
-    @IBOutlet weak var messageTextView: MessageText!
-    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet private weak var messageTextLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
 }
 
 extension TranslatedMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
-        configureMessage(of: messageTextView, with: message.text)
+        configureMessage(of: messageTextLabel, with: message.text)
         configureTime(of: timeLabel, with: message.time, shouldShow: message.shouldTimeShow)
     }
 }
