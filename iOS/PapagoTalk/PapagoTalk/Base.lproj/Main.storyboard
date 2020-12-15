@@ -1510,14 +1510,34 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SystemMessageCell" id="9UL-52-m31" customClass="SystemMessageCell" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="318" width="414" height="59"/>
+                                        <rect key="frame" x="0.0" y="318" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="y0M-9g-FR0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZIv-3F-zv2">
+                                                    <rect key="frame" x="112" y="4" width="190" height="24"/>
+                                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                                                    </accessibility>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="999" constant="24" id="jC7-rY-Yr5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                    <state key="normal" title="2020 November 30 Monday">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
                                                 <button opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMh-Aw-S72">
-                                                    <rect key="frame" x="125.5" y="4" width="163" height="51"/>
+                                                    <rect key="frame" x="125.5" y="36" width="163" height="24"/>
                                                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
@@ -1539,14 +1559,19 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VMh-Aw-S72" firstAttribute="top" secondItem="y0M-9g-FR0" secondAttribute="top" constant="4" id="5G5-hx-HzY"/>
+                                                <constraint firstItem="VMh-Aw-S72" firstAttribute="top" secondItem="ZIv-3F-zv2" secondAttribute="bottom" priority="998" constant="8" id="0eL-Fg-vmh"/>
                                                 <constraint firstItem="VMh-Aw-S72" firstAttribute="centerX" secondItem="y0M-9g-FR0" secondAttribute="centerX" id="Ngd-vp-dW8"/>
                                                 <constraint firstItem="VMh-Aw-S72" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y0M-9g-FR0" secondAttribute="leading" constant="8" id="PTV-ZK-H0x"/>
+                                                <constraint firstItem="ZIv-3F-zv2" firstAttribute="top" secondItem="y0M-9g-FR0" secondAttribute="top" priority="999" constant="4" id="Vzd-vz-73M"/>
                                                 <constraint firstAttribute="bottom" secondItem="VMh-Aw-S72" secondAttribute="bottom" constant="4" id="Wxw-1O-xfs"/>
+                                                <constraint firstItem="ZIv-3F-zv2" firstAttribute="centerX" secondItem="y0M-9g-FR0" secondAttribute="centerX" id="Zaj-yM-Xle"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VMh-Aw-S72" secondAttribute="trailing" constant="8" id="abe-TM-8ep"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="64"/>
                                         <connections>
+                                            <outlet property="dateBadge" destination="ZIv-3F-zv2" id="fWu-Qn-o3E"/>
+                                            <outlet property="dateBadgeHeight" destination="jC7-rY-Yr5" id="H3D-jp-4bR"/>
                                             <outlet property="systemMessageBadge" destination="VMh-Aw-S72" id="QV7-4k-gGu"/>
                                         </connections>
                                     </collectionViewCell>
@@ -1626,7 +1651,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKB-f7-LDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="792"/>
+            <point key="canvasLocation" x="1931.8840579710147" y="791.51785714285711"/>
         </scene>
         <!--Chat Drawer View Controller-->
         <scene sceneID="uFR-uJ-Uri">
