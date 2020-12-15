@@ -1,21 +1,19 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, User } from '@prisma/client';
 import { getRandomNumber, randomImage } from '@utils/util';
 import generateToken from '@utils/generateToken';
 
 const prisma = new PrismaClient();
 
-interface User {
-  nickname: string;
-  avatar: string;
-  lang: string;
+interface CreateRoomResponse {
+  userId: number;
+  roomId: number;
+  code: string;
+  token: string;
 }
 
 export default {
   Mutation: {
-    createRoom: async (
-      _: any,
-      args: User,
-    ): Promise<{ userId: number; roomId: number; code: string; token: string }> => {
+    createRoom: async (_: CreateRoomResponse, args: User): Promise<CreateRoomResponse> => {
       const { nickname, avatar, lang } = args;
       const newUser = await prisma.user.create({
         data: {

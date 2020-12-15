@@ -11,12 +11,18 @@ interface EnterInfo {
   token: string;
 }
 
+interface EnterRoomResponse {
+  userId: number;
+  roomId: number;
+  token: string;
+}
+
 export default {
   Mutation: {
     enterRoom: async (
-      _: any,
+      _: EnterRoomResponse,
       { nickname, avatar, lang, code }: EnterInfo,
-    ): Promise<{ userId: number; roomId: number; token: string }> => {
+    ): Promise<EnterRoomResponse> => {
       const newUser = await prisma.user.create({
         data: {
           nickname,

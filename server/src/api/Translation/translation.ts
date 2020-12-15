@@ -1,3 +1,4 @@
+import { Context } from '@interfaces/context';
 import { PrismaClient } from '@prisma/client';
 import getSecondLang from '@utils/getSecondLang';
 import req from '@utils/request';
@@ -8,15 +9,19 @@ interface TranslationForm {
   target: string;
 }
 
+interface translationResponse {
+  translatedText: string;
+}
+
 const prisma = new PrismaClient();
 
 export default {
   Mutation: {
     translation: async (
-      _: any,
+      _: translationResponse,
       args: TranslationForm,
-      { request, isAuthenticated }: any,
-    ): Promise<{ translatedText: string }> => {
+      { request, isAuthenticated }: Context,
+    ): Promise<translationResponse> => {
       try {
         isAuthenticated(request);
         const { text } = args;
