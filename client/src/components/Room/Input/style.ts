@@ -105,8 +105,8 @@ export default {
     margin-right: 1rem;
     transform: translateY(-50%);
     @media (max-width: ${({ theme }) => theme.mediaSize}) {
-      height: 25px;
       width: 25px;
+      height: 25px;
       transform: translate(-90%, -160%);
       svg {
         width: 20px;
