@@ -14,7 +14,7 @@ export default {
       const { id, nickname, avatar, lang, roomId } = request.user;
       const newMessage = await prisma.message.create({
         data: {
-          text: `${nickname}님이 ${source === 'in' ? '들어왔습니다' : '나갔습니다'}`,
+          text: nickname,
           source,
           user: {
             connect: {

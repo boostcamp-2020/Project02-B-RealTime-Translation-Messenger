@@ -1,6 +1,7 @@
 import { PrismaClient, User } from '@prisma/client';
 import { getRandomNumber, randomImage } from '@utils/util';
 import generateToken from '@utils/generateToken';
+import ERROR_MSG from '@utils/errorMessage';
 
 const prisma = new PrismaClient();
 
@@ -15,6 +16,7 @@ export default {
   Mutation: {
     createRoom: async (_: CreateRoomResponse, args: User): Promise<CreateRoomResponse> => {
       const { nickname, avatar, lang } = args;
+      if (!nickname || !avatar || !lang) throw new Error(ERROR_MSG.invalid);
       const newUser = await prisma.user.create({
         data: {
           nickname,
@@ -22,7 +24,14 @@ export default {
           avatar,
         },
       });
-      const randomCode = getRandomNumber(6);
+
+      let randomCode;
+      while (true) {
+        randomCode = getRandomNumber(6);
+        const isExistRoom = await prisma.room.findOne({ where: { code: randomCode } });
+        if (!isExistRoom) break;
+      }
+
       const newRoom = await prisma.room.create({
         data: {
           users: {
