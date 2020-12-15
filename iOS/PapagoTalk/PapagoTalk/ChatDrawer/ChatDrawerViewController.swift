@@ -129,7 +129,8 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         
         visualEffectView.rx.tapGesture()
             .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
+            .first()
+            .subscribe({ [weak self] _ in
                 self?.chatDrawerObserver.accept(true)
             })
             .disposed(by: disposeBag)
