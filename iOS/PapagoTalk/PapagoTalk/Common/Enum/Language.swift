@@ -35,7 +35,7 @@ enum Language: String, Codable, CaseIterable {
         case .japanese:
             return "ja"
         case .chinese:
-            return "zh-cn"
+            return "zh-CN"
         }
     }
     
@@ -73,7 +73,7 @@ enum Language: String, Codable, CaseIterable {
             return .english
         case "ja":
             return .japanese
-        case "zh-cn":
+        case "zh-CN":
             return .chinese
         default:
             return .english
