@@ -220,11 +220,11 @@ extension ChatViewController: KeyboardProviding {
                       !self.isKeyboardShowing else {
                     return
                 }
-                self.chatCollectionView.keyboardWillShow(keyboardHeight: keyboardFrame.height)
                 self.bottomConstraint.constant = keyboardFrame.height - self.view.safeAreaInsets.bottom
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
                 }
+                self.chatCollectionView.keyboardWillShow(keyboardHeight: keyboardFrame.height)
                 self.isKeyboardShowing = true
             })
             .disposed(by: disposeBag)
