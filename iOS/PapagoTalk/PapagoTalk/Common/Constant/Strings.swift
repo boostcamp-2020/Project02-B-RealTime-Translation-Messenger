@@ -12,6 +12,7 @@ struct Strings {
     // MARK: - Common
     static let english = "English".localized
     static let korean = "Korean".localized
+    static let japanese = "Japanese".localized
     static let ok = "OK".localized
     
     // MARK: - Network

@@ -1,0 +1,148 @@
+
+/* Class = "UILabel"; text = "Label 입니다 안녕하세요 반갑습니다 라벨입니다 안녕하세요 라벨이요"; ObjectID = "2RR-Ib-0s1"; */
+"2RR-Ib-0s1.text" = "Label 입니다 안녕하세요 반갑습니다 라벨입니다 안녕하세요 라벨이요";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "2dy-Pc-WHl"; */
+"2dy-Pc-WHl.normalTitle" = "3";
+
+/* Class = "UITextField"; placeholder = "Enter NickName (2-12 Characters)"; ObjectID = "2kJ-Nk-l6d"; */
+"2kJ-Nk-l6d.placeholder" = "ニックネームを入力してください (2-12 文字)";
+
+/* Class = "UILabel"; text = "Papago (Me)"; ObjectID = "67P-sA-8Kn"; */
+"67P-sA-8Kn.text" = "Papago (Me)";
+
+/* Class = "UINavigationItem"; title = "Setting"; ObjectID = "8DQ-aA-kFK"; */
+"8DQ-aA-kFK.title" = "セッティング";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "BiU-hv-QG4"; */
+"BiU-hv-QG4.normalTitle" = "2";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "DHP-ud-cXj"; */
+"DHP-ud-cXj.normalTitle" = "1";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "DgZ-xC-wWt"; */
+"DgZ-xC-wWt.normalTitle" = "キャンセル";
+
+/* Class = "UILabel"; text = "dddjk"; ObjectID = "H9j-cY-3W4"; */
+"H9j-cY-3W4.text" = "dddjk";
+
+/* Class = "UIButton"; normalTitle = "2020 November 30 Monday"; ObjectID = "IJO-uC-sDU"; */
+"IJO-uC-sDU.normalTitle" = "2020 November 30 Monday";
+
+/* Class = "UIButton"; normalTitle = "Leave ChatRoom"; ObjectID = "M2b-ut-9Qf"; */
+"M2b-ut-9Qf.normalTitle" = "チャットルームに出かける";
+
+/* Class = "UILabel"; text = "My Language : "; ObjectID = "OmL-yO-6V3"; */
+"OmL-yO-6V3.text" = "私のランゲージ : ";
+
+/* Class = "UILabel"; text = "Speech Button Size"; ObjectID = "Pe3-cF-AGK"; */
+"Pe3-cF-AGK.text" = "音声認識ボタンサイズ";
+
+/* Class = "UIButton"; normalTitle = "마마고님이 퇴장하셨습니다."; ObjectID = "VMh-Aw-S72"; */
+"VMh-Aw-S72.normalTitle" = "마마고님이 퇴장하셨습니다.";
+
+/* Class = "UILabel"; text = "Recent ChatRoom"; ObjectID = "YAJ-aN-PmS"; */
+"YAJ-aN-PmS.text" = "最近のチャットルーム";
+
+/* Class = "UILabel"; text = "Korean"; ObjectID = "ZAj-jr-wsU"; */
+"ZAj-jr-wsU.text" = "Korean";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "ZOe-qD-a0k"; */
+"ZOe-qD-a0k.normalTitle" = "4";
+
+/* Class = "UILabel"; text = "Korean"; ObjectID = "a5W-ft-o8t"; */
+"a5W-ft-o8t.text" = "Korean";
+
+/* Class = "UIButton"; normalTitle = "2020 November 30 Monday"; ObjectID = "btx-gT-koo"; */
+"btx-gT-koo.normalTitle" = "2020 November 30 Monday";
+
+/* Class = "UINavigationItem"; title = "604-392"; ObjectID = "c2Q-0K-ftg"; */
+"c2Q-0K-ftg.title" = "604-392";
+
+/* Class = "UILabel"; text = "Same Language Translation"; ObjectID = "cK6-us-NJ0"; */
+"cK6-us-NJ0.text" = "同じ言語翻訳";
+
+/* Class = "UILabel"; text = "666-666"; ObjectID = "cqP-sC-kH8"; */
+"cqP-sC-kH8.text" = "666-666";
+
+/* Class = "UILabel"; text = "Translation Setting"; ObjectID = "d14-0i-ZpS"; */
+"d14-0i-ZpS.text" = "翻訳セットリング";
+
+/* Class = "UIButton"; normalTitle = "Enter"; ObjectID = "eHY-2u-taz"; */
+"eHY-2u-taz.normalTitle" = "再入場";
+
+/* Class = "UIButton"; normalTitle = "Copy ChatRoom Code"; ObjectID = "fJr-yc-L8f"; */
+"fJr-yc-L8f.normalTitle" = "コードコピー";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jlh-hN-l7I"; */
+"jlh-hN-l7I.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "jvs-zu-QQw"; */
+"jvs-zu-QQw.normalTitle" = "確認";
+
+/* Class = "UIButton"; normalTitle = "6"; ObjectID = "kPg-Yj-Muo"; */
+"kPg-Yj-Muo.normalTitle" = "6";
+
+/* Class = "UILabel"; text = "꽉채운열두자짜리닉네임"; ObjectID = "luv-MB-NB0"; */
+"luv-MB-NB0.text" = "꽉채운열두자짜리닉네임";
+
+/* Class = "UIButton"; normalTitle = "0"; ObjectID = "mN6-zV-UBV"; */
+"mN6-zV-UBV.normalTitle" = "0";
+
+/* Class = "UIButton"; normalTitle = "Create a ChatRoom"; ObjectID = "mY1-Fj-RPh"; */
+"mY1-Fj-RPh.normalTitle" = "チャットルーム作成";
+
+/* Class = "UILabel"; text = "Members"; ObjectID = "okh-F7-eqj"; */
+"okh-F7-eqj.text" = "メンバー";
+
+/* Class = "UIButton"; normalTitle = "7"; ObjectID = "ptb-Gu-gI7"; */
+"ptb-Gu-gI7.normalTitle" = "7";
+
+/* Class = "UIButton"; normalTitle = "Join a ChatRoom"; ObjectID = "qNg-mc-5e2"; */
+"qNg-mc-5e2.normalTitle" = "チャットルームへの参加";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "qag-dd-9LB"; */
+"qag-dd-9LB.normalTitle" = "キャンセル";
+
+/* Class = "UIButton"; normalTitle = "9"; ObjectID = "r6Z-aW-cVM"; */
+"r6Z-aW-cVM.normalTitle" = "9";
+
+/* Class = "UIButton"; normalTitle = "8"; ObjectID = "sgm-nq-9up"; */
+"sgm-nq-9up.normalTitle" = "8";
+
+/* Class = "UILabel"; text = "My Nickname : "; ObjectID = "tw3-KO-rR3"; */
+"tw3-KO-rR3.text" = "私のニックネーム : ";
+
+/* Class = "UILabel"; text = "Chat Code"; ObjectID = "uWd-v3-N4n"; */
+"uWd-v3-N4n.text" = "コード";
+
+/* Class = "UILabel"; text = "Please Enter Chat Code"; ObjectID = "vAR-9r-AIg"; */
+"vAR-9r-AIg.text" = "コードを入力してください。";
+
+/* Class = "UIButton"; normalTitle = "5"; ObjectID = "vDZ-MP-myf"; */
+"vDZ-MP-myf.normalTitle" = "5";
+
+/* Class = "UILabel"; text = "Korean"; ObjectID = "xog-kc-b8F"; */
+"xog-kc-b8F.text" = "Korean";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yL2-TG-Xm6"; */
+"yL2-TG-Xm6.text" = "Label";
+
+/* Class = "UILabel"; text = "2020.01.02"; ObjectID = "yOG-pL-ejC"; */
+"yOG-pL-ejC.text" = "2020.01.02";
+
+/* Class = "UISegmentedControl"; znw-ev-qsy.segmentTitles[0] = "Big"; ObjectID = "znw-ev-qsy"; */
+"znw-ev-qsy.segmentTitles[0]" = "ビッグ";
+
+/* Class = "UISegmentedControl"; znw-ev-qsy.segmentTitles[1] = "Medium"; ObjectID = "znw-ev-qsy"; */
+"znw-ev-qsy.segmentTitles[1]" = "ミドル";
+
+/* Class = "UISegmentedControl"; znw-ev-qsy.segmentTitles[2] = "Small"; ObjectID = "znw-ev-qsy"; */
+"znw-ev-qsy.segmentTitles[2]" = "スモール";
+
+/* Class = "UISegmentedControl"; znw-ev-qsy.segmentTitles[3] = "None"; ObjectID = "znw-ev-qsy"; */
+"znw-ev-qsy.segmentTitles[3]" = "なし";
+
+/* Class = "UILabel"; text = "마마고"; ObjectID = "zyP-S3-xoJ"; */
+"zyP-S3-xoJ.text" = "마마고";
+

@@ -22,7 +22,7 @@ enum Language: String, Codable, CaseIterable {
         case .french:
             return "프랑스어"
         case .japanese:
-            return "일본어"
+            return Strings.japanese
         }
     }
     
