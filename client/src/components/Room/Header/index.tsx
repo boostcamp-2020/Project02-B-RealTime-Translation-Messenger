@@ -6,7 +6,7 @@ import { AvatarStack, Avatar } from '@primer/components';
 import { useMutation } from '@apollo/client';
 import { DELETE_USER } from '@queries/user.queries';
 import { User } from '@generated/types';
-import client from '@/apollo/Client';
+import client, { wsClient } from '@/apollo/Client';
 import { CREATE_SYSTEM_MESSAGE } from '@/queries/messege.queries';
 import S from './style';
 
@@ -31,6 +31,7 @@ const Header: React.FC<Props> = ({ visible, setVisible, code, users }) => {
     await deleteUser();
     localStorage.removeItem('token');
     client.resetStore();
+    wsClient.close();
   };
 
   const toast = () => {
