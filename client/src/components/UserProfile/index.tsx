@@ -18,7 +18,7 @@ const UserProfile: React.FC<Props> = ({
   isNicknameValid,
   setIsNicknameValid,
 }) => {
-  const { avatar, nickname, lang } = useUserState();
+  const { avatar, nickname } = useUserState();
   const dispatch = useUserDispatch();
   const {
     inputNickName,
@@ -26,6 +26,9 @@ const UserProfile: React.FC<Props> = ({
     selectLanguage,
   } = useLocalizationState();
   const localDispatch = useLocalizationDispatch();
+
+  const [selectedLangNum, setSelectedLangNum] = useState(0);
+  const [selectedLangValue, setSelectedLangValue] = useState('한');
 
   const minNicknameLength = 1;
   const maxNicknameLength = 12;
@@ -54,14 +57,21 @@ const UserProfile: React.FC<Props> = ({
     });
   };
 
-  const onClickLang = (language: string) => {
+  const onClickLanguageRefresh = () => {
+    const selectedNum = (selectedLangNum + 1) % 4;
+
+    const selected: any = Object.values(LANGUAGE)[selectedNum];
+    setSelectedLangNum(selectedNum);
+    setSelectedLangValue(selected.value);
+
     dispatch({
       type: 'SET_LANG',
-      lang: language,
+      lang: selected.code,
     });
+
     localDispatch({
       type: 'SET_LOCAL',
-      lang: language as 'ko' | 'en',
+      lang: selected.code === 'en' ? 'en' : 'ko',
     });
   };
 
@@ -89,18 +99,12 @@ const UserProfile: React.FC<Props> = ({
       </S.NicknameWrapper>
       <S.LanguageWrapper>
         <S.LanguageTitle>{selectLanguage}</S.LanguageTitle>
-        <S.LanguageButton
-          type="button"
-          value="한"
-          selected={lang === LANGUAGE.KO}
-          onClick={() => onClickLang(LANGUAGE.KO)}
-        />
-        <S.LanguageButton
-          type="button"
-          value="En"
-          selected={lang === LANGUAGE.EN}
-          onClick={() => onClickLang(LANGUAGE.EN)}
-        />
+        <S.LanguageButtonWrapper>
+          <S.LanguageButton>{selectedLangValue}</S.LanguageButton>
+          <S.LanguageRefreshButton onClick={onClickLanguageRefresh}>
+            <Refresh size={24} />
+          </S.LanguageRefreshButton>
+        </S.LanguageButtonWrapper>
       </S.LanguageWrapper>
     </S.ProfileWrapper>
   );

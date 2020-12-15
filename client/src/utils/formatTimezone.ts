@@ -5,9 +5,13 @@ interface OffsetTable {
 const timeOffsetTable: OffsetTable = {
   ko: 9,
   en: -5,
-  'zh-cn': 8,
+  'zh-CN': 8,
   ja: 9,
   fr: 1,
+};
+
+const fillZero = (minute: number) => {
+  return minute.toString().length === 1 ? `0${minute}` : minute;
 };
 
 const formatTime = (timestamp: string, langCode: string): string => {
@@ -20,7 +24,7 @@ const formatTime = (timestamp: string, langCode: string): string => {
 
   const now = new Date(tz);
   const Hour = now.getHours();
-  const minute = now.getMinutes();
+  const minute = fillZero(now.getMinutes());
 
   const amPMTime =
     Hour > 12

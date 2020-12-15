@@ -12,7 +12,7 @@ import { CREATE_ROOM } from '@queries/room.queires';
 import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import { useUserState } from '@contexts/UserContext';
 import { useLocalizationState } from '@contexts/LocalizationContext';
-import encrypt from '@/utils/encryption';
+import encrypt from '@utils/encryption';
 
 const Wrapper = styled.div`
   min-width: inherit;
@@ -25,11 +25,12 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 30%;
   min-width: 360px;
   padding: 3rem;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    padding: 0.5rem 3rem;
+  }
 `;
 
 const Home: React.FC = () => {

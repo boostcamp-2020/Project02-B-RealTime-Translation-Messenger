@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import LANGUAGE from '@constants/language';
 import { TextList, getText } from '@constants/localization';
 
 const LocalizationStateContext = createContext<TextList | undefined>(undefined);
