@@ -37,6 +37,7 @@ const Button: FC<Props> = ({ text, color, onClick, isValid }) => (
 Button.defaultProps = {
   text: '',
   color: blueColor,
+  isValid: true,
 };
 
 export default Button;
