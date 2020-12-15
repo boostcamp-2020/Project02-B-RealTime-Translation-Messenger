@@ -33,8 +33,8 @@ final class ChatDrawerViewReactor: Reactor {
     }
     
     private let networkService: NetworkServiceProviding
-    private let userData: UserDataProviding
     private let roomID: Int
+    private var userData: UserDataProviding
     let initialState: State
     
     init(networkService: NetworkServiceProviding, userData: UserDataProviding, roomID: Int, roomCode: String) {
@@ -58,6 +58,7 @@ final class ChatDrawerViewReactor: Reactor {
             ])
         case .leaveChatRoomButtonTapped:
             networkService.leaveRoom()
+            userData.removeToken()
             return .just(Mutation.setLeaveChatRoom(true))
         }
     }
