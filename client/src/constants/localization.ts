@@ -1,5 +1,6 @@
 interface TextList {
   inputNickName: string;
+  nicknameError: string;
   selectLanguage: string;
   enterRoom: string;
   createRoom: string;
@@ -11,6 +12,7 @@ interface TextList {
 const textList = {
   ko: {
     inputNickName: '닉네임 입력',
+    nicknameError: '닉네임은 1~10자 사이여야 합니다.',
     selectLanguage: '언어 선택',
     enterRoom: '대화 참여하기',
     createRoom: '방 만들기',
@@ -20,6 +22,7 @@ const textList = {
   },
   en: {
     inputNickName: 'Enter Nickname',
+    nicknameError: 'Nickname must be between 1 and 10 characters.',
     selectLanguage: 'Select Language',
     enterRoom: 'Enter ChatRoom',
     createRoom: 'Create ChatRoom',

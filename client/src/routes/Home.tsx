@@ -34,6 +34,7 @@ const Home: React.FC = () => {
   const { greenColor } = Theme;
   const [visible, setVisible] = useState(false);
   const { avatar, nickname, lang } = useUserState();
+  const [isNicknameValid, setIsNicknameValid] = useState(true);
 
   const onClickEnterRoom = () => {
     setVisible(true);
@@ -76,12 +77,20 @@ const Home: React.FC = () => {
     <Wrapper>
       <Container>
         <Modal visible={visible} setVisible={setVisible} />
-        <UserProfile />
-        <Button onClick={onClickEnterRoom} text={enterRoom} />
+        <UserProfile
+          isNicknameValid={isNicknameValid}
+          setIsNicknameValid={setIsNicknameValid}
+        />
+        <Button
+          onClick={onClickEnterRoom}
+          text={enterRoom}
+          isValid={isNicknameValid && nickname.length > 0}
+        />
         <Button
           text={createRoom}
           color={greenColor}
           onClick={onClickCreateRoom}
+          isValid={isNicknameValid && nickname.length > 0}
         />
         <Footer />
       </Container>
