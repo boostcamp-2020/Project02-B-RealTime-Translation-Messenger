@@ -10,7 +10,7 @@ import UIKit
 final class SentMessageCell: UICollectionViewCell {
     
     @IBOutlet private weak var dateBadge: UIButton!
-    @IBOutlet private weak var messageTextView: UITextView!
+    @IBOutlet weak var messageTextLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet weak var dateBadgeHeight: NSLayoutConstraint!
 }
@@ -18,7 +18,7 @@ final class SentMessageCell: UICollectionViewCell {
 extension SentMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
         configureDate(of: dateBadge, dateBadgeHeight: dateBadgeHeight, with: message.time, isFirst: message.isFirstOfDay)
-        configureMessage(of: messageTextView, with: message.text)
+        configureMessage(of: messageTextLabel, with: message.text)
         configureTime(of: timeLabel, with: message.time, shouldShow: message.shouldTimeShow)
     }
 }

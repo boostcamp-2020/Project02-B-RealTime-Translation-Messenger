@@ -54,7 +54,8 @@ struct MessageHeightCalculator {
     }
     
     private func sentMessageTextHeight(of text: String) -> CGFloat {
-        let maxSize = CGSize(width: 240 - 26, height: CGFloat.greatestFiniteMagnitude)
+        let maxSize = CGSize(width: 240 - Constant.messageInset * 2,
+                             height: CGFloat.greatestFiniteMagnitude)
         let font = UIFont.init(name: "Helvetica", size: 14) ?? UIFont.systemFont(ofSize: 14)
         let textHeight = text.boundingRect(with: maxSize,
                                  options: [.usesLineFragmentOrigin],
@@ -64,7 +65,8 @@ struct MessageHeightCalculator {
     }
     
     private func receivedMessageTextHeight(of text: String) -> CGFloat {
-        let maxSize = CGSize(width: 200 - 26, height: CGFloat.greatestFiniteMagnitude)
+        let maxSize = CGSize(width: 200 - Constant.messageInset * 2,
+                             height: CGFloat.greatestFiniteMagnitude)
         let font = UIFont.init(name: "Helvetica", size: 14) ?? UIFont.systemFont(ofSize: 14)
         let textHeight = text.boundingRect(with: maxSize,
                                            options: [.usesLineFragmentOrigin],

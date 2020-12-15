@@ -18,9 +18,9 @@ extension MessageCell {
         dateBadgeHeight.constant = isFirst ? Constant.dateBadgeHeight : 0
     }
     
-    func configureMessage(of messageTextView: UITextView, with message: String) {
-        messageTextView.text = message
-        messageTextView.textColor = UIColor.init(named: "MessageTextColor")
+    func configureMessage(of messageLabel: UILabel, with message: String) {
+        messageLabel.text = message
+        messageLabel.textColor = UIColor.init(named: "MessageTextColor")
     }
     
     func configureTime(of timeLabel: UILabel, with timeStamp: Date, shouldShow: Bool) {

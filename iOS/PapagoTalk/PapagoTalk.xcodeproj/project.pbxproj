@@ -59,7 +59,6 @@
 		995BE9D1257621B700C15AC7 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D0257621B700C15AC7 /* UserDataProvider.swift */; };
 		995BE9D525762AC500C15AC7 /* UserDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D425762AC500C15AC7 /* UserDataProviding.swift */; };
 		995BE9F72576350A00C15AC7 /* TranslatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9F62576350A00C15AC7 /* TranslatedResult.swift */; };
-		996479372576854900CFF202 /* MessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479362576854900CFF202 /* MessageText.swift */; };
 		9964793B2576901200CFF202 /* InputBarTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964793A2576901200CFF202 /* InputBarTextView.swift */; };
 		9964795325769BD500CFF202 /* ChatRoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964795225769BD500CFF202 /* ChatRoomInfo.swift */; };
 		9964797E2577670A00CFF202 /* MicrophoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964797D2577670A00CFF202 /* MicrophoneButton.swift */; };
@@ -105,7 +104,6 @@
 		BB156975257F71F400A2C0F9 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE140762573D374000B0604 /* DateFormatter+.swift */; };
 		BB156978257F71F700A2C0F9 /* Calendar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C2932575345200C68491 /* Calendar+.swift */; };
 		BB15697B257F720B00A2C0F9 /* SentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E91257005C20015F9F4 /* SentMessageCell.swift */; };
-		BB15697E257F722200A2C0F9 /* MessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996479362576854900CFF202 /* MessageText.swift */; };
 		BB156981257F723000A2C0F9 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20F4D6257394D800C5AC1D /* Data+.swift */; };
 		BB156984257F723900A2C0F9 /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52F51A2570977300B7577B /* UICollectionReusableView+.swift */; };
 		BB15699C257F888300A2C0F9 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E98257CEE2500802B45 /* MessageParser.swift */; };
@@ -261,7 +259,6 @@
 		995BE9D0257621B700C15AC7 /* UserDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
 		995BE9D425762AC500C15AC7 /* UserDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProviding.swift; sourceTree = "<group>"; };
 		995BE9F62576350A00C15AC7 /* TranslatedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedResult.swift; sourceTree = "<group>"; };
-		996479362576854900CFF202 /* MessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageText.swift; sourceTree = "<group>"; };
 		9964793A2576901200CFF202 /* InputBarTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarTextView.swift; sourceTree = "<group>"; };
 		9964795225769BD500CFF202 /* ChatRoomInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomInfo.swift; sourceTree = "<group>"; };
 		9964797D2577670A00CFF202 /* MicrophoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneButton.swift; sourceTree = "<group>"; };
@@ -423,7 +420,6 @@
 			children = (
 				99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */,
 				99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */,
-				996479362576854900CFF202 /* MessageText.swift */,
 				BB9A86A3257487C800FE14D6 /* MessageCell.swift */,
 				996C4E91257005C20015F9F4 /* SentMessageCell.swift */,
 				BB2772BB2581F02900F6A47B /* UserTranslatedMessageCell.swift */,
@@ -1030,7 +1026,6 @@
 				BB5EFE7C25812991001A121C /* UserSection.swift in Sources */,
 				BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */,
 				9968476C2585C979006C116E /* PersistenceManager.swift in Sources */,
-				996479372576854900CFF202 /* MessageText.swift in Sources */,
 				BBC5B328257E0E4500739CD8 /* Keychain.swift in Sources */,
 				99482F46257FCE1800802B45 /* MicButtonSize.swift in Sources */,
 				BBDE2C6B25825C720068D7DE /* Date+.swift in Sources */,
@@ -1160,7 +1155,6 @@
 				BBFFC1CF2581CFA400B241F0 /* MicButtonSize.swift in Sources */,
 				99482F24257F83E900802B45 /* SpeechServiceProviding.swift in Sources */,
 				BB15695F257F716A00A2C0F9 /* Message.swift in Sources */,
-				BB15697E257F722200A2C0F9 /* MessageText.swift in Sources */,
 				BB987E91257F4E3D00F4C258 /* ImageFactoryProviding.swift in Sources */,
 				BB987E94257F4E5300F4C258 /* AlertFactoryProviding.swift in Sources */,
 				BB15696B257F71B300A2C0F9 /* MessageCell.swift in Sources */,
