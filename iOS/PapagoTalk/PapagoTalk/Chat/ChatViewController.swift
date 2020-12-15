@@ -77,11 +77,13 @@ final class ChatViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         chatDrawerButton.rx.tap
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .map { Reactor.Action.chatDrawerButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         chatDrawerObserver.filter { $0 }
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.chatDrawerButtonTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
