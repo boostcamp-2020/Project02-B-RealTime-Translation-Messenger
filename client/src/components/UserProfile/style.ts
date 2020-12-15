@@ -33,14 +33,32 @@ export default {
       fill: ${({ theme }) => theme.whiteColor};
     }
   `,
+  NicknameWrapper: styled.div`
+    width: 80%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+  `,
   NicknameInput: styled.input`
-    width: 10rem;
-    margin: 1rem 0;
+    width: 100%;
+    margin: 0 auto;
     padding: 0.5rem;
     color: ${({ theme }) => theme.text};
     border-bottom: ${({ theme }) => theme.boxBorder};
     font-size: 18px;
     text-align: center;
+  `,
+  NicknameValidator: styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+
+    span {
+      &:first-child {
+        color: red;
+      }
+      color: ${(props) => props.theme.text};
+    }
   `,
   LanguageTitle: styled.div`
     margin: 0 0 1rem 0;

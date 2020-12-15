@@ -7,6 +7,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
 import Listening from '@components/Listening';
+import Badge from './Badge';
 import S from './style';
 
 interface LocationState {
@@ -19,7 +20,9 @@ const Input: React.FC = () => {
   const [isListening, setIsListening] = useState(false);
   const { transcript } = useSpeechRecognition();
   const location = useLocation<LocationState>();
+
   const { lang } = location.state;
+
   const [createMessageMutation] = useMutation(CREATE_MESSAGE, {
     variables: {
       text,
@@ -84,6 +87,7 @@ const Input: React.FC = () => {
             onChange={onChangeText}
             onKeyUp={onKeyUp}
             onKeyPress={onKeyPressEnter}
+            maxLength={190}
           />
           <S.VoiceButton onClick={onClickVoiceButton}>
             <Listening
@@ -94,7 +98,8 @@ const Input: React.FC = () => {
           </S.VoiceButton>
         </S.InputContainer>
         <S.Margin />
-        <S.Translation>{translatedText}</S.Translation>
+        <S.Translation value={translatedText} />
+        <Badge textLength={text.length} />
       </S.InputWrapper>
     </S.Wrapper>
   );

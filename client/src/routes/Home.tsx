@@ -12,11 +12,16 @@ import { CREATE_ROOM } from '@queries/room.queires';
 import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import { useUserState } from '@contexts/UserContext';
 import { useLocalizationState } from '@contexts/LocalizationContext';
+import encrypt from '@utils/encryption';
 
 const Wrapper = styled.div`
+  min-width: inherit;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-self: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
 `;
 
 const Container = styled.div`
@@ -34,6 +39,7 @@ const Home: React.FC = () => {
   const { greenColor } = Theme;
   const [visible, setVisible] = useState(false);
   const { avatar, nickname, lang } = useUserState();
+  const [isNicknameValid, setIsNicknameValid] = useState(true);
 
   const onClickEnterRoom = () => {
     setVisible(true);
@@ -56,18 +62,17 @@ const Home: React.FC = () => {
 
   const onClickCreateRoom = async () => {
     const { data } = await createRoomMutation();
-    const roomId = data?.createRoom.roomId;
-    const code = data?.createRoom.code;
-    const userId = data?.createRoom.userId;
-    if (typeof data?.createRoom.token === 'string')
-      localStorage.setItem('token', data?.createRoom.token);
+    if (!data) return;
+    const { roomId, code, userId } = data.createRoom;
+    localStorage.setItem('token', data?.createRoom.token);
     await createSystemMessageMutation();
     history.push({
-      pathname: `/room/${roomId}`,
+      pathname: `/room/${encrypt(`${roomId}`)}`,
       state: {
         lang,
         code,
         userId,
+        roomId,
       },
     });
   };
@@ -76,12 +81,20 @@ const Home: React.FC = () => {
     <Wrapper>
       <Container>
         <Modal visible={visible} setVisible={setVisible} />
-        <UserProfile />
-        <Button onClick={onClickEnterRoom} text={enterRoom} />
+        <UserProfile
+          isNicknameValid={isNicknameValid}
+          setIsNicknameValid={setIsNicknameValid}
+        />
+        <Button
+          onClick={onClickEnterRoom}
+          text={enterRoom}
+          isValid={isNicknameValid && nickname.length > 0}
+        />
         <Button
           text={createRoom}
           color={greenColor}
           onClick={onClickCreateRoom}
+          isValid={isNicknameValid && nickname.length > 0}
         />
         <Footer />
       </Container>

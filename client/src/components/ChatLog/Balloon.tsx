@@ -17,7 +17,7 @@ interface ContainerProps {
 }
 
 const Container = styled.div<ContainerProps>`
-  width: 200px;
+  width: 100%;
   height: fit-content;
   min-height: 50px;
   margin-left: ${(props) => (props.isLeft ? '0.7rem' : '0')};

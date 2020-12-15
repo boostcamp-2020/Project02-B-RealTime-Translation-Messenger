@@ -6,8 +6,9 @@ import Button from '@components/Button';
 import { ENTER_ROOM } from '@queries/room.queires';
 import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
 import { useUserState } from '@contexts/UserContext';
-import { useLocalizationState } from '@/contexts/LocalizationContext';
-import { CREATE_SYSTEM_MESSAGE } from '@/queries/messege.queries';
+import { useLocalizationState } from '@contexts/LocalizationContext';
+import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
+import encrypt from '@utils/encryption';
 import Overlay from './Overlay';
 import Code from './Code';
 
@@ -23,13 +24,17 @@ const Wrapper = styled.div<Props>`
   left: 50%;
   transform: translate(-50%, 10%);
   display: ${(props) => (props.visible ? 'block' : 'none')};
-  width: 20vw;
+  width: 400px;
   height: 350px;
-  min-width: 400px;
+  min-width: 250px;
   border-radius: ${(props) => props.theme.borderRadius};
   background-color: ${(props) => props.theme.blackColor};
   overflow: hidden;
   z-index: 2;
+
+  @media (max-width: 400px) {
+    width: 25vw;
+  }
 `;
 
 const ModalContainer = styled.div`
@@ -92,15 +97,15 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
 
   const onClickEnterRoom = async () => {
     const { data } = await enterRoomMutation();
-    const roomId = data?.enterRoom.roomId;
-    const userId = data?.enterRoom.userId;
-    if (typeof data?.enterRoom.token === 'string')
-      localStorage.setItem('token', data.enterRoom.token);
+    if (!data) return;
+    const { roomId, userId } = data.enterRoom;
+    localStorage.setItem('token', data.enterRoom.token);
     await createSystemMessageMutation();
     history.push({
-      pathname: `/room/${roomId}`,
+      pathname: `/room/${encrypt(`${roomId}`)}`,
       state: {
         userId,
+        roomId,
         code: pinValue,
         lang,
       },

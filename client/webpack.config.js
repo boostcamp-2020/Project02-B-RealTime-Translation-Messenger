@@ -22,6 +22,8 @@ module.exports = {
       '@queries': path.resolve(__dirname, 'src/queries'),
       '@generated': path.resolve(__dirname, 'src/generated'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      crypto: 'crypto-browserify',
+      stream: 'stream-browserify',
     },
   },
 
