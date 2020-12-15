@@ -12,4 +12,8 @@ struct UserDataProvider: UserDataProviding {
     @UserDefault(type: .micButtonSize, default: .small) var micButtonSize: MicButtonSize
     @UserDefault(type: .sameLanguageTranslation, default: true) var sameLanguageTranslation: Bool
     @Keychain(key: "jwt", defaultValue: "") var token: String
+    
+    func removeToken() {
+        try? KeychainAccess.shared.removeAll()
+    }
 }
