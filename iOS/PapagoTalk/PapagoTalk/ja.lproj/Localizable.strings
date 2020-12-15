@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  PapagoTalk
+
+  Created by Byoung-Hwi Yoon on 2020/11/29.
+  
+*/
+
+//Mark: - Common
+"English" = "英語";
+"Korean" = "韓国語";
+"Japanese" = "日本語";
+"OK" = "OK";
+
+//Mark: - Home
+"Please Enter 2-12 Characters for NickName" = "ニックネームを 2 ~ 12 文字入力してください";
+
+//Mark: - JoinChat
+"Chat Room is Doesn't Exist \n Or already Deleted" = "存在しないチャットルーム、\n または削除済みチャットルームです。";
+"Please Check your Network Connection" = "ネットワーク接続を確認してください";
+
+//Mark: - Chat
+" joined this chatroom" = " さんがチャットルームに 参加しました。";
+" left this chatroom" = " さんがチャットルームから 出て行かれました。";
+"Unknown User" = "(不詳)";
+
+//MARK: - ChatDrawer
+"Chat Code is copied" = "チャットルームコードがコピーされました。";
+"(ME)" = "(私)";
+
+//MARK: - DateFormatter
+"yyyy MMMM dd EEEE" = "yyyy MMMM dd EEEE";
+
+//MARK: - TimeFormatType
+"Yesterday" = "昨日";
+"MMM d" = "MMM d";
+"yyyy/MM/dd" = "yyyy/MM/dd";
+
+//MARK: - MicButtonSize
+"Big" = "ビッグ";
+"Medium" = "ミドル";
+"Small" = "スモール";
+"None" = "なし";
