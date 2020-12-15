@@ -2,6 +2,7 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    isLight: boolean;
     bgColor: string;
     text: string;
     lightGrayColor: string;

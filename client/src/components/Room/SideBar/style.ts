@@ -17,23 +17,22 @@ export default {
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
     font-size: 1.2rem;
-    z-index: 2;
+    z-index: 99;
     transform: ${({ visible }) =>
       visible ? 'translateX(0)' : 'translateX(-100%)'};
     transition: transform 0.3s ease-in-out;
 
     @media (max-width: ${({ theme }) => theme.mediaSize}) {
-      width: 100%;
-      border-radius: 0;
+      width: 85%;
     }
   `,
   SideBarHeader: styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 5rem;
     padding: 1.5rem;
+    border-bottom: 1px solid white;
     svg {
       fill: ${(props) => props.theme.whiteColor};
     }
@@ -45,8 +44,8 @@ export default {
     height: 5rem;
     width: 100%;
     margin-left: 3rem;
-    padding: 0.7rem 1rem 0rem 1rem;
-    font-weight: 700;
+    padding-left: 0.5rem;
+    font-weight: 500;
   `,
   UserList: styled.ul`
     width: 100%;

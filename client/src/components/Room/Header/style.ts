@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface Props {
   visible?: boolean;
@@ -10,51 +10,69 @@ export default {
     right: 0;
     left: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 10vh;
+    height: 5rem;
     padding: 0 2rem;
-    background: ${(props) => props.theme.whiteColor};
-    border-bottom: ${(props) => props.theme.boxBorder};
+    background: ${({ theme }) => theme.whiteColor};
+    border-bottom: ${({ theme }) => theme.boxBorder};
     z-index: 1;
+
     .reveal {
       opacity: 1;
       visibility: visible;
       transform: translate(-50%, 0);
     }
+
+    ${({ theme }) =>
+      !theme.isLight &&
+      css`
+        background: #373739;
+        color: #e5e5e5;
+        border: none;
+      `};
+
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      padding: 0 1.5rem;
+    }
+  `,
+  HamburgerWrapper: styled.div`
+    width: 10rem;
   `,
   HamburgerButton: styled.button<Props>`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 2rem;
-    height: 2rem;
+    height: 1.5rem;
     padding: 0;
     background: transparent;
     z-index: 10;
 
     div {
       position: relative;
-      width: 2rem;
-      height: 0.25rem;
+      width: 1.5rem;
+      height: 0.1rem;
       background: ${({ theme, visible }) =>
-        visible ? theme.whiteColor : theme.blackColor};
+        // eslint-disable-next-line no-nested-ternary
+        visible
+          ? theme.whiteColor
+          : theme.isLight
+          ? theme.blackColor
+          : '#545759'};
       border-radius: 10px;
       transition: all 0.3s linear;
-      transform-origin: 1px;
+      transform-origin: 0.5px;
+      z-index: 100;
 
-      :first-child {
+      :nth-child(1) {
         transform: ${({ visible }) =>
           visible ? 'rotate(45deg)' : 'rotate(0)'};
       }
-
       :nth-child(2) {
         opacity: ${({ visible }) => (visible ? '0' : '1')};
         transform: ${({ visible }) =>
           visible ? 'translateX(20px)' : 'translateX(0)'};
       }
-
       :nth-child(3) {
         transform: ${({ visible }) =>
           visible ? 'rotate(-45deg)' : 'rotate(0)'};
@@ -63,25 +81,33 @@ export default {
   `,
   CodeWrapper: styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto !important;
+    margin: 0 auto;
     cursor: pointer;
+    svg {
+      fill: ${({ theme }) => (theme.isLight ? theme.blackColor : '#e5e5e5')};
+    }
   `,
   Code: styled.div`
     margin-right: 0.3rem;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
   `,
   RightWrapper: styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    width: 10rem;
   `,
   DoorButton: styled.button`
     width: 24px;
     height: 24px;
     margin-left: 1rem;
+    svg {
+      fill: ${({ theme }) => (theme.isLight ? theme.blackColor : '#545759')};
+    }
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      margin-left: 0.3rem;
+    }
   `,
   Toast: styled.div`
     position: fixed;
