@@ -1,22 +1,17 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Message } from '@prisma/client';
 import translateText from '@utils/translateText';
 import { withFilter } from 'graphql-subscriptions';
 import TRIGGER from '@utils/trigger';
+import { Context } from '@interfaces/context';
+import ERROR_MSG from '@utils/errorMessage';
 
 const prisma = new PrismaClient();
-
-interface User {
-  id: number;
-  avatar: string;
-  nickname: string;
-  lang: string;
-}
 
 export default {
   Subscription: {
     newMessage: {
       subscribe: withFilter(
-        (_: any, __: any, { pubsub }: any): any => pubsub.asyncIterator(TRIGGER.NEW_MESSAGE),
+        (_: Message, __: null, { pubsub }: Context) => pubsub.asyncIterator(TRIGGER.NEW_MESSAGE),
         async (payload, variables, context): Promise<boolean> => {
           const { id, roomId } = context.connection.context.user;
           if (payload.newMessage.roomId === roomId) {
@@ -26,6 +21,7 @@ export default {
               return true;
             }
             const user = await prisma.user.findOne({ where: { id } });
+            if (!user) throw new Error(ERROR_MSG.read);
             const users = await prisma.room
               .findOne({
                 where: {
@@ -33,7 +29,7 @@ export default {
                 },
               })
               .users();
-            payload.newMessage.text = await translateText(message, user as User, users);
+            payload.newMessage.text = await translateText(message, { ...user, roomId }, users);
             return true;
           }
           return false;
