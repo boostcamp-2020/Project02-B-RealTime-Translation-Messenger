@@ -7,7 +7,7 @@ import Input from '@components/Room/Input';
 import useMessages from '@hooks/useMessages';
 import useUsers from '@hooks/useUsers';
 import { User } from '@/generated/types';
-import Loader from '@/components/Loader';
+import Loader from '@components/Loader';
 
 interface MatchParams {
   id: string;
