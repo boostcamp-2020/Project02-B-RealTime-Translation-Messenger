@@ -6,9 +6,9 @@ import Button from '@components/Button';
 import { ENTER_ROOM } from '@queries/room.queires';
 import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
 import { useUserState } from '@contexts/UserContext';
-import { useLocalizationState } from '@/contexts/LocalizationContext';
-import { CREATE_SYSTEM_MESSAGE } from '@/queries/messege.queries';
-import encrypt from '@/utils/encryption';
+import { useLocalizationState } from '@contexts/LocalizationContext';
+import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
+import encrypt from '@utils/encryption';
 import Overlay from './Overlay';
 import Code from './Code';
 
