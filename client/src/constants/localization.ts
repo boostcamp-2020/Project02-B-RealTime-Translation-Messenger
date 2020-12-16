@@ -57,8 +57,8 @@ const textList: TextObj = {
     userList: 'メンバー',
     inputText: 'チャットを入力してください',
     translationText: '翻訳',
-    enterText: 'さんがチャットルームに入ってきました',
-    leaveText: 'さんがチャットルームを出ました',
+    enterText: ' さんがチャットルームに入場しました',
+    leaveText: ' さんがチャットルームから出ました',
   },
   'zh-CN': {
     inputNickName: '输入昵称',
@@ -71,8 +71,8 @@ const textList: TextObj = {
     userList: '参加者名单',
     inputText: '请输入您的聊天内容',
     translationText: '翻译',
-    enterText: '这位朋友进了聊天室',
-    leaveText: '这位朋友从聊天室出去了',
+    enterText: ' 进入聊天室了',
+    leaveText: ' 从聊天室出去了',
   },
 };
 
