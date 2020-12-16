@@ -6,6 +6,7 @@ interface TextList {
   createRoom: string;
   enterCode: string;
   submitCode: string;
+  wrongCode: string;
   userList: string;
   enterText: string;
   translationText: string;
@@ -24,6 +25,7 @@ const textList: TextObj = {
     createRoom: '방 만들기',
     enterCode: '참여 코드(6자리의 숫자)를 입력해주세요.',
     submitCode: '입장',
+    wrongCode: '잘못된 방코드입니다😅',
     userList: '대화 상대',
     enterText: '채팅을 입력해주세요',
     translationText: '번역',
@@ -36,6 +38,7 @@ const textList: TextObj = {
     createRoom: 'Create ChatRoom',
     enterCode: 'Please enter 6 digits of the participating code.',
     submitCode: 'Enter',
+    wrongCode: 'Invalid room code😅',
     userList: 'User List',
     enterText: 'Please enter a chat',
     translationText: 'Translation',
@@ -48,6 +51,7 @@ const textList: TextObj = {
     createRoom: 'トークルーム作成',
     enterCode: '参加コード(6桁数字)を入力してください。',
     submitCode: '参加',
+    wrongCode: '間違ったルームコードです😅',
     userList: 'メンバー',
     enterText: 'チャットを入力してください',
     translationText: '翻訳',
@@ -60,6 +64,7 @@ const textList: TextObj = {
     createRoom: '创建聊天室',
     enterCode: '请输入参加代码（6位数字）。',
     submitCode: '参与度',
+    wrongCode: '是错误的房间代码😅',
     userList: '参加者名单',
     enterText: '请输入您的聊天内容',
     translationText: '翻译',
