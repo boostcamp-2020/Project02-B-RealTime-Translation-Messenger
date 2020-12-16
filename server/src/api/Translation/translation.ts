@@ -50,7 +50,7 @@ export default {
           return { translatedText: translatedText };
         }
       } catch (e) {
-        return { translatedText: '텍스트를 입력하세요' };
+        return { translatedText: '' };
       }
     },
   },
