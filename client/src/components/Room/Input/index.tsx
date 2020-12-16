@@ -19,8 +19,8 @@ const Input: React.FC = () => {
   const [text, setText] = useState('');
   const location = useLocation<LocationState>();
   const { lang } = location.state;
-  const { enterText, translationText } = getText(lang);
-  const [translatedText, setTranslatedText] = useState(enterText);
+  const { enterText, translationText, translationErrorText } = getText(lang);
+  const [translatedText, setTranslatedText] = useState(translationText);
   const [isListening, setIsListening] = useState(false);
   const { transcript } = useSpeechRecognition();
 
@@ -38,7 +38,15 @@ const Input: React.FC = () => {
 
   const getTranslatedText = debounce(async () => {
     const { data } = await translationMutation();
-    setTranslatedText(data ? data.translation.translatedText : '...');
+    console.log('data :>> ', data);
+    if (data.translation.translatedText === null)
+      setTranslatedText(translationText);
+    else
+      setTranslatedText(
+        data.translation.translatedText.length > 0
+          ? data.translation.translatedText
+          : translationErrorText,
+      );
   }, 500);
 
   const onKeyUp = () => {
@@ -59,7 +67,7 @@ const Input: React.FC = () => {
 
       await createMessageMutation();
       setText('');
-      setTranslatedText(enterText);
+      setTranslatedText(translationText);
     }
   };
 
