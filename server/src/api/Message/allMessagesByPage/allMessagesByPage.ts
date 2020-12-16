@@ -1,4 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+import { Context } from '@interfaces/context';
+import { PrismaClient, Message, User } from '@prisma/client';
 import translateText from '@utils/translateText';
 
 const prisma = new PrismaClient();
@@ -7,34 +8,25 @@ interface Pagination {
   page: number;
 }
 
-interface User {
-  id: number;
-  avatar: string;
-  nickname: string;
-  lang: string;
-}
-
-interface Message {
-  id: number;
-  text: string;
-  source: string;
-  user: User;
+interface AllMessages {
+  messages: (Message & { user: User })[];
+  nextPage: number | null;
 }
 
 export default {
   Query: {
     allMessagesByPage: async (
-      _: any,
+      _: AllMessages,
       args: Pagination,
-      { request, isAuthenticated }: any,
-    ): Promise<any> => {
+      { request, isAuthenticated }: Context,
+    ): Promise<AllMessages> => {
       isAuthenticated(request);
       const { page } = args;
       const { roomId } = request.user;
       const maxId = await prisma.$queryRaw`SELECT MAX(id) from Message WHERE roomId = ${roomId}`;
       const lastId = maxId[0]['MAX(id)'];
       if (!lastId) return { messages: [], nextPage: null };
-      const Messages: any = await prisma.message.findMany({
+      const Messages = await prisma.message.findMany({
         where: {
           room: { id: roomId },
         },
@@ -56,7 +48,7 @@ export default {
         })
         .users();
 
-      const promises = Messages.map(async (message: Message) => {
+      const promises = Messages.map(async (message) => {
         const { source } = message;
         if (source !== 'in' && source !== 'out') {
           message.text = await translateText(message, request.user, users);

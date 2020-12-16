@@ -13,6 +13,7 @@ const { blueColor } = Theme;
 
 const Container = styled.button`
   width: 100%;
+  height: 4rem;
   margin: 0.3rem 0;
   padding: 15px 0px;
   color: white;

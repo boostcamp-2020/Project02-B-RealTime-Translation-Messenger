@@ -1,5 +1,6 @@
-import React, { FC, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { FC, useState, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import { wsClient } from '@/apollo/Client';
 import ChatLog from '@components/ChatLog';
 import Header from '@components/Room/Header';
 import SideBar from '@components/Room/SideBar';
@@ -17,6 +18,7 @@ interface LocationState {
 
 const Room: FC = () => {
   const location = useLocation<LocationState>();
+  const history = useHistory();
   const { userId, roomId, code } = location.state;
   const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState(2);

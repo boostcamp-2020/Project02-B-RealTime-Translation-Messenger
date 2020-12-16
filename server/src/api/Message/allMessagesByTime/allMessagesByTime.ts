@@ -1,5 +1,6 @@
+import { Context } from '@interfaces/context';
 import translateText from '@utils/translateText';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Message } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -7,31 +8,17 @@ interface Timestamp {
   time: string;
 }
 
-interface User {
-  id: number;
-  avatar: string;
-  nickname: string;
-  lang: string;
-}
-
-interface Message {
-  id: number;
-  text: string;
-  source: string;
-  user: User;
-}
-
 export default {
   Query: {
     allMessagesByTime: async (
-      _: any,
+      _: Message,
       args: Timestamp,
-      { request, isAuthenticated }: any,
+      { request, isAuthenticated }: Context,
     ): Promise<Message[]> => {
       isAuthenticated(request);
       const { time } = args;
       const { roomId } = request.user;
-      const Messages: any = await prisma.message.findMany({
+      const Messages = await prisma.message.findMany({
         where: {
           AND: [
             {
@@ -59,7 +46,7 @@ export default {
         })
         .users();
 
-      const promises = Messages.map(async (message: Message) => {
+      const promises = Messages.map(async (message) => {
         message.text = await translateText(message, request.user, users);
       });
 

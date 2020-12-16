@@ -1,20 +1,15 @@
 import getSecondLang from '@utils/getSecondLang';
+import { Message, User } from '@prisma/client';
+import { UserToken } from '@interfaces/request';
 import req from './request';
 
-interface User {
-  id: number;
-  avatar: string;
-  nickname: string;
-  lang: string;
-}
-
-interface Message {
-  text: string;
-  source: string;
-  user: User;
-}
-
-export default async (message: Message, me: User, users: User[]): Promise<string> => {
+export default async (
+  message: Message & {
+    user: User;
+  },
+  me: UserToken,
+  users: User[],
+): Promise<string> => {
   const { id: authorId, lang: authorLang } = message.user;
   const { text, source } = message;
   const { id: myId, lang: myLang } = me;
@@ -37,7 +32,10 @@ export default async (message: Message, me: User, users: User[]): Promise<string
   } else {
     if (authorId === myId) {
       if (message.source === myLang) {
-        const secondLang = getSecondLang(users, myLang);
+        const secondLang = getSecondLang(
+          users.filter((user) => !user.isDeleted),
+          myLang,
+        );
         const translatedText = await req(text, source, secondLang);
         const texts = {
           originText: text,

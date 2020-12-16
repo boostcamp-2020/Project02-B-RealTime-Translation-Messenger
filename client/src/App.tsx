@@ -16,6 +16,14 @@ const Button = styled.button`
   svg {
     fill: ${(props) => props.theme.text};
   }
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    right: 1rem;
+    bottom: 0.5rem;
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
 `;
 
 const App: React.FC = () => {

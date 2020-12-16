@@ -1,9 +1,4 @@
-interface User {
-  id: number;
-  avatar: string;
-  nickname: string;
-  lang: string;
-}
+import { User } from '@prisma/client';
 
 interface CountObject {
   [key: string]: number;

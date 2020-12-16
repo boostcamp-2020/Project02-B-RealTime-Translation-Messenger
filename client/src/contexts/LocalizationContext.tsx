@@ -6,7 +6,7 @@ const LocalizationDispatchContext = createContext<
   React.Dispatch<Action> | undefined
 >(undefined);
 
-type Action = { type: 'SET_LOCAL'; lang: 'ko' | 'en' };
+type Action = { type: 'SET_LOCAL'; lang: 'ko' | 'en' | 'ja' | 'zh-CN' };
 
 const initialState = getText('ko');
 

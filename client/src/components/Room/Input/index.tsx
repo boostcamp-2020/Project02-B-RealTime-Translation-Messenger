@@ -3,6 +3,7 @@ import { debounce } from 'lodash';
 import { useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { CREATE_MESSAGE, TRANSLATION } from '@queries/messege.queries';
+import { getText } from '@constants/localization';
 import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
@@ -16,12 +17,12 @@ interface LocationState {
 
 const Input: React.FC = () => {
   const [text, setText] = useState('');
-  const [translatedText, setTranslatedText] = useState('텍스트를 입력하세요');
+  const location = useLocation<LocationState>();
+  const { lang } = location.state;
+  const { enterText, translationText } = getText(lang);
+  const [translatedText, setTranslatedText] = useState(enterText);
   const [isListening, setIsListening] = useState(false);
   const { transcript } = useSpeechRecognition();
-  const location = useLocation<LocationState>();
-
-  const { lang } = location.state;
 
   const [createMessageMutation] = useMutation(CREATE_MESSAGE, {
     variables: {
@@ -58,7 +59,7 @@ const Input: React.FC = () => {
 
       await createMessageMutation();
       setText('');
-      setTranslatedText('텍스트를 입력하세요');
+      setTranslatedText(enterText);
     }
   };
 
@@ -82,7 +83,7 @@ const Input: React.FC = () => {
       <S.InputWrapper>
         <S.InputContainer>
           <S.Input
-            placeholder="텍스트를 입력하세요"
+            placeholder={enterText}
             value={text}
             onChange={onChangeText}
             onKeyUp={onKeyUp}
@@ -98,7 +99,7 @@ const Input: React.FC = () => {
           </S.VoiceButton>
         </S.InputContainer>
         <S.Margin />
-        <S.Translation value={translatedText} />
+        <S.Translation placeholder={translationText} value={translatedText} />
         <Badge textLength={text.length} />
       </S.InputWrapper>
     </S.Wrapper>

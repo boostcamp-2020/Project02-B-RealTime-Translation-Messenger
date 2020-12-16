@@ -38,6 +38,11 @@ export default {
     border-radius: ${({ theme }) => theme.borderRadius};
     overflow: hidden;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      min-height: 4.5rem;
+      max-height: 4.5rem;
+      font-size: 12px;
+    }
   `,
   Input: styled(TextareaAutosize)<any>`
     width: 100%;
@@ -56,7 +61,12 @@ export default {
       props.value.length >= 190
         ? 'animation: vibrate 2s cubic-bezier(0.36, 0.07, 0.19, 0.97);'
         : ''}
-
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      min-height: 4.5rem;
+      max-height: 4.5rem;
+      padding: 1rem 3.5rem 1rem 1rem;
+      font-size: 12px;
+    }
     @keyframes vibrate {
       0%,
       2%,
@@ -94,6 +104,15 @@ export default {
     right: 0;
     margin-right: 1rem;
     transform: translateY(-50%);
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      width: 25px;
+      height: 25px;
+      transform: translate(-90%, -160%);
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
   `,
   Margin: styled.div`
     flex: 0.02 0 0;
@@ -115,6 +134,12 @@ export default {
     overflow: auto;
     &:focus {
       outline: none;
+    }
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      min-height: 4.5rem;
+      max-height: 4.5rem;
+      padding: 1rem 3.5rem 1rem 1rem;
+      font-size: 12px;
     }
   `,
 };

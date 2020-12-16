@@ -12,9 +12,18 @@ interface EnterInfo {
   token: string;
 }
 
+interface EnterRoomResponse {
+  userId: number;
+  roomId: number;
+  token: string;
+}
+
 export default {
   Mutation: {
-    enterRoom: async (_: any, { nickname, avatar, lang, code }: EnterInfo): Promise<any> => {
+    enterRoom: async (
+      _: EnterRoomResponse,
+      { nickname, avatar, lang, code }: EnterInfo,
+    ): Promise<EnterRoomResponse> => {
       if (!nickname || !avatar || !lang || !code) throw new Error(ERROR_MSG.invalid);
       try {
         const newUser = await prisma.user.create({
