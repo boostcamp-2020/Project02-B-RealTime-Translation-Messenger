@@ -41,5 +41,43 @@ class MessageParserTests: XCTestCase {
         // Then
         XCTAssertEqual(translatedText, "TranslatedText")
     }
+    
+    func test_parser_should_not_parse_system_in_message() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: true)
+        let messageParser = MessageParser(userData: receiver)
+        
+        let message = MockMessageFactory().message(messageID: 1, senderID: 2, source: "in")
+        // When
+        let parsedMessage = messageParser.parse(newMessage: message)
+        // Then
+        XCTAssertEqual(parsedMessage.count, 1)
+        XCTAssertEqual(parsedMessage[0].type, .system)
+    }
+    
+        func test_parser_should_not_parse_system_out_message() throws {
+            // Given
+            let receiver = MockReceiver(userID: 1,
+                                        language: .korean,
+                                        sameLanguageTranslation: true)
+            let messageParser = MessageParser(userData: receiver)
+            
+            let message = MockMessageFactory().message(messageID: 1, senderID: 2, source: "out")
+            // When
+            let parsedMessage = messageParser.parse(newMessage: message)
+            // Then
+            XCTAssertEqual(parsedMessage.count, 1)
+            XCTAssertEqual(parsedMessage[0].type, .system)
+        }
+    
+//    func test_parser_should_not_parse_system_message() throws {
+//        // Given
+//
+//        // When
+//
+//        // Then
+//    }
 
 }
