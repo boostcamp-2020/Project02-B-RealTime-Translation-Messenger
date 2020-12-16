@@ -14,7 +14,7 @@ interface QueryReturnType {
   onLoadMore: any;
 }
 
-const useMessages = ({ roomId, page, id }: VariablesType): QueryReturnType => {
+const useMessages = ({ page }: VariablesType): QueryReturnType => {
   const { data, loading, subscribeToMore, fetchMore } = useQuery(
     ALL_MESSAGES_BY_PAGE,
     {

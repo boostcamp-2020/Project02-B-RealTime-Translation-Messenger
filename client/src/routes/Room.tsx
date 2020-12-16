@@ -7,7 +7,7 @@ import SideBar from '@components/Room/SideBar';
 import Input from '@components/Room/Input';
 import useMessages from '@hooks/useMessages';
 import useUsers from '@hooks/useUsers';
-import { User } from '@/generated/types';
+import { User } from '@generated/types';
 import Loader from '@components/Loader';
 
 interface LocationState {
@@ -23,50 +23,48 @@ const Room: FC = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState(2);
 
-  const { data: usersData, loading: usersLoading } = useUsers({
-    roomId,
-  });
-  const {
-    data: messagesData,
-    loading: messagesLoading,
-    onLoadMore,
-  } = useMessages({
-    roomId,
-    page: 1,
-    id: userId,
-  });
+  try {
+    const { data: usersData, loading: usersLoading } = useUsers({
+      roomId,
+    });
+    const {
+      data: messagesData,
+      loading: messagesLoading,
+      onLoadMore,
+    } = useMessages({
+      roomId,
+      page: 1,
+      id: userId,
+    });
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      wsClient.close();
-      history.push('/');
-    }
-  }, []);
+    if (messagesLoading || usersLoading) return <Loader />;
 
-  if (messagesLoading || usersLoading) return <Loader />;
-
-  const validUser = usersData.roomById.users.filter(
-    (user: User) => !user.isDeleted,
-  );
-  return (
-    <>
-      <Header
-        visible={visible}
-        setVisible={setVisible}
-        code={code}
-        users={validUser}
-      />
-      <SideBar visible={visible} setVisible={setVisible} users={validUser} />
-      <ChatLog
-        messages={messagesData.allMessagesByPage.messages}
-        page={page}
-        setPage={setPage}
-        onLoadMore={onLoadMore}
-      />
-      <Input />
-    </>
-  );
+    const validUser = usersData.roomById.users.filter(
+      (user: User) => !user.isDeleted,
+    );
+    return (
+      <>
+        <Header
+          visible={visible}
+          setVisible={setVisible}
+          code={code}
+          users={validUser}
+        />
+        <SideBar visible={visible} setVisible={setVisible} users={validUser} />
+        <ChatLog
+          messages={messagesData.allMessagesByPage.messages}
+          page={page}
+          setPage={setPage}
+          onLoadMore={onLoadMore}
+        />
+        <Input />
+      </>
+    );
+  } catch (e) {
+    alert('토큰이 없어요! 메인페이지로 돌아갑니다😥');
+    window.location.href = '/';
+    return <div />;
+  }
 };
 
 export default Room;

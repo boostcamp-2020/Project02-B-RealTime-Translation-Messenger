@@ -10,10 +10,6 @@ const timeOffsetTable: OffsetTable = {
   fr: 1,
 };
 
-const fillZero = (minute: number) => {
-  return minute.toString().length === 1 ? `0${minute}` : minute;
-};
-
 const formatTime = (timestamp: string, langCode: string): string => {
   const time = +timestamp;
   const date = new Date(time);
@@ -24,7 +20,7 @@ const formatTime = (timestamp: string, langCode: string): string => {
 
   const now = new Date(tz);
   const Hour = now.getHours();
-  const minute = fillZero(now.getMinutes());
+  const minute = now.getMinutes();
 
   const amPMTime =
     Hour > 12 ? `오후 ${Hour - 12}:${minute}` : `오전 ${Hour}:${minute}`;
