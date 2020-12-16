@@ -36,7 +36,10 @@ export default {
           .users();
 
         if (lang === source) {
-          const target = getSecondLang(users, source);
+          const target = getSecondLang(
+            users.filter((user) => !user.isDeleted),
+            source,
+          );
           const translatedText = await req(text, source, target);
           return { translatedText: translatedText };
         }
