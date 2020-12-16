@@ -11,12 +11,12 @@ struct MessageParser: MessageParseProviding {
     
     var userData: UserDataProviding
     
-    func parse(newMessage: GetMessageSubscription.Data.NewMessage) -> [Message] {
+    func parse(newMessage: MessageData) -> [Message] {
         
         guard newMessage.source != "in", newMessage.source != "out" else {
             let systemMessageText = newMessage.source == "in" ?
                 Strings.Chat.userJoinMessage : Strings.Chat.userLeaveMessage
-            return [Message(systemText: newMessage.user.nickname + systemMessageText,
+            return [Message(systemText: newMessage.userData.nickname + systemMessageText,
                             timeStamp: newMessage.createdAt ?? "")]
         }
 
@@ -29,7 +29,7 @@ struct MessageParser: MessageParseProviding {
         
         var messages = [Message]()
       
-        let sender = User(data: newMessage.user)
+        let sender = User(data: newMessage.userData)
         let originMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp)
         messages.append(originMessage)
         
@@ -49,7 +49,7 @@ struct MessageParser: MessageParseProviding {
         return messages
     }
     
-    func parse(missingMessages: [GetMessageByTimeQuery.Data.AllMessagesByTime?]?) -> [Message] {
+    func parse(missingMessages: [MessageData?]?) -> [Message] {
         guard let messages = missingMessages, !messages.isEmpty else {
             return []
         }
@@ -61,7 +61,7 @@ struct MessageParser: MessageParseProviding {
             if message.source == "in" || message.source == "out" {
                 let systemMessageText = message.source == "in" ?
                    Strings.Chat.userJoinMessage : Strings.Chat.userLeaveMessage
-                parsedMessages.append(Message(systemText: message.user.nickname + systemMessageText,
+                parsedMessages.append(Message(systemText: message.userData.nickname + systemMessageText,
                                        timeStamp: message.createdAt ?? ""))
                 break
             }
