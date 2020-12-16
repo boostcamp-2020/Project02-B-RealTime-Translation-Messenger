@@ -26,7 +26,7 @@ const textList: TextObj = {
     submitCode: '입장',
     userList: '대화 상대',
     enterText: '채팅을 입력해주세요',
-    translationText: '번역',
+    translationText: '번역할 메시지를 입력해주세요',
   },
   en: {
     inputNickName: 'Enter Nickname',
@@ -38,7 +38,7 @@ const textList: TextObj = {
     submitCode: 'Enter',
     userList: 'User List',
     enterText: 'Please enter a chat',
-    translationText: 'Translation',
+    translationText: 'Please enter a message to translate',
   },
   ja: {
     inputNickName: 'ニックネーム 入力',
@@ -50,7 +50,7 @@ const textList: TextObj = {
     submitCode: '参加',
     userList: 'メンバー',
     enterText: 'チャットを入力してください',
-    translationText: '翻訳',
+    translationText: '翻訳メッセージを入力してください',
   },
   'zh-CN': {
     inputNickName: '输入昵称',
@@ -62,7 +62,7 @@ const textList: TextObj = {
     submitCode: '参与度',
     userList: '参加者名单',
     enterText: '请输入您的聊天内容',
-    translationText: '翻译',
+    translationText: '请输入要翻译的信息',
   },
 };
 
