@@ -1,5 +1,7 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { User } from '@generated/types';
+import { getText } from '@constants/localization';
 import S from './style';
 
 interface Props {
@@ -8,12 +10,19 @@ interface Props {
   users: User[];
 }
 
+interface LocationState {
+  lang: string;
+}
+
 const SideBar: React.FC<Props> = ({ visible, users }) => {
+  const location = useLocation<LocationState>();
+  const { lang } = location.state;
+  const { userList } = getText(lang);
   return (
     <S.SideBarWrapper visible={visible}>
       <S.SideBarHeader>
         <S.HeaderText>
-          <div>대화 상대</div>
+          <div>{userList}</div>
           <div>{users.length}</div>
         </S.HeaderText>
       </S.SideBarHeader>
