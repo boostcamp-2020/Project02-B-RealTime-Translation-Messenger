@@ -38,7 +38,6 @@ const Input: React.FC = () => {
 
   const getTranslatedText = debounce(async () => {
     const { data } = await translationMutation();
-    console.log('data :>> ', data);
     if (data.translation.translatedText === null)
       setTranslatedText(translationText);
     else
