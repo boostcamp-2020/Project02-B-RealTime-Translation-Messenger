@@ -12,7 +12,6 @@ struct MessageParser: MessageParseProviding {
     var userData: UserDataProviding
     
     func parse(newMessage: MessageData) -> [Message] {
-        
         guard !isSystemMessage(newMessage) else {
             return [systemMessage(from: newMessage)]
         }
@@ -33,10 +32,15 @@ struct MessageParser: MessageParseProviding {
             return messages
         }
         
-        let translatedMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp, isTranslated: true)
+        let translatedMessage = Message(data: newMessage,
+                                        with: translatedResult,
+                                        timeStamp: timeStamp,
+                                        isTranslated: true)
+        
         guard !translatedMessage.text.isEmpty else {
             return messages
         }
+        
         messages.append(translatedMessage)
         
         return messages

@@ -20,6 +20,12 @@ target 'PapagoTalk' do
     # Pods for testing
   end
 
+  target 'MessageModelTests' do
+    inherit! :search_paths
+    pod "Apollo"
+    # Pods for testing
+  end
+
 end
 
 post_install do |installer|
