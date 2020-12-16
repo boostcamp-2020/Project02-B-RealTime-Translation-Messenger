@@ -75,7 +75,7 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
   const history = useHistory();
   const [pinValue, setPinValue] = useState('');
   const { nickname, avatar, lang } = useUserState();
-  const { enterCode, submitCode } = useLocalizationState();
+  const { enterCode, submitCode, wrongCode } = useLocalizationState();
 
   const onClickOverlay = () => {
     if (setVisible) setVisible(!visible);
@@ -97,7 +97,12 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
     variables: { source: 'in' },
   });
 
-  const onClickEnterRoom = async () => {
+  const onClickEnter = async () => {
+    if (pinValue.length < 6) {
+      floatToast('.modal-toast');
+      return;
+    }
+
     try {
       const { data } = await enterRoomMutation();
       if (!data) return;
@@ -137,12 +142,12 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
             />
           </ModalBody>
           <ModalFooter>
-            <Button text={submitCode} onClick={onClickEnterRoom} />
+            <Button text={submitCode} onClick={onClickEnter} />
           </ModalFooter>
         </ModalContainer>
       </Wrapper>
       <S.Toast className="modal-toast" isTop>
-        잘못된 방코드입니다!
+        {wrongCode}
       </S.Toast>
     </S.ToastWrapper>
   );
