@@ -217,7 +217,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dF-cj-mEC">
                                                         <rect key="frame" x="0.0" y="0.0" width="294" height="36"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="MessageTextColor"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                         <state key="normal" image="square.and.arrow.up" catalog="system">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -1502,7 +1502,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SystemMessageCell" id="9UL-52-m31" customClass="SystemMessageCell" customModule="PapagoTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="318" width="414" height="64"/>
+                                        <rect key="frame" x="0.0" y="335" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="y0M-9g-FR0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>

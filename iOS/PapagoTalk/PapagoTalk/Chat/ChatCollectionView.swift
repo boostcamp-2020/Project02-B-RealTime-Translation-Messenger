@@ -20,7 +20,10 @@ class ChatCollectionView: UICollectionView {
             }
             var offset = contentOffset
             var yOffSet = keyboardHeight - superview.safeAreaInsets.bottom
-            let maxYOffSet = contentSize.height - bounds.height
+            var maxYOffSet = contentSize.height - bounds.height
+            if maxYOffSet < 0 {
+                maxYOffSet = 0
+            }
             yOffSet = yOffSet > maxYOffSet ? maxYOffSet : yOffSet
             offset.y += yOffSet
             setContentOffset(offset, animated: false)
