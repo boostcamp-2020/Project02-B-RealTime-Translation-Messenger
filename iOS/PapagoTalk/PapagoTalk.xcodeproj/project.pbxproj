@@ -90,6 +90,12 @@
 		996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */; };
 		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
 		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
+		99E9BD372589CFA3006EEFEA /* MessageBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BD362589CFA3006EEFEA /* MessageBoxTests.swift */; };
+		99E9BD4C2589D0D0006EEFEA /* MessageParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BD4B2589D0D0006EEFEA /* MessageParserTests.swift */; };
+		99E9BD512589D0FD006EEFEA /* MessageHeightCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BD502589D0FD006EEFEA /* MessageHeightCalculatorTests.swift */; };
+		99E9BD552589D13C006EEFEA /* MessageHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968473B25847AB2006C116E /* MessageHeightCalculator.swift */; };
+		99E9BD592589D13F006EEFEA /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E98257CEE2500802B45 /* MessageParser.swift */; };
+		99E9BD5D2589D142006EEFEA /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9725A7256FA5DD00C4938D /* MessageBox.swift */; };
 		BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */; };
 		BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200A025701B4000CC8020 /* RxSwift+.swift */; };
 		BB15693E257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift */; };
@@ -189,6 +195,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		99E9BD392589CFA3006EEFEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBF2DC91256674A300F2EA7D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBF2DC98256674A300F2EA7D;
+			remoteInfo = PapagoTalk;
+		};
 		BBF2DCB0256674A500F2EA7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BBF2DC91256674A300F2EA7D /* Project object */;
@@ -297,6 +310,11 @@
 		99CF54542588943100440F37 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		99CF54552588943100440F37 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		99CF54562588943100440F37 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		99E9BD342589CFA3006EEFEA /* MessageModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		99E9BD362589CFA3006EEFEA /* MessageBoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBoxTests.swift; sourceTree = "<group>"; };
+		99E9BD382589CFA3006EEFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99E9BD4B2589D0D0006EEFEA /* MessageParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParserTests.swift; sourceTree = "<group>"; };
+		99E9BD502589D0FD006EEFEA /* MessageHeightCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeightCalculatorTests.swift; sourceTree = "<group>"; };
 		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactorTests.swift; sourceTree = "<group>"; };
@@ -364,6 +382,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		99E9BD312589CFA3006EEFEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBF2DC96256674A300F2EA7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -590,6 +615,17 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		99E9BD352589CFA3006EEFEA /* MessageModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				99E9BD502589D0FD006EEFEA /* MessageHeightCalculatorTests.swift */,
+				99E9BD362589CFA3006EEFEA /* MessageBoxTests.swift */,
+				99E9BD4B2589D0D0006EEFEA /* MessageParserTests.swift */,
+				99E9BD382589CFA3006EEFEA /* Info.plist */,
+			);
+			path = MessageModelTests;
+			sourceTree = "<group>";
+		};
 		BB1FFD4A257685EA00E4668C /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,7 +763,8 @@
 			children = (
 				99A2766A256687D1008BD24C /* .swiftlint.yml */,
 				BBF2DC9B256674A300F2EA7D /* PapagoTalk */,
-				BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */,
+				BBF2DCB2256674A500F2EA7D /* ReactorTests */,
+				99E9BD352589CFA3006EEFEA /* MessageModelTests */,
 				BBF2DC9A256674A300F2EA7D /* Products */,
 				BDB645955860CC284B4F06B4 /* Pods */,
 				EB34B92CAF9EC55846A01D71 /* Frameworks */,
@@ -739,6 +776,7 @@
 			children = (
 				BBF2DC99256674A300F2EA7D /* PapagoTalk.app */,
 				BBF2DCAF256674A500F2EA7D /* PapagoTalkTests.xctest */,
+				99E9BD342589CFA3006EEFEA /* MessageModelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -772,7 +810,7 @@
 			path = PapagoTalk;
 			sourceTree = "<group>";
 		};
-		BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */ = {
+		BBF2DCB2256674A500F2EA7D /* ReactorTests */ = {
 			isa = PBXGroup;
 			children = (
 				BB987E8E257F4D3E00F4C258 /* Mock */,
@@ -783,7 +821,7 @@
 				99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */,
 				BBF2DCB5256674A500F2EA7D /* Info.plist */,
 			);
-			path = PapagoTalkTests;
+			path = ReactorTests;
 			sourceTree = "<group>";
 		};
 		BDB645955860CC284B4F06B4 /* Pods */ = {
@@ -809,6 +847,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		99E9BD332589CFA3006EEFEA /* MessageModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99E9BD3B2589CFA3006EEFEA /* Build configuration list for PBXNativeTarget "MessageModelTests" */;
+			buildPhases = (
+				99E9BD302589CFA3006EEFEA /* Sources */,
+				99E9BD312589CFA3006EEFEA /* Frameworks */,
+				99E9BD322589CFA3006EEFEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				99E9BD3A2589CFA3006EEFEA /* PBXTargetDependency */,
+			);
+			name = MessageModelTests;
+			productName = MessageModelTests;
+			productReference = 99E9BD342589CFA3006EEFEA /* MessageModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BBF2DC98256674A300F2EA7D /* PapagoTalk */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBF2DCC3256674A500F2EA7D /* Build configuration list for PBXNativeTarget "PapagoTalk" */;
@@ -858,6 +914,10 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					99E9BD332589CFA3006EEFEA = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = BBF2DC98256674A300F2EA7D;
+					};
 					BBF2DC98256674A300F2EA7D = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -885,11 +945,19 @@
 			targets = (
 				BBF2DC98256674A300F2EA7D /* PapagoTalk */,
 				BBF2DCAE256674A500F2EA7D /* PapagoTalkTests */,
+				99E9BD332589CFA3006EEFEA /* MessageModelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		99E9BD322589CFA3006EEFEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBF2DC97256674A300F2EA7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1014,6 +1082,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		99E9BD302589CFA3006EEFEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99E9BD552589D13C006EEFEA /* MessageHeightCalculator.swift in Sources */,
+				99E9BD512589D0FD006EEFEA /* MessageHeightCalculatorTests.swift in Sources */,
+				99E9BD4C2589D0D0006EEFEA /* MessageParserTests.swift in Sources */,
+				99E9BD5D2589D142006EEFEA /* MessageBox.swift in Sources */,
+				99E9BD592589D13F006EEFEA /* MessageParser.swift in Sources */,
+				99E9BD372589CFA3006EEFEA /* MessageBoxTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBF2DC95256674A300F2EA7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1203,6 +1284,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		99E9BD3A2589CFA3006EEFEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BBF2DC98256674A300F2EA7D /* PapagoTalk */;
+			targetProxy = 99E9BD392589CFA3006EEFEA /* PBXContainerItemProxy */;
+		};
 		BBF2DCB1256674A500F2EA7D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BBF2DC98256674A300F2EA7D /* PapagoTalk */;
@@ -1247,6 +1333,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		99E9BD3C2589CFA3006EEFEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4WL559DRW9;
+				INFOPLIST_FILE = MessageModelTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.hwi.MessageModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PapagoTalk.app/PapagoTalk";
+			};
+			name = Debug;
+		};
+		99E9BD3D2589CFA3006EEFEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4WL559DRW9;
+				INFOPLIST_FILE = MessageModelTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.hwi.MessageModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PapagoTalk.app/PapagoTalk";
+			};
+			name = Release;
+		};
 		BBF2DCC1256674A500F2EA7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1349,6 +1478,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1360,7 +1490,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1456,6 +1586,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		99E9BD3B2589CFA3006EEFEA /* Build configuration list for PBXNativeTarget "MessageModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99E9BD3C2589CFA3006EEFEA /* Debug */,
+				99E9BD3D2589CFA3006EEFEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BBF2DC94256674A300F2EA7D /* Build configuration list for PBXProject "PapagoTalk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
