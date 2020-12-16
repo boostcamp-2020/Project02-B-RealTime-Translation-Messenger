@@ -197,4 +197,42 @@ class MessageParserTests: XCTestCase {
         XCTAssertEqual(parsedMessage[0].text, "OriginText")
         XCTAssertEqual(parsedMessage[1].text, "TranslatedText")
     }
+    
+    func test_parser_should_always_parse_translated_message_when_flag_true() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: true)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 1, source: "ko"),
+                        factory.message(messageID: 2, senderID: 1, source: "en"),
+                        factory.message(messageID: 3, senderID: 2, source: "ko"),
+                        factory.message(messageID: 4, senderID: 2, source: "en")]
+        var parsedMessages: [Message] = []
+        // When
+        messages.forEach { parsedMessages.append(contentsOf: messageParser.parse(newMessage: $0)) }
+        // Then
+        
+        XCTAssertEqual(parsedMessages.count, messages.count * 2)
+    }
+    
+    func test_parser_should_always_throw_traslation_failed_messsage() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: true)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.translationFailedMessage(messageID: 1, senderID: 1, source: "ko"),
+                        factory.translationFailedMessage(messageID: 2, senderID: 1, source: "en"),
+                        factory.translationFailedMessage(messageID: 3, senderID: 2, source: "ko"),
+                        factory.translationFailedMessage(messageID: 4, senderID: 2, source: "en")]
+        var parsedMessages: [Message] = []
+        // When
+        messages.forEach { parsedMessages.append(contentsOf: messageParser.parse(newMessage: $0)) }
+        // Then
+        
+        XCTAssertEqual(parsedMessages.count, messages.count)
+    }
 }
