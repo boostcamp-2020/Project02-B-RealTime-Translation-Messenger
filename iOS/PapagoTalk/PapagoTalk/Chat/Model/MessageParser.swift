@@ -13,11 +13,8 @@ struct MessageParser: MessageParseProviding {
     
     func parse(newMessage: MessageData) -> [Message] {
         
-        guard newMessage.source != "in", newMessage.source != "out" else {
-            let systemMessageText = newMessage.source == "in" ?
-                Strings.Chat.userJoinMessage : Strings.Chat.userLeaveMessage
-            return [Message(systemText: newMessage.userData.nickname + systemMessageText,
-                            timeStamp: newMessage.createdAt ?? "")]
+        guard !isSystemMessage(newMessage) else {
+            return [systemMessage(from: newMessage)]
         }
 
         guard let timeStamp = newMessage.createdAt,
@@ -29,14 +26,10 @@ struct MessageParser: MessageParseProviding {
         
         var messages = [Message]()
       
-        let sender = User(data: newMessage.userData)
         let originMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp)
         messages.append(originMessage)
         
-        let messageLanguage = Language.codeToLanguage(of: newMessage.source)
-        let setting = userData.sameLanguageTranslation
-        
-        guard messageLanguage != userData.language || messageLanguage != sender.language || setting else {
+        guard shouldTranslate(message: newMessage) else {
             return messages
         }
         
@@ -54,29 +47,34 @@ struct MessageParser: MessageParseProviding {
             return []
         }
         var parsedMessages = [Message]()
-        
-        for message in messages {
-            guard let message = message else { return parsedMessages }
-            
-            if message.source == "in" || message.source == "out" {
-                let systemMessageText = message.source == "in" ?
-                   Strings.Chat.userJoinMessage : Strings.Chat.userLeaveMessage
-                parsedMessages.append(Message(systemText: message.userData.nickname + systemMessageText,
-                                       timeStamp: message.createdAt ?? ""))
-                break
-            }
-            
-            if let timeStamp = message.createdAt,
-               let data = message.text.data(using: .utf8),
-               let translatedResult: TranslatedResult = try? data.decoded() {
-                
-                let originMessage = Message(data: message, with: translatedResult, timeStamp: timeStamp)
-                parsedMessages.append(originMessage)
-                
-                let translatedMessage = Message(data: message, with: translatedResult, timeStamp: timeStamp, isTranslated: true)
-                parsedMessages.append(translatedMessage)
-            }
+    
+        messages.forEach {
+            guard let message = $0 else { return }
+            parsedMessages.append(contentsOf: parse(newMessage: message))
         }
+        
         return parsedMessages
+    }
+    
+    private func isSystemMessage(_ message: MessageData) -> Bool {
+        return message.source == "in" || message.source == "out"
+    }
+    
+    private func shouldTranslate(message: MessageData) -> Bool {
+        let messageLanguage = Language.codeToLanguage(of: message.source)
+        return messageLanguage != userData.language || userData.sameLanguageTranslation
+    }
+    
+    private func systemMessage(from message: MessageData) -> Message {
+        switch message.source {
+        case "in":
+            return Message(systemText: message.userData.nickname + Strings.Chat.userJoinMessage,
+                           timeStamp: message.createdAt ?? "")
+        case "out":
+            return Message(systemText: message.userData.nickname + Strings.Chat.userLeaveMessage,
+                           timeStamp: message.createdAt ?? "")
+        default:
+            return Message(systemText: "", timeStamp: message.createdAt ?? "")
+        }
     }
 }
