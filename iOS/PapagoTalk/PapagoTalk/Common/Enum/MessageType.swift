@@ -17,15 +17,15 @@ enum MessageType: String, Codable {
     var identifier: String {
         switch self {
         case .sent:
-            return SentMessageCell.identifier
+            return "SentMessageCell"
         case .sentTranslated:
-            return UserTranslatedMessageCell.identifier
+            return "UserTranslatedMessageCell"
         case .received:
-            return ReceivedMessageCell.identifier
+            return "ReceivedMessageCell"
         case .translated:
-            return TranslatedMessageCell.identifier
+            return "TranslatedMessageCell"
         case .system:
-            return SystemMessageCell.identifier
+            return "SystemMessageCell"
         }
     }
 }

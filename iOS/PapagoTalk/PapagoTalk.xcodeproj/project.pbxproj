@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */; };
+		33207D5C0DE1407DC4B9CA33 /* Pods_MessageModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E533376834C2E5DF21B9F /* Pods_MessageModelTests.framework */; };
 		990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE922257265BB00340A72 /* ChatCodeInputViewController.swift */; };
 		990DE9292572665400340A72 /* ChatCodeInputViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9282572665400340A72 /* ChatCodeInputViewReactor.swift */; };
 		990DE947257336D900340A72 /* JoinChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE946257336D900340A72 /* JoinChatError.swift */; };
@@ -96,6 +97,35 @@
 		99E9BD552589D13C006EEFEA /* MessageHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968473B25847AB2006C116E /* MessageHeightCalculator.swift */; };
 		99E9BD592589D13F006EEFEA /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E98257CEE2500802B45 /* MessageParser.swift */; };
 		99E9BD5D2589D142006EEFEA /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9725A7256FA5DD00C4938D /* MessageBox.swift */; };
+		99E9BD6B2589EA67006EEFEA /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BD6A2589EA67006EEFEA /* MockMessage.swift */; };
+		99E9BD722589EA88006EEFEA /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDE2C7C25830B3C0068D7DE /* MessageData.swift */; };
+		99E9BD762589EAB8006EEFEA /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDE2C7625830AB90068D7DE /* UserData.swift */; };
+		99E9BD7B2589EAE5006EEFEA /* MockUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BD7A2589EAE5006EEFEA /* MockUserData.swift */; };
+		99E9BD802589EB18006EEFEA /* MockMessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BD7F2589EB18006EEFEA /* MockMessageFactory.swift */; };
+		99E9BD842589EE76006EEFEA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5B256F4678009B8B5F /* Message.swift */; };
+		99E9BD882589EE83006EEFEA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA1A5F256F46FE009B8B5F /* User.swift */; };
+		99E9BD8C2589EE99006EEFEA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
+		99E9BD902589EE9F006EEFEA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE97B2573A80B00340A72 /* Strings.swift */; };
+		99E9BD942589EEAC006EEFEA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968472B258325F6006C116E /* API.swift */; };
+		99E9BDAC2589F031006EEFEA /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1466256D3A5F00F21215 /* Language.swift */; };
+		99E9BDB02589F054006EEFEA /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9772573A67C00340A72 /* String+.swift */; };
+		99E9BDB42589F058006EEFEA /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A146A256D5B6200F21215 /* Locale+.swift */; };
+		99E9BDB82589F076006EEFEA /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C28F257526DD00C68491 /* MessageType.swift */; };
+		99E9BDBC2589F132006EEFEA /* MessageParseProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15699F257F8C2F00A2C0F9 /* MessageParseProviding.swift */; };
+		99E9BDC02589F148006EEFEA /* UserDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9D425762AC500C15AC7 /* UserDataProviding.swift */; };
+		99E9BDC42589F16A006EEFEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDE2C6A25825C720068D7DE /* Date+.swift */; };
+		99E9BDC82589F16C006EEFEA /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE140762573D374000B0604 /* DateFormatter+.swift */; };
+		99E9BDCC2589F16F006EEFEA /* Calendar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C2932575345200C68491 /* Calendar+.swift */; };
+		99E9BDD02589F17A006EEFEA /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20F4D6257394D800C5AC1D /* Data+.swift */; };
+		99E9BDD42589F17C006EEFEA /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20F4DA257394F800C5AC1D /* Encodable+.swift */; };
+		99E9BDD82589F18B006EEFEA /* MicButtonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F45257FCE1700802B45 /* MicButtonSize.swift */; };
+		99E9BDDC2589F19E006EEFEA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23C09A2576979C001D74A0 /* NetworkError.swift */; };
+		99E9BDE02589F1C0006EEFEA /* TimeFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49857F2587438100896432 /* TimeFormatType.swift */; };
+		99E9BDE42589F1C9006EEFEA /* ImageFactoryProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1445256D187900F21215 /* ImageFactoryProviding.swift */; };
+		99E9BDE82589F1E4006EEFEA /* TranslatedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995BE9F62576350A00C15AC7 /* TranslatedResult.swift */; };
+		99E9BDEC2589F1EC006EEFEA /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A1432256D040B00F21215 /* ImageFactory.swift */; };
+		99E9BDF02589F26D006EEFEA /* UserDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* UserDataProviderMock.swift */; };
+		99E9BDF52589F2A9006EEFEA /* MockReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BDF42589F2A9006EEFEA /* MockReceiver.swift */; };
 		BAAC70519C9ECD089A8DBAFE /* Pods_PapagoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */; };
 		BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200A025701B4000CC8020 /* RxSwift+.swift */; };
 		BB15693E257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift */; };
@@ -214,6 +244,7 @@
 /* Begin PBXFileReference section */
 		110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.release.xcconfig"; sourceTree = "<group>"; };
 		68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		908E533376834C2E5DF21B9F /* Pods_MessageModelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageModelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
 		990DE922257265BB00340A72 /* ChatCodeInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCodeInputViewController.swift; sourceTree = "<group>"; };
 		990DE9282572665400340A72 /* ChatCodeInputViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCodeInputViewReactor.swift; sourceTree = "<group>"; };
@@ -315,6 +346,10 @@
 		99E9BD382589CFA3006EEFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99E9BD4B2589D0D0006EEFEA /* MessageParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParserTests.swift; sourceTree = "<group>"; };
 		99E9BD502589D0FD006EEFEA /* MessageHeightCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeightCalculatorTests.swift; sourceTree = "<group>"; };
+		99E9BD6A2589EA67006EEFEA /* MockMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		99E9BD7A2589EAE5006EEFEA /* MockUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserData.swift; sourceTree = "<group>"; };
+		99E9BD7F2589EB18006EEFEA /* MockMessageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessageFactory.swift; sourceTree = "<group>"; };
+		99E9BDF42589F2A9006EEFEA /* MockReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReceiver.swift; sourceTree = "<group>"; };
 		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalkTests.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalkTests/Pods-PapagoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactorTests.swift; sourceTree = "<group>"; };
@@ -379,6 +414,8 @@
 		BBF2DCB5256674A500F2EA7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBF3B6F0257FB800004578D4 /* ChatCodeInputReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCodeInputReactorTests.swift; sourceTree = "<group>"; };
 		E428797153F8882AB3C663E3 /* Pods-PapagoTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.debug.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.debug.xcconfig"; sourceTree = "<group>"; };
+		E82F24C736A257F94A2B71EF /* Pods-MessageModelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageModelTests.release.xcconfig"; path = "Target Support Files/Pods-MessageModelTests/Pods-MessageModelTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE4EC5A162E26818567AFAC1 /* Pods-MessageModelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageModelTests.debug.xcconfig"; path = "Target Support Files/Pods-MessageModelTests/Pods-MessageModelTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +423,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33207D5C0DE1407DC4B9CA33 /* Pods_MessageModelTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,12 +656,24 @@
 		99E9BD352589CFA3006EEFEA /* MessageModelTests */ = {
 			isa = PBXGroup;
 			children = (
+				99E9BD692589EA4A006EEFEA /* Mock */,
 				99E9BD502589D0FD006EEFEA /* MessageHeightCalculatorTests.swift */,
 				99E9BD362589CFA3006EEFEA /* MessageBoxTests.swift */,
 				99E9BD4B2589D0D0006EEFEA /* MessageParserTests.swift */,
 				99E9BD382589CFA3006EEFEA /* Info.plist */,
 			);
 			path = MessageModelTests;
+			sourceTree = "<group>";
+		};
+		99E9BD692589EA4A006EEFEA /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				99E9BD6A2589EA67006EEFEA /* MockMessage.swift */,
+				99E9BD7A2589EAE5006EEFEA /* MockUserData.swift */,
+				99E9BD7F2589EB18006EEFEA /* MockMessageFactory.swift */,
+				99E9BDF42589F2A9006EEFEA /* MockReceiver.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		BB1FFD4A257685EA00E4668C /* Errors */ = {
@@ -831,6 +881,8 @@
 				110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */,
 				B7DF5FBC75925F323CE96437 /* Pods-PapagoTalkTests.debug.xcconfig */,
 				9724353B0AE530300B9CAC1B /* Pods-PapagoTalkTests.release.xcconfig */,
+				FE4EC5A162E26818567AFAC1 /* Pods-MessageModelTests.debug.xcconfig */,
+				E82F24C736A257F94A2B71EF /* Pods-MessageModelTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -840,6 +892,7 @@
 			children = (
 				AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */,
 				68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */,
+				908E533376834C2E5DF21B9F /* Pods_MessageModelTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -851,9 +904,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99E9BD3B2589CFA3006EEFEA /* Build configuration list for PBXNativeTarget "MessageModelTests" */;
 			buildPhases = (
+				C4EDCD1F7B25AA4BF8B49677 /* [CP] Check Pods Manifest.lock */,
 				99E9BD302589CFA3006EEFEA /* Sources */,
 				99E9BD312589CFA3006EEFEA /* Frameworks */,
 				99E9BD322589CFA3006EEFEA /* Resources */,
+				50651DA8E26D9A1D229D532D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1019,6 +1074,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		50651DA8E26D9A1D229D532D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MessageModelTests/Pods-MessageModelTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MessageModelTests/Pods-MessageModelTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MessageModelTests/Pods-MessageModelTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9310C3760A617A247417F4C4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1079,6 +1151,28 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
+		C4EDCD1F7B25AA4BF8B49677 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MessageModelTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1086,12 +1180,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E9BDC42589F16A006EEFEA /* Date+.swift in Sources */,
+				99E9BDDC2589F19E006EEFEA /* NetworkError.swift in Sources */,
+				99E9BDE82589F1E4006EEFEA /* TranslatedResult.swift in Sources */,
+				99E9BD882589EE83006EEFEA /* User.swift in Sources */,
+				99E9BD6B2589EA67006EEFEA /* MockMessage.swift in Sources */,
+				99E9BDD02589F17A006EEFEA /* Data+.swift in Sources */,
 				99E9BD552589D13C006EEFEA /* MessageHeightCalculator.swift in Sources */,
+				99E9BDB82589F076006EEFEA /* MessageType.swift in Sources */,
 				99E9BD512589D0FD006EEFEA /* MessageHeightCalculatorTests.swift in Sources */,
+				99E9BD762589EAB8006EEFEA /* UserData.swift in Sources */,
+				99E9BD722589EA88006EEFEA /* MessageData.swift in Sources */,
+				99E9BD802589EB18006EEFEA /* MockMessageFactory.swift in Sources */,
+				99E9BDE02589F1C0006EEFEA /* TimeFormatType.swift in Sources */,
+				99E9BDD82589F18B006EEFEA /* MicButtonSize.swift in Sources */,
+				99E9BD902589EE9F006EEFEA /* Strings.swift in Sources */,
+				99E9BDCC2589F16F006EEFEA /* Calendar+.swift in Sources */,
+				99E9BDE42589F1C9006EEFEA /* ImageFactoryProviding.swift in Sources */,
+				99E9BDC02589F148006EEFEA /* UserDataProviding.swift in Sources */,
+				99E9BDAC2589F031006EEFEA /* Language.swift in Sources */,
+				99E9BDC82589F16C006EEFEA /* DateFormatter+.swift in Sources */,
+				99E9BD8C2589EE99006EEFEA /* Constant.swift in Sources */,
+				99E9BDB02589F054006EEFEA /* String+.swift in Sources */,
 				99E9BD4C2589D0D0006EEFEA /* MessageParserTests.swift in Sources */,
+				99E9BD7B2589EAE5006EEFEA /* MockUserData.swift in Sources */,
 				99E9BD5D2589D142006EEFEA /* MessageBox.swift in Sources */,
+				99E9BD842589EE76006EEFEA /* Message.swift in Sources */,
 				99E9BD592589D13F006EEFEA /* MessageParser.swift in Sources */,
+				99E9BDEC2589F1EC006EEFEA /* ImageFactory.swift in Sources */,
+				99E9BD942589EEAC006EEFEA /* API.swift in Sources */,
+				99E9BDB42589F058006EEFEA /* Locale+.swift in Sources */,
+				99E9BDF52589F2A9006EEFEA /* MockReceiver.swift in Sources */,
+				99E9BDD42589F17C006EEFEA /* Encodable+.swift in Sources */,
 				99E9BD372589CFA3006EEFEA /* MessageBoxTests.swift in Sources */,
+				99E9BDBC2589F132006EEFEA /* MessageParseProviding.swift in Sources */,
+				99E9BDF02589F26D006EEFEA /* UserDataProviderMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1335,6 +1458,7 @@
 /* Begin XCBuildConfiguration section */
 		99E9BD3C2589CFA3006EEFEA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE4EC5A162E26818567AFAC1 /* Pods-MessageModelTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1356,6 +1480,7 @@
 		};
 		99E9BD3D2589CFA3006EEFEA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E82F24C736A257F94A2B71EF /* Pods-MessageModelTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

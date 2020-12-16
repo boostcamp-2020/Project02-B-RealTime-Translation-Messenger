@@ -11,6 +11,7 @@ struct UserDataProviderMock: UserDataProviding {
     var user: User
     var micButtonSize = MicButtonSize.medium
     var token = "testToken"
+    var sameLanguageTranslation: Bool = true
     
     init() {
         user = User(id: 1, nickName: "test", image: "", language: .english)
@@ -26,5 +27,8 @@ struct UserDataProviderMock: UserDataProviding {
     
     init(language: Language) {
         user = User(id: 1, nickName: "test", image: "", language: language)
+    }
+    
+    func removeToken() {
     }
 }

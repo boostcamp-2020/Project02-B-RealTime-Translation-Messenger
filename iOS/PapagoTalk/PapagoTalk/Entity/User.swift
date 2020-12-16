@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Apollo
 
 struct User: Codable {
     var id: Int

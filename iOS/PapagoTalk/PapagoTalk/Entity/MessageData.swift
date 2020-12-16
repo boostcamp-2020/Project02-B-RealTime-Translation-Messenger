@@ -12,6 +12,7 @@ protocol MessageData {
     var text: String { get set }
     var userData: UserData { get }
     var source: String { get set }
+    var createdAt: String? { get set }
 }
 
 typealias GetMessageData = GetMessageSubscription.Data.NewMessage
