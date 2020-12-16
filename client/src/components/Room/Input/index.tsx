@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { debounce } from 'lodash';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { CREATE_MESSAGE, TRANSLATION } from '@queries/messege.queries';
 import { getText } from '@constants/localization';
@@ -8,6 +8,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
 import Listening from '@components/Listening';
+import { wsClient } from '@/apollo/Client';
 import Badge from './Badge';
 import S from './style';
 
@@ -17,9 +18,10 @@ interface LocationState {
 
 const Input: React.FC = () => {
   const [text, setText] = useState('');
+  const history = useHistory();
   const location = useLocation<LocationState>();
   const { lang } = location.state;
-  const { enterText, translationText } = getText(lang);
+  const { enterText, translationText, tokenErrorText } = getText(lang);
   const [translatedText, setTranslatedText] = useState(enterText);
   const [isListening, setIsListening] = useState(false);
   const { transcript } = useSpeechRecognition();
@@ -48,6 +50,12 @@ const Input: React.FC = () => {
   };
 
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!localStorage.getItem('token')) {
+      alert(tokenErrorText);
+      wsClient.close();
+      history.push('/');
+    }
+
     setText(e.target.value);
     setTranslatedText('...');
   };

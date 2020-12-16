@@ -9,6 +9,7 @@ interface TextList {
   userList: string;
   enterText: string;
   translationText: string;
+  tokenErrorText: string;
 }
 
 interface TextObj {
@@ -27,6 +28,7 @@ const textList: TextObj = {
     userList: '대화 상대',
     enterText: '채팅을 입력해주세요',
     translationText: '번역',
+    tokenErrorText: '토큰이 없어요! 메인페이지로 돌아갑니다😥',
   },
   en: {
     inputNickName: 'Enter Nickname',
@@ -39,6 +41,7 @@ const textList: TextObj = {
     userList: 'User List',
     enterText: 'Please enter a chat',
     translationText: 'Translation',
+    tokenErrorText: 'You don`t have a token! Go back to the main page😥',
   },
   ja: {
     inputNickName: 'ニックネーム 入力',
@@ -51,6 +54,7 @@ const textList: TextObj = {
     userList: 'メンバー',
     enterText: 'チャットを入力してください',
     translationText: '翻訳',
+    tokenErrorText: 'トークンがありません！ メインページに戻ります😥',
   },
   'zh-CN': {
     inputNickName: '输入昵称',
@@ -63,6 +67,7 @@ const textList: TextObj = {
     userList: '参加者名单',
     enterText: '请输入您的聊天内容',
     translationText: '翻译',
+    tokenErrorText: '没有代币牌！ 回到主页😥',
   },
 };
 
