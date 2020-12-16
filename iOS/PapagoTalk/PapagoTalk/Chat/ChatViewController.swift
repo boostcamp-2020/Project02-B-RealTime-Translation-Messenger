@@ -211,9 +211,13 @@ final class ChatViewController: UIViewController, StoryboardView {
 }
 
 extension ChatViewController: KeyboardProviding {
-    private func bindKeyboard() {
-        tapToDissmissKeyboard
-            .drive()
+    private func bindKeyboard() { 
+        chatCollectionView.rx.tapGesture()
+            .when(.recognized)
+            .asObservable()
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
             .disposed(by: disposeBag)
         
         keyboardWillShow
