@@ -36,11 +36,15 @@ interface TranslatedText {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 70vh;
+  height: 65vh;
   margin: 1rem 0;
   padding: 0 2rem;
   overflow-x: hidden;
   overflow-y: scroll;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    height: 55vh;
+    padding: 0 1rem;
+  }
 `;
 
 const ChatLog: FC<Props> = ({ messages, page, setPage, onLoadMore }) => {

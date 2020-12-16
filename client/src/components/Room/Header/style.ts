@@ -33,7 +33,8 @@ export default {
       `};
 
     @media (max-width: ${({ theme }) => theme.mediaSize}) {
-      padding: 0 1.5rem;
+      height: 3rem;
+      padding: 0 1rem;
     }
   `,
   HamburgerWrapper: styled.div`
@@ -86,11 +87,20 @@ export default {
     svg {
       fill: ${({ theme }) => (theme.isLight ? theme.blackColor : '#e5e5e5')};
     }
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
   `,
   Code: styled.div`
     margin-right: 0.3rem;
     font-size: 20px;
     font-weight: 500;
+    @media (max-width: ${({ theme }) => theme.mediaSize}) {
+      font-size: 14px;
+    }
   `,
   RightWrapper: styled.div`
     display: flex;
@@ -99,6 +109,8 @@ export default {
     width: 10rem;
   `,
   DoorButton: styled.button`
+    display: flex;
+    align-items: center;
     width: 24px;
     height: 24px;
     margin-left: 1rem;
@@ -106,7 +118,12 @@ export default {
       fill: ${({ theme }) => (theme.isLight ? theme.blackColor : '#545759')};
     }
     @media (max-width: ${({ theme }) => theme.mediaSize}) {
-      margin-left: 0.3rem;
+      margin-top: 3px;
+      margin-left: 0.5rem;
+      svg {
+        width: 15px;
+        height: 15px;
+      }
     }
   `,
   Toast: styled.div`

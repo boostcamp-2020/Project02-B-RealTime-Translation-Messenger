@@ -10,6 +10,9 @@ const Text = styled.div<Props>`
   display: ${(props) => (props.isAvatarVisible ? 'inline-block' : 'none')};
   margin-right: 0.3rem;
   color: ${({ theme }) => theme.reverseColor};
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    font-size: 10px;
+  }
 `;
 
 const AvatarText: FC<Props> = ({ text, isAvatarVisible }) => (

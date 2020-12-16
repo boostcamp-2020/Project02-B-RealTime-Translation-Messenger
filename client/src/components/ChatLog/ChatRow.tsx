@@ -74,6 +74,7 @@ const DoubleBubble = styled.div`
     min-width: 50px;
     max-width: 200px;
     div {
+      font-size: 10px;
       :first-child {
         margin-bottom: 0.5rem;
       }
@@ -92,6 +93,10 @@ const UserChangedPopup = styled.div`
   background-color: #000;
   border-radius: ${(props) => props.theme.borderRadiusSmall};
   font-size: 12px;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    margin: 1rem auto;
+    font-size: 8px;
+  }
 `;
 
 const ChatRow: FC<Props> = ({ message, obj, allMessages }) => {
