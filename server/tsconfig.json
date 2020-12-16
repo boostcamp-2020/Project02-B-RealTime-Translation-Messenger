@@ -31,7 +31,10 @@
       ],
       "@utils/*": [
         "src/utils/*"
-      ]
+      ],
+      "@interfaces/*": [
+        "src/interfaces/*"
+      ],
     }
   }
 }

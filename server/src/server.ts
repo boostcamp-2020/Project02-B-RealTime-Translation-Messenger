@@ -11,9 +11,7 @@ import { verify } from 'jsonwebtoken';
 const PORT = process.env.PORT || 4000;
 
 const prisma = new PrismaClient();
-
 const pubsub = new PubSub();
-
 const server = new GraphQLServer({
   schema,
   context: ({ request, connection }) => ({ request, connection, isAuthenticated, pubsub }),
@@ -22,6 +20,10 @@ const server = new GraphQLServer({
 server.express.use(logger('dev'));
 server.express.use(authenticateJwt);
 
+interface ConnectionParams {
+  authToken: string;
+}
+
 server.start(
   {
     port: PORT,
@@ -29,7 +31,7 @@ server.start(
     endpoint: '/graphql',
     subscriptions: {
       path: '/graphql',
-      onConnect: async (connectionParams: any, webSocket: any) => {
+      onConnect: async (connectionParams: ConnectionParams) => {
         const { authToken } = connectionParams;
         const user: any = verify(authToken, process.env.JWT_SECRET_KEY as string);
         const findUser = await prisma.user.findOne({ where: { id: user.id } });

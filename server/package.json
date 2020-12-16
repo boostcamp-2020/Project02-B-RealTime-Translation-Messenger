@@ -48,6 +48,7 @@
   },
   "_moduleAliases": {
     "@utils": "src/utils",
-    "@api": "src/api"
+    "@api": "src/api",
+    "@interfaces": "src/interfaces"
   }
 }

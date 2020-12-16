@@ -1,3 +1,4 @@
+import { Context } from './../../../interfaces/context';
 import { PrismaClient } from '@prisma/client';
 import TRIGGER from '@utils/trigger';
 
@@ -6,9 +7,9 @@ const prisma = new PrismaClient();
 export default {
   Mutation: {
     createSystemMessage: async (
-      _: any,
+      _: boolean,
       { source }: { source: string },
-      { request, pubsub }: any,
+      { request, pubsub }: Context,
     ): Promise<boolean> => {
       const { id, nickname, avatar, lang, roomId } = request.user;
       const newMessage = await prisma.message.create({
