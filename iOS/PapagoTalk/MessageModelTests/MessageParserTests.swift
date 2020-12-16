@@ -213,7 +213,6 @@ class MessageParserTests: XCTestCase {
         // When
         messages.forEach { parsedMessages.append(contentsOf: messageParser.parse(newMessage: $0)) }
         // Then
-        
         XCTAssertEqual(parsedMessages.count, messages.count * 2)
     }
     
@@ -232,7 +231,168 @@ class MessageParserTests: XCTestCase {
         // When
         messages.forEach { parsedMessages.append(contentsOf: messageParser.parse(newMessage: $0)) }
         // Then
-        
         XCTAssertEqual(parsedMessages.count, messages.count)
+    }
+    
+    func test_parse_missing_messages_sent_same_language_flag_true() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: true)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 1, source: "ko"),
+                        factory.message(messageID: 2, senderID: 1, source: "ko"),
+                        factory.message(messageID: 3, senderID: 1, source: "ko"),
+                        factory.message(messageID: 4, senderID: 1, source: "ko")]
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count * 2)
+    }
+    
+    func test_parse_missing_messages_sent_same_language_flag_false() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: false)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 1, source: "ko"),
+                        factory.message(messageID: 2, senderID: 1, source: "ko"),
+                        factory.message(messageID: 3, senderID: 1, source: "ko"),
+                        factory.message(messageID: 4, senderID: 1, source: "ko")]
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count)
+    }
+    
+    func test_parse_missing_messages_sent_different_language_flag_true() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: true)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 1, source: "en"),
+                        factory.message(messageID: 2, senderID: 1, source: "en"),
+                        factory.message(messageID: 3, senderID: 1, source: "en"),
+                        factory.message(messageID: 4, senderID: 1, source: "en")]
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count * 2)
+    }
+    
+    func test_parse_missing_messages_sent_different_language_flag_false() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: false)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 1, source: "en"),
+                        factory.message(messageID: 2, senderID: 1, source: "en"),
+                        factory.message(messageID: 3, senderID: 1, source: "en"),
+                        factory.message(messageID: 4, senderID: 1, source: "en")]
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count * 2)
+    }
+    
+    func test_parse_missing_messages_received_same_language_flag_true() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: true)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 2, source: "ko"),
+                        factory.message(messageID: 2, senderID: 3, source: "ko"),
+                        factory.message(messageID: 3, senderID: 4, source: "ko"),
+                        factory.message(messageID: 4, senderID: 5, source: "ko")]
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count * 2)
+    }
+    
+    func test_parse_missing_messages_received_same_language_flag_false() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: false)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 2, source: "ko"),
+                        factory.message(messageID: 2, senderID: 3, source: "ko"),
+                        factory.message(messageID: 3, senderID: 4, source: "ko"),
+                        factory.message(messageID: 4, senderID: 5, source: "ko")]
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count)
+    }
+    
+    func test_parse_missing_messages_received_different_language_flag_true() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: true)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 2, source: "en"),
+                        factory.message(messageID: 2, senderID: 3, source: "en"),
+                        factory.message(messageID: 3, senderID: 4, source: "en"),
+                        factory.message(messageID: 4, senderID: 5, source: "en")]
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count * 2)
+    }
+    
+    func test_parse_missing_messages_received_different_language_flag_false() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: false)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let messages = [factory.message(messageID: 1, senderID: 2, source: "en"),
+                        factory.message(messageID: 2, senderID: 3, source: "en"),
+                        factory.message(messageID: 3, senderID: 4, source: "en"),
+                        factory.message(messageID: 4, senderID: 5, source: "en")]
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count * 2)
+    }
+    
+    func test_parse_missing_messages_mixed() throws {
+        // Given
+        let receiver = MockReceiver(userID: 1,
+                                    language: .korean,
+                                    sameLanguageTranslation: false)
+        let messageParser = MessageParser(userData: receiver)
+        let factory = MockMessageFactory()
+        let translatedMessages = [factory.message(messageID: 1, senderID: 1, source: "en"),
+                                  factory.message(messageID: 2, senderID: 2, source: "en")]
+        let noneTranslatedMessages = [factory.message(messageID: 1, senderID: 2, source: "ko"),
+                                      factory.message(messageID: 3, senderID: 2, source: "ko"),
+                                      factory.message(messageID: 4, senderID: 1, source: "in"),
+                                      factory.message(messageID: 5, senderID: 2, source: "out"),
+                                      factory.translationFailedMessage(messageID: 6, senderID: 1, source: "ko"),
+                                      factory.translationFailedMessage(messageID: 7, senderID: 1, source: "en"),
+                                      factory.translationFailedMessage(messageID: 8, senderID: 2, source: "ko"),
+                                      factory.translationFailedMessage(messageID: 9, senderID: 2, source: "en")]
+        var messages: [MessageData] = []
+        messages.append(contentsOf: translatedMessages)
+        messages.append(contentsOf: noneTranslatedMessages)
+        // When
+        let parsedMessages = messageParser.parse(missingMessages: messages)
+        // Then
+        XCTAssertEqual(parsedMessages.count, messages.count + translatedMessages.count)
     }
 }
