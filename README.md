@@ -47,9 +47,17 @@
 
 <br>
 
-### [Web팀의 큐티뽀짝한 서비스 URL 🕸]()
-### [iOS팀의 큐티뽀짝한 배포 URL 🍎](https://kr.object.ncloudstorage.com/papagotalk/release/1.0.0/download.html)
 ### [마다가스카팀이 더 궁금하시다면 Wiki 보러가기 ✨](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/wiki)
+
+<br>
+
+### Web🕸
+### [Web팀의 큐티뽀짝한 서비스 URL 🕸]()
+
+### iOS🍎
+### [iOS팀의 큐티뽀짝한 배포 URL 🍎](https://kr.object.ncloudstorage.com/papago-talk/index.html)
+
+### [iOS팀의 자세한 개발 내용은 ➡️ README](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/tree/master/iOS)
 
 <br>
 
