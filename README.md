@@ -2,6 +2,7 @@
 
 <h1 align="center">
   <img src="https://user-images.githubusercontent.com/60081031/99608166-b48fb800-2a50-11eb-8d25-505f65fe6370.png" width=700 alt="Madagascar team Logo" />
+  
   <div align="center">
 
   [![Swift](https://img.shields.io/badge/swift-v5.1-orange?logo=swift)](https://developer.apple.com/kr/swift/)
@@ -12,6 +13,16 @@
   [![NodeJS](https://img.shields.io/badge/node.js-v12.18.3-green?logo=node.js)](https://nodejs.org/ko/)
 
   </div>
+  
+  <div align="center">
+  
+  [![GitHub Open Issues](https://img.shields.io/github/issues-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=green)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/issues)
+  [![GitHub Closed Issues](https://img.shields.io/github/issues-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/issues?q=is%3Aissue+is%3Aclosed)
+  [![GitHub Open PR](https://img.shields.io/github/issues-pr-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=green)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls)
+  [![GitHub Closed PR](https://img.shields.io/github/issues-pr-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls?q=is%3Apr+is%3Aclosed)
+
+  </div>
+  
 </h1>
 <br>
 
@@ -70,16 +81,6 @@
 
 <br>
 
-<div align="center">
-  
-[![GitHub Open Issues](https://img.shields.io/github/issues-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=green)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/issues)
-[![GitHub Closed Issues](https://img.shields.io/github/issues-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/issues?q=is%3Aissue+is%3Aclosed)
-[![GitHub Open PR](https://img.shields.io/github/issues-pr-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=green)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls)
-[![GitHub Closed PR](https://img.shields.io/github/issues-pr-closed-raw/boostcamp-2020/Project02-B-RealTime-Translation-Messenger?color=red)](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/pulls?q=is%3Apr+is%3Aclosed)
-
-</div>
-
-<br>
 
 ## Demo Video 🎬
 
