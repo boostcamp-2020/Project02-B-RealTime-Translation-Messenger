@@ -13,13 +13,13 @@ class MessageHeightCalculatorTests: XCTestCase {
         let calculator = MessageHeightCalculator()
         
         var oneLinemessage = Message(of: "OneLine", by: User())
-        oneLinemessage.type = .sent
+        oneLinemessage.type = .sentOrigin
         
         var twoLinemessage = Message(of: "OneLine\n", by: User())
-        twoLinemessage.type = .sent
+        twoLinemessage.type = .sentOrigin
         
         var threeLinemessage = Message(of: "OneLine\n\n", by: User())
-        threeLinemessage.type = .sent
+        threeLinemessage.type = .sentOrigin
         
         // When
         let oneLineHeight = calculator.height(of: oneLinemessage)
@@ -36,13 +36,13 @@ class MessageHeightCalculatorTests: XCTestCase {
         let calculator = MessageHeightCalculator()
         
         var oneLinemessage = Message(of: "OneLine", by: User())
-        oneLinemessage.type = .received
+        oneLinemessage.type = .receivedOrigin
         
         var twoLinemessage = Message(of: "OneLine\n", by: User())
-        twoLinemessage.type = .received
+        twoLinemessage.type = .receivedOrigin
         
         var threeLinemessage = Message(of: "OneLine\n\n", by: User())
-        threeLinemessage.type = .received
+        threeLinemessage.type = .receivedOrigin
         
         // When
         let oneLineHeight = calculator.height(of: oneLinemessage)
@@ -82,13 +82,13 @@ class MessageHeightCalculatorTests: XCTestCase {
         let calculator = MessageHeightCalculator()
         
         var oneLinemessage = Message(of: "OneLine", by: User())
-        oneLinemessage.type = .translated
+        oneLinemessage.type = .receivedTranslated
         
         var twoLinemessage = Message(of: "OneLine\n", by: User())
-        twoLinemessage.type = .translated
+        twoLinemessage.type = .receivedTranslated
         
         var threeLinemessage = Message(of: "OneLine\n\n", by: User())
-        threeLinemessage.type = .translated
+        threeLinemessage.type = .receivedTranslated
         
         // When
         let oneLineHeight = calculator.height(of: oneLinemessage)
