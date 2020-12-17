@@ -19,8 +19,8 @@ const Input: React.FC = () => {
   const [text, setText] = useState('');
   const location = useLocation<LocationState>();
   const { lang } = location.state;
-  const { enterText, translationText } = getText(lang);
-  const [translatedText, setTranslatedText] = useState(enterText);
+  const { inputText, translationText } = getText(lang);
+  const [translatedText, setTranslatedText] = useState(inputText);
   const [isListening, setIsListening] = useState(false);
   const { transcript } = useSpeechRecognition();
 
@@ -59,7 +59,7 @@ const Input: React.FC = () => {
 
       await createMessageMutation();
       setText('');
-      setTranslatedText(enterText);
+      setTranslatedText(inputText);
     }
   };
 
@@ -83,7 +83,7 @@ const Input: React.FC = () => {
       <S.InputWrapper>
         <S.InputContainer>
           <S.Input
-            placeholder={enterText}
+            placeholder={inputText}
             value={text}
             onChange={onChangeText}
             onKeyUp={onKeyUp}
