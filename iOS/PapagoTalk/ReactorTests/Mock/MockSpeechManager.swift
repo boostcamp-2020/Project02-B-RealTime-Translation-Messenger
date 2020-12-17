@@ -1,5 +1,5 @@
 //
-//  SpeechManagerMock.swift
+//  MockSpeechManager.swift
 //  PapagoTalkTests
 //
 //  Created by Byoung-Hwi Yoon on 2020/12/08.
@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-class SpeechManagerMock: SpeechServiceProviding {
+class MockSpeechManager: SpeechServiceProviding {
     var recognizedSpeech: BehaviorSubject<String> = BehaviorSubject(value: "")
     var isAvailable: BehaviorSubject<Bool>  = BehaviorSubject(value: true)
     
