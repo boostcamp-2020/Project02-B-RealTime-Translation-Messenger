@@ -136,3 +136,6 @@ yarn-error.log*
 # Prisma
 
 migrations/
+
+# Test
+mockData.json
