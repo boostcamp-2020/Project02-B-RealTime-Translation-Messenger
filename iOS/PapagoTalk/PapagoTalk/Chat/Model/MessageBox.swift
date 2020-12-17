@@ -63,14 +63,30 @@ final class MessageBox {
     }
     
     private func setShouldTimeShow(of newMessage: Message, comparedBy lastMessage: Message) {
-        guard newMessage.sender.id == lastMessage.sender.id,
-              DateFormatter.chatTimeFormat(of: newMessage.time) == DateFormatter.chatTimeFormat(of: lastMessage.time) else {
-            messages.append(newMessage)
+        guard isSameSender(of: newMessage, comparedBy: lastMessage),
+              isSameTime(of: newMessage, comparedBy: lastMessage)
+        else {
             return
         }
-        var lastMessage = lastMessage
+        var lastMessage = messages.removeLast()
         lastMessage.shouldTimeShow = false
-        messages.removeLast()
-        messages.append(contentsOf: [lastMessage, newMessage])
+        messages.append(lastMessage)
+    }
+    
+    private func isSuccessiveReceive(of newMessage: Message, comparedBy lastMessage: Message) -> Bool {
+        isSameMessageType(of: newMessage, comparedBy: lastMessage, type: .receivedOrigin)
+            && isSameSender(of: newMessage, comparedBy: lastMessage)
+    }
+    
+    private func isSameMessageType(of newMessage: Message, comparedBy lastMessage: Message, type: MessageType) -> Bool {
+        newMessage.type == type && lastMessage.type == type
+    }
+    
+    private func isSameSender(of newMessage: Message, comparedBy lastMessage: Message) -> Bool {
+        newMessage.sender.id == lastMessage.sender.id
+    }
+    
+    private func isSameTime(of newMessage: Message, comparedBy lastMessage: Message) -> Bool {
+        Calendar.isSameTime(of: newMessage.time, with: lastMessage.time)
     }
 }
