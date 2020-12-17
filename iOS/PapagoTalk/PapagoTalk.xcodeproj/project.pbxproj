@@ -116,6 +116,24 @@
 		99E9BDF02589F26D006EEFEA /* MockUserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */; };
 		99E9BDF52589F2A9006EEFEA /* MockReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BDF42589F2A9006EEFEA /* MockReceiver.swift */; };
 		99E9BE09258AF7E3006EEFEA /* LanguagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BE08258AF7E3006EEFEA /* LanguagePickerView.swift */; };
+		99E9BE13258B7B95006EEFEA /* MessageHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9968473B25847AB2006C116E /* MessageHeightCalculator.swift */; };
+		99E9BE2B258B7C45006EEFEA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23C09A2576979C001D74A0 /* NetworkError.swift */; };
+		99E9BE2F258B7D12006EEFEA /* HomeReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */; };
+		99E9BE33258B7D29006EEFEA /* HistoryReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25AECD258B5E0400941096 /* HistoryReactorTests.swift */; };
+		99E9BE37258B7D2B006EEFEA /* ChatCodeInputReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3B6F0257FB800004578D4 /* ChatCodeInputReactorTests.swift */; };
+		99E9BE3B258B7D2D006EEFEA /* ChatReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCB3256674A500F2EA7D /* ChatReactorTests.swift */; };
+		99E9BE3C258B7D30006EEFEA /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
+		99E9BE40258B7D33006EEFEA /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
+		99E9BE44258B7D36006EEFEA /* SettingReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C886B258A20E70086568D /* SettingReactorTests.swift */; };
+		99E9BE48258B7D3B006EEFEA /* MockApolloNetworkServiceSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */; };
+		99E9BE4C258B7D3F006EEFEA /* MockApolloNetworkServiceFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */; };
+		99E9BE50258B7D42006EEFEA /* MockWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E44258AF95300CE4758 /* MockWebSocketService.swift */; };
+		99E9BE54258B7D44006EEFEA /* MockUserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */; };
+		99E9BE58258B7D47006EEFEA /* MockMessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */; };
+		99E9BE5C258B7D4A006EEFEA /* MockHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E33258AF59B00CE4758 /* MockHistoryManager.swift */; };
+		99E9BE60258B7D4D006EEFEA /* MockSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F1E257F83D300802B45 /* MockSpeechManager.swift */; };
+		99E9BE64258B7D50006EEFEA /* StubAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E80257F4CA800F4C258 /* StubAlertFactory.swift */; };
+		99E9BE68258B7D54006EEFEA /* StubImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E8A257F4CF800F4C258 /* StubImageFactory.swift */; };
 		BB1200A125701B4000CC8020 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1200A025701B4000CC8020 /* RxSwift+.swift */; };
 		BB1569A0257F8C2F00A2C0F9 /* MessageParseProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15699F257F8C2F00A2C0F9 /* MessageParseProviding.swift */; };
 		BB15A5872577690F0006D258 /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15A5862577690F0006D258 /* SpeechViewController.swift */; };
@@ -1213,6 +1231,7 @@
 				99E9BDE82589F1E4006EEFEA /* TranslatedResult.swift in Sources */,
 				99E9BD882589EE83006EEFEA /* User.swift in Sources */,
 				99E9BD6B2589EA67006EEFEA /* MockMessageData.swift in Sources */,
+				99E9BE13258B7B95006EEFEA /* MessageHeightCalculator.swift in Sources */,
 				99E9BDD02589F17A006EEFEA /* Data+.swift in Sources */,
 				99E9BDB82589F076006EEFEA /* MessageType.swift in Sources */,
 				99E9BD512589D0FD006EEFEA /* MessageHeightCalculatorTests.swift in Sources */,
@@ -1224,6 +1243,7 @@
 				99E9BDD82589F18B006EEFEA /* MicButtonSize.swift in Sources */,
 				99E9BD902589EE9F006EEFEA /* Strings.swift in Sources */,
 				99E9BDCC2589F16F006EEFEA /* Calendar+.swift in Sources */,
+				99E9BE2B258B7C45006EEFEA /* NetworkError.swift in Sources */,
 				99E9BDE42589F1C9006EEFEA /* ImageFactoryProviding.swift in Sources */,
 				99E9BDC02589F148006EEFEA /* UserDataProviding.swift in Sources */,
 				99E9BDAC2589F031006EEFEA /* Language.swift in Sources */,
@@ -1251,6 +1271,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E9BE64258B7D50006EEFEA /* StubAlertFactory.swift in Sources */,
+				99E9BE3B258B7D2D006EEFEA /* ChatReactorTests.swift in Sources */,
+				99E9BE60258B7D4D006EEFEA /* MockSpeechManager.swift in Sources */,
+				99E9BE44258B7D36006EEFEA /* SettingReactorTests.swift in Sources */,
+				99E9BE37258B7D2B006EEFEA /* ChatCodeInputReactorTests.swift in Sources */,
+				99E9BE50258B7D42006EEFEA /* MockWebSocketService.swift in Sources */,
+				99E9BE2F258B7D12006EEFEA /* HomeReactorTests.swift in Sources */,
+				99E9BE33258B7D29006EEFEA /* HistoryReactorTests.swift in Sources */,
+				99E9BE58258B7D47006EEFEA /* MockMessageParser.swift in Sources */,
+				99E9BE48258B7D3B006EEFEA /* MockApolloNetworkServiceSuccess.swift in Sources */,
+				99E9BE68258B7D54006EEFEA /* StubImageFactory.swift in Sources */,
+				99E9BE40258B7D33006EEFEA /* SpeechReactorTests.swift in Sources */,
+				99E9BE4C258B7D3F006EEFEA /* MockApolloNetworkServiceFailure.swift in Sources */,
+				99E9BE54258B7D44006EEFEA /* MockUserDataProvider.swift in Sources */,
+				99E9BE5C258B7D4A006EEFEA /* MockHistoryManager.swift in Sources */,
+				99E9BE3C258B7D30006EEFEA /* ChatDrawerReactorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1487,7 +1523,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = ReactorTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1509,7 +1545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = ReactorTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

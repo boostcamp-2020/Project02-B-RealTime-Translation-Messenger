@@ -6,6 +6,7 @@
 //
 
 import UIKit
+@testable import PapagoTalk
 
 struct StubAlertFactory: AlertFactoryProviding {
     func alert(message: String) -> UIAlertController {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import PapagoTalk
 
 class MockHistoryManager: HistoryServiceProviding {
     func fetch() -> [ChatRoomHistory] {

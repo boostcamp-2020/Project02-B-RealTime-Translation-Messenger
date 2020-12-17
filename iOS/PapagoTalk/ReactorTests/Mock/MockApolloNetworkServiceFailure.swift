@@ -7,21 +7,11 @@
 
 import Foundation
 import RxSwift
+@testable import PapagoTalk
 
 struct MockApolloNetworkServiceFailure: NetworkServiceProviding {
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.just(.init(createMessage: false))
-    }
-    
-    func getMessage() -> Observable<GetMessageSubscription.Data> {
-        return Observable.just(.init(newMessage: .init(id: 1,
-                                                       text: "안녕하세요",
-                                                       source: "ko",
-                                                       createdAt: "2020",
-                                                       user: .init(id: 1,
-                                                                   nickname: "testUser",
-                                                                   avatar: "",
-                                                                   lang: "ko"))))
     }
     
     func getMissingMessage(timeStamp: String) -> Maybe<GetMessageByTimeQuery.Data> {
@@ -37,7 +27,8 @@ struct MockApolloNetworkServiceFailure: NetworkServiceProviding {
     
     func enterRoom(user: User,
                    code: String) -> Maybe<JoinChatResponse> {
-        return Maybe.error(JoinChatError.networkError)
+        let error = code == "999999" ? JoinChatError.cannotFindRoom : JoinChatError.networkError
+        return Maybe.error(error)
     }
     
     func createRoom(user: User) -> Maybe<CreateRoomResponse> {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import PapagoTalk
 
 struct MockUserDataProvider: UserDataProviding {
     var user: User
