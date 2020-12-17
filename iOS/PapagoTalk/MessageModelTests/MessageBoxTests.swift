@@ -126,5 +126,75 @@ class MessageBoxTests: XCTestCase {
         XCTAssertEqual(messageBox.messages.last?.shouldImageShow, false)
     }
     
+    func test_append_setShouldTimeShow_when_first() throws {
+        // Given
+        let messageBox = MessageBox()
+        let mockMessageData = MockMessageData()
+        let mockTranslatedResult = TranslatedResult(originText: "", translatedText: "")
+        let message = Message(data: mockMessageData, with: mockTranslatedResult, timeStamp: "1234567890123")
+
+        // When
+        messageBox.append(message)
+
+        // Then
+        XCTAssertEqual(messageBox.messages.last?.shouldTimeShow, true)
+    }
+    
+    func test_append_setShouldTimeShow_when_second_true() throws {
+        // Given
+        let messageBox = MessageBox()
+        let mockMessageData = MockMessageData()
+        let mockTranslatedResult = TranslatedResult(originText: "", translatedText: "")
+        let message = Message(data: mockMessageData, with: mockTranslatedResult, timeStamp: "1234567890123")
+        messageBox.append(message)
+        
+        // When
+        messageBox.append(message)
+
+        // Then
+        XCTAssertEqual(messageBox.messages.first?.shouldTimeShow, false)
+        XCTAssertEqual(messageBox.messages.last?.shouldTimeShow, true)
+    }
+    
+    func test_append_setShouldTimeShow_when_second_different_sender() throws {
+        // Given
+        let messageBox = MessageBox()
+        let mockUserData = MockUserData(id: 0, nickname: "sender1", avatar: "", lang: "")
+        let mockMessageData = MockMessageData(userData: mockUserData)
+        let mockTranslatedResult = TranslatedResult(originText: "", translatedText: "")
+        let message = Message(data: mockMessageData, with: mockTranslatedResult, timeStamp: "1234567890123")
+        messageBox.append(message)
+        
+        let secondMockUserData = MockUserData(id: 1, nickname: "sender2", avatar: "", lang: "")
+        let secondMockMessageData = MockMessageData(userData: secondMockUserData)
+        let secondMessage = Message(data: secondMockMessageData, with: mockTranslatedResult, timeStamp: "1234567890123")
+        
+        // When
+        messageBox.append(secondMessage)
+
+        // Then
+        XCTAssertEqual(messageBox.messages.first?.shouldTimeShow, true)
+        XCTAssertEqual(messageBox.messages.last?.shouldTimeShow, true)
+    }
+    
+    func test_append_setShouldTimeShow_when_second_different_time() throws {
+        // Given
+        let messageBox = MessageBox()
+        let mockMessageData = MockMessageData()
+        let mockTranslatedResult = TranslatedResult(originText: "", translatedText: "")
+        let message = Message(data: mockMessageData, with: mockTranslatedResult, timeStamp: "1234567890123")
+        messageBox.append(message)
+        
+        let secondMockMessageData = MockMessageData()
+        let secondMessage = Message(data: secondMockMessageData, with: mockTranslatedResult, timeStamp: "123459999999")
+        
+        // When
+        messageBox.append(secondMessage)
+
+        // Then
+        XCTAssertEqual(messageBox.messages.first?.shouldTimeShow, true)
+        XCTAssertEqual(messageBox.messages.last?.shouldTimeShow, true)
+    }
+    
     
 }
