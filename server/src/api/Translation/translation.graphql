@@ -1,5 +1,6 @@
 type translationResponse {
-  translatedText: String!
+  translatedText: String
+  errorMsg: String
 }
 
 type Mutation {
