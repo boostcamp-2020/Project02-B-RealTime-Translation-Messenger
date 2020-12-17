@@ -10,17 +10,16 @@ import UIKit
 struct MessageHeightCalculator {
     func height(of message: Message) -> CGFloat {
         switch message.type {
-        case .received:
+        case .receivedOrigin:
             return receivedMessageHeight(of: message)
-        case .sent:
+        case .sentOrigin:
             return sentMessageHeight(of: message)
         case .sentTranslated:
             return sentTranslatedMessageHeight(of: message)
         case .system:
             return systemMessageHeight(of: message)
-        case .translated:
+        case .receivedTranslated:
             return translatedMessageHeight(of: message)
-            
         }
     }
     
