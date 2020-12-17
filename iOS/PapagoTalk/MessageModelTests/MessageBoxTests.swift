@@ -39,5 +39,34 @@ class MessageBoxTests: XCTestCase {
         XCTAssertEqual(messageBox.messages.first?.text, "test")
     }
     
+    func test_append_isAppropriateMessage_true() throws {
+        // Given
+        let messageBox = MessageBox()
+        let message = Message(of: "test", by: User())
+        messageBox.append(message)
+
+        // When
+        messageBox.append(message)
+
+        // Then
+        XCTAssertEqual(messageBox.messages.count, 2)
+    }
     
+    func test_append_isAppropriateMessage_false() throws {
+        // Given
+        let messageBox = MessageBox()
+        let message = Message(of: "test", by: User())
+        let mockMessageData = MockMessageData()
+        let mockTranslatedResult = TranslatedResult(originText: "", translatedText: "")
+        let newMessage = Message(data: mockMessageData, with: mockTranslatedResult, timeStamp: "1000000000000")
+        messageBox.append(message)
+
+        // When
+        messageBox.append(newMessage)
+
+        // Then
+        XCTAssertEqual(messageBox.messages.count, 1)
+    }
+    
+
 }
