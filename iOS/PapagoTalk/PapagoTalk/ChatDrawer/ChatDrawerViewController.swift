@@ -90,6 +90,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         
         reactor.state.compactMap { $0.roomCode }
             .distinctUntilChanged()
+            .filter { !($0.data?.isEmpty ?? true) }
             .asObservable()
             .subscribe(onNext: {
                 UIPasteboard.general.string = $0.data
@@ -97,6 +98,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.toastMessage }
+            .distinctUntilChanged()
             .compactMap { $0.data }
             .filter { !$0.isEmpty }
             .subscribe(onNext: { [weak self] in
@@ -108,12 +110,11 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         
         reactor.state.map { $0.leaveChatRoom }
             .filter { $0 }
-            .do { [weak self] _ in
+            .subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: {
                     self?.navigationController?.popViewController(animated: true)
                 })
-            }
-            .subscribe()
+            })
             .disposed(by: disposeBag)
     }
     

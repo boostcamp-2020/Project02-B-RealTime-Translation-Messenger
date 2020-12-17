@@ -6,7 +6,7 @@
 "2dy-Pc-WHl.normalTitle" = "3";
 
 /* Class = "UITextField"; placeholder = "Enter NickName (2-12 Characters)"; ObjectID = "2kJ-Nk-l6d"; */
-"2kJ-Nk-l6d.placeholder" = "ニックネームを入力してください (2-12 文字)";
+"2kJ-Nk-l6d.placeholder" = "名前を入力してください (2-12 文字)";
 
 /* Class = "UILabel"; text = "Papago (Me)"; ObjectID = "67P-sA-8Kn"; */
 "67P-sA-8Kn.text" = "Papago (Me)";
