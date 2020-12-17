@@ -68,5 +68,34 @@ class MessageBoxTests: XCTestCase {
         XCTAssertEqual(messageBox.messages.count, 1)
     }
     
+    func test_append_setMessageIsFirst_when_true() throws {
+        // Given
+        let messageBox = MessageBox()
+        let mockMessageData = MockMessageData()
+        let mockTranslatedResult = TranslatedResult(originText: "", translatedText: "")
+        let message = Message(data: mockMessageData, with: mockTranslatedResult, timeStamp: "")
 
+        // When
+        messageBox.append(message)
+
+        // Then
+        XCTAssertEqual(messageBox.messages.last?.isFirstOfDay, true)
+    }
+    
+    func test_append_setMessageIsFirst_when_false() throws {
+        // Given
+        let messageBox = MessageBox()
+        let mockMessageData = MockMessageData()
+        let mockTranslatedResult = TranslatedResult(originText: "", translatedText: "")
+        let message = Message(data: mockMessageData, with: mockTranslatedResult, timeStamp: "")
+        messageBox.append(message)
+
+        // When
+        messageBox.append(message)
+
+        // Then
+        XCTAssertEqual(messageBox.messages.last?.isFirstOfDay, false)
+    }
+    
+    
 }
