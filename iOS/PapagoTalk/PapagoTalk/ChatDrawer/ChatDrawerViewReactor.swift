@@ -34,6 +34,7 @@ final class ChatDrawerViewReactor: Reactor {
     
     private let networkService: NetworkServiceProviding
     private let roomID: Int
+    private let roomCode: String
     private var userData: UserDataProviding
     let initialState: State
     
@@ -41,8 +42,9 @@ final class ChatDrawerViewReactor: Reactor {
         self.networkService = networkService
         self.userData = userData
         self.roomID = roomID
+        self.roomCode = roomCode
         initialState = State(users: UserList(),
-                             roomCode: RevisionedData(data: roomCode),
+                             roomCode: RevisionedData(data: ""),
                              toastMessage: RevisionedData(data: ""),
                              leaveChatRoom: false)
     }
@@ -70,7 +72,7 @@ final class ChatDrawerViewReactor: Reactor {
         case .setUsers(let users):
             state.users = users
         case .copyRoomCode:
-            state.roomCode = state.roomCode.update()
+            state.roomCode = state.roomCode.update(roomCode)
         case .setToastMessage(let toast):
             state.toastMessage = state.toastMessage.update(toast)
         case .setLeaveChatRoom(let leaveChatRoom):
