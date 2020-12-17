@@ -47,7 +47,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nickNameTextField.autocorrectionType = .no
+        //nickNameTextField.autocorrectionType = .no
         bind()
         bindKeyboard()
     }
@@ -165,10 +165,10 @@ final class HomeViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
         
         settingButton.rx.tap
-            .asObservable()
-            .subscribe(onNext: { [weak self] in
+            .asDriver()
+            .drive { [weak self] _ in
                 self?.coordinator?.pushSetting()
-            })
+            }
             .disposed(by: disposeBag)
     }
     

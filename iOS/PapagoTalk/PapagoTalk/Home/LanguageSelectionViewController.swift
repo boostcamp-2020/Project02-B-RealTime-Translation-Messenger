@@ -11,7 +11,7 @@ import RxCocoa
 
 final class LanguageSelectionViewController: UIViewController {
     
-    @IBOutlet private weak var pickerView: UIPickerView!
+    @IBOutlet private weak var pickerView: LanguagePickerView!
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var confirmButton: UIButton!
     
@@ -37,13 +37,6 @@ final class LanguageSelectionViewController: UIViewController {
         configurePickerView()
         bind()
         initializePickerView(at: userData.user.language.index)
-        
-        guard pickerView.subviews.count > 1 else {
-            return
-        }
-        pickerView.subviews[1].backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 1, alpha: 0)
-        pickerView.subviews[1].layer.borderWidth = 2
-        pickerView.subviews[1].layer.borderColor = UIColor(named: "PapagoBlue")?.cgColor
     }
     
     private func configurePickerView() {
@@ -65,9 +58,9 @@ final class LanguageSelectionViewController: UIViewController {
         confirmButton.rx.tap
             .withLatestFrom(pickerView.rx.modelSelected(Language.self))
             .map { $0[0] }
-            .do { [weak self] _ in
+            .do(afterNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
-            }
+            })
             .bind(to: pickerViewObserver)
             .disposed(by: disposeBag)
     }
