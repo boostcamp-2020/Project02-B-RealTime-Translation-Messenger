@@ -40,25 +40,20 @@ final class MessageBox {
         return lastMessage.timeStamp
     }
     
-    func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
-        let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.time,
-                                                  with: lastMessage.time)
+    private func isAppropriateMessage(of newMessage: Message, comparedBy lastMessage: Message) -> Bool {
+        lastMessage.time <= newMessage.time
+    }
+    
+    private func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
+        let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.time, with: lastMessage.time)
         var message = newMessage
         message.setIsFirst(with: !isNotFirstOfDay)
         return message
     }
     
-    func setType(of newMessage: Message) -> Message {
-        var message = newMessage
-        message.setType(by: currentUserID)
-        return message
-    }
-    
     private func setShouldImageShow(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
-        guard newMessage.type == .received,
-              lastMessage.type == .received,
-              newMessage.sender.id == lastMessage.sender.id,
-              DateFormatter.chatTimeFormat(of: newMessage.time) == DateFormatter.chatTimeFormat(of: lastMessage.time)
+        guard isSuccessiveReceive(of: newMessage, comparedBy: lastMessage),
+              isSameTime(of: newMessage, comparedBy: lastMessage)
         else {
             return newMessage
         }
