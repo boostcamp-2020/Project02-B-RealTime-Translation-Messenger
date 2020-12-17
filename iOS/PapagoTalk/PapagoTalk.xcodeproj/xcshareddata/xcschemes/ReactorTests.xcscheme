@@ -1,40 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1220"
+   LastUpgradeVersion = "1230"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <BuildActionEntries>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BBF2DC98256674A300F2EA7D"
-               BuildableName = "PapagoTalk.app"
-               BlueprintName = "PapagoTalk"
-               ReferencedContainer = "container:PapagoTalk.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BBF2DCAE256674A500F2EA7D"
-               BuildableName = "PapagoTalkTests.xctest"
-               BlueprintName = "PapagoTalkTests"
-               ReferencedContainer = "container:PapagoTalk.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -47,9 +17,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "99E9BD332589CFA3006EEFEA"
-               BuildableName = "MessageModelTests.xctest"
-               BlueprintName = "MessageModelTests"
+               BlueprintIdentifier = "BB1C8868258A20E70086568D"
+               BuildableName = "ReactorTests.xctest"
+               BlueprintName = "ReactorTests"
                ReferencedContainer = "container:PapagoTalk.xcodeproj">
             </BuildableReference>
          </TestableReference>

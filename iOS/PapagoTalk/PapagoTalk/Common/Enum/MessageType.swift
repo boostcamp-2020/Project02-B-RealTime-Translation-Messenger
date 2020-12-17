@@ -8,21 +8,21 @@
 import Foundation
 
 enum MessageType: String, Codable {
-    case sent
+    case sentOrigin
     case sentTranslated
-    case received
-    case translated
+    case receivedOrigin
+    case receivedTranslated
     case system
     
     var identifier: String {
         switch self {
-        case .sent:
+        case .sentOrigin:
             return "SentMessageCell"
         case .sentTranslated:
             return "UserTranslatedMessageCell"
-        case .received:
+        case .receivedOrigin:
             return "ReceivedMessageCell"
-        case .translated:
+        case .receivedTranslated:
             return "TranslatedMessageCell"
         case .system:
             return "SystemMessageCell"

@@ -12,4 +12,19 @@ struct MockUserData: UserData {
     var nickname: String
     var avatar: String
     var lang: String
+    
+    init(id: Int, nickname: String, avatar: String, lang: String) {
+        self.id = id
+        self.nickname = nickname
+        self.avatar = avatar
+        self.lang = lang
+    }
+    
+    // default user
+    init() {
+        id = 0
+        nickname = "nickName"
+        avatar = "avatar"
+        lang = "ko"
+    }
 }

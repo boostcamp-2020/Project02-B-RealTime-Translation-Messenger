@@ -9,42 +9,28 @@ import Foundation
 
 final class MessageBox {
     
-    var currentUserID: Int
     var messages = [Message]()
-    
-    init(userID: Int) {
-        currentUserID = userID
-    }
     
     func append(_ messages: [Message]) {
         messages.forEach { append($0) }
     }
     
     func append(_ message: Message) {
-        guard let lastMessage = messages.last else {
-            var message = message
-            if message.type != .system {
-                message = setType(of: message)
-            }
-            messages.append(message)
-            return
-        }
-        
-        guard lastMessage.time <= message.time else {
-            return
-        }
-        
         var message = message
-        message = setMessageIsFirst(of: message, comparedBy: lastMessage)
         
-        guard message.type != .system else {
+        guard let lastMessage = messages.last else {
             messages.append(message)
             return
         }
         
-        message = setType(of: message)
+        guard isAppropriateMessage(of: message, comparedBy: lastMessage) else {
+            return
+        }
+        
+        message = setMessageIsFirst(of: message, comparedBy: lastMessage)
         message = setShouldImageShow(of: message, comparedBy: lastMessage)
         setShouldTimeShow(of: message, comparedBy: lastMessage)
+        messages.append(message)
     }
     
     func lastMessageTimeStamp() -> String {
@@ -54,25 +40,20 @@ final class MessageBox {
         return lastMessage.timeStamp
     }
     
-    func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
-        let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.time,
-                                                  with: lastMessage.time)
+    private func isAppropriateMessage(of newMessage: Message, comparedBy lastMessage: Message) -> Bool {
+        lastMessage.time <= newMessage.time
+    }
+    
+    private func setMessageIsFirst(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
+        let isNotFirstOfDay = Calendar.isSameDate(of: newMessage.time, with: lastMessage.time)
         var message = newMessage
         message.setIsFirst(with: !isNotFirstOfDay)
         return message
     }
     
-    func setType(of newMessage: Message) -> Message {
-        var message = newMessage
-        message.setType(by: currentUserID)
-        return message
-    }
-    
     private func setShouldImageShow(of newMessage: Message, comparedBy lastMessage: Message) -> Message {
-        guard newMessage.type == .received,
-              lastMessage.type == .received,
-              newMessage.sender.id == lastMessage.sender.id,
-              DateFormatter.chatTimeFormat(of: newMessage.time) == DateFormatter.chatTimeFormat(of: lastMessage.time)
+        guard isSuccessiveReceive(of: newMessage, comparedBy: lastMessage),
+              isSameTime(of: newMessage, comparedBy: lastMessage)
         else {
             return newMessage
         }
@@ -82,14 +63,30 @@ final class MessageBox {
     }
     
     private func setShouldTimeShow(of newMessage: Message, comparedBy lastMessage: Message) {
-        guard newMessage.sender.id == lastMessage.sender.id,
-              DateFormatter.chatTimeFormat(of: newMessage.time) == DateFormatter.chatTimeFormat(of: lastMessage.time) else {
-            messages.append(newMessage)
+        guard isSameSender(of: newMessage, comparedBy: lastMessage),
+              isSameTime(of: newMessage, comparedBy: lastMessage)
+        else {
             return
         }
-        var lastMessage = lastMessage
+        var lastMessage = messages.removeLast()
         lastMessage.shouldTimeShow = false
-        messages.removeLast()
-        messages.append(contentsOf: [lastMessage, newMessage])
+        messages.append(lastMessage)
+    }
+    
+    private func isSuccessiveReceive(of newMessage: Message, comparedBy lastMessage: Message) -> Bool {
+        isSameMessageType(of: newMessage, comparedBy: lastMessage, type: .receivedOrigin)
+            && isSameSender(of: newMessage, comparedBy: lastMessage)
+    }
+    
+    private func isSameMessageType(of newMessage: Message, comparedBy lastMessage: Message, type: MessageType) -> Bool {
+        newMessage.type == type && lastMessage.type == type
+    }
+    
+    private func isSameSender(of newMessage: Message, comparedBy lastMessage: Message) -> Bool {
+        newMessage.sender.id == lastMessage.sender.id
+    }
+    
+    private func isSameTime(of newMessage: Message, comparedBy lastMessage: Message) -> Bool {
+        Calendar.isSameTime(of: newMessage.time, with: lastMessage.time)
     }
 }
