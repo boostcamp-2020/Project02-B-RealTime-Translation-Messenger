@@ -1,5 +1,5 @@
 //
-//  SpeechManager.swift
+//  SpeechService.swift
 //  PapagoTalk
 //
 //  Created by 송민관 on 2020/12/02.
@@ -9,7 +9,7 @@ import Foundation
 import Speech
 import RxSwift
 
-final class SpeechManager: NSObject, SpeechServiceProviding {
+final class SpeechService: NSObject, SpeechServiceProviding {
    
     private let userData: UserDataProviding
     private var speechRecognizer: SFSpeechRecognizer?
@@ -59,7 +59,6 @@ final class SpeechManager: NSObject, SpeechServiceProviding {
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             debugPrint(error.localizedDescription)
-            // Toast(text: "음성인식 기능의 오류가 발생하였습니다.\n앱을 재시작 해주세요.", delay: 0, duration: 2).show()
         }
     }
     
@@ -69,7 +68,6 @@ final class SpeechManager: NSObject, SpeechServiceProviding {
         
         guard let recognitionRequest = recognitionRequest else {
             debugPrint("SFSpeechAudioBufferRecognitionRequest create error")
-            // Toast(text: "음성인식 기능의 오류가 발생하였습니다.\n다시 시작해주세요.", delay: 0, duration: 2).show()
             return
         }
         recognitionRequest.shouldReportPartialResults = true
@@ -112,7 +110,7 @@ final class SpeechManager: NSObject, SpeechServiceProviding {
     }
 }
 
-extension SpeechManager: SFSpeechRecognizerDelegate {
+extension SpeechService: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         isAvailable.onNext(available)
     }

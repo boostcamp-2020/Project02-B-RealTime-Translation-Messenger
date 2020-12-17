@@ -14,18 +14,3 @@ protocol MessageData {
     var source: String { get set }
     var createdAt: String? { get set }
 }
-
-typealias GetMessageData = GetMessageSubscription.Data.NewMessage
-typealias GetMissingMessageData = GetMessageByTimeQuery.Data.AllMessagesByTime
-
-extension GetMessageData: MessageData {
-    var userData: UserData {
-        return self.user
-    }
-}
-
-extension GetMissingMessageData: MessageData {
-    var userData: UserData {
-        return self.user
-    }
-}

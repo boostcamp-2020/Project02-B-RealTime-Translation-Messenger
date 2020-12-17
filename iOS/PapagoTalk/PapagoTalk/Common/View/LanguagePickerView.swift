@@ -27,5 +27,4 @@ final class LanguagePickerView: UIPickerView {
         subviews[1].layer.borderWidth = 2
         subviews[1].layer.borderColor = UIColor(named: "PapagoBlue")?.cgColor
     }
-    
 }

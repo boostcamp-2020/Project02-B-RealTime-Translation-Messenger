@@ -11,8 +11,6 @@ import RxSwift
 protocol NetworkServiceProviding {
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data>
     
-    func getMessage() -> Observable<GetMessageSubscription.Data>
-    
     func getMissingMessage(timeStamp: String) -> Maybe<GetMessageByTimeQuery.Data>
     
     func enterRoom(user: User, code: String) -> Maybe<JoinChatResponse>
@@ -26,6 +24,4 @@ protocol NetworkServiceProviding {
     func leaveRoom()
     
     func sendSystemMessage(type: String)
-    
-    func reconnect()
 }

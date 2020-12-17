@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import PapagoTalk
 
 class ChatCodeInputReactorTests: XCTestCase {
 

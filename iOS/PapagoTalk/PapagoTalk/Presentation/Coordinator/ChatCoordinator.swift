@@ -35,7 +35,7 @@ final class ChatCoordinator: Coordinator {
               let code = code else {
             return
         }
-        let chatWebSocket = ChatWebSocket()
+        let chatWebSocket = WebSocketService()
         let viewController = storyboard.instantiateViewController(
             identifier: ChatViewController.identifier,
             creator: { [unowned self] coder -> ChatViewController? in
@@ -59,7 +59,7 @@ extension ChatCoordinator: ChatCoordinating {
         guard let roomID = roomID else {
             return
         }
-        let speechManager = SpeechManager(userData: userData)
+        let speechManager = SpeechService(userData: userData)
         let speechViewController = storyboard.instantiateViewController(
             identifier: SpeechViewController.identifier,
             creator: { [unowned self] coder -> SpeechViewController? in

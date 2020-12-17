@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         let navigationController = UINavigationController()
-        let networkService = ApolloNetworkService()
+        let networkService = NetworkService()
         let alertFactory = AlertFactory()
         let userData = UserDataProvider()
         let messageParser = MessageParser(userData: userData)

@@ -9,31 +9,18 @@ import Foundation
 import Apollo
 import RxSwift
 
-class ApolloNetworkService: NetworkServiceProviding {
+class NetworkService: NetworkServiceProviding {
     
     let store = ApolloStore()
     let urlClient = URLSessionClient()
-    var socketURL = APIEndPoint.socketURL
     var requestURL = APIEndPoint.requestURL
     
-    private lazy var webSocketTransport: WebSocketTransport = {
-        let url = socketURL
-        let request = URLRequest(url: url)
-        let authPayload = ["authToken": UserDataProvider().token]
-        return WebSocketTransport(request: request, connectingPayload: authPayload)
-    }()
-    
-    private lazy var normalTransport: RequestChainNetworkTransport = {
+    private lazy var transport: RequestChainNetworkTransport = {
         let url = requestURL
         return RequestChainNetworkTransport(interceptorProvider: NetworkInterceptorProvider(store: store, client: urlClient), endpointURL: url)
     }()
     
-    private lazy var splitNetworkTransport = SplitNetworkTransport(
-        uploadingNetworkTransport: self.normalTransport,
-        webSocketNetworkTransport: self.webSocketTransport
-    )
-    
-    private(set) lazy var client = ApolloClient(networkTransport: self.splitNetworkTransport, store: store)
+    private(set) lazy var client = ApolloClient(networkTransport: transport, store: store)
     
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.create { [weak self] observer in
@@ -51,27 +38,6 @@ class ApolloNetworkService: NetworkServiceProviding {
                         }
                     case let .failure(error):
                         observer(.error(error))
-                    }
-                }
-            )
-            return Disposables.create {
-                cancellable?.cancel()
-            }
-        }
-    }
-    
-    func getMessage() -> Observable<GetMessageSubscription.Data> {
-        return Observable.create { [weak self] observer in
-            let cancellable = self?.client.subscribe(
-                subscription: GetMessageSubscription(),
-                resultHandler: { [weak self] result in
-                    switch result {
-                    case let .success(gqlResult):
-                        if let data = gqlResult.data {
-                            observer.onNext(data)
-                        }
-                    case .failure:
-                        self?.reconnect()
                     }
                 }
             )
@@ -216,11 +182,5 @@ class ApolloNetworkService: NetworkServiceProviding {
     func leaveRoom() {
         sendSystemMessage(type: "out")
         client.perform(mutation: LeaveRoomMutation())
-    }
-    
-    func reconnect() {
-        if !webSocketTransport.isConnected() {
-            webSocketTransport.resumeWebSocketConnection()
-        }
     }
 }

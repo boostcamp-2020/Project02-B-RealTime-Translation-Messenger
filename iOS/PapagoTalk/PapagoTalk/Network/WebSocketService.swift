@@ -1,5 +1,5 @@
 //
-//  ChatWebSocket.swift
+//  WebSocketService.swift
 //  PapagoTalk
 //
 //  Created by Byoung-Hwi Yoon on 2020/12/11.
@@ -8,7 +8,7 @@
 import Apollo
 import RxSwift
 
-final class ChatWebSocket: WebsocketServiceProviding {
+final class WebSocketService: WebSocketServiceProviding {
     
     let store = ApolloStore()
     var socketURL = APIEndPoint.socketURL

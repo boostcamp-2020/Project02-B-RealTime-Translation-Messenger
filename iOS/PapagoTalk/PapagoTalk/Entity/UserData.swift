@@ -13,16 +13,3 @@ protocol UserData {
     var avatar: String { get set }
     var lang: String { get set }
 }
-
-typealias GetMessageUserData = GetMessageSubscription.Data.NewMessage.User
-typealias GetMissingMessageUserData = GetMessageByTimeQuery.Data.AllMessagesByTime.User
-typealias GetUserListData = FindRoomByIdQuery.Data.RoomById.User
-
-extension GetMessageUserData: UserData {
-}
-
-extension GetMissingMessageUserData: UserData {
-}
-
-extension GetUserListData: UserData {
-}

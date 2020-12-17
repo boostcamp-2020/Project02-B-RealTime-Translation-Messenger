@@ -41,7 +41,7 @@ final class ChatViewReactor: Reactor {
     private var userData: UserDataProviding
     private let roomID: Int
     private let messageParser: MessageParseProviding
-    private let chatWebSocket: WebsocketServiceProviding
+    private let chatWebSocket: WebSocketServiceProviding
     private let historyManager: HistoryServiceProviding
     
     let initialState: State
@@ -49,7 +49,7 @@ final class ChatViewReactor: Reactor {
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
          messageParser: MessageParseProviding,
-         chatWebSocket: WebsocketServiceProviding,
+         chatWebSocket: WebSocketServiceProviding,
          historyManager: HistoryServiceProviding,
          roomID: Int,
          code: String) {
