@@ -11,7 +11,7 @@ class ChatCodeInputReactorTests: XCTestCase {
 
     func test_codeNumberInput_firstNumber() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                                userData: UserDataProviderMock())
         
         // When
@@ -24,7 +24,7 @@ class ChatCodeInputReactorTests: XCTestCase {
     
     func test_codeNumberInput_thirdNumber() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                                userData: UserDataProviderMock())
         reactor.action.onNext(.numberButtonTapped("5"))
         reactor.action.onNext(.numberButtonTapped("4"))
@@ -39,7 +39,7 @@ class ChatCodeInputReactorTests: XCTestCase {
     
     func test_codeNumberInput_sixthNumber() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                                userData: UserDataProviderMock())
         reactor.action.onNext(.numberButtonTapped("8"))
         reactor.action.onNext(.numberButtonTapped("9"))
@@ -57,7 +57,7 @@ class ChatCodeInputReactorTests: XCTestCase {
     
     func test_codeNumberInput_above_maxLength() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                                userData: UserDataProviderMock())
         reactor.action.onNext(.numberButtonTapped("1"))
         reactor.action.onNext(.numberButtonTapped("2"))
@@ -77,7 +77,7 @@ class ChatCodeInputReactorTests: XCTestCase {
     
     func test_codeNumberRemove_fifthNumber() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                                userData: UserDataProviderMock())
         reactor.action.onNext(.numberButtonTapped("2"))
         reactor.action.onNext(.numberButtonTapped("4"))
@@ -95,7 +95,7 @@ class ChatCodeInputReactorTests: XCTestCase {
     
     func test_codeNumberRemove_firstNumber() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                                userData: UserDataProviderMock())
         reactor.action.onNext(.numberButtonTapped("1"))
 
@@ -109,7 +109,7 @@ class ChatCodeInputReactorTests: XCTestCase {
     
     func test_codeNumberRemove_below_minLength() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                                userData: UserDataProviderMock())
 
         // When
@@ -122,7 +122,7 @@ class ChatCodeInputReactorTests: XCTestCase {
     
     func test_joinChatRoom_success() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                                userData: UserDataProviderMock())
         reactor.action.onNext(.numberButtonTapped("5"))
         reactor.action.onNext(.numberButtonTapped("4"))
@@ -134,12 +134,12 @@ class ChatCodeInputReactorTests: XCTestCase {
         reactor.action.onNext(.numberButtonTapped("5"))
 
         // Then
-        XCTAssertEqual(reactor.currentState.chatRoomInfo, ChatRoomInfo(roomID: 8, code: "545305"))
+        XCTAssertEqual(reactor.currentState.chatRoomInfo, ChatRoomInfo(userID: 0, roomID: 8, code: "545305", token: ""))
     }
     
     func test_joinChatRoom_fail() throws {
         // Given
-        let reactor = ChatCodeInputViewReactor(networkService: ApolloNetworkServiceMockFailure(),
+        let reactor = ChatCodeInputViewReactor(networkService: MockApolloNetworkServiceFailure(),
                                                userData: UserDataProviderMock())
         reactor.action.onNext(.numberButtonTapped("6"))
         reactor.action.onNext(.numberButtonTapped("3"))

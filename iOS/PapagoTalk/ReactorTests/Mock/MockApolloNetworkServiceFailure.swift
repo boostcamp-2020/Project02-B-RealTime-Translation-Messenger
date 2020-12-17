@@ -1,5 +1,5 @@
 //
-//  ApolloNetworkServiceMockFailure.swift
+//  MockApolloNetworkServiceFailure.swift
 //  PapagoTalkTests
 //
 //  Created by 송민관 on 2020/12/08.
@@ -8,13 +8,12 @@
 import Foundation
 import RxSwift
 
-struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
+struct MockApolloNetworkServiceFailure: NetworkServiceProviding {
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.just(.init(createMessage: false))
     }
     
-    func getMessage(roomId: Int,
-                    language: Language) -> Observable<GetMessageSubscription.Data> {
+    func getMessage() -> Observable<GetMessageSubscription.Data> {
         return Observable.just(.init(newMessage: .init(id: 1,
                                                        text: "안녕하세요",
                                                        source: "ko",
@@ -23,6 +22,17 @@ struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
                                                                    nickname: "testUser",
                                                                    avatar: "",
                                                                    lang: "ko"))))
+    }
+    
+    func getMissingMessage(timeStamp: String) -> Maybe<GetMessageByTimeQuery.Data> {
+        return .just(.init(allMessagesByTime: .init(repeating: .init(.init(id: 0,
+                                                                           text: "",
+                                                                           source: "",
+                                                                           createdAt: "",
+                                                                           user: .init(id: 0,
+                                                                                       nickname: "",
+                                                                                       avatar: "",
+                                                                                       lang: ""))), count: 3)))
     }
     
     func enterRoom(user: User,
@@ -40,30 +50,33 @@ struct ApolloNetworkServiceMockFailure: NetworkServiceProviding {
                                                     .init(id: 1,
                                                           nickname: "test1",
                                                           avatar: "",
-                                                          lang: "en"),
+                                                          lang: "en",
+                                                          isDeleted: false),
                                                     .init(id: 2,
                                                           nickname: "test2",
                                                           avatar: "",
-                                                          lang: "ko"),
+                                                          lang: "ko",
+                                                          isDeleted: false),
                                                     .init(id: 3,
                                                           nickname: "test3",
                                                           avatar: "",
-                                                          lang: "fr")
+                                                          lang: "fr",
+                                                          isDeleted: false)
                                                 ])))
     }
     
-    func subscribeLeavedUser(roomID: Int) -> Observable<LeavedUserSubscription.Data> {
-        return Observable.error(NetworkError.invalidResponse(message: "error"))
-    }
-    
-    func subscribeNewUser(roomID: Int) -> Observable<NewUserSubscription.Data> {
-        return Observable.error(NetworkError.serverError(message: "400"))
+    func translate(text: String) -> Maybe<String> {
+        return .just("")
     }
     
     func leaveRoom() {
         
     }
-    
+
+    func sendSystemMessage(type: String) {
+        
+    }
+
     func reconnect() {
 
     }

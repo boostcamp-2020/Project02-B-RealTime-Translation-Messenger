@@ -1,5 +1,5 @@
 //
-//  ImageFactoryStub.swift
+//  StubImageFactory.swift
 //  PapagoTalkTests
 //
 //  Created by 송민관 on 2020/12/08.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageFactoryStub: ImageFactoryProviding {
+struct StubImageFactory: ImageFactoryProviding {
     func randomImageURL() -> String {
         return "1.png"
     }
