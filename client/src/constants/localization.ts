@@ -12,6 +12,7 @@ interface TextList {
   translationErrorText: string;
   enterText: string;
   leaveText: string;
+  tokenErrorText: string;
 }
 
 interface TextObj {
@@ -33,6 +34,7 @@ const textList: TextObj = {
     inputText: '채팅을 입력해주세요',
     enterText: '님이 들어왔습니다',
     leaveText: '님이 나갔습니다',
+    tokenErrorText: '토큰이 없어요! 메인페이지로 돌아갑니다😥',
   },
   en: {
     inputNickName: 'Enter Nickname',
@@ -48,6 +50,7 @@ const textList: TextObj = {
     inputText: 'Please enter a chat',
     enterText: ' is here',
     leaveText: ' left the chat room',
+    tokenErrorText: 'You don`t have a token! Go back to the main page😥',
   },
   ja: {
     inputNickName: 'ニックネーム 入力',
@@ -63,6 +66,7 @@ const textList: TextObj = {
     inputText: 'チャットを入力してください',
     enterText: ' さんがチャットルームに入場しました',
     leaveText: ' さんがチャットルームから出ました',
+    tokenErrorText: 'トークンがありません！ メインページに戻ります😥',
   },
   'zh-CN': {
     inputNickName: '输入昵称',
@@ -78,6 +82,7 @@ const textList: TextObj = {
     inputText: '请输入您的聊天内容',
     enterText: ' 进入聊天室了',
     leaveText: ' 从聊天室出去了',
+    tokenErrorText: '没有代币牌！ 回到主页😥',
   },
 };
 

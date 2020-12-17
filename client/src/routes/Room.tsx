@@ -1,6 +1,5 @@
-import React, { FC, useState, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
-import { wsClient } from '@/apollo/Client';
+import React, { FC, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import ChatLog from '@components/ChatLog';
 import Header from '@components/Room/Header';
 import SideBar from '@components/Room/SideBar';
@@ -9,19 +8,21 @@ import useMessages from '@hooks/useMessages';
 import useUsers from '@hooks/useUsers';
 import { User } from '@generated/types';
 import Loader from '@components/Loader';
+import { getText } from '@constants/localization';
 
 interface LocationState {
   userId: number;
   roomId: number;
   code: string;
+  lang: string;
 }
 
 const Room: FC = () => {
   const location = useLocation<LocationState>();
-  const history = useHistory();
-  const { userId, roomId, code } = location.state;
+  const { userId, roomId, code, lang } = location.state;
   const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState(2);
+  const { tokenErrorText } = getText(lang);
 
   try {
     const { data: usersData, loading: usersLoading } = useUsers({
@@ -61,7 +62,7 @@ const Room: FC = () => {
       </>
     );
   } catch (e) {
-    alert('토큰이 없어요! 메인페이지로 돌아갑니다😥');
+    alert(tokenErrorText);
     window.location.href = '/';
     return <div />;
   }
