@@ -43,9 +43,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BBF2DCAE256674A500F2EA7D"
-               BuildableName = "PapagoTalkTests.xctest"
-               BlueprintName = "PapagoTalkTests"
+               BlueprintIdentifier = "99E9BD332589CFA3006EEFEA"
+               BuildableName = "MessageModelTests.xctest"
+               BlueprintName = "MessageModelTests"
                ReferencedContainer = "container:PapagoTalk.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -53,9 +53,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "99E9BD332589CFA3006EEFEA"
-               BuildableName = "MessageModelTests.xctest"
-               BlueprintName = "MessageModelTests"
+               BlueprintIdentifier = "BB1C8868258A20E70086568D"
+               BuildableName = "ReactorTests.xctest"
+               BlueprintName = "ReactorTests"
                ReferencedContainer = "container:PapagoTalk.xcodeproj">
             </BuildableReference>
          </TestableReference>
