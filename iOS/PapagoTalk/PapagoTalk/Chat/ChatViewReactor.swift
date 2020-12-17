@@ -60,7 +60,7 @@ final class ChatViewReactor: Reactor {
         self.chatWebSocket = chatWebSocket
         self.historyManager = historyManager
         self.roomID = roomID
-        initialState = State(messageBox: MessageBox(userID: userData.id),
+        initialState = State(messageBox: MessageBox(),
                              roomCode: code,
                              presentDrawer: false,
                              micButtonSize: userData.micButtonSize,
