@@ -4,6 +4,10 @@ import { User } from '@generated/types';
 import { getText } from '@constants/localization';
 import styled from 'styled-components';
 
+interface StyleProps {
+  visible?: boolean;
+}
+
 const SideBarWrapper = styled.div<StyleProps>`
   position: fixed;
   top: 0;
@@ -83,10 +87,6 @@ interface Props {
 
 interface LocationState {
   lang: string;
-}
-
-interface StyleProps {
-  visible?: boolean;
 }
 
 const SideBar: React.FC<Props> = ({ visible, users }) => {

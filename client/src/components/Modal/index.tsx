@@ -14,12 +14,6 @@ import floatToast from '@utils/toast';
 import Overlay from './Overlay';
 import Code from './Code';
 
-interface Props {
-  visible: boolean;
-  onClick?: () => void;
-  setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 const Wrapper = styled.div<Props>`
   position: fixed;
   top: 0;
@@ -70,6 +64,12 @@ const ModalFooter = styled.div`
 const Text = styled.div`
   font-size: 15px;
 `;
+
+interface Props {
+  visible: boolean;
+  onClick?: () => void;
+  setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const Modal: FC<Props> = ({ visible, setVisible }) => {
   const history = useHistory();

@@ -9,11 +9,6 @@ import { useUserDispatch, useUserState } from '@contexts/UserContext';
 import { Refresh } from '@components/Common/Icons';
 import styled from 'styled-components';
 
-interface Props {
-  isNicknameValid: boolean;
-  setIsNicknameValid: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -114,6 +109,11 @@ const LanguageRefreshButton = styled.button`
     fill: ${({ theme }) => theme.whiteColor};
   }
 `;
+
+interface Props {
+  isNicknameValid: boolean;
+  setIsNicknameValid: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const UserProfile: React.FC<Props> = ({
   isNicknameValid,
