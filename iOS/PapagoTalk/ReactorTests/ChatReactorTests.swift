@@ -14,6 +14,8 @@ class ChatReactorTests: XCTestCase {
         let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                       userData: UserDataProviderMock(),
                                       messageParser: MessageParserMock(),
+                                      chatWebSocket: MockWebSocketService(),
+                                      historyManager: MockHistoryManager(),
                                       roomID: 8,
                                       code: "")
         
@@ -37,6 +39,8 @@ class ChatReactorTests: XCTestCase {
         let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                       userData: UserDataProviderMock(),
                                       messageParser: MessageParserMock(),
+                                      chatWebSocket: MockWebSocketService(),
+                                      historyManager: MockHistoryManager(),
                                       roomID: 8,
                                       code: "")
 
@@ -52,6 +56,8 @@ class ChatReactorTests: XCTestCase {
         let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockFailure(),
                                       userData: UserDataProviderMock(),
                                       messageParser: MessageParserMock(),
+                                      chatWebSocket: MockWebSocketService(),
+                                      historyManager: MockHistoryManager(),
                                       roomID: 8,
                                       code: "")
 
@@ -67,6 +73,8 @@ class ChatReactorTests: XCTestCase {
         let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                       userData: UserDataProviderMock(),
                                       messageParser: MessageParserMock(),
+                                      chatWebSocket: MockWebSocketService(),
+                                      historyManager: MockHistoryManager(),
                                       roomID: 8,
                                       code: "")
 
@@ -82,6 +90,8 @@ class ChatReactorTests: XCTestCase {
         let reactor = ChatViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                       userData: UserDataProviderMock(),
                                       messageParser: MessageParserMock(),
+                                      chatWebSocket: MockWebSocketService(),
+                                      historyManager: MockHistoryManager(),
                                       roomID: 8,
                                       code: "")
         reactor.action.onNext(.chatDrawerButtonTapped)

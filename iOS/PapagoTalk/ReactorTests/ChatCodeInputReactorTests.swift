@@ -134,7 +134,7 @@ class ChatCodeInputReactorTests: XCTestCase {
         reactor.action.onNext(.numberButtonTapped("5"))
 
         // Then
-        XCTAssertEqual(reactor.currentState.chatRoomInfo, ChatRoomInfo(roomID: 8, code: "545305"))
+        XCTAssertEqual(reactor.currentState.chatRoomInfo, ChatRoomInfo(userID: 0, roomID: 8, code: "545305", token: ""))
     }
     
     func test_joinChatRoom_fail() throws {

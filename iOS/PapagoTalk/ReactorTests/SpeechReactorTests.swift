@@ -13,7 +13,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 
@@ -28,7 +27,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 
@@ -43,7 +41,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 
@@ -58,7 +55,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 
@@ -73,7 +69,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 
@@ -88,7 +83,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 
@@ -103,7 +97,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 
@@ -118,7 +111,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 
@@ -133,7 +125,6 @@ class SpeechReactorTests: XCTestCase {
         // Given
         let reactor = SpeechViewReactor(networkService: ApolloNetworkServiceMockSuccess(),
                                         userData: UserDataProviderMock(),
-                                        translationManager: PapagoAPIServiceMock(),
                                         speechManager: SpeechManagerMock(),
                                         roomID: 1)
 

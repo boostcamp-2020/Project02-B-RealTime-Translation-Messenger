@@ -23,8 +23,7 @@ class ChatDrawerReactorTests: XCTestCase {
         XCTAssertEqual(reactor.currentState.users.count, 3)
         XCTAssertEqual(reactor.currentState.users[0].id, 1)
         XCTAssertEqual(reactor.currentState.users[1].nickName, "test2")
-        XCTAssertEqual(reactor.currentState.users[2].language, .french)
-        
+        XCTAssertEqual(reactor.currentState.users[2].language, .japanese)
     }
     
     func test_same_roomCode_after_chatRoomCodeButton_tapped() throws {
