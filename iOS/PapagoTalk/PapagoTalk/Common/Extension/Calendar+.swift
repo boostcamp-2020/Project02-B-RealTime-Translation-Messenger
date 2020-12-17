@@ -10,7 +10,11 @@ import Foundation
 extension Calendar {
     
     static let calendar = Calendar(identifier: Calendar.autoupdatingCurrent.identifier)
-
+    
+    static func isSameTime(of firstDate: Date, with secondDate: Date) -> Bool {
+        return calendar.isDate(firstDate, equalTo: secondDate, toGranularity: .minute)
+    }
+    
     static func isSameDate(of firstDate: Date, with secondDate: Date) -> Bool {
         return calendar.isDate(firstDate, inSameDayAs: secondDate)
     }
@@ -24,6 +28,6 @@ extension Calendar {
     }
     
     static func isSameYear(of date: Date) -> Bool {
-        return calendar.isDate(Date(), equalTo: date, toGranularity: self.Component.year)
+        return calendar.isDate(Date(), equalTo: date, toGranularity: .year)
     }
 }
