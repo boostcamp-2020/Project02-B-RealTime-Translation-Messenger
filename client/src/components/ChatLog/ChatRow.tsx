@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import Avatar from '@components/Avatar';
+import Avatar from '@components/Common/Avatar';
 import formatTime from '@utils/formatTimezone';
 import comparePrevMessage from '@utils/comparePrevMessage';
 import { getText } from '@constants/localization';

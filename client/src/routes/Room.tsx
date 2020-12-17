@@ -1,13 +1,13 @@
 import React, { FC, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChatLog from '@components/ChatLog';
-import Header from '@components/Room/Header';
-import SideBar from '@components/Room/SideBar';
-import Input from '@components/Room/Input';
+import RoomHeader from '@components/RoomHeader';
+import SideBar from '@components/SideBar';
+import RoomInput from '@components/RoomInput';
 import useMessages from '@hooks/useMessages';
 import useUsers from '@hooks/useUsers';
 import { User } from '@generated/types';
-import Loader from '@components/Loader';
+import Loader from '@components/Common/Loader';
 import { getText } from '@constants/localization';
 
 interface LocationState {
@@ -45,7 +45,7 @@ const Room: FC = () => {
     );
     return (
       <>
-        <Header
+        <RoomHeader
           visible={visible}
           setVisible={setVisible}
           code={code}
@@ -58,7 +58,7 @@ const Room: FC = () => {
           setPage={setPage}
           onLoadMore={onLoadMore}
         />
-        <Input />
+        <RoomInput />
       </>
     );
   } catch (e) {
