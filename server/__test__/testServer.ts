@@ -4,12 +4,12 @@ import schema from '../src/schema';
 import { createTestClient } from 'apollo-server-testing';
 import dotenv from 'dotenv';
 import isAuthenticated from '../src/middlewares/isAuthenticated';
-import { testUser } from './mock.json';
+import { requestUser } from './mockData.json';
 
 dotenv.config();
 
 const RequestUser = {
-  user: testUser,
+  user: requestUser,
 };
 
 const pubsub = new PubSub();
