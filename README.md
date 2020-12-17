@@ -92,7 +92,7 @@
 ![web_tech_stack](https://i.imgur.com/UbpX2vq.png)
 
 ### iOS 🍎
-![iOS 기술 스택](https://user-images.githubusercontent.com/68672528/101985046-c6b7eb80-3cc8-11eb-8938-fea5683cae2c.png)
+![iOS 기술 스택](https://user-images.githubusercontent.com/68672528/102453828-57ebe100-4080-11eb-9160-d9395c6b7ef9.jpeg)
 
 
 ## 🗃 Project Folder
