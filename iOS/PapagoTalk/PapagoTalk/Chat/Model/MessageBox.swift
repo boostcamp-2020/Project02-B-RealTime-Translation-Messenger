@@ -9,42 +9,28 @@ import Foundation
 
 final class MessageBox {
     
-    var currentUserID: Int
     var messages = [Message]()
-    
-    init(userID: Int) {
-        currentUserID = userID
-    }
     
     func append(_ messages: [Message]) {
         messages.forEach { append($0) }
     }
     
     func append(_ message: Message) {
-        guard let lastMessage = messages.last else {
-            var message = message
-            if message.type != .system {
-                message = setType(of: message)
-            }
-            messages.append(message)
-            return
-        }
-        
-        guard lastMessage.time <= message.time else {
-            return
-        }
-        
         var message = message
-        message = setMessageIsFirst(of: message, comparedBy: lastMessage)
         
-        guard message.type != .system else {
+        guard let lastMessage = messages.last else {
             messages.append(message)
             return
         }
         
-        message = setType(of: message)
+        guard isAppropriateMessage(of: message, comparedBy: lastMessage) else {
+            return
+        }
+        
+        message = setMessageIsFirst(of: message, comparedBy: lastMessage)
         message = setShouldImageShow(of: message, comparedBy: lastMessage)
         setShouldTimeShow(of: message, comparedBy: lastMessage)
+        messages.append(message)
     }
     
     func lastMessageTimeStamp() -> String {
