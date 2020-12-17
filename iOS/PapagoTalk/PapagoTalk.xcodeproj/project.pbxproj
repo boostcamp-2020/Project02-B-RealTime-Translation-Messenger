@@ -717,6 +717,14 @@
 			path = ChatCollectionView;
 			sourceTree = "<group>";
 		};
+		BB25AEFD258B69F300941096 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				990DE96F2573A59B00340A72 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		BB38252325740153000425FD /* ChatDrawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -870,7 +878,7 @@
 				BBF2DCA5256674A500F2EA7D /* Assets.xcassets */,
 				BBF2DCA7256674A500F2EA7D /* LaunchScreen.storyboard */,
 				BBF2DCAA256674A500F2EA7D /* Info.plist */,
-				990DE96F2573A59B00340A72 /* Localizable.strings */,
+				BB25AEFD258B69F300941096 /* Localization */,
 			);
 			path = PapagoTalk;
 			sourceTree = "<group>";
