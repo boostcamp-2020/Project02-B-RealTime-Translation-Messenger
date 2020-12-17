@@ -196,5 +196,28 @@ class MessageBoxTests: XCTestCase {
         XCTAssertEqual(messageBox.messages.last?.shouldTimeShow, true)
     }
     
+    func test_lastMessageTimeStamp_when_lastMessage_exist() throws {
+        // Given
+        let messageBox = MessageBox()
+        let mockMessageData = MockMessageData()
+        let mockTranslatedResult = TranslatedResult(originText: "", translatedText: "")
+        let message = Message(data: mockMessageData, with: mockTranslatedResult, timeStamp: "1234567890123")
+
+        // When
+        messageBox.messages.append(message)
+
+        // Then
+        XCTAssertEqual(messageBox.lastMessageTimeStamp(), "1234567890123")
+    }
     
+    func test_lastMessageTimeStamp_when_lastMessage_not_exist() throws {
+        // Given
+        let messageBox = MessageBox()
+
+        // When
+        messageBox.messages.removeAll()
+
+        // Then
+        XCTAssertEqual(messageBox.lastMessageTimeStamp(), Date.presentTimeStamp())
+    }
 }
