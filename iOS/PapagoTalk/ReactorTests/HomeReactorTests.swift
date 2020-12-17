@@ -13,7 +13,7 @@ class HomeReactorTests: XCTestCase {
     func test_changeProfileImage() throws {
         // Given
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock(),
+                                      userData: MockUserDataProvider(),
                                       imageFactory: StubImageFactory())
 
         // When
@@ -26,7 +26,7 @@ class HomeReactorTests: XCTestCase {
     func test_changeNickName() throws {
         // Given
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock())
+                                      userData: MockUserDataProvider())
 
         // When
         reactor.action.onNext(.nickNameChanged("test"))
@@ -38,7 +38,7 @@ class HomeReactorTests: XCTestCase {
     func test_selectLanguage() throws {
         // Given
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock())
+                                      userData: MockUserDataProvider())
 
         // When
         reactor.action.onNext(.languageSelected(.english))
@@ -49,7 +49,7 @@ class HomeReactorTests: XCTestCase {
     
     func test_blockNickNameMaxLength() throws {
         // Given
-        let userMock = UserDataProviderMock(nickName: "abcdefghijklmnop")
+        let userMock = MockUserDataProvider(nickName: "abcdefghijklmnop")
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceSuccess(),
                                       userData: userMock)
 
@@ -64,7 +64,7 @@ class HomeReactorTests: XCTestCase {
     func test_makeChatRoom_success() throws {
         // Given
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock())
+                                      userData: MockUserDataProvider())
 
         // When
         reactor.action.onNext(.makeChatRoomButtonTapped)
@@ -76,7 +76,7 @@ class HomeReactorTests: XCTestCase {
     
     func test_makeChatRoom_invalidNickName() throws {
         // Given
-        let userMock = UserDataProviderMock(nickName: "a")
+        let userMock = MockUserDataProvider(nickName: "a")
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceFailure(),
                                       userData: userMock)
 
@@ -91,7 +91,7 @@ class HomeReactorTests: XCTestCase {
     func test_makeChatRoom_fail() throws {
         // Given
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceFailure(),
-                                      userData: UserDataProviderMock())
+                                      userData: MockUserDataProvider())
 
         // When
         reactor.action.onNext(.makeChatRoomButtonTapped)
@@ -104,7 +104,7 @@ class HomeReactorTests: XCTestCase {
     func test_joinChatRoom() throws {
         // Given
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock())
+                                      userData: MockUserDataProvider())
 
         // When
         reactor.action.onNext(.joinChatRoomButtonTapped)
@@ -115,7 +115,7 @@ class HomeReactorTests: XCTestCase {
     
     func test_joinChatRoom_invalidNickName() throws {
         // Given
-        let userMock = UserDataProviderMock(nickName: "a")
+        let userMock = MockUserDataProvider(nickName: "a")
         let reactor = HomeViewReactor(networkService: MockApolloNetworkServiceFailure(),
                                       userData: userMock)
 
