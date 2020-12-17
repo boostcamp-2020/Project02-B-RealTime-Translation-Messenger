@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
@@ -13,6 +13,7 @@ import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import { useUserState } from '@contexts/UserContext';
 import { useLocalizationState } from '@contexts/LocalizationContext';
 import encrypt from '@utils/encryption';
+import client, { wsClient } from '@/apollo/Client';
 
 const Wrapper = styled.div`
   min-width: inherit;
@@ -76,6 +77,15 @@ const Home: React.FC = () => {
       },
     });
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      localStorage.removeItem('token');
+      client.resetStore();
+      wsClient.close();
+    }
+  }, []);
 
   return (
     <Wrapper>
