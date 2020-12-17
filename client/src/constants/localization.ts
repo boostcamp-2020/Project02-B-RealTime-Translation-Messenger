@@ -7,9 +7,11 @@ interface TextList {
   enterCode: string;
   submitCode: string;
   userList: string;
-  enterText: string;
+  inputText: string;
   translationText: string;
   translationErrorText: string;
+  enterText: string;
+  leaveText: string;
 }
 
 interface TextObj {
@@ -26,9 +28,11 @@ const textList: TextObj = {
     enterCode: '참여 코드(6자리의 숫자)를 입력해주세요',
     submitCode: '입장',
     userList: '대화 상대',
-    enterText: '채팅을 입력해주세요',
     translationText: '번역된 메세지가 출력됩니다',
     translationErrorText: '번역에 실패했습니다',
+    inputText: '채팅을 입력해주세요',
+    enterText: '님이 들어왔습니다',
+    leaveText: '님이 나갔습니다',
   },
   en: {
     inputNickName: 'Enter Nickname',
@@ -39,9 +43,11 @@ const textList: TextObj = {
     enterCode: 'Please enter 6 digits of the participating code',
     submitCode: 'Enter',
     userList: 'User List',
-    enterText: 'Please enter a chat',
     translationText: 'The translated message is printed',
     translationErrorText: 'Translation failed',
+    inputText: 'Please enter a chat',
+    enterText: ' is here',
+    leaveText: ' left the chat room',
   },
   ja: {
     inputNickName: 'ニックネーム 入力',
@@ -52,9 +58,11 @@ const textList: TextObj = {
     enterCode: '参加コード(6桁数字)を入力してください',
     submitCode: '参加',
     userList: 'メンバー',
-    enterText: 'チャットを入力してください',
     translationText: '翻訳メッセージが出力されます',
     translationErrorText: '翻訳に失敗しました',
+    inputText: 'チャットを入力してください',
+    enterText: ' さんがチャットルームに入場しました',
+    leaveText: ' さんがチャットルームから出ました',
   },
   'zh-CN': {
     inputNickName: '输入昵称',
@@ -65,9 +73,11 @@ const textList: TextObj = {
     enterCode: '请输入参加代码（6位数字）',
     submitCode: '参与度',
     userList: '参加者名单',
-    enterText: '请输入您的聊天内容',
     translationText: '会打印翻译好的信息',
     translationErrorText: '翻译失败了',
+    inputText: '请输入您的聊天内容',
+    enterText: ' 进入聊天室了',
+    leaveText: ' 从聊天室出去了',
   },
 };
 

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Avatar from '@components/Avatar';
 import formatTime from '@utils/formatTimezone';
 import comparePrevMessage from '@utils/comparePrevMessage';
+import { getText } from '@constants/localization';
 import Balloon from './Balloon';
 import AvatarText from './AvatarText';
 import TimeText from './TimeText';
@@ -29,7 +30,7 @@ interface Message {
 }
 
 interface Props {
-  message?: Message;
+  message: Message;
   obj?: TranslatedMessage;
   allMessages: Message[];
 }
@@ -91,12 +92,16 @@ const UserChangedPopup = styled.div`
   padding: 0.3rem 1rem;
   color: #fff;
   background-color: #000;
-  border-radius: ${(props) => props.theme.borderRadiusSmall};
+  border-radius: ${({ theme }) => theme.borderRadiusSmall};
   font-size: 12px;
   @media (max-width: ${({ theme }) => theme.mediaSize}) {
     margin: 1rem auto;
     font-size: 8px;
   }
+`;
+
+const UserChangedPopupMessage = styled.span`
+  color: ${({ theme }) => theme.grayColor};
 `;
 
 const ChatRow: FC<Props> = ({ message, obj, allMessages }) => {
@@ -110,6 +115,7 @@ const ChatRow: FC<Props> = ({ message, obj, allMessages }) => {
   const avatar = message?.user.avatar;
   const source = message?.source;
   const messageId = message?.id;
+  const { enterText, leaveText } = getText(lang);
 
   useEffect(() => {
     const { isAvatarVisible, isTimeVisible } = comparePrevMessage(
@@ -121,7 +127,14 @@ const ChatRow: FC<Props> = ({ message, obj, allMessages }) => {
   }, [allMessages]);
 
   if (source === 'in' || source === 'out') {
-    return <UserChangedPopup>{message?.text}</UserChangedPopup>;
+    return (
+      <UserChangedPopup>
+        {message?.text}
+        <UserChangedPopupMessage>
+          {message.source === 'in' ? enterText : leaveText}
+        </UserChangedPopupMessage>
+      </UserChangedPopup>
+    );
   }
 
   return (

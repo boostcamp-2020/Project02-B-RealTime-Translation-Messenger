@@ -19,7 +19,7 @@ const Input: React.FC = () => {
   const [text, setText] = useState('');
   const location = useLocation<LocationState>();
   const { lang } = location.state;
-  const { enterText, translationText, translationErrorText } = getText(lang);
+  const { inputText, translationText, translationErrorText } = getText(lang);
   const [translatedText, setTranslatedText] = useState(translationText);
   const [isListening, setIsListening] = useState(false);
   const { transcript } = useSpeechRecognition();
@@ -90,7 +90,7 @@ const Input: React.FC = () => {
       <S.InputWrapper>
         <S.InputContainer>
           <S.Input
-            placeholder={enterText}
+            placeholder={inputText}
             value={text}
             onChange={onChangeText}
             onKeyUp={onKeyUp}
