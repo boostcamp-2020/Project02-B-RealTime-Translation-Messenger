@@ -63,7 +63,7 @@
 <br>
 
 ### Web🕸
-### [Web팀의 큐티뽀짝한 서비스 URL 🕸]()
+### [Web팀의 큐티뽀짝한 서비스 URL 🕸](https://www.papagotalk.kro.kr/)
 
 ### iOS🍎
 ### [iOS팀의 큐티뽀짝한 배포 URL 🍎](https://kr.object.ncloudstorage.com/papago-talk/index.html)
@@ -125,26 +125,35 @@
     └── 📄index.tsx
 
 📁iOS
-├── 📁PapagoTalkTests
+├── 📁ReactorTests
+├── 📁MessageModelTests
 └── 📁PapagoTalk
     ├── 📁Network
     ├── 📁GraphQL
-    ├── 📁DataLayer
+      ├── 📁MessageData
+      ├── 📁UserData
+      └── 📁Response    
+    ├── 📁Persistent
     ├── 📁Entity
-    ├── 📁Coordinator
-    ├── 📁LaunchScreen
-    ├── 📁Home
-    ├── 📁Chat
-    ├── 📁ChatCodeInput
-    ├── 📁ChatDrawer
-    ├── 📁Speech
-    └── 📁Common
+    ├── 📁Localization
+    ├── 📁Common
         ├── 📁Constant
         ├── 📁Enums
         ├── 📁Extensions
         ├── 📁Factory
         ├── 📁PropertyWrapper
         ├── 📁Util
-        └── 📁View
+        └── 📁View    
+    └── 📁Presentation  
+      ├── 📁Coordinator
+      ├── 📁LaunchScreen
+      ├── 📁Home
+      ├── 📁History
+      ├── 📁Chat
+      ├── 📁ChatCodeInput
+      ├── 📁ChatDrawer
+      ├── 📁Speech
+      └── 📁Setting
+    
 ```
 
