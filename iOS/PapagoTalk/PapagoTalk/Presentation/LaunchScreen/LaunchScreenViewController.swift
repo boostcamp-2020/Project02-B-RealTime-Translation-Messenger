@@ -7,13 +7,13 @@
 
 import UIKit
 
-class LaunchScreenViewController: UIViewController {
+final class LaunchScreenViewController: UIViewController {
 
-    @IBOutlet weak var imageContainerView: UIView!
-    @IBOutlet weak var rightImageView: UIImageView!
-    @IBOutlet weak var centerImageView: UIImageView!
-    @IBOutlet weak var leftImageView: UIImageView!
-    @IBOutlet weak var logoTextLabel: UILabel!
+    @IBOutlet private weak var imageContainerView: UIView!
+    @IBOutlet private weak var rightImageView: UIImageView!
+    @IBOutlet private weak var centerImageView: UIImageView!
+    @IBOutlet private weak var leftImageView: UIImageView!
+    @IBOutlet private weak var logoTextLabel: UILabel!
     
     var coordinator: MainCoordinator?
     private var circleLayer: CAShapeLayer?

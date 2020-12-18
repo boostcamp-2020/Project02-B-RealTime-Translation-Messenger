@@ -13,7 +13,7 @@ class ChatReactorTests: XCTestCase {
     func test_subscribeMessages_success() throws {
         // Given
         let reactor = ChatViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock(),
+                                      userData: MockUserDataProvider(),
                                       messageParser: MockMessageParser(),
                                       chatWebSocket: MockWebSocketService(),
                                       historyManager: MockHistoryManager(),
@@ -38,7 +38,7 @@ class ChatReactorTests: XCTestCase {
     func test_sendMessage_success() throws {
         // Given
         let reactor = ChatViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock(),
+                                      userData: MockUserDataProvider(),
                                       messageParser: MockMessageParser(),
                                       chatWebSocket: MockWebSocketService(),
                                       historyManager: MockHistoryManager(),
@@ -55,7 +55,7 @@ class ChatReactorTests: XCTestCase {
     func test_sendMessage_fail() throws {
         // Given
         let reactor = ChatViewReactor(networkService: MockApolloNetworkServiceFailure(),
-                                      userData: UserDataProviderMock(),
+                                      userData: MockUserDataProvider(),
                                       messageParser: MockMessageParser(),
                                       chatWebSocket: MockWebSocketService(),
                                       historyManager: MockHistoryManager(),
@@ -72,7 +72,7 @@ class ChatReactorTests: XCTestCase {
     func test_presentChatDrawer() throws {
         // Given
         let reactor = ChatViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock(),
+                                      userData: MockUserDataProvider(),
                                       messageParser: MockMessageParser(),
                                       chatWebSocket: MockWebSocketService(),
                                       historyManager: MockHistoryManager(),
@@ -89,7 +89,7 @@ class ChatReactorTests: XCTestCase {
     func test_dismissChatDrawer() throws {
         // Given
         let reactor = ChatViewReactor(networkService: MockApolloNetworkServiceSuccess(),
-                                      userData: UserDataProviderMock(),
+                                      userData: MockUserDataProvider(),
                                       messageParser: MockMessageParser(),
                                       chatWebSocket: MockWebSocketService(),
                                       historyManager: MockHistoryManager(),

@@ -41,9 +41,3 @@ extension StoryboardInstantiatible where Self: UIViewController {
         return viewController
     }
 }
-
-//extension MemoryLeakCheckable where Self: StoryboardInstantiatible & UIViewController {
-//    static func instantiateForLeakChecking() -> Self {
-//        Self.instantiate()
-//    }
-//}

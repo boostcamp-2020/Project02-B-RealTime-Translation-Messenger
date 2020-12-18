@@ -7,8 +7,9 @@
 
 import Foundation
 import RxSwift
+@testable import PapagoTalk
 
-final class MockWebSocketService: WebsocketServiceProviding {
+final class MockWebSocketService: WebSocketServiceProviding {
     func getMessage() -> Observable<GetMessageSubscription.Data> {
         return .just(.init(newMessage: .init(id: 0,
                                              text: "",

@@ -6,9 +6,9 @@
 //
 
 import XCTest
-@testable import PapagoTalk
 import RxSwift
 import RxRelay
+@testable import PapagoTalk
 
 class MemoryLeakTests: XCTestCase {
     
@@ -21,53 +21,66 @@ class MemoryLeakTests: XCTestCase {
         _ = onceToken
     }
     
+    func testLaunchScreenViewControllerIsLeak() {
+        XCTAssertLeak(viewController: LaunchScreenViewController.self)
+    }
+    
     func testHomeViewControllerIsLeak() {
         XCTAssertLeak(viewController: HomeViewController.self)
-    }
-
-    func testChatViewControllerIsLeak() {
-        XCTAssertLeak(viewController: ChatViewController.self)
     }
     
     func testLanguageSelectionViewControllerIsLeak() {
         XCTAssertLeak(viewController: LanguageSelectionViewController.self)
     }
     
+    func testHistoryViewControllerIsLeak() {
+        XCTAssertLeak(viewController: HistoryViewController.self)
+    }
+    
     func testChatCodeInputViewControllerIsLeak() {
         XCTAssertLeak(viewController: ChatCodeInputViewController.self)
     }
 
+    func testChatViewControllerIsLeak() {
+        XCTAssertLeak(viewController: ChatViewController.self)
+    }
+    
     func testChatDrawerViewControllerIsLeak() {
         XCTAssertLeak(viewController: ChatDrawerViewController.self)
     }
-
+    
     func testSpeechViewControllerIsLeak() {
         XCTAssertLeak(viewController: SpeechViewController.self)
     }
-    
+
+    func testSettingViewControllerIsLeak() {
+        XCTAssertLeak(viewController: SettingViewController.self)
+    }
 }
 
+extension LaunchScreenViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
 extension HomeViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
-extension ChatViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
 extension LanguageSelectionViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
+extension HistoryViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
 extension ChatCodeInputViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
+extension ChatViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
 extension ChatDrawerViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
 extension SpeechViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
+extension SettingViewController: MemoryLeakCheckable, StoryboardInstantiatible, Resolvable {}
 
 extension Resolver {
     
     static func setupForMemoryLeakTest() {
         Resolver.shared
-            .regist { _ in ApolloNetworkServiceMockSuccess() } // networkService
-            .regist { _ in AlertFactoryStub() }
-            .regist { _ in UserDataProviderMock() }
-            .regist { _ in PapagoAPIManager() } // translationManager
-            .regist { SpeechManager(userData: $0.resolve(UserDataProviderMock.self)) }
-            .regist { MessageParser(userData: $0.resolve(UserDataProviderMock.self)) }
+            .regist { _ in MockApolloNetworkServiceSuccess() } // networkService
+            .regist { _ in StubAlertFactory() }
+            .regist { _ in MockUserDataProvider() }
+            .regist { _ in MockSpeechManager() }
+            .regist { _ in MockMessageParser() }
             .regist {
                 HomeViewReactor(
-                    networkService: $0.resolve(ApolloNetworkServiceMockSuccess.self),
-                    userData: $0.resolve(UserDataProviderMock.self)
+                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    userData: $0.resolve(MockUserDataProvider.self)
                 )
             }
             .regist { resolver in
@@ -75,16 +88,58 @@ extension Resolver {
                     HomeViewController(
                         coder: $0,
                         reactor: resolver.resolve(HomeViewReactor.self),
-                        alertFactory: resolver.resolve(AlertFactoryStub.self),
-                        currentLanguage: resolver.resolve(UserDataProviderMock.self).language
+                        alertFactory: resolver.resolve(StubAlertFactory.self),
+                        currentLanguage: resolver.resolve(MockUserDataProvider.self).language
+                    )
+                }
+            }
+            .regist { resolver in
+                LanguageSelectionViewController.instantiate {
+                    LanguageSelectionViewController(
+                        coder: $0,
+                        userData: resolver.resolve(MockUserDataProvider.self),
+                        observer: BehaviorSubject<Language>(value: .korean)
+                    )
+                }
+            }
+            .regist {
+                HistoryViewReactor(
+                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    userData: $0.resolve(MockUserDataProvider.self),
+                    historyManager: MockHistoryManager()
+                )
+            }
+            .regist { resolver in
+                HistoryViewController.instantiate {
+                    HistoryViewController(
+                        coder: $0,
+                        reactor: resolver.resolve(HistoryViewReactor.self),
+                        alertFactory: resolver.resolve(StubAlertFactory.self)
+                    )
+                }
+            }
+            .regist {
+                ChatCodeInputViewReactor(
+                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    userData: $0.resolve(MockUserDataProvider.self)
+                )
+            }
+            .regist { resolver in
+                ChatCodeInputViewController.instantiate {
+                    ChatCodeInputViewController(
+                        coder: $0,
+                        reactor: resolver.resolve(ChatCodeInputViewReactor.self),
+                        alertFactory: resolver.resolve(StubAlertFactory.self)
                     )
                 }
             }
             .regist {
                 ChatViewReactor(
-                    networkService: $0.resolve(ApolloNetworkServiceMockSuccess.self),
-                    userData: $0.resolve(UserDataProviderMock.self),
-                    messageParser: $0.resolve(MessageParser.self),
+                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    userData: $0.resolve(MockUserDataProvider.self),
+                    messageParser: $0.resolve(MockMessageParser.self),
+                    chatWebSocket: MockWebSocketService(),
+                    historyManager: MockHistoryManager(),
                     roomID: 0,
                     code: "0000"
                 )
@@ -95,39 +150,15 @@ extension Resolver {
                         coder: $0,
                         reactor: resolver.resolve(ChatViewReactor.self),
                         micButtonObserver: BehaviorRelay(
-                            value: resolver.resolve(UserDataProviderMock.self).micButtonSize
+                            value: resolver.resolve(MockUserDataProvider.self).micButtonSize
                         )
-                    )
-                }
-            }
-            .regist { resolver in
-                LanguageSelectionViewController.instantiate {
-                    LanguageSelectionViewController(
-                        coder: $0,
-                        userData: resolver.resolve(UserDataProviderMock.self),
-                        observer: BehaviorSubject<Language>(value: .korean)
-                    )
-                }
-            }
-            .regist {
-                ChatCodeInputViewReactor(
-                    networkService: $0.resolve(ApolloNetworkServiceMockSuccess.self),
-                    userData: $0.resolve(UserDataProviderMock.self)
-                )
-            }
-            .regist { resolver in
-                ChatCodeInputViewController.instantiate {
-                    ChatCodeInputViewController(
-                        coder: $0,
-                        reactor: resolver.resolve(ChatCodeInputViewReactor.self),
-                        alertFactory: resolver.resolve(AlertFactoryStub.self)
                     )
                 }
             }
             .regist {
                 ChatDrawerViewReactor(
-                    networkService: $0.resolve(ApolloNetworkServiceMockSuccess.self),
-                    userData: $0.resolve(UserDataProviderMock.self),
+                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    userData: $0.resolve(MockUserDataProvider.self),
                     roomID: 0,
                     roomCode: "0000"
                 )
@@ -145,10 +176,9 @@ extension Resolver {
             }
             .regist {
                 SpeechViewReactor(
-                    networkService: $0.resolve(ApolloNetworkServiceMockSuccess.self),
-                    userData: $0.resolve(UserDataProviderMock.self),
-                    translationManager: $0.resolve(PapagoAPIManager.self),
-                    speechManager: $0.resolve(SpeechManager.self),
+                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    userData: $0.resolve(MockUserDataProvider.self),
+                    speechManager: $0.resolve(MockSpeechManager.self),
                     roomID: 0
                 )
             }
@@ -160,6 +190,19 @@ extension Resolver {
                     )
                 }
             }
+            .regist {
+                SettingViewReactor(
+                    userData: $0.resolve(MockUserDataProvider.self)
+                )
+            }
+            .regist { resolver in
+                SettingViewController.instantiate {
+                    SettingViewController(
+                        coder: $0,
+                        reactor: resolver.resolve(SettingViewReactor.self),
+                        micButtonObserver: BehaviorRelay(value: .none)
+                    )
+                }
+            }
     }
-    
 }

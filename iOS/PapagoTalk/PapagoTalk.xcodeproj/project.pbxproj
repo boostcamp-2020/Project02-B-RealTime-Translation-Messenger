@@ -10,26 +10,6 @@
 		1E097ADBCF94CEB776E541B7 /* Pods_PapagoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */; };
 		33207D5C0DE1407DC4B9CA33 /* Pods_MessageModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E533376834C2E5DF21B9F /* Pods_MessageModelTests.framework */; };
 		46F908135F35372C0C087EC7 /* Pods_ReactorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C496F5A5B5C972F4BBCF95A /* Pods_ReactorTests.framework */; };
-		4AC6BE752582356700D24DF6 /* PapagoAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F04257F7DA400802B45 /* PapagoAPIServiceMock.swift */; };
-		4AC6BE762582356700D24DF6 /* MessageParserMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1569A3257F8C5B00A2C0F9 /* MessageParserMock.swift */; };
-		4AC6BE772582356700D24DF6 /* UserDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* UserDataProviderMock.swift */; };
-		4AC6BE782582356700D24DF6 /* ImageFactoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E8A257F4CF800F4C258 /* ImageFactoryStub.swift */; };
-		4AC6BE792582356700D24DF6 /* ApolloNetworkServiceMockSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* ApolloNetworkServiceMockSuccess.swift */; };
-		4AC6BE7A2582356700D24DF6 /* SpeechManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F1E257F83D300802B45 /* SpeechManagerMock.swift */; };
-		4AC6BE7B2582356700D24DF6 /* AlertFactoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E80257F4CA800F4C258 /* AlertFactoryStub.swift */; };
-		4AC6BE7C2582356700D24DF6 /* ApolloNetworkServiceMockFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift */; };
-		4AC6BE7F2582356F00D24DF6 /* ChatCodeInputReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3B6F0257FB800004578D4 /* ChatCodeInputReactorTests.swift */; };
-		4AC6BE802582356F00D24DF6 /* HomeReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */; };
-		4AC6BE812582356F00D24DF6 /* ChatReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCB3256674A500F2EA7D /* ChatReactorTests.swift */; };
-		4AC6BE822582356F00D24DF6 /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
-		4AC6BE832582356F00D24DF6 /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
-		4AC6BE8E2582358600D24DF6 /* MemoryLeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6BE862582358600D24DF6 /* MemoryLeakTests.swift */; };
-		4AC6BE8F2582358600D24DF6 /* StoryboardInitiatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6BE882582358600D24DF6 /* StoryboardInitiatible.swift */; };
-		4AC6BE902582358600D24DF6 /* IOCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6BE892582358600D24DF6 /* IOCContainer.swift */; };
-		4AC6BE912582358600D24DF6 /* MemoryLeakCheakable+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6BE8A2582358600D24DF6 /* MemoryLeakCheakable+UIViewController.swift */; };
-		4AC6BE922582358600D24DF6 /* InstanceSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6BE8B2582358600D24DF6 /* InstanceSetupable.swift */; };
-		4AC6BE932582358600D24DF6 /* MemoryLeakCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6BE8C2582358600D24DF6 /* MemoryLeakCheckable.swift */; };
-		4AC6BE942582358600D24DF6 /* MemoryLeakCheakable+XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6BE8D2582358600D24DF6 /* MemoryLeakCheakable+XCTest.swift */; };
 		990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE922257265BB00340A72 /* ChatCodeInputViewController.swift */; };
 		990DE9292572665400340A72 /* ChatCodeInputViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE9282572665400340A72 /* ChatCodeInputViewReactor.swift */; };
 		990DE947257336D900340A72 /* JoinChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990DE946257336D900340A72 /* JoinChatError.swift */; };
@@ -168,6 +148,29 @@
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
 		BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
+		BB70DD05258C47FF0018BC53 /* HomeReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */; };
+		BB70DD06258C47FF0018BC53 /* HistoryReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25AECD258B5E0400941096 /* HistoryReactorTests.swift */; };
+		BB70DD07258C47FF0018BC53 /* ChatCodeInputReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3B6F0257FB800004578D4 /* ChatCodeInputReactorTests.swift */; };
+		BB70DD08258C47FF0018BC53 /* ChatReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCB3256674A500F2EA7D /* ChatReactorTests.swift */; };
+		BB70DD09258C47FF0018BC53 /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
+		BB70DD0A258C47FF0018BC53 /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
+		BB70DD0B258C47FF0018BC53 /* SettingReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C886B258A20E70086568D /* SettingReactorTests.swift */; };
+		BB70DD0C258C47FF0018BC53 /* MemoryLeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCDD258C44B30018BC53 /* MemoryLeakTests.swift */; };
+		BB70DD10258C48250018BC53 /* StoryboardInitiatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCB258C443B0018BC53 /* StoryboardInitiatible.swift */; };
+		BB70DD11258C48250018BC53 /* IOCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCC258C443B0018BC53 /* IOCContainer.swift */; };
+		BB70DD12258C48250018BC53 /* MemoryLeakCheakable+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCD258C443B0018BC53 /* MemoryLeakCheakable+UIViewController.swift */; };
+		BB70DD13258C48250018BC53 /* InstanceSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCE258C443B0018BC53 /* InstanceSetupable.swift */; };
+		BB70DD14258C48250018BC53 /* MemoryLeakCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCF258C443B0018BC53 /* MemoryLeakCheckable.swift */; };
+		BB70DD15258C48250018BC53 /* MemoryLeakCheakable+XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCD0258C443B0018BC53 /* MemoryLeakCheakable+XCTest.swift */; };
+		BB70DD19258C48340018BC53 /* MockApolloNetworkServiceSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */; };
+		BB70DD1A258C48340018BC53 /* MockApolloNetworkServiceFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */; };
+		BB70DD1B258C48340018BC53 /* MockWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E44258AF95300CE4758 /* MockWebSocketService.swift */; };
+		BB70DD1C258C48340018BC53 /* MockUserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */; };
+		BB70DD1D258C48340018BC53 /* MockMessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */; };
+		BB70DD1E258C48340018BC53 /* MockHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E33258AF59B00CE4758 /* MockHistoryManager.swift */; };
+		BB70DD1F258C48340018BC53 /* MockSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F1E257F83D300802B45 /* MockSpeechManager.swift */; };
+		BB70DD20258C48340018BC53 /* StubAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E80257F4CA800F4C258 /* StubAlertFactory.swift */; };
+		BB70DD21258C48340018BC53 /* StubImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E8A257F4CF800F4C258 /* StubImageFactory.swift */; };
 		BB7AB0152577B49400D9EDF7 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7AB0142577B49400D9EDF7 /* SpeechService.swift */; };
 		BB7B58AD25848C7500898D6C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7B58AC25848C7500898D6C /* SettingViewController.swift */; };
 		BB93C290257526DD00C68491 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C28F257526DD00C68491 /* MessageType.swift */; };
@@ -213,13 +216,6 @@
 
 /* Begin PBXFileReference section */
 		110AE697DEAC9E4A5369FF3D /* Pods-PapagoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PapagoTalk.release.xcconfig"; path = "Target Support Files/Pods-PapagoTalk/Pods-PapagoTalk.release.xcconfig"; sourceTree = "<group>"; };
-		4AC6BE862582358600D24DF6 /* MemoryLeakTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryLeakTests.swift; sourceTree = "<group>"; };
-		4AC6BE882582358600D24DF6 /* StoryboardInitiatible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitiatible.swift; sourceTree = "<group>"; };
-		4AC6BE892582358600D24DF6 /* IOCContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOCContainer.swift; sourceTree = "<group>"; };
-		4AC6BE8A2582358600D24DF6 /* MemoryLeakCheakable+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoryLeakCheakable+UIViewController.swift"; sourceTree = "<group>"; };
-		4AC6BE8B2582358600D24DF6 /* InstanceSetupable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceSetupable.swift; sourceTree = "<group>"; };
-		4AC6BE8C2582358600D24DF6 /* MemoryLeakCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryLeakCheckable.swift; sourceTree = "<group>"; };
-		4AC6BE8D2582358600D24DF6 /* MemoryLeakCheakable+XCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoryLeakCheakable+XCTest.swift"; sourceTree = "<group>"; };
 		68E0A5672F4C09FEC3520B34 /* Pods_PapagoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C496F5A5B5C972F4BBCF95A /* Pods_ReactorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		908E533376834C2E5DF21B9F /* Pods_MessageModelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageModelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -366,6 +362,13 @@
 		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
 		BB6F7ED2256D799B00D66F8E /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB70DCCB258C443B0018BC53 /* StoryboardInitiatible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitiatible.swift; sourceTree = "<group>"; };
+		BB70DCCC258C443B0018BC53 /* IOCContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOCContainer.swift; sourceTree = "<group>"; };
+		BB70DCCD258C443B0018BC53 /* MemoryLeakCheakable+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoryLeakCheakable+UIViewController.swift"; sourceTree = "<group>"; };
+		BB70DCCE258C443B0018BC53 /* InstanceSetupable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceSetupable.swift; sourceTree = "<group>"; };
+		BB70DCCF258C443B0018BC53 /* MemoryLeakCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryLeakCheckable.swift; sourceTree = "<group>"; };
+		BB70DCD0258C443B0018BC53 /* MemoryLeakCheakable+XCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoryLeakCheakable+XCTest.swift"; sourceTree = "<group>"; };
+		BB70DCDD258C44B30018BC53 /* MemoryLeakTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoryLeakTests.swift; path = ReactorTests/MemoryLeakTests.swift; sourceTree = SOURCE_ROOT; };
 		BB7AB0142577B49400D9EDF7 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		BB7B58AC25848C7500898D6C /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BB93C28F257526DD00C68491 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
@@ -433,19 +436,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4AC6BE872582358600D24DF6 /* MemoryLeakChecker */ = {
-			isa = PBXGroup;
-			children = (
-				4AC6BE882582358600D24DF6 /* StoryboardInitiatible.swift */,
-				4AC6BE892582358600D24DF6 /* IOCContainer.swift */,
-				4AC6BE8A2582358600D24DF6 /* MemoryLeakCheakable+UIViewController.swift */,
-				4AC6BE8B2582358600D24DF6 /* InstanceSetupable.swift */,
-				4AC6BE8C2582358600D24DF6 /* MemoryLeakCheckable.swift */,
-				4AC6BE8D2582358600D24DF6 /* MemoryLeakCheakable+XCTest.swift */,
-			);
-			path = MemoryLeakChecker;
-			sourceTree = "<group>";
-		};
 		990DE9212572657300340A72 /* ChatCodeInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +656,7 @@
 		BB1C886A258A20E70086568D /* ReactorTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB70DCCA258C443B0018BC53 /* MemoryLeakChecker */,
 				BB987E8E257F4D3E00F4C258 /* Mock */,
 				BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */,
 				BB25AECD258B5E0400941096 /* HistoryReactorTests.swift */,
@@ -674,6 +665,7 @@
 				99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */,
 				99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */,
 				BB1C886B258A20E70086568D /* SettingReactorTests.swift */,
+				BB70DCDD258C44B30018BC53 /* MemoryLeakTests.swift */,
 				BB1C886D258A20E70086568D /* Info.plist */,
 			);
 			path = ReactorTests;
@@ -795,6 +787,19 @@
 				990DE97B2573A80B00340A72 /* Strings.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		BB70DCCA258C443B0018BC53 /* MemoryLeakChecker */ = {
+			isa = PBXGroup;
+			children = (
+				BB70DCCB258C443B0018BC53 /* StoryboardInitiatible.swift */,
+				BB70DCCC258C443B0018BC53 /* IOCContainer.swift */,
+				BB70DCCD258C443B0018BC53 /* MemoryLeakCheakable+UIViewController.swift */,
+				BB70DCCE258C443B0018BC53 /* InstanceSetupable.swift */,
+				BB70DCCF258C443B0018BC53 /* MemoryLeakCheckable.swift */,
+				BB70DCD0258C443B0018BC53 /* MemoryLeakCheakable+XCTest.swift */,
+			);
+			path = MemoryLeakChecker;
 			sourceTree = "<group>";
 		};
 		BB7B58AB25848C6300898D6C /* Setting */ = {
@@ -921,22 +926,6 @@
 				BB25AEFD258B69F300941096 /* Localization */,
 			);
 			path = PapagoTalk;
-			sourceTree = "<group>";
-		};
-		BBF2DCB2256674A500F2EA7D /* PapagoTalkTests */ = {
-			isa = PBXGroup;
-			children = (
-				4AC6BE872582358600D24DF6 /* MemoryLeakChecker */,
-				4AC6BE862582358600D24DF6 /* MemoryLeakTests.swift */,
-				BB987E8E257F4D3E00F4C258 /* Mock */,
-				BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */,
-				BBF2DCB3256674A500F2EA7D /* ChatReactorTests.swift */,
-				99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */,
-				BBF3B6F0257FB800004578D4 /* ChatCodeInputReactorTests.swift */,
-				99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */,
-				BBF2DCB5256674A500F2EA7D /* Info.plist */,
-			);
-			path = PapagoTalkTests;
 			sourceTree = "<group>";
 		};
 		BDB645955860CC284B4F06B4 /* Pods */ = {
@@ -1307,6 +1296,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB70DD19258C48340018BC53 /* MockApolloNetworkServiceSuccess.swift in Sources */,
+				BB70DD1A258C48340018BC53 /* MockApolloNetworkServiceFailure.swift in Sources */,
+				BB70DD1B258C48340018BC53 /* MockWebSocketService.swift in Sources */,
+				BB70DD1C258C48340018BC53 /* MockUserDataProvider.swift in Sources */,
+				BB70DD1D258C48340018BC53 /* MockMessageParser.swift in Sources */,
+				BB70DD1E258C48340018BC53 /* MockHistoryManager.swift in Sources */,
+				BB70DD1F258C48340018BC53 /* MockSpeechManager.swift in Sources */,
+				BB70DD20258C48340018BC53 /* StubAlertFactory.swift in Sources */,
+				BB70DD21258C48340018BC53 /* StubImageFactory.swift in Sources */,
+				BB70DD10258C48250018BC53 /* StoryboardInitiatible.swift in Sources */,
+				BB70DD11258C48250018BC53 /* IOCContainer.swift in Sources */,
+				BB70DD12258C48250018BC53 /* MemoryLeakCheakable+UIViewController.swift in Sources */,
+				BB70DD13258C48250018BC53 /* InstanceSetupable.swift in Sources */,
+				BB70DD14258C48250018BC53 /* MemoryLeakCheckable.swift in Sources */,
+				BB70DD15258C48250018BC53 /* MemoryLeakCheakable+XCTest.swift in Sources */,
+				BB70DD05258C47FF0018BC53 /* HomeReactorTests.swift in Sources */,
+				BB70DD06258C47FF0018BC53 /* HistoryReactorTests.swift in Sources */,
+				BB70DD07258C47FF0018BC53 /* ChatCodeInputReactorTests.swift in Sources */,
+				BB70DD08258C47FF0018BC53 /* ChatReactorTests.swift in Sources */,
+				BB70DD09258C47FF0018BC53 /* ChatDrawerReactorTests.swift in Sources */,
+				BB70DD0A258C47FF0018BC53 /* SpeechReactorTests.swift in Sources */,
+				BB70DD0B258C47FF0018BC53 /* SettingReactorTests.swift in Sources */,
+				BB70DD0C258C47FF0018BC53 /* MemoryLeakTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,91 +1447,6 @@
 				BB38252B25740B22000425FD /* ChatDrawerViewReactor.swift in Sources */,
 				BB25AE93258B57F900941096 /* GetMessageData.swift in Sources */,
 				BB25AE98258B583900941096 /* GetMissingMessageData.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBF2DCAB256674A500F2EA7D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4AC6BE832582356F00D24DF6 /* ChatDrawerReactorTests.swift in Sources */,
-				4AC6BE912582358600D24DF6 /* MemoryLeakCheakable+UIViewController.swift in Sources */,
-				4AC6BE812582356F00D24DF6 /* ChatReactorTests.swift in Sources */,
-				4AC6BE932582358600D24DF6 /* MemoryLeakCheckable.swift in Sources */,
-				4AC6BE772582356700D24DF6 /* UserDataProviderMock.swift in Sources */,
-				4AC6BE922582358600D24DF6 /* InstanceSetupable.swift in Sources */,
-				4AC6BE7A2582356700D24DF6 /* SpeechManagerMock.swift in Sources */,
-				4AC6BE792582356700D24DF6 /* ApolloNetworkServiceMockSuccess.swift in Sources */,
-				4AC6BE7F2582356F00D24DF6 /* ChatCodeInputReactorTests.swift in Sources */,
-				4AC6BE762582356700D24DF6 /* MessageParserMock.swift in Sources */,
-				4AC6BE942582358600D24DF6 /* MemoryLeakCheakable+XCTest.swift in Sources */,
-				4AC6BE8E2582358600D24DF6 /* MemoryLeakTests.swift in Sources */,
-				4AC6BE802582356F00D24DF6 /* HomeReactorTests.swift in Sources */,
-				4AC6BE8F2582358600D24DF6 /* StoryboardInitiatible.swift in Sources */,
-				4AC6BE7C2582356700D24DF6 /* ApolloNetworkServiceMockFailure.swift in Sources */,
-				4AC6BE902582358600D24DF6 /* IOCContainer.swift in Sources */,
-				4AC6BE782582356700D24DF6 /* ImageFactoryStub.swift in Sources */,
-				4AC6BE7B2582356700D24DF6 /* AlertFactoryStub.swift in Sources */,
-				4AC6BE822582356F00D24DF6 /* SpeechReactorTests.swift in Sources */,
-				4AC6BE752582356700D24DF6 /* PapagoAPIServiceMock.swift in Sources */,
-				BB987E9A257F4EA700F4C258 /* User.swift in Sources */,
-				BBFFC1C92581CE7200B241F0 /* (null) in Sources */,
-				BB987E9D257F4EAC00F4C258 /* Language.swift in Sources */,
-				BB1569A4257F8C5B00A2C0F9 /* MessageParserMock.swift in Sources */,
-				BB987EB8257F4FF200F4C258 /* RevisionedData.swift in Sources */,
-				BB987EC7257F505900F4C258 /* Constant.swift in Sources */,
-				BB987EA3257F4F0200F4C258 /* Strings.swift in Sources */,
-				BBF3B6F7257FB927004578D4 /* ChatRoomInfo.swift in Sources */,
-				BB987EAF257F4F9600F4C258 /* String+.swift in Sources */,
-				99482F1F257F83D300802B45 /* SpeechManagerMock.swift in Sources */,
-				BB987EAC257F4F8100F4C258 /* Locale+.swift in Sources */,
-				99482F05257F7DA400802B45 /* PapagoAPIServiceMock.swift in Sources */,
-				BB987EBB257F4FFB00F4C258 /* NetworkServiceProviding.swift in Sources */,
-				BBF3B6F1257FB800004578D4 /* ChatCodeInputReactorTests.swift in Sources */,
-				BB987EC1257F503700F4C258 /* JoinChatResponse.swift in Sources */,
-				BB156975257F71F400A2C0F9 /* DateFormatter+.swift in Sources */,
-				BB15699C257F888300A2C0F9 /* MessageParser.swift in Sources */,
-				BB987EC4257F503900F4C258 /* CreateRoomResponse.swift in Sources */,
-				BB156974257F71E600A2C0F9 /* TranslatedResult.swift in Sources */,
-				99482F13257F7EE800802B45 /* TranslationRequest.swift in Sources */,
-				BBFFC1CF2581CFA400B241F0 /* MicButtonSize.swift in Sources */,
-				99482F24257F83E900802B45 /* SpeechServiceProviding.swift in Sources */,
-				BB15695F257F716A00A2C0F9 /* Message.swift in Sources */,
-				BB15697E257F722200A2C0F9 /* MessageText.swift in Sources */,
-				BB987E91257F4E3D00F4C258 /* ImageFactoryProviding.swift in Sources */,
-				BB987E94257F4E5300F4C258 /* AlertFactoryProviding.swift in Sources */,
-				BB15696B257F71B300A2C0F9 /* MessageCell.swift in Sources */,
-				BB987EBE257F503000F4C258 /* NetworkError.swift in Sources */,
-				BB987EB5257F4FE600F4C258 /* HomeError.swift in Sources */,
-				99482EF0257F7C9C00802B45 /* SpeechReactorTests.swift in Sources */,
-				BB987EB2257F4FE400F4C258 /* JoinChatError.swift in Sources */,
-				BBF3B6FA257FB942004578D4 /* ReceivedMessageBubbleTail.swift in Sources */,
-				BB987EA0257F4EE400F4C258 /* ImageFactory.swift in Sources */,
-				BB15693E257F5ADA00A2C0F9 /* ApolloNetworkServiceMockFailure.swift in Sources */,
-				BBFFC1CC2581CEC100B241F0 /* UserDataProviding.swift in Sources */,
-				BB987E75257F470B00F4C258 /* ApolloNetworkServiceMockSuccess.swift in Sources */,
-				BB156981257F723000A2C0F9 /* Data+.swift in Sources */,
-				BB156978257F71F700A2C0F9 /* Calendar+.swift in Sources */,
-				BB156984257F723900A2C0F9 /* UICollectionReusableView+.swift in Sources */,
-				BB1569A7257F8CBB00A2C0F9 /* MessageParseProviding.swift in Sources */,
-				BB15697B257F720B00A2C0F9 /* SentMessageCell.swift in Sources */,
-				BB15696E257F71B600A2C0F9 /* ReceivedMessageCell.swift in Sources */,
-				BB156971257F71DF00A2C0F9 /* TranslatedMessageCell.swift in Sources */,
-				BB156968257F719900A2C0F9 /* MessageType.swift in Sources */,
-				99482EF5257F7CE600802B45 /* SpeechViewReactor.swift in Sources */,
-				BB987E87257F4CD100F4C258 /* UserDataProviderMock.swift in Sources */,
-				BB987E8B257F4CF800F4C258 /* ImageFactoryStub.swift in Sources */,
-				BBF3B6F4257FB8CE004578D4 /* ChatCodeInputViewReactor.swift in Sources */,
-				BBFFC1D22581CFB600B241F0 /* SystemMessageCell.swift in Sources */,
-				BB987E81257F4CA800F4C258 /* AlertFactoryStub.swift in Sources */,
-				BB987EA9257F4F5C00F4C258 /* HomeViewReactor.swift in Sources */,
-				BB15694B257F710C00A2C0F9 /* ChatViewReactor.swift in Sources */,
-				BB156962257F716E00A2C0F9 /* MessageBox.swift in Sources */,
-				BBF2DCB4256674A500F2EA7D /* ChatReactorTests.swift in Sources */,
-				BBF3B6FD257FB946004578D4 /* SentMessageBubbleTail.swift in Sources */,
-				99482F2A257FA10200802B45 /* ChatDrawerReactorTests.swift in Sources */,
-				99482EF8257F7D0700802B45 /* PapagoAPIServiceProviding.swift in Sources */,
-				99482F2D257FA13000802B45 /* ChatDrawerViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
