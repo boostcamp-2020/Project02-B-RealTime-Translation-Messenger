@@ -73,10 +73,17 @@ extension Resolver {
     static func setupForMemoryLeakTest() {
         Resolver.shared
             .regist { _ in MockApolloNetworkServiceSuccess() } // networkService
-            .regist { _ in StubAlertFactory() }
+            .regist { _ in MockWebSocketService() }
             .regist { _ in MockUserDataProvider() }
-            .regist { _ in MockSpeechManager() }
             .regist { _ in MockMessageParser() }
+            .regist { _ in MockSpeechManager() }
+            .regist { _ in MockHistoryManager() }
+            .regist { _ in StubAlertFactory() }
+            .regist { _ in
+                LaunchScreenViewController.instantiate {
+                    LaunchScreenViewController(coder: $0)
+                }
+            }
             .regist {
                 HomeViewReactor(
                     networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
