@@ -49,6 +49,7 @@ const Nickname: React.FC<NicknameProps> = ({
 
   const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: nicknameValue } = e.target;
+    if (nicknameValue && !nicknameValue.replace(' ', '').length) return;
     const nicknameValueLength = nicknameValue.length;
     if (
       nicknameValueLength < minNicknameLength ||
