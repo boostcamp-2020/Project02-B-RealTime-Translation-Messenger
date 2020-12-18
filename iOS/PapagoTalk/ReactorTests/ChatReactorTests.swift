@@ -25,13 +25,24 @@ class ChatReactorTests: XCTestCase {
         
         // Then
         XCTAssertEqual(reactor.currentState.isSubscribingMessage, true)
-        XCTAssertEqual(reactor.currentState.messageBox.messages.first?.text, "안녕하세요")
-        XCTAssertEqual(reactor.currentState.messageBox.messages.first?.sender.nickName, "testUser")
-        XCTAssertEqual(reactor.currentState.messageBox.messages.first?.sender.language, .korean)
-        XCTAssertEqual(reactor.currentState.messageBox.messages.first?.language, "ko")
     }
     
     func test_subscribeMessages_reconnect() throws {
+        // Given
+        let reactor = ChatViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+                                      userData: MockUserDataProvider(),
+                                      messageParser: MockMessageParser(),
+                                      chatWebSocket: MockWebSocketService(),
+                                      historyManager: MockHistoryManager(),
+                                      roomID: 8,
+                                      code: "")
+        
+        // When
+        reactor.action.onNext(.subscribeChatRoom)
+        reactor.action.onNext(.subscribeChatRoom)
+        
+        // Then
+        XCTAssertEqual(reactor.currentState.isSubscribingMessage, true)
 
     }
     

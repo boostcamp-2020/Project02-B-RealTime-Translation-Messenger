@@ -19,6 +19,8 @@ class ChatCodeInputReactorTests: XCTestCase {
         reactor.action.onNext(.numberButtonTapped("5"))
         
         // Then
+        let code = reactor.currentState.codeInput.reduce("") { $0 + $1 }
+        XCTAssertEqual(code, "5")
         XCTAssertEqual(reactor.currentState.codeInput[0], "5")
         XCTAssertEqual(reactor.currentState.cusor, 1)
     }
@@ -34,6 +36,8 @@ class ChatCodeInputReactorTests: XCTestCase {
         reactor.action.onNext(.numberButtonTapped("5"))
 
         // Then
+        let code = reactor.currentState.codeInput.reduce("") { $0 + $1 }
+        XCTAssertEqual(code, "545")
         XCTAssertEqual(reactor.currentState.codeInput[2], "5")
         XCTAssertEqual(reactor.currentState.cusor, 3)
     }
@@ -52,6 +56,8 @@ class ChatCodeInputReactorTests: XCTestCase {
         reactor.action.onNext(.numberButtonTapped("3"))
 
         // Then
+        let code = reactor.currentState.codeInput.reduce("") { $0 + $1 }
+        XCTAssertEqual(code, "890123")
         XCTAssertEqual(reactor.currentState.codeInput[5], "3")
         XCTAssertEqual(reactor.currentState.cusor, 6)
     }
@@ -71,6 +77,8 @@ class ChatCodeInputReactorTests: XCTestCase {
         reactor.action.onNext(.numberButtonTapped("7"))
 
         // Then
+        let code = reactor.currentState.codeInput.reduce("") { $0 + $1 }
+        XCTAssertEqual(code, "123456")
         XCTAssertEqual(reactor.currentState.codeInput[5], "6")
         XCTAssertEqual(reactor.currentState.codeInput.count, 6)
         XCTAssertEqual(reactor.currentState.cusor, 6)
@@ -90,6 +98,8 @@ class ChatCodeInputReactorTests: XCTestCase {
         reactor.action.onNext(.removeButtonTapped)
 
         // Then
+        let code = reactor.currentState.codeInput.reduce("") { $0 + $1 }
+        XCTAssertEqual(code, "2437")
         XCTAssertEqual(reactor.currentState.codeInput[4], "")
         XCTAssertEqual(reactor.currentState.cusor, 4)
     }
@@ -135,7 +145,7 @@ class ChatCodeInputReactorTests: XCTestCase {
         reactor.action.onNext(.numberButtonTapped("5"))
 
         // Then
-        XCTAssertEqual(reactor.currentState.chatRoomInfo, ChatRoomInfo(userID: 0, roomID: 8, code: "545305", token: ""))
+        XCTAssertEqual(reactor.currentState.chatRoomInfo, ChatRoomInfo(userID: 1, roomID: 8, code: "545305", token: "testToken"))
     }
     
     func test_joinChatRoom_fail() throws {
@@ -150,9 +160,10 @@ class ChatCodeInputReactorTests: XCTestCase {
 
         // When
         reactor.action.onNext(.numberButtonTapped("7"))
-
+        
         // Then
-        // XCTAssertEqual(reactor.currentState.errorMessage, JoinChatError.networkError.message)
+        let code = reactor.currentState.codeInput.reduce("") { $0 + $1 }
+        XCTAssertEqual(code, "")
         XCTAssertEqual(reactor.currentState.codeInput[0], "")
         XCTAssertEqual(reactor.currentState.cusor, 0)
     }
