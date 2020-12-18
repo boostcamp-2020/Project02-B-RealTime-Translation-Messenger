@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
-import { Microphone } from './Icons';
+import { Microphone } from '@components/Common/Icons';
 
 interface Props {
   isListening: boolean;

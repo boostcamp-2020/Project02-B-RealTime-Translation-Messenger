@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
-import { Sun, Moon } from '@components/Icons';
+import { Sun, Moon } from '@components/Common/Icons';
 import GlobalStyles from '@styles/GlobalStyles';
 import { lightTheme, darkTheme } from '@styles/Theme';
 import Routes from '@routes/.';
 import { LocalizationContextProvider } from '@contexts/LocalizationContext';
 import { UserContextProvider } from '@contexts/UserContext';
 
-const Button = styled.button`
+const ThemeButton = styled.button`
   position: fixed;
   right: 2.5rem;
   bottom: 2rem;
@@ -38,9 +38,9 @@ const App: React.FC = () => {
       <LocalizationContextProvider>
         <UserContextProvider>
           <GlobalStyles />
-          <Button onClick={toggleTheme}>
+          <ThemeButton onClick={toggleTheme}>
             {isLight ? <Sun size={36} /> : <Moon size={36} />}
-          </Button>
+          </ThemeButton>
           <BrowserRouter>
             <Routes />
           </BrowserRouter>
