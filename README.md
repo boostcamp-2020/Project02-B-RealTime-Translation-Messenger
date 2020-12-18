@@ -130,9 +130,9 @@
 └── 📁PapagoTalk
     ├── 📁Network
     ├── 📁GraphQL
-      ├── 📁MessageData
-      ├── 📁UserData
-      └── 📁Response    
+        ├── 📁MessageData
+        ├── 📁UserData
+        └── 📁Response    
     ├── 📁Persistent
     ├── 📁Entity
     ├── 📁Localization
@@ -145,15 +145,15 @@
         ├── 📁Util
         └── 📁View    
     └── 📁Presentation  
-      ├── 📁Coordinator
-      ├── 📁LaunchScreen
-      ├── 📁Home
-      ├── 📁History
-      ├── 📁Chat
-      ├── 📁ChatCodeInput
-      ├── 📁ChatDrawer
-      ├── 📁Speech
-      └── 📁Setting
+        ├── 📁Coordinator
+        ├── 📁LaunchScreen
+        ├── 📁Home
+        ├── 📁History
+        ├── 📁Chat
+        ├── 📁ChatCodeInput
+        ├── 📁ChatDrawer
+        ├── 📁Speech
+        └── 📁Setting
     
 ```
 
