@@ -7,10 +7,10 @@ import Toast from '@components/Common/Toast';
 import { ENTER_ROOM } from '@queries/room.queires';
 import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
 import { useUserState } from '@contexts/UserContext';
-import { useLocalizationState } from '@contexts/LocalizationContext';
 import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import encrypt from '@utils/encryption';
 import floatToast from '@utils/toast';
+import { getText } from '@/constants/localization';
 import Overlay from './Overlay';
 import Code from './Code';
 
@@ -75,7 +75,7 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
   const history = useHistory();
   const [pinValue, setPinValue] = useState('');
   const { nickname, avatar, lang } = useUserState();
-  const { enterCode, submitCode, wrongCode } = useLocalizationState();
+  const { enterCode, submitCode, wrongCode } = getText(lang);
 
   const onClickOverlay = () => {
     if (setVisible) setVisible(!visible);

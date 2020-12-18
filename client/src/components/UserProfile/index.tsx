@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Refresh } from '@components/Common/Icons';
 import LANGUAGE from '@constants/language';
 import util from '@utils/utils';
-import {
-  useLocalizationState,
-  useLocalizationDispatch,
-} from '@contexts/LocalizationContext';
 import { useUserDispatch, useUserState } from '@contexts/UserContext';
-import { Refresh } from '@components/Common/Icons';
-import styled from 'styled-components';
+import { getText } from '@/constants/localization';
 
 const ProfileWrapper = styled.div`
   display: flex;
@@ -119,14 +116,9 @@ const UserProfile: React.FC<Props> = ({
   isNicknameValid,
   setIsNicknameValid,
 }) => {
-  const { avatar, nickname } = useUserState();
+  const { avatar, nickname, lang } = useUserState();
   const dispatch = useUserDispatch();
-  const {
-    inputNickName,
-    nicknameError,
-    selectLanguage,
-  } = useLocalizationState();
-  const localDispatch = useLocalizationDispatch();
+  const { inputNickName, nicknameError, selectLanguage } = getText(lang);
 
   const [selectedLangNum, setSelectedLangNum] = useState(0);
   const [selectedLangValue, setSelectedLangValue] = useState('한');
@@ -167,11 +159,6 @@ const UserProfile: React.FC<Props> = ({
 
     dispatch({
       type: 'SET_LANG',
-      lang: selected.code,
-    });
-
-    localDispatch({
-      type: 'SET_LOCAL',
       lang: selected.code,
     });
   };

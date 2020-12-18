@@ -11,9 +11,9 @@ import { CreateRoomResponse, MutationCreateRoomArgs } from '@generated/types';
 import { CREATE_ROOM } from '@queries/room.queires';
 import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import { useUserState } from '@contexts/UserContext';
-import { useLocalizationState } from '@contexts/LocalizationContext';
 import encrypt from '@utils/encryption';
 import client, { wsClient } from '@/apollo/Client';
+import { getText } from '@/constants/localization';
 
 const Wrapper = styled.div`
   min-width: inherit;
@@ -36,10 +36,10 @@ const Container = styled.div`
 
 const Home: React.FC = () => {
   const history = useHistory();
-  const { createRoom, enterRoom } = useLocalizationState();
   const { greenColor } = Theme;
-  const [visible, setVisible] = useState(false);
   const { avatar, nickname, lang } = useUserState();
+  const { createRoom, enterRoom } = getText(lang);
+  const [visible, setVisible] = useState(false);
   const [isNicknameValid, setIsNicknameValid] = useState(true);
 
   const onClickEnterRoom = () => {
