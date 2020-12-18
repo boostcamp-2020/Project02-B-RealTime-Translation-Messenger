@@ -11,6 +11,7 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@types/passport": "^1.0.4",
     "@types/passport-jwt": "^3.0.3",
+    "apollo-server": "^2.19.0",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "graphql-subscriptions": "^1.1.0",
@@ -26,28 +27,54 @@
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.5",
     "@prisma/cli": "2.11.0",
+    "@types/jest": "^26.0.19",
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.8",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
+    "apollo-server-testing": "^2.19.0",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
+    "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.5"
   },
   "scripts": {
     "dev": "nodemon --exec ./node_modules/.bin/ts-node -r tsconfig-paths/register src/server.ts",
-    "generate": "yarn prisma migrate save --name init --experimental && yarn prisma migrate up --experimental && yarn prisma generate"
+    "generate": "yarn prisma migrate save --name init --experimental && yarn prisma migrate up --experimental && yarn prisma generate",
+    "test": "jest --testEnvironment=node --detectOpenHandles --forceExit"
   },
   "_moduleAliases": {
     "@utils": "src/utils",
-    "@api": "src/api"
+    "@api": "src/api",
+    "@interfaces": "src/interfaces"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "\\.spec\\.ts$",
+    "moduleFileExtensions": [
+      "ts", "js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "enableTsDiagnostics": true
+      }
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^@api/(.*)": "<rootDir>/src/api/$1",
+      "^@utils/(.*)": "<rootDir>/src/utils/$1",
+      "^@interfaces/(.*)": "<rootDir>/src/interfaces/$1"
+    }
   }
 }

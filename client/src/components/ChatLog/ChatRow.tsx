@@ -1,23 +1,52 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import Avatar from '@components/Avatar';
-import { Message } from '@generated/types';
+import Avatar from '@components/Common/Avatar';
 import formatTime from '@utils/formatTimezone';
+import comparePrevMessage from '@utils/comparePrevMessage';
+import { getText } from '@constants/localization';
 import Balloon from './Balloon';
+import AvatarText from './AvatarText';
+import TimeText from './TimeText';
 
 interface TranslatedMessage {
   originText: string;
   translatedText: string;
 }
 
+interface User {
+  id: number;
+  nickname: string;
+  avatar: string;
+  lang: string;
+}
+
+interface Message {
+  id: number;
+  text: string;
+  createdAt: string;
+  source: string;
+  user: User;
+}
+
 interface Props {
-  message?: Message;
+  message: Message;
   obj?: TranslatedMessage;
+  allMessages: Message[];
 }
 
 interface isOriginProps {
   isOrigin: boolean;
+}
+
+interface LocationState {
+  lang: string;
+  userId: number;
+}
+
+interface Props {
+  isAvatarVisible?: boolean;
+  isTimeVisible?: boolean;
 }
 
 const Wrapper = styled.div<isOriginProps>`
@@ -37,49 +66,88 @@ const Info = styled.div<isOriginProps>`
   margin: 0 0 0.4rem 0.2rem;
 `;
 
-const Text = styled.span`
-  margin-right: 0.3rem;
-  color: ${({ theme }) => theme.reverseColor};
-`;
-
 const DoubleBubble = styled.div`
   display: flex;
   align-items: center;
+  min-width: 400px;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    flex-direction: column;
+    min-width: 50px;
+    max-width: 200px;
+    div {
+      font-size: 10px;
+      :first-child {
+        margin-bottom: 0.5rem;
+      }
+      :nth-child(2) {
+        margin: 0;
+      }
+    }
+  }
 `;
 
 const UserChangedPopup = styled.div`
   width: fit-content;
-  margin: 1.5rem auto 0 auto;
+  margin: 1.5rem auto;
   padding: 0.3rem 1rem;
   color: #fff;
   background-color: #000;
-  border-radius: ${(props) => props.theme.borderRadiusSmall};
+  border-radius: ${({ theme }) => theme.borderRadiusSmall};
   font-size: 12px;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    margin: 1rem auto;
+    font-size: 8px;
+  }
 `;
 
-const ChatRow: FC<Props> = ({ message, obj }) => {
-  const location = useLocation<{ userId: number; lang: string }>();
-  const { lang, userId } = location.state;
+const UserChangedPopupMessage = styled.span`
+  color: ${({ theme }) => theme.grayColor};
+`;
 
+const ChatRow: FC<Props> = ({ message, obj, allMessages }) => {
+  const location = useLocation<LocationState>();
+  const [isVisbleAvatar, setIsVisbleAvatar] = useState(true);
+  const [isVisibleTime, setIsVisibleTime] = useState(true);
+  const { lang, userId } = location.state;
   const isOrigin = userId === message?.user.id;
   const author = message?.user.nickname;
   const createdAt = formatTime(message?.createdAt as string, lang);
   const avatar = message?.user.avatar;
   const source = message?.source;
+  const messageId = message?.id;
+  const { enterText, leaveText } = getText(lang);
+
+  useEffect(() => {
+    const { isAvatarVisible, isTimeVisible } = comparePrevMessage(
+      messageId as number,
+      allMessages,
+    );
+    setIsVisbleAvatar(isAvatarVisible);
+    setIsVisibleTime(isTimeVisible);
+  }, [allMessages]);
 
   if (source === 'in' || source === 'out') {
-    return <UserChangedPopup>{message?.text}</UserChangedPopup>;
+    return (
+      <UserChangedPopup>
+        {message?.text}
+        <UserChangedPopupMessage>
+          {message.source === 'in' ? enterText : leaveText}
+        </UserChangedPopupMessage>
+      </UserChangedPopup>
+    );
   }
 
   return (
     <Wrapper isOrigin={isOrigin}>
       <>
-        {!isOrigin && <Avatar size={50} profile={avatar} />}
+        {!isOrigin && (
+          <Avatar size={50} profile={avatar} isAvatarVisible={isVisbleAvatar} />
+        )}
         <Column>
           <>
             <Info isOrigin={isOrigin}>
-              <Text>{author}</Text>
-              <Text>{createdAt}</Text>
+              <AvatarText text={author} isAvatarVisible={isVisbleAvatar} />
+              <TimeText text={createdAt} isTimeVisible={isVisibleTime} />
             </Info>
             <DoubleBubble>
               <Balloon isOrigin={isOrigin} originText={obj?.originText} />
@@ -93,7 +161,9 @@ const ChatRow: FC<Props> = ({ message, obj }) => {
             </DoubleBubble>
           </>
         </Column>
-        {isOrigin && <Avatar size={50} profile={avatar} />}
+        {isOrigin && (
+          <Avatar size={50} profile={avatar} isAvatarVisible={isVisbleAvatar} />
+        )}
       </>
     </Wrapper>
   );

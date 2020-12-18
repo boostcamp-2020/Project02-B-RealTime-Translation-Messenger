@@ -9,10 +9,16 @@ interface Props {
   numInputs: number;
 }
 
+const containerStyle: CSS.Properties = {
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+};
+
 const InputStyle: CSS.Properties = {
   width: '3rem',
   height: '4rem',
-  margin: '0 0.3rem',
+  margin: '.2rem',
   color: 'black',
   background: 'white',
   border: 'none',
@@ -26,6 +32,8 @@ const Input: FC<Props> = ({ value, onChange, numInputs }) => (
     onChange={onChange}
     numInputs={numInputs}
     separator={<span>-</span>}
+    isInputNum
+    containerStyle={containerStyle}
     inputStyle={InputStyle}
     shouldAutoFocus
   />

@@ -1,3 +1,4 @@
+import { Context } from '@interfaces/context';
 import { PrismaClient } from '@prisma/client';
 import getSecondLang from '@utils/getSecondLang';
 import req from '@utils/request';
@@ -8,15 +9,20 @@ interface TranslationForm {
   target: string;
 }
 
+interface translationResponse {
+  translatedText?: string;
+  errorMsg?: string;
+}
+
 const prisma = new PrismaClient();
 
 export default {
   Mutation: {
     translation: async (
-      _: any,
+      _: translationResponse,
       args: TranslationForm,
-      { request, isAuthenticated }: any,
-    ): Promise<{ translatedText: string }> => {
+      { request, isAuthenticated }: Context,
+    ): Promise<translationResponse> => {
       try {
         isAuthenticated(request);
         const { text } = args;
@@ -31,18 +37,18 @@ export default {
           .users();
 
         if (lang === source) {
-          const target = getSecondLang(users, source);
+          const target = getSecondLang(
+            users.filter((user) => !user.isDeleted),
+            source,
+          );
           const translatedText = await req(text, source, target);
           return { translatedText: translatedText };
         }
+
         const translatedText = await req(text, source, lang);
-        if (translatedText) {
-          return { translatedText: translatedText };
-        } else {
-          return { translatedText: translatedText };
-        }
+        return { translatedText: translatedText };
       } catch (e) {
-        return { translatedText: '텍스트를 입력하세요' };
+        return { errorMsg: e.response.data.errorMessage };
       }
     },
   },

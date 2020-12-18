@@ -5,7 +5,7 @@ interface OffsetTable {
 const timeOffsetTable: OffsetTable = {
   ko: 9,
   en: -5,
-  'zh-cn': 8,
+  'zh-CN': 8,
   ja: 9,
   fr: 1,
 };
@@ -23,7 +23,9 @@ const formatTime = (timestamp: string, langCode: string): string => {
   const minute = now.getMinutes();
 
   const amPMTime =
-    Hour > 12 ? `오후 ${Hour - 12}:${minute}` : `오전 ${Hour}:${minute}`;
+    Hour > 12
+      ? `오후 ${Hour - 12}:${minute >= 10 ? minute : `0${minute}`}`
+      : `오전 ${Hour}:${minute >= 10 ? minute : `0${minute}`}`;
 
   return amPMTime;
 };
