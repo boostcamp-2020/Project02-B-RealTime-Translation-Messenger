@@ -51,29 +51,27 @@ const Language: React.FC = () => {
   const { lang } = useUserState();
   const dispatch = useUserDispatch();
 
-  const [selectedLangNum, setSelectedLangNum] = useState(0);
-  const [selectedLangValue, setSelectedLangValue] = useState('한');
-
-  const { selectLanguage } = getText(lang);
+  const { langCode, selectLanguage } = getText(lang);
 
   const onClickLanguageRefresh = () => {
-    const selectedNum = (selectedLangNum + 1) % 4;
-
-    const selected: any = Object.values(LANGUAGE)[selectedNum];
-    setSelectedLangNum(selectedNum);
-    setSelectedLangValue(selected.value);
-
     dispatch({
       type: 'SET_LANG',
-      lang: selected.code,
+      lang: getNextLang(),
     });
+  };
+
+  const getNextLang = () => {
+    const langIndex = LANGUAGE.indexOf(lang);
+    const langLength = LANGUAGE.length;
+    const newLang = LANGUAGE[(langIndex + 1) % langLength];
+    return newLang;
   };
 
   return (
     <LanguageWrapper>
       <LanguageTitle>{selectLanguage}</LanguageTitle>
       <LanguageButtonWrapper>
-        <LanguageButton>{selectedLangValue}</LanguageButton>
+        <LanguageButton>{langCode}</LanguageButton>
         <LanguageRefreshButton onClick={onClickLanguageRefresh}>
           <Refresh size={24} />
         </LanguageRefreshButton>
