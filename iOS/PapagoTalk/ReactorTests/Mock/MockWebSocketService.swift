@@ -11,7 +11,7 @@ import RxSwift
 @testable import PapagoTalk
 
 final class MockWebSocketService: WebSocketServiceProviding {
-    
+
     var isConnected: Bool = false
     
     func getMessage() -> Observable<GetMessageSubscription.Data> {

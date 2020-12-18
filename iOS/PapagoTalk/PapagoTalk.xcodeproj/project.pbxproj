@@ -166,6 +166,29 @@
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
 		BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
+		BB70DD05258C47FF0018BC53 /* HomeReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */; };
+		BB70DD06258C47FF0018BC53 /* HistoryReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25AECD258B5E0400941096 /* HistoryReactorTests.swift */; };
+		BB70DD07258C47FF0018BC53 /* ChatCodeInputReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3B6F0257FB800004578D4 /* ChatCodeInputReactorTests.swift */; };
+		BB70DD08258C47FF0018BC53 /* ChatReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCB3256674A500F2EA7D /* ChatReactorTests.swift */; };
+		BB70DD09258C47FF0018BC53 /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
+		BB70DD0A258C47FF0018BC53 /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
+		BB70DD0B258C47FF0018BC53 /* SettingReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C886B258A20E70086568D /* SettingReactorTests.swift */; };
+		BB70DD0C258C47FF0018BC53 /* MemoryLeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCDD258C44B30018BC53 /* MemoryLeakTests.swift */; };
+		BB70DD10258C48250018BC53 /* StoryboardInitiatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCB258C443B0018BC53 /* StoryboardInitiatible.swift */; };
+		BB70DD11258C48250018BC53 /* IOCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCC258C443B0018BC53 /* IOCContainer.swift */; };
+		BB70DD12258C48250018BC53 /* MemoryLeakCheakable+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCD258C443B0018BC53 /* MemoryLeakCheakable+UIViewController.swift */; };
+		BB70DD13258C48250018BC53 /* InstanceSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCE258C443B0018BC53 /* InstanceSetupable.swift */; };
+		BB70DD14258C48250018BC53 /* MemoryLeakCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCF258C443B0018BC53 /* MemoryLeakCheckable.swift */; };
+		BB70DD15258C48250018BC53 /* MemoryLeakCheakable+XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCD0258C443B0018BC53 /* MemoryLeakCheakable+XCTest.swift */; };
+		BB70DD19258C48340018BC53 /* MockApolloNetworkServiceSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */; };
+		BB70DD1A258C48340018BC53 /* MockApolloNetworkServiceFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */; };
+		BB70DD1B258C48340018BC53 /* MockWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E44258AF95300CE4758 /* MockWebSocketService.swift */; };
+		BB70DD1C258C48340018BC53 /* MockUserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */; };
+		BB70DD1D258C48340018BC53 /* MockMessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */; };
+		BB70DD1E258C48340018BC53 /* MockHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E33258AF59B00CE4758 /* MockHistoryManager.swift */; };
+		BB70DD1F258C48340018BC53 /* MockSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F1E257F83D300802B45 /* MockSpeechManager.swift */; };
+		BB70DD20258C48340018BC53 /* StubAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E80257F4CA800F4C258 /* StubAlertFactory.swift */; };
+		BB70DD21258C48340018BC53 /* StubImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E8A257F4CF800F4C258 /* StubImageFactory.swift */; };
 		BB7AB0152577B49400D9EDF7 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7AB0142577B49400D9EDF7 /* SpeechService.swift */; };
 		BB7B58AD25848C7500898D6C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7B58AC25848C7500898D6C /* SettingViewController.swift */; };
 		BB93C290257526DD00C68491 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C28F257526DD00C68491 /* MessageType.swift */; };
@@ -357,6 +380,13 @@
 		BB6F7EBF256D697500D66F8E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewReactor.swift; sourceTree = "<group>"; };
 		BB6F7ED2256D799B00D66F8E /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB70DCCB258C443B0018BC53 /* StoryboardInitiatible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitiatible.swift; sourceTree = "<group>"; };
+		BB70DCCC258C443B0018BC53 /* IOCContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOCContainer.swift; sourceTree = "<group>"; };
+		BB70DCCD258C443B0018BC53 /* MemoryLeakCheakable+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoryLeakCheakable+UIViewController.swift"; sourceTree = "<group>"; };
+		BB70DCCE258C443B0018BC53 /* InstanceSetupable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceSetupable.swift; sourceTree = "<group>"; };
+		BB70DCCF258C443B0018BC53 /* MemoryLeakCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryLeakCheckable.swift; sourceTree = "<group>"; };
+		BB70DCD0258C443B0018BC53 /* MemoryLeakCheakable+XCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoryLeakCheakable+XCTest.swift"; sourceTree = "<group>"; };
+		BB70DCDD258C44B30018BC53 /* MemoryLeakTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemoryLeakTests.swift; path = ReactorTests/MemoryLeakTests.swift; sourceTree = SOURCE_ROOT; };
 		BB7AB0142577B49400D9EDF7 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		BB7B58AC25848C7500898D6C /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BB93C28F257526DD00C68491 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
@@ -644,6 +674,7 @@
 		BB1C886A258A20E70086568D /* ReactorTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB70DCCA258C443B0018BC53 /* MemoryLeakChecker */,
 				BB987E8E257F4D3E00F4C258 /* Mock */,
 				BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */,
 				BB25AECD258B5E0400941096 /* HistoryReactorTests.swift */,
@@ -652,6 +683,7 @@
 				99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */,
 				99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */,
 				BB1C886B258A20E70086568D /* SettingReactorTests.swift */,
+				BB70DCDD258C44B30018BC53 /* MemoryLeakTests.swift */,
 				BB1C886D258A20E70086568D /* Info.plist */,
 			);
 			path = ReactorTests;
@@ -773,6 +805,19 @@
 				990DE97B2573A80B00340A72 /* Strings.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		BB70DCCA258C443B0018BC53 /* MemoryLeakChecker */ = {
+			isa = PBXGroup;
+			children = (
+				BB70DCCB258C443B0018BC53 /* StoryboardInitiatible.swift */,
+				BB70DCCC258C443B0018BC53 /* IOCContainer.swift */,
+				BB70DCCD258C443B0018BC53 /* MemoryLeakCheakable+UIViewController.swift */,
+				BB70DCCE258C443B0018BC53 /* InstanceSetupable.swift */,
+				BB70DCCF258C443B0018BC53 /* MemoryLeakCheckable.swift */,
+				BB70DCD0258C443B0018BC53 /* MemoryLeakCheakable+XCTest.swift */,
+			);
+			path = MemoryLeakChecker;
 			sourceTree = "<group>";
 		};
 		BB7B58AB25848C6300898D6C /* Setting */ = {
@@ -1287,6 +1332,13 @@
 				99E9BE54258B7D44006EEFEA /* MockUserDataProvider.swift in Sources */,
 				99E9BE5C258B7D4A006EEFEA /* MockHistoryManager.swift in Sources */,
 				99E9BE3C258B7D30006EEFEA /* ChatDrawerReactorTests.swift in Sources */,
+        BB70DD10258C48250018BC53 /* StoryboardInitiatible.swift in Sources */,
+				BB70DD11258C48250018BC53 /* IOCContainer.swift in Sources */,
+				BB70DD12258C48250018BC53 /* MemoryLeakCheakable+UIViewController.swift in Sources */,
+				BB70DD13258C48250018BC53 /* InstanceSetupable.swift in Sources */,
+				BB70DD14258C48250018BC53 /* MemoryLeakCheckable.swift in Sources */,
+				BB70DD15258C48250018BC53 /* MemoryLeakCheakable+XCTest.swift in Sources */,
+        BB70DD0C258C47FF0018BC53 /* MemoryLeakTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

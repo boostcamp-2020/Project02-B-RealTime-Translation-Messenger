@@ -11,6 +11,7 @@ import RxSwift
 @testable import PapagoTalk
 
 struct MockApolloNetworkServiceSuccess: NetworkServiceProviding {
+
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.just(.init(createMessage: true))
     }
