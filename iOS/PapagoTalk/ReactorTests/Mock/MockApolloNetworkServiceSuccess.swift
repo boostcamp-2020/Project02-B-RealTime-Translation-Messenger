@@ -5,23 +5,14 @@
 //  Created by 송민관 on 2020/12/08.
 //
 
+import XCTest
 import Foundation
 import RxSwift
+@testable import PapagoTalk
 
 struct MockApolloNetworkServiceSuccess: NetworkServiceProviding {
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.just(.init(createMessage: true))
-    }
-    
-    func getMessage() -> Observable<GetMessageSubscription.Data> {
-        return Observable.just(.init(newMessage: .init(id: 1,
-                                                       text: "안녕하세요",
-                                                       source: "ko",
-                                                       createdAt: "1607480160000",
-                                                       user: .init(id: 2,
-                                                                   nickname: "testUser",
-                                                                   avatar: "",
-                                                                   lang: "ko"))))
     }
     
     func getMissingMessage(timeStamp: String) -> Maybe<GetMessageByTimeQuery.Data> {
@@ -60,23 +51,23 @@ struct MockApolloNetworkServiceSuccess: NetworkServiceProviding {
                                                     .init(id: 3,
                                                           nickname: "test3",
                                                           avatar: "",
-                                                          lang: "fr",
+                                                          lang: "ja",
                                                           isDeleted: false)])))
     }
     
     func translate(text: String) -> Maybe<String> {
-        return .just("")
+        return .just("TranslatedText")
     }
 
     func sendSystemMessage(type: String) {
-        
+        guard type == "in" || type == "out" else {
+            XCTFail("System Message Type Should be \"in\" or \"out\"")
+            return
+        }
+        XCTAssert(true)
     }
     
     func leaveRoom() {
-        
-    }
-    
-    func reconnect() {
-        
+        XCTAssert(true)
     }
 }
