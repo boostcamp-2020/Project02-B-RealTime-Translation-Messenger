@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server';
 import { query, mutate } from './testServer';
-import { testUser } from './mock.json';
+import { requestUser } from './mockData.json';
 
 const CREATE_ROOM = gql`
   mutation createRoom($nickname: String!, $avatar: String!, $lang: String!) {
@@ -36,7 +36,7 @@ const ME = gql`
 `;
 
 describe('모든 사용자를 조회하는 API TEST', () => {
-  const { nickname, avatar, lang } = testUser;
+  const { nickname, avatar, lang } = requestUser;
   test('방 생성 후 사용자 수가 증가했는지 확인', async () => {
     const {
       data: { allUsers: beforeUser },
@@ -60,7 +60,7 @@ describe('모든 사용자를 조회하는 API TEST', () => {
 });
 
 describe('요청한 사용자의 정보를 반환하는 API TEST', () => {
-  const { id, nickname, avatar, lang } = testUser;
+  const { id, nickname, avatar, lang } = requestUser;
   test('방 생성', async () => {
     const { errors } = await mutate({
       mutation: CREATE_ROOM,
