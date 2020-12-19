@@ -18,6 +18,7 @@ const ToastMsg = styled.div<StyleProps>`
   bottom: ${({ isTop }) => (isTop ? 'auto' : '5.5rem')};
   left: 50%;
   padding: 1rem 1.5rem;
+  width: fit-content;
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 30px;
@@ -27,6 +28,9 @@ const ToastMsg = styled.div<StyleProps>`
   opacity: 0;
   visibility: hidden;
   z-index: 10000;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    padding: 1rem;
+  }
 `;
 
 interface Props {
