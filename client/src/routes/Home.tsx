@@ -13,7 +13,7 @@ import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
 import { useUserState } from '@contexts/UserContext';
 import encrypt from '@utils/encryption';
 import client, { wsClient } from '@/apollo/Client';
-import { getText } from '@/constants/localization';
+import { getText } from '@constants/localization';
 
 const Wrapper = styled.div`
   min-width: inherit;
