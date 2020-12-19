@@ -21,8 +21,8 @@ interface Message {
 interface Props {
   messages: Message[];
   page: number;
-  setPage: any;
-  onLoadMore: any;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  onLoadMore: (variables: { roomId: number; page: number }) => void;
 }
 
 interface LocationState {
