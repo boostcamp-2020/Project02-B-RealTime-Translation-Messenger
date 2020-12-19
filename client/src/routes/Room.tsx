@@ -50,6 +50,7 @@ const Room: FC = () => {
           setVisible={setVisible}
           code={code}
           users={validUser}
+          lang={lang}
         />
         <SideBar visible={visible} users={validUser} />
         <ChatLog

@@ -2,6 +2,7 @@ import React from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { Copy } from '@components/Common/Icons';
 import Toast from '@components/Common/Toast';
+import { getText } from '@constants/localization';
 import floatToast from '@utils/toast';
 import styled from 'styled-components';
 
@@ -30,9 +31,12 @@ const CodeText = styled.div`
 
 interface Props {
   code: string;
+  lang: string;
 }
 
-const Code: React.FC<Props> = ({ code }) => {
+const Code: React.FC<Props> = ({ code, lang }) => {
+  const { copyCode } = getText(lang);
+
   const toast = () => {
     floatToast('.copy-toast');
   };
@@ -46,7 +50,7 @@ const Code: React.FC<Props> = ({ code }) => {
           <Copy size={20} />
         </CodeWrapper>
       </CopyToClipboard>
-      <Toast className="copy-toast" text="코드가 복사되었습니다!" />
+      <Toast className="copy-toast" text={copyCode} />
     </>
   );
 };

@@ -44,13 +44,20 @@ interface Props {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   code: string;
   users: User[];
+  lang: string;
 }
 
-const RoomHeader: React.FC<Props> = ({ visible, setVisible, code, users }) => {
+const RoomHeader: React.FC<Props> = ({
+  visible,
+  setVisible,
+  code,
+  users,
+  lang,
+}) => {
   return (
     <Wrapper>
       <Hamburger visible={visible} setVisible={setVisible} />
-      <Code code={code} />
+      <Code code={code} lang={lang} />
       <RightWrapper>
         <UserAvater users={users} />
         <Door />
