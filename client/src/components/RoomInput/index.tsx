@@ -158,6 +158,10 @@ interface LocationState {
   lang: string;
 }
 
+const debounceEvent = debounce((debounceFunction) => {
+  debounceFunction();
+}, 500);
+
 const RoomInput: React.FC = () => {
   const [text, setText] = useState('');
   const history = useHistory();
@@ -185,7 +189,7 @@ const RoomInput: React.FC = () => {
     },
   });
 
-  const getTranslatedText = debounce(async () => {
+  const getTranslatedText = async () => {
     const { data } = await translationMutation();
     if (data.translation.translatedText === null)
       setTranslatedText(translationText);
@@ -195,12 +199,12 @@ const RoomInput: React.FC = () => {
           ? data.translation.translatedText
           : translationErrorText,
       );
-  }, 500);
+  };
 
   const onKeyUp = () => {
     const checkText = text.replace(/\s/gi, '');
     if (checkText.length === 0) return;
-    getTranslatedText();
+    debounceEvent(getTranslatedText);
   };
 
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
