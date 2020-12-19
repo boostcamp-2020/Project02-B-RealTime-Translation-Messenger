@@ -51,7 +51,7 @@ const Room: FC = () => {
           code={code}
           users={validUser}
         />
-        <SideBar visible={visible} setVisible={setVisible} users={validUser} />
+        <SideBar visible={visible} users={validUser} />
         <ChatLog
           messages={messagesData.allMessagesByPage.messages}
           page={page}

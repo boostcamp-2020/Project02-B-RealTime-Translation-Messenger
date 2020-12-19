@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FooterWrapper = styled.footer`
-  margin: 0 auto;
-  display: relative;
-  transform: translateY(300%);
-  color: ${(props) => props.theme.text};
+interface StyleProps {
+  color: string;
+}
+
+const FooterContainer = styled.footer<StyleProps>`
+  color: ${({ color }) => color};
   text-align: center;
   font-size: 1.2rem;
   strong {
@@ -13,12 +14,16 @@ const FooterWrapper = styled.footer`
   }
 `;
 
-const Footer: React.FC = () => {
+interface Props {
+  color: string;
+}
+
+const Footer: React.FC<Props> = ({ color }) => {
   return (
-    <FooterWrapper>
+    <FooterContainer color={color}>
       Powered by
       <strong> papago</strong>
-    </FooterWrapper>
+    </FooterContainer>
   );
 };
 

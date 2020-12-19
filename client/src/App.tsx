@@ -13,7 +13,7 @@ const ThemeButton = styled.button`
   bottom: 2rem;
   z-index: 1;
   svg {
-    fill: ${(props) => props.theme.text};
+    fill: ${({ theme }) => theme.text};
   }
   @media (max-width: ${({ theme }) => theme.mediaSize}) {
     right: 1rem;
