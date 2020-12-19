@@ -166,13 +166,6 @@
 		BB6F7EC0256D697500D66F8E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EBF256D697500D66F8E /* ChatViewController.swift */; };
 		BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7EC3256D698B00D66F8E /* ChatViewReactor.swift */; };
 		BB6F7ED3256D799B00D66F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F7ED2256D799B00D66F8E /* Constant.swift */; };
-		BB70DD05258C47FF0018BC53 /* HomeReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */; };
-		BB70DD06258C47FF0018BC53 /* HistoryReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25AECD258B5E0400941096 /* HistoryReactorTests.swift */; };
-		BB70DD07258C47FF0018BC53 /* ChatCodeInputReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3B6F0257FB800004578D4 /* ChatCodeInputReactorTests.swift */; };
-		BB70DD08258C47FF0018BC53 /* ChatReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2DCB3256674A500F2EA7D /* ChatReactorTests.swift */; };
-		BB70DD09258C47FF0018BC53 /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
-		BB70DD0A258C47FF0018BC53 /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
-		BB70DD0B258C47FF0018BC53 /* SettingReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C886B258A20E70086568D /* SettingReactorTests.swift */; };
 		BB70DD0C258C47FF0018BC53 /* MemoryLeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCDD258C44B30018BC53 /* MemoryLeakTests.swift */; };
 		BB70DD10258C48250018BC53 /* StoryboardInitiatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCB258C443B0018BC53 /* StoryboardInitiatible.swift */; };
 		BB70DD11258C48250018BC53 /* IOCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCC258C443B0018BC53 /* IOCContainer.swift */; };
@@ -180,15 +173,6 @@
 		BB70DD13258C48250018BC53 /* InstanceSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCE258C443B0018BC53 /* InstanceSetupable.swift */; };
 		BB70DD14258C48250018BC53 /* MemoryLeakCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCCF258C443B0018BC53 /* MemoryLeakCheckable.swift */; };
 		BB70DD15258C48250018BC53 /* MemoryLeakCheakable+XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70DCD0258C443B0018BC53 /* MemoryLeakCheakable+XCTest.swift */; };
-		BB70DD19258C48340018BC53 /* MockApolloNetworkServiceSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */; };
-		BB70DD1A258C48340018BC53 /* MockApolloNetworkServiceFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */; };
-		BB70DD1B258C48340018BC53 /* MockWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E44258AF95300CE4758 /* MockWebSocketService.swift */; };
-		BB70DD1C258C48340018BC53 /* MockUserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */; };
-		BB70DD1D258C48340018BC53 /* MockMessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */; };
-		BB70DD1E258C48340018BC53 /* MockHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E33258AF59B00CE4758 /* MockHistoryManager.swift */; };
-		BB70DD1F258C48340018BC53 /* MockSpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F1E257F83D300802B45 /* MockSpeechManager.swift */; };
-		BB70DD20258C48340018BC53 /* StubAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E80257F4CA800F4C258 /* StubAlertFactory.swift */; };
-		BB70DD21258C48340018BC53 /* StubImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E8A257F4CF800F4C258 /* StubImageFactory.swift */; };
 		BB7AB0152577B49400D9EDF7 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7AB0142577B49400D9EDF7 /* SpeechService.swift */; };
 		BB7B58AD25848C7500898D6C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7B58AC25848C7500898D6C /* SettingViewController.swift */; };
 		BB93C290257526DD00C68491 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C28F257526DD00C68491 /* MessageType.swift */; };
@@ -981,7 +965,6 @@
 				99E9BD302589CFA3006EEFEA /* Sources */,
 				99E9BD312589CFA3006EEFEA /* Frameworks */,
 				99E9BD322589CFA3006EEFEA /* Resources */,
-				50651DA8E26D9A1D229D532D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1041,7 +1024,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1230;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					99E9BD332589CFA3006EEFEA = {
 						CreatedOnToolsVersion = 12.2;
@@ -1164,23 +1147,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		50651DA8E26D9A1D229D532D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MessageModelTests/Pods-MessageModelTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MessageModelTests/Pods-MessageModelTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MessageModelTests/Pods-MessageModelTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9310C3760A617A247417F4C4 /* [CP] Check Pods Manifest.lock */ = {
@@ -1332,13 +1298,13 @@
 				99E9BE54258B7D44006EEFEA /* MockUserDataProvider.swift in Sources */,
 				99E9BE5C258B7D4A006EEFEA /* MockHistoryManager.swift in Sources */,
 				99E9BE3C258B7D30006EEFEA /* ChatDrawerReactorTests.swift in Sources */,
-        BB70DD10258C48250018BC53 /* StoryboardInitiatible.swift in Sources */,
+				BB70DD10258C48250018BC53 /* StoryboardInitiatible.swift in Sources */,
 				BB70DD11258C48250018BC53 /* IOCContainer.swift in Sources */,
 				BB70DD12258C48250018BC53 /* MemoryLeakCheakable+UIViewController.swift in Sources */,
 				BB70DD13258C48250018BC53 /* InstanceSetupable.swift in Sources */,
 				BB70DD14258C48250018BC53 /* MemoryLeakCheckable.swift in Sources */,
 				BB70DD15258C48250018BC53 /* MemoryLeakCheakable+XCTest.swift in Sources */,
-        BB70DD0C258C47FF0018BC53 /* MemoryLeakTests.swift in Sources */,
+				BB70DD0C258C47FF0018BC53 /* MemoryLeakTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1530,7 +1496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = MessageModelTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1552,7 +1518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = MessageModelTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1575,7 +1541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = ReactorTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1597,7 +1563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = ReactorTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1664,7 +1630,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1721,11 +1687,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1740,7 +1705,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = PapagoTalk/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1761,7 +1726,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = PapagoTalk/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
