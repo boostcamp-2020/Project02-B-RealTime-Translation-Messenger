@@ -7,6 +7,7 @@ import schema from './schema';
 import logger from 'morgan';
 import 'module-alias/register';
 import { verify } from 'jsonwebtoken';
+import { ApolloError } from 'apollo-server';
 
 const PORT = process.env.PORT || 4000;
 
@@ -38,6 +39,12 @@ server.start(
         if (!findUser) throw new Error('Not valid user token');
         return { user: { ...findUser, roomId: user.roomId } };
       },
+    },
+    formatError: (err: ApolloError) => {
+      console.error('--- GraphQL Error ---');
+      console.error('Path:', err.path);
+      console.error('Message:', err.message);
+      return err;
     },
   },
   () => {
