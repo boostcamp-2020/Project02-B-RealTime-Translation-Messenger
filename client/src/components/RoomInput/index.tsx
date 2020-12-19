@@ -131,7 +131,6 @@ const Margin = styled.div`
 const Translation = styled(TextareaAutosize)<any>`
   flex: 1 0 0;
   width: 100%;
-  /* height: fit-content; */
   min-width: 49%;
   min-height: 6rem;
   max-height: 6rem;
