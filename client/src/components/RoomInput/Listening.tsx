@@ -69,11 +69,11 @@ const Button: FC<Props> = ({ isListening, setIsListening }) => {
     <>
       {isListening ? (
         <ListeningContainer onClick={onClickMic}>
-          <Microphone size={30} />
+          <Microphone size={24} />
         </ListeningContainer>
       ) : (
         <Container onClick={onClickMic}>
-          <Microphone size={30} />
+          <Microphone size={24} />
         </Container>
       )}
     </>
