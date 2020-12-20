@@ -15,7 +15,7 @@ struct MessageParser: MessageParseProviding {
         guard !isSystemMessage(newMessage) else {
             return [systemMessage(from: newMessage)]
         }
-
+        
         guard let timeStamp = newMessage.createdAt,
               let data = newMessage.text.data(using: .utf8),
               let translatedResult: TranslatedResult = try? data.decoded()
@@ -24,7 +24,7 @@ struct MessageParser: MessageParseProviding {
         }
         
         var messages = [Message]()
-      
+        
         var originMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp)
         originMessage = setMessageType(of: originMessage)
         messages.append(originMessage)
@@ -33,10 +33,7 @@ struct MessageParser: MessageParseProviding {
             return messages
         }
         
-        var translatedMessage = Message(data: newMessage,
-                                        with: translatedResult,
-                                        timeStamp: timeStamp,
-                                        isTranslated: true)
+        var translatedMessage = Message(data: newMessage, with: translatedResult, timeStamp: timeStamp, isTranslated: true)
         translatedMessage = setMessageType(of: translatedMessage)
         
         guard !translatedMessage.text.isEmpty else {
@@ -53,7 +50,7 @@ struct MessageParser: MessageParseProviding {
             return []
         }
         var parsedMessages = [Message]()
-    
+        
         messages.forEach {
             guard let message = $0 else { return }
             parsedMessages.append(contentsOf: parse(newMessage: message))
