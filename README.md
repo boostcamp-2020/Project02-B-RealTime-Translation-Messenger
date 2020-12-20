@@ -58,6 +58,17 @@
 
 <br>
 
+## 🎞 Demo Video
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=um-SrkFJbqE" target="_blank">
+    <img src="https://user-images.githubusercontent.com/60081031/102716904-18dcba80-4322-11eb-81c7-9d780fb947f1.JPG" width="600">
+  </a>
+</div>
+
+<br>
+<br>
+
 ### [마다가스카팀이 더 궁금하시다면 Wiki 보러가기 ✨](https://github.com/boostcamp-2020/Project02-B-RealTime-Translation-Messenger/wiki)
 
 <br>
