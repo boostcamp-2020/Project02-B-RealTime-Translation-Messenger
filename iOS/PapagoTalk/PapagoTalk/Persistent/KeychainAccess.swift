@@ -8,6 +8,7 @@
 import Foundation
 
 struct KeychainAccess {
+    
     static let shared = KeychainAccess(serviceName: "bundleID")
 
     let serviceName: String
@@ -118,10 +119,9 @@ struct KeychainAccess {
     }
 
     private func securityErrorMeesage(fromStatus status: OSStatus) -> String {
-        if #available(iOS 11.3, *), let errorMessage = SecCopyErrorMessageString(status, nil) {
-            return errorMessage as String
-        } else {
+        guard let errorMessage = SecCopyErrorMessageString(status, nil) else {
             return "error code: \(status)"
         }
+        return errorMessage as String
     }
 }
