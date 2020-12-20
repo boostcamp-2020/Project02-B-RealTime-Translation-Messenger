@@ -8,7 +8,7 @@
 import Foundation
 
 enum KeychainError: Error {
-  case updateFailed(key: String, description: String)
-  case insertFailed(key: String, description: String)
-  case removeFailed(key: String, description: String)
+    case updateFailed(key: String, description: String)
+    case insertFailed(key: String, description: String)
+    case removeFailed(key: String, description: String)
 }

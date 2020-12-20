@@ -9,24 +9,20 @@ import Foundation
 
 enum NetworkError: Error {
     
-    // MARK: Request Error
-    
+    // MARK: - Request Error
     case invalidURL
     case requestFailure(message: String)
 
-    // MARK: Response Error
-    
+    // MARK: - Response Error
     case invalidResponse(message: String)
     case invalidData(message: String)
     
-    // MARK: Status Code
-    
+    // MARK: - Status Code
     case informational(message: String)
     case redirection(message: String)
     case clientError(message: String)
     case serverError(message: String)
 
-    // MARK: Token
-
+    // MARK: - Token
     case tokenExpiration(message: String)
 }
