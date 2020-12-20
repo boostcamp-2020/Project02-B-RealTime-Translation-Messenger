@@ -81,9 +81,7 @@ extension ChatCoordinator: ChatCoordinating {
                                                  width: Constant.speechViewWidth,
                                                  height: height)
         
-        UIView.transition(with: presentingViewController.view,
-                          duration: 0.4,
-                          options: [.transitionCrossDissolve]) {
+        UIView.transition(with: presentingViewController.view, duration: 0.4, options: [.transitionCrossDissolve]) {
             presentingViewController.view.addSubview(speechViewController.view)
         }
     }

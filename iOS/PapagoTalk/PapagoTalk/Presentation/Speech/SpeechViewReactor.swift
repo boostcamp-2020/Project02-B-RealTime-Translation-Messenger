@@ -41,6 +41,7 @@ final class SpeechViewReactor: Reactor {
     private let userData: UserDataProviding
     private let networkService: NetworkServiceProviding
     private let roomID: Int
+    
     let initialState: State
     var disposeBag = DisposeBag()
     
@@ -66,10 +67,7 @@ final class SpeechViewReactor: Reactor {
         case .speechTextChanged(let output):
             return .just(.setSpeechRecognition(output))
         case .originTextChanged(let input):
-            return .concat([
-                .just(.setOriginText(input)),
-                translate(text: input)
-            ])
+            return .concat([.just(.setOriginText(input)), requestTranslation(text: input)])
         case .translatedTextChaged(let input):
             return .just(.setTranslatedText(input))
         case .speechRecognitionAvailabiltyChanged(let isAvailable):
@@ -111,7 +109,7 @@ final class SpeechViewReactor: Reactor {
             .disposed(by: disposeBag)
     }
     
-    private func translate(text: String) -> Observable<Mutation> {
+    private func requestTranslation(text: String) -> Observable<Mutation> {
         return networkService.translate(text: text)
             .asObservable()
             .map { Mutation.setTranslatedText($0) }

@@ -7,7 +7,10 @@
 
 import UIKit
 
-class SpeechButton: UIButton {
+final class SpeechButton: UIButton {
+    
+    var micLayer: CAShapeLayer?
+    var dotLayers: [CAShapeLayer] = []
     
     var isSpeeching: Bool = false {
         didSet {
@@ -15,17 +18,20 @@ class SpeechButton: UIButton {
         }
     }
     
-    var micLayer: CAShapeLayer?
-    var dotLayers: [CAShapeLayer] = []
+    var image: UIImage? {
+        let size = frame.width/2
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: size, weight: .semibold)
+        return UIImage(systemName: "mic", withConfiguration: symbolConfiguration)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        initailize()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        initailize()
     }
     
     override func draw(_ rect: CGRect) {
@@ -35,10 +41,7 @@ class SpeechButton: UIButton {
         circle.close()
     }
     
-    private func commonInit() {
-        let image = UIImage(systemName: "mic",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: frame.width/2,
-                                                                           weight: .semibold))
+    private func initailize() {
         setImage(image, for: .normal)
         contentMode = .center
         imageView?.contentMode = .scaleAspectFit
@@ -48,21 +51,23 @@ class SpeechButton: UIButton {
     private func attachMicLayer() {
         let micLayer = CAShapeLayer()
         let circle = UIBezierPath(ovalIn: bounds)
+        
         micLayer.fillColor = UIColor.systemGreen.cgColor
         micLayer.strokeColor = UIColor.clear.cgColor
         micLayer.frame = bounds
         micLayer.path = circle.cgPath
         micLayer.position = CGPoint(x: bounds.width/2, y: bounds.height/2)
         layer.addSublayer(micLayer)
-        
         self.micLayer = micLayer
-        guard let imageView = imageView else { return }
+        
+        guard let imageView = imageView else {
+            return
+        }
         bringSubviewToFront(imageView)
     }
     
     private func startAnimation() {
         micLayer?.transform = CATransform3DMakeScale(0.1, 0.1, 0.1)
-        
         imageView?.isHidden = true
         setDotLayers()
         animateDotLayers()
@@ -105,7 +110,6 @@ class SpeechButton: UIButton {
         let random = CGFloat.random(in: (5...8))
         path.move(to: CGPoint(x: frame.width/4 * CGFloat(index + 1), y: frame.height/2 - random))
         path.addLine(to: CGPoint(x: frame.width/4 * CGFloat(index + 1), y: frame.height/2 + random))
-        
         return path
     }
     

@@ -126,12 +126,13 @@ final class SpeechViewController: UIViewController, StoryboardView {
     }
     
     private func dismiss() {
-        guard let superview = view.superview, let parent = self.parent as? ChatViewController else { return }
+        guard let superview = view.superview, let parent = self.parent as? ChatViewController else {
+            return
+        }
         view.endEditing(true)
         parent.microphoneButton.isHidden = false
-        UIView.transition(with: superview,
-                          duration: 0.4,
-                          options: [.transitionCrossDissolve]) { [weak self] in
+        
+        UIView.transition(with: superview, duration: 0.4, options: [.transitionCrossDissolve]) { [weak self] in
             self?.view.removeFromSuperview()
         } completion: { _ in
             NotificationCenter.default.post(.init(name: .speechViewDidDismiss))
@@ -152,7 +153,7 @@ extension SpeechViewController: KeyboardProviding {
                 guard let self = self, let superview = self.parent as? ChatViewController else { return }
                 superview.microphoneButton.isHidden = true
                 self.view.frame.origin.y += keyboardFrame.origin.y - self.view.frame.maxY
-                UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+                UIView.animate(withDuration: 0.6, delay: .zero, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
                 }
             })
@@ -162,7 +163,7 @@ extension SpeechViewController: KeyboardProviding {
             .drive(onNext: { [weak self] _ in
                 guard let self = self, let superView = self.parent as? ChatViewController else { return }
                 self.view.frame.origin.y = superView.view.frame.height/4
-                UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+                UIView.animate(withDuration: 0.6, delay: .zero, options: .curveEaseInOut) {
                     self.view.layoutIfNeeded()
                 }
             })
