@@ -80,5 +80,4 @@ extension XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
         XCTAssertFalse(isLeaked, file: file, line: line)
     }
-
 }

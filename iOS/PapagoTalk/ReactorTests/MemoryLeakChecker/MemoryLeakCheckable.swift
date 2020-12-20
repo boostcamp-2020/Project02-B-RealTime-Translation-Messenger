@@ -65,5 +65,4 @@ extension MemoryLeakCheckable where Self: AnyObject {
             completion(leaked != nil)
         }
     }
-
 }
