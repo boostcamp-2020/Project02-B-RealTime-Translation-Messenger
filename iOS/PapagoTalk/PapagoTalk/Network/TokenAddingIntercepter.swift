@@ -8,20 +8,7 @@
 import Foundation
 import Apollo
 
-class TokenAddingIntercepter: ApolloInterceptor {
-    
-    private func addTokenAndProceed<Operation: GraphQLOperation>(
-        _ token: String,
-        to request: HTTPRequest<Operation>,
-        chain: RequestChain,
-        response: HTTPResponse<Operation>?,
-        completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) {
-        
-        request.addHeader(name: "Authorization", value: "Bearer \(token)")
-        chain.proceedAsync(request: request,
-                           response: response,
-                           completion: completion)
-    }
+final class TokenAddingIntercepter: ApolloInterceptor {
     
     func interceptAsync<Operation: GraphQLOperation>(
         chain: RequestChain,
@@ -36,5 +23,18 @@ class TokenAddingIntercepter: ApolloInterceptor {
                                 chain: chain,
                                 response: response,
                                 completion: completion)
+    }
+    
+    private func addTokenAndProceed<Operation: GraphQLOperation>(
+        _ token: String,
+        to request: HTTPRequest<Operation>,
+        chain: RequestChain,
+        response: HTTPResponse<Operation>?,
+        completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
+    ) {
+        request.addHeader(name: "Authorization", value: "Bearer \(token)")
+        chain.proceedAsync(request: request,
+                           response: response,
+                           completion: completion)
     }
 }
