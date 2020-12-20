@@ -355,6 +355,10 @@
 
 <br>
 
+<img width="1917" alt="스크린샷 2020-12-20 오후 6 07 54" src="https://user-images.githubusercontent.com/68672528/102710228-427eed00-42f4-11eb-8bb1-375deef24155.png">
+
+<br>
+
 ## Library
 - [Apollo-iOS](https://github.com/apollographql/apollo-ios)
 - [ReactorKit](https://github.com/ReactorKit/ReactorKit)
@@ -367,7 +371,7 @@
 - [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Requirements
- - iOS 12.0 +
+ - iOS 13.0 +
 
 ## Cocoapods
 ```ruby
