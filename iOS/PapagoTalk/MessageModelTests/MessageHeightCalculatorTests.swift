@@ -8,6 +8,7 @@
 import XCTest
 
 class MessageHeightCalculatorTests: XCTestCase {
+    
     func test_sent_message_when_line_changed() throws {
         // Given
         let calculator = MessageHeightCalculator()
@@ -122,5 +123,4 @@ class MessageHeightCalculatorTests: XCTestCase {
         XCTAssertEqual(twoLineHeight, oneLineHeight)
         XCTAssertEqual(threeLineHeight, twoLineHeight)
     }
-
 }

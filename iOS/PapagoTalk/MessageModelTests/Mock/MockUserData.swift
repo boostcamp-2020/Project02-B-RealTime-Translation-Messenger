@@ -8,6 +8,7 @@
 import Foundation
 
 struct MockUserData: UserData {
+    
     var id: Int 
     var nickname: String
     var avatar: String
@@ -20,7 +21,6 @@ struct MockUserData: UserData {
         self.lang = lang
     }
     
-    // default user
     init() {
         id = 0
         nickname = "nickName"

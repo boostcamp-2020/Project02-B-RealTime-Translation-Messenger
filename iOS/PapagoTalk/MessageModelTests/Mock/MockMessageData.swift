@@ -8,6 +8,7 @@
 import Foundation
 
 struct MockMessageData: MessageData {
+    
     var id: Int
     var text: String
     var userData: UserData
@@ -22,17 +23,17 @@ struct MockMessageData: MessageData {
         self.createdAt = createdAt
     }
     
-    init() {
-        id = 0
-        text = "test"
-        userData = MockUserData()
-        source = "ko"
-    }
-    
     init(userData: UserData) {
         self.id = 0
         self.text = "test"
         self.userData = userData
         self.source = "ko"
+    }
+    
+    init() {
+        id = 0
+        text = "test"
+        userData = MockUserData()
+        source = "ko"
     }
 }
