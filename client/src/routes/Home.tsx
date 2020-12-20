@@ -5,8 +5,8 @@ import { useMutation } from '@apollo/client';
 import UserProfile from '@components/UserProfile';
 import Button from '@components/Common/Button';
 import Footer from '@components/Common/Footer';
-import { Theme } from '@styles/Theme';
 import Modal from '@components/Modal';
+import { Theme } from '@styles/Theme';
 import { CreateRoomResponse, MutationCreateRoomArgs } from '@generated/types';
 import { CREATE_ROOM } from '@queries/room.queires';
 import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
@@ -31,6 +31,12 @@ const Container = styled.div`
   padding: 3rem;
   @media (max-width: ${({ theme }) => theme.mediaSize}) {
     padding: 0.5rem 3rem;
+  }
+`;
+const FooterWrapper = styled.div`
+  margin: 3rem 0%;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    margin: 2rem 0;
   }
 `;
 
@@ -111,7 +117,9 @@ const Home: React.FC = () => {
           onClick={onClickCreateRoom}
           isValid={isValid}
         />
-        <Footer />
+        <FooterWrapper>
+          <Footer color={Theme.darkGrayColor} />
+        </FooterWrapper>
       </Container>
     </Wrapper>
   );
