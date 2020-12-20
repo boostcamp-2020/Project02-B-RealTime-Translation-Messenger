@@ -36,6 +36,7 @@ final class ChatDrawerViewReactor: Reactor {
     private let roomID: Int
     private let roomCode: String
     private var userData: UserDataProviding
+    
     let initialState: State
     
     init(networkService: NetworkServiceProviding, userData: UserDataProviding, roomID: Int, roomCode: String) {
@@ -54,14 +55,9 @@ final class ChatDrawerViewReactor: Reactor {
         case .fetchUsers:
             return requestGetUserList(by: roomID)
         case .chatRoomCodeButtonTapped:
-            return .concat ([
-                .just(Mutation.copyRoomCode),
-                .just(Mutation.setToastMessage(Strings.ChatDrawer.chatCodeDidCopyMessage))
-            ])
+            return copyChatRoomCode()
         case .leaveChatRoomButtonTapped:
-            networkService.leaveRoom()
-            userData.removeToken()
-            return .just(Mutation.setLeaveChatRoom(true))
+            return leaveChatRoom()
         }
     }
     
@@ -87,9 +83,22 @@ final class ChatDrawerViewReactor: Reactor {
             .compactMap { $0.roomById?.users }
             .map { [weak self] in
                 $0.filter { !$0.isDeleted }
-                    .map { User(data: $0, userID: self?.userData.id ?? 0) }
+                    .map { User(data: $0, userID: self?.userData.id ?? .zero) }
                     .sorted()
             }
             .map { Mutation.setUsers($0) }
+    }
+    
+    private func copyChatRoomCode() -> Observable<Mutation> {
+        return .concat ([
+            .just(.copyRoomCode),
+            .just(.setToastMessage(Strings.ChatDrawer.chatCodeDidCopyMessage))
+        ])
+    }
+    
+    private func leaveChatRoom() -> Observable<Mutation> {
+        networkService.leaveRoom()
+        userData.removeToken()
+        return .just(.setLeaveChatRoom(true))
     }
 }
