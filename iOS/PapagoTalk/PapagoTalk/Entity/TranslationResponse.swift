@@ -20,5 +20,4 @@ struct TranslationResponse: Codable {
     }
 
     let message: Message
-    
 }
