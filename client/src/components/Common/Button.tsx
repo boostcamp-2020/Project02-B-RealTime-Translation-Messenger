@@ -2,16 +2,13 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Theme } from '@styles/Theme';
 
-interface Props {
-  text: string;
-  color?: string;
-  onClick?: () => void;
-  isValid?: boolean;
-}
-
 const { blueColor } = Theme;
 
-const Container = styled.button`
+interface StyleProps {
+  isValid: boolean | undefined;
+}
+
+const Container = styled.button<StyleProps>`
   width: 100%;
   height: 4rem;
   margin: 0.3rem 0;
@@ -24,13 +21,18 @@ const Container = styled.button`
   font-weight: 400;
   text-align: center;
 
-  &:disabled {
-    opacity: 0.6;
-  }
+  opacity: ${(props) => (props.isValid ? '' : '0.6')};
 `;
 
+interface Props {
+  text: string;
+  color?: string;
+  onClick?: () => void;
+  isValid?: boolean;
+}
+
 const Button: FC<Props> = ({ text, color, onClick, isValid }) => (
-  <Container onClick={onClick} color={color} disabled={!isValid}>
+  <Container onClick={onClick} color={color} isValid={isValid}>
     {text}
   </Container>
 );

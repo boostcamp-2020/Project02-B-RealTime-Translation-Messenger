@@ -68,8 +68,8 @@ const Input = styled(TextareaAutosize)<any>`
   &:focus {
     outline: none;
   }
-  ${(props) =>
-    props.value.length >= 190
+  ${({ value }) =>
+    value.length >= 190
       ? 'animation: vibrate 2s cubic-bezier(0.36, 0.07, 0.19, 0.97);'
       : ''}
   @media (max-width: ${({ theme }) => theme.mediaSize}) {
@@ -135,10 +135,10 @@ const Translation = styled(TextareaAutosize)<any>`
   min-height: 6rem;
   max-height: 6rem;
   padding: 1rem;
-  color: ${(props) => props.theme.darkGrayColor};
+  color: ${({ theme }) => theme.darkGrayColor};
   background: #f7f7f7;
   border: none;
-  border-radius: ${(props) => props.theme.borderRadius};
+  border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   font-size: 16px;
   resize: none;
@@ -146,10 +146,15 @@ const Translation = styled(TextareaAutosize)<any>`
   &:focus {
     outline: none;
   }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.whiteColor};
+  }
   @media (max-width: ${({ theme }) => theme.mediaSize}) {
-    min-height: 4.5rem;
+    min-height: 3.5rem;
     max-height: 4.5rem;
-    padding: 1rem 3.5rem 1rem 1rem;
+    padding: 1rem;
+    color: ${({ theme }) => theme.whiteColor};
+    background: rgba(0, 0, 0, 0.5);
     font-size: 12px;
   }
 `;
@@ -157,6 +162,10 @@ const Translation = styled(TextareaAutosize)<any>`
 interface LocationState {
   lang: string;
 }
+
+const debounceEvent = debounce((debounceFunction) => {
+  debounceFunction();
+}, 500);
 
 const RoomInput: React.FC = () => {
   const [text, setText] = useState('');
@@ -185,7 +194,7 @@ const RoomInput: React.FC = () => {
     },
   });
 
-  const getTranslatedText = debounce(async () => {
+  const getTranslatedText = async () => {
     const { data } = await translationMutation();
     if (data.translation.translatedText === null)
       setTranslatedText(translationText);
@@ -195,12 +204,12 @@ const RoomInput: React.FC = () => {
           ? data.translation.translatedText
           : translationErrorText,
       );
-  }, 500);
+  };
 
   const onKeyUp = () => {
     const checkText = text.replace(/\s/gi, '');
     if (checkText.length === 0) return;
-    getTranslatedText();
+    debounceEvent(getTranslatedText);
   };
 
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {

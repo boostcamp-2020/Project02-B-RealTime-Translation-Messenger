@@ -5,7 +5,6 @@ import { Sun, Moon } from '@components/Common/Icons';
 import GlobalStyles from '@styles/GlobalStyles';
 import { lightTheme, darkTheme } from '@styles/Theme';
 import Routes from '@routes/.';
-import { LocalizationContextProvider } from '@contexts/LocalizationContext';
 import { UserContextProvider } from '@contexts/UserContext';
 
 const ThemeButton = styled.button`
@@ -14,7 +13,7 @@ const ThemeButton = styled.button`
   bottom: 2rem;
   z-index: 1;
   svg {
-    fill: ${(props) => props.theme.text};
+    fill: ${({ theme }) => theme.text};
   }
   @media (max-width: ${({ theme }) => theme.mediaSize}) {
     right: 1rem;
@@ -35,17 +34,15 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
-      <LocalizationContextProvider>
-        <UserContextProvider>
-          <GlobalStyles />
-          <ThemeButton onClick={toggleTheme}>
-            {isLight ? <Sun size={36} /> : <Moon size={36} />}
-          </ThemeButton>
-          <BrowserRouter>
-            <Routes />
-          </BrowserRouter>
-        </UserContextProvider>
-      </LocalizationContextProvider>
+      <UserContextProvider>
+        <GlobalStyles />
+        <ThemeButton onClick={toggleTheme}>
+          {isLight ? <Sun size={36} /> : <Moon size={36} />}
+        </ThemeButton>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </UserContextProvider>
     </ThemeProvider>
   );
 };

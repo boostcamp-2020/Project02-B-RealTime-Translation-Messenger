@@ -1,8 +1,10 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { User } from '@generated/types';
-import { getText } from '@constants/localization';
+import Footer from '@components/Common/Footer';
+import { Theme } from '@styles/Theme';
 import styled from 'styled-components';
+import Header from './Header';
+import UserList from './UserList';
 
 interface StyleProps {
   visible?: boolean;
@@ -29,89 +31,24 @@ const SideBarWrapper = styled.div<StyleProps>`
     width: 85%;
   }
 `;
-const SideBarHeader = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 5rem;
-  padding: 1.5rem;
-  border-bottom: 1px solid white;
-  svg {
-    fill: ${(props) => props.theme.whiteColor};
-  }
-`;
-const HeaderText = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 5rem;
-  width: 100%;
-  margin-left: 3rem;
-  padding-left: 0.5rem;
-  font-weight: 500;
-`;
-const UserList = styled.ul`
-  width: 100%;
-  height: 85vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-
-  &::-webkit-scrollbar {
-    width: 10px;
-    background-color: inherit;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.whiteColor};
-    background-clip: padding-box;
-    border: 2px solid transparent;
-    border-radius: 16px;
-  }
-`;
-const UserInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 1.5rem 0 1.5rem;
-`;
-const Avatar = styled.img`
-  width: 20%;
-  background-color: ${(props) => props.theme.whiteColor};
-  border-radius: 100%;
+const FooterWrapper = styled.div`
+  position: relative;
+  bottom: 1rem;
 `;
 
 interface Props {
   visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   users: User[];
 }
 
-interface LocationState {
-  lang: string;
-}
-
 const SideBar: React.FC<Props> = ({ visible, users }) => {
-  const location = useLocation<LocationState>();
-  const { lang } = location.state;
-  const { userList } = getText(lang);
   return (
     <SideBarWrapper visible={visible}>
-      <SideBarHeader>
-        <HeaderText>
-          <div>{userList}</div>
-          <div>{users.length}</div>
-        </HeaderText>
-      </SideBarHeader>
-      <UserList>
-        {users.map((user) => (
-          <li key={user.id}>
-            <UserInfo>
-              <Avatar src={user.avatar} />
-              <div>{user.nickname}</div>
-              <div>{user.lang}</div>
-            </UserInfo>
-          </li>
-        ))}
-      </UserList>
+      <Header users={users} />
+      <UserList users={users} />
+      <FooterWrapper>
+        <Footer color={Theme.whiteColor} />
+      </FooterWrapper>
     </SideBarWrapper>
   );
 };

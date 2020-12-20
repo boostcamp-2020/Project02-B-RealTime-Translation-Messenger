@@ -1,15 +1,18 @@
 {
   "requestUser": {
-    "id": id,
-    "nickname": "nickname",
-    "lang": "lang",
-    "avatar": "avatar_url",
-    "roomId": id
+    "id": number,
+    "nickname": "string",
+    "lang": "string",
+    "avatar": "string",
+    "roomId": number
   },
   "createMessageData": {
-    "text": "text"
+    "text": "string"
   },
   "allMessageByPageData": {
     "page": number
+  },
+  "createSystemMessageData": {
+    "source": "string"
   }
 }

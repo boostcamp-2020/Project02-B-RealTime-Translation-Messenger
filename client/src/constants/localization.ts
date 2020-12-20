@@ -2,11 +2,13 @@ interface TextList {
   inputNickName: string;
   nicknameError: string;
   selectLanguage: string;
+  langCode: string;
   enterRoom: string;
   createRoom: string;
   enterCode: string;
   submitCode: string;
   wrongCode: string;
+  copyCode: string;
   userList: string;
   inputText: string;
   translationText: string;
@@ -25,11 +27,13 @@ const textList: TextObj = {
     inputNickName: '닉네임 입력',
     nicknameError: '닉네임은 1~12자 사이여야 합니다',
     selectLanguage: '언어 선택',
+    langCode: '한',
     enterRoom: '대화 참여하기',
     createRoom: '방 만들기',
     enterCode: '참여 코드(6자리의 숫자)를 입력해주세요',
     submitCode: '입장',
     wrongCode: '잘못된 방코드입니다😅',
+    copyCode: '코드가 복사되었습니다!',
     userList: '대화 상대',
     translationText: '번역된 메세지가 출력됩니다',
     translationErrorText: '번역에 실패했습니다',
@@ -42,11 +46,13 @@ const textList: TextObj = {
     inputNickName: 'Enter Nickname',
     nicknameError: 'Nickname must be between 1 and 10 characters',
     selectLanguage: 'Select Language',
+    langCode: 'A',
     enterRoom: 'Enter ChatRoom',
     createRoom: 'Create ChatRoom',
     enterCode: 'Please enter 6 digits of the participating code',
     submitCode: 'Enter',
     wrongCode: 'Invalid room code😅',
+    copyCode: 'The code has been copied!',
     userList: 'User List',
     translationText: 'The translated message is printed',
     translationErrorText: 'Translation failed',
@@ -59,11 +65,13 @@ const textList: TextObj = {
     inputNickName: 'ニックネーム 入力',
     nicknameError: 'ニックネームは1~12字の間でなければなりません',
     selectLanguage: '言語選択',
+    langCode: 'あ',
     enterRoom: '会話に参加する',
     createRoom: 'トークルーム作成',
     enterCode: '参加コード(6桁数字)を入力してください',
     submitCode: '参加',
     wrongCode: '間違ったルームコードです😅',
+    copyCode: 'コードがコピーされました!',
     userList: 'メンバー',
     translationText: '翻訳メッセージが出力されます',
     translationErrorText: '翻訳に失敗しました',
@@ -76,11 +84,13 @@ const textList: TextObj = {
     inputNickName: '输入昵称',
     nicknameError: '昵称必须介于1到12个字符之间',
     selectLanguage: '语言选择',
+    langCode: '文',
     enterRoom: '加入聊天室',
     createRoom: '创建聊天室',
     enterCode: '请输入参加代码（6位数字）',
     submitCode: '参与度',
     wrongCode: '是错误的房间代码😅',
+    copyCode: '代码被复制了!',
     userList: '参加者名单',
     translationText: '会打印翻译好的信息',
     translationErrorText: '翻译失败了',
