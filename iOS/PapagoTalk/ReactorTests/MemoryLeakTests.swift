@@ -72,14 +72,19 @@ extension Resolver {
     
     static func setupForMemoryLeakTest() {
         Resolver.shared
-            .regist { _ in MockApolloNetworkServiceSuccess() } // networkService
+            .regist { _ in MockNetworkServiceSuccess() } // networkService
             .regist { _ in StubAlertFactory() }
             .regist { _ in MockUserDataProvider() }
             .regist { _ in MockSpeechManager() }
             .regist { _ in MockMessageParser() }
+            .regist { _ in
+                LaunchScreenViewController.instantiate {
+                    LaunchScreenViewController(coder: $0)
+                }
+            }
             .regist {
                 HomeViewReactor(
-                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    networkService: $0.resolve(MockNetworkServiceSuccess.self),
                     userData: $0.resolve(MockUserDataProvider.self)
                 )
             }
@@ -104,7 +109,7 @@ extension Resolver {
             }
             .regist {
                 HistoryViewReactor(
-                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    networkService: $0.resolve(MockNetworkServiceSuccess.self),
                     userData: $0.resolve(MockUserDataProvider.self),
                     historyManager: MockHistoryManager()
                 )
@@ -120,7 +125,7 @@ extension Resolver {
             }
             .regist {
                 ChatCodeInputViewReactor(
-                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    networkService: $0.resolve(MockNetworkServiceSuccess.self),
                     userData: $0.resolve(MockUserDataProvider.self)
                 )
             }
@@ -135,7 +140,7 @@ extension Resolver {
             }
             .regist {
                 ChatViewReactor(
-                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    networkService: $0.resolve(MockNetworkServiceSuccess.self),
                     userData: $0.resolve(MockUserDataProvider.self),
                     messageParser: $0.resolve(MockMessageParser.self),
                     chatWebSocket: MockWebSocketService(),
@@ -157,7 +162,7 @@ extension Resolver {
             }
             .regist {
                 ChatDrawerViewReactor(
-                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    networkService: $0.resolve(MockNetworkServiceSuccess.self),
                     userData: $0.resolve(MockUserDataProvider.self),
                     roomID: 0,
                     roomCode: "0000"
@@ -176,7 +181,7 @@ extension Resolver {
             }
             .regist {
                 SpeechViewReactor(
-                    networkService: $0.resolve(MockApolloNetworkServiceSuccess.self),
+                    networkService: $0.resolve(MockNetworkServiceSuccess.self),
                     userData: $0.resolve(MockUserDataProvider.self),
                     speechManager: $0.resolve(MockSpeechManager.self),
                     roomID: 0

@@ -13,12 +13,12 @@ class HistoryReactorTests: XCTestCase {
     
     func test_should_fetch_after_view_will_appear() {
         // Given
-        let reactor = HistoryViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = HistoryViewReactor(networkService: MockNetworkServiceSuccess(),
                                       userData: MockUserDataProvider(),
                                       historyManager: MockHistoryManager())
 
         // When
-        reactor.action.onNext(.viewWillAppear)
+        reactor.action.onNext(.fetchHistory)
 
         // Then
         XCTAssertFalse(reactor.currentState.historyList.isEmpty)
@@ -26,7 +26,7 @@ class HistoryReactorTests: XCTestCase {
     
     func test_re_enter_success() {
         // Given
-        let reactor = HistoryViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = HistoryViewReactor(networkService: MockNetworkServiceSuccess(),
                                       userData: MockUserDataProvider(),
                                       historyManager: MockHistoryManager())
 
@@ -42,7 +42,7 @@ class HistoryReactorTests: XCTestCase {
     
     func test_re_enter_fail() {
         // Given
-        let reactor = HistoryViewReactor(networkService: MockApolloNetworkServiceFailure(),
+        let reactor = HistoryViewReactor(networkService: MockNetworkServiceFailure(),
                                       userData: MockUserDataProvider(),
                                       historyManager: MockHistoryManager())
 
@@ -55,7 +55,7 @@ class HistoryReactorTests: XCTestCase {
     
     func test_re_enter_fail_with_non_exist_room() {
         // Given
-        let reactor = HistoryViewReactor(networkService: MockApolloNetworkServiceFailure(),
+        let reactor = HistoryViewReactor(networkService: MockNetworkServiceFailure(),
                                       userData: MockUserDataProvider(),
                                       historyManager: MockHistoryManager())
 
@@ -65,5 +65,4 @@ class HistoryReactorTests: XCTestCase {
         // Then
         XCTAssertEqual(reactor.currentState.errorMessage.data, JoinChatError.cannotFindRoom.message)
     }
-    
 }

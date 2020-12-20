@@ -12,7 +12,7 @@ class SpeechReactorTests: XCTestCase {
 
     func test_microphone_button_tapped() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
@@ -26,7 +26,7 @@ class SpeechReactorTests: XCTestCase {
     
     func test_speech_text_changed() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
@@ -40,7 +40,7 @@ class SpeechReactorTests: XCTestCase {
     
     func test_origin_text_changed() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
@@ -54,7 +54,7 @@ class SpeechReactorTests: XCTestCase {
     
     func test_translated_text_changed() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
@@ -68,7 +68,7 @@ class SpeechReactorTests: XCTestCase {
     
     func test_speechRecognition_availabilty_changed_to_true() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
@@ -82,7 +82,7 @@ class SpeechReactorTests: XCTestCase {
     
     func test_speechRecognition_availabilty_changed_to_false() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
@@ -96,7 +96,7 @@ class SpeechReactorTests: XCTestCase {
     
     func test_origin_send_button_tapped() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
@@ -110,7 +110,7 @@ class SpeechReactorTests: XCTestCase {
     
     func test_translated_send_button_tapped() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
@@ -124,7 +124,7 @@ class SpeechReactorTests: XCTestCase {
     
     func test_text_should_translated_after_originText_changed() throws {
         // Given
-        let reactor = SpeechViewReactor(networkService: MockApolloNetworkServiceSuccess(),
+        let reactor = SpeechViewReactor(networkService: MockNetworkServiceSuccess(),
                                         userData: MockUserDataProvider(),
                                         speechManager: MockSpeechManager(),
                                         roomID: 1)
