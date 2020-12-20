@@ -1,5 +1,5 @@
 //
-//  PapagoAPIManager.swift
+//  TranslationManager.swift
 //  PapagoTalk
 //
 //  Created by Byoung-Hwi Yoon on 2020/12/03.
@@ -8,17 +8,17 @@
 import Foundation
 import RxSwift
 
-final class PapagoAPIManager: PapagoAPIServiceProviding {
+final class TranslationManager {
    
-    private let service: URLSessionNetworkServiceProviding
+    private let service: NetworkManager
     
-    init(service: URLSessionNetworkServiceProviding = URLSessionNetworkService()) {
+    init(service: NetworkManager = NetworkManager()) {
         self.service = service
     }
     
     func requestTranslation(request: TranslationRequest) -> Maybe<String> {
         let body = request.encoded()
-        let apiRequest = PapagoAPIRequest(body: body)
+        let apiRequest = TranslationEndPoint(body: body)
         
         return Maybe.create { [weak self] observer in
             self?.service.request(request: apiRequest) { result in
@@ -35,23 +35,5 @@ final class PapagoAPIManager: PapagoAPIServiceProviding {
             }
             return Disposables.create()
         }
-    }
-}
-
-struct PapagoAPIRequest: PapagoHTTPRequest {
-
-    // MARK: - NCP
-    var url: URL = APIEndPoint.ncpPapagoAPI
-    var httpMethod: HTTPMethod = .post
-    var headers: [String: String] = [
-        "Content-Type": "application/json",
-        "X-NCP-APIGW-API-KEY-ID": APIEndPoint.ncpPapagoAPIclientID,
-        "X-NCP-APIGW-API-KEY": APIEndPoint.ncpPapagoAPIclientSecret
-    ]
-    
-    var body: Data?
-    
-    init(body: Data?) {
-        self.body = body
     }
 }
