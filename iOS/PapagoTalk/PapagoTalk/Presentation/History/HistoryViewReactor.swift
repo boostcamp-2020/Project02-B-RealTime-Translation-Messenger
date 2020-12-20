@@ -11,7 +11,7 @@ import ReactorKit
 final class HistoryViewReactor: Reactor {
     
     enum Action {
-        case viewWillAppear
+        case fetchHistory
         case reEnterButtonTapped(String)
     }
     
@@ -40,13 +40,12 @@ final class HistoryViewReactor: Reactor {
         self.networkService = networkService
         self.userData = userData
         self.historyManager = historyManager
-        initialState = State(historyList: [],
-                             errorMessage: RevisionedData(data: ""))
+        initialState = State(historyList: [], errorMessage: RevisionedData(data: ""))
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .viewWillAppear:
+        case .fetchHistory:
             return Observable.just(historyManager.fetch().reversed())
                 .map { Mutation.fetchHistory($0) }
         case .reEnterButtonTapped(let code):
@@ -61,13 +60,12 @@ final class HistoryViewReactor: Reactor {
         case .fetchHistory(let historyList):
             state.historyList = historyList
         case .joinChatRoom(let roomInfo):
+            state.chatRoomInfo = roomInfo
             userData.id = roomInfo.userID
             userData.token = roomInfo.token
-            state.chatRoomInfo = roomInfo
         case .alertError(let error):
             state.errorMessage = state.errorMessage.update(error.message)
         }
-        
         return state
     }
     
@@ -75,13 +73,10 @@ final class HistoryViewReactor: Reactor {
         networkService.leaveRoom()
         return networkService.enterRoom(user: userData.user, code: code)
             .asObservable()
-            .map { Mutation.joinChatRoom(ChatRoomInfo(userID: $0.userId,
-                                                      roomID: $0.roomId,
-                                                      code: code,
-                                                      token: $0.token)) }
+            .map { Mutation.joinChatRoom(ChatRoomInfo(response: $0, code: code)) }
             .catchError { [weak self] in
                 guard let self = self else {
-                    return .just(Mutation.alertError(.networkError))
+                    return .just(.alertError(.networkError))
                 }
                 return self.handleError($0)
             }

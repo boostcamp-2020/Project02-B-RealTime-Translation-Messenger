@@ -13,12 +13,13 @@ import CoreData
 
 final class HistoryViewController: UIViewController, StoryboardView {
     
-    @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet private weak var historyTableView: UITableView!
     
     private let alertFactory: AlertFactoryProviding
     private let datasource = HistoryDatasource()
-    var disposeBag = DisposeBag()
+    
     weak var coordinator: HomeCoordinating?
+    var disposeBag = DisposeBag()
     
     init?(coder: NSCoder, reactor: HistoryViewReactor, alertFactory: AlertFactoryProviding) {
         self.alertFactory = alertFactory
@@ -53,8 +54,8 @@ final class HistoryViewController: UIViewController, StoryboardView {
     
     // MARK: - Input
     private func bindAction(reactor: HistoryViewReactor) {
-        rx.viewWillAppear
-            .map { _ in Reactor.Action.viewWillAppear }
+        self.rx.viewWillAppear
+            .map { _ in Reactor.Action.fetchHistory }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -76,9 +77,8 @@ final class HistoryViewController: UIViewController, StoryboardView {
         reactor.state.map { $0.chatRoomInfo }
             .distinctUntilChanged()
             .compactMap { $0 }
-            .subscribe(onNext: { [weak self] roomInfo in
-                self?.navigationController?.popViewController(animated: false)
-                self?.coordinator?.pushChat(roomID: roomInfo.roomID, code: roomInfo.code)
+            .subscribe(onNext: { [weak self] in
+                self?.moveToChat(of: $0)
             })
             .disposed(by: disposeBag)
         
@@ -92,13 +92,18 @@ final class HistoryViewController: UIViewController, StoryboardView {
             .disposed(by: disposeBag)
     }
     
-    func bind() {
+    private func bind() {
         historyTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
     
-    func alert(message: String) {
+    private func alert(message: String) {
         present(alertFactory.alert(message: message), animated: true)
+    }
+    
+    private func moveToChat(of roomInfo: ChatRoomInfo) {
+        navigationController?.popViewController(animated: false)
+        coordinator?.pushChat(roomID: roomInfo.roomID, code: roomInfo.code)
     }
 }
 

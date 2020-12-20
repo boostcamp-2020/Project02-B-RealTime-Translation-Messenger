@@ -8,13 +8,13 @@
 import UIKit
 import Kingfisher
 
-class HistoryCell: UITableViewCell {
+final class HistoryCell: UITableViewCell {
     
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var nicknameLabel: UILabel!
-    @IBOutlet weak var languageLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet private weak var profileImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var nicknameLabel: UILabel!
+    @IBOutlet private weak var languageLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
     
     var buttonHandler: (() -> Void)?
     
@@ -49,7 +49,7 @@ class HistoryCell: UITableViewCell {
         dateLabel.text = DateFormatter.chatHistoryTimeFormat(of: date, type: type)
     }
     
-    @IBAction func reEnterButtonTapped(_ sender: UIButton) {
+    @IBAction private func reEnterButtonTapped(_ sender: UIButton) {
         buttonHandler?()
     }
 }
