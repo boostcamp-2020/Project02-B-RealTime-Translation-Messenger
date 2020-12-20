@@ -1,5 +1,5 @@
 //
-//  MockApolloNetworkServiceSuccess.swift
+//  MockNetworkServiceSuccess.swift
 //  PapagoTalkHomeTests
 //
 //  Created by 송민관 on 2020/12/08.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 @testable import PapagoTalk
 
-struct MockApolloNetworkServiceSuccess: NetworkServiceProviding {
+struct MockNetworkServiceSuccess: NetworkServiceProviding {
 
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.just(.init(createMessage: true))
@@ -53,7 +53,8 @@ struct MockApolloNetworkServiceSuccess: NetworkServiceProviding {
                                                           nickname: "test3",
                                                           avatar: "",
                                                           lang: "ja",
-                                                          isDeleted: false)])))
+                                                          isDeleted: false)
+                                                ])))
     }
     
     func translate(text: String) -> Maybe<String> {

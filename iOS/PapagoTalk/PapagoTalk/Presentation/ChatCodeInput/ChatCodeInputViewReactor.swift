@@ -40,8 +40,7 @@ final class ChatCodeInputViewReactor: Reactor {
         
         self.networkService = networkService
         self.userData = userData
-        initialState = State(codeInput: [String](repeating: "", count: Constant.maxCodeLength),
-                             cusor: .zero)
+        initialState = State(codeInput: [String](repeating: "", count: Constant.maxCodeLength), cusor: .zero)
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -64,18 +63,16 @@ final class ChatCodeInputViewReactor: Reactor {
         
         switch mutation {
         case .setCodeInput(let tappedNumber):
-            guard (.zero..<Constant.maxCodeLength) ~= state.cusor else {
-                return state
-            }
+            guard (.zero..<Constant.maxCodeLength) ~= state.cusor else { return state }
             state.codeInput[state.cusor] = tappedNumber
             state.cusor += 1
         case .removeCodeInput:
             state.cusor = (state.cusor <= .zero) ? .zero : state.cusor - 1
             state.codeInput[state.cusor] = ""
         case .joinChatRoom(let roomInfo):
+            state.chatRoomInfo = roomInfo
             userData.id = roomInfo.userID
             userData.token = roomInfo.token
-            state.chatRoomInfo = roomInfo
         case .alertError(let error):
             state.errorMessage = error.message
         case .clearState:
@@ -89,28 +86,17 @@ final class ChatCodeInputViewReactor: Reactor {
         let code = state.codeInput.reduce("") { $0 + $1 } + lastInput
         return networkService.enterRoom(user: userData.user, code: code)
             .asObservable()
-            .map { Mutation.joinChatRoom(ChatRoomInfo(userID: $0.userId,
-                                                      roomID: $0.roomId,
-                                                      code: code,
-                                                      token: $0.token)) }
+            .map { Mutation.joinChatRoom(ChatRoomInfo(response: $0, code: code)) }
             .catchError { [weak self] in
-                guard let self = self else {
-                    return .just(Mutation.alertError(.networkError))
-                }
+                guard let self = self else { return .just(Mutation.alertError(.networkError)) }
                 return self.handleError($0)
             }
     }
     
     private func handleError(_ error: Error) -> Observable<Mutation> {
         guard let error = error as? JoinChatError else {
-            return .concat([
-                .just(.alertError(.networkError)),
-                .just(.clearState)
-            ])
+            return .concat([.just(.alertError(.networkError)), .just(.clearState)])
         }
-        return .concat([
-            .just(.alertError(error)),
-            .just(.clearState)
-        ])
+        return .concat([.just(.alertError(error)), .just(.clearState)])
     }
 }

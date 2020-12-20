@@ -14,7 +14,7 @@ final class MainCoordinator: Coordinator {
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
     var alertFactory: AlertFactoryProviding
-    var messageParser: MessageParser
+    var messageParser: MessageParseProviding
     var historyManager: HistoryServiceProviding
     var childCoordinator: [Coordinator] = []
     
@@ -32,9 +32,7 @@ final class MainCoordinator: Coordinator {
         self.messageParser = messageParser
         self.historyManager = historyManager
         
-        navigationController.navigationBar.barTintColor = UIColor(named: "NavigationBarColor")
-        navigationController.navigationBar.shadowImage = UIImage()
-        navigationController.navigationBar.tintColor = UIColor(named: "PapagoBlue")
+        configureNavigationItem()
     }
     
     func start() {
@@ -54,6 +52,12 @@ final class MainCoordinator: Coordinator {
         childCoordinator.append(chatCoordinator)
         
         homeCoordinator.start()
+    }
+    
+    private func configureNavigationItem() {
+        navigationController.navigationBar.barTintColor = UIColor(named: "NavigationBarColor")
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.tintColor = UIColor(named: "PapagoBlue")
     }
 }
 
@@ -87,9 +91,7 @@ extension MainCoordinator: MainCoordinating {
             identifier: SettingViewController.identifier,
             creator: { [unowned self] coder -> SettingViewController? in
                 let reacter = SettingViewReactor(userData: userData)
-                return SettingViewController(coder: coder,
-                                             reactor: reacter,
-                                             micButtonObserver: micButtonSizeObserver)
+                return SettingViewController(coder: coder, reactor: reacter, micButtonObserver: micButtonSizeObserver)
             }
         )
         push(viewController)
@@ -100,9 +102,7 @@ extension MainCoordinator: MainCoordinating {
             identifier: ChatCodeInputViewController.identifier,
             creator: { [unowned self] coder -> ChatCodeInputViewController? in
                 let reacter = ChatCodeInputViewReactor(networkService: networkService, userData: userData)
-                return ChatCodeInputViewController(coder: coder,
-                                                   reactor: reacter,
-                                                   alertFactory: alertFactory)
+                return ChatCodeInputViewController(coder: coder, reactor: reacter, alertFactory: alertFactory)
             }
         )
         viewController.coordinator = self

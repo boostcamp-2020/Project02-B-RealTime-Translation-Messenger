@@ -13,18 +13,19 @@ import RxDataSources
 
 final class ChatViewController: UIViewController, StoryboardView {
     
-    @IBOutlet weak var inputBarTextView: UITextView!
+    @IBOutlet private weak var inputBarTextView: UITextView!
     @IBOutlet private weak var inputBarTextViewHeight: NSLayoutConstraint!
     @IBOutlet private weak var chatCollectionView: ChatCollectionView!
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatDrawerButton: UIBarButtonItem!
     
-    private var chatDrawerObserver = BehaviorRelay(value: false)
-    private var micButtonSizeObserver: BehaviorRelay<MicButtonSize>
     private let messageDataSource = MessageDataSource()
     private let messageCollectionViewLayout = MessageSizeDelegate()
+    private var chatDrawerObserver = BehaviorRelay(value: false)
+    private var micButtonSizeObserver: BehaviorRelay<MicButtonSize>
     private var isKeyboardShowing: Bool = false
+    
     weak var coordinator: ChatCoordinating?
     var microphoneButton: MicrophoneButton!
     var disposeBag = DisposeBag()
@@ -140,8 +141,8 @@ final class ChatViewController: UIViewController, StoryboardView {
         
         inputBarTextView.rx.text
             .orEmpty
-            .compactMap { [weak self] text in
-                self?.calculateTextViewHeight(with: text)
+            .compactMap { [weak self] in
+                self?.calculateTextViewHeight(with: $0)
             }
             .asObservable()
             .distinctUntilChanged()
@@ -182,12 +183,12 @@ final class ChatViewController: UIViewController, StoryboardView {
     }
     
     private func setDrawer(isPresent: Bool) {
-        if isPresent {
-            hideKeyboard()
+        guard isPresent else {
+            dismissDrawer()
+            return
         }
-        isPresent ? coordinator?.presentDrawer(from: self,
-                                               with: chatDrawerObserver,
-                                               micButtonSizeObserver: micButtonSizeObserver) : dismissDrawer()
+        hideKeyboard()
+        coordinator?.presentDrawer(from: self, with: chatDrawerObserver, micButtonSizeObserver: micButtonSizeObserver)
     }
     
     private func dismissDrawer() {
@@ -222,8 +223,7 @@ extension ChatViewController: KeyboardProviding {
         
         keyboardWillShow
             .drive(onNext: { [weak self] keyboardFrame in
-                guard let self = self,
-                      !self.isKeyboardShowing else {
+                guard let self = self, !self.isKeyboardShowing else {
                     return
                 }
                 self.bottomConstraint.constant = keyboardFrame.height - self.view.safeAreaInsets.bottom
@@ -241,7 +241,7 @@ extension ChatViewController: KeyboardProviding {
                     return
                 }
                 self?.chatCollectionView.keyboardWillHide(keyboardHeight: keyboardFrame.height)
-                self?.bottomConstraint.constant = 0
+                self?.bottomConstraint.constant = .zero
                 UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
                     self?.view.layoutIfNeeded()
                 }

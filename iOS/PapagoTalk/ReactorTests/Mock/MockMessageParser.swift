@@ -9,6 +9,7 @@ import Foundation
 @testable import PapagoTalk
 
 struct MockMessageParser: MessageParseProviding {
+    
     func parse(newMessage: MessageData) -> [Message] {
         var messages = [Message]()
         
@@ -21,13 +22,6 @@ struct MockMessageParser: MessageParseProviding {
     }
     
     func parse(missingMessages: [MessageData?]?) -> [Message] {
-        var messages = [Message]()
-        
-        guard let missingMessages = missingMessages else { return [] }
-        
-//        missingMessages.forEach({ message in
-//            parse(newMessage: message )
-//        })
-        return messages
+        return [Message]()
     }
 }

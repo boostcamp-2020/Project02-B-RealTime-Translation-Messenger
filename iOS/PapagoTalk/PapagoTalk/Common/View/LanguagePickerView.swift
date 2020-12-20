@@ -11,19 +11,19 @@ final class LanguagePickerView: UIPickerView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        initailize()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        initailize()
     }
     
-    private func commonInit() {
+    private func initailize() {
         guard subviews.count > 1 else {
             return
         }
-        subviews[1].backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 1, alpha: 0)
+        subviews[1].backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 1, alpha: .zero)
         subviews[1].layer.borderWidth = 2
         subviews[1].layer.borderColor = UIColor(named: "PapagoBlue")?.cgColor
     }

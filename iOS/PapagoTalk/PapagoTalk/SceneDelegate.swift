@@ -33,8 +33,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator?.start()
         
         guard let launchScreenViewContorller =
-                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(
-                    identifier: LaunchScreenViewController.identifier) as? LaunchScreenViewController else {
+                UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: LaunchScreenViewController.identifier)
+                as? LaunchScreenViewController else {
+            
             window?.rootViewController = navigationController
             window?.makeKeyAndVisible()
             return

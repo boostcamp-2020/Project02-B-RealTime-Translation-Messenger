@@ -18,8 +18,4 @@ struct APIEndPoint {
     static var socketURL: URL {
         URL(string: "ws://" + baseURL)!
     }
-    
-    static let ncpPapagoAPI = URL(string: "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation")!
-    static let ncpPapagoAPIclientID = ""
-    static let ncpPapagoAPIclientSecret = ""
 }

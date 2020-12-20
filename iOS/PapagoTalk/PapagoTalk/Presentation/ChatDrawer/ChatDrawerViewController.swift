@@ -17,9 +17,9 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var leaveChatRoomButton: UIButton!
     @IBOutlet private weak var settingButton: UIButton!
     
+    private let userDataSource = UserDataSource()
     private var visualEffectView: UIVisualEffectView
     private var runningAnimations = [UIViewPropertyAnimator]()
-    private let userDataSource = UserDataSource()
     
     var chatDrawerObserver: BehaviorRelay<Bool>
     var buttonSizeObserver: BehaviorRelay<MicButtonSize>
@@ -32,6 +32,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
           visualEffectView: UIVisualEffectView,
           stateObserver: BehaviorRelay<Bool>,
           buttonSizeObserver: BehaviorRelay<MicButtonSize>) {
+        
         self.visualEffectView = visualEffectView
         self.chatDrawerObserver = stateObserver
         self.buttonSizeObserver = buttonSizeObserver
@@ -40,9 +41,9 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     }
     
     required init?(coder: NSCoder) {
-        self.visualEffectView = UIVisualEffectView()
-        self.chatDrawerObserver = BehaviorRelay(value: false)
-        self.buttonSizeObserver = BehaviorRelay(value: .small)
+        visualEffectView = UIVisualEffectView()
+        chatDrawerObserver = BehaviorRelay(value: false)
+        buttonSizeObserver = BehaviorRelay(value: .small)
         super.init(coder: coder)
     }
     
@@ -64,9 +65,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
     // MARK: - Input
     private func bindAction(reactor: ChatDrawerViewReactor) {
         self.rx.viewWillAppear
-            .map { _ in
-                Reactor.Action.fetchUsers
-            }
+            .map { _ in Reactor.Action.fetchUsers }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -102,18 +101,14 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             .compactMap { $0.data }
             .filter { !$0.isEmpty }
             .subscribe(onNext: { [weak self] in
-                self?.currentToast?.cancel()
-                self?.currentToast = Toast(text: $0, delay: 0, duration: 2)
-                self?.currentToast?.show()
+                self?.configureToast(with: $0)
             })
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.leaveChatRoom }
             .filter { $0 }
             .subscribe(onNext: { [weak self] _ in
-                self?.dismiss(animated: true, completion: {
-                    self?.navigationController?.popViewController(animated: true)
-                })
+                self?.leaveChatRoom()
             })
             .disposed(by: disposeBag)
     }
@@ -139,10 +134,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         settingButton.rx.tap
             .asObservable()
             .subscribe(onNext: { [weak self] in
-                guard let self = self, let superView = self.parent as? ChatViewController else {
-                    return
-                }
-                superView.coordinator?.pushSetting(micButtonSizeObserver: self.buttonSizeObserver)
+                self?.moveToSetting()
             })
             .disposed(by: disposeBag)
     }
@@ -157,10 +149,10 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         }
         
         let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) { [weak self] in
-            guard let self = self,
-                  let superview = self.parent?.view else {
+            guard let self = self, let superview = self.parent?.view else {
                 return
             }
+            
             switch state {
             case .opened:
                 self.view.frame.origin.x = superview.frame.width - self.view.frame.width
@@ -168,16 +160,12 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
                 self.view.frame.origin.x = superview.frame.width
             }
         }
-        
         frameAnimator.addCompletion { [weak self] _ in
             self?.runningAnimations.removeAll()
             guard state == .closed else {
                 return
             }
-            self?.dismiss(animated: false, completion: self?.completion)
-            self?.view.removeFromSuperview()
-            self?.visualEffectView.removeFromSuperview()
-            self?.removeFromParent()
+            self?.dismissChatDrawer()
         }
         frameAnimator.startAnimation()
         runningAnimations.append(frameAnimator)
@@ -186,6 +174,7 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
             guard let visualEffectView = self?.visualEffectView else {
                 return
             }
+            
             switch state {
             case .opened:
                 visualEffectView.effect = UIBlurEffect(style: .dark)
@@ -228,10 +217,39 @@ final class ChatDrawerViewController: UIViewController, StoryboardView {
         }
         chatDrawerObserver.accept(true)
     }
+    
+    private func dismissChatDrawer() {
+        dismiss(animated: false, completion: completion)
+        view.removeFromSuperview()
+        visualEffectView.removeFromSuperview()
+        removeFromParent()
+    }
+    
+    private func configureToast(with text: String) {
+        currentToast?.cancel()
+        currentToast = Toast(text: text, delay: .zero, duration: 2)
+        currentToast?.show()
+    }
+    
+    private func moveToSetting() {
+        guard let superView = self.parent as? ChatViewController else {
+            return
+        }
+        superView.coordinator?.pushSetting(micButtonSizeObserver: buttonSizeObserver)
+    }
+    
+    private func leaveChatRoom() {
+        dismiss(animated: true, completion: { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        })
+    }
 }
 
 extension ChatDrawerViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         CGSize(width: collectionView.frame.width, height: 60)
     }
 }

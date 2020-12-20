@@ -15,8 +15,8 @@ final class LaunchScreenViewController: UIViewController {
     @IBOutlet private weak var leftImageView: UIImageView!
     @IBOutlet private weak var logoTextLabel: UILabel!
     
-    var coordinator: MainCoordinator?
     private var circleLayer: CAShapeLayer?
+    var coordinator: MainCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ final class LaunchScreenViewController: UIViewController {
         let center = CGPoint(x: view.bounds.width/2, y: view.bounds.height/2)
         let circle = UIBezierPath(arcCenter: center,
                                   radius: 1,
-                                  startAngle: CGFloat.zero,
+                                  startAngle: .zero,
                                   endAngle: CGFloat(Double.pi * 2),
                                   clockwise: true)
         layer.fillColor = UIColor.systemYellow.cgColor
@@ -90,6 +90,7 @@ final class LaunchScreenViewController: UIViewController {
     private func rightImageJumpAnimation() {
         var origin = rightImageView.frame.origin
         origin.y -= 220
+        
         UIView.animate(withDuration: 0.5, delay: 0.6, options: .curveEaseInOut) { [weak self] in
             self?.rightImageView.frame.origin = origin
         } completion: { [weak self] _ in
@@ -109,6 +110,7 @@ final class LaunchScreenViewController: UIViewController {
     private func leftImageJumpAnimation() {
         var origin = leftImageView.frame.origin
         origin.y -= 220
+        
         UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseInOut) { [weak self] in
             self?.leftImageView.frame.origin = origin
         } completion: { [weak self] _ in
@@ -141,7 +143,6 @@ final class LaunchScreenViewController: UIViewController {
         } completion: { [weak self] _ in
             self?.moveToHome()
         }
-      
     }
     
     private func moveToHome() {

@@ -8,6 +8,8 @@
 import Foundation
 
 protocol UserDataProviding {
+    func removeToken()
+    
     var user: User { get set }
     var id: Int { get set }
     var nickName: String { get set }
@@ -16,8 +18,6 @@ protocol UserDataProviding {
     var micButtonSize: MicButtonSize { get set }
     var sameLanguageTranslation: Bool { get set }
     var token: String { get set }
-    
-    func removeToken()
 }
 
 extension UserDataProviding {

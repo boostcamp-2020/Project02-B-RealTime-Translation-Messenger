@@ -12,4 +12,18 @@ struct ChatRoomInfo: Equatable {
     var roomID: Int
     var code: String
     var token: String
+    
+    init(userID: Int, roomID: Int, code: String, token: String) {
+        self.userID = userID
+        self.roomID = roomID
+        self.code = code
+        self.token = token
+    }
+    
+    init(response: JoinChatResponse, code: String) {
+        self.userID = response.userId
+        self.roomID = response.roomId
+        self.code = code
+        self.token = response.token
+    }
 }

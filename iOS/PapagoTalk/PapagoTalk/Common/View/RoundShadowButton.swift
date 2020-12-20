@@ -34,7 +34,6 @@ class RoundShadowButton: UIButton {
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 2.0
         layer.masksToBounds = false
-        
         updateShadow()
     }
     

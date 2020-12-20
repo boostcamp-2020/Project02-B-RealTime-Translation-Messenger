@@ -149,10 +149,6 @@ class NetworkService: NetworkServiceProviding {
             }
         }
     }
-    
-    func sendSystemMessage(type: String) {
-        client.perform(mutation: SendSystemMessageMutation(type: type))
-    }
   
     func translate(text: String) -> Maybe<String> {
         return Maybe.create { [weak self] observer in
@@ -182,5 +178,9 @@ class NetworkService: NetworkServiceProviding {
     func leaveRoom() {
         sendSystemMessage(type: "out")
         client.perform(mutation: LeaveRoomMutation())
+    }
+    
+    func sendSystemMessage(type: String) {
+        client.perform(mutation: SendSystemMessageMutation(type: type))
     }
 }

@@ -9,19 +9,19 @@ import UIKit
 import RxCocoa
 
 final class ChatCoordinator: Coordinator {
+    
     weak var parentCoordinator: MainCoordinating?
     
     var networkService: NetworkServiceProviding
     var userData: UserDataProviding
-    var messageParser: MessageParser
+    var messageParser: MessageParseProviding
     var historyManager: HistoryServiceProviding
-    
     var roomID: Int?
     var code: String?
     
     init(networkService: NetworkServiceProviding,
          userData: UserDataProviding,
-         messageParser: MessageParser,
+         messageParser: MessageParseProviding,
          historyManager: HistoryServiceProviding) {
         
         self.networkService = networkService
@@ -31,8 +31,7 @@ final class ChatCoordinator: Coordinator {
     }
     
     func start() {
-        guard let roomID = roomID,
-              let code = code else {
+        guard let roomID = roomID, let code = code else {
             return
         }
         let chatWebSocket = WebSocketService()
@@ -46,7 +45,8 @@ final class ChatCoordinator: Coordinator {
                                               historyManager: historyManager,
                                               roomID: roomID,
                                               code: code)
-                return ChatViewController(coder: coder, reactor: reactor, micButtonObserver: BehaviorRelay(value: userData.micButtonSize))
+                let observer = BehaviorRelay(value: userData.micButtonSize)
+                return ChatViewController(coder: coder, reactor: reactor, micButtonObserver: observer)
             }
         )
         viewController.coordinator = self
@@ -70,16 +70,18 @@ extension ChatCoordinator: ChatCoordinating {
                 return SpeechViewController(coder: coder, reactor: reactor)
             }
         )
-              
         presentingViewController.addChild(speechViewController)
-        let height = presentingViewController.view.frame.height/2 - presentingViewController.view.safeAreaInsets.bottom
-        speechViewController.view.frame = CGRect(x: (presentingViewController.view.frame.width - Constant.speechViewWidth)/2.0,
-                                                 y: presentingViewController.view.frame.height/4,
+        
+        let frame = presentingViewController.view.frame
+        let bottomInset = presentingViewController.view.safeAreaInsets.bottom
+        let height = frame.height/2 - bottomInset
+        
+        speechViewController.view.frame = CGRect(x: (frame.width - Constant.speechViewWidth)/2,
+                                                 y: frame.height/4,
                                                  width: Constant.speechViewWidth,
                                                  height: height)
-        UIView.transition(with: presentingViewController.view,
-                          duration: 0.4,
-                          options: [.transitionCrossDissolve]) {
+        
+        UIView.transition(with: presentingViewController.view, duration: 0.4, options: [.transitionCrossDissolve]) {
             presentingViewController.view.addSubview(speechViewController.view)
         }
     }
@@ -87,11 +89,12 @@ extension ChatCoordinator: ChatCoordinating {
     func presentDrawer(from presentingViewController: UIViewController,
                        with stateObserver: BehaviorRelay<Bool>,
                        micButtonSizeObserver: BehaviorRelay<MicButtonSize>) {
-        guard let roomID = roomID,
-              let code = code else {
+        guard let roomID = roomID, let code = code else {
             return
         }
+        
         let visualEffectView = UIVisualEffectView()
+        
         visualEffectView.frame = presentingViewController.view.frame
         presentingViewController.view.addSubview(visualEffectView)
         
@@ -112,12 +115,13 @@ extension ChatCoordinator: ChatCoordinating {
         drawerViewController.completion = {
             (presentingViewController as? ChatViewController)?.chatDrawerButton.isEnabled = true
         }
-        let drawerWidth = presentingViewController.view.frame.width * 0.75
-        drawerViewController.view.frame = CGRect(x: presentingViewController.view.frame.width,
-                                                 y: .zero,
-                                                 width: drawerWidth,
-                                                 height: presentingViewController.view.frame.height)
+        
+        let frame = presentingViewController.view.frame
+        let drawerWidth = frame.width * 0.75
+        
+        drawerViewController.view.frame = CGRect(x: frame.width, y: .zero, width: drawerWidth, height: frame.height)
         drawerViewController.view.clipsToBounds = true
+        
         presentingViewController.addChild(drawerViewController)
         presentingViewController.view.addSubview(drawerViewController.view)
     }

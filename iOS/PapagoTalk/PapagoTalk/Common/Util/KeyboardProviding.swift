@@ -19,25 +19,23 @@ extension KeyboardProviding {
         return view.rx.tapGesture()
             .when(.recognized)
             .map { _ in Void.self }
-            .do(onNext: { [weak self] _ in self?.view.endEditing(true) })
+            .do(onNext: { [weak self] _ in
+                    self?.view.endEditing(true)
+            })
             .asDriver(onErrorJustReturn: Void.self)
     }
     
     var keyboardWillShow: Driver<CGRect> {
         return NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
             .asObservable()
-            .compactMap {
-                ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            }
+            .compactMap { ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue }
             .asDriver(onErrorJustReturn: .zero)
     }
     
     var keyboardWillHide: Driver<CGRect> {
         return NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
             .asObservable()
-            .compactMap {
-                ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            }
+            .compactMap { ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue }
             .asDriver(onErrorJustReturn: .zero)
     }
 }

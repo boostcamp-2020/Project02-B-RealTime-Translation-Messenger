@@ -50,9 +50,7 @@ extension HomeCoordinator: HomeCoordinating {
             storyboard.instantiateViewController(
                 identifier: LanguageSelectionViewController.identifier,
                 creator: { [unowned self] coder -> LanguageSelectionViewController? in
-                    return LanguageSelectionViewController(coder: coder,
-                                                           userData: userData,
-                                                           observer: observer)
+                    return LanguageSelectionViewController(coder: coder, userData: userData, observer: observer)
                 }
             )
         
@@ -73,11 +71,10 @@ extension HomeCoordinator: HomeCoordinating {
         let viewContoroller = storyboard.instantiateViewController(
             identifier: HistoryViewController.identifier,
             creator: { [unowned self] coder -> HistoryViewController? in
-                return HistoryViewController(coder: coder,
-                                             reactor: HistoryViewReactor(networkService: networkService,
-                                                                         userData: userData,
-                                                                         historyManager: historyManager),
-                                             alertFactory: alertFactory)
+                let reactor = HistoryViewReactor(networkService: networkService,
+                                                 userData: userData,
+                                                 historyManager: historyManager)
+                return HistoryViewController(coder: coder, reactor: reactor, alertFactory: alertFactory)
             }
         )
         viewContoroller.coordinator = self

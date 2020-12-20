@@ -78,6 +78,7 @@ extension Resolver {
 }
 
 protocol Resolvable {}
+
 extension Resolvable {
     static func resolve(from resolver: Resolver = .shared) -> Self {
         resolver.resolve()

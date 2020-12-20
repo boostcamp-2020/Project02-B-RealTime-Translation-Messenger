@@ -8,8 +8,8 @@
 import RxSwift
 
 protocol SpeechServiceProviding {
+    func speechToText()
+    
     var recognizedSpeech: BehaviorSubject<String> { get set }
     var isAvailable: BehaviorSubject<Bool> { get set }
-    
-    func speechToText()
 }

@@ -9,6 +9,7 @@ import Foundation
 @testable import PapagoTalk
 
 struct MockUserDataProvider: UserDataProviding {
+    
     var user: User
     var micButtonSize = MicButtonSize.medium
     var token = "testToken"

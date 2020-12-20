@@ -19,8 +19,7 @@ final class SettingViewController: UIViewController, StoryboardView {
     var microphoneButton = MicrophoneButton(mode: .none)
     var disposeBag = DisposeBag()
     
-    init?(coder: NSCoder, reactor: SettingViewReactor,
-          micButtonObserver: BehaviorRelay<MicButtonSize>?) {
+    init?(coder: NSCoder, reactor: SettingViewReactor, micButtonObserver: BehaviorRelay<MicButtonSize>?) {
         super.init(coder: coder)
         self.buttonObserver = micButtonObserver
         self.reactor = reactor
@@ -65,10 +64,7 @@ final class SettingViewController: UIViewController, StoryboardView {
         reactor.state.map { $0.microphoneButtonState }
             .distinctUntilChanged()
             .do(onNext: { [weak self] in
-                self?.microphoneButton.mode = $0
-                self?.setMicButtonPosition()
-                guard let buttonObserver = self?.buttonObserver else { return }
-                buttonObserver.accept($0)
+                self?.applyMicrophoneButtonState(of: $0)
             })
             .map { $0.index }
             .filter { [weak self] in
@@ -108,5 +104,15 @@ final class SettingViewController: UIViewController, StoryboardView {
         MicButtonSize.allCases.forEach {
             sizeSettingSegmentedControl.setTitle($0.description, forSegmentAt: $0.index)
         }
+    }
+    
+    private func applyMicrophoneButtonState(of micButtonSize: MicButtonSize) {
+        microphoneButton.mode = micButtonSize
+        setMicButtonPosition()
+        
+        guard let buttonObserver = buttonObserver else {
+            return
+        }
+        buttonObserver.accept(micButtonSize)
     }
 }

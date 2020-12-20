@@ -23,8 +23,8 @@
 		993AF6792574DF2F00416692 /* CreateRoomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF6782574DF2F00416692 /* CreateRoomResponse.swift */; };
 		993AF67D2574E3E200416692 /* HomeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF67C2574E3E200416692 /* HomeError.swift */; };
 		993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AF697257517AE00416692 /* KeyboardProviding.swift */; };
-		99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482D9A2578874000802B45 /* PapagoAPIManager.swift */; };
-		99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */; };
+		99482D9B2578874000802B45 /* TranslationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482D9A2578874000802B45 /* TranslationManager.swift */; };
+		99482DA72578AF8900802B45 /* ReceivedTranslatedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DA62578AF8900802B45 /* ReceivedTranslatedMessageCell.swift */; };
 		99482DFD2579425400802B45 /* RevisionedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482DFC2579425400802B45 /* RevisionedData.swift */; };
 		99482E57257B558700802B45 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E56257B558700802B45 /* HomeCoordinator.swift */; };
 		99482E5B257B63E100802B45 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E5A257B63E100802B45 /* ChatCoordinator.swift */; };
@@ -32,7 +32,6 @@
 		99482E63257BA39B00802B45 /* MainCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E62257BA39B00802B45 /* MainCoordinating.swift */; };
 		99482E67257BA3B200802B45 /* ChatCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E66257BA3B200802B45 /* ChatCoordinating.swift */; };
 		99482E81257BE06D00802B45 /* SpeechButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E80257BE06C00802B45 /* SpeechButton.swift */; };
-		99482E8B257CB91D00802B45 /* PapagoAPIServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */; };
 		99482E99257CEE2500802B45 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E98257CEE2500802B45 /* MessageParser.swift */; };
 		99482EAD257DB34800802B45 /* SentMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */; };
 		99482EB1257DB35200802B45 /* ReceivedMessageBubbleTail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */; };
@@ -79,8 +78,8 @@
 		996A146B256D5B6200F21215 /* Locale+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996A146A256D5B6200F21215 /* Locale+.swift */; };
 		996C4E51256E7BF90015F9F4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E50256E7BF90015F9F4 /* NetworkService.swift */; };
 		996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */; };
-		996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E91257005C20015F9F4 /* SentMessageCell.swift */; };
-		996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */; };
+		996C4E92257005C20015F9F4 /* SentOriginMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E91257005C20015F9F4 /* SentOriginMessageCell.swift */; };
+		996C4E98257006670015F9F4 /* ReceivedOriginMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996C4E97257006670015F9F4 /* ReceivedOriginMessageCell.swift */; };
 		99A2766B256687D1008BD24C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 99A2766A256687D1008BD24C /* .swiftlint.yml */; };
 		99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2768325668EFA008BD24C /* HomeViewController.swift */; };
 		99E9BD372589CFA3006EEFEA /* MessageBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9BD362589CFA3006EEFEA /* MessageBoxTests.swift */; };
@@ -125,8 +124,8 @@
 		99E9BE3C258B7D30006EEFEA /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
 		99E9BE40258B7D33006EEFEA /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
 		99E9BE44258B7D36006EEFEA /* SettingReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C886B258A20E70086568D /* SettingReactorTests.swift */; };
-		99E9BE48258B7D3B006EEFEA /* MockApolloNetworkServiceSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */; };
-		99E9BE4C258B7D3F006EEFEA /* MockApolloNetworkServiceFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */; };
+		99E9BE48258B7D3B006EEFEA /* MockNetworkServiceSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* MockNetworkServiceSuccess.swift */; };
+		99E9BE4C258B7D3F006EEFEA /* MockNetworkServiceFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* MockNetworkServiceFailure.swift */; };
 		99E9BE50258B7D42006EEFEA /* MockWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E44258AF95300CE4758 /* MockWebSocketService.swift */; };
 		99E9BE54258B7D44006EEFEA /* MockUserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */; };
 		99E9BE58258B7D47006EEFEA /* MockMessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */; };
@@ -153,10 +152,10 @@
 		BB25AEA2258B589000941096 /* GetMissingMessageUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25AEA1258B589000941096 /* GetMissingMessageUserData.swift */; };
 		BB25AEA7258B58AE00941096 /* GetUserListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25AEA6258B58AE00941096 /* GetUserListData.swift */; };
 		BB25AEE2258B5FBA00941096 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482E98257CEE2500802B45 /* MessageParser.swift */; };
-		BB2772BC2581F02900F6A47B /* UserTranslatedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2772BB2581F02900F6A47B /* UserTranslatedMessageCell.swift */; };
+		BB2772BC2581F02900F6A47B /* SentTranslatedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2772BB2581F02900F6A47B /* SentTranslatedMessageCell.swift */; };
 		BB3825252574050A000425FD /* ChatDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3825242574050A000425FD /* ChatDrawerViewController.swift */; };
 		BB38252B25740B22000425FD /* ChatDrawerViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */; };
-		BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */; };
+		BB48149E2577D64D00CFA6DB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48149D2577D64D00CFA6DB /* NetworkManager.swift */; };
 		BB4814A22577D79B00CFA6DB /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814A12577D79B00CFA6DB /* HTTPMethod.swift */; };
 		BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */; };
 		BB4985802587438100896432 /* TimeFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49857F2587438100896432 /* TimeFormatType.swift */; };
@@ -177,6 +176,8 @@
 		BB7B58AD25848C7500898D6C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7B58AC25848C7500898D6C /* SettingViewController.swift */; };
 		BB93C290257526DD00C68491 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C28F257526DD00C68491 /* MessageType.swift */; };
 		BB93C2942575345200C68491 /* Calendar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB93C2932575345200C68491 /* Calendar+.swift */; };
+		BB95F11B258F3D7C00C00DEB /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB95F11A258F3D7C00C00DEB /* APIConfiguration.swift */; };
+		BB95F126258F445100C00DEB /* TranslationEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB95F125258F445100C00DEB /* TranslationEndPoint.swift */; };
 		BB9725A8256FA5DD00C4938D /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9725A7256FA5DD00C4938D /* MessageBox.swift */; };
 		BB97AE08256CDC0400307DAD /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97AE07256CDC0400307DAD /* UIView+.swift */; };
 		BB9A86A02574879500FE14D6 /* ChatDrawerUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A869F2574879500FE14D6 /* ChatDrawerUserCell.swift */; };
@@ -240,8 +241,8 @@
 		993AF6782574DF2F00416692 /* CreateRoomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomResponse.swift; sourceTree = "<group>"; };
 		993AF67C2574E3E200416692 /* HomeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeError.swift; sourceTree = "<group>"; };
 		993AF697257517AE00416692 /* KeyboardProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardProviding.swift; sourceTree = "<group>"; };
-		99482D9A2578874000802B45 /* PapagoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIManager.swift; sourceTree = "<group>"; };
-		99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedMessageCell.swift; sourceTree = "<group>"; };
+		99482D9A2578874000802B45 /* TranslationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationManager.swift; sourceTree = "<group>"; };
+		99482DA62578AF8900802B45 /* ReceivedTranslatedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedTranslatedMessageCell.swift; sourceTree = "<group>"; };
 		99482DFC2579425400802B45 /* RevisionedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisionedData.swift; sourceTree = "<group>"; };
 		99482E56257B558700802B45 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		99482E5A257B63E100802B45 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
@@ -249,7 +250,6 @@
 		99482E62257BA39B00802B45 /* MainCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinating.swift; sourceTree = "<group>"; };
 		99482E66257BA3B200802B45 /* ChatCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinating.swift; sourceTree = "<group>"; };
 		99482E80257BE06C00802B45 /* SpeechButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechButton.swift; sourceTree = "<group>"; };
-		99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoAPIServiceProviding.swift; sourceTree = "<group>"; };
 		99482E98257CEE2500802B45 /* MessageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
 		99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMessageBubbleTail.swift; sourceTree = "<group>"; };
 		99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedMessageBubbleTail.swift; sourceTree = "<group>"; };
@@ -305,8 +305,8 @@
 		996C4E0E256E59AF0015F9F4 /* GetMessage.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetMessage.graphql; sourceTree = "<group>"; };
 		996C4E50256E7BF90015F9F4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		996C4E56256E7F0F0015F9F4 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
-		996C4E91257005C20015F9F4 /* SentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMessageCell.swift; sourceTree = "<group>"; };
-		996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedMessageCell.swift; sourceTree = "<group>"; };
+		996C4E91257005C20015F9F4 /* SentOriginMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentOriginMessageCell.swift; sourceTree = "<group>"; };
+		996C4E97257006670015F9F4 /* ReceivedOriginMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedOriginMessageCell.swift; sourceTree = "<group>"; };
 		99A2766A256687D1008BD24C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		99A2768325668EFA008BD24C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		99CF543A2588711F00440F37 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -327,9 +327,9 @@
 		99E9BE08258AF7E3006EEFEA /* LanguagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerView.swift; sourceTree = "<group>"; };
 		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactorTests.swift; sourceTree = "<group>"; };
-		BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApolloNetworkServiceSuccess.swift; sourceTree = "<group>"; };
+		BB0B6EEB257F3681005EDF22 /* MockNetworkServiceSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkServiceSuccess.swift; sourceTree = "<group>"; };
 		BB1200A025701B4000CC8020 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
-		BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApolloNetworkServiceFailure.swift; sourceTree = "<group>"; };
+		BB15693D257F5ADA00A2C0F9 /* MockNetworkServiceFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkServiceFailure.swift; sourceTree = "<group>"; };
 		BB15699F257F8C2F00A2C0F9 /* MessageParseProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParseProviding.swift; sourceTree = "<group>"; };
 		BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessageParser.swift; sourceTree = "<group>"; };
 		BB15A5862577690F0006D258 /* SpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
@@ -350,10 +350,10 @@
 		BB25AEA1258B589000941096 /* GetMissingMessageUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMissingMessageUserData.swift; sourceTree = "<group>"; };
 		BB25AEA6258B58AE00941096 /* GetUserListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserListData.swift; sourceTree = "<group>"; };
 		BB25AECD258B5E0400941096 /* HistoryReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReactorTests.swift; sourceTree = "<group>"; };
-		BB2772BB2581F02900F6A47B /* UserTranslatedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslatedMessageCell.swift; sourceTree = "<group>"; };
+		BB2772BB2581F02900F6A47B /* SentTranslatedMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentTranslatedMessageCell.swift; sourceTree = "<group>"; };
 		BB3825242574050A000425FD /* ChatDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerViewController.swift; sourceTree = "<group>"; };
 		BB38252A25740B22000425FD /* ChatDrawerViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDrawerViewReactor.swift; sourceTree = "<group>"; };
-		BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
+		BB48149D2577D64D00CFA6DB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BB4814A12577D79B00CFA6DB /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		BB4814C72577DCC800CFA6DB /* TranslationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationRequest.swift; sourceTree = "<group>"; };
 		BB4814CB2577DCE400CFA6DB /* TranslationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationResponse.swift; sourceTree = "<group>"; };
@@ -375,6 +375,8 @@
 		BB7B58AC25848C7500898D6C /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BB93C28F257526DD00C68491 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
 		BB93C2932575345200C68491 /* Calendar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+.swift"; sourceTree = "<group>"; };
+		BB95F11A258F3D7C00C00DEB /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		BB95F125258F445100C00DEB /* TranslationEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationEndPoint.swift; sourceTree = "<group>"; };
 		BB9725A7256FA5DD00C4938D /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		BB97AE07256CDC0400307DAD /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		BB987E80257F4CA800F4C258 /* StubAlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAlertFactory.swift; sourceTree = "<group>"; };
@@ -474,10 +476,10 @@
 				99482EB0257DB35200802B45 /* ReceivedMessageBubbleTail.swift */,
 				99482EAC257DB34700802B45 /* SentMessageBubbleTail.swift */,
 				BB9A86A3257487C800FE14D6 /* MessageCell.swift */,
-				996C4E91257005C20015F9F4 /* SentMessageCell.swift */,
-				BB2772BB2581F02900F6A47B /* UserTranslatedMessageCell.swift */,
-				996C4E97257006670015F9F4 /* ReceivedMessageCell.swift */,
-				99482DA62578AF8900802B45 /* TranslatedMessageCell.swift */,
+				996C4E91257005C20015F9F4 /* SentOriginMessageCell.swift */,
+				BB2772BB2581F02900F6A47B /* SentTranslatedMessageCell.swift */,
+				996C4E97257006670015F9F4 /* ReceivedOriginMessageCell.swift */,
+				99482DA62578AF8900802B45 /* ReceivedTranslatedMessageCell.swift */,
 				99482F992580ED6700802B45 /* SystemMessageCell.swift */,
 			);
 			path = MessageCell;
@@ -687,10 +689,11 @@
 		BB25AE89258B570E00941096 /* PapagoAPI */ = {
 			isa = PBXGroup;
 			children = (
-				BB48149D2577D64D00CFA6DB /* URLSessionNetworkService.swift */,
+				BB48149D2577D64D00CFA6DB /* NetworkManager.swift */,
+				99482D9A2578874000802B45 /* TranslationManager.swift */,
+				BB95F11A258F3D7C00C00DEB /* APIConfiguration.swift */,
+				BB95F125258F445100C00DEB /* TranslationEndPoint.swift */,
 				BB4814A12577D79B00CFA6DB /* HTTPMethod.swift */,
-				99482D9A2578874000802B45 /* PapagoAPIManager.swift */,
-				99482E8A257CB91D00802B45 /* PapagoAPIServiceProviding.swift */,
 			);
 			path = PapagoAPI;
 			sourceTree = "<group>";
@@ -707,7 +710,7 @@
 		BB25AEAC258B591500941096 /* MessageData */ = {
 			isa = PBXGroup;
 			children = (
-				BB25AEA1258B589000941096 /* GetMissingMessageUserData.swift */,
+				BB25AE92258B57F900941096 /* GetMessageData.swift */,
 				BB25AE97258B583900941096 /* GetMissingMessageData.swift */,
 			);
 			path = MessageData;
@@ -718,7 +721,7 @@
 			children = (
 				BB25AEA6258B58AE00941096 /* GetUserListData.swift */,
 				BB25AE9C258B586A00941096 /* GetMessageUserData.swift */,
-				BB25AE92258B57F900941096 /* GetMessageData.swift */,
+				BB25AEA1258B589000941096 /* GetMissingMessageUserData.swift */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -835,8 +838,8 @@
 		BB987E8E257F4D3E00F4C258 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */,
-				BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */,
+				BB0B6EEB257F3681005EDF22 /* MockNetworkServiceSuccess.swift */,
+				BB15693D257F5ADA00A2C0F9 /* MockNetworkServiceFailure.swift */,
 				BBF10E44258AF95300CE4758 /* MockWebSocketService.swift */,
 				BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */,
 				BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */,
@@ -1291,10 +1294,10 @@
 				99E9BE2F258B7D12006EEFEA /* HomeReactorTests.swift in Sources */,
 				99E9BE33258B7D29006EEFEA /* HistoryReactorTests.swift in Sources */,
 				99E9BE58258B7D47006EEFEA /* MockMessageParser.swift in Sources */,
-				99E9BE48258B7D3B006EEFEA /* MockApolloNetworkServiceSuccess.swift in Sources */,
+				99E9BE48258B7D3B006EEFEA /* MockNetworkServiceSuccess.swift in Sources */,
 				99E9BE68258B7D54006EEFEA /* StubImageFactory.swift in Sources */,
 				99E9BE40258B7D33006EEFEA /* SpeechReactorTests.swift in Sources */,
-				99E9BE4C258B7D3F006EEFEA /* MockApolloNetworkServiceFailure.swift in Sources */,
+				99E9BE4C258B7D3F006EEFEA /* MockNetworkServiceFailure.swift in Sources */,
 				99E9BE54258B7D44006EEFEA /* MockUserDataProvider.swift in Sources */,
 				99E9BE5C258B7D4A006EEFEA /* MockHistoryManager.swift in Sources */,
 				99E9BE3C258B7D30006EEFEA /* ChatDrawerReactorTests.swift in Sources */,
@@ -1338,15 +1341,14 @@
 				BBDE2C7D25830B3C0068D7DE /* MessageData.swift in Sources */,
 				99482FC625811E2300802B45 /* MessageSection.swift in Sources */,
 				BB93C2942575345200C68491 /* Calendar+.swift in Sources */,
-				BB48149E2577D64D00CFA6DB /* URLSessionNetworkService.swift in Sources */,
+				BB48149E2577D64D00CFA6DB /* NetworkManager.swift in Sources */,
 				BB4814CC2577DCE400CFA6DB /* TranslationResponse.swift in Sources */,
-				99482D9B2578874000802B45 /* PapagoAPIManager.swift in Sources */,
+				99482D9B2578874000802B45 /* TranslationManager.swift in Sources */,
 				9968478025862C5F006C116E /* Notification+.swift in Sources */,
 				990DE923257265BB00340A72 /* ChatCodeInputViewController.swift in Sources */,
-				99482DA72578AF8900802B45 /* TranslatedMessageCell.swift in Sources */,
+				99482DA72578AF8900802B45 /* ReceivedTranslatedMessageCell.swift in Sources */,
 				BBBCD4202584DD69001AE7BE /* SettingViewReactor.swift in Sources */,
 				99482FCC2581243500802B45 /* MessageDataSource.swift in Sources */,
-				99482E8B257CB91D00802B45 /* PapagoAPIServiceProviding.swift in Sources */,
 				99482E99257CEE2500802B45 /* MessageParser.swift in Sources */,
 				99482E67257BA3B200802B45 /* ChatCoordinating.swift in Sources */,
 				9968475F25851833006C116E /* HistoryViewController.swift in Sources */,
@@ -1400,16 +1402,17 @@
 				990DE97C2573A80B00340A72 /* Strings.swift in Sources */,
 				990DE947257336D900340A72 /* JoinChatError.swift in Sources */,
 				BB9A86A02574879500FE14D6 /* ChatDrawerUserCell.swift in Sources */,
-				996C4E98257006670015F9F4 /* ReceivedMessageCell.swift in Sources */,
+				996C4E98257006670015F9F4 /* ReceivedOriginMessageCell.swift in Sources */,
 				99482F942580BE5900802B45 /* NetworkIntercepterProvider.swift in Sources */,
 				996C4E57256E7F0F0015F9F4 /* APIEndPoint.swift in Sources */,
+				BB95F126258F445100C00DEB /* TranslationEndPoint.swift in Sources */,
 				9964793B2576901200CFF202 /* InputBarTextView.swift in Sources */,
 				BBE140772573D374000B0604 /* DateFormatter+.swift in Sources */,
-				996C4E92257005C20015F9F4 /* SentMessageCell.swift in Sources */,
+				996C4E92257005C20015F9F4 /* SentOriginMessageCell.swift in Sources */,
 				990DE9512573499500340A72 /* AlertFactoryProviding.swift in Sources */,
 				993AF698257517AE00416692 /* KeyboardProviding.swift in Sources */,
 				99483035258309D000802B45 /* WebSocketService.swift in Sources */,
-				BB2772BC2581F02900F6A47B /* UserTranslatedMessageCell.swift in Sources */,
+				BB2772BC2581F02900F6A47B /* SentTranslatedMessageCell.swift in Sources */,
 				BBC5B322257E0CFC00739CD8 /* KeychainError.swift in Sources */,
 				9932CF5B256CC6A4002459D0 /* HomeViewReactor.swift in Sources */,
 				990DE9782573A67C00340A72 /* String+.swift in Sources */,
@@ -1427,6 +1430,7 @@
 				9968472C258325F6006C116E /* API.swift in Sources */,
 				9968475925851778006C116E /* HistoryCell.swift in Sources */,
 				990DE94D2573479600340A72 /* AlertFactory.swift in Sources */,
+				BB95F11B258F3D7C00C00DEB /* APIConfiguration.swift in Sources */,
 				995BE9F72576350A00C15AC7 /* TranslatedResult.swift in Sources */,
 				BB6F7EC4256D698B00D66F8E /* ChatViewReactor.swift in Sources */,
 				99A2768425668EFA008BD24C /* HomeViewController.swift in Sources */,

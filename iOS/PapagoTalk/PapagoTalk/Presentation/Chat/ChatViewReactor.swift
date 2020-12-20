@@ -38,11 +38,11 @@ final class ChatViewReactor: Reactor {
     }
     
     private let networkService: NetworkServiceProviding
-    private var userData: UserDataProviding
-    private let roomID: Int
     private let messageParser: MessageParseProviding
     private let chatWebSocket: WebSocketServiceProviding
     private let historyManager: HistoryServiceProviding
+    private let roomID: Int
+    private var userData: UserDataProviding
     
     let initialState: State
     
@@ -71,9 +71,7 @@ final class ChatViewReactor: Reactor {
         switch action {
         case .subscribeChatRoom:
             return currentState.isSubscribingMessage ?
-                .just(.reconnectSocket) : .merge([ .just(.connectSocket),
-                                                    subscribeMessages()
-                                                    ])
+                .just(.reconnectSocket) : .merge([.just(.connectSocket), subscribeMessages()])
         case .fetchMissingMessages:
             return fetchMissingMessages(by: currentState.messageBox.lastMessageTimeStamp())
         case .sendMessage(let message):
@@ -126,7 +124,7 @@ final class ChatViewReactor: Reactor {
             }
             .map { Mutation.appendNewMessage($0) }
     }
-        
+    
     private func requestSendMessage(message: String) -> Observable<Mutation> {
         return networkService.sendMessage(text: message)
             .asObservable()
@@ -137,9 +135,6 @@ final class ChatViewReactor: Reactor {
         historyManager.insert(of: ChatRoomHistory(roomID: roomID,
                                                   code: currentState.roomCode,
                                                   title: currentState.roomTitle,
-                                                  usedNickname: userData.nickName,
-                                                  usedLanguage: userData.language,
-                                                  usedImage: userData.image,
-                                                  enterDate: Date()))
+                                                  userData: userData))
     }
 }

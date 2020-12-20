@@ -10,7 +10,7 @@ import Speech
 import RxSwift
 
 final class SpeechService: NSObject, SpeechServiceProviding {
-   
+    
     private let userData: UserDataProviding
     private var speechRecognizer: SFSpeechRecognizer?
     private let audioEngine = AVAudioEngine()
@@ -19,7 +19,7 @@ final class SpeechService: NSObject, SpeechServiceProviding {
     
     var recognizedSpeech = BehaviorSubject<String>(value: "")
     var isAvailable = BehaviorSubject<Bool>(value: true)
-        
+    
     init(userData: UserDataProviding) {
         self.userData = userData
         super.init()
@@ -48,7 +48,7 @@ final class SpeechService: NSObject, SpeechServiceProviding {
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: .zero)
         recognitionRequest?.endAudio()
-      }
+    }
     
     private func configureAVAudioSession() {
         let audioSession = AVAudioSession.sharedInstance()
@@ -76,6 +76,7 @@ final class SpeechService: NSObject, SpeechServiceProviding {
     
     private func configureRecognitionTask(by request: SFSpeechAudioBufferRecognitionRequest,
                                           on inputNode: AVAudioInputNode) {
+        
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { [weak self] result, error in
             var isFinal = false
             
@@ -88,7 +89,6 @@ final class SpeechService: NSObject, SpeechServiceProviding {
                 return
             }
             self?.stopSpeechRecognizing()
-
             self?.recognitionRequest = nil
             self?.recognitionTask = nil
         })

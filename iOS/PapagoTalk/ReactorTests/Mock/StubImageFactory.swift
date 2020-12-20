@@ -9,6 +9,7 @@ import Foundation
 @testable import PapagoTalk
 
 struct StubImageFactory: ImageFactoryProviding {
+    
     func randomImageURL() -> String {
         return "1.png"
     }

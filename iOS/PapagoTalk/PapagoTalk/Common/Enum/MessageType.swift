@@ -17,13 +17,13 @@ enum MessageType: String, Codable {
     var identifier: String {
         switch self {
         case .sentOrigin:
-            return "SentMessageCell"
+            return "SentOriginMessageCell"
         case .sentTranslated:
-            return "UserTranslatedMessageCell"
+            return "SentTranslatedMessageCell"
         case .receivedOrigin:
-            return "ReceivedMessageCell"
+            return "ReceivedOriginMessageCell"
         case .receivedTranslated:
-            return "TranslatedMessageCell"
+            return "ReceivedTranslatedMessageCell"
         case .system:
             return "SystemMessageCell"
         }

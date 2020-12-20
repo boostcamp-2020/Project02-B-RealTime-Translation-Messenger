@@ -22,8 +22,8 @@ final class HomeViewController: UIViewController, StoryboardView {
     @IBOutlet private weak var chatHistoryButton: UIBarButtonItem!
     @IBOutlet private weak var settingButton: UIBarButtonItem!
     
-    private var languageSelection: BehaviorSubject<Language>
     private let alertFactory: AlertFactoryProviding
+    private var languageSelection: BehaviorSubject<Language>
     
     weak var coordinator: HomeCoordinating?
     var disposeBag = DisposeBag()
@@ -34,7 +34,7 @@ final class HomeViewController: UIViewController, StoryboardView {
           currentLanguage: Language) {
         
         self.alertFactory = alertFactory
-        languageSelection = BehaviorSubject(value: currentLanguage)
+        self.languageSelection = BehaviorSubject(value: currentLanguage)
         super.init(coder: coder)
         self.reactor = reactor
     }
@@ -47,7 +47,6 @@ final class HomeViewController: UIViewController, StoryboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //nickNameTextField.autocorrectionType = .no
         bind()
         bindKeyboard()
     }
@@ -61,9 +60,7 @@ final class HomeViewController: UIViewController, StoryboardView {
     private func bindAction(reactor: HomeViewReactor) {
         profileImageView.rx.tapGesture()
             .when(.recognized)
-            .map { _ in
-                Reactor.Action.profileImageTapped
-            }
+            .map { _ in Reactor.Action.profileImageTapped }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -140,11 +137,9 @@ final class HomeViewController: UIViewController, StoryboardView {
             .distinctUntilChanged()
             .subscribeOn(MainScheduler.instance)
             .compactMap { $0.data }
-            .subscribe(onNext: { [weak self] errorMessage in
-                guard let message = errorMessage else {
-                    return
-                }
-                self?.alert(message: message)
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] in
+                self?.alert(message: $0)
             })
             .disposed(by: disposeBag)
     }

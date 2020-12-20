@@ -11,7 +11,6 @@ import RxCocoa
 protocol MainCoordinating: class {
     func push(_ viewController: UIViewController)
     func present(_ viewController: UIViewController)
-    
     func presentCodeInput()
     func pushChat(roomID: Int, code: String)
     func codeInputToChat(roomID: Int, code: String)

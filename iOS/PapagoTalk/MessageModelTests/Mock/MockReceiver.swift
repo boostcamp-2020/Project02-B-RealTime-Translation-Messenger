@@ -8,6 +8,7 @@
 import Foundation
 
 struct MockReceiver: UserDataProviding {
+    
     var user: User
     var micButtonSize: MicButtonSize
     var sameLanguageTranslation: Bool

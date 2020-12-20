@@ -8,7 +8,7 @@
 import Foundation
 import RxDataSources
 
-class MessageDataSource: RxCollectionViewSectionedReloadDataSource<MessageSection> {
+final class MessageDataSource: RxCollectionViewSectionedReloadDataSource<MessageSection> {
     
     init() {
         super.init(configureCell: { _, collectionView, indexPath, item in

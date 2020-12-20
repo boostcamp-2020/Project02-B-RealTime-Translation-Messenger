@@ -1,5 +1,5 @@
 //
-//  URLSessionNetworkService.swift
+//  NetworkManager.swift
 //  PapagoTalk
 //
 //  Created by 송민관 on 2020/12/02.
@@ -7,18 +7,8 @@
 
 import Foundation
 
-protocol PapagoHTTPRequest {
-    var url: URL { get set }
-    var httpMethod: HTTPMethod { get set }
-    var headers: [String: String] { get set }
-    var body: Data? { get set }
-}
-
-protocol URLSessionNetworkServiceProviding {
-    func request(request: PapagoHTTPRequest, handler: @escaping (Result<Data, NetworkError>) -> Void)
-}
-
-final class URLSessionNetworkService: URLSessionNetworkServiceProviding {
+/// URLSession Network Service
+final class NetworkManager {
     
     private let session: URLSession
 
@@ -26,7 +16,7 @@ final class URLSessionNetworkService: URLSessionNetworkServiceProviding {
         session = urlSession
     }
     
-    func request(request: PapagoHTTPRequest, handler: @escaping (Result<Data, NetworkError>) -> Void) {
+    func request(request: APIConfiguration, handler: @escaping (Result<Data, NetworkError>) -> Void) {
         let urlRequest = configureURLRequest(request: request)
         
         session.dataTask(with: urlRequest) { data, response, error in
@@ -34,6 +24,7 @@ final class URLSessionNetworkService: URLSessionNetworkServiceProviding {
                 handler(.failure(.requestFailure(message: error.localizedDescription)))
                 return
             }
+            
             guard let response = response as? HTTPURLResponse else {
                 handler(.failure(.invalidResponse(message: "")))
                 return
@@ -66,7 +57,7 @@ final class URLSessionNetworkService: URLSessionNetworkServiceProviding {
         }.resume()
     }
     
-    private func configureURLRequest(request: PapagoHTTPRequest) -> URLRequest {
+    private func configureURLRequest(request: APIConfiguration) -> URLRequest {
         var urlRequest = URLRequest(url: request.url)
         urlRequest.httpMethod = request.httpMethod.description
         urlRequest.allHTTPHeaderFields = request.headers
