@@ -7,38 +7,39 @@
 
 import UIKit
 
-class ChatCollectionView: UICollectionView {
-        func scrollToLast() {
-            superview?.layoutIfNeeded()
-            let newY = contentSize.height - bounds.height
-            setContentOffset(CGPoint(x: 0, y: newY < 0 ? 0 : newY), animated: false)
-        }
+final class ChatCollectionView: UICollectionView {
     
-        func keyboardWillShow(keyboardHeight: CGFloat) {
-            guard let superview = superview else {
-                return
-            }
-            var offset = contentOffset
-            var yOffSet = keyboardHeight - superview.safeAreaInsets.bottom
-            var maxYOffSet = contentSize.height - bounds.height
-            if maxYOffSet < 0 {
-                maxYOffSet = 0
-            }
-            yOffSet = yOffSet > maxYOffSet ? maxYOffSet : yOffSet
-            offset.y += yOffSet
-            setContentOffset(offset, animated: false)
-            superview.layoutIfNeeded()
-        }
+    func scrollToLast() {
+        superview?.layoutIfNeeded()
+        let newY = contentSize.height - bounds.height
+        setContentOffset(CGPoint(x: .zero, y: newY < .zero ? .zero : newY), animated: false)
+    }
     
-        func keyboardWillHide(keyboardHeight: CGFloat) {
-            guard let superview = superview else {
-                return
-            }
-            var offset = contentOffset
-            let yOffSet = keyboardHeight - superview.safeAreaInsets.bottom
-            offset.y -= yOffSet
-            offset.y = offset.y < 0 ? 0 : offset.y
-            setContentOffset(offset, animated: false)
-            superview.layoutIfNeeded()
+    func keyboardWillShow(keyboardHeight: CGFloat) {
+        guard let superview = superview else {
+            return
         }
+        var offset = contentOffset
+        var yOffSet = keyboardHeight - superview.safeAreaInsets.bottom
+        var maxYOffSet = contentSize.height - bounds.height
+        if maxYOffSet < .zero {
+            maxYOffSet = .zero
+        }
+        yOffSet = yOffSet > maxYOffSet ? maxYOffSet : yOffSet
+        offset.y += yOffSet
+        setContentOffset(offset, animated: false)
+        superview.layoutIfNeeded()
+    }
+    
+    func keyboardWillHide(keyboardHeight: CGFloat) {
+        guard let superview = superview else {
+            return
+        }
+        var offset = contentOffset
+        let yOffSet = keyboardHeight - superview.safeAreaInsets.bottom
+        offset.y -= yOffSet
+        offset.y = offset.y < .zero ? .zero : offset.y
+        setContentOffset(offset, animated: false)
+        superview.layoutIfNeeded()
+    }
 }

@@ -8,10 +8,10 @@
 import UIKit
 import RxSwift
 
-class MessageSizeDelegate: NSObject, UICollectionViewDelegateFlowLayout {
+final class MessageSizeDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     
-    var messageSizes: [CGFloat] = []
-    let calculator: MessageHeightCalculator = MessageHeightCalculator()
+    let calculator = MessageHeightCalculator()
+    var messageSizes = [CGFloat]()
     
     func updateSizes(messages: [Message]) {
         guard messageSizes.count < messages.count else {
@@ -24,7 +24,10 @@ class MessageSizeDelegate: NSObject, UICollectionViewDelegateFlowLayout {
         messageSizes.append(contentsOf: newHeights)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         guard messageSizes.count > indexPath.row else {
             return .zero
         }

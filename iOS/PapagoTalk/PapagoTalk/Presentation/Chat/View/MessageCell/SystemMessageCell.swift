@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SystemMessageCell: UICollectionViewCell {
+final class SystemMessageCell: UICollectionViewCell {
     
     @IBOutlet private weak var dateBadge: UIButton!
     @IBOutlet private weak var systemMessageBadge: UIButton!

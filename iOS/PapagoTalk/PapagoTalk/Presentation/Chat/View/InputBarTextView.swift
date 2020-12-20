@@ -8,6 +8,7 @@
 import UIKit
 
 final class InputBarTextView: UITextView {
+    
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         configureInset()
