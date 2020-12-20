@@ -1,0 +1,15 @@
+query GetMessageByTime($timeStamp: String!) {
+    allMessagesByTime(time: $timeStamp) {
+        id
+        text
+        source
+        createdAt
+        user {
+            id
+            nickname
+            avatar
+            lang
+        }
+    }
+}
+

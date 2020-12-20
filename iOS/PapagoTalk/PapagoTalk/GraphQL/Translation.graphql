@@ -1,0 +1,5 @@
+mutation Translation($text: String!) {
+  translation(text: $text){
+    translatedText
+  }
+}

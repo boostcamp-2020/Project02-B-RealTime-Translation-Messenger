@@ -8,9 +8,6 @@
 import Foundation
 
 struct RevisionedData<T>: Equatable {
-    static func == (lhs: RevisionedData, rhs: RevisionedData) -> Bool {
-        lhs.revision == rhs.revision
-    }
     
     fileprivate let revision: UInt
     let data: T?
@@ -21,12 +18,20 @@ struct RevisionedData<T>: Equatable {
     }
     
     init(data: T?) {
-        self.revision = 0
+        self.revision = .zero
         self.data = data
+    }
+    
+    static func == (lhs: RevisionedData, rhs: RevisionedData) -> Bool {
+        lhs.revision == rhs.revision
     }
 }
 
 extension RevisionedData {
     func update(_ data: T?) -> RevisionedData {
         return RevisionedData<T>(revision: self.revision + 1, data: data) }
+    
+    func update() -> RevisionedData {
+        return RevisionedData<T>(revision: self.revision + 1, data: self.data)
+    }
 }

@@ -15,7 +15,13 @@ target 'PapagoTalk' do
   pod "Toaster", :git => 'https://github.com/devxoul/Toaster', :branch => 'master'
   # Pods for PapagoTalk
 
-  target 'PapagoTalkTests' do
+  target 'ReactorTests' do
+    inherit! :search_paths
+    pod "ReactorKit"
+    # Pods for testing
+  end
+
+  target 'MessageModelTests' do
     inherit! :search_paths
     # Pods for testing
   end
