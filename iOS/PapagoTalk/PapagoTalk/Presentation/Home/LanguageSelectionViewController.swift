@@ -16,14 +16,14 @@ final class LanguageSelectionViewController: UIViewController {
     @IBOutlet private weak var confirmButton: UIButton!
     
     private let userData: UserDataProviding
-    var disposeBag = DisposeBag()
     var pickerViewObserver: BehaviorSubject<Language>
+    var disposeBag = DisposeBag()
     
     init?(coder: NSCoder,
           userData: UserDataProviding,
           observer: BehaviorSubject<Language>) {
         self.userData = userData
-        pickerViewObserver = observer
+        self.pickerViewObserver = observer
         super.init(coder: coder)
     }
     
@@ -57,7 +57,7 @@ final class LanguageSelectionViewController: UIViewController {
         
         confirmButton.rx.tap
             .withLatestFrom(pickerView.rx.modelSelected(Language.self))
-            .map { $0[0] }
+            .compactMap { $0.first }
             .do(afterNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
             })
@@ -66,7 +66,7 @@ final class LanguageSelectionViewController: UIViewController {
     }
     
     private func initializePickerView(at index: Int) {
-        pickerView.selectRow(index, inComponent: 0, animated: true)
-        pickerView.delegate?.pickerView?(pickerView, didSelectRow: index, inComponent: 0)
+        pickerView.selectRow(index, inComponent: .zero, animated: true)
+        pickerView.delegate?.pickerView?(pickerView, didSelectRow: index, inComponent: .zero)
     }
 }

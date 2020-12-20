@@ -43,8 +43,8 @@ final class HomeViewReactor: Reactor {
     }
     
     private let networkService: NetworkServiceProviding
-    private var userData: UserDataProviding
     private let defaultImageFactory: ImageFactoryProviding
+    private var userData: UserDataProviding
     
     let initialState: State
     
@@ -96,9 +96,9 @@ final class HomeViewReactor: Reactor {
             state.language = language
             userData.language = language 
         case .createRoom(let response):
+            state.createRoomResponse = response
             userData.id = response.userId
             userData.token = response.token
-            state.createRoomResponse = response
         case .joinRoom(let isAvaliable):
             state.joinRoom = state.joinRoom.update(isAvaliable)
         case .alertError(let error):
@@ -126,8 +126,6 @@ final class HomeViewReactor: Reactor {
         return networkService.createRoom(user: userData.user)
             .asObservable()
             .map { Mutation.createRoom($0) }
-            .catchError { _ in
-                .just(.alertError(.networkError))
-            }
+            .catchError { _ in .just(.alertError(.networkError)) }
     }
 }
