@@ -92,11 +92,6 @@
 
 <br>
 
-
-## Demo Video 🎬
-
-
-
 ## Tech Stack 🛠
 
 ### Web 🕸
