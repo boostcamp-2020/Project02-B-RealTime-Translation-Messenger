@@ -23,7 +23,6 @@ target 'PapagoTalk' do
 
   target 'MessageModelTests' do
     inherit! :search_paths
-    pod "Apollo"
     # Pods for testing
   end
 

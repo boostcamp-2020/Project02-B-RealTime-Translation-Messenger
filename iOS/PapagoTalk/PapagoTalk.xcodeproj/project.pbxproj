@@ -124,8 +124,8 @@
 		99E9BE3C258B7D30006EEFEA /* ChatDrawerReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482F29257FA10200802B45 /* ChatDrawerReactorTests.swift */; };
 		99E9BE40258B7D33006EEFEA /* SpeechReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99482EEF257F7C9C00802B45 /* SpeechReactorTests.swift */; };
 		99E9BE44258B7D36006EEFEA /* SettingReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C886B258A20E70086568D /* SettingReactorTests.swift */; };
-		99E9BE48258B7D3B006EEFEA /* MockApolloNetworkServiceSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */; };
-		99E9BE4C258B7D3F006EEFEA /* MockApolloNetworkServiceFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */; };
+		99E9BE48258B7D3B006EEFEA /* MockNetworkServiceSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B6EEB257F3681005EDF22 /* MockNetworkServiceSuccess.swift */; };
+		99E9BE4C258B7D3F006EEFEA /* MockNetworkServiceFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15693D257F5ADA00A2C0F9 /* MockNetworkServiceFailure.swift */; };
 		99E9BE50258B7D42006EEFEA /* MockWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF10E44258AF95300CE4758 /* MockWebSocketService.swift */; };
 		99E9BE54258B7D44006EEFEA /* MockUserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */; };
 		99E9BE58258B7D47006EEFEA /* MockMessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */; };
@@ -327,9 +327,9 @@
 		99E9BE08258AF7E3006EEFEA /* LanguagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerView.swift; sourceTree = "<group>"; };
 		AF3D2492C0C0C5E605FF6FBF /* Pods_PapagoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PapagoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0B6EA5257EB307005EDF22 /* HomeReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactorTests.swift; sourceTree = "<group>"; };
-		BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApolloNetworkServiceSuccess.swift; sourceTree = "<group>"; };
+		BB0B6EEB257F3681005EDF22 /* MockNetworkServiceSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkServiceSuccess.swift; sourceTree = "<group>"; };
 		BB1200A025701B4000CC8020 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
-		BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApolloNetworkServiceFailure.swift; sourceTree = "<group>"; };
+		BB15693D257F5ADA00A2C0F9 /* MockNetworkServiceFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkServiceFailure.swift; sourceTree = "<group>"; };
 		BB15699F257F8C2F00A2C0F9 /* MessageParseProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParseProviding.swift; sourceTree = "<group>"; };
 		BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessageParser.swift; sourceTree = "<group>"; };
 		BB15A5862577690F0006D258 /* SpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
@@ -838,8 +838,8 @@
 		BB987E8E257F4D3E00F4C258 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				BB0B6EEB257F3681005EDF22 /* MockApolloNetworkServiceSuccess.swift */,
-				BB15693D257F5ADA00A2C0F9 /* MockApolloNetworkServiceFailure.swift */,
+				BB0B6EEB257F3681005EDF22 /* MockNetworkServiceSuccess.swift */,
+				BB15693D257F5ADA00A2C0F9 /* MockNetworkServiceFailure.swift */,
 				BBF10E44258AF95300CE4758 /* MockWebSocketService.swift */,
 				BB987E86257F4CD100F4C258 /* MockUserDataProvider.swift */,
 				BB1569A3257F8C5B00A2C0F9 /* MockMessageParser.swift */,
@@ -1294,10 +1294,10 @@
 				99E9BE2F258B7D12006EEFEA /* HomeReactorTests.swift in Sources */,
 				99E9BE33258B7D29006EEFEA /* HistoryReactorTests.swift in Sources */,
 				99E9BE58258B7D47006EEFEA /* MockMessageParser.swift in Sources */,
-				99E9BE48258B7D3B006EEFEA /* MockApolloNetworkServiceSuccess.swift in Sources */,
+				99E9BE48258B7D3B006EEFEA /* MockNetworkServiceSuccess.swift in Sources */,
 				99E9BE68258B7D54006EEFEA /* StubImageFactory.swift in Sources */,
 				99E9BE40258B7D33006EEFEA /* SpeechReactorTests.swift in Sources */,
-				99E9BE4C258B7D3F006EEFEA /* MockApolloNetworkServiceFailure.swift in Sources */,
+				99E9BE4C258B7D3F006EEFEA /* MockNetworkServiceFailure.swift in Sources */,
 				99E9BE54258B7D44006EEFEA /* MockUserDataProvider.swift in Sources */,
 				99E9BE5C258B7D4A006EEFEA /* MockHistoryManager.swift in Sources */,
 				99E9BE3C258B7D30006EEFEA /* ChatDrawerReactorTests.swift in Sources */,
