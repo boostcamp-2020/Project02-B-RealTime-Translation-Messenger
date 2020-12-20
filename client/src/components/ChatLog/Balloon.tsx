@@ -26,8 +26,6 @@ const Container = styled.div<StyleProps>`
     height: fit-content;
     min-height: auto;
     margin-left: 0;
-    /* min-width: 50px;
-    max-width: 200px; */
   }
 `;
 
