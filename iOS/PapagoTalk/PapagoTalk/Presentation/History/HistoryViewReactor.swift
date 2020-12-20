@@ -75,9 +75,7 @@ final class HistoryViewReactor: Reactor {
             .asObservable()
             .map { Mutation.joinChatRoom(ChatRoomInfo(response: $0, code: code)) }
             .catchError { [weak self] in
-                guard let self = self else {
-                    return .just(.alertError(.networkError))
-                }
+                guard let self = self else { return .just(.alertError(.networkError)) }
                 return self.handleError($0)
             }
     }
