@@ -10,9 +10,9 @@ export default async (
   me: UserToken,
   users: User[],
 ): Promise<string> => {
-  const { id: authorId, lang: authorLang } = message.user;
+  const { lang: authorLang } = message.user;
   const { text, source } = message;
-  const { id: myId, lang: myLang } = me;
+  const { lang: myLang } = me;
 
   if (authorLang !== myLang) {
     if (source === myLang) {
@@ -29,42 +29,23 @@ export default async (
       translatedText,
     };
     return JSON.stringify(texts);
-  } else {
-    if (authorId === myId) {
-      if (message.source === myLang) {
-        const secondLang = getSecondLang(
-          users.filter((user) => !user.isDeleted),
-          myLang,
-        );
-        const translatedText = await req(text, source, secondLang);
-        const texts = {
-          originText: text,
-          translatedText,
-        };
-        return JSON.stringify(texts);
-      }
-      const translatedText = await req(text, source, myLang);
-      const texts = {
-        originText: text,
-        translatedText,
-      };
-      return JSON.stringify(texts);
-    } else {
-      if (message.source === myLang) {
-        const secondLang = getSecondLang(users, myLang);
-        const translatedText = await req(text, source, secondLang);
-        const texts = {
-          originText: text,
-          translatedText,
-        };
-        return JSON.stringify(texts);
-      }
-      const translatedText = await req(text, source, myLang);
-      const texts = {
-        originText: text,
-        translatedText,
-      };
-      return JSON.stringify(texts);
-    }
   }
+  if (message.source === myLang) {
+    const secondLang = getSecondLang(
+      users.filter((user) => !user.isDeleted),
+      myLang,
+    );
+    const translatedText = await req(text, source, secondLang);
+    const texts = {
+      originText: text,
+      translatedText,
+    };
+    return JSON.stringify(texts);
+  }
+  const translatedText = await req(text, source, myLang);
+  const texts = {
+    originText: text,
+    translatedText,
+  };
+  return JSON.stringify(texts);
 };
