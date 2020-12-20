@@ -1,75 +1,33 @@
 import React from 'react';
-import LANGUAGE from '@constants/language';
-import util from '@utils/utils';
-import {
-  useLocalizationState,
-  useLocalizationDispatch,
-} from '@contexts/LocalizationContext';
-import { useUserDispatch, useUserState } from '@contexts/UserContext';
-import { Refresh } from '@components/Icons';
-import S from './style';
+import styled from 'styled-components';
+import Language from './Language';
+import Nickname from './Nickname';
+import Avatar from './Avatar';
 
-const UserProfile: React.FC = () => {
-  const { avatar, nickname, lang } = useUserState();
-  const dispatch = useUserDispatch();
-  const { inputNickName, selectLanguage } = useLocalizationState();
-  const localDispatch = useLocalizationDispatch();
+const ProfileWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  const onClickRefresh = () => {
-    const randomAvatar: string = util.getRandomAvatar();
-    dispatch({
-      type: 'SET_AVATAR',
-      avatar: randomAvatar,
-    });
-  };
+interface Props {
+  isNicknameValid: boolean;
+  setIsNicknameValid: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-  const onChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({
-      type: 'SET_NICKNAME',
-      nickname: e.target.value,
-    });
-  };
-
-  const onClickLang = (language: string) => {
-    dispatch({
-      type: 'SET_LANG',
-      lang: language,
-    });
-    localDispatch({
-      type: 'SET_LOCAL',
-      lang: language as 'ko' | 'en',
-    });
-  };
-
+const UserProfile: React.FC<Props> = ({
+  isNicknameValid,
+  setIsNicknameValid,
+}) => {
   return (
-    <S.ProfileWrapper>
-      <S.AvatarWrapper>
-        <S.Avatar src={avatar} />
-        <S.RefreshButton onClick={onClickRefresh}>
-          <Refresh size={30} />
-        </S.RefreshButton>
-      </S.AvatarWrapper>
-      <S.NicknameInput
-        placeholder={inputNickName}
-        value={nickname}
-        onChange={onChangeNickname}
+    <ProfileWrapper>
+      <Avatar />
+      <Nickname
+        isNicknameValid={isNicknameValid}
+        setIsNicknameValid={setIsNicknameValid}
       />
-      <S.LanguageWrapper>
-        <S.LanguageTitle>{selectLanguage}</S.LanguageTitle>
-        <S.LanguageButton
-          type="button"
-          value="한"
-          selected={lang === LANGUAGE.KO}
-          onClick={() => onClickLang(LANGUAGE.KO)}
-        />
-        <S.LanguageButton
-          type="button"
-          value="En"
-          selected={lang === LANGUAGE.EN}
-          onClick={() => onClickLang(LANGUAGE.EN)}
-        />
-      </S.LanguageWrapper>
-    </S.ProfileWrapper>
+      <Language />
+    </ProfileWrapper>
   );
 };
 

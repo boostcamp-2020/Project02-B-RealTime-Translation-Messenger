@@ -15,10 +15,12 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     // lint
     "strict": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     // more spec
     "experimentalDecorators": true,
@@ -31,7 +33,10 @@
       ],
       "@utils/*": [
         "src/utils/*"
-      ]
+      ],
+      "@interfaces/*": [
+        "src/interfaces/*"
+      ],
     }
   }
 }

@@ -1,0 +1,18 @@
+{
+  "requestUser": {
+    "id": number,
+    "nickname": "string",
+    "lang": "string",
+    "avatar": "string",
+    "roomId": number
+  },
+  "createMessageData": {
+    "text": "string"
+  },
+  "allMessageByPageData": {
+    "page": number
+  },
+  "createSystemMessageData": {
+    "source": "string"
+  }
+}

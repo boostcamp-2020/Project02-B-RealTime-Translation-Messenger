@@ -2,20 +2,17 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
-import Button from '@components/Button';
+import Button from '@components/Common/Button';
+import Toast from '@components/Common/Toast';
 import { ENTER_ROOM } from '@queries/room.queires';
 import { EnterRoomResponse, MutationEnterRoomArgs } from '@generated/types';
 import { useUserState } from '@contexts/UserContext';
-import { useLocalizationState } from '@/contexts/LocalizationContext';
-import { CREATE_SYSTEM_MESSAGE } from '@/queries/messege.queries';
+import { CREATE_SYSTEM_MESSAGE } from '@queries/messege.queries';
+import encrypt from '@utils/encryption';
+import floatToast from '@utils/toast';
+import { getText } from '@/constants/localization';
 import Overlay from './Overlay';
 import Code from './Code';
-
-interface Props {
-  visible: boolean;
-  onClick?: () => void;
-  setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const Wrapper = styled.div<Props>`
   position: fixed;
@@ -23,13 +20,17 @@ const Wrapper = styled.div<Props>`
   left: 50%;
   transform: translate(-50%, 10%);
   display: ${(props) => (props.visible ? 'block' : 'none')};
-  width: 20vw;
+  width: 400px;
   height: 350px;
-  min-width: 400px;
+  min-width: 250px;
   border-radius: ${(props) => props.theme.borderRadius};
   background-color: ${(props) => props.theme.blackColor};
   overflow: hidden;
   z-index: 2;
+
+  @media (max-width: 400px) {
+    width: 25vw;
+  }
 `;
 
 const ModalContainer = styled.div`
@@ -64,11 +65,17 @@ const Text = styled.div`
   font-size: 15px;
 `;
 
+interface Props {
+  visible: boolean;
+  onClick?: () => void;
+  setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 const Modal: FC<Props> = ({ visible, setVisible }) => {
   const history = useHistory();
   const [pinValue, setPinValue] = useState('');
   const { nickname, avatar, lang } = useUserState();
-  const { enterCode, submitCode } = useLocalizationState();
+  const { enterCode, submitCode, wrongCode } = getText(lang);
 
   const onClickOverlay = () => {
     if (setVisible) setVisible(!visible);
@@ -90,21 +97,33 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
     variables: { source: 'in' },
   });
 
-  const onClickEnterRoom = async () => {
-    const { data } = await enterRoomMutation();
-    const roomId = data?.enterRoom.roomId;
-    const userId = data?.enterRoom.userId;
-    if (typeof data?.enterRoom.token === 'string')
+  const onClickEnter = async () => {
+    if (pinValue.length < 6) {
+      floatToast('.modal-toast');
+      return;
+    }
+
+    try {
+      const { data } = await enterRoomMutation();
+      if (!data) return;
+
+      const { roomId, userId } = data.enterRoom;
       localStorage.setItem('token', data.enterRoom.token);
-    await createSystemMessageMutation();
-    history.push({
-      pathname: `/room/${roomId}`,
-      state: {
-        userId,
-        code: pinValue,
-        lang,
-      },
-    });
+
+      await createSystemMessageMutation();
+
+      history.push({
+        pathname: `/room/${encrypt(`${roomId}`)}`,
+        state: {
+          userId,
+          roomId,
+          code: pinValue,
+          lang,
+        },
+      });
+    } catch (e) {
+      floatToast('.modal-toast');
+    }
   };
 
   return (
@@ -123,10 +142,11 @@ const Modal: FC<Props> = ({ visible, setVisible }) => {
             />
           </ModalBody>
           <ModalFooter>
-            <Button text={submitCode} onClick={onClickEnterRoom} />
+            <Button text={submitCode} onClick={onClickEnter} />
           </ModalFooter>
         </ModalContainer>
       </Wrapper>
+      <Toast className="modal-toast" text={wrongCode} />
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { Context } from '@interfaces/context';
 import { PrismaClient } from '@prisma/client';
 import { withFilter } from 'graphql-subscriptions';
 import TRIGGER from '@utils/trigger';
@@ -6,7 +7,11 @@ const prisma = new PrismaClient();
 
 export default {
   Mutation: {
-    deleteUser: async (_: any, __: any, { request, isAuthenticated }: any): Promise<boolean> => {
+    deleteUser: async (
+      _: boolean,
+      __: null,
+      { request, isAuthenticated }: Context,
+    ): Promise<boolean> => {
       isAuthenticated(request);
 
       const { id, roomId } = request.user;
@@ -42,7 +47,7 @@ export default {
   Subscription: {
     deleteUser: {
       subscribe: withFilter(
-        (_: any, __: any, { pubsub }: any) => pubsub.asyncIterator(TRIGGER.DELETE_USER),
+        (_: boolean, __: null, { pubsub }: Context) => pubsub.asyncIterator(TRIGGER.DELETE_USER),
         async (payload, variables, context): Promise<boolean> => {
           const { roomId } = context.connection.context.user;
           if (payload.deleteUser.roomId === roomId) return true;

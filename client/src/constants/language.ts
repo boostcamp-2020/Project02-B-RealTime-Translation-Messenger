@@ -1,6 +1,3 @@
-const LANGUAGE = {
-  KO: 'ko',
-  EN: 'en',
-};
+const LANGUAGE = ['ko', 'en', 'zh-CN', 'ja'];
 
 export default LANGUAGE;

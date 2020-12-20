@@ -2,103 +2,47 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Theme } from '@styles/Theme';
 
-interface Props {
-  isOrigin?: boolean;
-  text?: string;
-  originText?: string;
-  translatedText?: string;
-  isLeft?: boolean;
-}
-
-interface ContainerProps {
+interface StyleProps {
   bgColor: string;
   color: string;
   isLeft: boolean;
 }
 
-const Container = styled.div<ContainerProps>`
-  width: 200px;
+const Container = styled.div<StyleProps>`
+  width: 14rem;
   height: fit-content;
-  min-height: 50px;
+  min-height: 3rem;
   margin-left: ${(props) => (props.isLeft ? '0.7rem' : '0')};
   padding: 0.5rem;
   color: ${(props) => props.color};
   background-color: ${(props) => props.bgColor};
   border: 0;
-  border-radius: ${(props) => props.theme.borderRadius};
+  border-radius: ${({ theme }) => theme.borderRadius};
   font-size: 12px;
   font-weight: 400;
+  @media (max-width: ${({ theme }) => theme.mediaSize}) {
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    min-height: auto;
+    margin-left: 0;
+  }
 `;
 
-const Balloon: FC<Props> = ({
-  isOrigin,
-  text,
-  translatedText,
-  originText,
-  isLeft = false,
-}) => {
-  if (text) {
-    if (isOrigin) {
-      return (
-        <Container
-          color={Theme.whiteColor}
-          bgColor={Theme.blueColor}
-          isLeft={isLeft}
-        >
-          {text}
-        </Container>
-      );
-    }
-    return (
-      <Container
-        color={Theme.blackColor}
-        bgColor={Theme.lightGrayColor}
-        isLeft={isLeft}
-      >
-        {text}
-      </Container>
-    );
-  }
-  if (originText) {
-    if (isOrigin) {
-      return (
-        <Container
-          color={Theme.whiteColor}
-          bgColor={Theme.blueColor}
-          isLeft={isLeft}
-        >
-          {originText}
-        </Container>
-      );
-    }
-    return (
-      <Container
-        color={Theme.blackColor}
-        bgColor={Theme.lightGrayColor}
-        isLeft={isLeft}
-      >
-        {originText}
-      </Container>
-    );
-  }
-  if (isOrigin) {
-    return (
-      <Container
-        color={Theme.whiteColor}
-        bgColor={Theme.blueColor}
-        isLeft={isLeft}
-      >
-        {translatedText}
-      </Container>
-    );
-  }
+interface Props {
+  isOrigin?: boolean;
+  text?: string;
+  isLeft?: boolean;
+}
+
+const Balloon: FC<Props> = ({ isOrigin, text, isLeft = false }) => {
   return (
     <Container
-      color={Theme.blackColor}
-      bgColor={Theme.lightGrayColor}
+      color={isOrigin ? Theme.whiteColor : Theme.blackColor}
+      bgColor={isOrigin ? Theme.blueColor : Theme.lightGrayColor}
       isLeft={isLeft}
     >
-      {translatedText}
+      {text}
     </Container>
   );
 };

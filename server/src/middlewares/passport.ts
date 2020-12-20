@@ -1,6 +1,7 @@
-import passport from 'passport';
-import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { PrismaClient } from '@prisma/client';
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
+import passport from 'passport';
+import { Request, Response, NextFunction } from 'express';
 
 const prisma = new PrismaClient();
 
@@ -35,7 +36,7 @@ const verifyJwt = async (payload: any, done: any) => {
   }
 };
 
-export const authenticateJwt = (req: any, res: any, next: any): any => {
+export const authenticateJwt = (req: Request, res: Response, next: NextFunction): void => {
   passport.authenticate('jwt', { session: false }, (error, user) => {
     if (user) {
       req.user = user;

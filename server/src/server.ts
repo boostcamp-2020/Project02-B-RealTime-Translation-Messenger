@@ -7,13 +7,12 @@ import schema from './schema';
 import logger from 'morgan';
 import 'module-alias/register';
 import { verify } from 'jsonwebtoken';
+import { ApolloError } from 'apollo-server';
 
 const PORT = process.env.PORT || 4000;
 
 const prisma = new PrismaClient();
-
 const pubsub = new PubSub();
-
 const server = new GraphQLServer({
   schema,
   context: ({ request, connection }) => ({ request, connection, isAuthenticated, pubsub }),
@@ -22,19 +21,30 @@ const server = new GraphQLServer({
 server.express.use(logger('dev'));
 server.express.use(authenticateJwt);
 
+interface ConnectionParams {
+  authToken: string;
+}
+
 server.start(
   {
     port: PORT,
     cors: { origin: true },
+    endpoint: '/graphql',
     subscriptions: {
-      onConnect: async (connectionParams: any, webSocket: any) => {
+      path: '/graphql',
+      onConnect: async (connectionParams: ConnectionParams) => {
         const { authToken } = connectionParams;
-        console.log('authToken :>> ', authToken);
         const user: any = verify(authToken, process.env.JWT_SECRET_KEY as string);
         const findUser = await prisma.user.findOne({ where: { id: user.id } });
         if (!findUser) throw new Error('Not valid user token');
         return { user: { ...findUser, roomId: user.roomId } };
       },
+    },
+    formatError: (err: ApolloError) => {
+      console.error('--- GraphQL Error ---');
+      console.error('Path:', err.path);
+      console.error('Message:', err.message);
+      return err;
     },
   },
   () => {

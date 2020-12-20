@@ -1,22 +1,16 @@
-import { PrismaClient } from '@prisma/client';
+import { Context } from './../../../interfaces/context';
+import { PrismaClient, Message } from '@prisma/client';
 import dect from '@utils/dect';
 import TRIGGER from '@utils/trigger';
 
 const prisma = new PrismaClient();
-
-interface Message {
-  text: string;
-  source: string;
-  userId: number;
-  roomId: number;
-}
 
 export default {
   Mutation: {
     createMessage: async (
       _: Message,
       args: Message,
-      { pubsub, isAuthenticated, request }: any,
+      { pubsub, isAuthenticated, request }: Context,
     ): Promise<boolean> => {
       isAuthenticated(request);
       const { id: userId, roomId } = request.user;

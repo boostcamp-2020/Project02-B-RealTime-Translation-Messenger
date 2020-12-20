@@ -1,11 +1,5 @@
 import jwt from 'jsonwebtoken';
-
-interface User {
-  id: number;
-  nickname: string;
-  avatar: string;
-  lang: string;
-}
+import { User } from '@prisma/client';
 
 export default (user: User, roomId: number): string => {
   const { id, nickname, avatar, lang } = user;
