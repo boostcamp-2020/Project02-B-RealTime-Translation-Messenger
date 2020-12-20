@@ -9,7 +9,8 @@ import Foundation
 import RxSwift
 @testable import PapagoTalk
 
-class MockSpeechManager: SpeechServiceProviding {
+struct MockSpeechManager: SpeechServiceProviding {
+    
     var recognizedSpeech: BehaviorSubject<String> = BehaviorSubject(value: "")
     var isAvailable: BehaviorSubject<Bool>  = BehaviorSubject(value: true)
     

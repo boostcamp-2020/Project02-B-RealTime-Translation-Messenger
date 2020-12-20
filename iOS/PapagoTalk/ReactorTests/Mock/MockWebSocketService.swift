@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 @testable import PapagoTalk
 
-final class MockWebSocketService: WebSocketServiceProviding {
+struct MockWebSocketService: WebSocketServiceProviding {
 
     var isConnected: Bool = false
     

@@ -1,5 +1,5 @@
 //
-//  MockApolloNetworkServiceFailure.swift
+//  MockNetworkServiceFailure.swift
 //  PapagoTalkTests
 //
 //  Created by 송민관 on 2020/12/08.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 @testable import PapagoTalk
 
-struct MockApolloNetworkServiceFailure: NetworkServiceProviding {
+struct MockNetworkServiceFailure: NetworkServiceProviding {
 
     func sendMessage(text: String) -> Maybe<SendMessageMutation.Data> {
         return Maybe.just(.init(createMessage: false))
@@ -62,14 +62,11 @@ struct MockApolloNetworkServiceFailure: NetworkServiceProviding {
     }
     
     func leaveRoom() {
-        
     }
 
     func sendSystemMessage(type: String) {
-        
     }
 
     func reconnect() {
-
     }
 }

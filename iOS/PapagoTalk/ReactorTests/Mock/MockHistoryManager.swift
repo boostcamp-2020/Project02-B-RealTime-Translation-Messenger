@@ -8,9 +8,10 @@
 import Foundation
 @testable import PapagoTalk
 
-class MockHistoryManager: HistoryServiceProviding {
+struct MockHistoryManager: HistoryServiceProviding {
+    
     func fetch() -> [ChatRoomHistory] {
-        var history = [
+        let history = [
             ChatRoomHistory(roomID: 0,
                             code: "",
                             title: "",
