@@ -1,19 +1,19 @@
 //
-//  TranslatedMessageCell.swift
+//  SentTranslatedMessageCell.swift
 //  PapagoTalk
 //
-//  Created by Byoung-Hwi Yoon on 2020/12/03.
+//  Created by 송민관 on 2020/12/10.
 //
 
 import UIKit
 
-final class TranslatedMessageCell: UICollectionViewCell {
+final class SentTranslatedMessageCell: UICollectionViewCell {
     
     @IBOutlet private weak var messageTextLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
 }
 
-extension TranslatedMessageCell: MessageCell {
+extension SentTranslatedMessageCell: MessageCell {
     func configureMessageCell(message: Message) {
         configureMessage(of: messageTextLabel, with: message.text)
         configureTime(of: timeLabel, with: message.time, shouldShow: message.shouldTimeShow)
