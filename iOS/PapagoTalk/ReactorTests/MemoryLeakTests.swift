@@ -75,8 +75,10 @@ extension Resolver {
             .regist { _ in MockNetworkServiceSuccess() } // networkService
             .regist { _ in StubAlertFactory() }
             .regist { _ in MockUserDataProvider() }
-            .regist { _ in MockSpeechManager() }
             .regist { _ in MockMessageParser() }
+            .regist { _ in MockSpeechManager() }
+            .regist { _ in MockHistoryManager() }
+            .regist { _ in StubAlertFactory() }
             .regist { _ in
                 LaunchScreenViewController.instantiate {
                     LaunchScreenViewController(coder: $0)
